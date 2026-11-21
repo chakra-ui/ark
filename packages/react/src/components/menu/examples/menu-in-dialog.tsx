@@ -32,15 +32,17 @@ export const MenuInDialog = () => (
                     <Menu.Arrow className={styles.Arrow}>
                       <Menu.ArrowTip className={styles.ArrowTip} />
                     </Menu.Arrow>
-                    <Menu.Item className={styles.Item} value="light">
-                      Light
-                    </Menu.Item>
-                    <Menu.Item className={styles.Item} value="dark">
-                      Dark
-                    </Menu.Item>
-                    <Menu.Item className={styles.Item} value="system">
-                      System
-                    </Menu.Item>
+                    <Menu.List className={styles.List}>
+                      <Menu.Item className={styles.Item} value="light">
+                        Light
+                      </Menu.Item>
+                      <Menu.Item className={styles.Item} value="dark">
+                        Dark
+                      </Menu.Item>
+                      <Menu.Item className={styles.Item} value="system">
+                        System
+                      </Menu.Item>
+                    </Menu.List>
                   </Menu.Content>
                 </Menu.Positioner>
               </Portal>

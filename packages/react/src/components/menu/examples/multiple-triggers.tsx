@@ -33,19 +33,21 @@ export const MultipleTriggers = () => (
     <Portal>
       <Menu.Positioner className={styles.Positioner}>
         <Menu.Content className={styles.Content}>
-          <Menu.Item className={styles.Item} value="reply">
-            Reply
-          </Menu.Item>
-          <Menu.Item className={styles.Item} value="forward">
-            Forward
-          </Menu.Item>
-          <Menu.Item className={styles.Item} value="archive">
-            Archive
-          </Menu.Item>
-          <Menu.Separator className={styles.Separator} />
-          <Menu.Item className={styles.Item} value="delete">
-            Delete
-          </Menu.Item>
+          <Menu.List className={styles.List}>
+            <Menu.Item className={styles.Item} value="reply">
+              Reply
+            </Menu.Item>
+            <Menu.Item className={styles.Item} value="forward">
+              Forward
+            </Menu.Item>
+            <Menu.Item className={styles.Item} value="archive">
+              Archive
+            </Menu.Item>
+            <Menu.Separator className={styles.Separator} />
+            <Menu.Item className={styles.Item} value="delete">
+              Delete
+            </Menu.Item>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Portal>

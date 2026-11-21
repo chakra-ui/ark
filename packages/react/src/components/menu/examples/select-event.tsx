@@ -12,16 +12,18 @@ export const SelectEvent = () => (
     </Menu.Trigger>
     <Menu.Positioner className={styles.Positioner}>
       <Menu.Content className={styles.Content}>
-        {items.map((item) => (
-          <Menu.Item
-            className={styles.Item}
-            key={item.value}
-            value={item.value}
-            onSelect={() => console.log('Item selected:', item.label)}
-          >
-            {item.label}
-          </Menu.Item>
-        ))}
+        <Menu.List className={styles.List}>
+          {items.map((item) => (
+            <Menu.Item
+              className={styles.Item}
+              key={item.value}
+              value={item.value}
+              onSelect={() => console.log('Item selected:', item.label)}
+            >
+              {item.label}
+            </Menu.Item>
+          ))}
+        </Menu.List>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>

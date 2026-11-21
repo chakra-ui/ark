@@ -19,10 +19,12 @@
   <Portal>
     <Menu.Positioner class={menu.Positioner}>
       <Menu.Content class={menu.Content}>
-        <Menu.Item class={menu.Item} value="edit">Edit</Menu.Item>
-        <Menu.Item class={menu.Item} value="duplicate">Duplicate</Menu.Item>
-        <Menu.Separator class={menu.Separator} />
-        <Menu.Item class={menu.Item} value="delete" onclick={() => (open = true)}>Delete...</Menu.Item>
+        <Menu.List class={menu.List}>
+          <Menu.Item class={menu.Item} value="edit">Edit</Menu.Item>
+          <Menu.Item class={menu.Item} value="duplicate">Duplicate</Menu.Item>
+          <Menu.Separator class={menu.Separator} />
+          <Menu.Item class={menu.Item} value="delete" onclick={() => (open = true)}>Delete...</Menu.Item>
+        </Menu.List>
       </Menu.Content>
     </Menu.Positioner>
   </Portal>

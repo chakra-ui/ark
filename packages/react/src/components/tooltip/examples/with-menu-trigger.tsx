@@ -29,18 +29,20 @@ export const WithMenuTrigger = () => (
         <Menu.Arrow className={styles.Arrow}>
           <Menu.ArrowTip className={styles.ArrowTip} />
         </Menu.Arrow>
-        <Menu.Item className={styles.Item} value="new-file">
-          New File
-        </Menu.Item>
-        <Menu.Item className={styles.Item} value="open">
-          Open...
-        </Menu.Item>
-        <Menu.Item className={styles.Item} value="save">
-          Save
-        </Menu.Item>
-        <Menu.Item className={styles.Item} value="save-as">
-          Save As...
-        </Menu.Item>
+        <Menu.List className={styles.List}>
+          <Menu.Item className={styles.Item} value="new-file">
+            New File
+          </Menu.Item>
+          <Menu.Item className={styles.Item} value="open">
+            Open...
+          </Menu.Item>
+          <Menu.Item className={styles.Item} value="save">
+            Save
+          </Menu.Item>
+          <Menu.Item className={styles.Item} value="save-as">
+            Save As...
+          </Menu.Item>
+        </Menu.List>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>

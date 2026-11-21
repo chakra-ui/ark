@@ -19,19 +19,21 @@ import tooltipStyles from 'styles/tooltip.module.css'
         <Menu.Arrow :class="styles.Arrow">
           <Menu.ArrowTip :class="styles.ArrowTip" />
         </Menu.Arrow>
-        <Menu.Item :class="styles.Item" value="new-file">New File</Menu.Item>
-        <Menu.Item :class="styles.Item" value="open">Open...</Menu.Item>
-        <Tooltip.Root>
-          <Tooltip.Trigger #render="ctx">
-            <Menu.Item v-bind="ctx.props" :class="styles.Item" value="save" disabled>Save</Menu.Item>
-          </Tooltip.Trigger>
-          <Teleport to="body">
-            <Tooltip.Positioner :class="tooltipStyles.Positioner">
-              <Tooltip.Content :class="tooltipStyles.Content">No changes to save</Tooltip.Content>
-            </Tooltip.Positioner>
-          </Teleport>
-        </Tooltip.Root>
-        <Menu.Item :class="styles.Item" value="save-as">Save As...</Menu.Item>
+        <Menu.List :class="styles.List">
+          <Menu.Item :class="styles.Item" value="new-file">New File</Menu.Item>
+          <Menu.Item :class="styles.Item" value="open">Open...</Menu.Item>
+          <Tooltip.Root>
+            <Tooltip.Trigger #render="ctx">
+              <Menu.Item v-bind="ctx.props" :class="styles.Item" value="save" disabled>Save</Menu.Item>
+            </Tooltip.Trigger>
+            <Teleport to="body">
+              <Tooltip.Positioner :class="tooltipStyles.Positioner">
+                <Tooltip.Content :class="tooltipStyles.Content">No changes to save</Tooltip.Content>
+              </Tooltip.Positioner>
+            </Teleport>
+          </Tooltip.Root>
+          <Menu.Item :class="styles.Item" value="save-as">Save As...</Menu.Item>
+        </Menu.List>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>

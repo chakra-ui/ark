@@ -28,9 +28,11 @@ const editItems = [
       </Menu.Trigger>
       <Menu.Positioner :class="styles.Positioner">
         <Menu.Content :class="styles.Content">
-          <Menu.Item v-for="item in fileItems" :key="item.value" :class="styles.Item" :value="item.value">
-            {{ item.label }}
-          </Menu.Item>
+          <Menu.List :class="styles.List">
+            <Menu.Item v-for="item in fileItems" :key="item.value" :class="styles.Item" :value="item.value">
+              {{ item.label }}
+            </Menu.Item>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Menu.Root>
@@ -44,9 +46,11 @@ const editItems = [
       </Menu.Trigger>
       <Menu.Positioner :class="styles.Positioner">
         <Menu.Content :class="styles.Content">
-          <Menu.Item v-for="item in editItems" :key="item.value" :class="styles.Item" :value="item.value">
-            {{ item.label }}
-          </Menu.Item>
+          <Menu.List :class="styles.List">
+            <Menu.Item v-for="item in editItems" :key="item.value" :class="styles.Item" :value="item.value">
+              {{ item.label }}
+            </Menu.Item>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Menu.Root>

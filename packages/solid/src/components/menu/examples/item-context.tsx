@@ -12,21 +12,23 @@ export const ItemContext = () => (
     </Menu.Trigger>
     <Menu.Positioner class={styles.Positioner}>
       <Menu.Content class={styles.Content}>
-        <Menu.Item class={styles.Item} value="profile">
-          <Menu.ItemContext>
-            {(item) => <span style={{ 'font-weight': item().highlighted ? 600 : 400 }}>Profile Settings</span>}
-          </Menu.ItemContext>
-        </Menu.Item>
-        <Menu.Item class={styles.Item} value="preferences">
-          Preferences
-        </Menu.Item>
-        <Menu.Item class={styles.Item} value="notifications">
-          Notifications
-        </Menu.Item>
-        <Menu.Separator class={styles.Separator} />
-        <Menu.Item class={styles.Item} value="logout">
-          Log Out
-        </Menu.Item>
+        <Menu.List class={styles.List}>
+          <Menu.Item class={styles.Item} value="profile">
+            <Menu.ItemContext>
+              {(item) => <span style={{ 'font-weight': item().highlighted ? 600 : 400 }}>Profile Settings</span>}
+            </Menu.ItemContext>
+          </Menu.Item>
+          <Menu.Item class={styles.Item} value="preferences">
+            Preferences
+          </Menu.Item>
+          <Menu.Item class={styles.Item} value="notifications">
+            Notifications
+          </Menu.Item>
+          <Menu.Separator class={styles.Separator} />
+          <Menu.Item class={styles.Item} value="logout">
+            Log Out
+          </Menu.Item>
+        </Menu.List>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>

@@ -1,0 +1,112 @@
+import { createElement, Upload, CircleAlert, CircleCheck, X, File } from 'lucide'
+
+import type { FileError } from '@zag-js/file-upload'
+
+import styles from 'styles/file-upload.module.css'
+
+import '../../src/components/file-upload/index.js'
+
+import type { FileChangeDetails } from '@zag-js/file-upload'
+
+function trackSections(host: HTMLElement, messages: Record<string, string> = {}, tag = 'div') {
+  const el = host.querySelector('ark-file-upload')!
+  el.addEventListener('filechange', (event) => {
+    const { acceptedFiles, rejectedFiles } = event.detail
+    // Items are stamped on the render that follows the event
+    queueMicrotask(() => {
+      host.querySelector<HTMLElement>('[data-section="accepted"]')!.hidden = acceptedFiles.length === 0
+      host.querySelector<HTMLElement>('[data-section="rejected"]')!.hidden = rejectedFiles.length === 0
+      const nodes = host.querySelectorAll('[data-section="rejected"] ark-file-upload-item[data-rendered]')
+      nodes.forEach((node, index) => {
+        node.querySelector(`.${styles.ErrorList}`)!.innerHTML = (rejectedFiles[index]?.errors ?? [])
+          .map((error) => `<${tag} class="${styles.ErrorItem}">${messages[error] ?? error}</${tag}>`)
+          .join('')
+      })
+    })
+  })
+  return host
+}
+
+const fragment = (html: string) => {
+  const host = document.createElement('div')
+  host.innerHTML = html
+  return host
+}
+
+const label = (text: string) => `<ark-file-upload-label class="${styles.Label}">${text}</ark-file-upload-label>`
+
+const dropzone = (title: string, description: string) => `
+  <ark-file-upload-dropzone class="${styles.Dropzone}">
+    ${createElement(Upload, { 'aria-hidden': 'true', class: `${styles.DropzoneIcon}` }).outerHTML}
+    <div class="${styles.DropzoneContent}">
+      <span class="${styles.DropzoneTitle}">${title}</span>
+      <span class="${styles.DropzoneDescription}">${description}</span>
+    </div>
+  </ark-file-upload-dropzone>`
+
+const itemGroup = (template: string, type = '') =>
+  `<ark-file-upload-item-group class="${styles.ItemGroup}" ${type ? `type="${type}"` : ''}><template>${template}</template></ark-file-upload-item-group>`
+
+const staticPreview = (iconHtml: string) => `<div class="${styles.ItemPreview}">${iconHtml}</div>`
+
+const rejectedItem = `
+  <ark-file-upload-item class="${styles.Item}" data-rejected>
+    ${staticPreview(createElement(CircleAlert, { 'aria-hidden': 'true' }).outerHTML)}
+    <ark-file-upload-item-name class="${styles.ItemName}"></ark-file-upload-item-name>
+    <ark-file-upload-item-size-text class="${styles.ItemSizeText}"></ark-file-upload-item-size-text>
+    <div class="${styles.ErrorList}"></div>
+  </ark-file-upload-item>`
+
+const sections = (accepted: string) => `
+  <div class="${styles.Section}" data-section="accepted" hidden>
+    <div class="${styles.SectionTitle}" data-status="accepted">${createElement(CircleCheck, { 'aria-hidden': 'true', style: 'width: 0.875rem; height: 0.875rem; display: inline; margin-right: 0.25rem; vertical-align: middle' }).outerHTML}Accepted Files</div>
+    ${itemGroup(accepted, 'accepted')}
+  </div>
+  <div class="${styles.Section}" data-section="rejected" hidden>
+    <div class="${styles.SectionTitle}" data-status="rejected">${createElement(CircleAlert, { 'aria-hidden': 'true', style: 'width: 0.875rem; height: 0.875rem; display: inline; margin-right: 0.25rem; vertical-align: middle' }).outerHTML}Rejected Files</div>
+    ${itemGroup(rejectedItem, 'rejected')}
+  </div>`
+
+const deleteTrigger = `<ark-file-upload-item-delete-trigger><button class="${styles.ItemDeleteTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-file-upload-item-delete-trigger>`
+
+const item = (previews: string) => `
+  <ark-file-upload-item class="${styles.Item}">
+    ${previews}
+    <ark-file-upload-item-name class="${styles.ItemName}"></ark-file-upload-item-name>
+    <ark-file-upload-item-size-text class="${styles.ItemSizeText}"></ark-file-upload-item-size-text>
+    ${deleteTrigger}
+  </ark-file-upload-item>`
+
+const imagePreview = `
+  <ark-file-upload-item-preview type="image/*" class="${styles.ItemPreview}">
+    <ark-file-upload-item-preview-image><img class="${styles.ItemPreviewImage}" /></ark-file-upload-item-preview-image>
+  </ark-file-upload-item-preview>`
+
+const typePreview = (type: string, iconHtml: string) =>
+  `<ark-file-upload-item-preview type="${type}" class="${styles.ItemPreview}">${iconHtml}</ark-file-upload-item-preview>`
+
+const hiddenInput = `<ark-file-upload-hidden-input></ark-file-upload-hidden-input>`
+
+const errorMessages: Record<FileError, string> = {
+  TOO_MANY_FILES: 'Too many files selected (max 3 allowed)',
+  FILE_INVALID_TYPE: 'Invalid file type (only images and PDFs allowed)',
+  FILE_TOO_LARGE: 'File too large (max 1MB)',
+  FILE_TOO_SMALL: 'File too small (min 1KB)',
+  FILE_INVALID: 'Invalid file',
+  FILE_EXISTS: 'File already exists',
+}
+
+export function mount(root: HTMLElement) {
+  root.replaceChildren(
+    trackSections(
+      fragment(`
+      <ark-file-upload max-files="3" max-file-size="${1024 * 1024}" min-file-size="1024" accept="image/*,application/pdf" class="${styles.Root}">
+        ${label('Upload Documents')}
+        ${dropzone('Drop files here', 'Images and PDFs, max 1MB each')}
+        ${sections(item(`${imagePreview}${typePreview('application/pdf', createElement(File, { 'aria-hidden': 'true' }).outerHTML)}`))}
+        ${hiddenInput}
+      </ark-file-upload>`),
+      errorMessages,
+    ),
+  )
+}

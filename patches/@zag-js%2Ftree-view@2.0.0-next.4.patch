@@ -1,0 +1,62 @@
+diff --git a/node_modules/@zag-js/tree-view/.bun-tag-29a1228d9bbbca2e b/.bun-tag-29a1228d9bbbca2e
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/tree-view/.bun-tag-c53a8380aa2f5c52 b/.bun-tag-c53a8380aa2f5c52
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/dist/tree-view.connect.js b/dist/tree-view.connect.js
+index 3005efc9dce16938b1bb4a6eaa90d30c040eb9e0..1d797de1245576b52bb38cb89387374625068eb0 100644
+--- a/dist/tree-view.connect.js
++++ b/dist/tree-view.connect.js
+@@ -31,10 +31,13 @@ function connect(service, normalize) {
+ 	const firstNodeValue = firstNode ? collection.getNodeValue(firstNode) : null;
+ 	const focusedIndexPath = focusedValue != null ? collection.getIndexPath(focusedValue) : void 0;
+ 	const tabbableValue = focusedIndexPath && !skip({ indexPath: focusedIndexPath }) ? focusedValue : firstNodeValue;
++	const nodeStates = /* @__PURE__ */ new Map();
+ 	function getNodeState(props) {
+ 		const { node, indexPath } = props;
+ 		const value = collection.getNodeValue(node);
+-		return {
++		const cached = nodeStates.get(value);
++		if (cached) return cached;
++		const state = {
+ 			id: require_tree_view_dom.getNodeId(scope, value),
+ 			value,
+ 			indexPath,
+@@ -51,6 +54,8 @@ function connect(service, normalize) {
+ 				return require_utils_checked_state.getCheckedState(collection, node, checkedValue);
+ 			}
+ 		};
++		nodeStates.set(value, state);
++		return state;
+ 	}
+ 	return {
+ 		collection,
+diff --git a/dist/tree-view.connect.mjs b/dist/tree-view.connect.mjs
+index 5c2d3b37fbeec4e7308bff7b210e808782a9ec55..6d634904dde5e3ee1efddc53ce0fc51a60d6e3d0 100644
+--- a/dist/tree-view.connect.mjs
++++ b/dist/tree-view.connect.mjs
+@@ -27,10 +27,13 @@ function connect(service, normalize) {
+ 	const firstNodeValue = firstNode ? collection.getNodeValue(firstNode) : null;
+ 	const focusedIndexPath = focusedValue != null ? collection.getIndexPath(focusedValue) : void 0;
+ 	const tabbableValue = focusedIndexPath && !skip({ indexPath: focusedIndexPath }) ? focusedValue : firstNodeValue;
++	const nodeStates = /* @__PURE__ */ new Map();
+ 	function getNodeState(props) {
+ 		const { node, indexPath } = props;
+ 		const value = collection.getNodeValue(node);
+-		return {
++		const cached = nodeStates.get(value);
++		if (cached) return cached;
++		const state = {
+ 			id: getNodeId(scope, value),
+ 			value,
+ 			indexPath,
+@@ -47,6 +50,8 @@ function connect(service, normalize) {
+ 				return getCheckedState(collection, node, checkedValue);
+ 			}
+ 		};
++		nodeStates.set(value, state);
++		return state;
+ 	}
+ 	return {
+ 		collection,

@@ -10,9 +10,11 @@
   <Portal>
     <Menu.Positioner>
       <Menu.Content>
-        <Menu.Item value="new">New</Menu.Item>
-        <Menu.Separator />
-        <Menu.Item value="exit">Exit</Menu.Item>
+        <Menu.List>
+          <Menu.Item value="new">New</Menu.Item>
+          <Menu.Separator />
+          <Menu.Item value="exit">Exit</Menu.Item>
+        </Menu.List>
       </Menu.Content>
     </Menu.Positioner>
   </Portal>

@@ -28,11 +28,13 @@
   </Menu.Trigger>
   <Menu.Positioner class={styles.Positioner}>
     <Menu.Content class={styles.Content}>
-      {#each items as item}
-        <Menu.Item class={styles.Item} value={item.value} onSelect={() => handleItemSelect(item.label)}>
-          {item.label}
-        </Menu.Item>
-      {/each}
+      <Menu.List class={styles.List}>
+        {#each items as item}
+          <Menu.Item class={styles.Item} value={item.value} onSelect={() => handleItemSelect(item.label)}>
+            {item.label}
+          </Menu.Item>
+        {/each}
+      </Menu.List>
     </Menu.Content>
   </Menu.Positioner>
 </Menu.Root>

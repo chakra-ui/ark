@@ -21,37 +21,41 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
           <Menu.Arrow>
             <Menu.ArrowTip />
           </Menu.Arrow>
-          <Menu.ItemGroup>
-            <Menu.ItemGroupLabel>Ark UI</Menu.ItemGroupLabel>
-            <Menu.Item value="dialog" disabled>
-              Dialog
-            </Menu.Item>
-          </Menu.ItemGroup>
-          <Menu.Separator />
-          <Menu.CheckboxItem checked value="checked">
-            <Menu.ItemIndicator>✅</Menu.ItemIndicator>
-            <Menu.ItemText>Check me</Menu.ItemText>
-          </Menu.CheckboxItem>
-          <Menu.Separator />
-          <Menu.RadioItemGroup value="react" onValueChange={onValueChange}>
-            <Menu.ItemGroupLabel>JS Frameworks</Menu.ItemGroupLabel>
-            {['react', 'solid', 'vue', 'svelte'].map((framework) => (
-              <Menu.RadioItem key={framework} value={framework} disabled={framework === 'svelte'}>
-                <Menu.ItemIndicator>✅</Menu.ItemIndicator>
-                <Menu.ItemText>{framework}</Menu.ItemText>
-              </Menu.RadioItem>
-            ))}
-          </Menu.RadioItemGroup>
-          <Menu.Separator />
-          <Menu.Root>
-            <Menu.TriggerItem>CSS Frameworks</Menu.TriggerItem>
-            <Menu.Positioner>
-              <Menu.Content>
-                <Menu.Item value="panda">Panda</Menu.Item>
-                <Menu.Item value="tailwind">Tailwind</Menu.Item>
-              </Menu.Content>
-            </Menu.Positioner>
-          </Menu.Root>
+          <Menu.List>
+            <Menu.ItemGroup>
+              <Menu.ItemGroupLabel>Ark UI</Menu.ItemGroupLabel>
+              <Menu.Item value="dialog" disabled>
+                Dialog
+              </Menu.Item>
+            </Menu.ItemGroup>
+            <Menu.Separator />
+            <Menu.CheckboxItem checked value="checked">
+              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+              <Menu.ItemText>Check me</Menu.ItemText>
+            </Menu.CheckboxItem>
+            <Menu.Separator />
+            <Menu.RadioItemGroup value="react" onValueChange={onValueChange}>
+              <Menu.ItemGroupLabel>JS Frameworks</Menu.ItemGroupLabel>
+              {['react', 'solid', 'vue', 'svelte'].map((framework) => (
+                <Menu.RadioItem key={framework} value={framework} disabled={framework === 'svelte'}>
+                  <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+                  <Menu.ItemText>{framework}</Menu.ItemText>
+                </Menu.RadioItem>
+              ))}
+            </Menu.RadioItemGroup>
+            <Menu.Separator />
+            <Menu.Root>
+              <Menu.TriggerItem>CSS Frameworks</Menu.TriggerItem>
+              <Menu.Positioner>
+                <Menu.Content>
+                  <Menu.List>
+                    <Menu.Item value="panda">Panda</Menu.Item>
+                    <Menu.Item value="tailwind">Tailwind</Menu.Item>
+                  </Menu.List>
+                </Menu.Content>
+              </Menu.Positioner>
+            </Menu.Root>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Menu.Root>
@@ -156,7 +160,9 @@ describe('Menu', () => {
         <Menu.ContextTrigger value="second">Second</Menu.ContextTrigger>
         <Menu.Positioner>
           <Menu.Content>
-            <Menu.Item value="edit">Edit</Menu.Item>
+            <Menu.List>
+              <Menu.Item value="edit">Edit</Menu.Item>
+            </Menu.List>
           </Menu.Content>
         </Menu.Positioner>
       </Menu.Root>,

@@ -112,9 +112,11 @@
               <Portal>
                 <Menu.Positioner class={styles.Positioner}>
                   <Menu.Content class={styles.Content}>
-                    {#each sharingOptions as option (option.value)}
-                      <Menu.Item class={styles.Item} value={option.value}>{option.label}</Menu.Item>
-                    {/each}
+                    <Menu.List class={styles.List}>
+                      {#each sharingOptions as option (option.value)}
+                        <Menu.Item class={styles.Item} value={option.value}>{option.label}</Menu.Item>
+                      {/each}
+                    </Menu.List>
                   </Menu.Content>
                 </Menu.Positioner>
               </Portal>

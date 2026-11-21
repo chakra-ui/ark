@@ -21,15 +21,17 @@ const items = [
     </Menu.Trigger>
     <Menu.Positioner :class="styles.Positioner">
       <Menu.Content :class="styles.Content">
-        <Menu.Item
-          v-for="item in items"
-          :key="item.value"
-          :class="styles.Item"
-          :value="item.value"
-          @select="() => console.log('Item selected:', item.label)"
-        >
-          {{ item.label }}
-        </Menu.Item>
+        <Menu.List :class="styles.List">
+          <Menu.Item
+            v-for="item in items"
+            :key="item.value"
+            :class="styles.Item"
+            :value="item.value"
+            @select="() => console.log('Item selected:', item.label)"
+          >
+            {{ item.label }}
+          </Menu.Item>
+        </Menu.List>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>

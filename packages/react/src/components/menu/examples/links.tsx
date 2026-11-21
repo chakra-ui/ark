@@ -12,18 +12,20 @@ export const Links = () => (
     </Menu.Trigger>
     <Menu.Positioner className={styles.Positioner}>
       <Menu.Content className={styles.Content}>
-        <Menu.Item className={styles.Item} value="docs" render={<a href="https://ark-ui.com">Documentation</a>} />
-        <Menu.Item
-          className={styles.Item}
-          value="github"
-          render={<a href="https://github.com/chakra-ui/ark">GitHub</a>}
-        />
-        <Menu.Separator className={styles.Separator} />
-        <Menu.Item
-          className={styles.Item}
-          value="changelog"
-          render={<a href="https://github.com/chakra-ui/ark/releases">Changelog</a>}
-        />
+        <Menu.List className={styles.List}>
+          <Menu.Item className={styles.Item} value="docs" render={<a href="https://ark-ui.com">Documentation</a>} />
+          <Menu.Item
+            className={styles.Item}
+            value="github"
+            render={<a href="https://github.com/chakra-ui/ark">GitHub</a>}
+          />
+          <Menu.Separator className={styles.Separator} />
+          <Menu.Item
+            className={styles.Item}
+            value="changelog"
+            render={<a href="https://github.com/chakra-ui/ark/releases">Changelog</a>}
+          />
+        </Menu.List>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>

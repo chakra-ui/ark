@@ -1,0 +1,379 @@
+diff --git a/node_modules/@zag-js/menu/.bun-tag-212369a1d96ac4e5 b/.bun-tag-212369a1d96ac4e5
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/menu/.bun-tag-340666b5320304a5 b/.bun-tag-340666b5320304a5
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/menu/.bun-tag-586bd0d871eedfb5 b/.bun-tag-586bd0d871eedfb5
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/menu/.bun-tag-5d7c33b9cb8d754 b/.bun-tag-5d7c33b9cb8d754
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/menu/.bun-tag-a4ce165fb68e6095 b/.bun-tag-a4ce165fb68e6095
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/menu/.bun-tag-d95c2e1977fe99a2 b/.bun-tag-d95c2e1977fe99a2
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/menu/.bun-tag-f04c6a9b23c01b7 b/.bun-tag-f04c6a9b23c01b7
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/menu/.bun-tag-f3946f4c47fe7c32 b/.bun-tag-f3946f4c47fe7c32
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/dist/menu.connect.js b/dist/menu.connect.js
+index dac8becedf42a36ea998d7cd14644e4f72eb0c51..9f6353cf4c39c1c28e130e7ac8d3badb2acacbe6 100644
+--- a/dist/menu.connect.js
++++ b/dist/menu.connect.js
+@@ -217,6 +217,13 @@ function connect(service, normalize) {
+ 				id: child.prop("id")
+ 			});
+ 		},
++		removeChild(child) {
++			send({
++				type: "CHILD.REMOVE",
++				value: child,
++				id: child.prop("id")
++			});
++		},
+ 		reposition(options = {}) {
+ 			send({
+ 				type: "POSITIONING.SET",
+diff --git a/dist/menu.connect.mjs b/dist/menu.connect.mjs
+index 0d34842562809e84e0380bbc28d779ef68fa0ba5..6edcf756993a233ad03f1945dd4ecadf9b49a663 100644
+--- a/dist/menu.connect.mjs
++++ b/dist/menu.connect.mjs
+@@ -213,6 +213,13 @@ function connect(service, normalize) {
+ 				id: child.prop("id")
+ 			});
+ 		},
++		removeChild(child) {
++			send({
++				type: "CHILD.REMOVE",
++				value: child,
++				id: child.prop("id")
++			});
++		},
+ 		reposition(options = {}) {
+ 			send({
+ 				type: "POSITIONING.SET",
+diff --git a/dist/menu.dom.js b/dist/menu.dom.js
+index 6b846375a35b07764039c67acde0fce0425bd094..6d8645279fe5b1bb2dc0d0778d70dc70a7fef9d7 100644
+--- a/dist/menu.dom.js
++++ b/dist/menu.dom.js
+@@ -38,6 +38,7 @@ const getLayerEl = (ctx, value) => getViewportEl(ctx) ?? getContentEl(ctx, value
+ const getPositionerEl = (ctx) => ctx.query(ctx.selector(require_menu_anatomy.parts.positioner));
+ const getTriggerEl = (ctx) => ctx.query(ctx.selector(require_menu_anatomy.parts.trigger));
+ const getInputEl = (ctx) => ctx.query(ctx.selector(require_menu_anatomy.parts.input));
++const getListEl = (ctx, contentEl) => contentEl?.querySelector(ctx.selector(require_menu_anatomy.parts.list)) ?? null;
+ const getMenubarEl = (ctx, rootId) => rootId ? ctx.getById(rootId) : null;
+ const dispatchMenubarEvent = (menubarEl, type, detail) => {
+ 	const win = (0, _zag_js_dom_query.getWindow)(menubarEl);
+@@ -46,7 +47,7 @@ const dispatchMenubarEvent = (menubarEl, type, detail) => {
+ const getItemEl = (ctx, value, triggerValue) => {
+ 	if (!value) return null;
+ 	const selector = `${ctx.selector(require_menu_anatomy.parts.item)}[data-value="${value}"]`;
+-	return getContentEl(ctx, triggerValue)?.querySelector(selector) ?? ctx.query(selector);
++	return getListEl(ctx, getContentEl(ctx, triggerValue))?.querySelector(selector) ?? ctx.query(selector);
+ };
+ const getArrowEl = (ctx) => ctx.query(ctx.selector(require_menu_anatomy.parts.arrow));
+ const getContextTriggerEl = (ctx) => ctx.query(ctx.selector(require_menu_anatomy.parts.contextTrigger));
+@@ -59,8 +60,8 @@ const getActiveTriggerEl = (ctx, value) => {
+ };
+ const getElements = (ctx, triggerValue) => {
+ 	const selector = `[data-menu-item="${CSS.escape(ctx.id)}"]:not([data-disabled])`;
+-	const contentEl = getContentEl(ctx, triggerValue);
+-	return contentEl ? Array.from(contentEl.querySelectorAll(selector)) : [];
++	const listEl = getListEl(ctx, getContentEl(ctx, triggerValue));
++	return listEl ? Array.from(listEl.querySelectorAll(selector)) : [];
+ };
+ const isMatch = (el, value) => {
+ 	if (!value) return false;
+@@ -154,6 +155,7 @@ exports.getElements = getElements;
+ exports.getGroupId = getGroupId;
+ exports.getGroupLabelId = getGroupLabelId;
+ exports.getInputEl = getInputEl;
++exports.getListEl = getListEl;
+ exports.getInputId = getInputId;
+ exports.getItemCloseOnSelect = getItemCloseOnSelect;
+ exports.getItemEl = getItemEl;
+diff --git a/dist/menu.dom.mjs b/dist/menu.dom.mjs
+index ebf3015da160ff29c980e0b7c433f5094fd50adc..6a0db1e56acf3c72df6b1801af3df032da77dc94 100644
+--- a/dist/menu.dom.mjs
++++ b/dist/menu.dom.mjs
+@@ -34,6 +34,7 @@ const getLayerEl = (ctx, value) => getViewportEl(ctx) ?? getContentEl(ctx, value
+ const getPositionerEl = (ctx) => ctx.query(ctx.selector(parts.positioner));
+ const getTriggerEl = (ctx) => ctx.query(ctx.selector(parts.trigger));
+ const getInputEl = (ctx) => ctx.query(ctx.selector(parts.input));
++const getListEl = (ctx, contentEl) => contentEl?.querySelector(ctx.selector(parts.list)) ?? null;
+ const getMenubarEl = (ctx, rootId) => rootId ? ctx.getById(rootId) : null;
+ const dispatchMenubarEvent = (menubarEl, type, detail) => {
+ 	const win = getWindow(menubarEl);
+@@ -42,7 +43,7 @@ const dispatchMenubarEvent = (menubarEl, type, detail) => {
+ const getItemEl = (ctx, value, triggerValue) => {
+ 	if (!value) return null;
+ 	const selector = `${ctx.selector(parts.item)}[data-value="${value}"]`;
+-	return getContentEl(ctx, triggerValue)?.querySelector(selector) ?? ctx.query(selector);
++	return getListEl(ctx, getContentEl(ctx, triggerValue))?.querySelector(selector) ?? ctx.query(selector);
+ };
+ const getArrowEl = (ctx) => ctx.query(ctx.selector(parts.arrow));
+ const getContextTriggerEl = (ctx) => ctx.query(ctx.selector(parts.contextTrigger));
+@@ -55,8 +56,8 @@ const getActiveTriggerEl = (ctx, value) => {
+ };
+ const getElements = (ctx, triggerValue) => {
+ 	const selector = `[data-menu-item="${CSS.escape(ctx.id)}"]:not([data-disabled])`;
+-	const contentEl = getContentEl(ctx, triggerValue);
+-	return contentEl ? Array.from(contentEl.querySelectorAll(selector)) : [];
++	const listEl = getListEl(ctx, getContentEl(ctx, triggerValue));
++	return listEl ? Array.from(listEl.querySelectorAll(selector)) : [];
+ };
+ const isMatch = (el, value) => {
+ 	if (!value) return false;
+@@ -134,4 +135,4 @@ const getItemCloseOnSelect = (el) => {
+ 	const value = el.dataset.closeOnSelect;
+ 	return value == null ? void 0 : value === "true";
+ };
+-export { dispatchClickWithModifiers, dispatchMenubarEvent, dispatchSelectionEvent, getActiveTriggerEl, getArrowEl, getArrowId, getContentEl, getContentId, getContextTriggerEl, getContextTriggerEls, getContextTriggerId, getElemByKey, getElements, getGroupId, getGroupLabelId, getInputEl, getInputId, getItemCloseOnSelect, getItemEl, getItemId, getItemValue, getLayerEl, getListId, getMenubarEl, getOptionFromItemEl, getPositionerEl, getPositionerId, getTriggerEl, getTriggerEls, getTriggerId, getTriggerItemEl, getViewportEl, isFocusHeldBySubmenuOf, isTargetDisabled, isTargetWithinMenuTree, isTriggerItem, itemSelectEvent };
++export { dispatchClickWithModifiers, dispatchMenubarEvent, dispatchSelectionEvent, getActiveTriggerEl, getArrowEl, getArrowId, getContentEl, getContentId, getContextTriggerEl, getContextTriggerEls, getContextTriggerId, getElemByKey, getElements, getGroupId, getGroupLabelId, getInputEl, getInputId, getItemCloseOnSelect, getItemEl, getItemId, getItemValue, getLayerEl, getListEl, getListId, getMenubarEl, getOptionFromItemEl, getPositionerEl, getPositionerId, getTriggerEl, getTriggerEls, getTriggerId, getTriggerItemEl, getViewportEl, isFocusHeldBySubmenuOf, isTargetDisabled, isTargetWithinMenuTree, isTriggerItem, itemSelectEvent };
+diff --git a/dist/menu.machine.js b/dist/menu.machine.js
+index edcfbe62fca03e77511fa8fd9d79b4ebc76818fc..ceff8252767056c6316ba8dddb0a49de8e26f867 100644
+--- a/dist/menu.machine.js
++++ b/dist/menu.machine.js
+@@ -195,6 +195,7 @@ const machine = (0, _zag_js_core.createMachine)({
+ 		] },
+ 		"PARENT.SET": { actions: ["setParentMenu"] },
+ 		"CHILD.SET": { actions: ["setChildMenu"] },
++		"CHILD.REMOVE": { actions: ["removeChildMenu"] },
+ 		OPEN_AUTOFOCUS: [{
+ 			guard: "isOpenControlled",
+ 			actions: ["setTriggerValue", "invokeOnOpen"]
+@@ -476,7 +477,8 @@ const machine = (0, _zag_js_core.createMachine)({
+ 				"unlockParentOnOpen",
+ 				"dispatchMenubarOpen",
+ 				"highlightFirstIfAlways",
+-				"warnIfFilterInputNotDialog"
++				"warnIfFilterInputNotDialog",
++				"warnIfListMissing"
+ 			],
+ 			exit: ["cancelFocusMenu", "cancelHighlightFrames"],
+ 			on: {
+@@ -638,10 +640,10 @@ const machine = (0, _zag_js_core.createMachine)({
+ 			trackItemsChange({ scope, send, context }) {
+ 				let observer;
+ 				const frame = (0, _zag_js_dom_query.raf)(() => {
+-					const contentEl = require_menu_dom.getContentEl(scope, context.get("triggerValue"));
+-					if (!contentEl || !require_menu_dom.getInputEl(scope)) return;
++					const listEl = require_menu_dom.getListEl(scope, require_menu_dom.getContentEl(scope, context.get("triggerValue")));
++					if (!listEl || !require_menu_dom.getInputEl(scope)) return;
+ 					observer = new (scope.getWin()).MutationObserver(() => send({ type: "ITEMS.CHANGE" }));
+-					observer.observe(contentEl, {
++					observer.observe(listEl, {
+ 						childList: true,
+ 						subtree: true
+ 					});
+@@ -837,21 +839,18 @@ const machine = (0, _zag_js_core.createMachine)({
+ 					}
+ 					const itemEl = scope.getById(computed("highlightedId"));
+ 					const contentEl = require_menu_dom.getContentEl(scope, context.get("triggerValue"));
+-					(0, _zag_js_dom_query.scrollToNearest)(itemEl, { rootEl: contentEl });
++					(0, _zag_js_dom_query.scrollToNearest)(itemEl, { rootEl: require_menu_dom.getListEl(scope, contentEl) });
+ 				};
+ 				const rafCleanup = (0, _zag_js_dom_query.raf)(() => {
+ 					(0, _zag_js_focus_visible.setInteractionModality)("virtual");
+ 					exec();
+ 				});
+ 				const contentEl = () => require_menu_dom.getContentEl(scope, context.get("triggerValue"));
+-				const observerCleanup = (0, _zag_js_dom_query.observeAttributes)(contentEl, {
+-					defer: true,
+-					attributes: ["aria-activedescendant"],
+-					callback: exec
+-				});
++				const options = { defer: true, attributes: ["aria-activedescendant"], callback: exec };
++				const cleanups = [(0, _zag_js_dom_query.observeAttributes)(contentEl, options), (0, _zag_js_dom_query.observeAttributes)(() => require_menu_dom.getInputEl(scope), options)];
+ 				return () => {
+ 					rafCleanup();
+-					observerCleanup();
++					cleanups.forEach((cleanup) => cleanup());
+ 				};
+ 			}
+ 		},
+@@ -1047,6 +1046,14 @@ const machine = (0, _zag_js_core.createMachine)({
+ 					if (first != null) context.set("highlightedValue", first);
+ 				});
+ 			},
++			warnIfListMissing({ scope, context }) {
++				if (process.env.NODE_ENV === "production") return;
++				(0, _zag_js_dom_query.raf)(() => {
++					const contentEl = require_menu_dom.getContentEl(scope, context.get("triggerValue"));
++					if (!contentEl || require_menu_dom.getListEl(scope, contentEl)) return;
++					console.warn("[@zag-js/menu] Render the items inside `getListProps()`; the list holds and scrolls them.");
++				});
++			},
+ 			warnIfFilterInputNotDialog({ prop, scope }) {
+ 				if (process.env.NODE_ENV === "production" || prop("popupType") === "dialog") return;
+ 				(0, _zag_js_dom_query.raf)(() => {
+@@ -1128,9 +1135,9 @@ const machine = (0, _zag_js_core.createMachine)({
+ 					const initialFocusEl = (0, _zag_js_dom_query.getInitialFocus)({
+ 						root: contentEl,
+ 						getInitialEl: prop("initialFocusEl"),
+-						enabled: !(0, _zag_js_dom_query.contains)(contentEl, scope.getActiveElement()),
++						enabled: !((0, _zag_js_dom_query.contains)(contentEl, scope.getActiveElement()) && !require_menu_dom.isTargetWithinMenuTree(scope.getActiveElement(), refs.get("children"))),
+ 						filter(node) {
+-							return !node.role?.startsWith("menuitem");
++							return !node.role?.startsWith("menuitem") && !require_menu_dom.isTargetWithinMenuTree(node, refs.get("children"));
+ 						}
+ 					});
+ 					if (!initialFocusEl) return;
+@@ -1236,6 +1243,12 @@ const machine = (0, _zag_js_core.createMachine)({
+ 				children[event.id] = event.value;
+ 				refs.set("children", children);
+ 			},
++			removeChildMenu({ refs, event }) {
++				const children = refs.get("children");
++				if (children[event.id] !== event.value) return;
++				delete children[event.id];
++				refs.set("children", children);
++			},
+ 			closeSiblingMenus({ refs, event, scope, context }) {
+ 				const target = event.target;
+ 				if (!require_menu_dom.isTriggerItem(target)) return;
+diff --git a/dist/menu.machine.mjs b/dist/menu.machine.mjs
+index 6463fcb1bf6d74f8fc82b7a5a930cc7c22ddd773..3519bfe92bf3c7b5083d309ff8a8fe2a11f43cea 100644
+--- a/dist/menu.machine.mjs
++++ b/dist/menu.machine.mjs
+@@ -1,5 +1,5 @@
+ import { parts } from "./menu.anatomy.mjs";
+-import { dispatchMenubarEvent, dispatchSelectionEvent, getActiveTriggerEl, getArrowEl, getContentEl, getContextTriggerEl, getContextTriggerEls, getElemByKey, getInputEl, getItemCloseOnSelect, getItemEl, getItemValue, getLayerEl, getMenubarEl, getPositionerEl, getTriggerEl, getTriggerEls, getTriggerId, getViewportEl, isFocusHeldBySubmenuOf, isTargetWithinMenuTree, isTriggerItem } from "./menu.dom.mjs";
++import { dispatchMenubarEvent, dispatchSelectionEvent, getActiveTriggerEl, getArrowEl, getContentEl, getContextTriggerEl, getContextTriggerEls, getElemByKey, getInputEl, getItemCloseOnSelect, getItemEl, getItemValue, getLayerEl, getListEl, getMenubarEl, getPositionerEl, getTriggerEl, getTriggerEls, getTriggerId, getViewportEl, isFocusHeldBySubmenuOf, isTargetWithinMenuTree, isTriggerItem } from "./menu.dom.mjs";
+ import { getViewportSizeStyle } from "./menu.style.mjs";
+ import { closeRootMenu, getAdjacentValue, getEdgeValue, hasItemValue, isWithinPolygon, resolveItemId, setParentRoutingLock, unlockParentAfterChildClose, unlockParentOnSubmenuClose } from "./menu.utils.mjs";
+ import { createGuards, createMachine } from "@zag-js/core";
+@@ -191,6 +191,7 @@ const machine = createMachine({
+ 		] },
+ 		"PARENT.SET": { actions: ["setParentMenu"] },
+ 		"CHILD.SET": { actions: ["setChildMenu"] },
++		"CHILD.REMOVE": { actions: ["removeChildMenu"] },
+ 		OPEN_AUTOFOCUS: [{
+ 			guard: "isOpenControlled",
+ 			actions: ["setTriggerValue", "invokeOnOpen"]
+@@ -472,7 +473,8 @@ const machine = createMachine({
+ 				"unlockParentOnOpen",
+ 				"dispatchMenubarOpen",
+ 				"highlightFirstIfAlways",
+-				"warnIfFilterInputNotDialog"
++				"warnIfFilterInputNotDialog",
++				"warnIfListMissing"
+ 			],
+ 			exit: ["cancelFocusMenu", "cancelHighlightFrames"],
+ 			on: {
+@@ -634,10 +636,10 @@ const machine = createMachine({
+ 			trackItemsChange({ scope, send, context }) {
+ 				let observer;
+ 				const frame = raf(() => {
+-					const contentEl = getContentEl(scope, context.get("triggerValue"));
+-					if (!contentEl || !getInputEl(scope)) return;
++					const listEl = getListEl(scope, getContentEl(scope, context.get("triggerValue")));
++					if (!listEl || !getInputEl(scope)) return;
+ 					observer = new (scope.getWin()).MutationObserver(() => send({ type: "ITEMS.CHANGE" }));
+-					observer.observe(contentEl, {
++					observer.observe(listEl, {
+ 						childList: true,
+ 						subtree: true
+ 					});
+@@ -833,21 +835,18 @@ const machine = createMachine({
+ 					}
+ 					const itemEl = scope.getById(computed("highlightedId"));
+ 					const contentEl = getContentEl(scope, context.get("triggerValue"));
+-					scrollToNearest(itemEl, { rootEl: contentEl });
++					scrollToNearest(itemEl, { rootEl: getListEl(scope, contentEl) });
+ 				};
+ 				const rafCleanup = raf(() => {
+ 					setInteractionModality("virtual");
+ 					exec();
+ 				});
+ 				const contentEl = () => getContentEl(scope, context.get("triggerValue"));
+-				const observerCleanup = observeAttributes(contentEl, {
+-					defer: true,
+-					attributes: ["aria-activedescendant"],
+-					callback: exec
+-				});
++				const options = { defer: true, attributes: ["aria-activedescendant"], callback: exec };
++				const cleanups = [observeAttributes(contentEl, options), observeAttributes(() => getInputEl(scope), options)];
+ 				return () => {
+ 					rafCleanup();
+-					observerCleanup();
++					cleanups.forEach((cleanup) => cleanup());
+ 				};
+ 			}
+ 		},
+@@ -1043,6 +1042,14 @@ const machine = createMachine({
+ 					if (first != null) context.set("highlightedValue", first);
+ 				});
+ 			},
++			warnIfListMissing({ scope, context }) {
++				if (process.env.NODE_ENV === "production") return;
++				raf(() => {
++					const contentEl = getContentEl(scope, context.get("triggerValue"));
++					if (!contentEl || getListEl(scope, contentEl)) return;
++					console.warn("[@zag-js/menu] Render the items inside `getListProps()`; the list holds and scrolls them.");
++				});
++			},
+ 			warnIfFilterInputNotDialog({ prop, scope }) {
+ 				if (process.env.NODE_ENV === "production" || prop("popupType") === "dialog") return;
+ 				raf(() => {
+@@ -1124,9 +1131,9 @@ const machine = createMachine({
+ 					const initialFocusEl = getInitialFocus({
+ 						root: contentEl,
+ 						getInitialEl: prop("initialFocusEl"),
+-						enabled: !contains(contentEl, scope.getActiveElement()),
++						enabled: !(contains(contentEl, scope.getActiveElement()) && !isTargetWithinMenuTree(scope.getActiveElement(), refs.get("children"))),
+ 						filter(node) {
+-							return !node.role?.startsWith("menuitem");
++							return !node.role?.startsWith("menuitem") && !isTargetWithinMenuTree(node, refs.get("children"));
+ 						}
+ 					});
+ 					if (!initialFocusEl) return;
+@@ -1232,6 +1239,12 @@ const machine = createMachine({
+ 				children[event.id] = event.value;
+ 				refs.set("children", children);
+ 			},
++			removeChildMenu({ refs, event }) {
++				const children = refs.get("children");
++				if (children[event.id] !== event.value) return;
++				delete children[event.id];
++				refs.set("children", children);
++			},
+ 			closeSiblingMenus({ refs, event, scope, context }) {
+ 				const target = event.target;
+ 				if (!isTriggerItem(target)) return;
+diff --git a/dist/menu.types.d.mts b/dist/menu.types.d.mts
+index c0b5db322a17ad22eab8b5839c0292b234ff89b9..57220a4046ef5d1671c5a8e7bab5c083118c6d39 100644
+--- a/dist/menu.types.d.mts
++++ b/dist/menu.types.d.mts
+@@ -525,6 +525,10 @@ export interface MenuApi<T extends PropTypes = PropTypes> {
+    * Function to register a child menu. This is used for submenus
+    */
+   setChild: (child: MenuService) => void;
++  /**
++   * Function to unregister a child menu, e.g. when the submenu unmounts
++   */
++  removeChild: (child: MenuService) => void;
+   /**
+    * Function to reposition the popover
+    */
+diff --git a/dist/menu.types.d.ts b/dist/menu.types.d.ts
+index 7b7f95ed815c442f4d6f26709fc4b24d9b1f5270..af47e092baa5d323b2a987d8240f64182df9b5a7 100644
+--- a/dist/menu.types.d.ts
++++ b/dist/menu.types.d.ts
+@@ -525,6 +525,10 @@ export interface MenuApi<T extends PropTypes = PropTypes> {
+    * Function to register a child menu. This is used for submenus
+    */
+   setChild: (child: MenuService) => void;
++  /**
++   * Function to unregister a child menu, e.g. when the submenu unmounts
++   */
++  removeChild: (child: MenuService) => void;
+   /**
+    * Function to reposition the popover
+    */

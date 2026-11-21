@@ -39,17 +39,19 @@ export const AvatarStack = () => (
         <Portal>
           <Menu.Positioner class={menuStyles.Positioner}>
             <Menu.Content class={menuStyles.Content}>
-              <For each={hidden}>
-                {(user) => (
-                  <Menu.Item class={menuStyles.Item} value={user.id}>
-                    <Avatar.Root class={styles.MenuAvatar}>
-                      <Avatar.Fallback class={styles.Fallback}>{user.initials}</Avatar.Fallback>
-                      <Avatar.Image class={styles.Image} src={user.src} alt={user.name} />
-                    </Avatar.Root>
-                    {user.name}
-                  </Menu.Item>
-                )}
-              </For>
+              <Menu.List class={menuStyles.List}>
+                <For each={hidden}>
+                  {(user) => (
+                    <Menu.Item class={menuStyles.Item} value={user.id}>
+                      <Avatar.Root class={styles.MenuAvatar}>
+                        <Avatar.Fallback class={styles.Fallback}>{user.initials}</Avatar.Fallback>
+                        <Avatar.Image class={styles.Image} src={user.src} alt={user.name} />
+                      </Avatar.Root>
+                      {user.name}
+                    </Menu.Item>
+                  )}
+                </For>
+              </Menu.List>
             </Menu.Content>
           </Menu.Positioner>
         </Portal>

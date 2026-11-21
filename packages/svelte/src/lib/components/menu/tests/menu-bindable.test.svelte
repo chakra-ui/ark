@@ -10,8 +10,10 @@
   <Menu.Trigger value="second">Second</Menu.Trigger>
   <Menu.Positioner>
     <Menu.Content>
-      <Menu.Item value="edit">Edit</Menu.Item>
-      <Menu.Item value="delete">Delete</Menu.Item>
+      <Menu.List>
+        <Menu.Item value="edit">Edit</Menu.Item>
+        <Menu.Item value="delete">Delete</Menu.Item>
+      </Menu.List>
     </Menu.Content>
   </Menu.Positioner>
 </Menu.Root>

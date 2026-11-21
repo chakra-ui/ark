@@ -17,8 +17,10 @@ const menubar = useMenubar()
         <Teleport to="body">
           <Menu.Positioner :class="menu.Positioner">
             <Menu.Content :class="menu.Content">
-              <Menu.Item :class="menu.Item" value="new">New File</Menu.Item>
-              <Menu.Item :class="menu.Item" value="open">Open...</Menu.Item>
+              <Menu.List :class="menu.List">
+                <Menu.Item :class="menu.Item" value="new">New File</Menu.Item>
+                <Menu.Item :class="menu.Item" value="open">Open...</Menu.Item>
+              </Menu.List>
             </Menu.Content>
           </Menu.Positioner>
         </Teleport>
@@ -29,8 +31,10 @@ const menubar = useMenubar()
         <Teleport to="body">
           <Menu.Positioner :class="menu.Positioner">
             <Menu.Content :class="menu.Content">
-              <Menu.Item :class="menu.Item" value="undo">Undo</Menu.Item>
-              <Menu.Item :class="menu.Item" value="redo">Redo</Menu.Item>
+              <Menu.List :class="menu.List">
+                <Menu.Item :class="menu.Item" value="undo">Undo</Menu.Item>
+                <Menu.Item :class="menu.Item" value="redo">Redo</Menu.Item>
+              </Menu.List>
             </Menu.Content>
           </Menu.Positioner>
         </Teleport>

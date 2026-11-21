@@ -12,7 +12,9 @@
     <Portal>
       <Menu.Positioner>
         <Menu.Content>
-          <Menu.Item value="new">New File</Menu.Item>
+          <Menu.List>
+            <Menu.Item value="new">New File</Menu.Item>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Portal>
@@ -23,7 +25,9 @@
     <Portal>
       <Menu.Positioner>
         <Menu.Content>
-          <Menu.Item value="undo">Undo</Menu.Item>
+          <Menu.List>
+            <Menu.Item value="undo">Undo</Menu.Item>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Portal>
@@ -34,7 +38,9 @@
     <Portal>
       <Menu.Positioner>
         <Menu.Content>
-          <Menu.Item value="zoom-in">Zoom In</Menu.Item>
+          <Menu.List>
+            <Menu.Item value="zoom-in">Zoom In</Menu.Item>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Portal>

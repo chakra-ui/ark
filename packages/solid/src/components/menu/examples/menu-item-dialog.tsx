@@ -22,16 +22,18 @@ export const MenuItemDialog = () => {
         <Portal>
           <Menu.Positioner class={styles.Positioner}>
             <Menu.Content class={styles.Content}>
-              <Menu.Item class={styles.Item} value="edit">
-                Edit
-              </Menu.Item>
-              <Menu.Item class={styles.Item} value="duplicate">
-                Duplicate
-              </Menu.Item>
-              <Menu.Separator class={styles.Separator} />
-              <Menu.Item class={styles.Item} value="delete" onClick={() => setDialogOpen(true)}>
-                Delete...
-              </Menu.Item>
+              <Menu.List class={styles.List}>
+                <Menu.Item class={styles.Item} value="edit">
+                  Edit
+                </Menu.Item>
+                <Menu.Item class={styles.Item} value="duplicate">
+                  Duplicate
+                </Menu.Item>
+                <Menu.Separator class={styles.Separator} />
+                <Menu.Item class={styles.Item} value="delete" onClick={() => setDialogOpen(true)}>
+                  Delete...
+                </Menu.Item>
+              </Menu.List>
             </Menu.Content>
           </Menu.Positioner>
         </Portal>

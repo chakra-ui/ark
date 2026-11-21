@@ -31,9 +31,26 @@
   border: 1px solid var(--demo-border-emphasized);
   border-radius: 0.375rem;
   max-height: 18rem;
+  overflow: hidden;
+  outline: none;
+
+  &[data-orientation='horizontal'] {
+    max-height: none;
+    max-width: max-content;
+  }
+}
+
+.List {
+  /* a real box: zag makes the list focusable (tabindex=0), and `display: contents`
+     generates no box, which makes it unreachable by keyboard */
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
   overflow-y: auto;
   outline: none;
 
+  /* the scroll container: zag scrolls the list to reveal the highlighted item */
   scrollbar-width: thin;
   scrollbar-color: var(--demo-border-emphasized) var(--demo-bg-popover);
 
@@ -49,23 +66,9 @@
   }
 
   &[data-orientation='horizontal'] {
-    max-height: none;
-    max-width: max-content;
+    flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
-  }
-}
-
-.List {
-  /* a real box: zag makes the list focusable (tabindex=0), and `display: contents`
-     generates no box, which makes it unreachable by keyboard */
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  outline: none;
-
-  &[data-orientation='horizontal'] {
-    flex-direction: row;
   }
 
   /* zag sets --column-count on the list itself */

@@ -6,19 +6,21 @@ export const Context = () => (
     <Menu.ContextTrigger className={styles.ContextTrigger}>Right click here</Menu.ContextTrigger>
     <Menu.Positioner className={styles.Positioner}>
       <Menu.Content className={styles.Content}>
-        <Menu.Item className={styles.Item} value="cut">
-          Cut
-        </Menu.Item>
-        <Menu.Item className={styles.Item} value="copy">
-          Copy
-        </Menu.Item>
-        <Menu.Item className={styles.Item} value="paste">
-          Paste
-        </Menu.Item>
-        <Menu.Separator className={styles.Separator} />
-        <Menu.Item className={styles.Item} value="delete">
-          Delete
-        </Menu.Item>
+        <Menu.List className={styles.List}>
+          <Menu.Item className={styles.Item} value="cut">
+            Cut
+          </Menu.Item>
+          <Menu.Item className={styles.Item} value="copy">
+            Copy
+          </Menu.Item>
+          <Menu.Item className={styles.Item} value="paste">
+            Paste
+          </Menu.Item>
+          <Menu.Separator className={styles.Separator} />
+          <Menu.Item className={styles.Item} value="delete">
+            Delete
+          </Menu.Item>
+        </Menu.List>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>

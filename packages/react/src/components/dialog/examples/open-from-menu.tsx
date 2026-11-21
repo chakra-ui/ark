@@ -20,16 +20,18 @@ export const OpenFromMenu = () => {
         <Portal>
           <Menu.Positioner className={menu.Positioner}>
             <Menu.Content className={menu.Content}>
-              <Menu.Item className={menu.Item} value="edit">
-                Edit
-              </Menu.Item>
-              <Menu.Item className={menu.Item} value="duplicate">
-                Duplicate
-              </Menu.Item>
-              <Menu.Separator className={menu.Separator} />
-              <Menu.Item className={menu.Item} value="delete" onClick={() => setOpen(true)}>
-                Delete...
-              </Menu.Item>
+              <Menu.List className={menu.List}>
+                <Menu.Item className={menu.Item} value="edit">
+                  Edit
+                </Menu.Item>
+                <Menu.Item className={menu.Item} value="duplicate">
+                  Duplicate
+                </Menu.Item>
+                <Menu.Separator className={menu.Separator} />
+                <Menu.Item className={menu.Item} value="delete" onClick={() => setOpen(true)}>
+                  Delete...
+                </Menu.Item>
+              </Menu.List>
             </Menu.Content>
           </Menu.Positioner>
         </Portal>

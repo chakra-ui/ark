@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noEmit": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "paths": {
+      "styles/*": ["../../.storybook/modules/*"]
+    }
+  },
+  "include": ["src", "examples", "stories", ".storybook", "../../.storybook/modules/css-modules.d.ts", "type-tests"]
+}

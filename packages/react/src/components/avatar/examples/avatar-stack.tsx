@@ -36,15 +36,17 @@ export const AvatarStack = () => (
         <Portal>
           <Menu.Positioner className={menuStyles.Positioner}>
             <Menu.Content className={menuStyles.Content}>
-              {hidden.map((user) => (
-                <Menu.Item key={user.id} className={menuStyles.Item} value={user.id}>
-                  <Avatar.Root className={styles.MenuAvatar}>
-                    <Avatar.Fallback className={styles.Fallback}>{user.initials}</Avatar.Fallback>
-                    <Avatar.Image className={styles.Image} src={user.src} alt={user.name} />
-                  </Avatar.Root>
-                  {user.name}
-                </Menu.Item>
-              ))}
+              <Menu.List className={menuStyles.List}>
+                {hidden.map((user) => (
+                  <Menu.Item key={user.id} className={menuStyles.Item} value={user.id}>
+                    <Avatar.Root className={styles.MenuAvatar}>
+                      <Avatar.Fallback className={styles.Fallback}>{user.initials}</Avatar.Fallback>
+                      <Avatar.Image className={styles.Image} src={user.src} alt={user.name} />
+                    </Avatar.Root>
+                    {user.name}
+                  </Menu.Item>
+                ))}
+              </Menu.List>
             </Menu.Content>
           </Menu.Positioner>
         </Portal>

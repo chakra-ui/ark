@@ -1,0 +1,88 @@
+diff --git a/dist/machine.js b/dist/machine.js
+index c15227c0dbd36a484cac1d568f079e780c0849e5..b4994e59ecd8231db2d66ace7ec73c70026180f7 100644
+--- a/dist/machine.js
++++ b/dist/machine.js
+@@ -9,6 +9,16 @@ let _zag_js_utils = require("@zag-js/utils");
+ let _zag_js_core = require("@zag-js/core");
+ // src/machine.ts
+ const defer = (fn) => queueMicrotask(fn);
++const getterCache = new WeakMap();
++function hasGetters(props) {
++	if (!props || typeof props !== "object") return false;
++	let result = getterCache.get(props);
++	if (result === void 0) {
++		result = Object.values(Object.getOwnPropertyDescriptors(props)).some((descriptor) => descriptor.get);
++		getterCache.set(props, result);
++	}
++	return result;
++}
+ var VanillaMachine = class {
+ 	start() {
+ 		this.lifecycle.start();
+@@ -70,12 +80,18 @@ var VanillaMachine = class {
+ 			ids,
+ 			getRootNode
+ 		});
++		let lastProps;
++		let lastResolved;
+ 		const prop = (key) => {
+ 			const props = getUserProps();
+-			return (machine.props?.({
+-				props: (0, _zag_js_utils.compact)(props),
+-				scope
+-			}) ?? props)[key];
++			if (props !== lastProps || hasGetters(props)) {
++				lastResolved = machine.props?.({
++					props: (0, _zag_js_utils.compact)(props),
++					scope
++				}) ?? props;
++				lastProps = props;
++			}
++			return lastResolved[key];
+ 		};
+ 		const context = machine.context?.({
+ 			prop,
+diff --git a/dist/machine.mjs b/dist/machine.mjs
+index 25f24b0d4476892fcb6338be5dccb54d2e89b36a..085c0b93d0c8e2c96bb43a96380693ac82cd51f9 100644
+--- a/dist/machine.mjs
++++ b/dist/machine.mjs
+@@ -5,6 +5,16 @@ import { compact, ensure, identity, isEqual, isFunction, isString, runIfFn, toAr
+ import { INIT_STATE, MachineStatus, createReplaceTracker, createScope, findTransition, getExitEnterStates, hasTag, isWatchEffect, matchesState, resolveStateValue, watchEffect } from "@zag-js/core";
+ // src/machine.ts
+ const defer = (fn) => queueMicrotask(fn);
++const getterCache = new WeakMap();
++function hasGetters(props) {
++	if (!props || typeof props !== "object") return false;
++	let result = getterCache.get(props);
++	if (result === void 0) {
++		result = Object.values(Object.getOwnPropertyDescriptors(props)).some((descriptor) => descriptor.get);
++		getterCache.set(props, result);
++	}
++	return result;
++}
+ var VanillaMachine = class {
+ 	start() {
+ 		this.lifecycle.start();
+@@ -66,12 +76,18 @@ var VanillaMachine = class {
+ 			ids,
+ 			getRootNode
+ 		});
++		let lastProps;
++		let lastResolved;
+ 		const prop = (key) => {
+ 			const props = getUserProps();
+-			return (machine.props?.({
+-				props: compact(props),
+-				scope
+-			}) ?? props)[key];
++			if (props !== lastProps || hasGetters(props)) {
++				lastResolved = machine.props?.({
++					props: compact(props),
++					scope
++				}) ?? props;
++				lastProps = props;
++			}
++			return lastResolved[key];
+ 		};
+ 		const context = machine.context?.({
+ 			prop,

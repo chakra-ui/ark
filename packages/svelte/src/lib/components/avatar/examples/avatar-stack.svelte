@@ -37,15 +37,17 @@
       <Portal>
         <Menu.Positioner class={menuStyles.Positioner}>
           <Menu.Content class={menuStyles.Content}>
-            {#each hidden as user (user.id)}
-              <Menu.Item class={menuStyles.Item} value={user.id}>
-                <Avatar.Root class={styles.MenuAvatar}>
-                  <Avatar.Fallback class={styles.Fallback}>{user.initials}</Avatar.Fallback>
-                  <Avatar.Image class={styles.Image} src={user.src} alt={user.name} />
-                </Avatar.Root>
-                {user.name}
-              </Menu.Item>
-            {/each}
+            <Menu.List class={menuStyles.List}>
+              {#each hidden as user (user.id)}
+                <Menu.Item class={menuStyles.Item} value={user.id}>
+                  <Avatar.Root class={styles.MenuAvatar}>
+                    <Avatar.Fallback class={styles.Fallback}>{user.initials}</Avatar.Fallback>
+                    <Avatar.Image class={styles.Image} src={user.src} alt={user.name} />
+                  </Avatar.Root>
+                  {user.name}
+                </Menu.Item>
+              {/each}
+            </Menu.List>
           </Menu.Content>
         </Menu.Positioner>
       </Portal>

@@ -7,11 +7,13 @@ import { Menu } from '@ark-ui/vue/menu'
     <Menu.Trigger>Open menu</Menu.Trigger>
     <Menu.Positioner>
       <Menu.Content>
-        <Menu.Item value="react">React</Menu.Item>
-        <Menu.Separator as-child>
-          <hr data-testid="separator" />
-        </Menu.Separator>
-        <Menu.Item value="vue">Vue</Menu.Item>
+        <Menu.List>
+          <Menu.Item value="react">React</Menu.Item>
+          <Menu.Separator as-child>
+            <hr data-testid="separator" />
+          </Menu.Separator>
+          <Menu.Item value="vue">Vue</Menu.Item>
+        </Menu.List>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>

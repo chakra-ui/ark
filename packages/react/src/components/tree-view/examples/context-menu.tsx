@@ -21,12 +21,14 @@ const TreeNodeContextMenu = (props: TreeNodeContextMenuProps) => {
       <Portal>
         <Menu.Positioner className={menuStyles.Positioner}>
           <Menu.Content className={menuStyles.Content}>
-            <Menu.Item className={menuStyles.Item} value="rename">
-              Rename
-            </Menu.Item>
-            <Menu.Item className={menuStyles.Item} value="delete">
-              Delete
-            </Menu.Item>
+            <Menu.List className={menuStyles.List}>
+              <Menu.Item className={menuStyles.Item} value="rename">
+                Rename
+              </Menu.Item>
+              <Menu.Item className={menuStyles.Item} value="delete">
+                Delete
+              </Menu.Item>
+            </Menu.List>
           </Menu.Content>
         </Menu.Positioner>
       </Portal>

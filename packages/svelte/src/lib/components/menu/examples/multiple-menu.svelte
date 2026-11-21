@@ -27,9 +27,11 @@
     </Menu.Trigger>
     <Menu.Positioner class={styles.Positioner}>
       <Menu.Content class={styles.Content}>
-        {#each fileItems as item}
-          <Menu.Item class={styles.Item} value={item.value}>{item.label}</Menu.Item>
-        {/each}
+        <Menu.List class={styles.List}>
+          {#each fileItems as item}
+            <Menu.Item class={styles.Item} value={item.value}>{item.label}</Menu.Item>
+          {/each}
+        </Menu.List>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>
@@ -43,9 +45,11 @@
     </Menu.Trigger>
     <Menu.Positioner class={styles.Positioner}>
       <Menu.Content class={styles.Content}>
-        {#each editItems as item}
-          <Menu.Item class={styles.Item} value={item.value}>{item.label}</Menu.Item>
-        {/each}
+        <Menu.List class={styles.List}>
+          {#each editItems as item}
+            <Menu.Item class={styles.Item} value={item.value}>{item.label}</Menu.Item>
+          {/each}
+        </Menu.List>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>

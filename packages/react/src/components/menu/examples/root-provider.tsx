@@ -20,18 +20,20 @@ export const RootProvider = () => {
         </Menu.Trigger>
         <Menu.Positioner className={styles.Positioner}>
           <Menu.Content className={styles.Content}>
-            <Menu.Item className={styles.Item} value="cut">
-              Cut
-            </Menu.Item>
-            <Menu.Item className={styles.Item} value="copy">
-              Copy
-            </Menu.Item>
-            <Menu.Item className={styles.Item} value="paste">
-              Paste
-            </Menu.Item>
-            <Menu.Item className={styles.Item} value="delete">
-              Delete
-            </Menu.Item>
+            <Menu.List className={styles.List}>
+              <Menu.Item className={styles.Item} value="cut">
+                Cut
+              </Menu.Item>
+              <Menu.Item className={styles.Item} value="copy">
+                Copy
+              </Menu.Item>
+              <Menu.Item className={styles.Item} value="paste">
+                Paste
+              </Menu.Item>
+              <Menu.Item className={styles.Item} value="delete">
+                Delete
+              </Menu.Item>
+            </Menu.List>
           </Menu.Content>
         </Menu.Positioner>
       </Menu.RootProvider>

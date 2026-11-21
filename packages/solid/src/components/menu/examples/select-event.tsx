@@ -13,17 +13,19 @@ export const SelectEvent = () => (
     </Menu.Trigger>
     <Menu.Positioner class={styles.Positioner}>
       <Menu.Content class={styles.Content}>
-        <For each={items}>
-          {(item) => (
-            <Menu.Item
-              class={styles.Item}
-              value={item.value}
-              onSelect={() => console.log('Item selected:', item.label)}
-            >
-              {item.label}
-            </Menu.Item>
-          )}
-        </For>
+        <Menu.List class={styles.List}>
+          <For each={items}>
+            {(item) => (
+              <Menu.Item
+                class={styles.Item}
+                value={item.value}
+                onSelect={() => console.log('Item selected:', item.label)}
+              >
+                {item.label}
+              </Menu.Item>
+            )}
+          </For>
+        </Menu.List>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>

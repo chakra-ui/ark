@@ -32,13 +32,15 @@ const hidden = users.slice(max)
       <Teleport to="body">
         <Menu.Positioner :class="menuStyles.Positioner">
           <Menu.Content :class="menuStyles.Content">
-            <Menu.Item v-for="user in hidden" :key="user.id" :class="menuStyles.Item" :value="user.id">
-              <Avatar.Root :class="styles.MenuAvatar">
-                <Avatar.Fallback :class="styles.Fallback">{{ user.initials }}</Avatar.Fallback>
-                <Avatar.Image :class="styles.Image" :src="user.src" :alt="user.name" />
-              </Avatar.Root>
-              {{ user.name }}
-            </Menu.Item>
+            <Menu.List :class="menuStyles.List">
+              <Menu.Item v-for="user in hidden" :key="user.id" :class="menuStyles.Item" :value="user.id">
+                <Avatar.Root :class="styles.MenuAvatar">
+                  <Avatar.Fallback :class="styles.Fallback">{{ user.initials }}</Avatar.Fallback>
+                  <Avatar.Image :class="styles.Image" :src="user.src" :alt="user.name" />
+                </Avatar.Root>
+                {{ user.name }}
+              </Menu.Item>
+            </Menu.List>
           </Menu.Content>
         </Menu.Positioner>
       </Teleport>

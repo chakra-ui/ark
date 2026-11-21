@@ -15,18 +15,20 @@ export const Basic = () => (
         <Menu.Arrow class={styles.Arrow}>
           <Menu.ArrowTip class={styles.ArrowTip} />
         </Menu.Arrow>
-        <Menu.Item class={styles.Item} value="new-file">
-          New File
-        </Menu.Item>
-        <Menu.Item class={styles.Item} value="open">
-          Open...
-        </Menu.Item>
-        <Menu.Item class={styles.Item} value="save">
-          Save
-        </Menu.Item>
-        <Menu.Item class={styles.Item} value="save-as">
-          Save As...
-        </Menu.Item>
+        <Menu.List class={styles.List}>
+          <Menu.Item class={styles.Item} value="new-file">
+            New File
+          </Menu.Item>
+          <Menu.Item class={styles.Item} value="open">
+            Open...
+          </Menu.Item>
+          <Menu.Item class={styles.Item} value="save">
+            Save
+          </Menu.Item>
+          <Menu.Item class={styles.Item} value="save-as">
+            Save As...
+          </Menu.Item>
+        </Menu.List>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>

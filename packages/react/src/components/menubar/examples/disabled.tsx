@@ -11,9 +11,11 @@ export const Disabled = () => (
       <Portal>
         <Menu.Positioner className={menu.Positioner}>
           <Menu.Content className={menu.Content}>
-            <Menu.Item className={menu.Item} value="new">
-              New File
-            </Menu.Item>
+            <Menu.List className={menu.List}>
+              <Menu.Item className={menu.Item} value="new">
+                New File
+              </Menu.Item>
+            </Menu.List>
           </Menu.Content>
         </Menu.Positioner>
       </Portal>
@@ -24,9 +26,11 @@ export const Disabled = () => (
       <Portal>
         <Menu.Positioner className={menu.Positioner}>
           <Menu.Content className={menu.Content}>
-            <Menu.Item className={menu.Item} value="undo">
-              Undo
-            </Menu.Item>
+            <Menu.List className={menu.List}>
+              <Menu.Item className={menu.Item} value="undo">
+                Undo
+              </Menu.Item>
+            </Menu.List>
           </Menu.Content>
         </Menu.Positioner>
       </Portal>

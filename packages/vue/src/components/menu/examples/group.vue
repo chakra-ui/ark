@@ -14,17 +14,19 @@ import styles from 'styles/menu.module.css'
     </Menu.Trigger>
     <Menu.Positioner :class="styles.Positioner">
       <Menu.Content :class="styles.Content">
-        <Menu.ItemGroup :class="styles.ItemGroup">
-          <Menu.ItemGroupLabel :class="styles.ItemGroupLabel">Clipboard</Menu.ItemGroupLabel>
-          <Menu.Item :class="styles.Item" value="cut">Cut</Menu.Item>
-          <Menu.Item :class="styles.Item" value="copy">Copy</Menu.Item>
-          <Menu.Item :class="styles.Item" value="paste">Paste</Menu.Item>
-        </Menu.ItemGroup>
-        <Menu.ItemGroup :class="styles.ItemGroup">
-          <Menu.ItemGroupLabel :class="styles.ItemGroupLabel">Selection</Menu.ItemGroupLabel>
-          <Menu.Item :class="styles.Item" value="select-all">Select All</Menu.Item>
-          <Menu.Item :class="styles.Item" value="deselect">Deselect</Menu.Item>
-        </Menu.ItemGroup>
+        <Menu.List :class="styles.List">
+          <Menu.ItemGroup :class="styles.ItemGroup">
+            <Menu.ItemGroupLabel :class="styles.ItemGroupLabel">Clipboard</Menu.ItemGroupLabel>
+            <Menu.Item :class="styles.Item" value="cut">Cut</Menu.Item>
+            <Menu.Item :class="styles.Item" value="copy">Copy</Menu.Item>
+            <Menu.Item :class="styles.Item" value="paste">Paste</Menu.Item>
+          </Menu.ItemGroup>
+          <Menu.ItemGroup :class="styles.ItemGroup">
+            <Menu.ItemGroupLabel :class="styles.ItemGroupLabel">Selection</Menu.ItemGroupLabel>
+            <Menu.Item :class="styles.Item" value="select-all">Select All</Menu.Item>
+            <Menu.Item :class="styles.Item" value="deselect">Deselect</Menu.Item>
+          </Menu.ItemGroup>
+        </Menu.List>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>

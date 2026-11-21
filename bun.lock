@@ -516,6 +516,53 @@
         "vue": ">=3.5.0",
       },
     },
+    "packages/web": {
+      "name": "@ark-ui/web",
+      "version": "0.1.0-next.0",
+      "dependencies": {
+        "@zag-js/accordion": "2.0.0-next.4",
+        "@zag-js/carousel": "2.0.0-next.4",
+        "@zag-js/checkbox": "2.0.0-next.4",
+        "@zag-js/collapsible": "2.0.0-next.4",
+        "@zag-js/combobox": "2.0.0-next.4",
+        "@zag-js/date-picker": "2.0.0-next.4",
+        "@zag-js/dialog": "2.0.0-next.4",
+        "@zag-js/editable": "2.0.0-next.4",
+        "@zag-js/file-upload": "2.0.0-next.4",
+        "@zag-js/hover-card": "2.0.0-next.4",
+        "@zag-js/listbox": "2.0.0-next.4",
+        "@zag-js/menu": "2.0.0-next.4",
+        "@zag-js/number-input": "2.0.0-next.4",
+        "@zag-js/pagination": "2.0.0-next.4",
+        "@zag-js/pin-input": "2.0.0-next.4",
+        "@zag-js/popover": "2.0.0-next.4",
+        "@zag-js/presence": "2.0.0-next.4",
+        "@zag-js/progress": "2.0.0-next.4",
+        "@zag-js/radio-group": "2.0.0-next.4",
+        "@zag-js/rating-group": "2.0.0-next.4",
+        "@zag-js/select": "2.0.0-next.4",
+        "@zag-js/slider": "2.0.0-next.4",
+        "@zag-js/splitter": "2.0.0-next.4",
+        "@zag-js/switch": "2.0.0-next.4",
+        "@zag-js/tabs": "2.0.0-next.4",
+        "@zag-js/tags-input": "2.0.0-next.4",
+        "@zag-js/toast": "2.0.0-next.4",
+        "@zag-js/toggle-group": "2.0.0-next.4",
+        "@zag-js/tooltip": "2.0.0-next.4",
+        "@zag-js/tree-view": "2.0.0-next.4",
+        "@zag-js/vanilla": "2.0.0-next.4",
+      },
+      "devDependencies": {
+        "@biomejs/biome": "2.5.11",
+        "@playwright/test": "1.56.1",
+        "@storybook/addon-a11y": "10.5.10",
+        "@storybook/html-vite": "10.5.10",
+        "lucide": "1.37.0",
+        "storybook": "10.5.10",
+        "typescript": "6.0.3",
+        "vite": "*",
+      },
+    },
     "scripts": {
       "name": "@ark-ui/scripts",
       "version": "1.0.0",
@@ -645,7 +692,10 @@
     "@ark-ui/website",
   ],
   "patchedDependencies": {
+    "@zag-js/tree-view@2.0.0-next.4": "patches/@zag-js%2Ftree-view@2.0.0-next.4.patch",
     "@zag-js/solid@2.0.0-next.4": "patches/@zag-js%2Fsolid@2.0.0-next.4.patch",
+    "@zag-js/vanilla@2.0.0-next.4": "patches/@zag-js%2Fvanilla@2.0.0-next.4.patch",
+    "@zag-js/menu@2.0.0-next.4": "patches/@zag-js%2Fmenu@2.0.0-next.4.patch",
   },
   "overrides": {
     "flexsearch": "0.8.212",
@@ -675,6 +725,8 @@
     "@ark-ui/svelte": ["@ark-ui/svelte@workspace:packages/svelte"],
 
     "@ark-ui/vue": ["@ark-ui/vue@workspace:packages/vue"],
+
+    "@ark-ui/web": ["@ark-ui/web@workspace:packages/web"],
 
     "@ark-ui/website": ["@ark-ui/website@workspace:website"],
 
@@ -1488,6 +1540,10 @@
 
     "@storybook/global": ["@storybook/global@5.0.0", "", {}, "sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ=="],
 
+    "@storybook/html": ["@storybook/html@10.5.10", "", { "dependencies": { "@storybook/global": "^5.0.0", "ts-dedent": "^2.0.0" }, "peerDependencies": { "storybook": "^10.5.10" } }, "sha512-8KS3xFhOO65pROYteHuyoRX2yXB3NesE/rHfj6AEoFIrLHdcQV6LrjFJtlA/VHZhEk/q6e5GBMYAb0y6ugPorA=="],
+
+    "@storybook/html-vite": ["@storybook/html-vite@10.5.10", "", { "dependencies": { "@storybook/builder-vite": "10.5.10", "@storybook/html": "10.5.10" }, "peerDependencies": { "storybook": "^10.5.10", "vite": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0" } }, "sha512-h0wLmdmMQXE0SfCg87Jqj8BPz0R1xhek+aFzEDJph8DP6QPaUF84Nk51k1MncbTmEB8p6g6WGMq3DSFBEuQdCw=="],
+
     "@storybook/icons": ["@storybook/icons@2.0.2", "", { "peerDependencies": { "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0" } }, "sha512-KZBCpXsshAIjczYNXR/rlxEtCUX/eAbpFNwKi8bcOomrLA4t/SyPz5RF+lVPO2oZBUE4sAkt43mfJUevQDSEEw=="],
 
     "@storybook/react": ["@storybook/react@10.5.10", "", { "dependencies": { "@storybook/global": "^5.0.0", "@storybook/react-dom-shim": "10.5.10", "react-docgen": "^8.0.2", "react-docgen-typescript": "^2.2.2" }, "peerDependencies": { "@types/react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "@types/react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "storybook": "^10.5.10", "typescript": ">= 4.9.x" }, "optionalPeers": ["@types/react", "@types/react-dom", "typescript"] }, "sha512-4MBV5e1SXIMfPynLHzr+Mp0dwGv/FW1bklWAsS4ynBOAbC98W9p/I9vqBnUctsvE3BJkhzHQQyPwMHL5tTcHVA=="],
@@ -2015,6 +2071,8 @@
     "@zag-js/types": ["@zag-js/types@2.0.0-next.4", "", { "dependencies": { "csstype": "3.2.3" } }, "sha512-kA/gdHvljyV4HpZmLBtx5Imfebt7BSk7Seh5pSek+oIPlRu3SBWjPNy+g05YBVxgyhg1l1VHemmPr5nLraLF/w=="],
 
     "@zag-js/utils": ["@zag-js/utils@2.0.0-next.4", "", {}, "sha512-SS5QhUHLvmvXGryptK7cVvmtdefy9xoZP8wUHgx14ftT8L934yzwLIRnmjvlJFTOAVJ1XTA6NBXrWULmX2IrbA=="],
+
+    "@zag-js/vanilla": ["@zag-js/vanilla@2.0.0-next.4", "", { "dependencies": { "@zag-js/core": "2.0.0-next.4", "@zag-js/types": "2.0.0-next.4", "@zag-js/utils": "2.0.0-next.4" } }, "sha512-Le/FYVn408BfsaO1bUsvDxZ3WT52REXjuli3s/rZ1XeTk/e1I+XzQjR22VGJP34GOtlhMMMQjCk5XE21tmqy+Q=="],
 
     "@zag-js/virtualizer": ["@zag-js/virtualizer@2.0.0-next.4", "", { "dependencies": { "@zag-js/dom-query": "2.0.0-next.4" } }, "sha512-CW5G0UDSXaxTpWH897PJb/qxP57rT6XbL4POPAgA9zUKog5+zt0sIv0/6y0qLg8f2+aT8V6kaVwZS0Met68g9A=="],
 

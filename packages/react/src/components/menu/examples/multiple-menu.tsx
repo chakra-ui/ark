@@ -26,11 +26,13 @@ const Menu = (props: MenuProps) => {
       </ArkMenu.Trigger>
       <ArkMenu.Positioner>
         <ArkMenu.Content className={styles.Content}>
-          {items.map((item) => (
-            <ArkMenu.Item className={styles.Item} key={item.value} value={item.value}>
-              {item.label}
-            </ArkMenu.Item>
-          ))}
+          <ArkMenu.List className={styles.List}>
+            {items.map((item) => (
+              <ArkMenu.Item className={styles.Item} key={item.value} value={item.value}>
+                {item.label}
+              </ArkMenu.Item>
+            ))}
+          </ArkMenu.List>
         </ArkMenu.Content>
       </ArkMenu.Positioner>
     </ArkMenu.Root>

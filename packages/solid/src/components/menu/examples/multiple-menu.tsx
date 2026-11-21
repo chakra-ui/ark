@@ -26,13 +26,15 @@ const Menu = (props: MenuProps) => {
       </ArkMenu.Trigger>
       <ArkMenu.Positioner>
         <ArkMenu.Content class={styles.Content}>
-          <For each={props.items}>
-            {(item) => (
-              <ArkMenu.Item class={styles.Item} value={item.value}>
-                {item.label}
-              </ArkMenu.Item>
-            )}
-          </For>
+          <ArkMenu.List class={styles.List}>
+            <For each={props.items}>
+              {(item) => (
+                <ArkMenu.Item class={styles.Item} value={item.value}>
+                  {item.label}
+                </ArkMenu.Item>
+              )}
+            </For>
+          </ArkMenu.List>
         </ArkMenu.Content>
       </ArkMenu.Positioner>
     </ArkMenu.Root>

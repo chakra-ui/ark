@@ -13,22 +13,24 @@
   </Menu.Trigger>
   <Menu.Positioner class={styles.Positioner}>
     <Menu.Content class={styles.Content}>
-      <Menu.Item class={styles.Item} value="docs">
-        {#snippet render(itemProps)}
-          <a href="https://ark-ui.com" {...itemProps()}>Documentation</a>
-        {/snippet}
-      </Menu.Item>
-      <Menu.Item class={styles.Item} value="github">
-        {#snippet render(itemProps)}
-          <a href="https://github.com/chakra-ui/ark" {...itemProps()}>GitHub</a>
-        {/snippet}
-      </Menu.Item>
-      <Menu.Separator class={styles.Separator} />
-      <Menu.Item class={styles.Item} value="changelog">
-        {#snippet render(itemProps)}
-          <a href="https://github.com/chakra-ui/ark/releases" {...itemProps()}>Changelog</a>
-        {/snippet}
-      </Menu.Item>
+      <Menu.List class={styles.List}>
+        <Menu.Item class={styles.Item} value="docs">
+          {#snippet render(itemProps)}
+            <a href="https://ark-ui.com" {...itemProps()}>Documentation</a>
+          {/snippet}
+        </Menu.Item>
+        <Menu.Item class={styles.Item} value="github">
+          {#snippet render(itemProps)}
+            <a href="https://github.com/chakra-ui/ark" {...itemProps()}>GitHub</a>
+          {/snippet}
+        </Menu.Item>
+        <Menu.Separator class={styles.Separator} />
+        <Menu.Item class={styles.Item} value="changelog">
+          {#snippet render(itemProps)}
+            <a href="https://github.com/chakra-ui/ark/releases" {...itemProps()}>Changelog</a>
+          {/snippet}
+        </Menu.Item>
+      </Menu.List>
     </Menu.Content>
   </Menu.Positioner>
 </Menu.Root>

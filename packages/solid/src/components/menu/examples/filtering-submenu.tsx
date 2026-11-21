@@ -93,13 +93,15 @@ export const FilteringSubmenu = () => {
                   <Portal>
                     <Menu.Positioner class={styles.Positioner}>
                       <Menu.Content class={styles.Content}>
-                        <For each={sharingOptions}>
-                          {(option) => (
-                            <Menu.Item class={styles.Item} value={option.value}>
-                              {option.label}
-                            </Menu.Item>
-                          )}
-                        </For>
+                        <Menu.List class={styles.List}>
+                          <For each={sharingOptions}>
+                            {(option) => (
+                              <Menu.Item class={styles.Item} value={option.value}>
+                                {option.label}
+                              </Menu.Item>
+                            )}
+                          </For>
+                        </Menu.List>
                       </Menu.Content>
                     </Menu.Positioner>
                   </Portal>

@@ -1,0 +1,47 @@
+import '../../src/components/tabs/index.js'
+
+import styles from 'styles/tabs.module.css'
+
+const panes = [
+  { value: 'account', label: 'Account', content: 'Make changes to your account here.' },
+  { value: 'password', label: 'Password', content: 'Change your password here.' },
+  { value: 'billing', label: 'Billing', content: 'Manage your billing and payment details.' },
+]
+
+const tabsMarkup = (attrs: string, { indicator = false, disabled = '', links = false, lazy = false } = {}) => `
+  <ark-tabs class="${styles.Root}" ${attrs.includes('value=') ? '' : 'default-value="account"'} ${attrs}>
+    <ark-tabs-list class="${styles.List}">
+      ${panes
+        .map(
+          (pane) => `
+        <ark-tabs-trigger value="${pane.value}" ${disabled === pane.value ? 'disabled' : ''}>
+          ${
+            links
+              ? `<a class="${styles.Trigger}" href="#${pane.value}">${pane.label}</a>`
+              : `<button class="${indicator ? styles.TriggerIndicator : styles.Trigger}">${pane.label}</button>`
+          }
+        </ark-tabs-trigger>`,
+        )
+        .join('')}
+      ${indicator ? `<ark-tabs-indicator class="${styles.Indicator}"></ark-tabs-indicator>` : ''}
+    </ark-tabs-list>
+    ${panes
+      .map(
+        (pane) =>
+          `<ark-tabs-content class="${styles.Content}" value="${pane.value}">${lazy ? `<template>${pane.content}</template>` : pane.content}</ark-tabs-content>`,
+      )
+      .join('')}
+  </ark-tabs>`
+
+export function mount(root: HTMLElement) {
+  const host = document.createElement('div')
+  host.className = 'stack'
+  host.innerHTML = `<output>value: account</output>${tabsMarkup('value="account"')}`
+  const el = host.querySelector('ark-tabs')!
+  el.addEventListener('valuechange', (event) => {
+    const { value } = event.detail
+    el.setAttribute('value', value ?? '')
+    host.querySelector('output')!.textContent = `value: ${value}`
+  })
+  root.replaceChildren(host)
+}

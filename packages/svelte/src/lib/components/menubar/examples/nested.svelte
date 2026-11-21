@@ -12,23 +12,27 @@
     <Portal>
       <Menu.Positioner class={menu.Positioner}>
         <Menu.Content class={menu.Content}>
-          <Menu.Item class={menu.Item} value="new">New File</Menu.Item>
-          <Menu.Item class={menu.Item} value="open">Open...</Menu.Item>
-          <Menu.Separator class={menu.Separator} />
-          <Menu.Root>
-            <Menu.TriggerItem class={menu.TriggerItem}>Export</Menu.TriggerItem>
-            <Portal>
-              <Menu.Positioner class={menu.Positioner}>
-                <Menu.Content class={menu.Content}>
-                  <Menu.Item class={menu.Item} value="pdf">PDF</Menu.Item>
-                  <Menu.Item class={menu.Item} value="png">PNG</Menu.Item>
-                  <Menu.Item class={menu.Item} value="svg">SVG</Menu.Item>
-                </Menu.Content>
-              </Menu.Positioner>
-            </Portal>
-          </Menu.Root>
-          <Menu.Separator class={menu.Separator} />
-          <Menu.Item class={menu.Item} value="print">Print...</Menu.Item>
+          <Menu.List class={menu.List}>
+            <Menu.Item class={menu.Item} value="new">New File</Menu.Item>
+            <Menu.Item class={menu.Item} value="open">Open...</Menu.Item>
+            <Menu.Separator class={menu.Separator} />
+            <Menu.Root>
+              <Menu.TriggerItem class={menu.TriggerItem}>Export</Menu.TriggerItem>
+              <Portal>
+                <Menu.Positioner class={menu.Positioner}>
+                  <Menu.Content class={menu.Content}>
+                    <Menu.List class={menu.List}>
+                      <Menu.Item class={menu.Item} value="pdf">PDF</Menu.Item>
+                      <Menu.Item class={menu.Item} value="png">PNG</Menu.Item>
+                      <Menu.Item class={menu.Item} value="svg">SVG</Menu.Item>
+                    </Menu.List>
+                  </Menu.Content>
+                </Menu.Positioner>
+              </Portal>
+            </Menu.Root>
+            <Menu.Separator class={menu.Separator} />
+            <Menu.Item class={menu.Item} value="print">Print...</Menu.Item>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Portal>
@@ -39,22 +43,26 @@
     <Portal>
       <Menu.Positioner class={menu.Positioner}>
         <Menu.Content class={menu.Content}>
-          <Menu.Item class={menu.Item} value="cut">Cut</Menu.Item>
-          <Menu.Item class={menu.Item} value="copy">Copy</Menu.Item>
-          <Menu.Item class={menu.Item} value="paste">Paste</Menu.Item>
-          <Menu.Separator class={menu.Separator} />
-          <Menu.Root>
-            <Menu.TriggerItem class={menu.TriggerItem}>Find</Menu.TriggerItem>
-            <Portal>
-              <Menu.Positioner class={menu.Positioner}>
-                <Menu.Content class={menu.Content}>
-                  <Menu.Item class={menu.Item} value="find">Find...</Menu.Item>
-                  <Menu.Item class={menu.Item} value="find-next">Find Next</Menu.Item>
-                  <Menu.Item class={menu.Item} value="replace">Replace...</Menu.Item>
-                </Menu.Content>
-              </Menu.Positioner>
-            </Portal>
-          </Menu.Root>
+          <Menu.List class={menu.List}>
+            <Menu.Item class={menu.Item} value="cut">Cut</Menu.Item>
+            <Menu.Item class={menu.Item} value="copy">Copy</Menu.Item>
+            <Menu.Item class={menu.Item} value="paste">Paste</Menu.Item>
+            <Menu.Separator class={menu.Separator} />
+            <Menu.Root>
+              <Menu.TriggerItem class={menu.TriggerItem}>Find</Menu.TriggerItem>
+              <Portal>
+                <Menu.Positioner class={menu.Positioner}>
+                  <Menu.Content class={menu.Content}>
+                    <Menu.List class={menu.List}>
+                      <Menu.Item class={menu.Item} value="find">Find...</Menu.Item>
+                      <Menu.Item class={menu.Item} value="find-next">Find Next</Menu.Item>
+                      <Menu.Item class={menu.Item} value="replace">Replace...</Menu.Item>
+                    </Menu.List>
+                  </Menu.Content>
+                </Menu.Positioner>
+              </Portal>
+            </Menu.Root>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Portal>
@@ -65,8 +73,10 @@
     <Portal>
       <Menu.Positioner class={menu.Positioner}>
         <Menu.Content class={menu.Content}>
-          <Menu.Item class={menu.Item} value="zoom-in">Zoom In</Menu.Item>
-          <Menu.Item class={menu.Item} value="zoom-out">Zoom Out</Menu.Item>
+          <Menu.List class={menu.List}>
+            <Menu.Item class={menu.Item} value="zoom-in">Zoom In</Menu.Item>
+            <Menu.Item class={menu.Item} value="zoom-out">Zoom Out</Menu.Item>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Portal>

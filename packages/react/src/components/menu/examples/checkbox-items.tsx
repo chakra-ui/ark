@@ -17,28 +17,30 @@ export const CheckboxItems = () => {
       </Menu.Trigger>
       <Menu.Positioner className={styles.Positioner}>
         <Menu.Content className={styles.Content}>
-          <Menu.CheckboxItem
-            className={styles.CheckboxItem}
-            checked={showToolbar}
-            onCheckedChange={setShowToolbar}
-            value="toolbar"
-          >
-            <Menu.ItemIndicator className={styles.ItemIndicator}>
-              <CheckIcon />
-            </Menu.ItemIndicator>
-            <Menu.ItemText className={styles.ItemText}>Show Toolbar</Menu.ItemText>
-          </Menu.CheckboxItem>
-          <Menu.CheckboxItem
-            className={styles.CheckboxItem}
-            checked={showStatusBar}
-            onCheckedChange={setShowStatusBar}
-            value="status-bar"
-          >
-            <Menu.ItemIndicator className={styles.ItemIndicator}>
-              <CheckIcon />
-            </Menu.ItemIndicator>
-            <Menu.ItemText className={styles.ItemText}>Show Status Bar</Menu.ItemText>
-          </Menu.CheckboxItem>
+          <Menu.List className={styles.List}>
+            <Menu.CheckboxItem
+              className={styles.CheckboxItem}
+              checked={showToolbar}
+              onCheckedChange={setShowToolbar}
+              value="toolbar"
+            >
+              <Menu.ItemIndicator className={styles.ItemIndicator}>
+                <CheckIcon />
+              </Menu.ItemIndicator>
+              <Menu.ItemText className={styles.ItemText}>Show Toolbar</Menu.ItemText>
+            </Menu.CheckboxItem>
+            <Menu.CheckboxItem
+              className={styles.CheckboxItem}
+              checked={showStatusBar}
+              onCheckedChange={setShowStatusBar}
+              value="status-bar"
+            >
+              <Menu.ItemIndicator className={styles.ItemIndicator}>
+                <CheckIcon />
+              </Menu.ItemIndicator>
+              <Menu.ItemText className={styles.ItemText}>Show Status Bar</Menu.ItemText>
+            </Menu.CheckboxItem>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Menu.Root>

@@ -11,12 +11,14 @@ export const Vertical = () => (
       <Portal>
         <Menu.Positioner class={menu.Positioner}>
           <Menu.Content class={menu.Content}>
-            <Menu.Item class={menu.Item} value="profile">
-              Profile
-            </Menu.Item>
-            <Menu.Item class={menu.Item} value="billing">
-              Billing
-            </Menu.Item>
+            <Menu.List class={menu.List}>
+              <Menu.Item class={menu.Item} value="profile">
+                Profile
+              </Menu.Item>
+              <Menu.Item class={menu.Item} value="billing">
+                Billing
+              </Menu.Item>
+            </Menu.List>
           </Menu.Content>
         </Menu.Positioner>
       </Portal>
@@ -27,12 +29,14 @@ export const Vertical = () => (
       <Portal>
         <Menu.Positioner class={menu.Positioner}>
           <Menu.Content class={menu.Content}>
-            <Menu.Item class={menu.Item} value="members">
-              Members
-            </Menu.Item>
-            <Menu.Item class={menu.Item} value="integrations">
-              Integrations
-            </Menu.Item>
+            <Menu.List class={menu.List}>
+              <Menu.Item class={menu.Item} value="members">
+                Members
+              </Menu.Item>
+              <Menu.Item class={menu.Item} value="integrations">
+                Integrations
+              </Menu.Item>
+            </Menu.List>
           </Menu.Content>
         </Menu.Positioner>
       </Portal>
@@ -43,12 +47,14 @@ export const Vertical = () => (
       <Portal>
         <Menu.Positioner class={menu.Positioner}>
           <Menu.Content class={menu.Content}>
-            <Menu.Item class={menu.Item} value="docs">
-              Documentation
-            </Menu.Item>
-            <Menu.Item class={menu.Item} value="support">
-              Contact Support
-            </Menu.Item>
+            <Menu.List class={menu.List}>
+              <Menu.Item class={menu.Item} value="docs">
+                Documentation
+              </Menu.Item>
+              <Menu.Item class={menu.Item} value="support">
+                Contact Support
+              </Menu.Item>
+            </Menu.List>
           </Menu.Content>
         </Menu.Positioner>
       </Portal>

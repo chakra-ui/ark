@@ -14,7 +14,9 @@ const emit = defineEmits<{ requestDismiss: [event: CustomEvent] }>()
           <Menu.Trigger>click me</Menu.Trigger>
           <Menu.Positioner>
             <Menu.Content>
-              <Menu.Item value="edit">Edit</Menu.Item>
+              <Menu.List>
+                <Menu.Item value="edit">Edit</Menu.Item>
+              </Menu.List>
             </Menu.Content>
           </Menu.Positioner>
         </Menu.Root>

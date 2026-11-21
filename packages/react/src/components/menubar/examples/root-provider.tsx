@@ -16,12 +16,14 @@ export const RootProvider = () => {
           <Portal>
             <Menu.Positioner className={menu.Positioner}>
               <Menu.Content className={menu.Content}>
-                <Menu.Item className={menu.Item} value="new">
-                  New File
-                </Menu.Item>
-                <Menu.Item className={menu.Item} value="open">
-                  Open...
-                </Menu.Item>
+                <Menu.List className={menu.List}>
+                  <Menu.Item className={menu.Item} value="new">
+                    New File
+                  </Menu.Item>
+                  <Menu.Item className={menu.Item} value="open">
+                    Open...
+                  </Menu.Item>
+                </Menu.List>
               </Menu.Content>
             </Menu.Positioner>
           </Portal>
@@ -32,12 +34,14 @@ export const RootProvider = () => {
           <Portal>
             <Menu.Positioner className={menu.Positioner}>
               <Menu.Content className={menu.Content}>
-                <Menu.Item className={menu.Item} value="undo">
-                  Undo
-                </Menu.Item>
-                <Menu.Item className={menu.Item} value="redo">
-                  Redo
-                </Menu.Item>
+                <Menu.List className={menu.List}>
+                  <Menu.Item className={menu.Item} value="undo">
+                    Undo
+                  </Menu.Item>
+                  <Menu.Item className={menu.Item} value="redo">
+                    Redo
+                  </Menu.Item>
+                </Menu.List>
               </Menu.Content>
             </Menu.Positioner>
           </Portal>

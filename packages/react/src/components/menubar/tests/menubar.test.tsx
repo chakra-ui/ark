@@ -18,8 +18,10 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
         <Portal>
           <Menu.Positioner>
             <Menu.Content>
-              <Menu.Item value="new">New File</Menu.Item>
-              <Menu.Item value="open">Open</Menu.Item>
+              <Menu.List>
+                <Menu.Item value="new">New File</Menu.Item>
+                <Menu.Item value="open">Open</Menu.Item>
+              </Menu.List>
             </Menu.Content>
           </Menu.Positioner>
         </Portal>
@@ -29,8 +31,10 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
         <Portal>
           <Menu.Positioner>
             <Menu.Content>
-              <Menu.Item value="undo">Undo</Menu.Item>
-              <Menu.Item value="redo">Redo</Menu.Item>
+              <Menu.List>
+                <Menu.Item value="undo">Undo</Menu.Item>
+                <Menu.Item value="redo">Redo</Menu.Item>
+              </Menu.List>
             </Menu.Content>
           </Menu.Positioner>
         </Portal>
@@ -40,7 +44,9 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
         <Portal>
           <Menu.Positioner>
             <Menu.Content>
-              <Menu.Item value="inspect">Inspect</Menu.Item>
+              <Menu.List>
+                <Menu.Item value="inspect">Inspect</Menu.Item>
+              </Menu.List>
             </Menu.Content>
           </Menu.Positioner>
         </Portal>
@@ -50,7 +56,9 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
         <Portal>
           <Menu.Positioner>
             <Menu.Content>
-              <Menu.Item value="zoom-in">Zoom In</Menu.Item>
+              <Menu.List>
+                <Menu.Item value="zoom-in">Zoom In</Menu.Item>
+              </Menu.List>
             </Menu.Content>
           </Menu.Positioner>
         </Portal>

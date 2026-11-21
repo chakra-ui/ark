@@ -85,11 +85,13 @@ export const FilteringSubmenu = () => {
                   <Portal>
                     <Menu.Positioner className={styles.Positioner}>
                       <Menu.Content className={styles.Content}>
-                        {sharingOptions.map((option) => (
-                          <Menu.Item className={styles.Item} key={option.value} value={option.value}>
-                            {option.label}
-                          </Menu.Item>
-                        ))}
+                        <Menu.List className={styles.List}>
+                          {sharingOptions.map((option) => (
+                            <Menu.Item className={styles.Item} key={option.value} value={option.value}>
+                              {option.label}
+                            </Menu.Item>
+                          ))}
+                        </Menu.List>
                       </Menu.Content>
                     </Menu.Positioner>
                   </Portal>

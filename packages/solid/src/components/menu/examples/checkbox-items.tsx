@@ -17,28 +17,30 @@ export const CheckboxItems = () => {
       </Menu.Trigger>
       <Menu.Positioner class={styles.Positioner}>
         <Menu.Content class={styles.Content}>
-          <Menu.CheckboxItem
-            class={styles.CheckboxItem}
-            checked={showToolbar()}
-            onCheckedChange={setShowToolbar}
-            value="toolbar"
-          >
-            <Menu.ItemIndicator class={styles.ItemIndicator}>
-              <CheckIcon />
-            </Menu.ItemIndicator>
-            <Menu.ItemText class={styles.ItemText}>Show Toolbar</Menu.ItemText>
-          </Menu.CheckboxItem>
-          <Menu.CheckboxItem
-            class={styles.CheckboxItem}
-            checked={showStatusBar()}
-            onCheckedChange={setShowStatusBar}
-            value="status-bar"
-          >
-            <Menu.ItemIndicator class={styles.ItemIndicator}>
-              <CheckIcon />
-            </Menu.ItemIndicator>
-            <Menu.ItemText class={styles.ItemText}>Show Status Bar</Menu.ItemText>
-          </Menu.CheckboxItem>
+          <Menu.List class={styles.List}>
+            <Menu.CheckboxItem
+              class={styles.CheckboxItem}
+              checked={showToolbar()}
+              onCheckedChange={setShowToolbar}
+              value="toolbar"
+            >
+              <Menu.ItemIndicator class={styles.ItemIndicator}>
+                <CheckIcon />
+              </Menu.ItemIndicator>
+              <Menu.ItemText class={styles.ItemText}>Show Toolbar</Menu.ItemText>
+            </Menu.CheckboxItem>
+            <Menu.CheckboxItem
+              class={styles.CheckboxItem}
+              checked={showStatusBar()}
+              onCheckedChange={setShowStatusBar}
+              value="status-bar"
+            >
+              <Menu.ItemIndicator class={styles.ItemIndicator}>
+                <CheckIcon />
+              </Menu.ItemIndicator>
+              <Menu.ItemText class={styles.ItemText}>Show Status Bar</Menu.ItemText>
+            </Menu.CheckboxItem>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Menu.Root>

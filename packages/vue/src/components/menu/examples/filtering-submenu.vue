@@ -110,14 +110,16 @@ const isEmpty = computed(() => actionList.collection.value.size === 0 && !showMo
               <Teleport to="body">
                 <Menu.Positioner :class="styles.Positioner">
                   <Menu.Content :class="styles.Content">
-                    <Menu.Item
-                      v-for="option in sharingOptions"
-                      :key="option.value"
-                      :class="styles.Item"
-                      :value="option.value"
-                    >
-                      {{ option.label }}
-                    </Menu.Item>
+                    <Menu.List :class="styles.List">
+                      <Menu.Item
+                        v-for="option in sharingOptions"
+                        :key="option.value"
+                        :class="styles.Item"
+                        :value="option.value"
+                      >
+                        {{ option.label }}
+                      </Menu.Item>
+                    </Menu.List>
                   </Menu.Content>
                 </Menu.Positioner>
               </Teleport>

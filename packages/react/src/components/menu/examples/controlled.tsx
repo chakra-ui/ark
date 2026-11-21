@@ -21,18 +21,20 @@ export const Controlled = () => {
         </Menu.Trigger>
         <Menu.Positioner className={styles.Positioner}>
           <Menu.Content className={styles.Content}>
-            <Menu.Item className={styles.Item} value="edit">
-              Edit
-            </Menu.Item>
-            <Menu.Item className={styles.Item} value="duplicate">
-              Duplicate
-            </Menu.Item>
-            <Menu.Item className={styles.Item} value="archive">
-              Archive
-            </Menu.Item>
-            <Menu.Item className={styles.Item} value="delete">
-              Delete
-            </Menu.Item>
+            <Menu.List className={styles.List}>
+              <Menu.Item className={styles.Item} value="edit">
+                Edit
+              </Menu.Item>
+              <Menu.Item className={styles.Item} value="duplicate">
+                Duplicate
+              </Menu.Item>
+              <Menu.Item className={styles.Item} value="archive">
+                Archive
+              </Menu.Item>
+              <Menu.Item className={styles.Item} value="delete">
+                Delete
+              </Menu.Item>
+            </Menu.List>
           </Menu.Content>
         </Menu.Positioner>
       </Menu.Root>

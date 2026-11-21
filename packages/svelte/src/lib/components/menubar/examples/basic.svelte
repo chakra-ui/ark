@@ -12,11 +12,13 @@
     <Portal>
       <Menu.Positioner class={menu.Positioner}>
         <Menu.Content class={menu.Content}>
-          <Menu.Item class={menu.Item} value="new">New File</Menu.Item>
-          <Menu.Item class={menu.Item} value="open">Open...</Menu.Item>
-          <Menu.Separator class={menu.Separator} />
-          <Menu.Item class={menu.Item} value="save">Save</Menu.Item>
-          <Menu.Item class={menu.Item} value="save-as">Save As...</Menu.Item>
+          <Menu.List class={menu.List}>
+            <Menu.Item class={menu.Item} value="new">New File</Menu.Item>
+            <Menu.Item class={menu.Item} value="open">Open...</Menu.Item>
+            <Menu.Separator class={menu.Separator} />
+            <Menu.Item class={menu.Item} value="save">Save</Menu.Item>
+            <Menu.Item class={menu.Item} value="save-as">Save As...</Menu.Item>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Portal>
@@ -27,12 +29,14 @@
     <Portal>
       <Menu.Positioner class={menu.Positioner}>
         <Menu.Content class={menu.Content}>
-          <Menu.Item class={menu.Item} value="undo">Undo</Menu.Item>
-          <Menu.Item class={menu.Item} value="redo">Redo</Menu.Item>
-          <Menu.Separator class={menu.Separator} />
-          <Menu.Item class={menu.Item} value="cut">Cut</Menu.Item>
-          <Menu.Item class={menu.Item} value="copy">Copy</Menu.Item>
-          <Menu.Item class={menu.Item} value="paste">Paste</Menu.Item>
+          <Menu.List class={menu.List}>
+            <Menu.Item class={menu.Item} value="undo">Undo</Menu.Item>
+            <Menu.Item class={menu.Item} value="redo">Redo</Menu.Item>
+            <Menu.Separator class={menu.Separator} />
+            <Menu.Item class={menu.Item} value="cut">Cut</Menu.Item>
+            <Menu.Item class={menu.Item} value="copy">Copy</Menu.Item>
+            <Menu.Item class={menu.Item} value="paste">Paste</Menu.Item>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Portal>
@@ -43,7 +47,9 @@
     <Portal>
       <Menu.Positioner class={menu.Positioner}>
         <Menu.Content class={menu.Content}>
-          <Menu.Item class={menu.Item} value="inspect">Inspect Element</Menu.Item>
+          <Menu.List class={menu.List}>
+            <Menu.Item class={menu.Item} value="inspect">Inspect Element</Menu.Item>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Portal>
@@ -54,9 +60,11 @@
     <Portal>
       <Menu.Positioner class={menu.Positioner}>
         <Menu.Content class={menu.Content}>
-          <Menu.Item class={menu.Item} value="zoom-in">Zoom In</Menu.Item>
-          <Menu.Item class={menu.Item} value="zoom-out">Zoom Out</Menu.Item>
-          <Menu.Item class={menu.Item} value="fullscreen">Toggle Fullscreen</Menu.Item>
+          <Menu.List class={menu.List}>
+            <Menu.Item class={menu.Item} value="zoom-in">Zoom In</Menu.Item>
+            <Menu.Item class={menu.Item} value="zoom-out">Zoom Out</Menu.Item>
+            <Menu.Item class={menu.Item} value="fullscreen">Toggle Fullscreen</Menu.Item>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Portal>

@@ -16,33 +16,35 @@ export const RadioItems = () => {
       </Menu.Trigger>
       <Menu.Positioner className={styles.Positioner}>
         <Menu.Content className={styles.Content}>
-          <Menu.RadioItemGroup className={styles.ItemGroup} value={sortBy} onValueChange={(e) => setSortBy(e.value)}>
-            <Menu.ItemGroupLabel className={styles.ItemGroupLabel}>Sort By</Menu.ItemGroupLabel>
-            <Menu.RadioItem className={styles.RadioItem} value="name">
-              <Menu.ItemIndicator className={styles.ItemIndicator}>
-                <CheckIcon />
-              </Menu.ItemIndicator>
-              <Menu.ItemText className={styles.ItemText}>Name</Menu.ItemText>
-            </Menu.RadioItem>
-            <Menu.RadioItem className={styles.RadioItem} value="date">
-              <Menu.ItemIndicator className={styles.ItemIndicator}>
-                <CheckIcon />
-              </Menu.ItemIndicator>
-              <Menu.ItemText className={styles.ItemText}>Date Modified</Menu.ItemText>
-            </Menu.RadioItem>
-            <Menu.RadioItem className={styles.RadioItem} value="size">
-              <Menu.ItemIndicator className={styles.ItemIndicator}>
-                <CheckIcon />
-              </Menu.ItemIndicator>
-              <Menu.ItemText className={styles.ItemText}>Size</Menu.ItemText>
-            </Menu.RadioItem>
-            <Menu.RadioItem className={styles.RadioItem} value="type">
-              <Menu.ItemIndicator className={styles.ItemIndicator}>
-                <CheckIcon />
-              </Menu.ItemIndicator>
-              <Menu.ItemText className={styles.ItemText}>Type</Menu.ItemText>
-            </Menu.RadioItem>
-          </Menu.RadioItemGroup>
+          <Menu.List className={styles.List}>
+            <Menu.RadioItemGroup className={styles.ItemGroup} value={sortBy} onValueChange={(e) => setSortBy(e.value)}>
+              <Menu.ItemGroupLabel className={styles.ItemGroupLabel}>Sort By</Menu.ItemGroupLabel>
+              <Menu.RadioItem className={styles.RadioItem} value="name">
+                <Menu.ItemIndicator className={styles.ItemIndicator}>
+                  <CheckIcon />
+                </Menu.ItemIndicator>
+                <Menu.ItemText className={styles.ItemText}>Name</Menu.ItemText>
+              </Menu.RadioItem>
+              <Menu.RadioItem className={styles.RadioItem} value="date">
+                <Menu.ItemIndicator className={styles.ItemIndicator}>
+                  <CheckIcon />
+                </Menu.ItemIndicator>
+                <Menu.ItemText className={styles.ItemText}>Date Modified</Menu.ItemText>
+              </Menu.RadioItem>
+              <Menu.RadioItem className={styles.RadioItem} value="size">
+                <Menu.ItemIndicator className={styles.ItemIndicator}>
+                  <CheckIcon />
+                </Menu.ItemIndicator>
+                <Menu.ItemText className={styles.ItemText}>Size</Menu.ItemText>
+              </Menu.RadioItem>
+              <Menu.RadioItem className={styles.RadioItem} value="type">
+                <Menu.ItemIndicator className={styles.ItemIndicator}>
+                  <CheckIcon />
+                </Menu.ItemIndicator>
+                <Menu.ItemText className={styles.ItemText}>Type</Menu.ItemText>
+              </Menu.RadioItem>
+            </Menu.RadioItemGroup>
+          </Menu.List>
         </Menu.Content>
       </Menu.Positioner>
     </Menu.Root>
