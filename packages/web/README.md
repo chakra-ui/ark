@@ -5,10 +5,10 @@ ordinary CSS. No framework runtime is required.
 
 This package is a prerelease. It includes accordion, angle slider, avatar, carousel, checkbox and checkbox group,
 clipboard, collapsible, combobox, command, date input, date picker, dialog, drawer, editable, field, fieldset, file
-upload, highlight, hover card, listbox, marquee, menu, menubar, meter, number input, pagination, password input, pin
-input, popover, progress, qr code, radio group, rating group, scroll area, segment group, select, signature pad, slider,
-splitter, steps, swap, switch, tabs, tags input, timer, toast, toggle, toggle group, tooltip, tour, tree view, and
-virtualizer.
+upload, floating panel, highlight, hover card, listbox, marquee, menu, menubar, meter, number input, pagination,
+password input, pin input, popover, progress, qr code, radio group, rating group, scroll area, segment group, select,
+signature pad, slider, splitter, steps, swap, switch, tabs, tags input, timer, toast, toggle, toggle group, tooltip,
+tour, tree view, and virtualizer.
 
 ## Usage
 
@@ -165,6 +165,7 @@ events as the matching user interaction.
 | `ark-tree-view`                             | `expand(values?)`, `collapse(values?)`                   |
 | `ark-combobox`, `ark-select`, `ark-listbox` | `clearValue(value?)`                                     |
 | `ark-carousel`                              | `scrollNext(instant?)`, `scrollPrevious(instant?)`       |
+| `ark-floating-panel`                        | `minimize()`, `maximize()`, `restore()`                  |
 | `ark-marquee`                               | `restart()`                                              |
 | `ark-tour`                                  | `start(id?)`, `next()`, `previous()`                     |
 
