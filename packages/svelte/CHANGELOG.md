@@ -1,5 +1,32 @@
 # @ark-ui/svelte
 
+## [5.25.2] - 2026-11-21
+
+### Fixed
+
+- **FileUpload**: Fixed `FileUpload.ItemPreviewImage` revoking its blob URL on every re-render, which caused
+  intermittent `ERR_FILE_NOT_FOUND` requests. The URL is now recreated only when the file changes.
+- **Menu**: Forward `value` on `Menu.ContextTrigger` the same way `Menu.Trigger` does.
+- **General**: Fix types failing to resolve under `moduleResolution: node16` and `nodenext` without `skipLibCheck`.
+- **Menu**: Add `initialFocusEl` and `finalFocusEl` to choose which element gets focus when the menu opens and closes.
+
+- **Popover, Menu**: Fix opening one popup while another is open closing both, and clicks inside a same-origin iframe
+  closing the popup that contains it.
+
+- **Menu**: Fix focus not returning to the previously focused element when a context menu closes.
+
+- **Combobox, Select, Listbox, Menu, Cascade Select**: Fix the page scrolling when the highlighted item scrolls into
+  view.
+
+- **Collapsible**: Fix the trigger staying focusable and not announced as disabled when the collapsible is disabled.
+
+- **Floating Panel**: The positioner no longer sets an inline `z-index`. Add `z-index: var(--z-index)` to the positioner
+  to keep panel stacking.
+
+- **Slider**: Fix stepping past `max` with a decimal `step` moving the value down a step.
+
+- **Tabs**: Fix Shift- and Alt-clicks on link triggers being blocked.
+
 ## [5.25.1] - 2026-11-02
 
 ### Fixed
