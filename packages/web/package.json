@@ -66,6 +66,7 @@
     "@zag-js/toggle": "2.0.0-next.4",
     "@zag-js/toggle-group": "2.0.0-next.4",
     "@zag-js/tooltip": "2.0.0-next.4",
+    "@zag-js/tour": "2.0.0-next.4",
     "@zag-js/tree-view": "2.0.0-next.4",
     "@zag-js/vanilla": "2.0.0-next.4",
     "@zag-js/virtualizer": "2.0.0-next.4"
@@ -321,7 +322,11 @@
     },
     "./cdn/*": "./dist/cdn/*",
     "./custom-elements.json": "./dist/custom-elements.json",
-    "./vscode.html-data.json": "./dist/vscode.html-data.json"
+    "./vscode.html-data.json": "./dist/vscode.html-data.json",
+    "./tour": {
+      "types": "./dist/components/tour/index.d.ts",
+      "import": "./dist/components/tour/index.js"
+    }
   },
   "sideEffects": true,
   "publishConfig": {
