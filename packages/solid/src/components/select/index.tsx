@@ -31,6 +31,11 @@ export {
 export { SelectContext, type SelectContextProps } from './select-context.tsx'
 export { SelectControl, type SelectControlBaseProps, type SelectControlProps } from './select-control.tsx'
 export {
+  SelectHiddenInput,
+  type SelectHiddenInputBaseProps,
+  type SelectHiddenInputProps,
+} from './select-hidden-input.tsx'
+export {
   SelectHiddenSelect,
   type SelectHiddenSelectBaseProps,
   type SelectHiddenSelectProps,

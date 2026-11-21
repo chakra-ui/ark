@@ -26,6 +26,7 @@ export {
   type SelectControlBaseProps as ControlBaseProps,
   type SelectControlProps as ControlProps,
 } from './select-control.svelte'
+export { default as HiddenInput, type SelectHiddenInputProps as HiddenInputProps } from './select-hidden-input.svelte'
 export {
   default as HiddenSelect,
   type SelectHiddenSelectProps as HiddenSelectProps,

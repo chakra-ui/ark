@@ -65,5 +65,6 @@ const virtualizer = useListVirtualizer(
         </Select.Content>
       </Select.Positioner>
     </Teleport>
+    <Select.HiddenInput />
   </Select.Root>
 </template>

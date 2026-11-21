@@ -2,6 +2,7 @@ import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
 import { vi } from 'vitest'
 import SelectWithField from './field.test.vue'
+import SelectWithHiddenInput from './hidden-input.test.vue'
 import ComponentUnderTest from './select.test.vue'
 
 describe('Select', () => {
@@ -144,5 +145,22 @@ describe('Select / Field', () => {
   it('should describe the trigger with the helper and error text', async () => {
     render(SelectWithField, { props: { invalid: true } })
     expect(await screen.findByRole('combobox')).toHaveAccessibleDescription('Error Info Additional Info')
+  })
+  it('should submit the value through hidden inputs', async () => {
+    render(SelectWithHiddenInput)
+    const form = () => new FormData(screen.getByTestId('form') as HTMLFormElement)
+
+    expect(form().getAll('framework')).toEqual([''])
+
+    await user.click(screen.getByRole('combobox', { name: 'Framework' }))
+    await user.click(screen.getByRole('option', { name: 'Solid' }))
+    await waitFor(() => expect(form().getAll('framework')).toEqual(['Solid']))
+  })
+
+  it('should submit one hidden input per value when multiple', async () => {
+    render(SelectWithHiddenInput, { props: { multiple: true, defaultValue: ['React', 'Vue'] } })
+    const form = new FormData(screen.getByTestId('form') as HTMLFormElement)
+
+    expect(form.getAll('framework')).toEqual(['React', 'Vue'])
   })
 })

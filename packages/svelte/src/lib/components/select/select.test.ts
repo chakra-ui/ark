@@ -1,9 +1,10 @@
-import { render, screen } from '@testing-library/svelte'
+import { render, screen, waitFor } from '@testing-library/svelte'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { describe, expect, it } from 'vitest'
 import ComponentUnderTest from './examples/basic.svelte'
 import FieldComponent from './tests/select-field.test.svelte'
+import HiddenInputComponent from './tests/select-hidden-input.test.svelte'
 
 describe('Select', () => {
   it('should have no accessibility violations', async () => {
@@ -38,5 +39,22 @@ describe('Select', () => {
     expect(await screen.findByRole('combobox', { name: 'Label' })).toHaveAccessibleDescription(
       'Error Info Additional Info',
     )
+  })
+  it('should submit the value through hidden inputs', async () => {
+    render(HiddenInputComponent)
+    const form = () => new FormData(screen.getByTestId('form') as HTMLFormElement)
+
+    expect(form().getAll('framework')).toEqual([''])
+
+    await user.click(screen.getByRole('combobox', { name: 'Framework' }))
+    await user.click(screen.getByRole('option', { name: 'Solid' }))
+    await waitFor(() => expect(form().getAll('framework')).toEqual(['Solid']))
+  })
+
+  it('should submit one hidden input per value when multiple', async () => {
+    render(HiddenInputComponent, { props: { multiple: true, defaultValue: ['React', 'Vue'] } })
+    const form = new FormData(screen.getByTestId('form') as HTMLFormElement)
+
+    expect(form.getAll('framework')).toEqual(['React', 'Vue'])
   })
 })

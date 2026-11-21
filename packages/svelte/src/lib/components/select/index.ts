@@ -31,6 +31,11 @@ export {
 export { default as SelectContext, type SelectContextProps } from './select-context.svelte'
 export { default as SelectControl, type SelectControlBaseProps, type SelectControlProps } from './select-control.svelte'
 export {
+  default as SelectHiddenInput,
+  type SelectHiddenInputBaseProps,
+  type SelectHiddenInputProps,
+} from './select-hidden-input.svelte'
+export {
   default as SelectHiddenSelect,
   type SelectHiddenSelectBaseProps,
   type SelectHiddenSelectProps,
