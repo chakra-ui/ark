@@ -8,10 +8,6 @@ const apiOf = <Api>(el: HTMLElement, tag: string) =>
 
 export const fieldsetOf = (el: HTMLElement): FieldsetApi | undefined => apiOf<FieldsetApi>(el, 'ark-fieldset')
 
-/**
- * Merges the enclosing `ark-field` into a component's machine props, like the field context in the framework
- * packages: the field's label and control ids, and its disabled, invalid, read-only and required states.
- */
 export function withField<P extends Dict>(
   el: HTMLElement,
   control: string,
@@ -37,7 +33,6 @@ export function withField<P extends Dict>(
 
 const lastState = new WeakMap<HTMLElement, string>()
 
-/** Refreshes the components inside a field or fieldset when its shared state changes. */
 export function refreshOnChange(el: HTMLElement, state: unknown[]) {
   const key = state.join()
   if (lastState.get(el) === key) return

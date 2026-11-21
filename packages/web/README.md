@@ -7,7 +7,7 @@ This package is a prerelease. It includes accordion, angle slider, avatar, carou
 clipboard, collapsible, combobox, command, date input, date picker, dialog, drawer, editable, field, fieldset, file
 upload, highlight, hover card, listbox, menu, menubar, meter, number input, pagination, password input, pin input,
 popover, progress, qr code, radio group, rating group, scroll area, segment group, select, signature pad, slider,
-splitter, steps, switch, tabs, tags input, timer, toast, toggle, toggle group, tooltip, tour, tree view, and
+splitter, steps, swap, switch, tabs, tags input, timer, toast, toggle, toggle group, tooltip, tour, tree view, and
 virtualizer.
 
 ## Usage

@@ -326,6 +326,10 @@
     "./tour": {
       "types": "./dist/components/tour/index.d.ts",
       "import": "./dist/components/tour/index.js"
+    },
+    "./swap": {
+      "types": "./dist/components/swap/index.d.ts",
+      "import": "./dist/components/swap/index.js"
     }
   },
   "sideEffects": true,
