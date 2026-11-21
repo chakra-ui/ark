@@ -1,4 +1,4 @@
-import '../../src/components/angle-slider/index.js'
+import '@ark-ui/web/angle-slider'
 
 import styles from 'styles/angle-slider.module.css'
 

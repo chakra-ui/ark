@@ -1,47 +1,55 @@
-import { expect, type Locator, test } from '@playwright/test'
+import { screen, waitFor } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
-const story = (name: string) => `/iframe.html?id=components-virtualizer--${name}&viewMode=story`
+import { mount as List } from '../../../../examples/virtualizer/list.js'
+import { mount as ScrollToIndex } from '../../../../examples/virtualizer/scroll-to-index.js'
+import { mount } from '../../../test-utils.js'
 
-const renderedIndexes = (list: Locator) =>
-  list.locator('[data-index]').evaluateAll((items) => items.map((item) => Number(item.getAttribute('data-index'))))
+const user = userEvent.setup()
 
-test('list renders only a window of items', async ({ page }) => {
-  await page.goto(story('list'))
-  const list = page.getByTestId('list')
-  await expect(list).toHaveAttribute('role', 'list')
-  await expect(list.locator('[data-index="0"]')).toHaveText('Item 1')
-  await expect(list.locator('[data-index="0"]')).toHaveAttribute('aria-setsize', '10000')
+const mountList = (example: (root: HTMLElement) => void) =>
+  mount(example).querySelector<HTMLElement>('[data-testid=list]')!
 
-  const indexes = await renderedIndexes(list)
+const item = (list: HTMLElement, index: number) => list.querySelector(`[data-index="${index}"]`)
+
+const renderedIndexes = (list: HTMLElement) =>
+  Array.from(list.querySelectorAll('[data-index]')).map((el) => Number(el.getAttribute('data-index')))
+
+test('list renders only a window of items', async () => {
+  const list = mountList(List)
+
+  await waitFor(() => expect(item(list, 0)).toHaveTextContent('Item 1'))
+  expect(list).toHaveAttribute('role', 'list')
+  expect(item(list, 0)).toHaveAttribute('aria-setsize', '10000')
+
+  const indexes = renderedIndexes(list)
   expect(indexes.length).toBeGreaterThan(5)
   expect(indexes.length).toBeLessThan(50)
-  await expect(list.locator('[data-index="9999"]')).toHaveCount(0)
+  expect(item(list, 9999)).toBeNull()
 })
 
-test('scrolling changes the rendered window', async ({ page }) => {
-  await page.goto(story('list'))
-  const list = page.getByTestId('list')
-  await expect(list.locator('[data-index="0"]')).toBeVisible()
+test('scrolling changes the rendered window', async () => {
+  const list = mountList(List)
 
-  await list.evaluate((el) => {
-    el.scrollTop = 48 * 5000
-  })
+  await waitFor(() => expect(item(list, 0)).toBeInTheDocument())
 
-  await expect(list.locator('[data-index="5000"]')).toBeVisible()
-  await expect(list.locator('[data-index="0"]')).toHaveCount(0)
-  await expect(list.locator('[data-index="5000"]')).toHaveAttribute('aria-posinset', '5001')
+  list.scrollTop = 48 * 5000
+  list.dispatchEvent(new Event('scroll'))
+
+  await waitFor(() => expect(item(list, 5000)).toBeInTheDocument())
+  expect(item(list, 0)).toBeNull()
+  expect(item(list, 5000)).toHaveAttribute('aria-posinset', '5001')
 })
 
-test('scrollToIndex brings a far item into the DOM', async ({ page }) => {
-  await page.goto(story('scroll-to-index'))
-  const list = page.getByTestId('list')
-  await expect(list.locator('[data-index="0"]')).toBeVisible()
-  await expect(list.locator('[data-index="9999"]')).toHaveCount(0)
+test('scrollToIndex brings a far item into the DOM', async () => {
+  const list = mountList(ScrollToIndex)
 
-  await page.getByRole('button', { name: 'Scroll to bottom' }).click()
-  await expect(list.locator('[data-index="9999"]')).toBeVisible()
-  await expect(list.locator('[data-index="9999"]')).toHaveText('Item 10000')
+  await waitFor(() => expect(item(list, 0)).toBeInTheDocument())
+  expect(item(list, 9999)).toBeNull()
 
-  await page.getByRole('button', { name: 'Scroll to top' }).click()
-  await expect(list.locator('[data-index="0"]')).toBeVisible()
+  await user.click(screen.getByRole('button', { name: 'Scroll to bottom' }))
+  await waitFor(() => expect(item(list, 9999)).toHaveTextContent('Item 10000'))
+
+  await user.click(screen.getByRole('button', { name: 'Scroll to top' }))
+  await waitFor(() => expect(item(list, 0)).toBeInTheDocument())
 })

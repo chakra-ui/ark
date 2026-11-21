@@ -1,5 +1,5 @@
-import '../../src/components/switch/index.js'
-import '../../src/components/field/index.js'
+import '@ark-ui/web/switch'
+import '@ark-ui/web/field'
 
 import field from 'styles/field.module.css'
 

@@ -62,6 +62,7 @@ export const Virtualized = () => {
           </Select.Content>
         </Select.Positioner>
       </Portal>
+      <Select.HiddenInput />
     </Select.Root>
   )
 }

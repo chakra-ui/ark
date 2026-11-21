@@ -3,7 +3,7 @@ import type * as select from '@zag-js/select'
 import { positionOf } from '../../utils/collection.js'
 import { definePart, wrappedButton } from '../../utils/define.js'
 import { definePresencePart } from '../../utils/presence.js'
-import { itemOf, root } from './shared.js'
+import { itemOf, root, syncHiddenInputs } from './shared.js'
 
 definePart<select.Api>({
   tag: 'ark-select-label',
@@ -115,4 +115,12 @@ definePart<select.Api>({
     const item = itemOf(el)
     return item ? api.getItemIndicatorProps({ item }) : {}
   },
+})
+
+definePart<select.Api>({
+  tag: 'ark-select-hidden-input',
+  root,
+  display: 'contents',
+  props: () => ({}),
+  render: (api, el) => syncHiddenInputs(el, api),
 })

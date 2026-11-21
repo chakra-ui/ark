@@ -1,7 +1,7 @@
-import type { DialogElement } from '../../src/components/dialog/index.js'
+import type { DialogElement } from '@ark-ui/web/dialog'
 import { createElement, X } from 'lucide'
 
-import '../../src/components/dialog/index.js'
+import '@ark-ui/web/dialog'
 
 import button from 'styles/button.module.css'
 

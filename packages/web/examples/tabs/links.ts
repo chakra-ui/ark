@@ -1,4 +1,4 @@
-import '../../src/components/tabs/index.js'
+import '@ark-ui/web/tabs'
 
 import styles from 'styles/tabs.module.css'
 

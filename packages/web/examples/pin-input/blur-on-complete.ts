@@ -1,4 +1,4 @@
-import '../../src/components/pin-input/index.js'
+import '@ark-ui/web/pin-input'
 
 import styles from 'styles/pin-input.module.css'
 

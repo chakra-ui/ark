@@ -1,4 +1,4 @@
-import '../../src/components/date-input/index.js'
+import '@ark-ui/web/date-input'
 
 import styles from 'styles/date-input.module.css'
 

@@ -1,6 +1,6 @@
 import { createElement, Eye, EyeOff } from 'lucide'
 
-import '../../src/components/password-input/index.js'
+import '@ark-ui/web/password-input'
 
 import styles from 'styles/password-input.module.css'
 

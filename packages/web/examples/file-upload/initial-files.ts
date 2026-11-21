@@ -1,10 +1,10 @@
 import { createElement, X, Paperclip, File } from 'lucide'
 
-import type { FileUploadElement } from '../../src/components/file-upload/index.js'
+import type { FileUploadElement } from '@ark-ui/web/file-upload'
 
 import styles from 'styles/file-upload.module.css'
 
-import '../../src/components/file-upload/index.js'
+import '@ark-ui/web/file-upload'
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `

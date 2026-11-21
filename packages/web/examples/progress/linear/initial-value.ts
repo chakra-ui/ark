@@ -1,4 +1,4 @@
-import '../../../src/components/progress/index.js'
+import '@ark-ui/web/progress'
 
 import styles from 'styles/progress.module.css'
 

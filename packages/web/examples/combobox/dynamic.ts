@@ -1,6 +1,6 @@
 import { createElement, X, ChevronsUpDown, Check } from 'lucide'
 
-import { createListCollection } from '../../src/components/combobox/index.js'
+import { createListCollection } from '@ark-ui/web/combobox'
 
 import styles from 'styles/combobox.module.css'
 

@@ -1,5 +1,5 @@
-import '../../src/components/radio-group/index.js'
-import '../../src/components/fieldset/index.js'
+import '@ark-ui/web/radio-group'
+import '@ark-ui/web/fieldset'
 
 import fieldset from 'styles/fieldset.module.css'
 

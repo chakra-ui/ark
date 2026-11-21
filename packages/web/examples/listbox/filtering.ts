@@ -1,7 +1,7 @@
 import { createElement, Check } from 'lucide'
 
-import { createListCollection } from '../../src/components/listbox/index.js'
-import { createFilter } from '../../src/utils/locale.js'
+import { createListCollection } from '@ark-ui/web/listbox'
+import { createFilter } from '@ark-ui/web/locale'
 
 import styles from 'styles/listbox.module.css'
 

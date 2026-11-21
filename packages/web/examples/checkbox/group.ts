@@ -1,6 +1,6 @@
 import { createElement, Check } from 'lucide'
 
-import '../../src/components/checkbox/index.js'
+import '@ark-ui/web/checkbox'
 
 import styles from 'styles/checkbox.module.css'
 

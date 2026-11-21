@@ -3,6 +3,7 @@ import user from '@testing-library/user-event'
 import { Select, createListCollection } from '@ark-ui/solid/select'
 import { ComponentUnderTest } from './basic.tsx'
 import { SelectWithField } from './field.tsx'
+import { SelectWithHiddenInput } from './hidden-input.tsx'
 
 describe('Select', () => {
   it('should handle item selection', async () => {
@@ -139,5 +140,22 @@ describe('Select / Field', () => {
       </Select.Root>
     ))
     expect(screen.getByText('Custom')).toBeInTheDocument()
+  })
+  it('should submit the value through hidden inputs', async () => {
+    render(() => <SelectWithHiddenInput />)
+    const form = () => new FormData(screen.getByTestId('form') as HTMLFormElement)
+
+    expect(form().getAll('framework')).toEqual([''])
+
+    await user.click(screen.getByRole('combobox', { name: 'Framework' }))
+    await user.click(screen.getByRole('option', { name: 'Solid' }))
+    await waitFor(() => expect(form().getAll('framework')).toEqual(['Solid']))
+  })
+
+  it('should submit one hidden input per value when multiple', async () => {
+    render(() => <SelectWithHiddenInput multiple defaultValue={['React', 'Vue']} />)
+    const form = new FormData(screen.getByTestId('form') as HTMLFormElement)
+
+    expect(form.getAll('framework')).toEqual(['React', 'Vue'])
   })
 })

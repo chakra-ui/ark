@@ -1,4 +1,4 @@
-import '../../src/components/hover-card/index.js'
+import '@ark-ui/web/hover-card'
 
 import styles from 'styles/hover-card.module.css'
 

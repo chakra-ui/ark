@@ -1,55 +1,82 @@
-import { expect, test } from '@playwright/test'
-import type {} from '../index.js'
+import { screen, waitFor } from '@testing-library/dom'
 
-const story = (name: string) => `/iframe.html?id=components-fieldset--${name}&viewMode=story`
+import { mount as Basic } from '../../../../examples/fieldset/basic.js'
+import { mount as Disabled } from '../../../../examples/fieldset/disabled.js'
+import { mount as Invalid } from '../../../../examples/fieldset/invalid.js'
+import { mount as WithCheckbox } from '../../../../examples/fieldset/with-checkbox.js'
+import { mount } from '../../../test-utils.js'
+import '@ark-ui/web/field'
+import '@ark-ui/web/fieldset'
 
-test('fieldset is named by its legend', async ({ page }) => {
-  await page.goto(story('basic'))
-  await expect(page.getByRole('group', { name: 'Contact Details' })).toBeVisible()
-  await expect(page.getByRole('textbox', { name: 'Name' })).toBeVisible()
+const findTextbox = (name: string) =>
+  waitFor(async () => {
+    const element = await screen.findByRole('textbox', { name })
+    expect(element.localName).toBe('input')
+    return element as HTMLInputElement
+  })
+
+test('fieldset is named by its legend', async () => {
+  mount(Basic)
+
+  expect(await screen.findByRole('group', { name: 'Contact Details' })).toBeVisible()
+  expect(await findTextbox('Name')).toBeVisible()
 })
 
-test('disabled fieldset disables its fields and describes itself with the helper text', async ({ page }) => {
-  await page.goto(story('disabled'))
-  const fieldset = page.locator('fieldset')
-  await expect(fieldset).toHaveAttribute('disabled', '')
-  await expect(fieldset).toHaveAttribute(
-    'aria-describedby',
-    (await page.locator('ark-fieldset-helper-text').getAttribute('id'))!,
-  )
-  for (const name of ['Street', 'City']) await expect(page.getByRole('textbox', { name })).toBeDisabled()
-  await expect(page.locator('ark-field').first()).toHaveAttribute('data-disabled', '')
-  await page.locator('ark-fieldset').evaluate((el) => el.removeAttribute('disabled'))
-  await expect(page.getByRole('textbox', { name: 'Street' })).toBeEnabled()
-  await expect(page.locator('ark-field').first()).not.toHaveAttribute('data-disabled')
+test('disabled fieldset disables its fields and describes itself with the helper text', async () => {
+  mount(Disabled)
+  const fieldset = document.querySelector('fieldset')!
+  const helper = document.querySelector('ark-fieldset-helper-text')!
+  const field = document.querySelector('ark-field')!
+
+  await waitFor(() => expect(fieldset).toHaveAttribute('disabled', ''))
+  await waitFor(() => expect(fieldset).toHaveAttribute('aria-describedby', helper.id))
+
+  for (const name of ['Street', 'City']) {
+    const input = await findTextbox(name)
+    await waitFor(() => expect(input).toBeDisabled())
+  }
+
+  await waitFor(() => expect(field).toHaveAttribute('data-disabled', ''))
+
+  document.querySelector('ark-fieldset')!.removeAttribute('disabled')
+
+  await waitFor(async () => expect(await findTextbox('Street')).toBeEnabled())
+  await waitFor(() => expect(field).not.toHaveAttribute('data-disabled'))
 })
 
-test('invalid fieldset shows its error text', async ({ page }) => {
-  await page.goto(story('invalid'))
-  const error = page.locator('ark-fieldset-error-text')
-  await expect(error).toBeVisible()
-  await expect(page.locator('fieldset')).toHaveAttribute('aria-describedby', (await error.getAttribute('id'))!)
-  await expect(page.locator('fieldset')).toHaveAttribute('data-invalid', '')
-  await page.locator('ark-fieldset').evaluate((el) => el.removeAttribute('invalid'))
-  await expect(error).toBeHidden()
-  await expect(page.locator('fieldset')).not.toHaveAttribute('aria-describedby')
+test('invalid fieldset shows its error text', async () => {
+  mount(Invalid)
+  const error = document.querySelector('ark-fieldset-error-text')!
+  const fieldset = document.querySelector('fieldset')!
+
+  await waitFor(() => expect(error).toBeVisible())
+  await waitFor(() => expect(fieldset).toHaveAttribute('aria-describedby', error.id))
+  expect(fieldset).toHaveAttribute('data-invalid', '')
+
+  document.querySelector('ark-fieldset')!.removeAttribute('invalid')
+
+  await waitFor(() => expect(error).not.toBeVisible())
+  expect(fieldset).not.toHaveAttribute('aria-describedby')
 })
 
-test('fieldset groups other components', async ({ page }) => {
-  await page.goto(story('with-checkbox'))
-  await expect(page.getByRole('group', { name: 'Email Preferences' })).toBeVisible()
-  await expect(page.getByRole('checkbox', { name: 'Product updates' })).toBeChecked()
+test('fieldset groups other components', async () => {
+  mount(WithCheckbox)
+
+  expect(await screen.findByRole('group', { name: 'Email Preferences' })).toBeVisible()
+  await waitFor(() => expect(screen.getByRole('checkbox', { name: 'Product updates' })).toBeChecked())
 })
 
-test('a disabled fieldset disables a field that has no control', async ({ page }) => {
-  await page.goto('/test-fixtures/index.html')
-  await page.setContent(/* html */ `
-    <ark-fieldset disabled>
-      <fieldset>
-        <ark-fieldset-legend>Legend</ark-fieldset-legend>
-        <ark-field><ark-field-label><label>Label</label></ark-field-label></ark-field>
-      </fieldset>
-    </ark-fieldset>`)
-  await expect(page.locator('ark-field')).toHaveAttribute('data-disabled', '')
-  await expect(page.locator('ark-field label')).toHaveAttribute('data-disabled', '')
+test('a disabled fieldset disables a field that has no control', async () => {
+  mount((root) => {
+    root.innerHTML = /* html */ `
+      <ark-fieldset disabled>
+        <fieldset>
+          <ark-fieldset-legend>Legend</ark-fieldset-legend>
+          <ark-field><ark-field-label><label>Label</label></ark-field-label></ark-field>
+        </fieldset>
+      </ark-fieldset>`
+  })
+
+  await waitFor(() => expect(document.querySelector('ark-field')).toHaveAttribute('data-disabled', ''))
+  await waitFor(() => expect(document.querySelector('ark-field label')).toHaveAttribute('data-disabled', ''))
 })

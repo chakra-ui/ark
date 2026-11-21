@@ -4,7 +4,7 @@ import type { DateValue } from '@zag-js/date-picker'
 
 import styles from 'styles/date-picker.module.css'
 
-import '../../src/components/date-picker/index.js'
+import '@ark-ui/web/date-picker'
 
 import button from 'styles/button.module.css'
 

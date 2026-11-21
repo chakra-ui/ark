@@ -1,6 +1,6 @@
 import { createElement, ChevronRight, File, ExternalLink } from 'lucide'
 
-import '../../src/components/tree-view/index.js'
+import '@ark-ui/web/tree-view'
 
 import styles from 'styles/tree-view.module.css'
 

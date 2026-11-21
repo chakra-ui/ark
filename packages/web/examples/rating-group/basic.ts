@@ -1,6 +1,6 @@
 import { createElement, Star } from 'lucide'
 
-import '../../src/components/rating-group/index.js'
+import '@ark-ui/web/rating-group'
 
 import styles from 'styles/rating-group.module.css'
 

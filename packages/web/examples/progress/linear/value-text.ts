@@ -1,6 +1,6 @@
-import type { ProgressElement } from '../../../src/components/progress/index.js'
+import type { ProgressElement } from '@ark-ui/web/progress'
 
-import '../../../src/components/progress/index.js'
+import '@ark-ui/web/progress'
 
 import styles from 'styles/progress.module.css'
 

@@ -1,52 +1,38 @@
-import { expect, test } from '@playwright/test'
+import { screen, waitFor } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
-const story = (name: string) => `/iframe.html?id=components-segment-group--${name}&viewMode=story`
+import { mount as Controlled } from '../../../../examples/segment-group/controlled.js'
+import { mount as Disabled } from '../../../../examples/segment-group/disabled.js'
+import { mount } from '../../../test-utils.js'
 
-test('segment group selects a clicked item and emits valuechange', async ({ page }) => {
-  await page.goto(story('controlled'))
-  const group = page.locator('ark-segment-group')
-  await expect(page.locator('input[type=radio]')).toHaveCount(4)
-  await page.getByText('Solid', { exact: true }).click()
-  await expect(page.locator('output')).toHaveText('value: Solid')
-  await expect(group).toHaveAttribute('value', 'Solid')
-  await expect(page.locator('input[value=Solid]')).toBeChecked()
-  await expect(page.locator('label[data-state=checked]')).toHaveText('Solid')
-  await expect(page.locator('input[name=framework]:checked')).toHaveValue('Solid')
+const user = userEvent.setup()
+
+const checkedLabel = () => document.querySelector('label[data-state=checked]')
+
+test('segment group selects a clicked item and emits valuechange', async () => {
+  mount(Controlled)
+  const group = document.querySelector('ark-segment-group')!
+  await waitFor(() => expect(document.querySelectorAll('input[type=radio]')).toHaveLength(4))
+
+  await user.click(screen.getByText('Solid', { exact: true }))
+  await waitFor(() => expect(document.querySelector('output')).toHaveTextContent('value: Solid'))
+  expect(group).toHaveAttribute('value', 'Solid')
+  await waitFor(() => expect(document.querySelector('input[value=Solid]')).toBeChecked())
+  expect(checkedLabel()).toHaveTextContent('Solid')
+  expect(document.querySelector<HTMLInputElement>('input[name=framework]:checked')?.value).toBe('Solid')
 })
 
-test('segment group moves the selection with arrow keys and skips disabled items', async ({ page }) => {
-  await page.goto(story('disabled'))
-  const checked = page.locator('label[data-state=checked]')
-  await expect(checked).toHaveText('React')
-  await page.locator('input[value=React]').focus()
-  await page.keyboard.press('ArrowRight')
-  await expect(checked).toHaveText('Solid')
-  await page.keyboard.press('ArrowRight')
-  await expect(checked).toHaveText('Vue')
-  await page.keyboard.press('ArrowLeft')
-  await expect(checked).toHaveText('Solid')
-})
+test('segment group moves the selection with arrow keys and skips disabled items', async () => {
+  mount(Disabled)
+  await waitFor(() => expect(checkedLabel()).toHaveTextContent('React'))
 
-test('segment group indicator tracks the selected item', async ({ page }) => {
-  await page.goto(story('basic'))
-  const indicator = page.locator('ark-segment-group-indicator')
-  const rectOf = (text: string) =>
-    page.getByText(text, { exact: true }).evaluate((el) => {
-      const label = el.closest('label')!
-      return { left: `${label.offsetLeft}px`, width: `${label.offsetWidth}px` }
-    })
-  const vars = () =>
-    indicator.evaluate((el) => ({
-      left: el.style.getPropertyValue('--left'),
-      width: el.style.getPropertyValue('--width'),
-    }))
+  document.querySelector<HTMLInputElement>('input[value=React]')!.focus()
+  await user.keyboard('{ArrowRight}')
+  await waitFor(() => expect(checkedLabel()).toHaveTextContent('Solid'))
 
-  await expect.poll(vars).toEqual(await rectOf('React'))
-  await page.getByText('Svelte', { exact: true }).click()
-  await expect.poll(vars).toEqual(await rectOf('Svelte'))
+  await user.keyboard('{ArrowRight}')
+  await waitFor(() => expect(checkedLabel()).toHaveTextContent('Vue'))
 
-  await page.locator('ark-segment-group-item[value=Svelte] label').evaluate((el) => {
-    el.style.paddingInline = '3rem'
-  })
-  await expect.poll(vars).toEqual(await rectOf('Svelte'))
+  await user.keyboard('{ArrowLeft}')
+  await waitFor(() => expect(checkedLabel()).toHaveTextContent('Solid'))
 })

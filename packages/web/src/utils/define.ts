@@ -10,7 +10,7 @@ let uid = 0
 const sheet = typeof CSSStyleSheet !== 'undefined' ? new CSSStyleSheet() : null
 const rules = new Set<string>()
 
-function adoptDisplay(el: HTMLElement, display: string) {
+export function adoptDisplay(el: HTMLElement, display: string) {
   // `:where` so page styles win over defaults; `!important` so `hidden` wins over page styles
   for (const rule of [
     `:where(${el.localName}){display:${display}}`,

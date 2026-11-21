@@ -1,8 +1,8 @@
 import { createElement, ChevronRight, Folder, File } from 'lucide'
 
-import '../../src/components/menu/index.js'
+import '@ark-ui/web/menu'
 
-import '../../src/components/tree-view/index.js'
+import '@ark-ui/web/tree-view'
 
 import styles from 'styles/tree-view.module.css'
 

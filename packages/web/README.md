@@ -7,7 +7,7 @@ This package is a prerelease. It includes accordion, angle slider, avatar, carou
 clipboard, collapsible, combobox, command, date input, date picker, dialog, drawer, editable, field, fieldset, file
 upload, highlight, hover card, listbox, menu, menubar, meter, number input, pagination, password input, pin input,
 popover, progress, qr code, radio group, rating group, scroll area, segment group, select, signature pad, slider,
-splitter, steps, switch, tabs, tags input, timer, toast, toggle, toggle group, tooltip, and tree view.
+splitter, steps, switch, tabs, tags input, timer, toast, toggle, toggle group, tooltip, tree view, and virtualizer.
 
 ## Usage
 
@@ -179,9 +179,37 @@ const { contains } = createFilter({ sensitivity: 'base' })
 contains('Café', 'cafe') // true
 ```
 
+Long lists render through `<ark-list-virtualizer>` (also `<ark-window-virtualizer>` and `<ark-grid-virtualizer>`). Items
+come from a template and `renderItem` fills them. Inside a collection component, compose with `as-child` so the
+component keeps its roles and the virtualizer only positions:
+
+```html
+<ark-select-list as-child manual>
+  <ark-list-virtualizer count="5000" estimated-size="36">
+    <ark-list-virtualizer-content>
+      <template>
+        <ark-list-virtualizer-item as-child>
+          <ark-select-item><ark-select-item-text></ark-select-item-text></ark-select-item>
+        </ark-list-virtualizer-item>
+      </template>
+    </ark-list-virtualizer-content>
+  </ark-list-virtualizer>
+</ark-select-list>
+```
+
+```ts
+list.renderItem = (element, item) => {
+  const { value, label } = collection.items[item.index]
+  element.setAttribute('value', value)
+  element.querySelector('ark-select-item-text')!.textContent = label
+}
+select.scrollToIndexFn = ({ index }) => list.virtualizer?.scrollToIndex(index)
+```
+
 Form controls use native hidden inputs or a hidden select for submission and validation. Include the component's
 hidden-input part where shown in its examples. Set `name` and `value` on the root. Select creates its hidden select
-automatically. Custom element wrappers are not themselves form-associated elements.
+automatically; add `<ark-select-hidden-input>` to submit through hidden inputs instead, which suits large or virtualized
+lists. Custom element wrappers are not themselves form-associated elements.
 
 Wrap a control in `ark-field` to link it to a label, helper text, and error text. `disabled`, `invalid`, `readonly`, and
 `required` on the field reach its native input, textarea, or select, and the components inside it, such as checkbox,
@@ -242,11 +270,10 @@ bun run typecheck
 bun run lint
 bun run build           # ESM + declarations in dist/
 bun run build:storybook
-bun run test            # static Storybook on port 6017 + Chromium
+bun run test            # Vitest + happy-dom
 ```
 
-Install Playwright's Chromium if needed, or set `CHROME` to an existing Chrome executable. Tests cover every Storybook
-example plus keyboard interaction, form values, shadow roots, focus restoration, and reconnect cleanup.
+Tests mount the examples into happy-dom and drive them with Testing Library, like the other framework packages.
 
 The package is organized as follows:
 
@@ -257,9 +284,8 @@ The package is organized as follows:
 - `src/utils/`: element lifecycle, collections, attributes, lazy mounting, and presence.
 - `examples/<component>/`: self-contained examples with markup, data, icons, and helpers in the same file.
 - `src/components/<component>/<component>.stories.ts`: Storybook metadata and example exports.
-- `src/components/<component>/tests/`: browser interaction tests for that component.
+- `src/components/<component>/tests/`: interaction tests for that component.
 - `src/utils/tests/`: tests for the shared element runtime.
-- `tests/fixtures/`: the page the runtime tests load their markup into.
 
 ## Release prerequisite
 

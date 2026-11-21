@@ -2,7 +2,7 @@ import { createElement, ArrowLeft, ArrowRight, Plus } from 'lucide'
 
 import button from 'styles/button.module.css'
 
-import '../../src/components/carousel/index.js'
+import '@ark-ui/web/carousel'
 
 import styles from 'styles/carousel.module.css'
 

@@ -1,6 +1,6 @@
 import { createElement, X } from 'lucide'
 
-import { createToaster } from '../../src/components/toast/index.js'
+import { createToaster } from '@ark-ui/web/toast'
 
 import button from 'styles/button.module.css'
 

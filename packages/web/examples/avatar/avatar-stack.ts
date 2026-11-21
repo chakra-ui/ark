@@ -1,5 +1,5 @@
-import '../../src/components/avatar/index.js'
-import '../../src/components/menu/index.js'
+import '@ark-ui/web/avatar'
+import '@ark-ui/web/menu'
 
 import styles from 'styles/avatar.module.css'
 import menuStyles from 'styles/menu.module.css'

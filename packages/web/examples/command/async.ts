@@ -1,8 +1,8 @@
 import { createElement, Search } from 'lucide'
 
-import { createListCollection } from '../../src/components/command/index.js'
-import { createAsyncList } from '../../src/utils/async-list.js'
-import { createFilter } from '../../src/utils/locale.js'
+import { createListCollection } from '@ark-ui/web/command'
+import { createAsyncList } from '@ark-ui/web/async-list'
+import { createFilter } from '@ark-ui/web/locale'
 
 import styles from 'styles/command.module.css'
 

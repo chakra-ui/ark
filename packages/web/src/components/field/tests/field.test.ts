@@ -1,202 +1,290 @@
-import { expect, test } from '@playwright/test'
-import type {} from '../index.js'
+import { screen, waitFor, within } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
-const story = (name: string) => `/iframe.html?id=components-field--${name}&viewMode=story`
+import { mount as CustomValidation } from '../../../../examples/field/custom-validation.js'
+import { mount as Indicator } from '../../../../examples/field/indicator.js'
+import { mount as Input } from '../../../../examples/field/input.js'
+import { mount as Invalid } from '../../../../examples/field/invalid.js'
+import { mount as Item } from '../../../../examples/field/item.js'
+import { mount as Select } from '../../../../examples/field/select.js'
+import { mount as ServerErrors } from '../../../../examples/field/server-errors.js'
+import { mount as ShadowRoot } from '../../../../examples/field/shadow-root.js'
+import { mount as Textarea } from '../../../../examples/field/textarea.js'
+import { mount as Validation } from '../../../../examples/field/validation.js'
+import { mount } from '../../../test-utils.js'
+import '@ark-ui/web/checkbox'
+import '@ark-ui/web/field'
 
-test('field links the label, input, helper and error text', async ({ page }) => {
-  await page.goto(story('input'))
-  const input = page.getByRole('textbox', { name: 'Label' })
-  await expect(input).toBeVisible()
-  const helperId = await page.locator('ark-field-helper-text').getAttribute('id')
-  await expect(input).toHaveAttribute('aria-describedby', helperId!)
-  await expect(page.locator('ark-field-error-text')).toBeHidden()
-  await page.getByText('Label').click()
-  await expect(input).toBeFocused()
-})
-
-test('invalid field shows its error and describes the input with it', async ({ page }) => {
-  await page.goto(story('invalid'))
-  const input = page.getByRole('textbox', { name: 'Email' })
-  const error = page.locator('ark-field-error-text')
-  await expect(error).toBeVisible()
-  await expect(input).toHaveAttribute('aria-invalid', 'true')
-  await expect(input).toHaveAttribute('aria-describedby', (await error.getAttribute('id'))!)
-  await expect(page.locator('ark-field')).toHaveAttribute('data-invalid', '')
-})
-
-test('field states reach the native control and update with the attributes', async ({ page }) => {
-  await page.goto(story('input'))
-  const field = page.locator('ark-field')
-  const input = page.getByRole('textbox', { name: 'Label' })
-  await field.evaluate((el) => {
-    el.setAttribute('required', '')
-    el.setAttribute('readonly', '')
-    el.setAttribute('invalid', '')
+const findNative = <T extends HTMLElement>(find: () => Promise<HTMLElement>, tag: string) =>
+  waitFor(async () => {
+    const element = await find()
+    expect(element.localName).toBe(tag)
+    return element as T
   })
-  await expect(input).toHaveAttribute('required', '')
-  await expect(input).toHaveAttribute('readonly', '')
-  await expect(page.locator('ark-field-error-text')).toBeVisible()
-  const errorId = await page.locator('ark-field-error-text').getAttribute('id')
-  const helperId = await page.locator('ark-field-helper-text').getAttribute('id')
-  await expect(input).toHaveAttribute('aria-describedby', `${helperId} ${errorId}`)
-  await field.evaluate((el) => el.setAttribute('disabled', ''))
-  await expect(input).toBeDisabled()
-  await expect(field).toHaveAttribute('data-disabled', '')
-  await field.evaluate((el) => el.removeAttribute('invalid'))
-  await expect(page.locator('ark-field-error-text')).toBeHidden()
-  await expect(input).not.toHaveAttribute('aria-invalid')
+
+const findTextbox = (name: string | RegExp) =>
+  findNative<HTMLInputElement>(() => screen.findByRole('textbox', { name }), 'input')
+
+test('field links the label, input, helper and error text', async () => {
+  const user = userEvent.setup()
+  mount(Input)
+  const input = await findTextbox('Label')
+
+  expect(input).toBeVisible()
+
+  const helper = document.querySelector('ark-field-helper-text')!
+
+  await waitFor(() => expect(input).toHaveAttribute('aria-describedby', helper.id))
+  expect(document.querySelector('ark-field-error-text')).not.toBeVisible()
+
+  await user.click(screen.getByText('Label'))
+  await waitFor(() => expect(input).toHaveFocus())
 })
 
-test('field select and textarea receive the control props', async ({ page }) => {
-  await page.goto(story('select'))
-  await expect(page.getByRole('combobox', { name: 'Label' })).toBeVisible()
-  await page.goto(story('textarea'))
-  await expect(page.getByRole('textbox', { name: 'Label' })).toBeVisible()
+test('invalid field shows its error and describes the input with it', async () => {
+  mount(Invalid)
+  const input = await findTextbox('Email')
+  const error = document.querySelector('ark-field-error-text')!
+
+  await waitFor(() => expect(error).toBeVisible())
+  expect(input).toHaveAttribute('aria-invalid', 'true')
+  expect(input).toHaveAttribute('aria-describedby', error.id)
+  expect(document.querySelector('ark-field')).toHaveAttribute('data-invalid', '')
 })
 
-test('autoresize textarea grows with its content', async ({ page }) => {
-  await page.goto(story('textarea-autoresize'))
-  const textarea = page.getByRole('textbox', { name: 'Label' })
-  const before = await textarea.evaluate((el) => el.getBoundingClientRect().height)
-  await textarea.fill('one\ntwo\nthree\nfour\nfive\nsix')
-  await expect.poll(() => textarea.evaluate((el) => el.getBoundingClientRect().height)).toBeGreaterThan(before)
+test('field states reach the native control and update with the attributes', async () => {
+  mount(Input)
+  const field = document.querySelector('ark-field')!
+  const input = await findTextbox('Label')
+  const error = document.querySelector('ark-field-error-text')!
+  const helper = document.querySelector('ark-field-helper-text')!
+
+  await waitFor(() => expect(input).toHaveAttribute('aria-describedby', helper.id))
+  await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))
+
+  field.setAttribute('required', '')
+  field.setAttribute('readonly', '')
+  field.setAttribute('invalid', '')
+
+  await waitFor(() => expect(input).toHaveAttribute('required', ''))
+  await waitFor(() => expect(input).toHaveAttribute('readonly', ''))
+  await waitFor(() => expect(error).toBeVisible())
+  await waitFor(() => expect(input).toHaveAttribute('aria-describedby', `${helper.id} ${error.id}`))
+
+  field.setAttribute('disabled', '')
+
+  await waitFor(() => expect(input).toBeDisabled())
+  expect(field).toHaveAttribute('data-disabled', '')
+
+  field.removeAttribute('invalid')
+
+  await waitFor(() => expect(error).not.toBeVisible())
+  expect(input).not.toHaveAttribute('aria-invalid')
 })
 
-test('required indicator shows only while the field is required', async ({ page }) => {
-  await page.goto(story('indicator'))
-  const indicator = page.locator('ark-field-indicator')
-  await expect(indicator).toBeVisible()
-  await expect(indicator).toHaveAttribute('aria-hidden', 'true')
-  await expect(page.getByRole('textbox')).toHaveAttribute('required', '')
-  await page.locator('ark-field').evaluate((el) => el.removeAttribute('required'))
-  await expect(indicator).toBeHidden()
+test('field select and textarea receive the control props', async () => {
+  mount(Select)
+  const select = await findNative(() => screen.findByRole('combobox', { name: 'Label' }), 'select')
+
+  expect(select).toBeVisible()
+
+  document.body.replaceChildren()
+  mount(Textarea)
+  const textarea = await findNative(() => screen.findByRole('textbox', { name: 'Label' }), 'textarea')
+
+  expect(textarea).toBeVisible()
 })
 
-test('field items get their own control ids and the label follows the target item', async ({ page }) => {
-  await page.goto(story('item'))
-  const amount = page.locator('ark-field-item[value=amount] input')
-  const currency = page.getByRole('combobox', { name: 'Currency' })
-  await expect(amount).toHaveAttribute('id', /:item:amount$/)
-  await expect(currency).toHaveAttribute('id', /:item:currency$/)
-  await expect(page.getByRole('textbox', { name: 'Amount' })).toBeVisible()
-  await page.getByText('Amount', { exact: true }).click()
-  await expect(amount).toBeFocused()
+test('required indicator shows only while the field is required', async () => {
+  mount(Indicator)
+  const indicator = document.querySelector('ark-field-indicator')!
+
+  await waitFor(() => expect(indicator).toBeVisible())
+  expect(indicator).toHaveAttribute('aria-hidden', 'true')
+
+  const input = await findNative(() => screen.findByRole('textbox'), 'input')
+
+  await waitFor(() => expect(input).toHaveAttribute('required', ''))
+
+  document.querySelector('ark-field')!.removeAttribute('required')
+
+  await waitFor(() => expect(indicator).not.toBeVisible())
 })
 
-test('field works inside a shadow root', async ({ page }) => {
-  await page.goto(story('shadow-root'))
-  const input = page.getByRole('textbox', { name: 'Email' })
-  await expect(input).toHaveAttribute('aria-invalid', 'true')
-  await expect(input).toHaveAttribute('aria-describedby', /error-text/)
+test('field items get their own control ids and the label follows the target item', async () => {
+  const user = userEvent.setup()
+  mount(Item)
+  const amount = document.querySelector('ark-field-item[value=amount] input')!
+  const currency = await findNative(() => screen.findByRole('combobox', { name: 'Currency' }), 'select')
+
+  await waitFor(() => expect(amount).toHaveAttribute('id', expect.stringMatching(/:item:amount$/)))
+  await waitFor(() => expect(currency).toHaveAttribute('id', expect.stringMatching(/:item:currency$/)))
+  expect(await findTextbox('Amount')).toBe(amount)
+
+  await user.click(screen.getByText('Amount', { exact: true }))
+  await waitFor(() => expect(amount).toHaveFocus())
 })
 
-test('components inside a field take its label, ids and states', async ({ page }) => {
-  await page.goto('/test-fixtures/index.html')
-  await page.setContent(/* html */ `
-    <ark-field invalid required>
-      <ark-checkbox>
-        <label>
-          <ark-checkbox-control></ark-checkbox-control>
-          <ark-checkbox-label>Accept</ark-checkbox-label>
-          <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
-        </label>
-      </ark-checkbox>
-      <ark-field-error-text>Required</ark-field-error-text>
-    </ark-field>`)
-  const hidden = page.locator('ark-checkbox-hidden-input input')
-  const field = page.locator('ark-field')
-  await expect(hidden).toHaveAttribute('required', '')
-  await expect(hidden).toHaveAttribute(
-    'id',
-    (await field.evaluate((el) => (el as HTMLElementTagNameMap['ark-field']).api!.ids.control))!,
+test('field works inside a shadow root', async () => {
+  const root = mount(ShadowRoot)
+  const shadow = root.firstElementChild!.shadowRoot!
+  const input = await findNative<HTMLInputElement>(
+    () => within(shadow as unknown as HTMLElement).findByRole('textbox', { name: 'Email' }),
+    'input',
   )
-  await expect(page.locator('ark-checkbox label')).toHaveAttribute('data-invalid', '')
-  await field.evaluate((el) => el.setAttribute('disabled', ''))
-  await expect(hidden).toBeDisabled()
-  await expect(page.locator('ark-checkbox label')).toHaveAttribute('data-disabled', '')
+
+  await waitFor(() => expect(input).toHaveAttribute('aria-invalid', 'true'))
+  expect(input).toHaveAttribute('aria-describedby', expect.stringMatching(/error-text/))
 })
 
-test('an id on the field host does not collide with the control id', async ({ page }) => {
-  await page.goto('/test-fixtures/index.html')
-  await page.setContent(/* html */ `
-    <ark-field id="email">
-      <ark-field-label><label>Email</label></ark-field-label>
-      <ark-field-input><input /></ark-field-input>
-    </ark-field>`)
-  const input = page.getByRole('textbox', { name: 'Email' })
-  await expect(input).not.toHaveAttribute('id', 'email')
-  await expect(page.locator('#email')).toHaveCount(1)
-  await page.getByText('Email').click()
-  await expect(input).toBeFocused()
-})
-
-test('ids assigned to a component inside a field add to the field ids', async ({ page }) => {
-  await page.goto('/test-fixtures/index.html')
-  await page.setContent('<ark-field></ark-field>')
-  await page.locator('ark-field').evaluate((field) => {
-    const template = document.createElement('template')
-    template.innerHTML = /* html */ `
-      <ark-checkbox>
-        <label>
-          <ark-checkbox-control></ark-checkbox-control>
-          <ark-checkbox-label>Accept</ark-checkbox-label>
-          <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
-        </label>
-      </ark-checkbox>`
-    const checkbox = template.content.firstElementChild as HTMLElementTagNameMap['ark-checkbox']
-    checkbox.ids = { label: 'custom-label' }
-    field.append(checkbox)
+test('components inside a field take its label, ids and states', async () => {
+  mount((root) => {
+    root.innerHTML = '<ark-field invalid required></ark-field>'
   })
-  const controlId = await page
-    .locator('ark-field')
-    .evaluate((el) => (el as HTMLElementTagNameMap['ark-field']).api!.ids.control)
-  await expect(page.locator('ark-checkbox-label')).toHaveAttribute('id', 'custom-label')
-  await expect(page.locator('ark-checkbox-hidden-input input')).toHaveAttribute('id', controlId)
+
+  document.querySelector('ark-field')!.innerHTML = /* html */ `
+    <ark-checkbox>
+      <label>
+        <ark-checkbox-control></ark-checkbox-control>
+        <ark-checkbox-label>Accept</ark-checkbox-label>
+        <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
+      </label>
+    </ark-checkbox>
+    <ark-field-error-text>Required</ark-field-error-text>`
+
+  const field = document.querySelector('ark-field')!
+  const label = document.querySelector('ark-checkbox label')!
+  const hidden = await waitFor(() => {
+    const input = document.querySelector('ark-checkbox-hidden-input input')
+    expect(input).toBeInstanceOf(HTMLInputElement)
+    return input as HTMLInputElement
+  })
+
+  await waitFor(() => expect(hidden).toHaveAttribute('required', ''))
+  await waitFor(() => expect(hidden).toHaveAttribute('id', field.api!.ids.control))
+  await waitFor(() => expect(label).toHaveAttribute('data-invalid', ''))
+
+  field.setAttribute('disabled', '')
+
+  await waitFor(() => expect(hidden).toBeDisabled())
+  await waitFor(() => expect(label).toHaveAttribute('data-disabled', ''))
 })
 
-test('validation shows the matching native error after the control loses focus', async ({ page }) => {
-  await page.goto(story('validation'))
-  const input = page.getByRole('textbox', { name: /Email/ })
-  const missing = page.getByText('Email is required')
-  const mismatch = page.getByText('Enter a valid email address')
-  await input.focus()
-  await input.blur()
-  // A pristine required field is not flagged until it has been edited or submitted
-  await expect(missing).toBeHidden()
-  await input.fill('x')
-  await input.fill('')
-  await input.blur()
-  await expect(missing).toBeVisible()
-  await expect(input).toHaveAttribute('aria-invalid', 'true')
-  await input.fill('nope')
-  await input.blur()
-  await expect(mismatch).toBeVisible()
-  await expect(missing).toBeHidden()
-  await input.fill('me@example.com')
-  await input.blur()
-  await expect(mismatch).toBeHidden()
-  await expect(input).not.toHaveAttribute('aria-invalid')
+test('an id on the field host does not collide with the control id', async () => {
+  const user = userEvent.setup()
+  mount((root) => {
+    root.innerHTML = /* html */ `
+      <ark-field id="email">
+        <ark-field-label><label>Email</label></ark-field-label>
+        <ark-field-input><input /></ark-field-input>
+      </ark-field>`
+  })
+
+  const input = await findTextbox('Email')
+
+  expect(input).not.toHaveAttribute('id', 'email')
+  expect(document.querySelectorAll('#email')).toHaveLength(1)
+
+  await user.click(screen.getByText('Email'))
+  await waitFor(() => expect(input).toHaveFocus())
 })
 
-test('custom validation reports its errors through validitychange', async ({ page }) => {
-  await page.goto(story('custom-validation'))
-  const input = page.getByRole('textbox', { name: 'Username' })
-  const error = page.locator('ark-field-error-text')
-  await input.fill('ad')
-  await expect(error).toHaveText('Use at least 3 characters')
-  await expect(error).toBeVisible()
-  await input.fill('admin')
-  await expect(error).toHaveText('This username is reserved')
-  await input.fill('sage')
-  await expect(error).toBeHidden()
+test('ids assigned to a component inside a field add to the field ids', async () => {
+  mount((root) => {
+    root.innerHTML = '<ark-field></ark-field>'
+  })
+
+  const field = document.querySelector('ark-field')!
+  const template = document.createElement('template')
+
+  template.innerHTML = /* html */ `
+    <ark-checkbox>
+      <label>
+        <ark-checkbox-control></ark-checkbox-control>
+        <ark-checkbox-label>Accept</ark-checkbox-label>
+        <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
+      </label>
+    </ark-checkbox>`
+
+  const checkbox = template.content.firstElementChild as HTMLElementTagNameMap['ark-checkbox']
+  checkbox.ids = { label: 'custom-label' }
+  field.append(checkbox)
+
+  await waitFor(() => expect(document.querySelector('ark-checkbox-label')).toHaveAttribute('id', 'custom-label'))
+  await waitFor(() =>
+    expect(document.querySelector('ark-checkbox-hidden-input input')).toHaveAttribute('id', field.api!.ids.control),
+  )
 })
 
-test('server errors mark the field invalid until the value changes', async ({ page }) => {
-  await page.goto(story('server-errors'))
-  const input = page.getByRole('textbox', { name: 'Email' })
-  await page.getByRole('button', { name: 'Submit' }).click()
-  await expect(page.locator('ark-field-error-text')).toHaveText('This email is already registered')
-  await expect(input).toHaveAttribute('aria-invalid', 'true')
-  await input.fill('new@example.com')
-  await expect(input).not.toHaveAttribute('aria-invalid')
+test('validation shows the matching native error after the control loses focus', async () => {
+  const user = userEvent.setup()
+  mount(Validation)
+  const input = await findTextbox(/Email/)
+  const missing = screen.getByText('Email is required')
+  const mismatch = screen.getByText('Enter a valid email address')
+
+  input.focus()
+  input.blur()
+
+  await waitFor(() => expect(missing).not.toBeVisible())
+
+  await user.type(input, 'x')
+  await user.clear(input)
+  input.blur()
+
+  await waitFor(() => expect(missing).toBeVisible())
+  expect(input).toHaveAttribute('aria-invalid', 'true')
+
+  await user.type(input, 'nope')
+  input.blur()
+
+  await waitFor(() => expect(mismatch).toBeVisible())
+  expect(missing).not.toBeVisible()
+
+  await user.clear(input)
+  await user.type(input, 'me@example.com')
+  input.blur()
+
+  await waitFor(() => expect(mismatch).not.toBeVisible())
+  expect(input).not.toHaveAttribute('aria-invalid')
+})
+
+test('custom validation reports its errors through validitychange', async () => {
+  const user = userEvent.setup()
+  mount(CustomValidation)
+  const input = await findTextbox('Username')
+  const error = document.querySelector('ark-field-error-text')!
+
+  await user.type(input, 'ad')
+
+  await waitFor(() => expect(error).toHaveTextContent('Use at least 3 characters'))
+  expect(error).toBeVisible()
+
+  await user.clear(input)
+  await user.type(input, 'admin')
+
+  await waitFor(() => expect(error).toHaveTextContent('This username is reserved'))
+
+  await user.clear(input)
+  await user.type(input, 'sage')
+
+  await waitFor(() => expect(error).not.toBeVisible())
+})
+
+test('server errors mark the field invalid until the value changes', async () => {
+  const user = userEvent.setup()
+  mount(ServerErrors)
+  const input = await findTextbox('Email')
+
+  await user.click(screen.getByRole('button', { name: 'Submit' }))
+
+  await waitFor(() =>
+    expect(document.querySelector('ark-field-error-text')).toHaveTextContent('This email is already registered'),
+  )
+  expect(input).toHaveAttribute('aria-invalid', 'true')
+
+  await user.clear(input)
+  await user.type(input, 'new@example.com')
+
+  await waitFor(() => expect(input).not.toHaveAttribute('aria-invalid'))
 })

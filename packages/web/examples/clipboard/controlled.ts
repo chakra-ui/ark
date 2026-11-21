@@ -1,6 +1,6 @@
 import { Check, ClipboardCopy, createElement } from 'lucide'
 
-import '../../src/components/clipboard/index.js'
+import '@ark-ui/web/clipboard'
 
 import button from 'styles/button.module.css'
 import styles from 'styles/clipboard.module.css'

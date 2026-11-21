@@ -1,6 +1,6 @@
 import { createElement, ChevronUp, ChevronDown } from 'lucide'
 
-import '../../src/components/number-input/index.js'
+import '@ark-ui/web/number-input'
 
 import styles from 'styles/number-input.module.css'
 

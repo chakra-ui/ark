@@ -29,6 +29,11 @@ export {
   type SelectControlProps as ControlProps,
 } from './select-control.tsx'
 export {
+  SelectHiddenInput as HiddenInput,
+  type SelectHiddenInputBaseProps as HiddenInputBaseProps,
+  type SelectHiddenInputProps as HiddenInputProps,
+} from './select-hidden-input.tsx'
+export {
   SelectHiddenSelect as HiddenSelect,
   type SelectHiddenSelectBaseProps as HiddenSelectBaseProps,
   type SelectHiddenSelectProps as HiddenSelectProps,

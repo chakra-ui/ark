@@ -1,260 +1,317 @@
-import { expect, type Page, test } from '@playwright/test'
-import type { CommandElement } from '../index.js'
+import { screen, waitFor } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
-const story = (name: string) => `/iframe.html?id=components-command--${name}&viewMode=story`
+import { mount as Async } from '../../../../examples/command/async.js'
+import { mount as Basic } from '../../../../examples/command/basic.js'
+import { mount as Dialog } from '../../../../examples/command/dialog.js'
+import { mount as EmptyState } from '../../../../examples/command/empty-state.js'
+import { mount as FromJson } from '../../../../examples/command/from-json.js'
+import { mount as Groups } from '../../../../examples/command/groups.js'
+import { mount as Keywords } from '../../../../examples/command/keywords.js'
+import { mount as Pages } from '../../../../examples/command/pages.js'
+import { mount } from '../../../test-utils.js'
+import { createListCollection, type CommandElement } from '@ark-ui/web/command'
 
-test('command filters items as the user types', async ({ page }) => {
-  await page.goto(story('basic'))
-  const input = page.getByRole('combobox')
-  const options = page.getByRole('option')
-  await expect(options).toHaveCount(5)
-  await input.fill('open')
-  await expect(options).toHaveCount(2)
-  await expect(options.first()).toHaveText(/Open file/)
-  await input.fill('zzz')
-  await expect(options).toHaveCount(0)
-  await input.fill('')
-  await expect(options).toHaveCount(5)
-})
+const user = userEvent.setup()
 
-// Presses keys as soon as `match` is highlighted, waiting only on microtasks so no frame can pass, like a fast typist.
-const typeThenPress = (page: Page, text: string, match: string, ...keys: string[]) =>
-  page.getByRole('combobox').evaluate(
-    async (input: HTMLInputElement, [text, match, keys]) => {
-      const highlighted = () => document.querySelector('[role=option][data-highlighted]')?.textContent?.includes(match)
-      input.focus()
-      input.value = text
-      input.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText', data: text }))
-      for (let i = 0; i < 100 && !highlighted(); i++) await Promise.resolve()
-      for (const key of keys)
-        input.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true }))
-    },
-    [text, match, keys] as const,
-  )
-
-test('command selects the first match when Enter follows typing', async ({ page }) => {
-  await page.goto(story('pages'))
-  await expect(page.getByRole('option')).toHaveCount(3)
-  await typeThenPress(page, 'dark', 'Dark', 'Enter')
-  await expect(page.locator('output')).toHaveText('Selected: dark')
-})
-
-test('command keeps an arrow key pressed right after typing', async ({ page }) => {
-  await page.goto(story('basic'))
-  await expect(page.getByRole('option')).toHaveCount(5)
-  await typeThenPress(page, 'open', 'Open file', 'ArrowDown')
-  await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))))
-  await expect(page.locator('[role=option][data-highlighted]')).toHaveText(/Open settings/)
-})
-
-test('command navigates with the keyboard while focus stays in the input', async ({ page }) => {
-  await page.goto(story('basic'))
-  const input = page.getByRole('combobox')
-  await input.focus()
-  await expect(input).toHaveAttribute('aria-expanded', 'true')
-
-  const highlighted = page.locator('[role=option][data-highlighted]')
-  await page.keyboard.press('ArrowDown')
-  await expect(highlighted).toHaveText(/Open file/)
-  await expect(input).toBeFocused()
-  const id = await highlighted.getAttribute('id')
-  await expect(input).toHaveAttribute('aria-activedescendant', id!)
-
-  await page.keyboard.press('End')
-  await expect(highlighted).toHaveText(/Open settings/)
-  await page.keyboard.press('Home')
-  await expect(highlighted).toHaveText(/New file/)
-  await page.keyboard.press('ArrowUp')
-  await expect(highlighted).toHaveText(/New file/)
-
-  await input.fill('sav')
-  await expect(highlighted).toHaveText(/Save/)
-  await page.keyboard.press('Enter')
-  await expect(page.locator('output')).toHaveText('Selected: save')
-  await expect(input).toHaveValue('sav')
-  await expect(input).toBeFocused()
-})
-
-test('command selects an item with the pointer and keeps input focus', async ({ page }) => {
-  await page.goto(story('basic'))
-  const input = page.getByRole('combobox')
-  await input.focus()
-  await page.getByRole('option', { name: /Copy path/ }).click()
-  await expect(page.locator('output')).toHaveText('Selected: copy-path')
-  await expect(input).toBeFocused()
-})
-
-test('command skips disabled items and hides empty groups', async ({ page }) => {
-  await page.goto(story('groups'))
-  const input = page.getByRole('combobox')
-  await input.focus()
-  const highlighted = page.locator('[role=option][data-highlighted]')
-  await page.keyboard.press('Home')
-  await expect(highlighted).toHaveText('Calendar')
-  await page.keyboard.press('ArrowDown')
-  await page.keyboard.press('ArrowDown')
-  await expect(highlighted).toHaveText('Profile')
-  await expect(page.getByRole('option', { name: 'Calculator' })).toHaveAttribute('aria-disabled', 'true')
-
-  await input.fill('bill')
-  await expect(page.getByRole('group', { name: 'Suggestions' })).toBeHidden()
-  await expect(page.getByRole('group', { name: 'Settings' })).toBeVisible()
-  await expect(page.getByRole('option')).toHaveCount(1)
-})
-
-test('command matches item keywords', async ({ page }) => {
-  await page.goto(story('keywords'))
-  await page.getByRole('combobox').fill('logout')
-  await expect(page.getByRole('option')).toHaveCount(1)
-  await expect(page.getByRole('option')).toHaveText('Sign out')
-})
-
-test('command shows the empty state only when nothing matches', async ({ page }) => {
-  await page.goto(story('empty-state'))
-  const empty = page.locator('ark-command-empty')
-  const input = page.getByRole('combobox')
-  await expect(input).toHaveValue('xyz')
-  await expect(empty).toBeVisible()
-  await expect(empty).toHaveText('No results for “xyz”')
-  await input.fill('an')
-  await expect(empty).toBeHidden()
-  await expect(page.getByRole('option')).toHaveCount(1)
-  await input.fill('anx')
-  await expect(empty).toBeVisible()
-})
-
-test('command renders grouped items from JSON with keywords', async ({ page }) => {
-  await page.goto(story('from-json'))
-  await expect(page.getByRole('group')).toHaveCount(2)
-  await page.getByRole('combobox').fill('smaller')
-  await expect(page.getByRole('option')).toHaveText('Zoom out')
-  await expect(page.getByRole('group', { name: 'File' })).toBeHidden()
-})
-
-test('command loads items asynchronously', async ({ page }) => {
-  await page.goto(story('async'))
-  const command = page.locator('ark-command')
-  await expect(page.getByRole('option')).toHaveCount(6)
-  await expect(command).not.toHaveAttribute('loading')
-  await page.getByRole('combobox').fill('grace')
-  await expect(command).toHaveAttribute('loading')
-  await expect(page.getByText('Loading...')).toBeVisible()
-  await expect(command).not.toHaveAttribute('loading')
-  await expect(page.getByText('Loading...')).toBeHidden()
-  await expect(page.getByRole('option')).toHaveCount(1)
-  await expect(page.getByRole('option')).toHaveText('Grace Hopper')
-})
-
-test('command opens item pages and goes back with Backspace', async ({ page }) => {
-  await page.goto(story('pages'))
-  const input = page.getByRole('combobox')
-  const options = page.getByRole('option')
-  await expect(options).toHaveCount(3)
-  await input.fill('theme')
-  await expect(page.locator('[role=option][data-highlighted]')).toHaveText('Change theme')
-  await page.keyboard.press('Enter')
-  await expect(options).toHaveCount(3)
-  await expect(options.first()).toHaveText('Light')
-  await expect(input).toHaveValue('')
-  await expect(page.locator('output')).toHaveText('Selected: none')
-
-  await page.keyboard.press('Enter')
-  await expect(page.locator('output')).toHaveText('Selected: light')
-
-  await page.keyboard.press('Backspace')
-  await expect(options).toHaveCount(3)
-  await expect(page.locator('[role=option][data-highlighted]')).toHaveText('Change theme')
-})
-
-test('command searches nested pages from the top level', async ({ page }) => {
-  await page.goto(story('pages'))
-  await expect(page.getByRole('option', { name: 'Dark' })).toBeHidden()
-  await page.getByRole('combobox').fill('dark')
-  const option = page.getByRole('option', { name: /Dark/ })
-  await expect(page.getByRole('option')).toHaveCount(1)
-  await expect(option).toBeVisible()
-  await expect(option).toContainText('Change theme')
-  await page.keyboard.press('Enter')
-  await expect(page.locator('output')).toHaveText('Selected: dark')
-})
-
-test('command goes back to the previous page and restores its query', async ({ page }) => {
-  await page.goto(story('pages'))
-  const command = page.locator('ark-command')
-  const input = page.getByRole('combobox')
-  await input.fill('lang')
-  await expect(page.locator('[role=option][data-highlighted]')).toHaveText('Change language')
-  await page.keyboard.press('Enter')
-  await expect(input).toHaveValue('')
-  await expect(page.getByRole('option')).toHaveText(['English', 'French'])
-  await expect(page.getByRole('button', { name: 'Change language' })).toBeVisible()
-  await expect(
-    command.evaluate((el: CommandElement) => [el.page, el.canGoBack, el.path.map((item) => item.value)]),
-  ).resolves.toEqual(['language', true, ['language']])
-
-  await expect(command.evaluate((el: CommandElement) => el.back())).resolves.toBe(true)
-  await expect(input).toHaveValue('lang')
-  await expect(page.locator('[role=option][data-highlighted]')).toHaveText('Change language')
-  await expect(command.evaluate((el: CommandElement) => [el.page, el.canGoBack])).resolves.toEqual([null, false])
-
-  await command.evaluate((el: CommandElement) => el.setPage('theme'))
-  await expect(page.getByRole('option')).toHaveCount(3)
-  await expect(command.evaluate((el: CommandElement) => el.up())).resolves.toBe(true)
-  await expect(command.evaluate((el: CommandElement) => el.up())).resolves.toBe(false)
-})
-
-test('command palette opens with the keyboard shortcut and runs a command', async ({ page }) => {
-  await page.goto(story('dialog'))
-  await expect(page.locator('ark-command').evaluate((el) => !!(el as { api?: unknown }).api)).resolves.toBe(true)
-  const dialog = page.getByRole('dialog', { name: 'Command palette' })
-  await expect(dialog).toBeHidden()
-
-  await page.keyboard.press('ControlOrMeta+k')
-  await expect(dialog).toBeVisible()
-  const input = page.getByRole('combobox')
-  await expect(input).toBeFocused()
-
-  await input.fill('term')
-  await expect(page.locator('[role=option][data-highlighted]')).toHaveText(/Toggle terminal/)
-  await page.keyboard.press('Enter')
-  await expect(page.locator('output')).toHaveText('Ran: terminal')
-  await expect(dialog).toBeHidden()
-
-  await page.keyboard.press('ControlOrMeta+k')
-  await expect(dialog).toBeVisible()
-  await expect(input).toHaveValue('')
-  await expect(page.getByRole('option')).toHaveCount(5)
-  await page.keyboard.press('Escape')
-  await expect(dialog).toBeHidden()
-  await expect(page.getByRole('button', { name: /Search commands/ })).toBeFocused()
-})
-
-test('command accepts a plain list collection of object items', async ({ page }) => {
-  await page.goto('/test-fixtures/index.html')
-  await page.setContent(/* html */ `
-    <ark-command>
-      <ark-command-input><input aria-label="Search" /></ark-command-input>
-      <ark-command-list></ark-command-list>
-    </ark-command>`)
-  await page.evaluate(() => {
-    const { createListCollection } = window as unknown as typeof import('../../../index.js')
-    const command = document.querySelector('ark-command')!
-    command.collection = createListCollection({
-      items: [
-        { id: 'copy', title: 'Copy link', keywords: ['clipboard'] },
-        { id: 'share', title: 'Share' },
-      ],
-      itemToValue: (item) => item.id,
-      itemToString: (item) => item.title,
-    })
-    command.addEventListener('itemselect', (event) =>
-      document.body.setAttribute('data-selected', event.detail.itemValue),
-    )
+const findInput = () =>
+  waitFor(() => {
+    const input = screen.getByRole('combobox')
+    expect(input).toBeInstanceOf(HTMLInputElement)
+    return input as HTMLInputElement
   })
-  const options = page.getByRole('option')
-  await expect(options).toHaveText(['Copy link', 'Share'])
-  await page.getByRole('combobox').fill('clipboard')
-  await expect(options).toHaveText(['Copy link'])
-  await page.keyboard.press('Enter')
-  await expect(page.locator('body')).toHaveAttribute('data-selected', 'copy')
+
+const options = () => screen.queryAllByRole('option')
+const highlighted = () => document.querySelector('[role=option][data-highlighted]')
+const output = () => document.querySelector('output')!
+
+const fill = async (input: HTMLElement, text: string) => {
+  await user.clear(input)
+  if (text) await user.type(input, text)
+}
+
+const typeThenPress = async (text: string, match: string, ...keys: string[]) => {
+  const input = await findInput()
+  const isHighlighted = () => highlighted()?.textContent?.includes(match)
+  input.focus()
+  input.value = text
+  input.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText', data: text }))
+  for (let i = 0; i < 100 && !isHighlighted(); i++) await Promise.resolve()
+  for (const key of keys) input.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true }))
+}
+
+test('command filters items as the user types', async () => {
+  mount(Basic)
+  const input = await findInput()
+
+  await waitFor(() => expect(options()).toHaveLength(5))
+
+  await fill(input, 'open')
+  await waitFor(() => expect(options()).toHaveLength(2))
+  expect(options()[0]).toHaveTextContent(/Open file/)
+
+  await fill(input, 'zzz')
+  await waitFor(() => expect(options()).toHaveLength(0))
+
+  await fill(input, '')
+  await waitFor(() => expect(options()).toHaveLength(5))
+})
+
+test('command selects the first match when Enter follows typing', async () => {
+  mount(Pages)
+
+  await waitFor(() => expect(options()).toHaveLength(3))
+
+  await typeThenPress('dark', 'Dark', 'Enter')
+  await waitFor(() => expect(output()).toHaveTextContent('Selected: dark'))
+})
+
+test('command keeps an arrow key pressed right after typing', async () => {
+  mount(Basic)
+
+  await waitFor(() => expect(options()).toHaveLength(5))
+
+  await typeThenPress('open', 'Open file', 'ArrowDown')
+  await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))
+  await waitFor(() => expect(highlighted()).toHaveTextContent(/Open settings/))
+})
+
+test('command navigates with the keyboard while focus stays in the input', async () => {
+  mount(Basic)
+  const input = await findInput()
+
+  input.focus()
+  await waitFor(() => expect(input).toHaveAttribute('aria-expanded', 'true'))
+
+  await user.keyboard('{ArrowDown}')
+  await waitFor(() => expect(highlighted()).toHaveTextContent(/Open file/))
+  expect(input).toHaveFocus()
+  expect(input).toHaveAttribute('aria-activedescendant', highlighted()!.id)
+
+  await user.keyboard('{End}')
+  await waitFor(() => expect(highlighted()).toHaveTextContent(/Open settings/))
+
+  await user.keyboard('{Home}')
+  await waitFor(() => expect(highlighted()).toHaveTextContent(/New file/))
+
+  await user.keyboard('{ArrowUp}')
+  await waitFor(() => expect(highlighted()).toHaveTextContent(/New file/))
+
+  await fill(input, 'sav')
+  await waitFor(() => expect(highlighted()).toHaveTextContent(/Save/))
+
+  await user.keyboard('{Enter}')
+  await waitFor(() => expect(output()).toHaveTextContent('Selected: save'))
+  expect(input).toHaveValue('sav')
+  expect(input).toHaveFocus()
+})
+
+test('command selects an item with the pointer and keeps input focus', async () => {
+  mount(Basic)
+  const input = await findInput()
+
+  input.focus()
+  await user.click(await screen.findByRole('option', { name: /Copy path/ }))
+
+  await waitFor(() => expect(output()).toHaveTextContent('Selected: copy-path'))
+  expect(input).toHaveFocus()
+})
+
+test('command skips disabled items and hides empty groups', async () => {
+  mount(Groups)
+  const input = await findInput()
+
+  input.focus()
+  await user.keyboard('{Home}')
+  await waitFor(() => expect(highlighted()).toHaveTextContent('Calendar'))
+
+  await user.keyboard('{ArrowDown}{ArrowDown}')
+  await waitFor(() => expect(highlighted()).toHaveTextContent('Profile'))
+  expect(screen.getByRole('option', { name: 'Calculator' })).toHaveAttribute('aria-disabled', 'true')
+
+  await fill(input, 'bill')
+  await waitFor(() => expect(screen.queryByRole('group', { name: 'Suggestions' })).not.toBeInTheDocument())
+  expect(screen.getByRole('group', { name: 'Settings' })).toBeVisible()
+  expect(options()).toHaveLength(1)
+})
+
+test('command matches item keywords', async () => {
+  mount(Keywords)
+
+  await fill(await findInput(), 'logout')
+
+  await waitFor(() => expect(options()).toHaveLength(1))
+  expect(options()[0]).toHaveTextContent('Sign out')
+})
+
+test('command shows the empty state only when nothing matches', async () => {
+  mount(EmptyState)
+  const empty = document.querySelector('ark-command-empty')!
+  const input = await findInput()
+
+  await waitFor(() => expect(input).toHaveValue('xyz'))
+  await waitFor(() => expect(empty).toBeVisible())
+  expect(empty).toHaveTextContent('No results for “xyz”')
+
+  await fill(input, 'an')
+  await waitFor(() => expect(empty).not.toBeVisible())
+  expect(options()).toHaveLength(1)
+
+  await fill(input, 'anx')
+  await waitFor(() => expect(empty).toBeVisible())
+})
+
+test('command renders grouped items from JSON with keywords', async () => {
+  mount(FromJson)
+
+  await waitFor(() => expect(screen.queryAllByRole('group')).toHaveLength(2))
+
+  await fill(await findInput(), 'smaller')
+  await waitFor(() => expect(options().map((option) => option.textContent?.trim())).toEqual(['Zoom out']))
+  expect(screen.queryByRole('group', { name: 'File' })).not.toBeInTheDocument()
+})
+
+test('command loads items asynchronously', async () => {
+  mount(Async)
+  const command = document.querySelector('ark-command')!
+  const loading = screen.getByText('Loading...', { selector: 'div' })
+
+  await waitFor(() => expect(options()).toHaveLength(6))
+  expect(command).not.toHaveAttribute('loading')
+
+  await fill(await findInput(), 'grace')
+  await waitFor(() => expect(command).toHaveAttribute('loading'))
+  expect(loading).toBeVisible()
+
+  await waitFor(() => expect(command).not.toHaveAttribute('loading'))
+  expect(loading).not.toBeVisible()
+  await waitFor(() => expect(options()).toHaveLength(1))
+  expect(options()[0]).toHaveTextContent('Grace Hopper')
+})
+
+test('command opens item pages and goes back with Backspace', async () => {
+  mount(Pages)
+  const input = await findInput()
+
+  await waitFor(() => expect(options()).toHaveLength(3))
+
+  await fill(input, 'theme')
+  await waitFor(() => expect(highlighted()).toHaveTextContent('Change theme'))
+
+  await user.keyboard('{Enter}')
+  await waitFor(() => expect(options()[0]).toHaveTextContent('Light'))
+  expect(options()).toHaveLength(3)
+  expect(input).toHaveValue('')
+  expect(output()).toHaveTextContent('Selected: none')
+
+  await user.keyboard('{Enter}')
+  await waitFor(() => expect(output()).toHaveTextContent('Selected: light'))
+
+  await user.keyboard('{Backspace}')
+  await waitFor(() => expect(highlighted()).toHaveTextContent('Change theme'))
+  expect(options()).toHaveLength(3)
+})
+
+test('command searches nested pages from the top level', async () => {
+  mount(Pages)
+  const input = await findInput()
+
+  await waitFor(() => expect(options()).toHaveLength(3))
+  expect(screen.queryByRole('option', { name: 'Dark' })).not.toBeInTheDocument()
+
+  await fill(input, 'dark')
+  await waitFor(() => expect(options()).toHaveLength(1))
+  const option = screen.getByRole('option', { name: /Dark/ })
+  expect(option).toBeVisible()
+  expect(option).toHaveTextContent('Change theme')
+
+  await user.keyboard('{Enter}')
+  await waitFor(() => expect(output()).toHaveTextContent('Selected: dark'))
+})
+
+test('command goes back to the previous page and restores its query', async () => {
+  mount(Pages)
+  const command = document.querySelector<CommandElement>('ark-command')!
+  const input = await findInput()
+
+  await fill(input, 'lang')
+  await waitFor(() => expect(highlighted()).toHaveTextContent('Change language'))
+
+  await user.keyboard('{Enter}')
+  await waitFor(() => expect(input).toHaveValue(''))
+  await waitFor(() => expect(options().map((option) => option.textContent?.trim())).toEqual(['English', 'French']))
+  expect(screen.getByRole('button', { name: 'Change language' })).toBeVisible()
+  expect([command.page, command.canGoBack, command.path.map((item) => item.value)]).toEqual([
+    'language',
+    true,
+    ['language'],
+  ])
+
+  expect(command.back()).toBe(true)
+  await waitFor(() => expect(input).toHaveValue('lang'))
+  await waitFor(() => expect(highlighted()).toHaveTextContent('Change language'))
+  expect([command.page, command.canGoBack]).toEqual([null, false])
+
+  command.setPage('theme')
+  await waitFor(() => expect(options()).toHaveLength(3))
+  expect(command.up()).toBe(true)
+  expect(command.up()).toBe(false)
+})
+
+test('command palette opens with the keyboard shortcut and runs a command', async () => {
+  mount(Dialog)
+  const command = document.querySelector<CommandElement>('ark-command')!
+  const dialogContent = document.querySelector('ark-dialog-content')!
+
+  await waitFor(() => expect(command.api).toBeTruthy())
+  expect(dialogContent).not.toBeVisible()
+
+  await user.keyboard('{Control>}k{/Control}')
+  await waitFor(() => expect(screen.getByRole('dialog', { name: 'Command palette' })).toBeVisible())
+  const input = await findInput()
+  await waitFor(() => expect(input).toHaveFocus())
+
+  await fill(input, 'term')
+  await waitFor(() => expect(highlighted()).toHaveTextContent(/Toggle terminal/))
+
+  await user.keyboard('{Enter}')
+  await waitFor(() => expect(output()).toHaveTextContent('Ran: terminal'))
+  await waitFor(() => expect(dialogContent).not.toBeVisible())
+
+  await user.keyboard('{Control>}k{/Control}')
+  await waitFor(() => expect(dialogContent).toBeVisible())
+  expect(input).toHaveValue('')
+  await waitFor(() => expect(options()).toHaveLength(5))
+
+  await user.keyboard('{Escape}')
+  await waitFor(() => expect(dialogContent).not.toBeVisible())
+  await waitFor(() => expect(screen.getByRole('button', { name: /Search commands/ })).toHaveFocus())
+})
+
+test('command accepts a plain list collection of object items', async () => {
+  mount((root) => {
+    root.innerHTML = /* html */ `
+      <ark-command>
+        <ark-command-input><input aria-label="Search" /></ark-command-input>
+        <ark-command-list></ark-command-list>
+      </ark-command>`
+  })
+  const command = document.querySelector('ark-command')!
+  command.collection = createListCollection({
+    items: [
+      { id: 'copy', title: 'Copy link', keywords: ['clipboard'] },
+      { id: 'share', title: 'Share' },
+    ],
+    itemToValue: (item) => item.id,
+    itemToString: (item) => item.title,
+  })
+  command.addEventListener('itemselect', (event) => document.body.setAttribute('data-selected', event.detail.itemValue))
+
+  await waitFor(() => expect(options().map((option) => option.textContent?.trim())).toEqual(['Copy link', 'Share']))
+
+  await fill(await findInput(), 'clipboard')
+  await waitFor(() => expect(options().map((option) => option.textContent?.trim())).toEqual(['Copy link']))
+
+  await user.keyboard('{Enter}')
+  await waitFor(() => expect(document.body).toHaveAttribute('data-selected', 'copy'))
 })

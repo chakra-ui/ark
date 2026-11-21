@@ -1,4 +1,4 @@
-import '../../src/components/splitter/index.js'
+import '@ark-ui/web/splitter'
 
 import styles from 'styles/splitter.module.css'
 

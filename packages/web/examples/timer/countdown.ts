@@ -1,6 +1,6 @@
 import { createElement, Pause, Play, RotateCcw } from 'lucide'
 
-import '../../src/components/timer/index.js'
+import '@ark-ui/web/timer'
 
 import button from 'styles/button.module.css'
 import styles from 'styles/timer.module.css'

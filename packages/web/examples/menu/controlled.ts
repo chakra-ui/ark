@@ -1,6 +1,6 @@
 import { createElement, ChevronDown } from 'lucide'
 
-import '../../src/components/menu/index.js'
+import '@ark-ui/web/menu'
 
 import button from 'styles/button.module.css'
 

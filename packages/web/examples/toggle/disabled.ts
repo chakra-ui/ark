@@ -1,6 +1,6 @@
 import { createElement, Bold } from 'lucide'
 
-import '../../src/components/toggle/index.js'
+import '@ark-ui/web/toggle'
 
 import styles from 'styles/toggle.module.css'
 

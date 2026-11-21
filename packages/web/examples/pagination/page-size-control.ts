@@ -2,7 +2,7 @@ import { createElement, ChevronLeft, ChevronRight } from 'lucide'
 
 import styles from 'styles/pagination.module.css'
 
-import '../../src/components/pagination/index.js'
+import '@ark-ui/web/pagination'
 
 const pageSizes = [5, 10, 20, 50]
 

@@ -1,4 +1,4 @@
-import '../../src/components/switch/index.js'
+import '@ark-ui/web/switch'
 
 import styles from 'styles/switch.module.css'
 

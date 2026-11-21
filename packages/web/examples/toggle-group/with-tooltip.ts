@@ -1,8 +1,8 @@
 import { createElement, Bold, Italic, Underline } from 'lucide'
 
-import '../../src/components/toggle-group/index.js'
+import '@ark-ui/web/toggle-group'
 
-import '../../src/components/tooltip/index.js'
+import '@ark-ui/web/tooltip'
 
 import styles from 'styles/toggle-group.module.css'
 

@@ -1,5 +1,5 @@
-import '../../src/components/field/index.js'
-import '../../src/components/fieldset/index.js'
+import '@ark-ui/web/field'
+import '@ark-ui/web/fieldset'
 
 import field from 'styles/field.module.css'
 import styles from 'styles/fieldset.module.css'

@@ -1,4 +1,4 @@
-import '../../src/components/avatar/index.js'
+import '@ark-ui/web/avatar'
 
 import styles from 'styles/avatar.module.css'
 

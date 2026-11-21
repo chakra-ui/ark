@@ -184,21 +184,14 @@ The hidden select automatically syncs with the Select component's value, ensurin
 ### Virtualization
 
 When virtualizing a large collection, avoid `Select.HiddenSelect`: it renders an `<option>` for every item in the
-collection. Create a lightweight hidden input instead:
+collection. Use `Select.HiddenInput` instead. It renders one hidden `<input>` per selected value, using the root's
+`name`, `form` and `disabled`:
 
 ```tsx
-import { Select, useSelectContext } from '@ark-ui/react/select'
-
-const SelectHiddenInput = ({ name }: { name: string }) => {
-  const select = useSelectContext()
-  return (
-    <>
-      {select.value.map((value) => (
-        <input key={value} type="hidden" name={name} value={value} />
-      ))}
-    </>
-  )
-}
+<Select.Root collection={collection} name="item">
+  {/* Other Select components */}
+  <Select.HiddenInput />
+</Select.Root>
 ```
 
 ### Empty State

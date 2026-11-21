@@ -1,6 +1,6 @@
 import { createElement, Check, ChevronsUpDown } from 'lucide'
 
-import '../../src/components/select/index.js'
+import '@ark-ui/web/select'
 
 import button from 'styles/button.module.css'
 

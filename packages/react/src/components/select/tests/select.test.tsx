@@ -3,6 +3,7 @@ import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { SelectWithField } from './field.tsx'
 import { ComponentUnderTest } from './basic.tsx'
+import { SelectWithHiddenInput } from './hidden-input.tsx'
 
 describe('Select', () => {
   it('should have no a11y violations', async () => {
@@ -155,5 +156,23 @@ describe('Select / Field', () => {
   it('should describe the trigger with the helper and error text', async () => {
     render(<SelectWithField invalid />)
     await waitFor(() => expect(screen.getByRole('combobox')).toHaveAccessibleDescription('Additional Info Error Info'))
+  })
+
+  it('should submit the value through hidden inputs', async () => {
+    render(<SelectWithHiddenInput />)
+    const form = () => new FormData(screen.getByTestId('form') as HTMLFormElement)
+
+    expect(form().getAll('framework')).toEqual([''])
+
+    await user.click(screen.getByRole('combobox', { name: 'Framework' }))
+    await user.click(screen.getByRole('option', { name: 'Solid' }))
+    await waitFor(() => expect(form().getAll('framework')).toEqual(['Solid']))
+  })
+
+  it('should submit one hidden input per value when multiple', async () => {
+    render(<SelectWithHiddenInput multiple defaultValue={['React', 'Vue']} />)
+    const form = new FormData(screen.getByTestId('form') as HTMLFormElement)
+
+    expect(form.getAll('framework')).toEqual(['React', 'Vue'])
   })
 })

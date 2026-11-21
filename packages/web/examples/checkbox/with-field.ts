@@ -1,7 +1,7 @@
 import { createElement, Check, Minus } from 'lucide'
 
-import '../../src/components/checkbox/index.js'
-import '../../src/components/field/index.js'
+import '@ark-ui/web/checkbox'
+import '@ark-ui/web/field'
 
 import field from 'styles/field.module.css'
 

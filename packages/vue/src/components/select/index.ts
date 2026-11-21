@@ -31,6 +31,11 @@ export {
 export { default as SelectContext, type SelectContextProps } from './select-context.vue'
 export { default as SelectControl, type SelectControlBaseProps, type SelectControlProps } from './select-control.vue'
 export {
+  default as SelectHiddenInput,
+  type SelectHiddenInputBaseProps,
+  type SelectHiddenInputProps,
+} from './select-hidden-input.vue'
+export {
   default as SelectHiddenSelect,
   type SelectHiddenSelectBaseProps,
   type SelectHiddenSelectProps,

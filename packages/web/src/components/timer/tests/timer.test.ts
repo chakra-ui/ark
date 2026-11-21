@@ -1,71 +1,83 @@
-import { expect, type Page, test } from '@playwright/test'
-import type {} from '../index.js'
+import { screen, waitFor } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
-const story = (name: string) => `/iframe.html?id=components-timer--${name}&viewMode=story`
+import { mount as Basic } from '../../../../examples/timer/basic.js'
+import { mount as Countdown } from '../../../../examples/timer/countdown.js'
+import { mount as Events } from '../../../../examples/timer/events.js'
+import { mount } from '../../../test-utils.js'
 
-const item = (page: Page, type: string) => page.locator(`ark-timer-item[type="${type}"]`)
+const item = (type: string) => document.querySelector(`ark-timer-item[type="${type}"]`)!
 
-test.beforeEach(async ({ page }) => {
-  await page.clock.install()
+const actionButton = (action: string) =>
+  document.querySelector<HTMLButtonElement>(`ark-timer-action-trigger[action="${action}"] button`)!
+
+let user: ReturnType<typeof userEvent.setup>
+
+beforeEach(() => {
+  vi.useFakeTimers({ shouldAdvanceTime: true })
+  user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime })
 })
 
-test('start advances the seconds and emits tick', async ({ page }) => {
-  await page.goto(story('events'))
-  await expect(item(page, 'seconds')).toHaveText('00')
-
-  await page.getByRole('button', { name: 'Start' }).click()
-  await page.clock.runFor(3500)
-
-  await expect(item(page, 'seconds')).toHaveText('03')
-  await expect(page.locator('output')).toHaveText('Ticks: 3')
+afterEach(() => {
+  vi.useRealTimers()
 })
 
-test('pause stops the timer and offers resume', async ({ page }) => {
-  await page.goto(story('basic'))
-  await expect(item(page, 'minutes')).toHaveText('40')
+test('start advances the seconds and emits tick', async () => {
+  mount(Events)
+  await waitFor(() => expect(item('seconds')).toHaveTextContent('00'))
 
-  await page.getByRole('button', { name: 'Play' }).click()
-  await page.clock.runFor(2500)
-  await page.getByRole('button', { name: 'Pause' }).click()
-  await expect(item(page, 'seconds')).toHaveText('02')
+  await user.click(screen.getByRole('button', { name: 'Start' }))
+  await vi.advanceTimersByTimeAsync(3500)
 
-  await page.clock.runFor(5000)
-  await expect(item(page, 'seconds')).toHaveText('02')
-  await expect(page.getByRole('button', { name: 'Resume' })).toBeVisible()
-  await expect(page.getByRole('button', { name: 'Pause' })).toBeHidden()
+  await waitFor(() => expect(item('seconds')).toHaveTextContent('03'))
+  expect(document.querySelector('output')).toHaveTextContent('Ticks: 3')
 })
 
-test('countdown reaches zero and emits complete', async ({ page }) => {
-  await page.goto(story('countdown'))
-  await page.locator('ark-timer').waitFor({ state: 'attached' })
-  await page.evaluate(() => {
-    const el = document.querySelector('ark-timer')!
-    el.addEventListener('complete', () => el.setAttribute('data-completed', ''))
-    el.setAttribute('start-ms', '3000')
-  })
-  await expect(item(page, 'seconds')).toHaveText('03')
+test('pause stops the timer and offers resume', async () => {
+  mount(Basic)
+  await waitFor(() => expect(item('minutes')).toHaveTextContent('40'))
 
-  await page.getByRole('button', { name: 'Start' }).click()
-  await page.clock.runFor(4000)
+  await user.click(screen.getByRole('button', { name: 'Play' }))
+  await vi.advanceTimersByTimeAsync(2500)
+  await user.click(screen.getByRole('button', { name: 'Pause' }))
+  await waitFor(() => expect(item('seconds')).toHaveTextContent('02'))
 
-  await expect(page.locator('ark-timer')).toHaveAttribute('data-completed', '')
-  await expect(item(page, 'minutes')).toHaveText('00')
-  await expect(item(page, 'seconds')).toHaveText('00')
-  await expect(page.getByRole('button', { name: 'Start' })).toBeVisible()
+  await vi.advanceTimersByTimeAsync(5000)
+  expect(item('seconds')).toHaveTextContent('02')
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Resume' })).toBeVisible())
+  expect(actionButton('pause')).not.toBeVisible()
 })
 
-test('action triggers are hidden when their action is unavailable', async ({ page }) => {
-  await page.goto(story('basic'))
-  const play = page.locator('ark-timer-action-trigger[action="start"] button')
-  const resume = page.locator('ark-timer-action-trigger[action="resume"] button')
-  const pause = page.locator('ark-timer-action-trigger[action="pause"] button')
+test('countdown reaches zero and emits complete', async () => {
+  mount(Countdown)
+  const timer = document.querySelector('ark-timer')!
+  const complete = vi.fn()
+  timer.addEventListener('complete', complete)
+  await waitFor(() => expect(item('minutes')).toHaveTextContent('05'))
+  timer.setAttribute('start-ms', '3000')
+  await waitFor(() => expect(item('seconds')).toHaveTextContent('03'))
 
-  await expect(play).toBeVisible()
-  await expect(pause).toBeHidden()
-  await expect(resume).toBeHidden()
+  await user.click(screen.getByRole('button', { name: 'Start' }))
+  await vi.advanceTimersByTimeAsync(4000)
 
-  await play.click()
-  await expect(play).toBeHidden()
-  await expect(pause).toBeVisible()
-  await expect(resume).toBeHidden()
+  await waitFor(() => expect(complete).toHaveBeenCalled())
+  expect(item('minutes')).toHaveTextContent('00')
+  expect(item('seconds')).toHaveTextContent('00')
+  await waitFor(() => expect(actionButton('start')).toBeVisible())
+})
+
+test('action triggers are hidden when their action is unavailable', async () => {
+  mount(Basic)
+  const play = actionButton('start')
+  const resume = actionButton('resume')
+  const pause = actionButton('pause')
+
+  await waitFor(() => expect(play).toBeVisible())
+  expect(pause).not.toBeVisible()
+  expect(resume).not.toBeVisible()
+
+  await user.click(play)
+  await waitFor(() => expect(play).not.toBeVisible())
+  expect(pause).toBeVisible()
+  expect(resume).not.toBeVisible()
 })

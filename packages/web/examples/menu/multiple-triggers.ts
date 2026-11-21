@@ -1,6 +1,6 @@
 import { createElement, EllipsisVertical } from 'lucide'
 
-import '../../src/components/menu/index.js'
+import '@ark-ui/web/menu'
 
 import styles from 'styles/menu.module.css'
 

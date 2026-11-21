@@ -1,4 +1,4 @@
-import '../../src/components/field/index.js'
+import '@ark-ui/web/field'
 
 import button from 'styles/button.module.css'
 import styles from 'styles/field.module.css'

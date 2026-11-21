@@ -17,12 +17,11 @@ export const checkedOf = (el: Element): checkbox.CheckedState | undefined => {
 class CheckboxGroup extends HTMLElement {
   static observedAttributes = ['value', 'name', 'disabled', 'invalid', 'readonly', 'max-selected']
 
-  private uncontrolled: string[] = []
+  private uncontrolled: string[] | undefined
 
   connectedCallback() {
     this.setAttribute('role', 'group')
     for (const [name, value] of Object.entries(groupPart.attrs(this.id))) this.setAttribute(name, value)
-    this.uncontrolled = list(this, 'default-value') ?? []
     this.addEventListener('checkedchange', this.onCheckedChange, { capture: true })
   }
 
@@ -35,13 +34,18 @@ class CheckboxGroup extends HTMLElement {
   }
 
   get value() {
-    return this.hasAttribute('value') ? (list(this, 'value') ?? []) : this.uncontrolled
+    return this.hasAttribute('value') ? (list(this, 'value') ?? []) : this.#uncontrolledValue()
   }
 
   /** Ignored while the `value` attribute controls the group. */
   set value(next: string[]) {
     this.uncontrolled = [...next]
     this.attributeChangedCallback()
+  }
+
+  #uncontrolledValue() {
+    this.uncontrolled ??= list(this, 'default-value') ?? []
+    return this.uncontrolled
   }
 
   isChecked(value: string) {

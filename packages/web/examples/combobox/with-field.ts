@@ -1,7 +1,7 @@
 import { createElement, X, ChevronsUpDown, Check } from 'lucide'
 
-import '../../src/components/combobox/index.js'
-import '../../src/components/field/index.js'
+import '@ark-ui/web/combobox'
+import '@ark-ui/web/field'
 
 import field from 'styles/field.module.css'
 

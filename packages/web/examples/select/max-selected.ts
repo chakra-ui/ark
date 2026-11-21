@@ -1,6 +1,6 @@
 import { createElement, ChevronsUpDown, X, Check } from 'lucide'
 
-import { createListCollection } from '../../src/components/select/index.js'
+import { createListCollection } from '@ark-ui/web/select'
 
 import styles from 'styles/select.module.css'
 

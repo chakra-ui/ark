@@ -1,7 +1,7 @@
 import { createElement, Check, ChevronsUpDown } from 'lucide'
 
-import '../../src/components/select/index.js'
-import '../../src/components/field/index.js'
+import '@ark-ui/web/select'
+import '@ark-ui/web/field'
 
 import field from 'styles/field.module.css'
 

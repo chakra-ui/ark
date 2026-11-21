@@ -2,7 +2,7 @@ import { createElement, ChevronLeft, ChevronRight } from 'lucide'
 
 import styles from 'styles/date-picker.module.css'
 
-import '../../src/components/date-picker/index.js'
+import '@ark-ui/web/date-picker'
 
 const attr = (name: string, value?: string | number | boolean) =>
   value === undefined || value === false ? '' : value === true ? name : `${name}="${value}"`

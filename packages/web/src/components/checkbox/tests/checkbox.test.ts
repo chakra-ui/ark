@@ -1,39 +1,54 @@
-import { expect, test } from '@playwright/test'
+import { screen, waitFor } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
-test('checkbox group enforces its maximum and submits native form values', async ({ page }) => {
-  await page.goto('/iframe.html?id=components-checkbox--group-with-max-selected&viewMode=story')
-  const inputs = page.locator('input[type=checkbox]')
-  await expect(inputs).toHaveCount(4)
-  await expect(inputs.nth(0)).toBeChecked()
-  await page.getByText('Solid', { exact: true }).click()
-  await expect(inputs.nth(1)).toBeChecked()
-  await expect(inputs.nth(2)).toBeDisabled()
-  await page.getByText('React', { exact: true }).click()
-  await expect(inputs.nth(2)).toBeEnabled()
+import { mount as Controlled } from '../../../../examples/checkbox/controlled.js'
+import { mount as GroupWithForm } from '../../../../examples/checkbox/group-with-form.js'
+import { mount as GroupWithMaxSelected } from '../../../../examples/checkbox/group-with-max-selected.js'
+import { mount } from '../../../test-utils.js'
 
-  await page.goto('/iframe.html?id=components-checkbox--group-with-form&viewMode=story')
-  await page.getByText('Solid', { exact: true }).click()
-  await page.getByRole('button', { name: 'Submit' }).click()
-  await expect(page.locator('output')).toHaveText('["react","solid"]')
+const user = userEvent.setup()
+
+test('checkbox group enforces its maximum and submits native form values', async () => {
+  const root = mount(GroupWithMaxSelected)
+  const inputs = () => document.querySelectorAll<HTMLInputElement>('input[type=checkbox]')
+
+  await waitFor(() => expect(inputs()).toHaveLength(4))
+  await waitFor(() => expect(inputs()[0]).toBeChecked())
+
+  await user.click(screen.getByText('Solid', { exact: true }))
+  await waitFor(() => expect(inputs()[1]).toBeChecked())
+  await waitFor(() => expect(inputs()[2]).toBeDisabled())
+
+  await user.click(screen.getByText('React', { exact: true }))
+  await waitFor(() => expect(inputs()[2]).toBeEnabled())
+
+  root.remove()
+  mount(GroupWithForm)
+
+  await user.click(await screen.findByText('Solid', { exact: true }))
+  await user.click(screen.getByRole('button', { name: 'Submit' }))
+  await waitFor(() => expect(document.querySelector('output')).toHaveTextContent('["react","solid"]'))
 })
 
-test('controlled checkbox can disconnect and reconnect without duplicate events', async ({ page }) => {
-  await page.goto('/iframe.html?id=components-checkbox--controlled&viewMode=story')
-  const input = page.locator('input[type=checkbox]')
-  await expect(input).toBeChecked()
-  await page.evaluate(async () => {
-    const el = document.querySelector('ark-checkbox')!
-    const parent = el.parentElement!
-    let changes = 0
-    el.addEventListener('checkedchange', () => el.setAttribute('data-changes', String(++changes)))
-    for (let i = 0; i < 3; i++) {
-      el.remove()
-      parent.append(el)
-      await new Promise(requestAnimationFrame)
-    }
-  })
-  await page.getByText('Checkbox', { exact: true }).click()
-  await expect(input).not.toBeChecked()
-  await expect(page.locator('ark-checkbox')).toHaveAttribute('data-changes', '1')
-  await expect(page.locator('output')).toHaveText('checked: false')
+test('controlled checkbox can disconnect and reconnect without duplicate events', async () => {
+  mount(Controlled)
+  const input = document.querySelector<HTMLInputElement>('input[type=checkbox]')!
+
+  await waitFor(() => expect(input).toBeChecked())
+
+  const el = document.querySelector('ark-checkbox')!
+  const parent = el.parentElement!
+  let changes = 0
+  el.addEventListener('checkedchange', () => el.setAttribute('data-changes', String(++changes)))
+
+  for (let i = 0; i < 3; i++) {
+    el.remove()
+    parent.append(el)
+    await new Promise(requestAnimationFrame)
+  }
+
+  await user.click(screen.getByText('Checkbox', { exact: true }))
+  await waitFor(() => expect(input).not.toBeChecked())
+  expect(el).toHaveAttribute('data-changes', '1')
+  expect(document.querySelector('output')).toHaveTextContent('checked: false')
 })

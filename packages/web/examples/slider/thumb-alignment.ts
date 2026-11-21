@@ -1,4 +1,4 @@
-import '../../src/components/slider/index.js'
+import '@ark-ui/web/slider'
 
 import styles from 'styles/slider.module.css'
 

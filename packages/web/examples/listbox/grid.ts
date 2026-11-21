@@ -1,4 +1,4 @@
-import '../../src/components/listbox/index.js'
+import '@ark-ui/web/listbox'
 
 import styles from 'styles/listbox.module.css'
 

@@ -29,6 +29,11 @@ export {
   type SelectControlBaseProps as ControlBaseProps,
 } from './select-control.vue'
 export {
+  default as HiddenInput,
+  type SelectHiddenInputProps as HiddenInputProps,
+  type SelectHiddenInputBaseProps as HiddenInputBaseProps,
+} from './select-hidden-input.vue'
+export {
   default as HiddenSelect,
   type SelectHiddenSelectProps as HiddenSelectProps,
   type SelectHiddenSelectBaseProps as HiddenSelectBaseProps,
