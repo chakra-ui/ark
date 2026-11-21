@@ -44,7 +44,7 @@ definePresenceRoot<colorPicker.Api>({
     },
   },
   props: (el) =>
-    withField(el, 'input', {
+    withField(el, 'hiddenInput', {
       value: color(el, 'value'),
       defaultValue: color(el, 'default-value'),
       format: str<colorPicker.ColorFormat>(el, 'format'),

@@ -3,6 +3,10 @@ import { describe, expect, it } from 'vitest'
 import ComponentUnderTest from './color-picker-field.test.svelte'
 
 describe('ColorPicker / Field', () => {
+  it('should give the hidden input the field control id', async () => {
+    const { container } = render(ComponentUnderTest)
+    await waitFor(() => expect(container.querySelector('input[tabindex="-1"]')?.id).toMatch(/:control$/))
+  })
   it('should describe the trigger and channel input with the helper and error text', async () => {
     render(ComponentUnderTest)
     await waitFor(async () =>

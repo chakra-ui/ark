@@ -21,7 +21,7 @@ export const useColorPicker = (props?: UseColorPickerProps): UseColorPickerRetur
     id,
     ids: {
       label: field?.ids.label,
-      input: field?.ids.control,
+      hiddenInput: field?.ids.control,
     },
     dir,
     disabled: field?.disabled,
