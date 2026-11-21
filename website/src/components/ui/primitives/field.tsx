@@ -31,7 +31,7 @@ export const HelperText = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'s
 
 export const Input = withContext<HTMLInputElement, Assign<HTMLStyledProps<'input'>, Field.InputBaseProps>>(
   Field.Input,
-  'input',
+  'control',
 )
 
 export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, Field.LabelBaseProps>>(
@@ -41,12 +41,12 @@ export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label
 
 export const Select = withContext<HTMLSelectElement, Assign<HTMLStyledProps<'select'>, Field.SelectBaseProps>>(
   Field.Select,
-  'select',
+  'control',
 )
 
 export const Textarea = withContext<HTMLTextAreaElement, Assign<HTMLStyledProps<'textarea'>, Field.TextareaBaseProps>>(
   Field.Textarea,
-  'textarea',
+  'control',
 )
 
 export const Context = Field.Context
