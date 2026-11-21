@@ -17,6 +17,7 @@
   "dependencies": {
     "@zag-js/accordion": "2.0.0-next.4",
     "@zag-js/async-list": "2.0.0-next.4",
+    "@zag-js/auto-resize": "2.0.0-next.4",
     "@zag-js/avatar": "2.0.0-next.4",
     "@zag-js/carousel": "2.0.0-next.4",
     "@zag-js/checkbox": "2.0.0-next.4",
@@ -177,6 +178,14 @@
     "./editable": {
       "types": "./dist/components/editable/index.d.ts",
       "import": "./dist/components/editable/index.js"
+    },
+    "./field": {
+      "types": "./dist/components/field/index.d.ts",
+      "import": "./dist/components/field/index.js"
+    },
+    "./fieldset": {
+      "types": "./dist/components/fieldset/index.d.ts",
+      "import": "./dist/components/fieldset/index.js"
     },
     "./file-upload": {
       "types": "./dist/components/file-upload/index.d.ts",

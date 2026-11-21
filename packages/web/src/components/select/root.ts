@@ -3,6 +3,7 @@ import * as select from '@zag-js/select'
 import { positioning, positioningAttributes, str } from '../../utils/attrs.js'
 import { definePresenceRoot } from '../../utils/presence.js'
 import { collection, hiddenSelects, listOf, root, syncHiddenSelect } from './shared.js'
+import { withField } from '../../utils/field.js'
 
 definePresenceRoot<select.Api>({
   tag: root,
@@ -38,18 +39,19 @@ definePresenceRoot<select.Api>({
       set: (api, value) => api.setValue(value),
     },
   },
-  props: (el) => ({
-    collection: collection.get(el),
-    value: listOf(el, 'value'),
-    defaultValue: listOf(el, 'default-value'),
-    multiple: el.hasAttribute('multiple'),
-    disabled: el.hasAttribute('disabled'),
-    invalid: el.hasAttribute('invalid'),
-    required: el.hasAttribute('required'),
-    name: str(el, 'name'),
-    alignItemWithTrigger: el.hasAttribute('align-item-with-trigger'),
-    positioning: { ...positioning(el), ...(el.hasAttribute('fit-viewport') && { fitViewport: true }) },
-  }),
+  props: (el) =>
+    withField(el, 'hiddenSelect', {
+      collection: collection.get(el),
+      value: listOf(el, 'value'),
+      defaultValue: listOf(el, 'default-value'),
+      multiple: el.hasAttribute('multiple'),
+      disabled: el.hasAttribute('disabled'),
+      invalid: el.hasAttribute('invalid'),
+      required: el.hasAttribute('required'),
+      name: str(el, 'name'),
+      alignItemWithTrigger: el.hasAttribute('align-item-with-trigger'),
+      positioning: { ...positioning(el), ...(el.hasAttribute('fit-viewport') && { fitViewport: true }) },
+    }),
 
   events: {
     onSelect: 'itemselect',

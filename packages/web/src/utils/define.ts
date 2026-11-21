@@ -176,7 +176,11 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
       const getRootNode = () => this.getRootNode()
       this.machine = new VanillaMachine(config.machine, () => {
         if (this.snapshot) return this.snapshot
-        const props: Dict = { id: this.machineId, getRootNode, ...config.props(this), ...machineProperties(this) }
+        const own = config.props(this)
+        const assigned = machineProperties(this)
+        const props: Dict = { id: this.machineId, getRootNode, ...own, ...assigned }
+        // Assigned ids add to the ids a root derives, such as the ones an enclosing field supplies
+        if (own.ids && assigned.ids) props.ids = { ...own.ids, ...assigned.ids }
         for (const [prop, type] of Object.entries(config.events ?? {})) {
           const callback = props[prop]
           props[prop] = (detail: unknown) => {

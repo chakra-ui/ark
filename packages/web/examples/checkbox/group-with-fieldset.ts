@@ -1,6 +1,7 @@
 import { createElement, Check, Minus } from 'lucide'
 
 import '../../src/components/checkbox/index.js'
+import '../../src/components/fieldset/index.js'
 
 import fieldset from 'styles/fieldset.module.css'
 
@@ -31,9 +32,11 @@ const group = (attrs: string, items = frameworks, indeterminate = false) => /* h
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
-  <fieldset class="${fieldset.Root}">
-    <legend class="${fieldset.Legend}">Select frameworks</legend>
-    <span class="${fieldset.HelperText}">Choose your preferred frameworks</span>
-    ${group(`default-value="react" name="framework"`)}
-  </fieldset>`
+  <ark-fieldset>
+    <fieldset class="${fieldset.Root}">
+      <ark-fieldset-legend class="${fieldset.Legend}">Select frameworks</ark-fieldset-legend>
+      <ark-fieldset-helper-text class="${fieldset.HelperText}">Choose your preferred frameworks</ark-fieldset-helper-text>
+      ${group(`default-value="react" name="framework"`)}
+    </fieldset>
+  </ark-fieldset>`
 }

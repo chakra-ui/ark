@@ -1,4 +1,5 @@
 import '../../src/components/switch/index.js'
+import '../../src/components/field/index.js'
 
 import field from 'styles/field.module.css'
 
@@ -15,9 +16,9 @@ const switchMarkup = (attrs: string) => /* html */ `
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
-  <div class="${field.Root}">
+  <ark-field class="${field.Root}">
     ${switchMarkup('')}
-    <span class="${field.HelperText}">Additional Info</span>
-    <span class="${field.ErrorText}" hidden>Error Info</span>
-  </div>`
+    <ark-field-helper-text class="${field.HelperText}">Additional Info</ark-field-helper-text>
+    <ark-field-error-text class="${field.ErrorText}">Error Info</ark-field-error-text>
+  </ark-field>`
 }

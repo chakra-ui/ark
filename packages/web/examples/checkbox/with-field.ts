@@ -1,6 +1,7 @@
 import { createElement, Check, Minus } from 'lucide'
 
 import '../../src/components/checkbox/index.js'
+import '../../src/components/field/index.js'
 
 import field from 'styles/field.module.css'
 
@@ -20,9 +21,9 @@ const checkbox = (attrs: string, label = 'Checkbox', indeterminate = false) => /
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
-  <div class="${field.Root}" data-inline>
+  <ark-field class="${field.Root}" data-inline>
     ${checkbox('', 'Label', true)}
-    <span class="${field.HelperText}">Additional Info</span>
-    <span class="${field.ErrorText}" hidden>Error Info</span>
-  </div>`
+    <ark-field-helper-text class="${field.HelperText}">Additional Info</ark-field-helper-text>
+    <ark-field-error-text class="${field.ErrorText}">Error Info</ark-field-error-text>
+  </ark-field>`
 }

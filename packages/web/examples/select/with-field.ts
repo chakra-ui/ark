@@ -1,6 +1,7 @@
 import { createElement, ChevronsUpDown, Check } from 'lucide'
 
 import '../../src/components/select/index.js'
+import '../../src/components/field/index.js'
 
 import field from 'styles/field.module.css'
 
@@ -44,8 +45,8 @@ const names = ['React', 'Solid', 'Vue', 'Svelte']
 
 export function mount(container: HTMLElement) {
   container.innerHTML = /* html */ `
-  <div class="${field.Root}">
+  <ark-field class="${field.Root}">
     ${root('', inlineControl('Select a Framework', '') + popup(plainItems(names)), 'Label')}
-    <span class="${field.HelperText}">Additional Info</span>
-  </div>`
+    <ark-field-helper-text class="${field.HelperText}">Additional Info</ark-field-helper-text>
+  </ark-field>`
 }

@@ -4,10 +4,10 @@ Unstyled, accessible web components powered by Zag.js state machines. Components
 ordinary CSS. No framework runtime is required.
 
 This package is a prerelease. It includes accordion, avatar, carousel, checkbox and checkbox group, clipboard,
-collapsible, combobox, command, date picker, dialog, drawer, editable, file upload, hover card, listbox, menu, meter,
-number input, pagination, password input, pin input, popover, progress, radio group, rating group, scroll area, segment
-group, select, slider, splitter, steps, switch, tabs, tags input, timer, toast, toggle, toggle group, tooltip, and tree
-view.
+collapsible, combobox, command, date picker, dialog, drawer, editable, field, fieldset, file upload, hover card,
+listbox, menu, meter, number input, pagination, password input, pin input, popover, progress, radio group, rating group,
+scroll area, segment group, select, slider, splitter, steps, switch, tabs, tags input, timer, toast, toggle, toggle
+group, tooltip, and tree view.
 
 ## Usage
 
@@ -172,6 +172,20 @@ combobox.addEventListener('inputvaluechange', (event) => list.setFilter(event.de
 Form controls use native hidden inputs or a hidden select for submission and validation. Include the component's
 hidden-input part where shown in its examples. Set `name` and `value` on the root. Select creates its hidden select
 automatically. Custom element wrappers are not themselves form-associated elements.
+
+Wrap a control in `ark-field` to link it to a label, helper text, and error text. `disabled`, `invalid`, `readonly`, and
+`required` on the field reach its native input, textarea, or select, and the components inside it, such as checkbox,
+select, and number input. The error text shows only while the field is invalid. `ark-fieldset` wraps a native
+`fieldset`, so `disabled` on it disables every control inside, and its fields take that state too.
+
+```html
+<ark-field required>
+  <ark-field-label><label>Email</label></ark-field-label>
+  <ark-field-input><input type="email" /></ark-field-input>
+  <ark-field-helper-text>We never share it.</ark-field-helper-text>
+  <ark-field-error-text>Enter a valid email.</ark-field-error-text>
+</ark-field>
+```
 
 ## Styling and presence
 

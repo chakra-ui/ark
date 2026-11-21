@@ -1,4 +1,5 @@
 import '../../src/components/radio-group/index.js'
+import '../../src/components/fieldset/index.js'
 
 import fieldset from 'styles/fieldset.module.css'
 
@@ -29,10 +30,12 @@ const radioGroup = (
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
-  <fieldset class="${fieldset.Root}">
-    <legend class="${fieldset.Legend}">Select a framework</legend>
-    ${radioGroup('', { label: false })}
-    <span class="${fieldset.HelperText}">Choose your preferred framework</span>
-    <span class="${fieldset.ErrorText}" hidden>Please select a framework</span>
-  </fieldset>`
+  <ark-fieldset>
+    <fieldset class="${fieldset.Root}">
+      <ark-fieldset-legend class="${fieldset.Legend}">Select a framework</ark-fieldset-legend>
+      ${radioGroup('', { label: false })}
+      <ark-fieldset-helper-text class="${fieldset.HelperText}">Choose your preferred framework</ark-fieldset-helper-text>
+      <ark-fieldset-error-text class="${fieldset.ErrorText}">Please select a framework</ark-fieldset-error-text>
+    </fieldset>
+  </ark-fieldset>`
 }

@@ -526,6 +526,7 @@
       "dependencies": {
         "@zag-js/accordion": "2.0.0-next.4",
         "@zag-js/async-list": "2.0.0-next.4",
+        "@zag-js/auto-resize": "2.0.0-next.4",
         "@zag-js/avatar": "2.0.0-next.4",
         "@zag-js/carousel": "2.0.0-next.4",
         "@zag-js/checkbox": "2.0.0-next.4",

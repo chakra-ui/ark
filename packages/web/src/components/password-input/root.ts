@@ -3,6 +3,7 @@ import * as passwordInput from '@zag-js/password-input'
 import { controlled, str } from '../../utils/attrs.js'
 import { defineRoot } from '../../utils/define.js'
 import { root } from './shared.js'
+import { withField } from '../../utils/field.js'
 
 type AutoComplete = NonNullable<passwordInput.Props['autoComplete']>
 
@@ -29,17 +30,23 @@ defineRoot<passwordInput.Api>({
       set: (api, value) => api.setVisible(!!value),
     },
   },
-  props: (el) => ({
-    visible: controlled(el, 'visible'),
-    defaultVisible: el.hasAttribute('default-visible'),
-    disabled: el.hasAttribute('disabled'),
-    invalid: el.hasAttribute('invalid'),
-    readOnly: el.hasAttribute('readonly'),
-    required: el.hasAttribute('required'),
-    name: str(el, 'name'),
-    autoComplete: str<AutoComplete>(el, 'autocomplete'),
-    ignorePasswordManagers: el.hasAttribute('ignore-password-managers'),
-  }),
+  props: (el) =>
+    withField(
+      el,
+      'input',
+      {
+        visible: controlled(el, 'visible'),
+        defaultVisible: el.hasAttribute('default-visible'),
+        disabled: el.hasAttribute('disabled'),
+        invalid: el.hasAttribute('invalid'),
+        readOnly: el.hasAttribute('readonly'),
+        required: el.hasAttribute('required'),
+        name: str(el, 'name'),
+        autoComplete: str<AutoComplete>(el, 'autocomplete'),
+        ignorePasswordManagers: el.hasAttribute('ignore-password-managers'),
+      },
+      { label: false },
+    ),
 
   events: {
     onVisibilityChange: 'visibilitychange',
