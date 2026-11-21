@@ -4,10 +4,10 @@ Unstyled, accessible web components powered by Zag.js state machines. Components
 ordinary CSS. No framework runtime is required.
 
 This package is a prerelease. It includes accordion, angle slider, avatar, carousel, checkbox and checkbox group,
-clipboard, collapsible, combobox, command, date input, date picker, dialog, drawer, editable, file upload, highlight,
-hover card, listbox, menu, menubar, meter, number input, pagination, password input, pin input, popover, progress, qr
-code, radio group, rating group, scroll area, segment group, select, signature pad, slider, splitter, steps, switch,
-tabs, tags input, timer, toast, toggle, toggle group, tooltip, and tree view.
+clipboard, collapsible, combobox, command, date input, date picker, dialog, drawer, editable, field, fieldset, file
+upload, highlight, hover card, listbox, menu, menubar, meter, number input, pagination, password input, pin input,
+popover, progress, qr code, radio group, rating group, scroll area, segment group, select, signature pad, slider,
+splitter, steps, switch, tabs, tags input, timer, toast, toggle, toggle group, tooltip, and tree view.
 
 ## Usage
 
@@ -182,6 +182,28 @@ contains('Café', 'cafe') // true
 Form controls use native hidden inputs or a hidden select for submission and validation. Include the component's
 hidden-input part where shown in its examples. Set `name` and `value` on the root. Select creates its hidden select
 automatically. Custom element wrappers are not themselves form-associated elements.
+
+Wrap a control in `ark-field` to link it to a label, helper text, and error text. `disabled`, `invalid`, `readonly`, and
+`required` on the field reach its native input, textarea, or select, and the components inside it, such as checkbox,
+select, and number input. Fields validate with native constraints, and `validation-mode` (`onSubmit`, `onBlur`, or
+`onChange`) sets when errors show. Assign a `validate` function or server `errors` to the field element, and listen for
+`validitychange`. Error text is hidden while the field is valid; `match` limits it to one native failure, such as
+`valueMissing`. `ark-field-indicator type="required"` shows only while the field is required. `ark-fieldset` wraps a
+native `fieldset`, so `disabled` on it disables every control inside, and its fields take that state too.
+
+```html
+<ark-field required>
+  <ark-field-label>
+    <label>
+      Email
+      <ark-field-indicator type="required">*</ark-field-indicator>
+    </label>
+  </ark-field-label>
+  <ark-field-input><input type="email" /></ark-field-input>
+  <ark-field-helper-text>We never share it.</ark-field-helper-text>
+  <ark-field-error-text>Enter a valid email.</ark-field-error-text>
+</ark-field>
+```
 
 ## Styling and presence
 

@@ -1,6 +1,7 @@
 import { createElement, Check, Minus } from 'lucide'
 
 import '../../src/components/checkbox/index.js'
+import '../../src/components/field/index.js'
 
 import field from 'styles/field.module.css'
 
@@ -12,7 +13,7 @@ const minusIcon = createElement(Minus, { 'aria-hidden': 'true' }).outerHTML
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
-  <div class="${field.Root}" data-inline>
+  <ark-field class="${field.Root}" data-inline>
     <ark-checkbox>
       <label class="${styles.Root}">
         <ark-checkbox-control class="${styles.Control}">
@@ -23,7 +24,7 @@ export function mount(root: HTMLElement) {
         <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
       </label>
     </ark-checkbox>
-    <span class="${field.HelperText}">Additional Info</span>
-    <span class="${field.ErrorText}" hidden>Error Info</span>
-  </div>`
+    <ark-field-helper-text class="${field.HelperText}">Additional Info</ark-field-helper-text>
+    <ark-field-error-text class="${field.ErrorText}">Error Info</ark-field-error-text>
+  </ark-field>`
 }

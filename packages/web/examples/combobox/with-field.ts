@@ -1,6 +1,7 @@
 import { createElement, X, ChevronsUpDown, Check } from 'lucide'
 
 import '../../src/components/combobox/index.js'
+import '../../src/components/field/index.js'
 
 import field from 'styles/field.module.css'
 
@@ -28,7 +29,7 @@ const departments: Item[] = [
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
-  <div class="${field.Root}">
+  <ark-field class="${field.Root}">
     <ark-combobox class="${styles.Root}">
       <ark-combobox-label class="${styles.Label}">Department</ark-combobox-label>
       <ark-combobox-control class="${styles.Control}">
@@ -44,6 +45,6 @@ export function mount(root: HTMLElement) {
         </ark-combobox-content>
       </ark-combobox-positioner>
     </ark-combobox>
-    <span class="${field.HelperText}">Select your primary department</span>
-  </div>`
+    <ark-field-helper-text class="${field.HelperText}">Select your primary department</ark-field-helper-text>
+  </ark-field>`
 }

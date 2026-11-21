@@ -3,6 +3,7 @@ import { num, str } from '../../utils/attrs.js'
 import { defineRoot } from '../../utils/define.js'
 import type { FileUploadElement } from './index.js'
 import { root } from './shared.js'
+import { withField } from '../../utils/field.js'
 
 defineRoot<fileUpload.Api>({
   properties: ['validate', 'transformFiles', 'ids', 'translations', 'acceptedFiles', 'defaultAcceptedFiles'],
@@ -28,7 +29,7 @@ defineRoot<fileUpload.Api>({
   ],
   props: (el) => {
     const { acceptedFiles, defaultAcceptedFiles, validate, transformFiles, translations } = el as FileUploadElement
-    return {
+    return withField(el, 'hiddenInput', {
       accept: str(el, 'accept'),
       maxFiles: num(el, 'max-files'),
       maxFileSize: num(el, 'max-file-size'),
@@ -48,7 +49,7 @@ defineRoot<fileUpload.Api>({
       validate,
       transformFiles,
       translations,
-    }
+    })
   },
   events: { onFileChange: 'filechange', onFileAccept: 'fileaccept', onFileReject: 'filereject' },
   rootProps: (api) => api.getRootProps(),

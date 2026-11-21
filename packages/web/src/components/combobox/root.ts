@@ -3,6 +3,7 @@ import * as combobox from '@zag-js/combobox'
 import { positioning, positioningAttributes, str } from '../../utils/attrs.js'
 import { definePresenceRoot } from '../../utils/presence.js'
 import { collection, filteredOf, listOf, queries, root } from './shared.js'
+import { withField } from '../../utils/field.js'
 
 type InputBehavior = NonNullable<combobox.Props['inputBehavior']>
 type SelectionBehavior = NonNullable<combobox.Props['selectionBehavior']>
@@ -47,23 +48,24 @@ definePresenceRoot<combobox.Api>({
       set: (api, value) => api.setValue(value),
     },
   },
-  props: (el) => ({
-    collection: filteredOf(el),
-    value: listOf(el, 'value'),
-    defaultValue: listOf(el, 'default-value'),
-    multiple: el.hasAttribute('multiple'),
-    disabled: el.hasAttribute('disabled'),
-    readOnly: el.hasAttribute('readonly'),
-    invalid: el.hasAttribute('invalid'),
-    required: el.hasAttribute('required'),
-    loading: el.hasAttribute('loading'),
-    name: str(el, 'name'),
-    openOnClick: el.hasAttribute('open-on-click'),
-    allowCustomValue: el.hasAttribute('allow-custom-value'),
-    inputBehavior: str<InputBehavior>(el, 'input-behavior') ?? 'none',
-    selectionBehavior: str<SelectionBehavior>(el, 'selection-behavior') ?? 'replace',
-    positioning: positioning(el),
-  }),
+  props: (el) =>
+    withField(el, 'input', {
+      collection: filteredOf(el),
+      value: listOf(el, 'value'),
+      defaultValue: listOf(el, 'default-value'),
+      multiple: el.hasAttribute('multiple'),
+      disabled: el.hasAttribute('disabled'),
+      readOnly: el.hasAttribute('readonly'),
+      invalid: el.hasAttribute('invalid'),
+      required: el.hasAttribute('required'),
+      loading: el.hasAttribute('loading'),
+      name: str(el, 'name'),
+      openOnClick: el.hasAttribute('open-on-click'),
+      allowCustomValue: el.hasAttribute('allow-custom-value'),
+      inputBehavior: str<InputBehavior>(el, 'input-behavior') ?? 'none',
+      selectionBehavior: str<SelectionBehavior>(el, 'selection-behavior') ?? 'replace',
+      positioning: positioning(el),
+    }),
 
   events: {
     onInputValueChange: 'inputvaluechange',

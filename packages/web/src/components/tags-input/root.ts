@@ -3,6 +3,7 @@ import { num, str } from '../../utils/attrs.js'
 import { defineRoot } from '../../utils/define.js'
 import type { TagsInputElement } from './index.js'
 import { listOf, root } from './shared.js'
+import { withField } from '../../utils/field.js'
 
 defineRoot<tagsInput.Api>({
   properties: ['validate', 'sanitizeValue', 'ids', 'translations', 'delimiter'],
@@ -44,7 +45,7 @@ defineRoot<tagsInput.Api>({
   },
   props: (el) => {
     const { validate, sanitizeValue, delimiter, translations } = el as TagsInputElement
-    return {
+    return withField(el, 'hiddenInput', {
       value: listOf(el, 'value'),
       defaultValue: listOf(el, 'default-value'),
       inputValue: str(el, 'input-value'),
@@ -68,7 +69,7 @@ defineRoot<tagsInput.Api>({
       validate,
       sanitizeValue,
       translations,
-    }
+    })
   },
   events: {
     onValueChange: 'valuechange',

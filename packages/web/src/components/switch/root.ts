@@ -2,6 +2,7 @@ import * as zagSwitch from '@zag-js/switch'
 import { str } from '../../utils/attrs.js'
 import { defineRoot, wrapped } from '../../utils/define.js'
 import { root } from './shared.js'
+import { withField } from '../../utils/field.js'
 
 defineRoot<zagSwitch.Api>({
   properties: ['ids'],
@@ -16,17 +17,18 @@ defineRoot<zagSwitch.Api>({
       set: (api, value) => api.setChecked(!!value),
     },
   },
-  props: (el) => ({
-    checked: el.hasAttribute('checked') ? el.getAttribute('checked') !== 'false' : undefined,
-    defaultChecked: el.hasAttribute('default-checked'),
-    disabled: el.hasAttribute('disabled'),
-    invalid: el.hasAttribute('invalid'),
-    required: el.hasAttribute('required'),
-    readOnly: el.hasAttribute('readonly'),
-    name: str(el, 'name'),
-    value: str(el, 'value') ?? 'on',
-    form: str(el, 'form'),
-  }),
+  props: (el) =>
+    withField(el, 'hiddenInput', {
+      checked: el.hasAttribute('checked') ? el.getAttribute('checked') !== 'false' : undefined,
+      defaultChecked: el.hasAttribute('default-checked'),
+      disabled: el.hasAttribute('disabled'),
+      invalid: el.hasAttribute('invalid'),
+      required: el.hasAttribute('required'),
+      readOnly: el.hasAttribute('readonly'),
+      name: str(el, 'name'),
+      value: str(el, 'value') ?? 'on',
+      form: str(el, 'form'),
+    }),
   events: { onCheckedChange: 'checkedchange' },
   target: wrapped('label'),
   rootProps: (api) => api.getRootProps(),
