@@ -1,6 +1,7 @@
 {
   "name": "@ark-ui/web",
   "version": "0.1.0-next.0",
+  "private": true,
   "type": "module",
   "description": "Unstyled, accessible light-DOM web components powered by Zag.js state machines.",
   "scripts": {

@@ -166,11 +166,20 @@ function main() {
       exit(1)
     }
 
+    const [pinnedVersion] = uniqueVersions
+    const webMismatches = Object.entries(getZagPackages(readPackageJson('web'))).filter(
+      ([, version]) => version !== pinnedVersion,
+    )
+    if (webMismatches.length > 0) {
+      console.error(`❌ @ark-ui/web @zag-js/* packages differ from ${pinnedVersion}:\n`)
+      for (const [name, version] of webMismatches) console.error(`  ${name}: ${version}`)
+      exit(1)
+    }
+
     console.log('✅ All @zag-js/* packages are consistent across frameworks')
 
     if (controlPackageNames.length > 0) {
-      const [commonVersion] = uniqueVersions
-      console.log(`📋 Pinned version: ${commonVersion}`)
+      console.log(`📋 Pinned version: ${pinnedVersion}`)
       console.log(`📊 Total packages checked: ${controlPackageNames.length}`)
     }
   }
