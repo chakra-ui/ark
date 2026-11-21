@@ -48,15 +48,6 @@ const text = ({ label, icon: node }: { label: string; icon?: typeof File }) =>
 
 const renameInput = /* html */ `<ark-tree-view-node-rename-input><input class="${styles.NodeRenameInput}" /></ark-tree-view-node-rename-input>`
 
-const treeView = (
-  { label, canRename = false }: { label: string; canRename?: boolean },
-  children: string[],
-) => /* html */ `
-  <ark-tree-view class="${styles.Root}" ${canRename ? 'can-rename' : ''}>
-    <ark-tree-view-label class="${styles.Label}">${label}</ark-tree-view-label>
-    <ark-tree-view-tree class="${styles.Tree}">${children.join('')}</ark-tree-view-tree>
-  </ark-tree-view>`
-
 const branch = ({ value, label }: TreeNode, children: string[]) => /* html */ `
   <ark-tree-view-node-group class="${styles.NodeGroup}" value="${value}">
     <ark-tree-view-node class="${styles.Node}">
@@ -83,7 +74,11 @@ const renderTree = (nodes: TreeNode[]): string[] =>
   nodes.map((node) => (node.children ? branch(node, renderTree(node.children)) : leaf(node)))
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = treeView({ label: 'Tree (Press F2 to rename)', canRename: true }, renderTree(files))
+  root.innerHTML = /* html */ `
+    <ark-tree-view class="${styles.Root}" can-rename>
+      <ark-tree-view-label class="${styles.Label}">Tree (Press F2 to rename)</ark-tree-view-label>
+      <ark-tree-view-tree class="${styles.Tree}">${renderTree(files).join('')}</ark-tree-view-tree>
+    </ark-tree-view>`
   root.querySelector('ark-tree-view')!.addEventListener('renamecomplete', (event) => {
     const { value, label } = event.detail
     const holder = root.querySelector(`[value="${CSS.escape(value)}"]`)

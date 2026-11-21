@@ -6,12 +6,9 @@ import styles from 'styles/number-input.module.css'
 
 const icon = (node: typeof ChevronUp) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
-interface NumberInputProps {
-  formatOptions?: Intl.NumberFormatOptions
-}
-
-const numberInput = ({ formatOptions }: NumberInputProps) => /* html */ `
-  <ark-number-input class="${styles.Root}" ${formatOptions ? `format-options='${JSON.stringify(formatOptions)}'` : ''}>
+export function mount(root: HTMLElement) {
+  root.innerHTML = /* html */ `
+  <ark-number-input class="${styles.Root}" format-options='{"style":"currency","currency":"USD"}'>
     <ark-number-input-label class="${styles.Label}">Label</ark-number-input-label>
     <ark-number-input-control class="${styles.Control}">
       <ark-number-input-input><input class="${styles.Input}" /></ark-number-input-input>
@@ -25,7 +22,4 @@ const numberInput = ({ formatOptions }: NumberInputProps) => /* html */ `
       </div>
     </ark-number-input-control>
   </ark-number-input>`
-
-export function mount(root: HTMLElement) {
-  root.innerHTML = numberInput({ formatOptions: { style: 'currency', currency: 'USD' } })
 }

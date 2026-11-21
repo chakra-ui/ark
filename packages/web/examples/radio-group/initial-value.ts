@@ -13,12 +13,10 @@ const item = (value: string) => /* html */ `
     </label>
   </ark-radio-group-item>`
 
-const radioGroup = ({ defaultValue }: { defaultValue: string }, items: string[]) => /* html */ `
-  <ark-radio-group class="${styles.Root}" default-value="${defaultValue}">
-    <ark-radio-group-label class="${styles.Label}">Framework</ark-radio-group-label>
-    ${items.join('')}
-  </ark-radio-group>`
-
 export function mount(root: HTMLElement) {
-  root.innerHTML = radioGroup({ defaultValue: 'Solid' }, frameworks.map(item))
+  root.innerHTML = /* html */ `
+    <ark-radio-group class="${styles.Root}" default-value="Solid">
+      <ark-radio-group-label class="${styles.Label}">Framework</ark-radio-group-label>
+      ${frameworks.map(item).join('')}
+    </ark-radio-group>`
 }

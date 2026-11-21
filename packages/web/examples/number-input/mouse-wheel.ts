@@ -4,17 +4,11 @@ import '../../src/components/number-input/index.js'
 
 import styles from 'styles/number-input.module.css'
 
-const attr = (name: string, value?: string | number | boolean) =>
-  value === undefined || value === false ? '' : value === true ? name : `${name}="${value}"`
-
 const icon = (node: typeof ChevronUp) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
-interface NumberInputProps {
-  allowMouseWheel?: boolean
-}
-
-const numberInput = ({ allowMouseWheel }: NumberInputProps) => /* html */ `
-  <ark-number-input class="${styles.Root}" ${attr('allow-mouse-wheel', allowMouseWheel)}>
+export function mount(root: HTMLElement) {
+  root.innerHTML = /* html */ `
+  <ark-number-input class="${styles.Root}" allow-mouse-wheel>
     <ark-number-input-label class="${styles.Label}">Label</ark-number-input-label>
     <ark-number-input-control class="${styles.Control}">
       <ark-number-input-input><input class="${styles.Input}" /></ark-number-input-input>
@@ -28,7 +22,4 @@ const numberInput = ({ allowMouseWheel }: NumberInputProps) => /* html */ `
       </div>
     </ark-number-input-control>
   </ark-number-input>`
-
-export function mount(root: HTMLElement) {
-  root.innerHTML = numberInput({ allowMouseWheel: true })
 }

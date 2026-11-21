@@ -4,35 +4,6 @@ import '../../src/components/combobox/index.js'
 
 import styles from 'styles/combobox.module.css'
 
-interface ComboboxProps {
-  label: string
-  placeholder: string
-  empty?: boolean
-  inputBehavior: 'autohighlight' | 'autocomplete' | 'none'
-  filter: 'contains' | 'starts-with' | 'none'
-}
-
-const combobox = (
-  { label, placeholder, empty = false, inputBehavior, filter }: ComboboxProps,
-  children: string[],
-) => /* html */ `
-  <ark-combobox class="${styles.Root}" input-behavior="${inputBehavior}" filter="${filter}">
-    <ark-combobox-label class="${styles.Label}">${label}</ark-combobox-label>
-    <ark-combobox-control class="${styles.Control}">
-      <ark-combobox-input><input class="${styles.Input}" placeholder="${placeholder}" /></ark-combobox-input>
-      <div class="${styles.Indicators}">
-        <ark-combobox-clear-trigger><button class="${styles.ClearTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-clear-trigger>
-        <ark-combobox-trigger><button class="${styles.Trigger}">${createElement(ChevronsUpDown, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-trigger>
-      </div>
-    </ark-combobox-control>
-    <ark-combobox-positioner class="${styles.Positioner}">
-      <ark-combobox-content class="${styles.Content}">
-        ${empty ? /* html */ `<ark-combobox-empty><div class="${styles.Empty}">No results found</div></ark-combobox-empty>` : ''}
-        <ark-combobox-list class="${styles.List}">${children.join('')}</ark-combobox-list>
-      </ark-combobox-content>
-    </ark-combobox-positioner>
-  </ark-combobox>`
-
 interface Item {
   value: string
   label: string
@@ -50,14 +21,21 @@ const creatures: Item[] = ['Whale', 'Dolphin', 'Shark', 'Octopus', 'Jellyfish', 
 }))
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = combobox(
-    {
-      label: 'Sea Creature',
-      placeholder: 'e.g. Dolphin',
-      inputBehavior: 'autocomplete',
-      filter: 'starts-with',
-      empty: true,
-    },
-    creatures.map((creature) => item(creature)),
-  )
+  root.innerHTML = /* html */ `
+    <ark-combobox class="${styles.Root}" input-behavior="autocomplete" filter="starts-with">
+      <ark-combobox-label class="${styles.Label}">Sea Creature</ark-combobox-label>
+      <ark-combobox-control class="${styles.Control}">
+        <ark-combobox-input><input class="${styles.Input}" placeholder="e.g. Dolphin" /></ark-combobox-input>
+        <div class="${styles.Indicators}">
+          <ark-combobox-clear-trigger><button class="${styles.ClearTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-clear-trigger>
+          <ark-combobox-trigger><button class="${styles.Trigger}">${createElement(ChevronsUpDown, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-trigger>
+        </div>
+      </ark-combobox-control>
+      <ark-combobox-positioner class="${styles.Positioner}">
+        <ark-combobox-content class="${styles.Content}">
+          <ark-combobox-empty><div class="${styles.Empty}">No results found</div></ark-combobox-empty>
+          <ark-combobox-list class="${styles.List}">${creatures.map((creature) => item(creature)).join('')}</ark-combobox-list>
+        </ark-combobox-content>
+      </ark-combobox-positioner>
+    </ark-combobox>`
 }

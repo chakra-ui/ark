@@ -4,20 +4,6 @@ import '../../src/components/listbox/index.js'
 
 import styles from 'styles/listbox.module.css'
 
-interface ListboxProps {
-  label: string
-  selectionMode: 'single' | 'multiple' | 'extended'
-  defaultValue: string[]
-}
-
-const listbox = ({ label, selectionMode, defaultValue }: ListboxProps, children: string[]) => /* html */ `
-  <ark-listbox class="${styles.Root}" selection-mode="${selectionMode}" default-value="${defaultValue.join(',')}">
-    <ark-listbox-label class="${styles.Label}">${label}</ark-listbox-label>
-    <ark-listbox-content class="${styles.Content}">
-      <ark-listbox-list class="${styles.List}">${children.join('')}</ark-listbox-list>
-    </ark-listbox-content>
-  </ark-listbox>`
-
 interface Item {
   value: string
   label: string
@@ -35,12 +21,11 @@ const colors: Item[] = ['Red', 'Blue', 'Green', 'Yellow', 'Purple'].map((label) 
 }))
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = listbox(
-    {
-      label: /* html */ `Colors: <ark-listbox-value-text class="${styles.ValueText}"></ark-listbox-value-text>`,
-      selectionMode: 'multiple',
-      defaultValue: ['red', 'blue'],
-    },
-    colors.map((color) => item(color)),
-  )
+  root.innerHTML = /* html */ `
+  <ark-listbox class="${styles.Root}" selection-mode="multiple" default-value="red,blue">
+    <ark-listbox-label class="${styles.Label}">Colors: <ark-listbox-value-text class="${styles.ValueText}"></ark-listbox-value-text></ark-listbox-label>
+    <ark-listbox-content class="${styles.Content}">
+      <ark-listbox-list class="${styles.List}">${colors.map((color) => item(color)).join('')}</ark-listbox-list>
+    </ark-listbox-content>
+  </ark-listbox>`
 }

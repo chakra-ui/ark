@@ -26,15 +26,7 @@ const items: Item[] = [
   },
 ]
 
-const accordion = (
-  { defaultValue, orientation }: { defaultValue: string; orientation: 'horizontal' | 'vertical' },
-  children: string[],
-) => /* html */ `
-  <ark-accordion class="${styles.Root}" default-value="${defaultValue}" orientation="${orientation}">
-    ${children.join('')}
-  </ark-accordion>`
-
-const accordionItem = ({ value, title, content }: Item) => /* html */ `
+const item = ({ value, title, content }: Item) => /* html */ `
   <ark-accordion-item class="${styles.Item}" value="${value}">
     <ark-accordion-item-header class="${styles.ItemHeader}">
       <ark-accordion-item-trigger>
@@ -45,5 +37,8 @@ const accordionItem = ({ value, title, content }: Item) => /* html */ `
   </ark-accordion-item>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = accordion({ defaultValue: 'ark-ui', orientation: 'horizontal' }, items.map(accordionItem))
+  root.innerHTML = /* html */ `
+    <ark-accordion class="${styles.Root}" default-value="ark-ui" orientation="horizontal">
+      ${items.map(item).join('')}
+    </ark-accordion>`
 }

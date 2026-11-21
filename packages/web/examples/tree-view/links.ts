@@ -56,12 +56,6 @@ const icon = (node: typeof File) => createElement(node, { 'aria-hidden': 'true' 
 const text = ({ label, icon: node }: { label: string; icon?: typeof File }) =>
   /* html */ `<ark-tree-view-node-text class="${styles.NodeText}">${node ? icon(node) : ''}${label}</ark-tree-view-node-text>`
 
-const treeView = ({ label }: { label: string }, children: string[]) => /* html */ `
-  <ark-tree-view class="${styles.Root}">
-    <ark-tree-view-label class="${styles.Label}">${label}</ark-tree-view-label>
-    <ark-tree-view-tree class="${styles.Tree}">${children.join('')}</ark-tree-view-tree>
-  </ark-tree-view>`
-
 const branch = ({ value, label }: TreeNode, children: string[]) => /* html */ `
   <ark-tree-view-node-group class="${styles.NodeGroup}" value="${value}">
     <ark-tree-view-node class="${styles.Node}">
@@ -89,5 +83,9 @@ const renderTree = (nodes: TreeNode[]): string[] =>
   nodes.map((node) => (node.children ? branch(node, renderTree(node.children)) : leaf(node)))
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = treeView({ label: 'Docs' }, renderTree(docs))
+  root.innerHTML = /* html */ `
+    <ark-tree-view class="${styles.Root}">
+      <ark-tree-view-label class="${styles.Label}">Docs</ark-tree-view-label>
+      <ark-tree-view-tree class="${styles.Tree}">${renderTree(docs).join('')}</ark-tree-view-tree>
+    </ark-tree-view>`
 }

@@ -4,19 +4,6 @@ import '../../src/components/listbox/index.js'
 
 import styles from 'styles/listbox.module.css'
 
-interface ListboxProps {
-  label: string
-  selectionMode: 'single' | 'multiple' | 'extended'
-}
-
-const listbox = ({ label, selectionMode }: ListboxProps, children: string[]) => /* html */ `
-  <ark-listbox class="${styles.Root}" selection-mode="${selectionMode}">
-    <ark-listbox-label class="${styles.Label}">${label}</ark-listbox-label>
-    <ark-listbox-content class="${styles.Content}">
-      <ark-listbox-list class="${styles.List}">${children.join('')}</ark-listbox-list>
-    </ark-listbox-content>
-  </ark-listbox>`
-
 interface Item {
   value: string
   label: string
@@ -38,11 +25,11 @@ const frameworks: Item[] = [
 ]
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = listbox(
-    {
-      label: 'Hold <kbd>⌘</kbd> or <kbd>Ctrl</kbd> to select multiple',
-      selectionMode: 'extended',
-    },
-    frameworks.map((framework) => item(framework)),
-  )
+  root.innerHTML = /* html */ `
+  <ark-listbox class="${styles.Root}" selection-mode="extended">
+    <ark-listbox-label class="${styles.Label}">Hold <kbd>⌘</kbd> or <kbd>Ctrl</kbd> to select multiple</ark-listbox-label>
+    <ark-listbox-content class="${styles.Content}">
+      <ark-listbox-list class="${styles.List}">${frameworks.map((framework) => item(framework)).join('')}</ark-listbox-list>
+    </ark-listbox-content>
+  </ark-listbox>`
 }

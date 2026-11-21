@@ -4,29 +4,6 @@ import '../../src/components/combobox/index.js'
 
 import styles from 'styles/combobox.module.css'
 
-interface ComboboxProps {
-  multiple?: boolean
-  selectionBehavior: 'clear' | 'replace' | 'preserve'
-}
-
-const comboboxMarkup = ({ multiple, selectionBehavior }: ComboboxProps, children: string[]) => /* html */ `
-  <ark-combobox class="${styles.Root}" ${multiple ? 'multiple' : ''} selection-behavior="${selectionBehavior}">
-    <ark-combobox-label class="${styles.Label}">Favorite Fruit</ark-combobox-label>
-    <ark-combobox-control class="${styles.Control}">
-      <ark-combobox-input><input class="${styles.Input}" placeholder="e.g. Apple" /></ark-combobox-input>
-      <div class="${styles.Indicators}">
-        <ark-combobox-clear-trigger><button class="${styles.ClearTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-clear-trigger>
-        <ark-combobox-trigger><button class="${styles.Trigger}">${createElement(ChevronsUpDown, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-trigger>
-      </div>
-    </ark-combobox-control>
-    <ark-combobox-positioner class="${styles.Positioner}">
-      <ark-combobox-content class="${styles.Content}">
-        <ark-combobox-empty class="${styles.Empty}">No results found</ark-combobox-empty>
-        <ark-combobox-list class="${styles.List}">${children.join('')}</ark-combobox-list>
-      </ark-combobox-content>
-    </ark-combobox-positioner>
-  </ark-combobox>`
-
 interface Item {
   value: string
   label: string
@@ -48,8 +25,21 @@ const fruits: Item[] = [
 ]
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = comboboxMarkup(
-    { multiple: true, selectionBehavior: 'clear' },
-    fruits.map((fruit) => item(fruit)),
-  )
+  root.innerHTML = /* html */ `
+    <ark-combobox class="${styles.Root}" multiple selection-behavior="clear">
+      <ark-combobox-label class="${styles.Label}">Favorite Fruit</ark-combobox-label>
+      <ark-combobox-control class="${styles.Control}">
+        <ark-combobox-input><input class="${styles.Input}" placeholder="e.g. Apple" /></ark-combobox-input>
+        <div class="${styles.Indicators}">
+          <ark-combobox-clear-trigger><button class="${styles.ClearTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-clear-trigger>
+          <ark-combobox-trigger><button class="${styles.Trigger}">${createElement(ChevronsUpDown, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-trigger>
+        </div>
+      </ark-combobox-control>
+      <ark-combobox-positioner class="${styles.Positioner}">
+        <ark-combobox-content class="${styles.Content}">
+          <ark-combobox-empty class="${styles.Empty}">No results found</ark-combobox-empty>
+          <ark-combobox-list class="${styles.List}">${fruits.map((fruit) => item(fruit)).join('')}</ark-combobox-list>
+        </ark-combobox-content>
+      </ark-combobox-positioner>
+    </ark-combobox>`
 }

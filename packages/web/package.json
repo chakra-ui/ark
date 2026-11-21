@@ -32,7 +32,9 @@
     "@zag-js/editable": "2.0.0-next.4",
     "@zag-js/file-upload": "2.0.0-next.4",
     "@zag-js/fuzzy": "2.0.0-next.4",
+    "@zag-js/highlight-word": "2.0.0-next.4",
     "@zag-js/hover-card": "2.0.0-next.4",
+    "@zag-js/i18n-utils": "2.0.0-next.4",
     "@zag-js/listbox": "2.0.0-next.4",
     "@zag-js/menu": "2.0.0-next.4",
     "@zag-js/menubar": "2.0.0-next.4",
@@ -134,6 +136,10 @@
       "types": "./dist/components/listbox/index.d.ts",
       "import": "./dist/components/listbox/index.js"
     },
+    "./locale": {
+      "types": "./dist/utils/locale.d.ts",
+      "import": "./dist/utils/locale.js"
+    },
     "./menu": {
       "types": "./dist/components/menu/index.d.ts",
       "import": "./dist/components/menu/index.js"
@@ -186,6 +192,10 @@
     "./file-upload": {
       "types": "./dist/components/file-upload/index.d.ts",
       "import": "./dist/components/file-upload/index.js"
+    },
+    "./highlight": {
+      "types": "./dist/components/highlight/index.d.ts",
+      "import": "./dist/components/highlight/index.js"
     },
     "./hover-card": {
       "types": "./dist/components/hover-card/index.d.ts",

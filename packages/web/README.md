@@ -4,10 +4,10 @@ Unstyled, accessible web components powered by Zag.js state machines. Components
 ordinary CSS. No framework runtime is required.
 
 This package is a prerelease. It includes accordion, angle slider, avatar, carousel, checkbox and checkbox group,
-clipboard, collapsible, combobox, command, date input, date picker, dialog, drawer, editable, file upload, hover card,
-listbox, menu, menubar, meter, number input, pagination, password input, pin input, popover, progress, qr code, radio
-group, rating group, scroll area, segment group, select, signature pad, slider, splitter, steps, switch, tabs, tags
-input, timer, toast, toggle, toggle group, tooltip, and tree view.
+clipboard, collapsible, combobox, command, date input, date picker, dialog, drawer, editable, file upload, highlight,
+hover card, listbox, menu, menubar, meter, number input, pagination, password input, pin input, popover, progress, qr
+code, radio group, rating group, scroll area, segment group, select, signature pad, slider, splitter, steps, switch,
+tabs, tags input, timer, toast, toggle, toggle group, tooltip, and tree view.
 
 ## Usage
 
@@ -169,15 +169,26 @@ list.subscribe(() => {
 combobox.addEventListener('inputvaluechange', (event) => list.setFilter(event.detail.inputValue))
 ```
 
+Combobox's built-in `filter="contains"` and `filter="starts-with"` ignore case and accents and follow the nearest
+`lang`. Use `createFilter` from `@ark-ui/web/locale` to match the same way in your own filtering:
+
+```ts
+import { createFilter } from '@ark-ui/web/locale'
+
+const { contains } = createFilter({ sensitivity: 'base' })
+contains('Café', 'cafe') // true
+```
+
 Form controls use native hidden inputs or a hidden select for submission and validation. Include the component's
 hidden-input part where shown in its examples. Set `name` and `value` on the root. Select creates its hidden select
 automatically. Custom element wrappers are not themselves form-associated elements.
 
 ## Styling and presence
 
-Style parts using your own classes or `[data-scope][data-part]` selectors. State is exposed through attributes such as
-`data-state`, `data-disabled`, and `data-invalid`. The library supplies only default element display and hidden
-handling. Storybook's styles are examples and are not included in the published package.
+Style parts using your own classes or the `data-<scope>-<part>` attribute each part sets, e.g. `[data-menu-trigger]` or
+`[data-select-item]`. State is exposed through attributes such as `data-state`, `data-disabled`, and `data-invalid`. The
+library supplies only default element display and hidden handling. Storybook's styles are examples and are not included
+in the published package.
 
 Components also work within an existing shadow root; include your styles in that root.
 

@@ -1,32 +1,8 @@
-import { createElement, X, ChevronsUpDown, Check } from 'lucide'
+import { createElement, ChevronsUpDown, Check } from 'lucide'
 
 import '../../src/components/combobox/index.js'
 
 import styles from 'styles/combobox.module.css'
-
-interface ComboboxProps {
-  label: string
-  placeholder: string
-  clear?: boolean
-  limit: number
-}
-
-const combobox = ({ label, placeholder, clear = true, limit }: ComboboxProps, children: string[]) => /* html */ `
-  <ark-combobox class="${styles.Root}" limit="${limit}">
-    <ark-combobox-label class="${styles.Label}">${label}</ark-combobox-label>
-    <ark-combobox-control class="${styles.Control}">
-      <ark-combobox-input><input class="${styles.Input}" placeholder="${placeholder}" /></ark-combobox-input>
-      <div class="${styles.Indicators}">
-        ${clear ? /* html */ `<ark-combobox-clear-trigger><button class="${styles.ClearTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-clear-trigger>` : ''}
-        <ark-combobox-trigger><button class="${styles.Trigger}">${createElement(ChevronsUpDown, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-trigger>
-      </div>
-    </ark-combobox-control>
-    <ark-combobox-positioner class="${styles.Positioner}">
-      <ark-combobox-content class="${styles.Content}">
-        <ark-combobox-list class="${styles.List}">${children.join('')}</ark-combobox-list>
-      </ark-combobox-content>
-    </ark-combobox-positioner>
-  </ark-combobox>`
 
 interface Item {
   value: string
@@ -63,13 +39,19 @@ const cities = [
 ]
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = combobox(
-    {
-      label: 'City',
-      placeholder: 'e.g. New York',
-      limit: 5,
-      clear: false,
-    },
-    cities.map((label) => item({ label, value: label.toLowerCase().replace(' ', '-') })),
-  )
+  root.innerHTML = /* html */ `
+    <ark-combobox class="${styles.Root}" limit="5">
+      <ark-combobox-label class="${styles.Label}">City</ark-combobox-label>
+      <ark-combobox-control class="${styles.Control}">
+        <ark-combobox-input><input class="${styles.Input}" placeholder="e.g. New York" /></ark-combobox-input>
+        <div class="${styles.Indicators}">
+          <ark-combobox-trigger><button class="${styles.Trigger}">${createElement(ChevronsUpDown, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-trigger>
+        </div>
+      </ark-combobox-control>
+      <ark-combobox-positioner class="${styles.Positioner}">
+        <ark-combobox-content class="${styles.Content}">
+          <ark-combobox-list class="${styles.List}">${cities.map((label) => item({ label, value: label.toLowerCase().replace(' ', '-') })).join('')}</ark-combobox-list>
+        </ark-combobox-content>
+      </ark-combobox-positioner>
+    </ark-combobox>`
 }

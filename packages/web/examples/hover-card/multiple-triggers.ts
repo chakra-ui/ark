@@ -35,38 +35,33 @@ const fragment = (html: string) => {
   return host
 }
 
-const card = (children: string[]) => /* html */ `
-  <ark-hover-card-positioner class="${styles.Positioner}">
-    <ark-hover-card-content class="${styles.Content}">
-      <ark-hover-card-arrow class="${styles.Arrow}"><ark-hover-card-arrow-tip class="${styles.ArrowTip}"></ark-hover-card-arrow-tip></ark-hover-card-arrow>
-      ${children.join('')}
-    </ark-hover-card-content>
-  </ark-hover-card-positioner>`
-
-type Profile = (typeof profiles)[number]
-
-const profileBody = (profile: Profile) => /* html */ `
-  <div class="${styles.Body}">
-    <div class="${styles.Header}">
-      <img class="${styles.Avatar}" src="${profile.avatar}" alt="${profile.name}" />
-    </div>
-    <div>
-      <p class="${styles.Name}">${profile.name}</p>
-      <p class="${styles.Username}">${profile.username}</p>
-    </div>
-    <p class="${styles.Bio}">${profile.bio}</p>
-  </div>`
-
 export function mount(root: HTMLElement) {
   const [sarah, alex, jordan] = profiles.map((profile) => trigger({ text: profile.username, value: profile.id }))
   const host = fragment(/* html */ `
     <ark-hover-card>
       <p class="${styles.Paragraph}">Reviewed by ${sarah}, ${alex}, and ${jordan}</p>
-      ${card([/* html */ `<div data-profile></div>`])}
+      <ark-hover-card-positioner class="${styles.Positioner}">
+        <ark-hover-card-content class="${styles.Content}">
+          <ark-hover-card-arrow class="${styles.Arrow}"><ark-hover-card-arrow-tip class="${styles.ArrowTip}"></ark-hover-card-arrow-tip></ark-hover-card-arrow>
+          <div data-profile></div>
+        </ark-hover-card-content>
+      </ark-hover-card-positioner>
     </ark-hover-card>`)
   host.querySelector('ark-hover-card')!.addEventListener('triggervaluechange', (event) => {
     const profile = profiles.find((profile) => profile.id === event.detail.value)
-    host.querySelector('[data-profile]')!.innerHTML = profile ? profileBody(profile) : ''
+    host.querySelector('[data-profile]')!.innerHTML = profile
+      ? /* html */ `
+        <div class="${styles.Body}">
+          <div class="${styles.Header}">
+            <img class="${styles.Avatar}" src="${profile.avatar}" alt="${profile.name}" />
+          </div>
+          <div>
+            <p class="${styles.Name}">${profile.name}</p>
+            <p class="${styles.Username}">${profile.username}</p>
+          </div>
+          <p class="${styles.Bio}">${profile.bio}</p>
+        </div>`
+      : ''
   })
   root.replaceChildren(host)
 }

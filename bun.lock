@@ -541,7 +541,9 @@
         "@zag-js/editable": "2.0.0-next.4",
         "@zag-js/file-upload": "2.0.0-next.4",
         "@zag-js/fuzzy": "2.0.0-next.4",
+        "@zag-js/highlight-word": "2.0.0-next.4",
         "@zag-js/hover-card": "2.0.0-next.4",
+        "@zag-js/i18n-utils": "2.0.0-next.4",
         "@zag-js/listbox": "2.0.0-next.4",
         "@zag-js/menu": "2.0.0-next.4",
         "@zag-js/menubar": "2.0.0-next.4",
@@ -714,6 +716,7 @@
     "@ark-ui/website",
   ],
   "patchedDependencies": {
+    "@zag-js/menubar@2.0.0-next.4": "patches/@zag-js%2Fmenubar@2.0.0-next.4.patch",
     "@zag-js/tree-view@2.0.0-next.4": "patches/@zag-js%2Ftree-view@2.0.0-next.4.patch",
     "@zag-js/solid@2.0.0-next.4": "patches/@zag-js%2Fsolid@2.0.0-next.4.patch",
     "@zag-js/vanilla@2.0.0-next.4": "patches/@zag-js%2Fvanilla@2.0.0-next.4.patch",

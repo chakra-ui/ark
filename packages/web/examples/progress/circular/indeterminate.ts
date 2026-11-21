@@ -2,8 +2,9 @@ import '../../../src/components/progress/index.js'
 
 import styles from 'styles/progress-circular.module.css'
 
-const circular = ({ defaultValue }: { defaultValue: number | null }) => /* html */ `
-  <ark-progress class="${styles.Root}" default-value="${defaultValue ?? ''}">
+export function mount(root: HTMLElement) {
+  root.innerHTML = /* html */ `
+  <ark-progress class="${styles.Root}" default-value="">
     <div class="${styles.CircleContainer}">
       <ark-progress-circle>
         <svg class="${styles.Circle}">
@@ -14,7 +15,4 @@ const circular = ({ defaultValue }: { defaultValue: number | null }) => /* html 
       <ark-progress-value-text class="${styles.ValueText}"></ark-progress-value-text>
     </div>
   </ark-progress>`
-
-export function mount(root: HTMLElement) {
-  root.innerHTML = circular({ defaultValue: null })
 }

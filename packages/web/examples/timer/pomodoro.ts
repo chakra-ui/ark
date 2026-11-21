@@ -39,23 +39,10 @@ const timerItem = ({ type, label }: Segment) => /* html */ `
     <span class="${styles.ItemLabel}">${label}</span>
   </div>`
 
-const separator = (text: string) =>
-  /* html */ `<ark-timer-separator class="${styles.Separator}">${text}</ark-timer-separator>`
-
-const area = ({ segments, separator: text = ':' }: { segments: Segment[]; separator?: string }) => /* html */ `
-  <ark-timer-area class="${styles.Area}">
-    ${segments.map(timerItem).join(separator(text))}
-  </ark-timer-area>`
-
 const actionTrigger = ({ action, icon: node, label }: Action) => /* html */ `
   <ark-timer-action-trigger action="${action}">
     <button class="${button.Root}">${icon(node)} ${label}</button>
   </ark-timer-action-trigger>`
-
-const control = (actions: Action[]) => /* html */ `
-  <ark-timer-control class="hstack">
-    ${actions.map(actionTrigger).join('')}
-  </ark-timer-control>`
 
 const sessionTitle = (working: boolean) => (working ? 'Work Session' : 'Break Session')
 
@@ -65,8 +52,12 @@ export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
   <ark-timer class="stack" countdown start-ms="${WORK_MS}">
     <h2>${sessionTitle(true)}</h2>
-    ${area({ segments })}
-    ${control(actions)}
+    <ark-timer-area class="${styles.Area}">
+      ${segments.map(timerItem).join(/* html */ `<ark-timer-separator class="${styles.Separator}">:</ark-timer-separator>`)}
+    </ark-timer-area>
+    <ark-timer-control class="hstack">
+      ${actions.map(actionTrigger).join('')}
+    </ark-timer-control>
     <output>Completed cycles: 0</output>
   </ark-timer>`
 

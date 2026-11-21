@@ -1,6 +1,4 @@
-import { createElement, ChevronsLeft, ChevronLeft, ChevronRight, ChevronsRight } from 'lucide'
-
-import type { PaginationElement } from '../../src/components/pagination/index.js'
+import { createElement, ChevronLeft, ChevronRight } from 'lucide'
 
 import styles from 'styles/pagination.module.css'
 
@@ -26,15 +24,12 @@ export function mount(root: HTMLElement) {
       </div>
       
   <div class="${styles.Controls}">
-    
     <ark-pagination-previous-trigger><button class="${styles.Trigger}">${createElement(ChevronLeft, { 'aria-hidden': 'true' }).outerHTML}</button></ark-pagination-previous-trigger>
-    
   <template>
     <ark-pagination-item><button class="${styles.Item}"></button></ark-pagination-item>
     <ark-pagination-ellipsis class="${styles.Ellipsis}">&#8230;</ark-pagination-ellipsis>
   </template>
     <ark-pagination-next-trigger><button class="${styles.Trigger}">${createElement(ChevronRight, { 'aria-hidden': 'true' }).outerHTML}</button></ark-pagination-next-trigger>
-    
   </div>
       <p class="${styles.Text}" data-page></p></ark-pagination>`
   const el = root.querySelector('ark-pagination')!

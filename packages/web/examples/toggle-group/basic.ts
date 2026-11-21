@@ -22,6 +22,6 @@ const alignItems: Item[] = [
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
   <ark-toggle-group class="${styles.Root}" default-value="left">
-    ${alignItems.map((entry) => item(entry)).join('')}
+    ${alignItems.map(item).join('')}
   </ark-toggle-group>`
 }

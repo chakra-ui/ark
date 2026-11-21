@@ -4,23 +4,10 @@ import '../../src/components/tags-input/index.js'
 
 import styles from 'styles/tags-input.module.css'
 
-const attr = (name: string, on?: boolean) => (on ? name : '')
-
-interface TagsInputProps {
-  label?: string
-  placeholder?: string
-  addOnPaste?: boolean
-  delimiter: string
-}
-
-const tagsInputMarkup = ({
-  label = 'Frameworks',
-  placeholder = 'Add Framework',
-  addOnPaste,
-  delimiter,
-}: TagsInputProps) => /* html */ `
-  <ark-tags-input class="${styles.Root}" ${attr('add-on-paste', addOnPaste)} delimiter="${delimiter}">
-    <ark-tags-input-label class="${styles.Label}">${label}</ark-tags-input-label>
+export function mount(root: HTMLElement) {
+  root.innerHTML = /* html */ `
+  <ark-tags-input class="${styles.Root}" add-on-paste delimiter=",">
+    <ark-tags-input-label class="${styles.Label}">Frameworks</ark-tags-input-label>
     <ark-tags-input-control class="${styles.Control}">
       <template>
         <ark-tags-input-item class="${styles.Item}">
@@ -31,12 +18,9 @@ const tagsInputMarkup = ({
           <ark-tags-input-item-input><input class="${styles.ItemInput}" /></ark-tags-input-item-input>
         </ark-tags-input-item>
       </template>
-      <ark-tags-input-input><input class="${styles.Input}" placeholder="${placeholder}" /></ark-tags-input-input>
+      <ark-tags-input-input><input class="${styles.Input}" placeholder="Add Framework" /></ark-tags-input-input>
       <ark-tags-input-clear-trigger><button class="${styles.ClearTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-tags-input-clear-trigger>
     </ark-tags-input-control>
     <ark-tags-input-hidden-input></ark-tags-input-hidden-input>
   </ark-tags-input>`
-
-export function mount(root: HTMLElement) {
-  root.innerHTML = tagsInputMarkup({ addOnPaste: true, delimiter: ',' })
 }

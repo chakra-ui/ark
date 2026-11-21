@@ -4,19 +4,6 @@ import '../../src/components/listbox/index.js'
 
 import styles from 'styles/listbox.module.css'
 
-interface ListboxProps {
-  label: string
-  orientation: 'horizontal' | 'vertical'
-}
-
-const listbox = ({ label, orientation }: ListboxProps, children: string[]) => /* html */ `
-  <ark-listbox class="${styles.Root}" orientation="${orientation}">
-    <ark-listbox-label class="${styles.Label}">${label}</ark-listbox-label>
-    <ark-listbox-content class="${styles.Content}">
-      <ark-listbox-list class="${styles.List}">${children.join('')}</ark-listbox-list>
-    </ark-listbox-content>
-  </ark-listbox>`
-
 interface Album {
   title: string
   artist: string
@@ -40,8 +27,11 @@ const albumItem = ({ title, artist, image }: Album) => /* html */ `
   </ark-listbox-item>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = listbox(
-    { label: 'Select Album', orientation: 'horizontal' },
-    albums.map((album) => albumItem(album)),
-  )
+  root.innerHTML = /* html */ `
+  <ark-listbox class="${styles.Root}" orientation="horizontal">
+    <ark-listbox-label class="${styles.Label}">Select Album</ark-listbox-label>
+    <ark-listbox-content class="${styles.Content}">
+      <ark-listbox-list class="${styles.List}">${albums.map((album) => albumItem(album)).join('')}</ark-listbox-list>
+    </ark-listbox-content>
+  </ark-listbox>`
 }

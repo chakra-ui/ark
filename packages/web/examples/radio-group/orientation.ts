@@ -13,17 +13,10 @@ const item = (value: string) => /* html */ `
     </label>
   </ark-radio-group-item>`
 
-interface RadioGroupProps {
-  defaultValue: string
-  orientation: 'horizontal' | 'vertical'
-}
-
-const radioGroup = ({ defaultValue, orientation }: RadioGroupProps, items: string[]) => /* html */ `
-  <ark-radio-group class="${styles.Root}" default-value="${defaultValue}" orientation="${orientation}">
-    <ark-radio-group-label class="${styles.Label}">Framework</ark-radio-group-label>
-    <div class="hstack">${items.join('')}</div>
-  </ark-radio-group>`
-
 export function mount(root: HTMLElement) {
-  root.innerHTML = radioGroup({ defaultValue: 'React', orientation: 'horizontal' }, frameworks.map(item))
+  root.innerHTML = /* html */ `
+    <ark-radio-group class="${styles.Root}" default-value="React" orientation="horizontal">
+      <ark-radio-group-label class="${styles.Label}">Framework</ark-radio-group-label>
+      <div class="hstack">${frameworks.map(item).join('')}</div>
+    </ark-radio-group>`
 }

@@ -15,16 +15,13 @@ const item = (value: string) => /* html */ `
     </label>
   </ark-radio-group-item>`
 
-const radioGroup = (items: string[]) => /* html */ `
-  <ark-radio-group class="${styles.Root}">
-    ${items.join('')}
-  </ark-radio-group>`
-
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
   <fieldset class="${fieldset.Root}">
     <legend class="${fieldset.Legend}">Select a framework</legend>
-    ${radioGroup(frameworks.map(item))}
+    <ark-radio-group class="${styles.Root}">
+      ${frameworks.map(item).join('')}
+    </ark-radio-group>
     <span class="${fieldset.HelperText}">Choose your preferred framework</span>
     <span class="${fieldset.ErrorText}" hidden>Please select a framework</span>
   </fieldset>`

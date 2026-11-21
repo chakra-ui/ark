@@ -2,7 +2,7 @@ import * as menubar from '@zag-js/menubar'
 
 import { str } from '../../utils/attrs.js'
 import { defineRoot } from '../../utils/define.js'
-import { dirOf, menusOf, root, scopeTriggerQuery } from './shared.js'
+import { dirOf, menusOf, root } from './shared.js'
 
 type Orientation = NonNullable<menubar.Props['orientation']>
 
@@ -21,7 +21,6 @@ defineRoot<menubar.Api>({
   }),
 
   rootProps: (api) => api.getRootProps(),
-  setup: scopeTriggerQuery,
   render: (_api, el) => {
     for (const menu of menusOf(el)) menu.refresh?.()
   },

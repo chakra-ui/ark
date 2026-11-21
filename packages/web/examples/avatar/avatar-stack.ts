@@ -34,24 +34,6 @@ const avatar = ({ user, className = styles.Root }: { user: User; className?: str
     <ark-avatar-image><img class="${styles.Image}" src="${user.src}" alt="${user.name}" /></ark-avatar-image>
   </ark-avatar>`
 
-const overflowMenu = ({ count }: { count: number }, children: string[]) => /* html */ `
-  <ark-menu>
-    <ark-menu-trigger>
-      <button type="button" style="${triggerStyle}" aria-label="Show ${count} more">
-        <ark-avatar class="${styles.Root}">
-          <ark-avatar-fallback class="${styles.Fallback}">+${count}</ark-avatar-fallback>
-        </ark-avatar>
-      </button>
-    </ark-menu-trigger>
-    <ark-menu-positioner class="${menuStyles.Positioner}">
-      <ark-menu-content class="${menuStyles.Content}">
-        <ark-menu-list class="${menuStyles.List}">
-          ${children.join('')}
-        </ark-menu-list>
-      </ark-menu-content>
-    </ark-menu-positioner>
-  </ark-menu>`
-
 const menuItem = (user: User) => /* html */ `
   <ark-menu-item class="${menuStyles.Item}" value="${user.id}">
     ${avatar({ user, className: `${styles.Root} ${styles.MenuAvatar}` })}
@@ -62,6 +44,19 @@ export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
   <div class="${styles.Stack}">
     ${visible.map((user) => avatar({ user })).join('')}
-    ${overflowMenu({ count: hidden.length }, hidden.map(menuItem))}
+    <ark-menu>
+      <ark-menu-trigger>
+        <button type="button" style="${triggerStyle}" aria-label="Show ${hidden.length} more">
+          <ark-avatar class="${styles.Root}">
+            <ark-avatar-fallback class="${styles.Fallback}">+${hidden.length}</ark-avatar-fallback>
+          </ark-avatar>
+        </button>
+      </ark-menu-trigger>
+      <ark-menu-positioner class="${menuStyles.Positioner}">
+        <ark-menu-content class="${menuStyles.Content}">
+          <ark-menu-list class="${menuStyles.List}">${hidden.map(menuItem).join('')}</ark-menu-list>
+        </ark-menu-content>
+      </ark-menu-positioner>
+    </ark-menu>
   </div>`
 }

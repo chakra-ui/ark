@@ -4,17 +4,10 @@ import '../../src/components/rating-group/index.js'
 
 import styles from 'styles/rating-group.module.css'
 
-const attr = (name: string, on?: boolean) => (on ? name : '')
-
-interface RatingGroupProps {
-  label: string
-  defaultValue: number
-  disabled?: boolean
-}
-
-const ratingGroup = ({ label, defaultValue, disabled }: RatingGroupProps) => /* html */ `
-  <ark-rating-group class="${styles.Root}" default-value="${defaultValue}" ${attr('disabled', disabled)}>
-    <ark-rating-group-label class="${styles.Label}">${label}</ark-rating-group-label>
+export function mount(root: HTMLElement) {
+  root.innerHTML = /* html */ `
+  <ark-rating-group class="${styles.Root}" default-value="3" disabled>
+    <ark-rating-group-label class="${styles.Label}">Label</ark-rating-group-label>
     <ark-rating-group-control class="${styles.Control}">
       <template>
         <ark-rating-group-item class="${styles.Item}">
@@ -27,7 +20,4 @@ const ratingGroup = ({ label, defaultValue, disabled }: RatingGroupProps) => /* 
       <ark-rating-group-hidden-input></ark-rating-group-hidden-input>
     </ark-rating-group-control>
   </ark-rating-group>`
-
-export function mount(root: HTMLElement) {
-  root.innerHTML = ratingGroup({ label: 'Label', defaultValue: 3, disabled: true })
 }

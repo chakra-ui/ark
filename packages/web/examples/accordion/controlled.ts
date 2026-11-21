@@ -28,21 +28,13 @@ const items: Item[] = [
   },
 ]
 
-const indicator = /* html */ `
-  <ark-accordion-item-indicator class="${styles.ItemIndicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-accordion-item-indicator>`
-
-const accordion = ({ value }: { value: string }, children: string[]) => /* html */ `
-  <ark-accordion class="${styles.Root}" value="${value}">
-    ${children.join('')}
-  </ark-accordion>`
-
-const accordionItem = ({ value, title, content }: Item) => /* html */ `
+const item = ({ value, title, content }: Item) => /* html */ `
   <ark-accordion-item class="${styles.Item}" value="${value}">
     <ark-accordion-item-header class="${styles.ItemHeader}">
       <ark-accordion-item-trigger>
         <button class="${styles.ItemTrigger}">
           ${title}
-          ${indicator}
+          <ark-accordion-item-indicator class="${styles.ItemIndicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-accordion-item-indicator>
         </button>
       </ark-accordion-item-trigger>
     </ark-accordion-item-header>
@@ -53,7 +45,9 @@ export function mount(container: HTMLElement) {
   const host = document.createElement('div')
   host.innerHTML = /* html */ `
     <output class="${styles.Output}">value: </output>
-    ${accordion({ value: '' }, items.map(accordionItem))}`
+    <ark-accordion class="${styles.Root}" value="">
+      ${items.map(item).join('')}
+    </ark-accordion>`
   const root = host.querySelector('ark-accordion')!
   root.addEventListener('valuechange', (event) => {
     const { value } = event.detail

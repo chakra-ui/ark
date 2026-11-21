@@ -14,51 +14,6 @@ const names: Item[] = Array.from({ length: 14 }, (_, i) => ({ value: `Name ${i +
 
 const icon = (node: typeof Check) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
-const attr = (name: string, on?: boolean) => (on ? name : '')
-
-interface SelectProps {
-  label: string
-  placement: string
-  fitViewport?: boolean
-  sameWidth?: boolean
-}
-
-const select = ({ label, placement, fitViewport, sameWidth }: SelectProps, children: string[]) => /* html */ `
-  <ark-select class="${styles.Root}" ${attr('fit-viewport', fitViewport)} placement="${placement}" ${attr('same-width', sameWidth)}>
-    <ark-select-label class="${styles.Label}">${label}</ark-select-label>
-    ${children.join('')}
-  </ark-select>`
-
-const valueText = ({ placeholder }: { placeholder: string }) => /* html */ `
-  <ark-select-value-text class="${styles.ValueText}" placeholder="${placeholder}"></ark-select-value-text>`
-
-const indicator = () => /* html */ `
-  <ark-select-indicator class="${styles.Indicator}">${icon(ChevronsUpDown)}</ark-select-indicator>`
-
-const control = ({ placeholder, clearable = false }: { placeholder: string; clearable?: boolean }) => /* html */ `
-  <ark-select-control class="${styles.Control}">
-    <ark-select-trigger>
-      <button class="${styles.Trigger}">${valueText({ placeholder })}${indicator()}</button>
-    </ark-select-trigger>
-    ${clearable ? /* html */ `<ark-select-clear-trigger><button class="${styles.ClearTrigger}">Clear</button></ark-select-clear-trigger>` : ''}
-  </ark-select-control>`
-
-const content = ({ style }: { style?: string }, children: string[]) => /* html */ `
-  <ark-select-positioner class="${styles.Positioner}">
-    <ark-select-content class="${styles.Content}" ${style ? `style="${style}"` : ''}>
-      ${children.join('')}
-    </ark-select-content>
-  </ark-select-positioner>`
-
-const list = (children: string[]) => /* html */ `
-  <ark-select-list class="${styles.List}">${children.join('')}</ark-select-list>`
-
-const itemGroup = ({ label }: { label: string }, children: string[]) => /* html */ `
-  <ark-select-item-group class="${styles.ItemGroup}" name="${label.toLowerCase()}">
-    <ark-select-item-group-label class="${styles.ItemGroupLabel}">${label}</ark-select-item-group-label>
-    ${children.join('')}
-  </ark-select-item-group>`
-
 const item = ({ value, label }: Item) => /* html */ `
   <ark-select-item class="${styles.Item}" value="${value}">
     <ark-select-item-text class="${styles.ItemText}">${label}</ark-select-item-text>
@@ -66,8 +21,27 @@ const item = ({ value, label }: Item) => /* html */ `
   </ark-select-item>`
 
 export function mount(container: HTMLElement) {
-  container.innerHTML = select({ label: 'Framework', placement: 'bottom-start', fitViewport: true, sameWidth: true }, [
-    control({ placeholder: 'Select a Framework', clearable: true }),
-    content({ style: 'max-height: 200px' }, [list([itemGroup({ label: 'Names' }, names.map(item))])]),
-  ])
+  container.innerHTML = /* html */ `
+    <ark-select class="${styles.Root}" fit-viewport placement="bottom-start" same-width>
+      <ark-select-label class="${styles.Label}">Framework</ark-select-label>
+      <ark-select-control class="${styles.Control}">
+        <ark-select-trigger>
+          <button class="${styles.Trigger}">
+            <ark-select-value-text class="${styles.ValueText}" placeholder="Select a Framework"></ark-select-value-text>
+            <ark-select-indicator class="${styles.Indicator}">${icon(ChevronsUpDown)}</ark-select-indicator>
+          </button>
+        </ark-select-trigger>
+        <ark-select-clear-trigger><button class="${styles.ClearTrigger}">Clear</button></ark-select-clear-trigger>
+      </ark-select-control>
+      <ark-select-positioner class="${styles.Positioner}">
+        <ark-select-content class="${styles.Content}" style="max-height: 200px">
+          <ark-select-list class="${styles.List}">
+            <ark-select-item-group class="${styles.ItemGroup}" name="names">
+              <ark-select-item-group-label class="${styles.ItemGroupLabel}">Names</ark-select-item-group-label>
+              ${names.map(item).join('')}
+            </ark-select-item-group>
+          </ark-select-list>
+        </ark-select-content>
+      </ark-select-positioner>
+    </ark-select>`
 }

@@ -24,46 +24,8 @@ const frameworks: Item[] = [
 
 const icon = (node: typeof Check) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
-const attr = (name: string, on?: boolean) => (on ? name : '')
-
-interface SelectProps {
-  label: string
-  defaultValue: string
-  alignItemWithTrigger?: boolean
-}
-
-const select = ({ label, defaultValue, alignItemWithTrigger }: SelectProps, children: string[]) => /* html */ `
-  <ark-select class="${styles.Root}" ${attr('align-item-with-trigger', alignItemWithTrigger)} default-value="${defaultValue}">
-    <ark-select-label class="${styles.Label}">${label}</ark-select-label>
-    ${children.join('')}
-  </ark-select>`
-
-const valueText = ({ placeholder }: { placeholder: string }) => /* html */ `
-  <ark-select-value-text class="${styles.ValueText}" placeholder="${placeholder}"></ark-select-value-text>`
-
-const indicator = () => /* html */ `
-  <ark-select-indicator class="${styles.Indicator}">${icon(ChevronsUpDown)}</ark-select-indicator>`
-
-const control = ({ placeholder, clearable = false }: { placeholder: string; clearable?: boolean }) => /* html */ `
-  <ark-select-control class="${styles.Control}">
-    <ark-select-trigger>
-      <button class="${styles.Trigger}">${valueText({ placeholder })}${indicator()}</button>
-    </ark-select-trigger>
-    ${clearable ? /* html */ `<ark-select-clear-trigger><button class="${styles.ClearTrigger}">Clear</button></ark-select-clear-trigger>` : ''}
-  </ark-select-control>`
-
-const content = (children: string[]) => /* html */ `
-  <ark-select-positioner class="${styles.Positioner}">
-    <ark-select-content class="${styles.Content}">
-      ${children.join('')}
-    </ark-select-content>
-  </ark-select-positioner>`
-
 const scrollArrow = ({ placement }: { placement: 'top' | 'bottom' }) => /* html */ `
   <ark-select-scroll-arrow class="${styles.ScrollArrow}" placement="${placement}">${icon(placement === 'top' ? ChevronUp : ChevronDown)}</ark-select-scroll-arrow>`
-
-const list = (children: string[]) => /* html */ `
-  <ark-select-list class="${styles.List}">${children.join('')}</ark-select-list>`
 
 const item = ({ value, label }: Item) => /* html */ `
   <ark-select-item class="${styles.Item}" value="${value}">
@@ -72,8 +34,23 @@ const item = ({ value, label }: Item) => /* html */ `
   </ark-select-item>`
 
 export function mount(container: HTMLElement) {
-  container.innerHTML = select({ label: 'Framework', defaultValue: 'solid', alignItemWithTrigger: true }, [
-    control({ placeholder: 'Select' }),
-    content([scrollArrow({ placement: 'top' }), list(frameworks.map(item)), scrollArrow({ placement: 'bottom' })]),
-  ])
+  container.innerHTML = /* html */ `
+    <ark-select class="${styles.Root}" align-item-with-trigger default-value="solid">
+      <ark-select-label class="${styles.Label}">Framework</ark-select-label>
+      <ark-select-control class="${styles.Control}">
+        <ark-select-trigger>
+          <button class="${styles.Trigger}">
+            <ark-select-value-text class="${styles.ValueText}" placeholder="Select"></ark-select-value-text>
+            <ark-select-indicator class="${styles.Indicator}">${icon(ChevronsUpDown)}</ark-select-indicator>
+          </button>
+        </ark-select-trigger>
+      </ark-select-control>
+      <ark-select-positioner class="${styles.Positioner}">
+        <ark-select-content class="${styles.Content}">
+          ${scrollArrow({ placement: 'top' })}
+          <ark-select-list class="${styles.List}">${frameworks.map(item).join('')}</ark-select-list>
+          ${scrollArrow({ placement: 'bottom' })}
+        </ark-select-content>
+      </ark-select-positioner>
+    </ark-select>`
 }

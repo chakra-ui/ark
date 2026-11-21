@@ -6,38 +6,16 @@ import button from 'styles/button.module.css'
 
 import styles from 'styles/popover.module.css'
 
-const attr = (name: string, value?: string | number | boolean) => (value === undefined ? '' : `${name}="${value}"`)
-
-interface PopoverProps {
-  placement?: string
-  offset?: string
-  flip?: string
-}
-
-const popover = ({ placement, offset, flip }: PopoverProps, children: string[]) => /* html */ `
-  <ark-popover ${attr('placement', placement)} ${attr('offset', offset)} ${attr('flip', flip)}>
+export function mount(root: HTMLElement) {
+  root.innerHTML = /* html */ `
+  <ark-popover placement="left-start" offset="12,12" flip="right-start,bottom,top">
     <ark-popover-trigger><button class="${button.Root}">Click Me</button></ark-popover-trigger>
     <ark-popover-positioner class="${styles.Positioner}">
-      <ark-popover-content class="${styles.Content}">${children.join('')}</ark-popover-content>
+      <ark-popover-content class="${styles.Content}">
+        <ark-popover-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-popover-close-trigger>
+        <ark-popover-title class="${styles.Title}">Left Placement</ark-popover-title>
+        <ark-popover-description class="${styles.Description}">This popover appears on the left with custom offset values.</ark-popover-description>
+      </ark-popover-content>
     </ark-popover-positioner>
   </ark-popover>`
-
-const closeButton = /* html */ `<ark-popover-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-popover-close-trigger>`
-
-const heading = ({ title, description }: { title: string; description: string }) => /* html */ `
-  <ark-popover-title class="${styles.Title}">${title}</ark-popover-title>
-  <ark-popover-description class="${styles.Description}">${description}</ark-popover-description>`
-
-export function mount(root: HTMLElement) {
-  root.innerHTML = popover(
-    {
-      placement: 'left-start',
-      offset: '12,12',
-      flip: 'right-start,bottom,top',
-    },
-    [
-      closeButton,
-      heading({ title: 'Left Placement', description: 'This popover appears on the left with custom offset values.' }),
-    ],
-  )
 }

@@ -19,35 +19,22 @@ const images: Image[] = [
 
 const icon = (node: typeof ArrowLeft) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
-const carousel = ({ defaultPage }: { defaultPage: number }, children: string[]) => /* html */ `
-  <ark-carousel class="${styles.Root}" default-page="${defaultPage}">${children.join('')}</ark-carousel>`
-
-const control = (children: string[]) => /* html */ `
-  <ark-carousel-control class="${styles.Control}">${children.join('')}</ark-carousel-control>`
-
-const prevTrigger = () => /* html */ `
-  <ark-carousel-prev-trigger><button class="${styles.Trigger}">${icon(ArrowLeft)}</button></ark-carousel-prev-trigger>`
-
-const nextTrigger = () => /* html */ `
-  <ark-carousel-next-trigger><button class="${styles.Trigger}">${icon(ArrowRight)}</button></ark-carousel-next-trigger>`
-
-const itemGroup = (children: string[]) => /* html */ `
-  <ark-carousel-item-group class="${styles.ItemGroup}">${children.join('')}</ark-carousel-item-group>`
-
 const image = ({ src, alt }: Image) => /* html */ `<img src="${src}" alt="${alt}" width="500" height="300" />`
 
 const imageItem = (img: Image) => /* html */ `
   <ark-carousel-item class="${styles.Item}">${image(img)}</ark-carousel-item>`
 
-const indicatorGroup = (children: string[]) => /* html */ `
-  <ark-carousel-indicator-group class="${styles.IndicatorGroup}">${children.join('')}</ark-carousel-indicator-group>`
-
 const thumbnailIndicator = (img: Image) => /* html */ `
   <ark-carousel-indicator><button class="${styles.ThumbnailIndicator}">${image(img)}</button></ark-carousel-indicator>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = carousel({ defaultPage: 0 }, [
-    control([prevTrigger(), itemGroup(images.map(imageItem)), nextTrigger()]),
-    indicatorGroup(images.map(thumbnailIndicator)),
-  ])
+  root.innerHTML = /* html */ `
+    <ark-carousel class="${styles.Root}" default-page="0">
+      <ark-carousel-control class="${styles.Control}">
+        <ark-carousel-prev-trigger><button class="${styles.Trigger}">${icon(ArrowLeft)}</button></ark-carousel-prev-trigger>
+        <ark-carousel-item-group class="${styles.ItemGroup}">${images.map(imageItem).join('')}</ark-carousel-item-group>
+        <ark-carousel-next-trigger><button class="${styles.Trigger}">${icon(ArrowRight)}</button></ark-carousel-next-trigger>
+      </ark-carousel-control>
+      <ark-carousel-indicator-group class="${styles.IndicatorGroup}">${images.map(thumbnailIndicator).join('')}</ark-carousel-indicator-group>
+    </ark-carousel>`
 }

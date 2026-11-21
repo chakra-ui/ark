@@ -1,6 +1,7 @@
 import { createElement, ChevronsUpDown, Check } from 'lucide'
 
 import { createListCollection, type ListCollection } from '../../src/components/combobox/index.js'
+import { createFilter } from '../../src/utils/locale.js'
 import {
   createListVirtualizer,
   renderVirtualItems,
@@ -9,6 +10,8 @@ import {
 } from '../../src/components/virtualizer/index.js'
 
 import styles from 'styles/combobox.module.css'
+
+const { contains } = createFilter({ sensitivity: 'base' })
 
 interface Row {
   value: string
@@ -100,8 +103,8 @@ export function mount(root: HTMLElement) {
   }
   combobox.addEventListener('inputvaluechange', (event) => {
     if (event.detail.reason !== 'input-change') return
-    const query = event.detail.inputValue.trim().toLowerCase()
-    show(query ? all.filter((text) => text.toLowerCase().includes(query)) : all)
+    const query = event.detail.inputValue.trim()
+    show(all.filter((text) => contains(text, query)))
   })
 
   spreadVirtualizerProps(scroller, { style: virtualizer.getContainerStyle() })

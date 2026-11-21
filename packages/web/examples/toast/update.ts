@@ -12,26 +12,6 @@ const fragment = (html: string) => {
   return host
 }
 
-const typeStyle = /* html */ `<style>${['info', 'success', 'error', 'warning', 'loading']
-  .map((type) => `ark-toast:not([data-type='${type}']) [data-icon='${type}'] { display: none; }`)
-  .join('\n')}</style>`
-
-const toaster = (children: string[]) => /* html */ `
-  ${typeStyle}
-  <ark-toaster>
-    <template>
-      <ark-toast class="${styles.Root}">${children.join('')}</ark-toast>
-    </template>
-  </ark-toaster>`
-
-const title = (children: string[] = []) =>
-  /* html */ `<ark-toast-title class="${styles.Title}">${children.join('')}</ark-toast-title>`
-
-const description = /* html */ `<ark-toast-description class="${styles.Description}"></ark-toast-description>`
-
-const content = ({ style = '' }: { style?: string } = {}, children = [title(), description]) =>
-  /* html */ `<ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ${style}">${children.join('')}</ark-toast-content>`
-
 const onClick = (host: HTMLElement, selector: string, listener: (el: HTMLElement) => void) => {
   for (const el of host.querySelectorAll<HTMLElement>(selector)) el.addEventListener('click', () => listener(el))
 }
@@ -50,7 +30,19 @@ export function mount(root: HTMLElement) {
       <button type="button" class="${button.Root}" data-create>Send message</button>
       <button type="button" class="${button.Root}" data-update>Mark as sent</button>
     </div>
-    ${toaster([content()])}`)
+    <style>${['info', 'success', 'error', 'warning', 'loading']
+      .map((type) => `ark-toast:not([data-type='${type}']) [data-icon='${type}'] { display: none; }`)
+      .join('\n')}</style>
+    <ark-toaster>
+      <template>
+        <ark-toast class="${styles.Root}">
+          <ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ">
+            <ark-toast-title class="${styles.Title}"></ark-toast-title>
+            <ark-toast-description class="${styles.Description}"></ark-toast-description>
+          </ark-toast-content>
+        </ark-toast>
+      </template>
+    </ark-toaster>`)
   onClick(host, '[data-create]', () => {
     id = store.create({
       title: 'Sending message...',

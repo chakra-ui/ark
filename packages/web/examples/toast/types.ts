@@ -1,4 +1,4 @@
-import { createElement, X, Clock, Info, CircleCheck, CircleAlert, TriangleAlert, LoaderCircle } from 'lucide'
+import { createElement, X, CircleCheck, CircleAlert, TriangleAlert, Info } from 'lucide'
 
 import { createToaster } from '../../src/components/toast/index.js'
 
@@ -14,27 +14,19 @@ const fragment = (html: string) => {
   return host
 }
 
-const typeStyle = /* html */ `<style>${['info', 'success', 'error', 'warning', 'loading']
-  .map((type) => `ark-toast:not([data-type='${type}']) [data-icon='${type}'] { display: none; }`)
-  .join('\n')}</style>`
+const indicatorIcons = {
+  success: CircleCheck,
+  error: CircleAlert,
+  warning: TriangleAlert,
+  info: Info,
+}
 
-const toaster = (children: string[]) => /* html */ `
-  ${typeStyle}
-  <ark-toaster>
-    <template>
-      <ark-toast class="${styles.Root}">${children.join('')}</ark-toast>
-    </template>
-  </ark-toaster>`
-
-const title = (children: string[] = []) =>
-  /* html */ `<ark-toast-title class="${styles.Title}">${children.join('')}</ark-toast-title>`
-
-const description = /* html */ `<ark-toast-description class="${styles.Description}"></ark-toast-description>`
-
-const content = ({ style = '' }: { style?: string } = {}, children = [title(), description]) =>
-  /* html */ `<ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ${style}">${children.join('')}</ark-toast-content>`
-
-const closeTrigger = /* html */ `<ark-toast-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-toast-close-trigger>`
+const indicator = (type: keyof typeof indicatorIcons) =>
+  createElement(indicatorIcons[type], {
+    'aria-hidden': 'true',
+    class: styles.Indicator,
+    'data-icon': type,
+  }).outerHTML
 
 const onClick = (host: HTMLElement, selector: string, listener: (el: HTMLElement) => void) => {
   for (const el of host.querySelectorAll<HTMLElement>(selector)) el.addEventListener('click', () => listener(el))
@@ -67,31 +59,22 @@ const typeButton = ({ type, label }: { type: string; label: string }) =>
 export function mount(root: HTMLElement) {
   const host = fragment(/* html */ `
     <div style="display: flex; gap: 12px; flex-wrap: wrap">
-      ${typeButtons.map((entry) => typeButton(entry)).join('')}
+      ${typeButtons.map(typeButton).join('')}
     </div>
-    ${toaster([content({}, [title(typeIndicators(['success', 'error', 'warning', 'info'])), description]), closeTrigger])}`)
+    <style>${['info', 'success', 'error', 'warning', 'loading']
+      .map((type) => `ark-toast:not([data-type='${type}']) [data-icon='${type}'] { display: none; }`)
+      .join('\n')}</style>
+    <ark-toaster>
+      <template>
+        <ark-toast class="${styles.Root}">
+          <ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ">
+            <ark-toast-title class="${styles.Title}">${(['success', 'error', 'warning', 'info'] as const).map(indicator).join('')}</ark-toast-title>
+            <ark-toast-description class="${styles.Description}"></ark-toast-description>
+          </ark-toast-content>
+          <ark-toast-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-toast-close-trigger>
+        </ark-toast>
+      </template>
+    </ark-toaster>`)
   onClick(host, 'button[data-type]', (el) => actions[el.dataset.type as keyof typeof actions]())
   root.replaceChildren(connect(host, store))
 }
-
-const indicatorIcons = {
-  clock: Clock,
-  info: Info,
-  success: CircleCheck,
-  error: CircleAlert,
-  warning: TriangleAlert,
-  loading: LoaderCircle,
-}
-
-interface IndicatorProps {
-  name: keyof typeof indicatorIcons
-  attrs?: Record<string, string>
-}
-
-const indicator = ({ name, attrs = {} }: IndicatorProps) =>
-  createElement(indicatorIcons[name], { 'aria-hidden': 'true', class: styles.Indicator, ...attrs }).outerHTML
-
-const typeIndicators = (types: (keyof typeof indicatorIcons)[]) =>
-  types.map((type) =>
-    indicator({ name: type, attrs: { 'data-icon': type, ...(type === 'loading' ? { 'data-type': 'loading' } : {}) } }),
-  )

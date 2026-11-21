@@ -6,27 +6,18 @@ import button from 'styles/button.module.css'
 
 import styles from 'styles/popover.module.css'
 
-interface PopoverProps {
-  lazy?: boolean
-}
-
-const popover = ({ lazy = false }: PopoverProps, children: string[]) => /* html */ `
+export function mount(root: HTMLElement) {
+  root.innerHTML = /* html */ `
   <ark-popover>
     <ark-popover-trigger><button class="${button.Root}">Click Me</button></ark-popover-trigger>
     <ark-popover-positioner class="${styles.Positioner}">
-      <ark-popover-content class="${styles.Content}">${lazy ? /* html */ `<template>${children.join('')}</template>` : children.join('')}</ark-popover-content>
+      <ark-popover-content class="${styles.Content}">
+        <template>
+        <ark-popover-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-popover-close-trigger>
+        <ark-popover-title class="${styles.Title}">Lazy Loaded</ark-popover-title>
+        <ark-popover-description class="${styles.Description}">This content is only mounted when the popover opens.</ark-popover-description>
+        </template>
+      </ark-popover-content>
     </ark-popover-positioner>
   </ark-popover>`
-
-const closeButton = /* html */ `<ark-popover-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-popover-close-trigger>`
-
-const heading = ({ title, description }: { title: string; description: string }) => /* html */ `
-  <ark-popover-title class="${styles.Title}">${title}</ark-popover-title>
-  <ark-popover-description class="${styles.Description}">${description}</ark-popover-description>`
-
-export function mount(root: HTMLElement) {
-  root.innerHTML = popover({ lazy: true }, [
-    closeButton,
-    heading({ title: 'Lazy Loaded', description: 'This content is only mounted when the popover opens.' }),
-  ])
 }

@@ -14,22 +14,6 @@ const panes: Pane[] = [
   { value: 'billing', label: 'Billing', content: 'Manage your billing and payment details.' },
 ]
 
-interface TabsProps {
-  defaultValue: string
-  unmountOnExit?: boolean
-}
-
-const attr = (name: string, on?: boolean) => (on ? name : '')
-
-const tabs = ({ defaultValue, unmountOnExit = false }: TabsProps, children: string[]) => /* html */ `
-  <ark-tabs class="${styles.Root}" default-value="${defaultValue}" ${attr('unmount-on-exit', unmountOnExit)}>${children.join('')}</ark-tabs>`
-
-const list = (triggers: string[]) => /* html */ `
-  <ark-tabs-list class="${styles.List}">
-    ${triggers.join('')}
-    <ark-tabs-indicator class="${styles.Indicator}"></ark-tabs-indicator>
-  </ark-tabs-list>`
-
 const trigger = ({ value, label }: Pane) => /* html */ `
   <ark-tabs-trigger value="${value}">
     <button class="${styles.TriggerIndicator}">${label}</button>
@@ -39,8 +23,12 @@ const content = ({ value, content }: Pane) => /* html */ `
   <ark-tabs-content class="${styles.Content}" value="${value}"><template>${content}</template></ark-tabs-content>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = tabs({ defaultValue: 'account', unmountOnExit: true }, [
-    list(panes.map(trigger)),
-    ...panes.map(content),
-  ])
+  root.innerHTML = /* html */ `
+    <ark-tabs class="${styles.Root}" default-value="account" unmount-on-exit>
+      <ark-tabs-list class="${styles.List}">
+        ${panes.map(trigger).join('')}
+        <ark-tabs-indicator class="${styles.Indicator}"></ark-tabs-indicator>
+      </ark-tabs-list>
+      ${panes.map(content).join('')}
+    </ark-tabs>`
 }

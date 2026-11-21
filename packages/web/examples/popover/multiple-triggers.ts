@@ -21,8 +21,9 @@ export function mount(root: HTMLElement) {
       </div>
       <ark-popover-positioner class="${styles.Positioner}">
         <ark-popover-content class="${styles.Content}">
-  <ark-popover-title class="${styles.Title}">Select an action</ark-popover-title>
-  <ark-popover-description class="${styles.Description}">Click a button above</ark-popover-description></ark-popover-content>
+          <ark-popover-title class="${styles.Title}">Select an action</ark-popover-title>
+          <ark-popover-description class="${styles.Description}">Click a button above</ark-popover-description>
+        </ark-popover-content>
       </ark-popover-positioner>
     </ark-popover>`
   root.querySelector('ark-popover')!.addEventListener('triggervaluechange', (event) => {

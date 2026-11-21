@@ -14,12 +14,6 @@ const panes: Pane[] = [
   { value: 'billing', label: 'Billing', content: 'Manage your billing and payment details.' },
 ]
 
-const tabs = ({ defaultValue }: { defaultValue: string }, children: string[]) => /* html */ `
-  <ark-tabs class="${styles.Root}" default-value="${defaultValue}">${children.join('')}</ark-tabs>`
-
-const list = (triggers: string[]) => /* html */ `
-  <ark-tabs-list class="${styles.List}">${triggers.join('')}</ark-tabs-list>`
-
 const trigger = ({ value, label }: Pane) => /* html */ `
   <ark-tabs-trigger value="${value}">
     <button class="${styles.Trigger}">${label}</button>
@@ -29,5 +23,9 @@ const content = ({ value, content }: Pane) =>
   /* html */ `<ark-tabs-content class="${styles.Content}" value="${value}">${content}</ark-tabs-content>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = tabs({ defaultValue: 'account' }, [list(panes.map(trigger)), ...panes.map(content)])
+  root.innerHTML = /* html */ `
+    <ark-tabs class="${styles.Root}" default-value="account">
+      <ark-tabs-list class="${styles.List}">${panes.map(trigger).join('')}</ark-tabs-list>
+      ${panes.map(content).join('')}
+    </ark-tabs>`
 }

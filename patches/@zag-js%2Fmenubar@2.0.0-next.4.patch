@@ -1,0 +1,36 @@
+diff --git a/dist/menubar.dom.js b/dist/menubar.dom.js
+index 907e67f8faf1b5099d021df3d340e5d838bdf90b..64e09284373f928c835f2c715b58fb7ebda39124 100644
+--- a/dist/menubar.dom.js
++++ b/dist/menubar.dom.js
+@@ -15,11 +15,11 @@ const getRootEl = (ctx) => ctx.query(ctx.selector(require_menubar_anatomy.parts.
+ const getTriggerEls = (ctx) => {
+ 	const rootEl = getRootEl(ctx);
+ 	if (!rootEl) return [];
+-	const els = rootEl.querySelectorAll("[role=menuitem]");
++	const els = rootEl.querySelectorAll("[role=menuitem]:not([role=menu] *)");
+ 	return Array.from(els).filter((el) => !el.hasAttribute("data-disabled") && !el.hasAttribute("disabled") && el.getAttribute("aria-disabled") !== "true");
+ };
+ const isTriggerEl = (el) => {
+-	return (0, _zag_js_dom_query.isHTMLElement)(el) && el.getAttribute("role") === "menuitem";
++	return (0, _zag_js_dom_query.isHTMLElement)(el) && el.getAttribute("role") === "menuitem" && !el.closest("[role=menu]");
+ };
+ const getFirstTriggerEl = (ctx) => (0, _zag_js_utils.first)(getTriggerEls(ctx));
+ const getLastTriggerEl = (ctx) => (0, _zag_js_utils.last)(getTriggerEls(ctx));
+diff --git a/dist/menubar.dom.mjs b/dist/menubar.dom.mjs
+index c591a64ceefe2431b4854213018779f9acecc8e1..019c2b560b7167c483b469b5b63ebea9aa80728a 100644
+--- a/dist/menubar.dom.mjs
++++ b/dist/menubar.dom.mjs
+@@ -11,11 +11,11 @@ const getRootEl = (ctx) => ctx.query(ctx.selector(parts.root));
+ const getTriggerEls = (ctx) => {
+ 	const rootEl = getRootEl(ctx);
+ 	if (!rootEl) return [];
+-	const els = rootEl.querySelectorAll("[role=menuitem]");
++	const els = rootEl.querySelectorAll("[role=menuitem]:not([role=menu] *)");
+ 	return Array.from(els).filter((el) => !el.hasAttribute("data-disabled") && !el.hasAttribute("disabled") && el.getAttribute("aria-disabled") !== "true");
+ };
+ const isTriggerEl = (el) => {
+-	return isHTMLElement(el) && el.getAttribute("role") === "menuitem";
++	return isHTMLElement(el) && el.getAttribute("role") === "menuitem" && !el.closest("[role=menu]");
+ };
+ const getFirstTriggerEl = (ctx) => first(getTriggerEls(ctx));
+ const getLastTriggerEl = (ctx) => last(getTriggerEls(ctx));

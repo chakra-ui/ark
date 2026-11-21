@@ -2,12 +2,10 @@ import '../../src/components/listbox/index.js'
 
 import styles from 'styles/listbox.module.css'
 
-const json = (items: unknown[]) => /* html */ `<script type="application/json">${JSON.stringify(items)}</script>`
-
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
   <ark-listbox class="${styles.Root}" columns="4">
-    ${json(['😀', '😁', '😂', '🤣', '😃', '😄', '😅', '😆', '😉', '😊', '😋', '😎'])}
+    <script type="application/json">${JSON.stringify(['😀', '😁', '😂', '🤣', '😃', '😄', '😅', '😆', '😉', '😊', '😋', '😎'])}</script>
     <ark-listbox-label class="${styles.Label}">Pick an emoji</ark-listbox-label>
     <ark-listbox-content class="${styles.GridContent}">
       <ark-listbox-list class="${styles.List}">

@@ -10,8 +10,9 @@ const element = (html: string) => {
   return host.firstElementChild as HTMLElement
 }
 
-const circular = ({ value }: { value: number }) => /* html */ `
-  <ark-progress class="${styles.Root}" value="${value}">
+export function mount(root: HTMLElement) {
+  const progressEl = element(/* html */ `
+  <ark-progress class="${styles.Root}" value="42">
     <div class="${styles.CircleContainer}">
       <ark-progress-circle>
         <svg class="${styles.Circle}">
@@ -21,10 +22,7 @@ const circular = ({ value }: { value: number }) => /* html */ `
       </ark-progress-circle>
       <ark-progress-value-text class="${styles.ValueText}"></ark-progress-value-text>
     </div>
-  </ark-progress>`
-
-export function mount(root: HTMLElement) {
-  const progressEl = element(circular({ value: 42 })) as ProgressElement
+  </ark-progress>`) as ProgressElement
   progressEl.addEventListener('valuechange', (event) => {
     const { value } = event.detail
     progressEl.setAttribute('value', value == null ? '' : String(value))

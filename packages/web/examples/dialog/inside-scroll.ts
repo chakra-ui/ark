@@ -6,33 +6,6 @@ import styles from 'styles/dialog.module.css'
 
 import button from 'styles/button.module.css'
 
-const attr = (name: string, value?: string) => (value === undefined ? '' : `${name}="${value}"`)
-
-const openButton = (label: string) =>
-  /* html */ `<ark-dialog-trigger><button class="${button.Root}">${label}</button></ark-dialog-trigger>`
-
-interface DialogProps {
-  trigger: string
-  contentStyle?: string
-}
-
-const dialog = ({ trigger, contentStyle }: DialogProps, children: string[]) => /* html */ `
-  <ark-dialog>
-    ${openButton(trigger)}
-    <ark-dialog-backdrop class="${styles.Backdrop}"></ark-dialog-backdrop>
-    <ark-dialog-positioner class="${styles.Positioner}">
-      <ark-dialog-content class="${styles.Content}" ${attr('style', contentStyle)}>${children.join('')}</ark-dialog-content>
-    </ark-dialog-positioner>
-  </ark-dialog>`
-
-const closeButton = /* html */ `<ark-dialog-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-dialog-close-trigger>`
-
-const heading = ({ title, description }: { title: string; description: string }) => /* html */ `
-  <ark-dialog-title class="${styles.Title}">${title}</ark-dialog-title>
-  <ark-dialog-description class="${styles.Description}">${description}</ark-dialog-description>`
-
-const actions = (children: string[]) => /* html */ `<div class="${styles.Actions}">${children.join('')}</div>`
-
 const closeAction = ({ label, solid = false }: { label: string; solid?: boolean }) =>
   /* html */ `<ark-dialog-close-trigger><button class="${button.Root}" ${solid ? 'data-variant="solid"' : ''}>${label}</button></ark-dialog-close-trigger>`
 
@@ -71,10 +44,18 @@ const terms = [
 ]
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = dialog({ trigger: 'Open Dialog', contentStyle: 'max-height: min(32rem, calc(100vh - 4rem))' }, [
-    closeButton,
-    heading({ title: 'Terms of Service', description: 'Please review our terms before continuing.' }),
-    /* html */ `<div class="${styles.ScrollContainer}">${terms.map((term) => section(term)).join('')}</div>`,
-    actions([closeAction({ label: 'Decline' }), closeAction({ label: 'Accept', solid: true })]),
-  ])
+  root.innerHTML = /* html */ `
+  <ark-dialog>
+    <ark-dialog-trigger><button class="${button.Root}">Open Dialog</button></ark-dialog-trigger>
+    <ark-dialog-backdrop class="${styles.Backdrop}"></ark-dialog-backdrop>
+    <ark-dialog-positioner class="${styles.Positioner}">
+      <ark-dialog-content class="${styles.Content}" style="max-height: min(32rem, calc(100vh - 4rem))">
+        <ark-dialog-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-dialog-close-trigger>
+        <ark-dialog-title class="${styles.Title}">Terms of Service</ark-dialog-title>
+        <ark-dialog-description class="${styles.Description}">Please review our terms before continuing.</ark-dialog-description>
+        <div class="${styles.ScrollContainer}">${terms.map((term) => section(term)).join('')}</div>
+        <div class="${styles.Actions}">${closeAction({ label: 'Decline' })}${closeAction({ label: 'Accept', solid: true })}</div>
+      </ark-dialog-content>
+    </ark-dialog-positioner>
+  </ark-dialog>`
 }

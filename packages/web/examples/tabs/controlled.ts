@@ -14,12 +14,6 @@ const panes: Pane[] = [
   { value: 'billing', label: 'Billing', content: 'Manage your billing and payment details.' },
 ]
 
-const tabs = ({ value }: { value: string }, children: string[]) => /* html */ `
-  <ark-tabs class="${styles.Root}" value="${value}">${children.join('')}</ark-tabs>`
-
-const list = (triggers: string[]) => /* html */ `
-  <ark-tabs-list class="${styles.List}">${triggers.join('')}</ark-tabs-list>`
-
 const trigger = ({ value, label }: Pane) => /* html */ `
   <ark-tabs-trigger value="${value}">
     <button class="${styles.Trigger}">${label}</button>
@@ -31,7 +25,12 @@ const content = ({ value, content }: Pane) =>
 export function mount(root: HTMLElement) {
   const host = document.createElement('div')
   host.className = 'stack'
-  host.innerHTML = /* html */ `<output>value: account</output>${tabs({ value: 'account' }, [list(panes.map(trigger)), ...panes.map(content)])}`
+  host.innerHTML = /* html */ `
+    <output>value: account</output>
+    <ark-tabs class="${styles.Root}" value="account">
+      <ark-tabs-list class="${styles.List}">${panes.map(trigger).join('')}</ark-tabs-list>
+      ${panes.map(content).join('')}
+    </ark-tabs>`
   const el = host.querySelector('ark-tabs')!
   el.addEventListener('valuechange', (event) => {
     const { value } = event.detail

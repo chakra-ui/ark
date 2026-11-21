@@ -29,16 +29,6 @@ const tableBody = ({ triggerClass }: { triggerClass: string }) => /* html */ `
       </template>
     </ark-date-picker-table-body>`
 
-const dayTable = ({ offset }: { offset?: number } = {}) => /* html */ `
-  <ark-date-picker-table class="${styles.Table}" ${attr('offset', offset)}>
-    <ark-date-picker-table-head>
-      <ark-date-picker-table-row>
-        <template><ark-date-picker-table-header class="${styles.TableHeader}"></ark-date-picker-table-header></template>
-      </ark-date-picker-table-row>
-    </ark-date-picker-table-head>
-    ${tableBody({ triggerClass: styles.TableCellTrigger })}
-  </ark-date-picker-table>`
-
 interface GridTableProps {
   columns: number
   format?: 'short' | 'long'
@@ -50,27 +40,29 @@ const gridTable = ({ columns, format, triggerClass }: GridTableProps) => /* html
     ${tableBody({ triggerClass })}
   </ark-date-picker-table>`
 
-const views = ({ gridTriggers = false }: { gridTriggers?: boolean } = {}) => /* html */ `
-  <ark-date-picker-view view="day" class="${styles.View}">
-    ${viewControl()}
-    ${dayTable()}
-  </ark-date-picker-view>
-  <ark-date-picker-view view="month" class="${styles.View}">
-    ${viewControl()}
-    ${gridTable({
-      columns: 4,
-      format: 'short',
-      triggerClass: gridTriggers ? styles.MonthTableCellTrigger : styles.TableCellTrigger,
-    })}
-  </ark-date-picker-view>
-  <ark-date-picker-view view="year" class="${styles.View}">
-    ${viewControl()}
-    ${gridTable({ columns: 4, triggerClass: gridTriggers ? styles.YearTableCellTrigger : styles.TableCellTrigger })}
-  </ark-date-picker-view>`
-
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
   <ark-date-picker class="${styles.Root}" inline>
-    <div class="${styles.Content}">${views()}</div>
+    <div class="${styles.Content}">
+      <ark-date-picker-view view="day" class="${styles.View}">
+        ${viewControl()}
+        <ark-date-picker-table class="${styles.Table}">
+          <ark-date-picker-table-head>
+            <ark-date-picker-table-row>
+              <template><ark-date-picker-table-header class="${styles.TableHeader}"></ark-date-picker-table-header></template>
+            </ark-date-picker-table-row>
+          </ark-date-picker-table-head>
+          ${tableBody({ triggerClass: styles.TableCellTrigger })}
+        </ark-date-picker-table>
+      </ark-date-picker-view>
+      <ark-date-picker-view view="month" class="${styles.View}">
+        ${viewControl()}
+        ${gridTable({ columns: 4, format: 'short', triggerClass: styles.TableCellTrigger })}
+      </ark-date-picker-view>
+      <ark-date-picker-view view="year" class="${styles.View}">
+        ${viewControl()}
+        ${gridTable({ columns: 4, triggerClass: styles.TableCellTrigger })}
+      </ark-date-picker-view>
+    </div>
   </ark-date-picker>`
 }

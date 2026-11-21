@@ -28,21 +28,13 @@ const items: Item[] = [
   },
 ]
 
-const indicator = /* html */ `
-  <ark-accordion-item-indicator class="${styles.ItemIndicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-accordion-item-indicator>`
-
-const accordion = ({ defaultValue }: { defaultValue: string }, children: string[]) => /* html */ `
-  <ark-accordion class="${styles.Root}" default-value="${defaultValue}">
-    ${children.join('')}
-  </ark-accordion>`
-
-const accordionItem = ({ value, title, content }: Item) => /* html */ `
+const item = ({ value, title, content }: Item) => /* html */ `
   <ark-accordion-item class="${styles.Item}" value="${value}">
     <ark-accordion-item-header class="${styles.ItemHeader}">
       <ark-accordion-item-trigger>
         <button class="${styles.ItemTrigger}">
           ${title}
-          ${indicator}
+          <ark-accordion-item-indicator class="${styles.ItemIndicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-accordion-item-indicator>
         </button>
       </ark-accordion-item-trigger>
     </ark-accordion-item-header>
@@ -50,5 +42,8 @@ const accordionItem = ({ value, title, content }: Item) => /* html */ `
   </ark-accordion-item>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = accordion({ defaultValue: 'ark-ui' }, items.map(accordionItem))
+  root.innerHTML = /* html */ `
+    <ark-accordion class="${styles.Root}" default-value="ark-ui">
+      ${items.map(item).join('')}
+    </ark-accordion>`
 }

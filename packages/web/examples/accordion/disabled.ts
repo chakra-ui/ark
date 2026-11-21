@@ -28,26 +28,15 @@ const items: Item[] = [
   },
 ]
 
-const indicator = /* html */ `
-  <ark-accordion-item-indicator class="${styles.ItemIndicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-accordion-item-indicator>`
-
 const attr = (name: string, on?: boolean) => (on ? name : '')
 
-const accordion = (
-  { defaultValue, collapsible }: { defaultValue: string; collapsible?: boolean },
-  children: string[],
-) => /* html */ `
-  <ark-accordion class="${styles.Root}" default-value="${defaultValue}" ${attr('collapsible', collapsible)}>
-    ${children.join('')}
-  </ark-accordion>`
-
-const accordionItem = ({ value, title, content, disabled }: Item & { disabled?: boolean }) => /* html */ `
+const item = ({ value, title, content, disabled }: Item & { disabled?: boolean }) => /* html */ `
   <ark-accordion-item class="${styles.Item}" value="${value}" ${attr('disabled', disabled)}>
     <ark-accordion-item-header class="${styles.ItemHeader}">
       <ark-accordion-item-trigger>
         <button class="${styles.ItemTrigger}">
           ${title}
-          ${indicator}
+          <ark-accordion-item-indicator class="${styles.ItemIndicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-accordion-item-indicator>
         </button>
       </ark-accordion-item-trigger>
     </ark-accordion-item-header>
@@ -55,8 +44,8 @@ const accordionItem = ({ value, title, content, disabled }: Item & { disabled?: 
   </ark-accordion-item>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = accordion(
-    { defaultValue: 'ark-ui', collapsible: true },
-    items.map((item) => accordionItem({ ...item, disabled: item.value === 'getting-started' })),
-  )
+  root.innerHTML = /* html */ `
+    <ark-accordion class="${styles.Root}" default-value="ark-ui" collapsible>
+      ${items.map((it) => item({ ...it, disabled: it.value === 'getting-started' })).join('')}
+    </ark-accordion>`
 }

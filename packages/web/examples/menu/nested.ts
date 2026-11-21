@@ -9,26 +9,11 @@ interface Item {
   label: string
 }
 
-const list = (items: string[]) => /* html */ `<ark-menu-list class="${styles.List}">${items.join('')}</ark-menu-list>`
-
-const menu = ({ label }: { label: string }, items: string[]) => /* html */ `
-  <ark-menu>
-    <ark-menu-trigger>
-      <button class="${styles.Trigger}">
-        ${label}
-        <ark-menu-indicator class="${styles.Indicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-indicator>
-      </button>
-    </ark-menu-trigger>
-    <ark-menu-positioner class="${styles.Positioner}">
-      <ark-menu-content class="${styles.Content}">${list(items)}</ark-menu-content>
-    </ark-menu-positioner>
-  </ark-menu>`
-
 const submenu = ({ label }: { label: string }, items: string[]) => /* html */ `
   <ark-menu>
     <ark-menu-trigger-item class="${styles.TriggerItem}">${label}</ark-menu-trigger-item>
     <ark-menu-positioner class="${styles.Positioner}">
-      <ark-menu-content class="${styles.Content}">${list(items)}</ark-menu-content>
+      <ark-menu-content class="${styles.Content}"><ark-menu-list class="${styles.List}">${items.join('')}</ark-menu-list></ark-menu-content>
     </ark-menu-positioner>
   </ark-menu>`
 
@@ -47,22 +32,34 @@ export function mount(root: HTMLElement) {
   const host = document.createElement('div')
   host.innerHTML = /* html */ `
   <output>Selected: none</output>
-  ${menu({ label: 'File' }, [
-    item({ value: 'new', label: 'New File' }),
-    item({ value: 'open', label: 'Open...' }),
-    separator(),
-    submenu({ label: 'Share' }, [
-      item({ value: 'email', label: 'Email' }),
-      item({ value: 'message', label: 'Message' }),
-      submenu({ label: 'More' }, [
-        item({ value: 'airdrop', label: 'AirDrop' }),
-        item({ value: 'nearby', label: 'Nearby Share' }),
-      ]),
-    ]),
-    submenu({ label: 'Export' }, exportItems.map(item)),
-    separator(),
-    item({ value: 'print', label: 'Print...' }),
-  ])}`
+  <ark-menu>
+    <ark-menu-trigger>
+      <button class="${styles.Trigger}">
+        File
+        <ark-menu-indicator class="${styles.Indicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-indicator>
+      </button>
+    </ark-menu-trigger>
+    <ark-menu-positioner class="${styles.Positioner}">
+      <ark-menu-content class="${styles.Content}">
+        <ark-menu-list class="${styles.List}">
+          ${item({ value: 'new', label: 'New File' })}
+          ${item({ value: 'open', label: 'Open...' })}
+          ${separator()}
+          ${submenu({ label: 'Share' }, [
+            item({ value: 'email', label: 'Email' }),
+            item({ value: 'message', label: 'Message' }),
+            submenu({ label: 'More' }, [
+              item({ value: 'airdrop', label: 'AirDrop' }),
+              item({ value: 'nearby', label: 'Nearby Share' }),
+            ]),
+          ])}
+          ${submenu({ label: 'Export' }, exportItems.map(item))}
+          ${separator()}
+          ${item({ value: 'print', label: 'Print...' })}
+        </ark-menu-list>
+      </ark-menu-content>
+    </ark-menu-positioner>
+  </ark-menu>`
   host.querySelector('ark-menu')!.addEventListener(
     'itemselect',
     (event) => {

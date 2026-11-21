@@ -6,36 +6,6 @@ import styles from 'styles/dialog.module.css'
 
 import button from 'styles/button.module.css'
 
-const attr = (name: string, value?: string) => (value === undefined ? '' : `${name}="${value}"`)
-
-const openButton = (label: string) =>
-  /* html */ `<ark-dialog-trigger><button class="${button.Root}">${label}</button></ark-dialog-trigger>`
-
-interface DialogProps {
-  trigger: string
-  initialFocus?: string
-  contentStyle?: string
-  positionerClass?: string
-}
-
-const dialog = (
-  { trigger, initialFocus, contentStyle, positionerClass = styles.Positioner }: DialogProps,
-  children: string[],
-) => /* html */ `
-  <ark-dialog ${attr('initial-focus', initialFocus)}>
-    ${openButton(trigger)}
-    <ark-dialog-backdrop class="${styles.Backdrop}"></ark-dialog-backdrop>
-    <ark-dialog-positioner class="${positionerClass}">
-      <ark-dialog-content class="${styles.Content}" ${attr('style', contentStyle)}>${children.join('')}</ark-dialog-content>
-    </ark-dialog-positioner>
-  </ark-dialog>`
-
-const closeButton = /* html */ `<ark-dialog-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-dialog-close-trigger>`
-
-const heading = ({ title, description }: { title: string; description: string }) => /* html */ `
-  <ark-dialog-title class="${styles.Title}">${title}</ark-dialog-title>
-  <ark-dialog-description class="${styles.Description}">${description}</ark-dialog-description>`
-
 const section = ({ title, body }: { title: string; body: string }) =>
   /* html */ `<section class="${styles.ScrollSection}"><h3>${title}</h3><p>${body}</p></section>`
 
@@ -91,21 +61,17 @@ const policy = [
 ]
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = dialog(
-    {
-      trigger: 'Open Dialog',
-      initialFocus: 'ark-dialog-content',
-      contentStyle: 'margin: 4rem auto; max-height: none',
-      positionerClass: styles.OutsideScrollPositioner,
-    },
-    [
-      closeButton,
-      heading({
-        title: 'Privacy Policy',
-        description:
-          'This layout allows the dialog to extend beyond the viewport while keeping the outer container scrollable.',
-      }),
-      /* html */ `<div class="${styles.Body}">${policy.map((entry) => section(entry)).join('')}</div>`,
-    ],
-  )
+  root.innerHTML = /* html */ `
+  <ark-dialog initial-focus="ark-dialog-content">
+    <ark-dialog-trigger><button class="${button.Root}">Open Dialog</button></ark-dialog-trigger>
+    <ark-dialog-backdrop class="${styles.Backdrop}"></ark-dialog-backdrop>
+    <ark-dialog-positioner class="${styles.OutsideScrollPositioner}">
+      <ark-dialog-content class="${styles.Content}" style="margin: 4rem auto; max-height: none">
+        <ark-dialog-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-dialog-close-trigger>
+        <ark-dialog-title class="${styles.Title}">Privacy Policy</ark-dialog-title>
+        <ark-dialog-description class="${styles.Description}">This layout allows the dialog to extend beyond the viewport while keeping the outer container scrollable.</ark-dialog-description>
+        <div class="${styles.Body}">${policy.map((entry) => section(entry)).join('')}</div>
+      </ark-dialog-content>
+    </ark-dialog-positioner>
+  </ark-dialog>`
 }

@@ -4,9 +4,11 @@ import '../../src/components/rating-group/index.js'
 
 import styles from 'styles/rating-group.module.css'
 
-const ratingGroup = ({ label, value }: { label: string; value: number }) => /* html */ `
-  <ark-rating-group class="${styles.Root}" value="${value}">
-    <ark-rating-group-label class="${styles.Label}">${label}</ark-rating-group-label>
+export function mount(root: HTMLElement) {
+  const host = document.createElement('div')
+  host.innerHTML = /* html */ `
+  <ark-rating-group class="${styles.Root}" value="0">
+    <ark-rating-group-label class="${styles.Label}">Label</ark-rating-group-label>
     <ark-rating-group-control class="${styles.Control}">
       <template>
         <ark-rating-group-item class="${styles.Item}">
@@ -19,10 +21,6 @@ const ratingGroup = ({ label, value }: { label: string; value: number }) => /* h
       <ark-rating-group-hidden-input></ark-rating-group-hidden-input>
     </ark-rating-group-control>
   </ark-rating-group>`
-
-export function mount(root: HTMLElement) {
-  const host = document.createElement('div')
-  host.innerHTML = ratingGroup({ label: 'Label', value: 0 })
   const el = host.querySelector('ark-rating-group')!
   el.addEventListener('valuechange', (event) => {
     el.setAttribute('value', String(event.detail.value))

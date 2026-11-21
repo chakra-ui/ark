@@ -12,11 +12,6 @@ interface Item {
 const item = ({ value, icon }: Item) =>
   /* html */ `<ark-toggle-group-item value="${value}"><button class="${styles.Item}">${icon}</button></ark-toggle-group-item>`
 
-const toggleGroup = ({ value }: { value: string }, children: string[]) => /* html */ `
-  <ark-toggle-group class="${styles.Root}" value="${value}">
-    ${children.join('')}
-  </ark-toggle-group>`
-
 const alignItems: Item[] = [
   { value: 'left', icon: createElement(AlignLeft, { 'aria-hidden': 'true' }).outerHTML },
   { value: 'center', icon: createElement(AlignCenter, { 'aria-hidden': 'true' }).outerHTML },
@@ -26,10 +21,10 @@ const alignItems: Item[] = [
 
 export function mount(root: HTMLElement) {
   const host = document.createElement('div')
-  host.innerHTML = toggleGroup(
-    { value: 'left' },
-    alignItems.map((entry) => item(entry)),
-  )
+  host.innerHTML = /* html */ `
+    <ark-toggle-group class="${styles.Root}" value="left">
+      ${alignItems.map(item).join('')}
+    </ark-toggle-group>`
   const el = host.querySelector('ark-toggle-group')!
   el.addEventListener('valuechange', (event) => {
     el.setAttribute('value', event.detail.value.join(','))

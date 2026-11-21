@@ -4,7 +4,8 @@
   color: var(--demo-neutral-fg);
 }
 
-.Mark {
+.Mark,
+.Text mark {
   background: var(--demo-coral-subtle);
   color: var(--demo-coral-fg);
   border-radius: 0.125rem;

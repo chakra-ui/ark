@@ -1,4 +1,4 @@
-import { createElement, ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from 'lucide'
+import { createElement, ArrowDown, ArrowUp } from 'lucide'
 
 import '../../src/components/carousel/index.js'
 
@@ -17,42 +17,22 @@ const images: Image[] = [
   { src: 'https://picsum.photos/seed/5/500/300', alt: 'Forest path' },
 ]
 
-const icon = (node: typeof ArrowLeft) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
-
-const carousel = (
-  { defaultPage, orientation }: { defaultPage: number; orientation: 'horizontal' | 'vertical' },
-  children: string[],
-) => /* html */ `
-  <ark-carousel class="${styles.Root}" default-page="${defaultPage}" orientation="${orientation}">${children.join('')}</ark-carousel>`
-
-const control = (children: string[]) => /* html */ `
-  <ark-carousel-control class="${styles.Control}">${children.join('')}</ark-carousel-control>`
-
-const prevTrigger = ({ icon: node = ArrowLeft }: { icon?: typeof ArrowLeft } = {}) => /* html */ `
-  <ark-carousel-prev-trigger><button class="${styles.Trigger}">${icon(node)}</button></ark-carousel-prev-trigger>`
-
-const nextTrigger = ({ icon: node = ArrowRight }: { icon?: typeof ArrowRight } = {}) => /* html */ `
-  <ark-carousel-next-trigger><button class="${styles.Trigger}">${icon(node)}</button></ark-carousel-next-trigger>`
-
-const itemGroup = (children: string[]) => /* html */ `
-  <ark-carousel-item-group class="${styles.ItemGroup}">${children.join('')}</ark-carousel-item-group>`
+const icon = (node: typeof ArrowUp) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
 const imageItem = ({ src, alt }: Image) => /* html */ `
   <ark-carousel-item class="${styles.Item}"><img src="${src}" alt="${alt}" width="500" height="300" /></ark-carousel-item>`
-
-const indicatorGroup = (children: string[]) => /* html */ `
-  <ark-carousel-indicator-group class="${styles.IndicatorGroup}">${children.join('')}</ark-carousel-indicator-group>`
 
 const indicator = () => /* html */ `
   <ark-carousel-indicator><button class="${styles.Indicator}"></button></ark-carousel-indicator>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = carousel({ defaultPage: 0, orientation: 'vertical' }, [
-    itemGroup(images.map(imageItem)),
-    control([
-      prevTrigger({ icon: ArrowUp }),
-      indicatorGroup(images.map(() => indicator())),
-      nextTrigger({ icon: ArrowDown }),
-    ]),
-  ])
+  root.innerHTML = /* html */ `
+    <ark-carousel class="${styles.Root}" default-page="0" orientation="vertical">
+      <ark-carousel-item-group class="${styles.ItemGroup}">${images.map(imageItem).join('')}</ark-carousel-item-group>
+      <ark-carousel-control class="${styles.Control}">
+        <ark-carousel-prev-trigger><button class="${styles.Trigger}">${icon(ArrowUp)}</button></ark-carousel-prev-trigger>
+        <ark-carousel-indicator-group class="${styles.IndicatorGroup}">${images.map(() => indicator()).join('')}</ark-carousel-indicator-group>
+        <ark-carousel-next-trigger><button class="${styles.Trigger}">${icon(ArrowDown)}</button></ark-carousel-next-trigger>
+      </ark-carousel-control>
+    </ark-carousel>`
 }

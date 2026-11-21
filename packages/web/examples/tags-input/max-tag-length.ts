@@ -4,19 +4,10 @@ import '../../src/components/tags-input/index.js'
 
 import styles from 'styles/tags-input.module.css'
 
-interface TagsInputProps {
-  label?: string
-  placeholder?: string
-  maxLength: number
-}
-
-const tagsInputMarkup = ({
-  label = 'Frameworks',
-  placeholder = 'Add Framework',
-  maxLength,
-}: TagsInputProps) => /* html */ `
-  <ark-tags-input class="${styles.Root}" max-length="${maxLength}">
-    <ark-tags-input-label class="${styles.Label}">${label}</ark-tags-input-label>
+export function mount(root: HTMLElement) {
+  root.innerHTML = /* html */ `
+  <ark-tags-input class="${styles.Root}" max-length="10">
+    <ark-tags-input-label class="${styles.Label}">Frameworks (Max 10 characters)</ark-tags-input-label>
     <ark-tags-input-control class="${styles.Control}">
       <template>
         <ark-tags-input-item class="${styles.Item}">
@@ -27,12 +18,9 @@ const tagsInputMarkup = ({
           <ark-tags-input-item-input><input class="${styles.ItemInput}" /></ark-tags-input-item-input>
         </ark-tags-input-item>
       </template>
-      <ark-tags-input-input><input class="${styles.Input}" placeholder="${placeholder}" /></ark-tags-input-input>
+      <ark-tags-input-input><input class="${styles.Input}" placeholder="Add Framework" /></ark-tags-input-input>
       <ark-tags-input-clear-trigger><button class="${styles.ClearTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-tags-input-clear-trigger>
     </ark-tags-input-control>
     <ark-tags-input-hidden-input></ark-tags-input-hidden-input>
   </ark-tags-input>`
-
-export function mount(root: HTMLElement) {
-  root.innerHTML = tagsInputMarkup({ maxLength: 10, label: 'Frameworks (Max 10 characters)' })
 }

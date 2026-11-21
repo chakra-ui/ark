@@ -8,11 +8,6 @@ import styles from 'styles/tooltip.module.css'
 
 import popover from 'styles/popover.module.css'
 
-const tooltipPopup = (content: string) => /* html */ `
-  <ark-tooltip-positioner class="${styles.Positioner}">
-    <ark-tooltip-content class="${styles.Content}">${content}</ark-tooltip-content>
-  </ark-tooltip-positioner>`
-
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
   <ark-popover>
@@ -20,7 +15,9 @@ export function mount(root: HTMLElement) {
       <ark-tooltip-trigger>
         <ark-popover-trigger><button class="${button.Root}">Click Me</button></ark-popover-trigger>
       </ark-tooltip-trigger>
-      ${tooltipPopup('See more details')}
+      <ark-tooltip-positioner class="${styles.Positioner}">
+        <ark-tooltip-content class="${styles.Content}">See more details</ark-tooltip-content>
+      </ark-tooltip-positioner>
     </ark-tooltip>
     <ark-popover-positioner class="${popover.Positioner}">
       <ark-popover-content class="${popover.Content}">

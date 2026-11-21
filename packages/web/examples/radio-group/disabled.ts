@@ -15,15 +15,10 @@ const item = ({ value, disabled = false }: { value: string; disabled?: boolean }
     </label>
   </ark-radio-group-item>`
 
-const radioGroup = ({ defaultValue }: { defaultValue: string }, items: string[]) => /* html */ `
-  <ark-radio-group class="${styles.Root}" default-value="${defaultValue}">
-    <ark-radio-group-label class="${styles.Label}">Framework</ark-radio-group-label>
-    ${items.join('')}
-  </ark-radio-group>`
-
 export function mount(root: HTMLElement) {
-  root.innerHTML = radioGroup(
-    { defaultValue: 'React' },
-    frameworks.map((value) => item({ value, disabled: value === 'Solid' })),
-  )
+  root.innerHTML = /* html */ `
+    <ark-radio-group class="${styles.Root}" default-value="React">
+      <ark-radio-group-label class="${styles.Label}">Framework</ark-radio-group-label>
+      ${frameworks.map((value) => item({ value, disabled: value === 'Solid' })).join('')}
+    </ark-radio-group>`
 }

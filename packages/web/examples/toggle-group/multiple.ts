@@ -12,16 +12,6 @@ interface Item {
 const item = ({ value, icon }: Item) =>
   /* html */ `<ark-toggle-group-item value="${value}"><button class="${styles.Item}">${icon}</button></ark-toggle-group-item>`
 
-const attr = (name: string, on?: boolean) => (on ? name : '')
-
-const toggleGroup = (
-  { defaultValue, multiple }: { defaultValue: string; multiple?: boolean },
-  children: string[],
-) => /* html */ `
-  <ark-toggle-group class="${styles.Root}" default-value="${defaultValue}" ${attr('multiple', multiple)}>
-    ${children.join('')}
-  </ark-toggle-group>`
-
 const formatItems: Item[] = [
   { value: 'bold', icon: createElement(Bold, { 'aria-hidden': 'true' }).outerHTML },
   { value: 'italic', icon: createElement(Italic, { 'aria-hidden': 'true' }).outerHTML },
@@ -29,8 +19,8 @@ const formatItems: Item[] = [
 ]
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = toggleGroup(
-    { defaultValue: 'bold', multiple: true },
-    formatItems.map((entry) => item(entry)),
-  )
+  root.innerHTML = /* html */ `
+    <ark-toggle-group class="${styles.Root}" default-value="bold" multiple>
+      ${formatItems.map(item).join('')}
+    </ark-toggle-group>`
 }

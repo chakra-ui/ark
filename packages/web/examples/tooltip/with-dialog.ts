@@ -10,11 +10,6 @@ import styles from 'styles/tooltip.module.css'
 
 import dialog from 'styles/dialog.module.css'
 
-const tooltipPopup = (content: string) => /* html */ `
-  <ark-tooltip-positioner class="${styles.Positioner}">
-    <ark-tooltip-content class="${styles.Content}">${content}</ark-tooltip-content>
-  </ark-tooltip-positioner>`
-
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
   <ark-dialog>
@@ -22,7 +17,9 @@ export function mount(root: HTMLElement) {
       <ark-tooltip-trigger>
         <ark-dialog-trigger><button class="${button.Root}">Open Dialog</button></ark-dialog-trigger>
       </ark-tooltip-trigger>
-      ${tooltipPopup('Opens a sign-in dialog')}
+      <ark-tooltip-positioner class="${styles.Positioner}">
+        <ark-tooltip-content class="${styles.Content}">Opens a sign-in dialog</ark-tooltip-content>
+      </ark-tooltip-positioner>
     </ark-tooltip>
     <ark-dialog-backdrop class="${dialog.Backdrop}"></ark-dialog-backdrop>
     <ark-dialog-positioner class="${dialog.Positioner}">

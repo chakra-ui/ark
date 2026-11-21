@@ -15,14 +15,7 @@ const frameworks: Framework[] = [
   { label: 'Vue', value: 'vue' },
 ]
 
-const attr = (name: string, on?: boolean) => (on ? name : '')
-
 const checkIcon = createElement(Check, { 'aria-hidden': 'true' }).outerHTML
-
-const group = ({ invalid }: { invalid?: boolean }, children: string[]) => /* html */ `
-  <ark-checkbox-group class="${styles.Group}" ${attr('invalid', invalid)}>
-    ${children.join('')}
-  </ark-checkbox-group>`
 
 const checkbox = ({ label, value }: Framework) => /* html */ `
   <ark-checkbox value="${value}">
@@ -36,5 +29,8 @@ const checkbox = ({ label, value }: Framework) => /* html */ `
   </ark-checkbox>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = group({ invalid: true }, frameworks.map(checkbox))
+  root.innerHTML = /* html */ `
+    <ark-checkbox-group class="${styles.Group}" invalid>
+      ${frameworks.map(checkbox).join('')}
+    </ark-checkbox-group>`
 }

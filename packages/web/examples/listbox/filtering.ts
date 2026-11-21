@@ -1,10 +1,13 @@
 import { createElement, Check } from 'lucide'
 
 import { createListCollection } from '../../src/components/listbox/index.js'
+import { createFilter } from '../../src/utils/locale.js'
 
 import styles from 'styles/listbox.module.css'
 
 import field from 'styles/field.module.css'
+
+const { contains } = createFilter({ sensitivity: 'base' })
 
 export function mount(root: HTMLElement) {
   const all = [
@@ -35,7 +38,7 @@ export function mount(root: HTMLElement) {
   const el = root.querySelector('ark-listbox')!
   el.collection = createListCollection({ items: all })
   root.querySelector('input')!.addEventListener('input', (event) => {
-    const query = (event.target as HTMLInputElement).value.toLowerCase()
-    el.collection = createListCollection({ items: all.filter((it) => it.label.toLowerCase().includes(query)) })
+    const query = (event.target as HTMLInputElement).value
+    el.collection = createListCollection({ items: all.filter((it) => contains(it.label, query)) })
   })
 }

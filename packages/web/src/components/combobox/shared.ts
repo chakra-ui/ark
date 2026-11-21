@@ -4,6 +4,7 @@ import * as combobox from '@zag-js/combobox'
 import { num, str } from '../../utils/attrs.js'
 import { defineCollection, grouping, type Item } from '../../utils/collection.js'
 import { rootOf } from '../../utils/define.js'
+import { filterOf } from '../../utils/locale.js'
 
 export const root = 'ark-combobox'
 
@@ -22,13 +23,6 @@ export const queries = new WeakMap<HTMLElement, string>()
 
 const filtered = new WeakMap<HTMLElement, { source: ListCollection; key: string; result: ListCollection }>()
 
-function matches(label: string, query: string, filter: Filter) {
-  if (!query || filter === 'none') return true
-  const text = label.toLocaleLowerCase()
-  const q = query.toLocaleLowerCase()
-  return filter === 'starts-with' ? text.startsWith(q) : text.includes(q)
-}
-
 export function filteredOf(el: HTMLElement) {
   const source = collection.get(el)
   if (!source) return undefined
@@ -39,7 +33,13 @@ export function filteredOf(el: HTMLElement) {
   const key = `${filter}|${limit}|${query}`
   const cached = filtered.get(el)
   if (cached && cached.source === source && cached.key === key) return cached.result
-  const items = source.items.filter((item) => matches(source.stringifyItem(item) ?? '', query, filter))
+  const { contains, startsWith } = filterOf(el)
+  const match = filter === 'starts-with' ? startsWith : contains
+
+  const items =
+    !query || filter === 'none'
+      ? source.items
+      : source.items.filter((item) => match(source.stringifyItem(item) ?? '', query))
   const result = source.setItems(limit == null ? items : items.slice(0, limit))
   filtered.set(el, { source, key, result })
   return result

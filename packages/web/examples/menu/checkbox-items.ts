@@ -6,21 +6,6 @@ import styles from 'styles/menu.module.css'
 
 const attr = (name: string, on?: boolean) => (on ? name : '')
 
-const menu = ({ label }: { label: string }, items: string[]) => /* html */ `
-  <ark-menu>
-    <ark-menu-trigger>
-      <button class="${styles.Trigger}">
-        ${label}
-        <ark-menu-indicator class="${styles.Indicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-indicator>
-      </button>
-    </ark-menu-trigger>
-    <ark-menu-positioner class="${styles.Positioner}">
-      <ark-menu-content class="${styles.Content}">
-        <ark-menu-list class="${styles.List}">${items.join('')}</ark-menu-list>
-      </ark-menu-content>
-    </ark-menu-positioner>
-  </ark-menu>`
-
 interface CheckboxItemProps {
   value: string
   label: string
@@ -40,5 +25,18 @@ const options: CheckboxItemProps[] = [
 ]
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = menu({ label: 'View' }, options.map(checkboxItem))
+  root.innerHTML = /* html */ `
+  <ark-menu>
+    <ark-menu-trigger>
+      <button class="${styles.Trigger}">
+        View
+        <ark-menu-indicator class="${styles.Indicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-indicator>
+      </button>
+    </ark-menu-trigger>
+    <ark-menu-positioner class="${styles.Positioner}">
+      <ark-menu-content class="${styles.Content}">
+        <ark-menu-list class="${styles.List}">${options.map(checkboxItem).join('')}</ark-menu-list>
+      </ark-menu-content>
+    </ark-menu-positioner>
+  </ark-menu>`
 }

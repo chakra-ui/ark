@@ -17,11 +17,6 @@ const frameworks: Framework[] = [
 
 const checkIcon = createElement(Check, { 'aria-hidden': 'true' }).outerHTML
 
-const group = ({ defaultValue, name }: { defaultValue: string; name: string }, children: string[]) => /* html */ `
-  <ark-checkbox-group class="${styles.Group}" default-value="${defaultValue}" name="${name}">
-    ${children.join('')}
-  </ark-checkbox-group>`
-
 const checkbox = ({ label, value }: Framework) => /* html */ `
   <ark-checkbox value="${value}">
     <label class="${styles.Root}">
@@ -34,5 +29,8 @@ const checkbox = ({ label, value }: Framework) => /* html */ `
   </ark-checkbox>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = group({ defaultValue: 'react', name: 'framework' }, frameworks.map(checkbox))
+  root.innerHTML = /* html */ `
+    <ark-checkbox-group class="${styles.Group}" default-value="react" name="framework">
+      ${frameworks.map(checkbox).join('')}
+    </ark-checkbox-group>`
 }

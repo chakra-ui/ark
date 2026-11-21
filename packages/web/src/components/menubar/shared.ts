@@ -19,17 +19,3 @@ export const dirOf = (el: Element): Dir | undefined => {
 const isTopLevel = (menu: MenuElement) => !menu.parentElement || !rootOf(menu.parentElement, 'ark-menu')
 
 export const menusOf = (el: HTMLElement) => [...el.querySelectorAll<MenuElement>('ark-menu')].filter(isTopLevel)
-
-const itemSelector = '[role=menuitem]'
-const triggerSelector = '[role=menuitem][data-menu-trigger]'
-
-/** Zag finds the menubar's triggers with `[role=menuitem]`, which in light DOM also matches the menus' items. */
-export function scopeTriggerQuery(el: HTMLElement) {
-  const query = (selectors: string) =>
-    HTMLElement.prototype.querySelectorAll.call(el, selectors === itemSelector ? triggerSelector : selectors)
-
-  Object.defineProperty(el, 'querySelectorAll', { configurable: true, value: query })
-  return () => {
-    delete (el as Partial<HTMLElement>).querySelectorAll
-  }
-}

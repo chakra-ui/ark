@@ -6,14 +6,6 @@ import styles from 'styles/collapsible.module.css'
 
 const attr = (name: string, on?: boolean) => (on ? name : '')
 
-const trigger = (label: string) => /* html */ `
-  <ark-collapsible-trigger>
-    <button class="${styles.Trigger}">
-      ${label}
-      <ark-collapsible-indicator class="${styles.Indicator}">${createElement(ChevronRight, { 'aria-hidden': 'true' }).outerHTML}</ark-collapsible-indicator>
-    </button>
-  </ark-collapsible-trigger>`
-
 interface CollapsibleProps {
   label: string
   defaultOpen?: boolean
@@ -22,7 +14,12 @@ interface CollapsibleProps {
 
 const collapsible = ({ label, defaultOpen, hiddenUntilFound }: CollapsibleProps, children: string[]) => /* html */ `
   <ark-collapsible class="${styles.Root}" ${attr('default-open', defaultOpen)} ${attr('hidden-until-found', hiddenUntilFound)}>
-    ${trigger(label)}
+    <ark-collapsible-trigger>
+      <button class="${styles.Trigger}">
+        ${label}
+        <ark-collapsible-indicator class="${styles.Indicator}">${createElement(ChevronRight, { 'aria-hidden': 'true' }).outerHTML}</ark-collapsible-indicator>
+      </button>
+    </ark-collapsible-trigger>
     <ark-collapsible-content class="${styles.Content}">${children.join('')}</ark-collapsible-content>
   </ark-collapsible>`
 

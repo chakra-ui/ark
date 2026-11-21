@@ -4,30 +4,6 @@ import '../../src/components/menu/index.js'
 
 import styles from 'styles/menu.module.css'
 
-const menu = ({ label }: { label: string }, items: string[]) => /* html */ `
-  <ark-menu>
-    <ark-menu-trigger>
-      <button class="${styles.Trigger}">
-        ${label}
-        <ark-menu-indicator class="${styles.Indicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-indicator>
-      </button>
-    </ark-menu-trigger>
-    <ark-menu-positioner class="${styles.Positioner}">
-      <ark-menu-content class="${styles.Content}">
-        <ark-menu-list class="${styles.List}">${items.join('')}</ark-menu-list>
-      </ark-menu-content>
-    </ark-menu-positioner>
-  </ark-menu>`
-
-const radioGroup = (
-  { name, value, label }: { name: string; value: string; label: string },
-  items: string[],
-) => /* html */ `
-  <ark-menu-radio-item-group class="${styles.ItemGroup}" name="${name}" value="${value}">
-    <ark-menu-item-group-label class="${styles.ItemGroupLabel}">${label}</ark-menu-item-group-label>
-    ${items.join('')}
-  </ark-menu-radio-item-group>`
-
 const radioItem = ({ value, label }: { value: string; label: string }) => /* html */ `
   <ark-menu-radio-item class="${styles.RadioItem}" value="${value}">
     <ark-menu-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-item-indicator>
@@ -41,7 +17,23 @@ const sortOptions = [
 ]
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = menu({ label: 'Sort' }, [
-    radioGroup({ name: 'sort', value: 'date', label: 'Sort By' }, sortOptions.map(radioItem)),
-  ])
+  root.innerHTML = /* html */ `
+  <ark-menu>
+    <ark-menu-trigger>
+      <button class="${styles.Trigger}">
+        Sort
+        <ark-menu-indicator class="${styles.Indicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-indicator>
+      </button>
+    </ark-menu-trigger>
+    <ark-menu-positioner class="${styles.Positioner}">
+      <ark-menu-content class="${styles.Content}">
+        <ark-menu-list class="${styles.List}">
+          <ark-menu-radio-item-group class="${styles.ItemGroup}" name="sort" value="date">
+            <ark-menu-item-group-label class="${styles.ItemGroupLabel}">Sort By</ark-menu-item-group-label>
+            ${sortOptions.map(radioItem).join('')}
+          </ark-menu-radio-item-group>
+        </ark-menu-list>
+      </ark-menu-content>
+    </ark-menu-positioner>
+  </ark-menu>`
 }

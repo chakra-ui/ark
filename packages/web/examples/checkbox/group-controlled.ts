@@ -19,11 +19,6 @@ const checkIcon = createElement(Check, { 'aria-hidden': 'true' }).outerHTML
 
 const json = (value: string[]) => JSON.stringify(value)
 
-const group = ({ value, name }: { value: string; name: string }, children: string[]) => /* html */ `
-  <ark-checkbox-group class="${styles.Group}" value="${value}" name="${name}">
-    ${children.join('')}
-  </ark-checkbox-group>`
-
 const checkbox = ({ label, value }: Framework) => /* html */ `
   <ark-checkbox value="${value}">
     <label class="${styles.Root}">
@@ -39,7 +34,9 @@ export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
     <div class="vstack">
       <output>value: ["react"]</output>
-      ${group({ value: 'react', name: 'framework' }, frameworks.map(checkbox))}
+      <ark-checkbox-group class="${styles.Group}" value="react" name="framework">
+        ${frameworks.map(checkbox).join('')}
+      </ark-checkbox-group>
     </div>`
   const el = root.querySelector('ark-checkbox-group')!
   el.addEventListener('valuechange', (event) => {

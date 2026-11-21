@@ -18,28 +18,6 @@ const fragment = (html: string) => {
   return host
 }
 
-const typeStyle = /* html */ `<style>${['info', 'success', 'error', 'warning', 'loading']
-  .map((type) => `ark-toast:not([data-type='${type}']) [data-icon='${type}'] { display: none; }`)
-  .join('\n')}</style>`
-
-const toaster = (children: string[]) => /* html */ `
-  ${typeStyle}
-  <ark-toaster>
-    <template>
-      <ark-toast class="${styles.Root}">${children.join('')}</ark-toast>
-    </template>
-  </ark-toaster>`
-
-const title = (children: string[] = []) =>
-  /* html */ `<ark-toast-title class="${styles.Title}">${children.join('')}</ark-toast-title>`
-
-const description = /* html */ `<ark-toast-description class="${styles.Description}"></ark-toast-description>`
-
-const content = ({ style = '' }: { style?: string } = {}, children = [title(), description]) =>
-  /* html */ `<ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ${style}">${children.join('')}</ark-toast-content>`
-
-const actionTrigger = /* html */ `<ark-toast-action-trigger><button class="${styles.ActionTrigger}"></button></ark-toast-action-trigger>`
-
 const store = createToaster({ placement: 'bottom-end', gap: 24 })
 
 const connect = (host: HTMLElement, store: toast.Store<string>) => {
@@ -49,7 +27,22 @@ const connect = (host: HTMLElement, store: toast.Store<string>) => {
 
 export function mount(root: HTMLElement) {
   let files = initialFiles
-  const host = fragment(/* html */ `<div class="stack" data-files></div>${toaster([content(), actionTrigger])}`)
+  const host = fragment(/* html */ `
+    <div class="stack" data-files></div>
+    <style>${['info', 'success', 'error', 'warning', 'loading']
+      .map((type) => `ark-toast:not([data-type='${type}']) [data-icon='${type}'] { display: none; }`)
+      .join('\n')}</style>
+    <ark-toaster>
+      <template>
+        <ark-toast class="${styles.Root}">
+          <ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ">
+            <ark-toast-title class="${styles.Title}"></ark-toast-title>
+            <ark-toast-description class="${styles.Description}"></ark-toast-description>
+          </ark-toast-content>
+          <ark-toast-action-trigger><button class="${styles.ActionTrigger}"></button></ark-toast-action-trigger>
+        </ark-toast>
+      </template>
+    </ark-toaster>`)
   const list = host.querySelector<HTMLElement>('[data-files]')!
 
   const render = () => {

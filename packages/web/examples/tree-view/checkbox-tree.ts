@@ -52,12 +52,6 @@ const checkbox = /* html */ `
     <ark-tree-view-node-indicator type="indeterminate" class="${styles.NodeIndicator}">${icon(Minus)}</ark-tree-view-node-indicator>
   </ark-tree-view-node-checkbox>`
 
-const treeView = ({ defaultCheckedValue }: { defaultCheckedValue: string }, children: string[]) => /* html */ `
-  <ark-tree-view class="${styles.Root}" default-checked-value="${defaultCheckedValue}">
-    <ark-tree-view-label class="${styles.Label}">Tree</ark-tree-view-label>
-    <ark-tree-view-tree class="${styles.Tree}">${children.join('')}</ark-tree-view-tree>
-  </ark-tree-view>`
-
 const branch = ({ value, label }: TreeNode, children: string[]) => /* html */ `
   <ark-tree-view-node-group class="${styles.NodeGroup}" value="${value}">
     <ark-tree-view-node class="${styles.Node}">
@@ -84,5 +78,9 @@ const renderTree = (nodes: TreeNode[]): string[] =>
   nodes.map((node) => (node.children ? branch(node, renderTree(node.children)) : leaf(node)))
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = treeView({ defaultCheckedValue: '' }, renderTree(files))
+  root.innerHTML = /* html */ `
+    <ark-tree-view class="${styles.Root}" default-checked-value="">
+      <ark-tree-view-label class="${styles.Label}">Tree</ark-tree-view-label>
+      <ark-tree-view-tree class="${styles.Tree}">${renderTree(files).join('')}</ark-tree-view-tree>
+    </ark-tree-view>`
 }

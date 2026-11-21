@@ -21,14 +21,6 @@ const minusIcon = createElement(Minus, { 'aria-hidden': 'true' }).outerHTML
 
 const json = (value: string[]) => JSON.stringify(value)
 
-const group = (
-  { value, name, style }: { value: string; name: string; style?: string },
-  children: string[],
-) => /* html */ `
-  <ark-checkbox-group class="${styles.Group}" value="${value}" name="${name}" ${style ? `style="${style}"` : ''}>
-    ${children.join('')}
-  </ark-checkbox-group>`
-
 const checkbox = ({ label, value, checked }: Framework & { checked?: boolean }) => /* html */ `
   <ark-checkbox value="${value}" ${checked === undefined ? '' : `checked="${checked}"`}>
     <label class="${styles.Root}">
@@ -46,7 +38,9 @@ export function mount(root: HTMLElement) {
     <div style="display: flex; flex-direction: column; gap: 10px">
       <output>Selected: []</output>
       ${checkbox({ label: 'JSX Frameworks', value: 'all', checked: false })}
-      ${group({ value: '', name: 'framework', style: 'margin-inline-start: 1rem' }, frameworks.map(checkbox))}
+      <ark-checkbox-group class="${styles.Group}" value="" name="framework" style="margin-inline-start: 1rem">
+        ${frameworks.map(checkbox).join('')}
+      </ark-checkbox-group>
     </div>`
   const all = root.querySelector('ark-checkbox')!
   const el = root.querySelector('ark-checkbox-group')!

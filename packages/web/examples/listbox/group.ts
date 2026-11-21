@@ -4,18 +4,6 @@ import '../../src/components/listbox/index.js'
 
 import styles from 'styles/listbox.module.css'
 
-interface ListboxProps {
-  label: string
-}
-
-const listbox = ({ label }: ListboxProps, children: string[]) => /* html */ `
-  <ark-listbox class="${styles.Root}">
-    <ark-listbox-label class="${styles.Label}">${label}</ark-listbox-label>
-    <ark-listbox-content class="${styles.Content}">
-      <ark-listbox-list class="${styles.List}">${children.join('')}</ark-listbox-list>
-    </ark-listbox-content>
-  </ark-listbox>`
-
 const group = ({ name, label }: { name: string; label: string }, children: string[]) => /* html */ `
   <ark-listbox-item-group class="${styles.ItemGroup}" name="${name}">
     <ark-listbox-item-group-label class="${styles.ItemGroupLabel}">${label}</ark-listbox-item-group-label>
@@ -34,14 +22,20 @@ const item = ({ value, label }: Item) => /* html */ `
   </ark-listbox-item>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = listbox({ label: 'Select Region' }, [
-    group({ name: 'na', label: 'North America' }, [
-      item({ value: 'nyc', label: 'New York' }),
-      item({ value: 'tor', label: 'Toronto' }),
-    ]),
-    group({ name: 'eu', label: 'Europe' }, [
-      item({ value: 'lon', label: 'London' }),
-      item({ value: 'ber', label: 'Berlin' }),
-    ]),
-  ])
+  root.innerHTML = /* html */ `
+  <ark-listbox class="${styles.Root}">
+    <ark-listbox-label class="${styles.Label}">Select Region</ark-listbox-label>
+    <ark-listbox-content class="${styles.Content}">
+      <ark-listbox-list class="${styles.List}">
+        ${group({ name: 'na', label: 'North America' }, [
+          item({ value: 'nyc', label: 'New York' }),
+          item({ value: 'tor', label: 'Toronto' }),
+        ])}
+        ${group({ name: 'eu', label: 'Europe' }, [
+          item({ value: 'lon', label: 'London' }),
+          item({ value: 'ber', label: 'Berlin' }),
+        ])}
+      </ark-listbox-list>
+    </ark-listbox-content>
+  </ark-listbox>`
 }

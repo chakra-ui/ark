@@ -57,12 +57,6 @@ const icon = (node: typeof File) => createElement(node, { 'aria-hidden': 'true' 
 const text = ({ label, icon: node }: { label: string; icon?: typeof File }) =>
   /* html */ `<ark-tree-view-node-text class="${styles.NodeText}">${node ? icon(node) : ''}${label}</ark-tree-view-node-text>`
 
-const treeView = ({ defaultExpandedValue }: { defaultExpandedValue: string }, children: string[]) => /* html */ `
-  <ark-tree-view class="${styles.Root}" default-expanded-value="${defaultExpandedValue}">
-    <ark-tree-view-label class="${styles.Label}">Tree</ark-tree-view-label>
-    <ark-tree-view-tree class="${styles.Tree}">${children.join('')}</ark-tree-view-tree>
-  </ark-tree-view>`
-
 const branch = ({ value, label }: TreeNode, children: string[]) => /* html */ `
   <ark-tree-view-node-group class="${styles.NodeGroup}" value="${value}">
     <ark-tree-view-node class="${styles.Node}">
@@ -87,8 +81,12 @@ const leaf = ({ value, label }: TreeNode) => /* html */ `
 const renderTree = (nodes: TreeNode[]): string[] =>
   nodes.map((node) => (node.children ? branch(node, renderTree(node.children)) : leaf(node)))
 
-const Basic = () => treeView({ defaultExpandedValue: 'node_modules' }, renderTree(files))
-
 export function mount(container: HTMLElement) {
-  container.replaceChildren(inShadowRoot(Basic()))
+  container.replaceChildren(
+    inShadowRoot(/* html */ `
+      <ark-tree-view class="${styles.Root}" default-expanded-value="node_modules">
+        <ark-tree-view-label class="${styles.Label}">Tree</ark-tree-view-label>
+        <ark-tree-view-tree class="${styles.Tree}">${renderTree(files).join('')}</ark-tree-view-tree>
+      </ark-tree-view>`),
+  )
 }

@@ -13,8 +13,6 @@ import button from 'styles/button.module.css'
 const item = ({ value, label }: { value: string; label: string }) =>
   /* html */ `<ark-menu-item class="${styles.Item}" value="${value}">${label}</ark-menu-item>`
 
-const separator = () => /* html */ `<ark-menu-separator class="${styles.Separator}"></ark-menu-separator>`
-
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
     <ark-menu>
@@ -27,12 +25,10 @@ export function mount(root: HTMLElement) {
       <ark-menu-positioner class="${styles.Positioner}">
         <ark-menu-content class="${styles.Content}">
           <ark-menu-list class="${styles.List}">
-            ${[
-              item({ value: 'edit', label: 'Edit' }),
-              item({ value: 'duplicate', label: 'Duplicate' }),
-              separator(),
-              item({ value: 'delete', label: 'Delete...' }),
-            ].join('')}
+            ${item({ value: 'edit', label: 'Edit' })}
+            ${item({ value: 'duplicate', label: 'Duplicate' })}
+            <ark-menu-separator class="${styles.Separator}"></ark-menu-separator>
+            ${item({ value: 'delete', label: 'Delete...' })}
           </ark-menu-list>
         </ark-menu-content>
       </ark-menu-positioner>

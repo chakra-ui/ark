@@ -13,16 +13,15 @@ const item = (value: string) => /* html */ `
     </label>
   </ark-radio-group-item>`
 
-const radioGroup = ({ value }: { value: string }, items: string[]) => /* html */ `
-  <ark-radio-group class="${styles.Root}" value="${value}">
-    <ark-radio-group-label class="${styles.Label}">Framework</ark-radio-group-label>
-    ${items.join('')}
-  </ark-radio-group>`
-
 export function mount(root: HTMLElement) {
   const host = document.createElement('div')
   host.className = 'stack'
-  host.innerHTML = /* html */ `<output>value: null</output>${radioGroup({ value: '' }, frameworks.map(item))}`
+  host.innerHTML = /* html */ `
+    <output>value: null</output>
+    <ark-radio-group class="${styles.Root}" value="">
+      <ark-radio-group-label class="${styles.Label}">Framework</ark-radio-group-label>
+      ${frameworks.map(item).join('')}
+    </ark-radio-group>`
   const el = host.querySelector('ark-radio-group')!
   el.addEventListener('valuechange', (event) => {
     const { value } = event.detail

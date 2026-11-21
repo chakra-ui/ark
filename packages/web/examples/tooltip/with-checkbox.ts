@@ -8,11 +8,6 @@ import checkbox from 'styles/checkbox.module.css'
 
 import styles from 'styles/tooltip.module.css'
 
-const tooltipPopup = (content: string) => /* html */ `
-  <ark-tooltip-positioner class="${styles.Positioner}">
-    <ark-tooltip-content class="${styles.Content}">${content}</ark-tooltip-content>
-  </ark-tooltip-positioner>`
-
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
   <ark-tooltip>
@@ -27,6 +22,8 @@ export function mount(root: HTMLElement) {
         </label>
       </ark-checkbox>
     </ark-tooltip-trigger>
-    ${tooltipPopup('Required to continue')}
+    <ark-tooltip-positioner class="${styles.Positioner}">
+      <ark-tooltip-content class="${styles.Content}">Required to continue</ark-tooltip-content>
+    </ark-tooltip-positioner>
   </ark-tooltip>`
 }

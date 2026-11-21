@@ -20,38 +20,19 @@ const slides: Slide[] = [
 
 const icon = (node: typeof ArrowLeft) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
-const attr = (name: string, on?: boolean) => (on ? name : '')
-
-const carousel = ({ autoSize, spacing }: { autoSize?: boolean; spacing: string }, children: string[]) => /* html */ `
-  <ark-carousel class="${styles.Root}" ${attr('auto-size', autoSize)} spacing="${spacing}">${children.join('')}</ark-carousel>`
-
-const control = (children: string[]) => /* html */ `
-  <ark-carousel-control class="${styles.Control}">${children.join('')}</ark-carousel-control>`
-
-const prevTrigger = () => /* html */ `
-  <ark-carousel-prev-trigger><button class="${styles.Trigger}">${icon(ArrowLeft)}</button></ark-carousel-prev-trigger>`
-
-const nextTrigger = () => /* html */ `
-  <ark-carousel-next-trigger><button class="${styles.Trigger}">${icon(ArrowRight)}</button></ark-carousel-next-trigger>`
-
-const itemGroup = (children: string[]) => /* html */ `
-  <ark-carousel-item-group class="${styles.ItemGroup}">${children.join('')}</ark-carousel-item-group>`
-
 const sizedItem = ({ width, label }: Slide) => /* html */ `
   <ark-carousel-item snap-align="center">
     <div class="${styles.Slide}" style="width: ${width}; height: 6rem">${label}</div>
   </ark-carousel-item>`
 
-const indicator = () => /* html */ `
-  <ark-carousel-indicator><button class="${styles.Indicator}"></button></ark-carousel-indicator>`
-
-const pageIndicators = () => /* html */ `
-  <ark-carousel-indicator-group class="${styles.IndicatorGroup}"><template>${indicator()}</template></ark-carousel-indicator-group>`
-
 export function mount(root: HTMLElement) {
-  root.innerHTML = carousel({ autoSize: true, spacing: '8px' }, [
-    control([prevTrigger(), nextTrigger()]),
-    itemGroup(slides.map(sizedItem)),
-    pageIndicators(),
-  ])
+  root.innerHTML = /* html */ `
+    <ark-carousel class="${styles.Root}" auto-size spacing="8px">
+      <ark-carousel-control class="${styles.Control}">
+        <ark-carousel-prev-trigger><button class="${styles.Trigger}">${icon(ArrowLeft)}</button></ark-carousel-prev-trigger>
+        <ark-carousel-next-trigger><button class="${styles.Trigger}">${icon(ArrowRight)}</button></ark-carousel-next-trigger>
+      </ark-carousel-control>
+      <ark-carousel-item-group class="${styles.ItemGroup}">${slides.map(sizedItem).join('')}</ark-carousel-item-group>
+      <ark-carousel-indicator-group class="${styles.IndicatorGroup}"><template><ark-carousel-indicator><button class="${styles.Indicator}"></button></ark-carousel-indicator></template></ark-carousel-indicator-group>
+    </ark-carousel>`
 }

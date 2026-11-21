@@ -32,7 +32,7 @@ export function mount(root: HTMLElement) {
   host.innerHTML = /* html */ `
     <ark-tooltip>
       <ark-toggle-group class="${styles.Root}" default-value="bold">
-        ${items.map((entry) => item(entry)).join('')}
+        ${items.map(item).join('')}
       </ark-toggle-group>
       <ark-tooltip-positioner class="${tooltipStyles.Positioner}">
         <ark-tooltip-content class="${tooltipStyles.Content}"></ark-tooltip-content>

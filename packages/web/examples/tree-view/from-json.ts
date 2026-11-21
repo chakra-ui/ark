@@ -12,40 +12,6 @@ interface TreeNode {
 
 const icon = (node: typeof File) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
-const treeView = (
-  { data, defaultExpandedValue }: { data: TreeNode[]; defaultExpandedValue?: string },
-  children: string[],
-) => /* html */ `
-  <ark-tree-view class="${styles.Root}" ${defaultExpandedValue ? `default-expanded-value="${defaultExpandedValue}"` : ''}>
-    <script type="application/json">${JSON.stringify(data)}</script>
-    <ark-tree-view-label class="${styles.Label}">Tree</ark-tree-view-label>
-    <ark-tree-view-tree class="${styles.Tree}">${children.join('')}</ark-tree-view-tree>
-  </ark-tree-view>`
-
-const branchTemplate = /* html */ `
-  <template data-branch>
-    <ark-tree-view-node-group class="${styles.NodeGroup}">
-      <ark-tree-view-node class="${styles.Node}">
-        <ark-tree-view-cell class="${styles.Cell}">
-          <ark-tree-view-node-expand-trigger class="${styles.NodeExpandTrigger}">
-            <ark-tree-view-node-indicator class="${styles.NodeIndicator}">${icon(ChevronRight)}</ark-tree-view-node-indicator>
-          </ark-tree-view-node-expand-trigger>
-          <ark-tree-view-node-text class="${styles.NodeText}">${icon(Folder)}</ark-tree-view-node-text>
-        </ark-tree-view-cell>
-      </ark-tree-view-node>
-      <ark-tree-view-node-group-content class="${styles.NodeGroupContent}">
-        <ark-tree-view-indent-guide class="${styles.IndentGuide}"></ark-tree-view-indent-guide>
-      </ark-tree-view-node-group-content>
-    </ark-tree-view-node-group>
-  </template>`
-
-const leafTemplate = /* html */ `
-  <template>
-    <ark-tree-view-node class="${styles.Node}">
-      <ark-tree-view-cell class="${styles.Cell}"><ark-tree-view-node-text class="${styles.NodeText}">${icon(File)}</ark-tree-view-node-text></ark-tree-view-cell>
-    </ark-tree-view-node>
-  </template>`
-
 const data: TreeNode[] = [
   {
     value: 'docs',
@@ -67,5 +33,31 @@ const data: TreeNode[] = [
 ]
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = treeView({ data }, [branchTemplate, leafTemplate])
+  root.innerHTML = /* html */ `
+    <ark-tree-view class="${styles.Root}">
+      <script type="application/json">${JSON.stringify(data)}</script>
+      <ark-tree-view-label class="${styles.Label}">Tree</ark-tree-view-label>
+      <ark-tree-view-tree class="${styles.Tree}">
+        <template data-branch>
+          <ark-tree-view-node-group class="${styles.NodeGroup}">
+            <ark-tree-view-node class="${styles.Node}">
+              <ark-tree-view-cell class="${styles.Cell}">
+                <ark-tree-view-node-expand-trigger class="${styles.NodeExpandTrigger}">
+                  <ark-tree-view-node-indicator class="${styles.NodeIndicator}">${icon(ChevronRight)}</ark-tree-view-node-indicator>
+                </ark-tree-view-node-expand-trigger>
+                <ark-tree-view-node-text class="${styles.NodeText}">${icon(Folder)}</ark-tree-view-node-text>
+              </ark-tree-view-cell>
+            </ark-tree-view-node>
+            <ark-tree-view-node-group-content class="${styles.NodeGroupContent}">
+              <ark-tree-view-indent-guide class="${styles.IndentGuide}"></ark-tree-view-indent-guide>
+            </ark-tree-view-node-group-content>
+          </ark-tree-view-node-group>
+        </template>
+        <template>
+          <ark-tree-view-node class="${styles.Node}">
+            <ark-tree-view-cell class="${styles.Cell}"><ark-tree-view-node-text class="${styles.NodeText}">${icon(File)}</ark-tree-view-node-text></ark-tree-view-cell>
+          </ark-tree-view-node>
+        </template>
+      </ark-tree-view-tree>
+    </ark-tree-view>`
 }

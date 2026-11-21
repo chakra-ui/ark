@@ -51,11 +51,6 @@ const sheets: Sheet[] = [
   },
 ]
 
-const list = (items: string[]) => /* html */ `
-  <ul class="${styles.list}">
-    ${items.map((item) => /* html */ `<li>${item}</li>`).join('')}
-  </ul>`
-
 const field = ({ id, label, value, rows }: Field) => /* html */ `
   <div class="${styles.field}">
     <label class="${styles.label}" for="${id}">${label}</label>
@@ -66,16 +61,9 @@ const field = ({ id, label, value, rows }: Field) => /* html */ `
     }
   </div>`
 
-const backdrop = () => /* html */ `<ark-drawer-backdrop class="${styles.backdrop}"></ark-drawer-backdrop>`
-
-const nextAction = ({ name, label }: { name: string; label: string }) => /* html */ `
-  <div class="${styles.actionsLeft}">
-    <button class="${styles.ghostButton}" data-open="${name}">${label}</button>
-  </div>`
-
 const drawer = (sheet: Sheet) => /* html */ `
   <ark-drawer data-name="${sheet.name}">
-    ${sheet.backdrop ? backdrop() : ''}
+    ${sheet.backdrop ? /* html */ `<ark-drawer-backdrop class="${styles.backdrop}"></ark-drawer-backdrop>` : ''}
     <ark-drawer-positioner class="${styles.positioner}">
       <ark-drawer-content class="${styles.contentHost}">
         <div class="${styles.popup}">
@@ -85,10 +73,18 @@ const drawer = (sheet: Sheet) => /* html */ `
           <div class="${styles.content}">
             <ark-drawer-title class="${styles.title}">${sheet.title}</ark-drawer-title>
             <ark-drawer-description class="${styles.description}">${sheet.description}</ark-drawer-description>
-            ${sheet.list ? list(sheet.list) : ''}
+            ${
+              sheet.list
+                ? /* html */ `<ul class="${styles.list}">${sheet.list.map((item) => /* html */ `<li>${item}</li>`).join('')}</ul>`
+                : ''
+            }
             ${sheet.fields ? sheet.fields.map(field).join('') : ''}
             <div class="${styles.actions}">
-              ${sheet.next ? nextAction(sheet.next) : ''}
+              ${
+                sheet.next
+                  ? /* html */ `<div class="${styles.actionsLeft}"><button class="${styles.ghostButton}" data-open="${sheet.next.name}">${sheet.next.label}</button></div>`
+                  : ''
+              }
               <ark-drawer-close-trigger><button class="${styles.button}">${sheet.close}</button></ark-drawer-close-trigger>
             </div>
           </div>

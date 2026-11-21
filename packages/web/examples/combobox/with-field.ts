@@ -6,28 +6,6 @@ import field from 'styles/field.module.css'
 
 import styles from 'styles/combobox.module.css'
 
-interface ComboboxProps {
-  label: string
-  placeholder: string
-}
-
-const combobox = ({ label, placeholder }: ComboboxProps, children: string[]) => /* html */ `
-  <ark-combobox class="${styles.Root}">
-    <ark-combobox-label class="${styles.Label}">${label}</ark-combobox-label>
-    <ark-combobox-control class="${styles.Control}">
-      <ark-combobox-input><input class="${styles.Input}" placeholder="${placeholder}" /></ark-combobox-input>
-      <div class="${styles.Indicators}">
-        <ark-combobox-clear-trigger><button class="${styles.ClearTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-clear-trigger>
-        <ark-combobox-trigger><button class="${styles.Trigger}">${createElement(ChevronsUpDown, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-trigger>
-      </div>
-    </ark-combobox-control>
-    <ark-combobox-positioner class="${styles.Positioner}">
-      <ark-combobox-content class="${styles.Content}">
-        <ark-combobox-list class="${styles.List}">${children.join('')}</ark-combobox-list>
-      </ark-combobox-content>
-    </ark-combobox-positioner>
-  </ark-combobox>`
-
 interface Item {
   value: string
   label: string
@@ -51,10 +29,21 @@ const departments: Item[] = [
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
   <div class="${field.Root}">
-    ${combobox(
-      { label: 'Department', placeholder: 'e.g. Engineering' },
-      departments.map((department) => item(department)),
-    )}
+    <ark-combobox class="${styles.Root}">
+      <ark-combobox-label class="${styles.Label}">Department</ark-combobox-label>
+      <ark-combobox-control class="${styles.Control}">
+        <ark-combobox-input><input class="${styles.Input}" placeholder="e.g. Engineering" /></ark-combobox-input>
+        <div class="${styles.Indicators}">
+          <ark-combobox-clear-trigger><button class="${styles.ClearTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-clear-trigger>
+          <ark-combobox-trigger><button class="${styles.Trigger}">${createElement(ChevronsUpDown, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-trigger>
+        </div>
+      </ark-combobox-control>
+      <ark-combobox-positioner class="${styles.Positioner}">
+        <ark-combobox-content class="${styles.Content}">
+          <ark-combobox-list class="${styles.List}">${departments.map((department) => item(department)).join('')}</ark-combobox-list>
+        </ark-combobox-content>
+      </ark-combobox-positioner>
+    </ark-combobox>
     <span class="${field.HelperText}">Select your primary department</span>
   </div>`
 }

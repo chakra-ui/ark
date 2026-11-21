@@ -11,23 +11,6 @@ const attr = (name: string, value?: string | number | boolean) =>
 
 const icon = (node: typeof Calendar) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
-const input = ({ index }: { index?: number } = {}) =>
-  /* html */ `<ark-date-picker-input ${attr('index', index)}><input class="${styles.Input}" /></ark-date-picker-input>`
-
-const trigger = () =>
-  /* html */ `<ark-date-picker-trigger><button class="${styles.Trigger}">${icon(Calendar)}</button></ark-date-picker-trigger>`
-
-const clearTrigger = ({ label = 'Clear' }: { label?: string } = {}) =>
-  /* html */ `<ark-date-picker-clear-trigger><button class="${button.Root}">${label}</button></ark-date-picker-clear-trigger>`
-
-const control = (children: string[]) =>
-  /* html */ `<ark-date-picker-control class="${styles.Control}">${children.join('')}</ark-date-picker-control>`
-
-const content = (children: string[]) => /* html */ `
-  <ark-date-picker-positioner class="${styles.Positioner}">
-    <ark-date-picker-content class="${styles.Content}">${children.join('')}</ark-date-picker-content>
-  </ark-date-picker-positioner>`
-
 const viewControl = () => /* html */ `
   <ark-date-picker-view-control class="${styles.ViewControl}">
     <ark-date-picker-prev-trigger><button class="${styles.PrevTrigger}">${icon(ChevronLeft)}</button></ark-date-picker-prev-trigger>
@@ -48,16 +31,6 @@ const tableBody = ({ triggerClass }: { triggerClass: string }) => /* html */ `
       </template>
     </ark-date-picker-table-body>`
 
-const dayTable = ({ offset }: { offset?: number } = {}) => /* html */ `
-  <ark-date-picker-table class="${styles.Table}" ${attr('offset', offset)}>
-    <ark-date-picker-table-head>
-      <ark-date-picker-table-row>
-        <template><ark-date-picker-table-header class="${styles.TableHeader}"></ark-date-picker-table-header></template>
-      </ark-date-picker-table-row>
-    </ark-date-picker-table-head>
-    ${tableBody({ triggerClass: styles.TableCellTrigger })}
-  </ark-date-picker-table>`
-
 interface GridTableProps {
   columns: number
   format?: 'short' | 'long'
@@ -69,46 +42,38 @@ const gridTable = ({ columns, format, triggerClass }: GridTableProps) => /* html
     ${tableBody({ triggerClass })}
   </ark-date-picker-table>`
 
-const views = ({ gridTriggers = false }: { gridTriggers?: boolean } = {}) => /* html */ `
-  <ark-date-picker-view view="day" class="${styles.View}">
-    ${viewControl()}
-    ${dayTable()}
-  </ark-date-picker-view>
-  <ark-date-picker-view view="month" class="${styles.View}">
-    ${viewControl()}
-    ${gridTable({
-      columns: 4,
-      format: 'short',
-      triggerClass: gridTriggers ? styles.MonthTableCellTrigger : styles.TableCellTrigger,
-    })}
-  </ark-date-picker-view>
-  <ark-date-picker-view view="year" class="${styles.View}">
-    ${viewControl()}
-    ${gridTable({ columns: 4, triggerClass: gridTriggers ? styles.YearTableCellTrigger : styles.TableCellTrigger })}
-  </ark-date-picker-view>`
-
-interface DatePickerProps {
-  label?: string
-  selectionMode?: 'single' | 'multiple' | 'range'
-  gridTriggers?: boolean
-}
-
-const datePicker = (
-  { label = 'Label', selectionMode, gridTriggers = false }: DatePickerProps,
-  children: string[],
-) => /* html */ `
-  <ark-date-picker class="${styles.Root}" ${attr('selection-mode', selectionMode)}>
-    <ark-date-picker-label class="${styles.Label}">${label}</ark-date-picker-label>
-    ${children.join('')}
-    ${content([views({ gridTriggers })])}
-  </ark-date-picker>`
-
-const presetTrigger = ({ value, label }: { value: string; label: string }) =>
-  /* html */ `<ark-date-picker-preset-trigger value="${value}"><button class="${styles.PresetTrigger}">${label}</button></ark-date-picker-preset-trigger>`
-
 export function mount(root: HTMLElement) {
-  root.innerHTML = datePicker({ selectionMode: 'range' }, [
-    control([input({ index: 0 }), input({ index: 1 }), trigger(), clearTrigger()]),
-    presetTrigger({ value: 'last7Days', label: 'Last 7 days' }),
-  ])
+  root.innerHTML = /* html */ `
+  <ark-date-picker class="${styles.Root}" selection-mode="range">
+    <ark-date-picker-label class="${styles.Label}">Label</ark-date-picker-label>
+    <ark-date-picker-control class="${styles.Control}">
+      <ark-date-picker-input index="0"><input class="${styles.Input}" /></ark-date-picker-input><ark-date-picker-input index="1"><input class="${styles.Input}" /></ark-date-picker-input>
+      <ark-date-picker-trigger><button class="${styles.Trigger}">${icon(Calendar)}</button></ark-date-picker-trigger>
+      <ark-date-picker-clear-trigger><button class="${button.Root}">Clear</button></ark-date-picker-clear-trigger>
+    </ark-date-picker-control>
+    <ark-date-picker-preset-trigger value="last7Days"><button class="${styles.PresetTrigger}">Last 7 days</button></ark-date-picker-preset-trigger>
+    <ark-date-picker-positioner class="${styles.Positioner}">
+      <ark-date-picker-content class="${styles.Content}">
+        <ark-date-picker-view view="day" class="${styles.View}">
+          ${viewControl()}
+          <ark-date-picker-table class="${styles.Table}">
+            <ark-date-picker-table-head>
+              <ark-date-picker-table-row>
+                <template><ark-date-picker-table-header class="${styles.TableHeader}"></ark-date-picker-table-header></template>
+              </ark-date-picker-table-row>
+            </ark-date-picker-table-head>
+            ${tableBody({ triggerClass: styles.TableCellTrigger })}
+          </ark-date-picker-table>
+        </ark-date-picker-view>
+        <ark-date-picker-view view="month" class="${styles.View}">
+          ${viewControl()}
+          ${gridTable({ columns: 4, format: 'short', triggerClass: styles.TableCellTrigger })}
+        </ark-date-picker-view>
+        <ark-date-picker-view view="year" class="${styles.View}">
+          ${viewControl()}
+          ${gridTable({ columns: 4, triggerClass: styles.TableCellTrigger })}
+        </ark-date-picker-view>
+      </ark-date-picker-content>
+    </ark-date-picker-positioner>
+  </ark-date-picker>`
 }

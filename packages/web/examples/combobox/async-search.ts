@@ -2,8 +2,11 @@ import { createElement, X, ChevronsUpDown, Check, LoaderCircle } from 'lucide'
 
 import { createListCollection } from '../../src/components/combobox/index.js'
 import { createAsyncList } from '../../src/utils/async-list.js'
+import { createFilter } from '../../src/utils/locale.js'
 
 import styles from 'styles/combobox.module.css'
+
+const { contains } = createFilter({ sensitivity: 'base' })
 
 interface Movie {
   id: string
@@ -69,11 +72,8 @@ export function mount(root: HTMLElement) {
       if (!filter) return { items: [] }
       await new Promise((resolve) => setTimeout(resolve, 400))
       if (signal?.aborted) return { items: [] }
-      const query = filter.toLowerCase()
       return {
-        items: movies.filter(
-          (movie) => movie.title.toLowerCase().includes(query) || movie.director.toLowerCase().includes(query),
-        ),
+        items: movies.filter((movie) => contains(movie.title, filter) || contains(movie.director, filter)),
       }
     },
   })

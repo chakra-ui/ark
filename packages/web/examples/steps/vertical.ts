@@ -17,8 +17,6 @@ const items: Step[] = [
 
 const prevTrigger = /* html */ `<ark-steps-prev-trigger><button class="${button.Root}">Back</button></ark-steps-prev-trigger>`
 
-const nextTrigger = /* html */ `<ark-steps-next-trigger><button class="${button.Root}" data-variant="solid">Next</button></ark-steps-next-trigger>`
-
 const step = ({ value, title, index }: { value: string; title: string; index: number }) => /* html */ `
   <ark-steps-item class="${styles.Item}" value="${value}">
     <ark-steps-trigger>
@@ -34,7 +32,10 @@ const content = ({ value, title, description }: Step) => /* html */ `
   <ark-steps-content class="${styles.Content}" value="${value}">
     <div class="vstack">
       <span>${title} - ${description}</span>
-      <div class="${styles.Actions}">${prevTrigger}${nextTrigger}</div>
+      <div class="${styles.Actions}">
+        ${prevTrigger}
+        <ark-steps-next-trigger><button class="${button.Root}" data-variant="solid">Next</button></ark-steps-next-trigger>
+      </div>
     </div>
   </ark-steps-content>`
 

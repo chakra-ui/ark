@@ -2,8 +2,11 @@ import { createElement, Search } from 'lucide'
 
 import { createListCollection } from '../../src/components/command/index.js'
 import { createAsyncList } from '../../src/utils/async-list.js'
+import { createFilter } from '../../src/utils/locale.js'
 
 import styles from 'styles/command.module.css'
+
+const { contains } = createFilter({ sensitivity: 'base' })
 
 interface Person {
   id: string
@@ -49,8 +52,7 @@ export function mount(root: HTMLElement) {
     async load({ filter, signal }) {
       await new Promise((resolve) => setTimeout(resolve, 300))
       if (signal?.aborted) return { items: [] }
-      const query = (filter ?? '').toLowerCase()
-      return { items: people.filter((person) => person.name.toLowerCase().includes(query)) }
+      return { items: people.filter((person) => contains(person.name, filter ?? '')) }
     },
   })
 
