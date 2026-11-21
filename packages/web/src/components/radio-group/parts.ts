@@ -14,25 +14,49 @@ const itemPart = (
   tag: string,
   props: (api: radio.Api, item: radio.ItemProps) => Record<string, any>,
   target?: (el: HTMLElement) => HTMLElement | null,
+  attributes?: string[],
 ) =>
-  definePart<radio.Api>({
+  definePart<radio.Api, radio.ItemState | undefined>({
     tag,
     root,
+    attributes,
     target,
     props: (api, el) => {
       const item = itemOf(el)
       return item ? props(api, item) : {}
     },
+    state: (api, el) => {
+      const item = itemOf(el)
+      return item ? api.getItemState(item) : undefined
+    },
   })
 
-definePart<radio.Api>({ tag: 'ark-radio-group-label', root, props: (api) => api.getLabelProps() })
+export const RadioGroupLabel = definePart<radio.Api>({
+  tag: 'ark-radio-group-label',
+  root,
+  props: (api) => api.getLabelProps(),
+})
 
-definePart<radio.Api>({ tag: 'ark-radio-group-indicator', root, props: (api) => api.getIndicatorProps() })
+export const RadioGroupIndicator = definePart<radio.Api>({
+  tag: 'ark-radio-group-indicator',
+  root,
+  props: (api) => api.getIndicatorProps(),
+})
 
-itemPart(itemTag, (api, item) => api.getItemProps(item), wrapped('label'))
+export const RadioGroupItem = itemPart(itemTag, (api, item) => api.getItemProps(item), wrapped('label'), [
+  'value',
+  'disabled',
+  'invalid',
+])
 
-itemPart('ark-radio-group-item-text', (api, item) => api.getItemTextProps(item))
+export const RadioGroupItemText = itemPart('ark-radio-group-item-text', (api, item) => api.getItemTextProps(item))
 
-itemPart('ark-radio-group-item-control', (api, item) => api.getItemControlProps(item))
+export const RadioGroupItemControl = itemPart('ark-radio-group-item-control', (api, item) =>
+  api.getItemControlProps(item),
+)
 
-itemPart('ark-radio-group-item-hidden-input', (api, item) => api.getItemHiddenInputProps(item), ownInput)
+export const RadioGroupItemHiddenInput = itemPart(
+  'ark-radio-group-item-hidden-input',
+  (api, item) => api.getItemHiddenInputProps(item),
+  ownInput,
+)

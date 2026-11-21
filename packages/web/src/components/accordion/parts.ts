@@ -24,30 +24,38 @@ function collapsibleOf(item: HTMLElement, api: accordion.Api, props: accordion.I
   return collapsible.api()
 }
 
+const itemStateOf = (api: accordion.Api, el: HTMLElement) => {
+  const item = itemPropsOf(el)
+  return item ? api.getItemState(item) : undefined
+}
+
 const itemPart = (tag: string, props: (api: accordion.Api, item: accordion.ItemProps) => Record<string, any>) =>
-  definePart<accordion.Api>({
+  definePart<accordion.Api, accordion.ItemState | undefined>({
     tag,
     root,
     props: (api, el) => {
       const item = itemPropsOf(el)
       return item ? props(api, item) : {}
     },
+    state: itemStateOf,
   })
 
-definePart<accordion.Api>({
+export const AccordionItem = definePart<accordion.Api, accordion.ItemState | undefined>({
   tag: itemTag,
   root,
+  attributes: ['value', 'disabled'],
   setup: (el) => () => stopItemCollapsible(el),
   props: (api, el) => {
     const item = itemPropsOf(el)
     if (!item) return {}
     return mergeProps(collapsibleOf(el, api, item).getRootProps(), api.getItemProps(item))
   },
+  state: itemStateOf,
 })
 
-itemPart('ark-accordion-item-header', (api, item) => api.getItemHeaderProps(item))
+export const AccordionItemHeader = itemPart('ark-accordion-item-header', (api, item) => api.getItemHeaderProps(item))
 
-definePart<accordion.Api>({
+export const AccordionItemTrigger = definePart<accordion.Api, accordion.ItemState | undefined>({
   tag: 'ark-accordion-item-trigger',
   root,
   target: wrappedButton,
@@ -59,11 +67,14 @@ definePart<accordion.Api>({
     const unmounted = content?.querySelector(':scope > template') && !content.querySelector(':scope > :not(template)')
     return unmounted ? { ...props, 'aria-controls': undefined } : props
   },
+  state: itemStateOf,
 })
 
-itemPart('ark-accordion-item-indicator', (api, item) => api.getItemIndicatorProps(item))
+export const AccordionItemIndicator = itemPart('ark-accordion-item-indicator', (api, item) =>
+  api.getItemIndicatorProps(item),
+)
 
-definePart<accordion.Api>({
+export const AccordionItemContent = definePart<accordion.Api, accordion.ItemState | undefined>({
   tag: contentTag,
   root,
   props: (api, el) => {
@@ -73,6 +84,7 @@ definePart<accordion.Api>({
     const collapsible = collapsibleOf(itemEl, api, item)
     return mergeProps(collapsible.getContentProps(), withoutVisibility(api.getItemContentProps(item)))
   },
+  state: itemStateOf,
   render: (api, el) => {
     const item = itemPropsOf(el)
     const itemEl = el.closest<HTMLElement>(itemTag)

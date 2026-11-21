@@ -4,6 +4,7 @@ import './parts.js'
 import type { Api, Props } from '@zag-js/pin-input'
 import type { RootElement, StateProperties } from '../../utils/define.js'
 import type { FunctionProperties } from '../../utils/events.js'
+import type { PinInputControl, PinInputHiddenInput, PinInputInput, PinInputLabel } from './parts.js'
 
 export type { Api as PinInputApi } from '@zag-js/pin-input'
 export interface PinInputElement
@@ -16,6 +17,10 @@ export interface PinInputElement
 declare global {
   interface HTMLElementTagNameMap {
     'ark-pin-input': PinInputElement
+    'ark-pin-input-input': InstanceType<typeof PinInputInput>
+    'ark-pin-input-hidden-input': InstanceType<typeof PinInputHiddenInput>
+    'ark-pin-input-label': InstanceType<typeof PinInputLabel>
+    'ark-pin-input-control': InstanceType<typeof PinInputControl>
   }
 }
 

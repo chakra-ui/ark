@@ -14,7 +14,7 @@ const downloadOptions = (el: HTMLElement): qrCode.DownloadTriggerProps => ({
   quality: num(el, 'quality'),
 })
 
-definePart<qrCode.Api>({
+export const QrCodeFrame = definePart<qrCode.Api>({
   tag: frame,
   root,
   target: (el) => ownSvg(el) as unknown as HTMLElement,
@@ -22,7 +22,7 @@ definePart<qrCode.Api>({
 })
 
 // Custom elements can't live inside <svg>, so the pattern sits beside it and props the svg's <path>
-definePart<qrCode.Api>({
+export const QrCodePattern = definePart<qrCode.Api>({
   tag: 'ark-qr-code-pattern',
   root,
   setup: (el) => {
@@ -38,15 +38,16 @@ definePart<qrCode.Api>({
   props: (api) => api.getPatternProps(),
 })
 
-definePart<qrCode.Api>({
+export const QrCodeOverlay = definePart<qrCode.Api>({
   tag: 'ark-qr-code-overlay',
   root,
   props: (api) => api.getOverlayProps(),
 })
 
-definePart<qrCode.Api>({
+export const QrCodeDownloadTrigger = definePart<qrCode.Api>({
   tag: 'ark-qr-code-download-trigger',
   root,
+  attributes: ['file-name', 'mime-type', 'quality'],
   target: wrappedButton,
   props: (api, el) => api.getDownloadTriggerProps(downloadOptions(el)),
 })

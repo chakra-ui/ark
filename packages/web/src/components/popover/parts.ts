@@ -4,35 +4,67 @@ import { definePart, wrappedButton } from '../../utils/define.js'
 import { definePresencePart } from '../../utils/presence.js'
 import { root } from './shared.js'
 
-definePart<popover.Api>({
+export const PopoverTrigger = definePart<popover.Api, popover.TriggerState>({
   tag: 'ark-popover-trigger',
   root,
+  attributes: ['value'],
   target: wrappedButton,
   props: (api, el) => api.getTriggerProps({ value: str(el, 'value') }),
+  state: (api, el) => api.getTriggerState({ value: str(el, 'value') }),
 })
 
-definePart<popover.Api>({ tag: 'ark-popover-anchor', root, props: (api) => api.getAnchorProps() })
+export const PopoverAnchor = definePart<popover.Api>({
+  tag: 'ark-popover-anchor',
+  root,
+  props: (api) => api.getAnchorProps(),
+})
 
-definePart<popover.Api>({ tag: 'ark-popover-indicator', root, props: (api) => api.getIndicatorProps() })
+export const PopoverIndicator = definePart<popover.Api>({
+  tag: 'ark-popover-indicator',
+  root,
+  props: (api) => api.getIndicatorProps(),
+})
 
-definePresencePart<popover.Api>({
+export const PopoverPositioner = definePresencePart<popover.Api, popover.PositionerState>({
   tag: 'ark-popover-positioner',
   root,
   animates: false,
   props: (api) => api.getPositionerProps(),
+  state: (api) => api.getPositionerState(),
 })
 
-definePresencePart<popover.Api>({ tag: 'ark-popover-content', root, props: (api) => api.getContentProps() })
+export const PopoverContent = definePresencePart<popover.Api, popover.ContentState>({
+  tag: 'ark-popover-content',
+  root,
+  props: (api) => api.getContentProps(),
+  state: (api) => api.getContentState(),
+})
 
-definePart<popover.Api>({ tag: 'ark-popover-arrow', root, props: (api) => api.getArrowProps() })
+export const PopoverArrow = definePart<popover.Api>({
+  tag: 'ark-popover-arrow',
+  root,
+  props: (api) => api.getArrowProps(),
+})
 
-definePart<popover.Api>({ tag: 'ark-popover-arrow-tip', root, props: (api) => api.getArrowTipProps() })
+export const PopoverArrowTip = definePart<popover.Api>({
+  tag: 'ark-popover-arrow-tip',
+  root,
+  props: (api) => api.getArrowTipProps(),
+})
 
-definePart<popover.Api>({ tag: 'ark-popover-title', root, props: (api) => api.getTitleProps() })
+export const PopoverTitle = definePart<popover.Api>({
+  tag: 'ark-popover-title',
+  root,
+  props: (api) => api.getTitleProps(),
+})
 
-definePart<popover.Api>({ tag: 'ark-popover-description', root, props: (api) => api.getDescriptionProps() })
+export const PopoverDescription = definePart<popover.Api>({
+  tag: 'ark-popover-description',
+  root,
+  props: (api) => api.getDescriptionProps(),
+})
 
-definePart<popover.Api>({
+export const PopoverCloseTrigger = definePart<popover.Api>({
   tag: 'ark-popover-close-trigger',
   root,
   target: wrappedButton,

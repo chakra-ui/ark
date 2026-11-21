@@ -8,7 +8,7 @@ import { contentValueOf, itemTag, itemValueOf, root } from './shared.js'
 type Align = navigationMenu.ViewportProps['align']
 
 const itemPropsOf = (el: Element) => {
-  const item = el.closest(itemTag)
+  const item = el.closest<HTMLElement>(itemTag)
   return { value: itemValueOf(el), disabled: item?.hasAttribute('disabled') || undefined }
 }
 
@@ -18,30 +18,34 @@ const linkValueOf = (el: HTMLElement) => {
 }
 
 const alignOf = (el: Element) =>
-  (el.closest('ark-navigation-menu-viewport-positioner')?.getAttribute('align') ?? undefined) as Align
+  (el.closest<HTMLElement>('ark-navigation-menu-viewport-positioner')?.getAttribute('align') ?? undefined) as Align
 
-definePart<navigationMenu.Api>({
+export const NavigationMenuList = definePart<navigationMenu.Api>({
   tag: 'ark-navigation-menu-list',
   root,
   props: (api) => api.getListProps(),
 })
 
-definePart<navigationMenu.Api>({
+export const NavigationMenuItem = definePart<navigationMenu.Api, navigationMenu.ItemState>({
   tag: itemTag,
   root,
+  attributes: ['value', 'disabled'],
   props: (api, el) => api.getItemProps(itemPropsOf(el)),
+  state: (api, el) => api.getItemState(itemPropsOf(el)),
 })
 
-definePart<navigationMenu.Api>({
+export const NavigationMenuTrigger = definePart<navigationMenu.Api, navigationMenu.TriggerState>({
   tag: 'ark-navigation-menu-trigger',
   root,
   target: wrappedButton,
   props: (api, el) => api.getTriggerProps(itemPropsOf(el)),
+  state: (api, el) => api.getTriggerState(itemPropsOf(el)),
 })
 
-definePart<navigationMenu.Api>({
+export const NavigationMenuLink = definePart<navigationMenu.Api>({
   tag: 'ark-navigation-menu-link',
   root,
+  attributes: ['value', 'current', 'close-on-click'],
   target: wrapped('a'),
   props: (api, el) =>
     api.getLinkProps({
@@ -51,36 +55,39 @@ definePart<navigationMenu.Api>({
     }),
 })
 
-definePart<navigationMenu.Api>({
+export const NavigationMenuItemIndicator = definePart<navigationMenu.Api, navigationMenu.ItemState>({
   tag: 'ark-navigation-menu-item-indicator',
   root,
   props: (api, el) => api.getItemIndicatorProps(itemPropsOf(el)),
+  state: (api, el) => api.getItemState(itemPropsOf(el)),
 })
 
-definePart<navigationMenu.Api>({
+export const NavigationMenuArrow = definePart<navigationMenu.Api>({
   tag: 'ark-navigation-menu-arrow',
   root,
   props: (api) => api.getArrowProps(),
 })
 
-definePresencePart<navigationMenu.Api>({
+export const NavigationMenuIndicator = definePresencePart<navigationMenu.Api>({
   tag: 'ark-navigation-menu-indicator',
   root,
   present: (api) => api.open,
   props: (api) => api.getIndicatorProps(),
 })
 
-definePart<navigationMenu.Api>({
+export const NavigationMenuViewportPositioner = definePart<navigationMenu.Api>({
   tag: 'ark-navigation-menu-viewport-positioner',
   root,
+  attributes: ['align'],
   props: (api, el) => api.getViewportPositionerProps({ align: alignOf(el) }),
 })
 
-definePresencePart<navigationMenu.Api>({
+export const NavigationMenuViewport = definePresencePart<navigationMenu.Api, navigationMenu.ViewportState>({
   tag: 'ark-navigation-menu-viewport',
   root,
   present: (api) => api.open,
   props: (api, el) => api.getViewportProps({ align: alignOf(el) }),
+  state: (api) => api.getViewportState(),
 })
 
 const proxies = new WeakMap<HTMLElement, [HTMLElement, HTMLElement]>()
@@ -102,10 +109,12 @@ const moveIntoViewport = (api: navigationMenu.Api, el: HTMLElement, id: string) 
   spreadProps(pair[1], api.getTriggerProxyProps({ value }), id)
 }
 
-definePresencePart<navigationMenu.Api>({
+export const NavigationMenuContent = definePresencePart<navigationMenu.Api, navigationMenu.ContentState>({
   tag: 'ark-navigation-menu-content',
   root,
+  attributes: ['value'],
   present: (api, el) => api.value === contentValueOf(el),
   props: (api, el) => api.getContentProps({ value: contentValueOf(el) }),
+  state: (api, el) => api.getContentState({ value: contentValueOf(el) }),
   render: (api, el) => moveIntoViewport(api, el, el.closest(root)?.id ?? ''),
 })

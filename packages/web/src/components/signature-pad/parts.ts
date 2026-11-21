@@ -58,19 +58,19 @@ function capture(api: signaturePad.Api, el: HTMLElement) {
   })
 }
 
-definePart<signaturePad.Api>({
+export const SignaturePadLabel = definePart<signaturePad.Api>({
   tag: 'ark-signature-pad-label',
   root,
   props: (api) => api.getLabelProps(),
 })
 
-definePart<signaturePad.Api>({
+export const SignaturePadControl = definePart<signaturePad.Api>({
   tag: 'ark-signature-pad-control',
   root,
   props: (api) => api.getControlProps(),
 })
 
-definePart<signaturePad.Api>({
+export const SignaturePadSegment = definePart<signaturePad.Api>({
   tag: 'ark-signature-pad-segment',
   root,
   target: ownSvg,
@@ -78,20 +78,20 @@ definePart<signaturePad.Api>({
   render: (api, el) => renderPaths(targetOf(el, ownSvg), api),
 })
 
-definePart<signaturePad.Api>({
+export const SignaturePadGuide = definePart<signaturePad.Api>({
   tag: 'ark-signature-pad-guide',
   root,
   props: (api) => api.getGuideProps(),
 })
 
-definePart<signaturePad.Api>({
+export const SignaturePadClearTrigger = definePart<signaturePad.Api>({
   tag: 'ark-signature-pad-clear-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getClearTriggerProps(),
 })
 
-definePart<signaturePad.Api>({
+export const SignaturePadHiddenInput = definePart<signaturePad.Api>({
   tag: 'ark-signature-pad-hidden-input',
   root,
   target: ownInput,

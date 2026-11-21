@@ -1,22 +1,27 @@
+import type * as scrollArea from '@zag-js/scroll-area'
+
 import { definePart } from '../../utils/define.js'
 import { type Api, orientationOf, root, scrollbarTag } from './shared.js'
 
-definePart<Api>({
+export const ScrollAreaViewport = definePart<Api, scrollArea.ViewportState>({
   tag: 'ark-scroll-area-viewport',
   root,
   props: (api) => api.getViewportProps(),
+  state: (api) => api.getViewportState(),
 })
 
-definePart<Api>({
+export const ScrollAreaContent = definePart<Api>({
   tag: 'ark-scroll-area-content',
   root,
   props: (api) => api.getContentProps(),
 })
 
-definePart<Api>({
+export const ScrollAreaScrollbar = definePart<Api, scrollArea.ScrollbarState>({
   tag: scrollbarTag,
   root,
+  attributes: ['orientation'],
   props: (api, el) => api.getScrollbarProps({ orientation: orientationOf(el) }),
+  state: (api, el) => api.getScrollbarState({ orientation: orientationOf(el) }),
 
   setup: (el, rootEl) => {
     const observer = new MutationObserver(() => rootEl.render())
@@ -25,7 +30,7 @@ definePart<Api>({
   },
 })
 
-definePart<Api>({
+export const ScrollAreaThumb = definePart<Api>({
   tag: 'ark-scroll-area-thumb',
   root,
   props: (api, el) => {
@@ -34,8 +39,9 @@ definePart<Api>({
   },
 })
 
-definePart<Api>({
+export const ScrollAreaCorner = definePart<Api, scrollArea.CornerState>({
   tag: 'ark-scroll-area-corner',
   root,
   props: (api) => api.getCornerProps(),
+  state: (api) => api.getCornerState(),
 })

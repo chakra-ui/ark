@@ -11,72 +11,81 @@ const observeAttributes = (el: HTMLElement, names: string[], onChange: VoidFunct
   return () => observer.disconnect()
 }
 
-definePart<drawer.Api>({
+export const DrawerTrigger = definePart<drawer.Api, drawer.TriggerState>({
   tag: 'ark-drawer-trigger',
   root,
+  attributes: ['value'],
   target: wrappedButton,
   props: (api, el) => api.getTriggerProps({ value: str(el, 'value') }),
+  state: (api, el) => api.getTriggerState({ value: str(el, 'value') }),
 })
 
-definePresencePart<drawer.Api>({
+export const DrawerBackdrop = definePresencePart<drawer.Api, drawer.BackdropState>({
   tag: 'ark-drawer-backdrop',
   root,
   present: (api) => api.open,
   props: (api) => api.getBackdropProps(),
+  state: (api) => api.getBackdropState(),
 })
 
-definePresencePart<drawer.Api>({
+export const DrawerPositioner = definePresencePart<drawer.Api, drawer.PositionerState>({
   tag: 'ark-drawer-positioner',
   root,
   animates: false,
   props: (api) => api.getPositionerProps(),
+  state: (api) => api.getPositionerState(),
 })
 
-definePresencePart<drawer.Api>({
+export const DrawerContent = definePresencePart<drawer.Api, drawer.ContentState>({
   tag: 'ark-drawer-content',
   root,
+  attributes: ['draggable'],
   props: (api, el) => api.getContentProps({ draggable: el.getAttribute('draggable') !== 'false' }),
+  state: (api) => api.getContentState(),
 
   setup: (el, rootEl) => observeAttributes(el, ['draggable'], () => rootEl.render()),
 })
 
-definePart<drawer.Api>({
+export const DrawerGrabber = definePart<drawer.Api>({
   tag: 'ark-drawer-grabber',
   root,
   props: (api) => api.getGrabberProps(),
 })
 
-definePart<drawer.Api>({
+export const DrawerGrabberIndicator = definePart<drawer.Api>({
   tag: 'ark-drawer-grabber-indicator',
   root,
   props: (api) => api.getGrabberIndicatorProps(),
 })
 
-definePart<drawer.Api>({
+const swipeAreaPropsOf = (el: HTMLElement) => ({
+  disabled: el.hasAttribute('disabled'),
+  swipeDirection: swipeDirectionOf(el),
+})
+
+export const DrawerSwipeArea = definePart<drawer.Api, drawer.SwipeAreaState>({
   tag: 'ark-drawer-swipe-area',
   root,
-  props: (api, el) =>
-    api.getSwipeAreaProps({
-      disabled: el.hasAttribute('disabled'),
-      swipeDirection: swipeDirectionOf(el),
-    }),
+  attributes: ['disabled', 'swipe-direction'],
+  props: (api, el) => api.getSwipeAreaProps(swipeAreaPropsOf(el)),
+  state: (api, el) => api.getSwipeAreaState(swipeAreaPropsOf(el)),
 
   setup: (el, rootEl) => observeAttributes(el, ['disabled', 'swipe-direction'], () => rootEl.render()),
 })
 
-definePart<drawer.Api>({
+export const DrawerTitle = definePart<drawer.Api>({
   tag: 'ark-drawer-title',
   root,
   props: (api) => api.getTitleProps(),
 })
 
-definePart<drawer.Api>({
+export const DrawerDescription = definePart<drawer.Api>({
   tag: 'ark-drawer-description',
   root,
   props: (api) => api.getDescriptionProps(),
 })
 
-definePart<drawer.Api>({
+export const DrawerCloseTrigger = definePart<drawer.Api>({
   tag: 'ark-drawer-close-trigger',
   root,
   target: wrappedButton,

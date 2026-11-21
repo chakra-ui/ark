@@ -32,22 +32,25 @@ const clearTriggerProps = (api: Api) => {
   }
 }
 
-definePart<Api>({
+export const DateInputLabel = definePart<Api>({
   tag: 'ark-date-input-label',
   root,
+  attributes: ['index'],
   props: (api, el) => api.getLabelProps({ index: num(el, 'index') }),
 })
 
-definePart<Api>({
+export const DateInputControl = definePart<Api>({
   tag: 'ark-date-input-control',
   root,
   props: (api) => api.getControlProps(),
 })
 
-definePart<Api>({
+export const DateInputSegmentGroup = definePart<Api, dateInput.SegmentGroupState>({
   tag: segmentGroupTag,
   root,
+  attributes: ['index'],
   props: (api, el) => api.getSegmentGroupProps({ index: num(el, 'index') }),
+  state: (api, el) => api.getSegmentGroupState({ index: num(el, 'index') }),
   render: (api, el) => {
     repeat(segmentTemplateOf(el), api.getSegments({ index: num(el, 'index') }), segmentKey, (node, segment) =>
       segments.set(node, segment),
@@ -55,13 +58,22 @@ definePart<Api>({
   },
 })
 
-definePart<Api>({
+const segmentOf = (el: HTMLElement): dateInput.SegmentProps | undefined => {
+  const segment = segments.get(el)
+  return segment ? { segment, index: groupIndexOf(el) } : undefined
+}
+
+export const DateInputSegment = definePart<Api, dateInput.SegmentState | undefined>({
   tag: segmentTag,
   root,
   display: 'inline',
   props: (api, el) => {
-    const segment = segments.get(el)
-    return segment ? api.getSegmentProps({ segment, index: groupIndexOf(el) }) : {}
+    const segment = segmentOf(el)
+    return segment ? api.getSegmentProps(segment) : {}
+  },
+  state: (api, el) => {
+    const segment = segmentOf(el)
+    return segment ? api.getSegmentState(segment) : undefined
   },
   render: (_api, el) => {
     const text = segments.get(el)?.text
@@ -69,16 +81,17 @@ definePart<Api>({
   },
 })
 
-definePart<Api>({
+export const DateInputClearTrigger = definePart<Api>({
   tag: 'ark-date-input-clear-trigger',
   root,
   target: wrappedButton,
   props: (api) => clearTriggerProps(api),
 })
 
-definePart<Api>({
+export const DateInputHiddenInput = definePart<Api>({
   tag: 'ark-date-input-hidden-input',
   root,
+  attributes: ['index', 'name'],
   target: ownInput,
   props: (api, el) => api.getHiddenInputProps({ index: num(el, 'index'), name: str(el, 'name') }),
 })

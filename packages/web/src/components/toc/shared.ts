@@ -4,10 +4,10 @@ export const root = 'ark-toc'
 export const itemTag = 'ark-toc-item'
 export const contentTag = 'ark-toc-content'
 
-export const itemValueOf = (el: Element) => el.closest(itemTag)?.getAttribute('value') ?? undefined
+export const itemValueOf = (el: Element) => el.closest<HTMLElement>(itemTag)?.getAttribute('value') ?? undefined
 
 export function itemsOf(el: HTMLElement): TocItem[] {
-  return Array.from(el.querySelectorAll(itemTag), (item) => ({
+  return Array.from(el.querySelectorAll<HTMLElement>(itemTag), (item) => ({
     value: item.getAttribute('value') ?? '',
     depth: Number(item.getAttribute('depth') ?? 1),
     label: item.textContent?.trim() ?? '',

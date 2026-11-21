@@ -3,6 +3,7 @@ import './root.js'
 import './parts.js'
 import type { Api, Props } from '@zag-js/toggle'
 import type { RootElement, StateProperties } from '../../utils/define.js'
+import type { ToggleIndicator } from './parts.js'
 
 export type { Api as ToggleApi } from '@zag-js/toggle'
 export interface ToggleElement extends RootElement<Api, Props>, StateProperties<Props, 'pressed'> {}
@@ -10,6 +11,7 @@ export interface ToggleElement extends RootElement<Api, Props>, StateProperties<
 declare global {
   interface HTMLElementTagNameMap {
     'ark-toggle': ToggleElement
+    'ark-toggle-indicator': InstanceType<typeof ToggleIndicator>
   }
 }
 

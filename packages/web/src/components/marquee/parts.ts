@@ -5,7 +5,7 @@ import { contentIndexOf, contentTag, root, syncCopies } from './shared.js'
 
 const counts = new WeakMap<HTMLElement, number>()
 
-definePart<marquee.Api>({
+export const MarqueeViewport = definePart<marquee.Api>({
   tag: 'ark-marquee-viewport',
   root,
   props: (api) => api.getViewportProps(),
@@ -23,20 +23,22 @@ definePart<marquee.Api>({
   },
 })
 
-definePart<marquee.Api>({
+export const MarqueeContent = definePart<marquee.Api, marquee.ContentState>({
   tag: contentTag,
   root,
   props: (api, el) => api.getContentProps({ index: contentIndexOf(el) }),
+  state: (api, el) => api.getContentState({ index: contentIndexOf(el) }),
 })
 
-definePart<marquee.Api>({
+export const MarqueeItem = definePart<marquee.Api>({
   tag: 'ark-marquee-item',
   root,
   props: (api) => api.getItemProps(),
 })
 
-definePart<marquee.Api>({
+export const MarqueeEdge = definePart<marquee.Api>({
   tag: 'ark-marquee-edge',
   root,
+  attributes: ['side'],
   props: (api, el) => api.getEdgeProps({ side: (el.getAttribute('side') ?? 'start') as marquee.Side }),
 })

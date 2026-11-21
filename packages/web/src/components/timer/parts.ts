@@ -17,15 +17,16 @@ const actionOf = (el: HTMLElement) => {
   return action && actions.includes(action) ? action : null
 }
 
-definePart<timer.Api>({
+export const TimerArea = definePart<timer.Api>({
   tag: 'ark-timer-area',
   root,
   props: (api) => api.getAreaProps(),
 })
 
-definePart<timer.Api>({
+export const TimerItem = definePart<timer.Api>({
   tag: 'ark-timer-item',
   root,
+  attributes: ['type'],
   props: (api, el) => {
     const type = itemType(el)
     return type ? api.getItemProps({ type }) : {}
@@ -38,24 +39,29 @@ definePart<timer.Api>({
   },
 })
 
-definePart<timer.Api>({
+export const TimerSeparator = definePart<timer.Api>({
   tag: 'ark-timer-separator',
   root,
   props: (api) => api.getSeparatorProps(),
 })
 
-definePart<timer.Api>({
+export const TimerControl = definePart<timer.Api>({
   tag: 'ark-timer-control',
   root,
   props: (api) => api.getControlProps(),
 })
 
-definePart<timer.Api>({
+export const TimerActionTrigger = definePart<timer.Api, timer.ActionTriggerState | undefined>({
   tag: 'ark-timer-action-trigger',
   root,
+  attributes: ['action'],
   target: wrappedButton,
   props: (api, el) => {
     const action = actionOf(el)
     return action ? api.getActionTriggerProps({ action }) : {}
+  },
+  state: (api, el) => {
+    const action = actionOf(el)
+    return action ? api.getActionTriggerState({ action }) : undefined
   },
 })

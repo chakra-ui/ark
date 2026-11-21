@@ -6,25 +6,25 @@ import { root } from './shared.js'
 
 const autoText = new WeakSet<HTMLElement>()
 
-definePart<angleSlider.Api>({
+export const AngleSliderLabel = definePart<angleSlider.Api>({
   tag: 'ark-angle-slider-label',
   root,
   props: (api) => api.getLabelProps(),
 })
 
-definePart<angleSlider.Api>({
+export const AngleSliderControl = definePart<angleSlider.Api>({
   tag: 'ark-angle-slider-control',
   root,
   props: (api) => api.getControlProps(),
 })
 
-definePart<angleSlider.Api>({
+export const AngleSliderThumb = definePart<angleSlider.Api>({
   tag: 'ark-angle-slider-thumb',
   root,
   props: (api) => api.getThumbProps(),
 })
 
-definePart<angleSlider.Api>({
+export const AngleSliderValueText = definePart<angleSlider.Api>({
   tag: 'ark-angle-slider-value-text',
   root,
   props: (api) => api.getValueTextProps(),
@@ -37,19 +37,21 @@ definePart<angleSlider.Api>({
   },
 })
 
-definePart<angleSlider.Api>({
+export const AngleSliderMarkerGroup = definePart<angleSlider.Api>({
   tag: 'ark-angle-slider-marker-group',
   root,
   props: (api) => api.getMarkerGroupProps(),
 })
 
-definePart<angleSlider.Api>({
+export const AngleSliderMarker = definePart<angleSlider.Api, angleSlider.MarkerState>({
   tag: 'ark-angle-slider-marker',
   root,
+  attributes: ['value'],
   props: (api, el) => api.getMarkerProps({ value: num(el, 'value') ?? 0 }),
+  state: (api, el) => api.getMarkerState({ value: num(el, 'value') ?? 0 }),
 })
 
-definePart<angleSlider.Api>({
+export const AngleSliderHiddenInput = definePart<angleSlider.Api>({
   tag: 'ark-angle-slider-hidden-input',
   root,
   target: ownInput,

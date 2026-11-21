@@ -4,55 +4,85 @@ import { definePart, wrappedButton } from '../../utils/define.js'
 import { definePresencePart } from '../../utils/presence.js'
 import { root } from './shared.js'
 
-const simple = (tag: string, props: (api: floatingPanel.Api) => Record<string, unknown>) =>
-  definePart<floatingPanel.Api>({ tag, root, props })
+const stageOf = (el: HTMLElement) => ({ stage: (el.getAttribute('stage') ?? 'default') as floatingPanel.Stage })
 
-definePart<floatingPanel.Api>({
+const placementOf = (el: HTMLElement) => ({
+  placement: (el.getAttribute('placement') ?? 'se') as floatingPanel.ResizeTriggerProps['placement'],
+})
+
+export const FloatingPanelTrigger = definePart<floatingPanel.Api, floatingPanel.TriggerState>({
   tag: 'ark-floating-panel-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getTriggerProps(),
+  state: (api) => api.getTriggerState(),
 })
 
-definePresencePart<floatingPanel.Api>({
+export const FloatingPanelPositioner = definePresencePart<floatingPanel.Api>({
   tag: 'ark-floating-panel-positioner',
   root,
   animates: false,
   props: (api) => api.getPositionerProps(),
 })
 
-definePresencePart<floatingPanel.Api>({
+export const FloatingPanelContent = definePresencePart<floatingPanel.Api, floatingPanel.ContentState>({
   tag: 'ark-floating-panel-content',
   root,
   props: (api) => api.getContentProps(),
+  state: (api) => api.getContentState(),
 })
 
-simple('ark-floating-panel-drag-trigger', (api) => api.getDragTriggerProps())
-simple('ark-floating-panel-header', (api) => api.getHeaderProps())
-simple('ark-floating-panel-title', (api) => api.getTitleProps())
-simple('ark-floating-panel-control', (api) => api.getControlProps())
-simple('ark-floating-panel-body', (api) => api.getBodyProps())
+export const FloatingPanelDragTrigger = definePart<floatingPanel.Api>({
+  tag: 'ark-floating-panel-drag-trigger',
+  root,
+  props: (api) => api.getDragTriggerProps(),
+})
 
-definePart<floatingPanel.Api>({
+export const FloatingPanelHeader = definePart<floatingPanel.Api>({
+  tag: 'ark-floating-panel-header',
+  root,
+  props: (api) => api.getHeaderProps(),
+})
+
+export const FloatingPanelTitle = definePart<floatingPanel.Api>({
+  tag: 'ark-floating-panel-title',
+  root,
+  props: (api) => api.getTitleProps(),
+})
+
+export const FloatingPanelControl = definePart<floatingPanel.Api, floatingPanel.ControlState>({
+  tag: 'ark-floating-panel-control',
+  root,
+  props: (api) => api.getControlProps(),
+  state: (api) => api.getControlState(),
+})
+
+export const FloatingPanelBody = definePart<floatingPanel.Api>({
+  tag: 'ark-floating-panel-body',
+  root,
+  props: (api) => api.getBodyProps(),
+})
+
+export const FloatingPanelCloseTrigger = definePart<floatingPanel.Api>({
   tag: 'ark-floating-panel-close-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getCloseTriggerProps(),
 })
 
-definePart<floatingPanel.Api>({
+export const FloatingPanelStageTrigger = definePart<floatingPanel.Api, floatingPanel.StageTriggerState>({
   tag: 'ark-floating-panel-stage-trigger',
   root,
+  attributes: ['stage'],
   target: wrappedButton,
-  props: (api, el) =>
-    api.getStageTriggerProps({ stage: (el.getAttribute('stage') ?? 'default') as floatingPanel.Stage }),
+  props: (api, el) => api.getStageTriggerProps(stageOf(el)),
+  state: (api, el) => api.getStageTriggerState(stageOf(el)),
 })
 
-definePart<floatingPanel.Api>({
+export const FloatingPanelResizeTrigger = definePart<floatingPanel.Api, floatingPanel.ResizeTriggerState>({
   tag: 'ark-floating-panel-resize-trigger',
   root,
-  props: (api, el) =>
-    api.getResizeTriggerProps({
-      placement: (el.getAttribute('placement') ?? 'se') as floatingPanel.ResizeTriggerProps['placement'],
-    }),
+  attributes: ['placement'],
+  props: (api, el) => api.getResizeTriggerProps(placementOf(el)),
+  state: (api, el) => api.getResizeTriggerState(placementOf(el)),
 })

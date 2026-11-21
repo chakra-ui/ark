@@ -5,9 +5,13 @@ import { itemOf, root } from './shared.js'
 
 const autoText = new WeakSet<HTMLElement>()
 
-definePart<tagsInput.Api>({ tag: 'ark-tags-input-label', root, props: (api) => api.getLabelProps() })
+export const TagsInputLabel = definePart<tagsInput.Api>({
+  tag: 'ark-tags-input-label',
+  root,
+  props: (api) => api.getLabelProps(),
+})
 
-definePart<tagsInput.Api>({
+export const TagsInputControl = definePart<tagsInput.Api>({
   tag: 'ark-tags-input-control',
   root,
   props: (api) => api.getControlProps(),
@@ -27,42 +31,45 @@ definePart<tagsInput.Api>({
   },
 })
 
-definePart<tagsInput.Api>({
+export const TagsInputInput = definePart<tagsInput.Api>({
   tag: 'ark-tags-input-input',
   root,
   target: wrapped('input'),
   props: (api) => api.getInputProps(),
 })
 
-definePart<tagsInput.Api>({
+export const TagsInputClearTrigger = definePart<tagsInput.Api>({
   tag: 'ark-tags-input-clear-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getClearTriggerProps(),
 })
 
-definePart<tagsInput.Api>({
+export const TagsInputHiddenInput = definePart<tagsInput.Api>({
   tag: 'ark-tags-input-hidden-input',
   root,
   target: ownInput,
   props: (api) => api.getHiddenInputProps(),
 })
 
-definePart<tagsInput.Api>({
+export const TagsInputItem = definePart<tagsInput.Api, tagsInput.ItemState>({
   tag: 'ark-tags-input-item',
   root,
+  attributes: ['index', 'value', 'disabled'],
   display: 'inline-block',
   props: (api, el) => api.getItemProps(itemOf(el)),
+  state: (api, el) => api.getItemState(itemOf(el)),
 })
 
-definePart<tagsInput.Api>({
+export const TagsInputItemPreview = definePart<tagsInput.Api, tagsInput.ItemState>({
   tag: 'ark-tags-input-item-preview',
   root,
   display: 'inline-block',
   props: (api, el) => api.getItemPreviewProps(itemOf(el)),
+  state: (api, el) => api.getItemState(itemOf(el)),
 })
 
-definePart<tagsInput.Api>({
+export const TagsInputItemText = definePart<tagsInput.Api, tagsInput.ItemState>({
   tag: 'ark-tags-input-item-text',
   root,
   display: 'inline',
@@ -70,21 +77,24 @@ definePart<tagsInput.Api>({
     if (!el.firstChild) autoText.add(el)
   },
   props: (api, el) => api.getItemTextProps(itemOf(el)),
+  state: (api, el) => api.getItemState(itemOf(el)),
   render: (_, el) => {
     if (autoText.has(el)) el.textContent = itemOf(el).value
   },
 })
 
-definePart<tagsInput.Api>({
+export const TagsInputItemInput = definePart<tagsInput.Api, tagsInput.ItemState>({
   tag: 'ark-tags-input-item-input',
   root,
   target: wrapped('input'),
   props: (api, el) => api.getItemInputProps(itemOf(el)),
+  state: (api, el) => api.getItemState(itemOf(el)),
 })
 
-definePart<tagsInput.Api>({
+export const TagsInputItemDeleteTrigger = definePart<tagsInput.Api, tagsInput.ItemState>({
   tag: 'ark-tags-input-item-delete-trigger',
   root,
   target: wrappedButton,
   props: (api, el) => api.getItemDeleteTriggerProps(itemOf(el)),
+  state: (api, el) => api.getItemState(itemOf(el)),
 })

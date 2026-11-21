@@ -3,7 +3,7 @@ export const itemTag = 'ark-navigation-menu-item'
 
 const contentValues = new WeakMap<HTMLElement, string>()
 
-export const itemValueOf = (el: Element) => el.closest(itemTag)?.getAttribute('value') ?? ''
+export const itemValueOf = (el: Element) => el.closest<HTMLElement>(itemTag)?.getAttribute('value') ?? ''
 
 export function contentValueOf(el: HTMLElement) {
   let value = contentValues.get(el)

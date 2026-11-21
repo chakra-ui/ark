@@ -18,33 +18,50 @@ const itemOf = (part: HTMLElement): segmentGroup.ItemProps | null => {
   }
 }
 
-const defineItemPart = (tag: string, props: ItemPropsFn, target?: Target) =>
-  definePart<segmentGroup.Api>({
+const defineItemPart = (tag: string, props: ItemPropsFn, target?: Target, attributes?: string[]) =>
+  definePart<segmentGroup.Api, segmentGroup.ItemState | undefined>({
     tag,
     root,
+    attributes,
     target,
     props: (api, el) => {
       const item = itemOf(el)
       return item ? props(api, item) : {}
     },
+    state: (api, el) => {
+      const item = itemOf(el)
+      return item ? api.getItemState(item) : undefined
+    },
   })
 
-definePart<segmentGroup.Api>({
+export const SegmentGroupLabel = definePart<segmentGroup.Api>({
   tag: 'ark-segment-group-label',
   root,
   props: (api) => api.getLabelProps(),
 })
 
-definePart<segmentGroup.Api>({
+export const SegmentGroupIndicator = definePart<segmentGroup.Api>({
   tag: 'ark-segment-group-indicator',
   root,
   props: (api) => api.getIndicatorProps(),
 })
 
-defineItemPart(itemTag, (api, item) => api.getItemProps(item), wrapped('label'))
+export const SegmentGroupItem = defineItemPart(itemTag, (api, item) => api.getItemProps(item), wrapped('label'), [
+  'value',
+  'disabled',
+  'invalid',
+])
 
-defineItemPart('ark-segment-group-item-text', (api, item) => api.getItemTextProps(item))
+export const SegmentGroupItemText = defineItemPart('ark-segment-group-item-text', (api, item) =>
+  api.getItemTextProps(item),
+)
 
-defineItemPart('ark-segment-group-item-control', (api, item) => api.getItemControlProps(item))
+export const SegmentGroupItemControl = defineItemPart('ark-segment-group-item-control', (api, item) =>
+  api.getItemControlProps(item),
+)
 
-defineItemPart('ark-segment-group-item-hidden-input', (api, item) => api.getItemHiddenInputProps(item), ownInput)
+export const SegmentGroupItemHiddenInput = defineItemPart(
+  'ark-segment-group-item-hidden-input',
+  (api, item) => api.getItemHiddenInputProps(item),
+  ownInput,
+)

@@ -5,7 +5,7 @@ import { renderSegments, root } from './shared.js'
 
 const idOf = (el: HTMLElement) => rootOf<RootElement<numberFlow.Api> & HTMLElement>(el, root)?.machineId
 
-definePart<numberFlow.Api>({
+export const NumberFlowSegments = definePart<numberFlow.Api>({
   tag: 'ark-number-flow-segments',
   root,
   display: 'contents',
@@ -13,7 +13,7 @@ definePart<numberFlow.Api>({
   render: (api, el) => renderSegments(api, el, idOf(el) ?? ''),
 })
 
-definePart<numberFlow.Api>({
+export const NumberFlowValueText = definePart<numberFlow.Api>({
   tag: 'ark-number-flow-value-text',
   root,
   props: (api) => api.getValueTextProps(),

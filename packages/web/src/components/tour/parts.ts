@@ -6,38 +6,46 @@ import { definePresencePart } from '../../utils/presence.js'
 import { repeat, templateOf } from '../../utils/repeat.js'
 import { fillText, markAuthored, root } from './shared.js'
 
-definePresencePart<tour.Api>({
+export const TourBackdrop = definePresencePart<tour.Api, tour.BackdropState>({
   tag: 'ark-tour-backdrop',
   root,
   present: (api) => api.open,
   props: (api) => api.getBackdropProps(),
+  state: (api) => api.getBackdropState(),
 })
 
-definePresencePart<tour.Api>({
+export const TourSpotlight = definePresencePart<tour.Api, tour.SpotlightState>({
   tag: 'ark-tour-spotlight',
   root,
   present: (api) => api.open,
   props: (api) => api.getSpotlightProps(),
+  state: (api) => api.getSpotlightState(),
 })
 
-definePresencePart<tour.Api>({
+export const TourPositioner = definePresencePart<tour.Api, tour.PositionerState>({
   tag: 'ark-tour-positioner',
   root,
   animates: false,
   props: (api) => api.getPositionerProps(),
+  state: (api) => api.getPositionerState(),
 })
 
-definePresencePart<tour.Api>({
+export const TourContent = definePresencePart<tour.Api, tour.ContentState>({
   tag: 'ark-tour-content',
   root,
   props: (api) => api.getContentProps(),
+  state: (api) => api.getContentState(),
 })
 
-definePart<tour.Api>({ tag: 'ark-tour-arrow', root, props: (api) => api.getArrowProps() })
+export const TourArrow = definePart<tour.Api>({ tag: 'ark-tour-arrow', root, props: (api) => api.getArrowProps() })
 
-definePart<tour.Api>({ tag: 'ark-tour-arrow-tip', root, props: (api) => api.getArrowTipProps() })
+export const TourArrowTip = definePart<tour.Api>({
+  tag: 'ark-tour-arrow-tip',
+  root,
+  props: (api) => api.getArrowTipProps(),
+})
 
-definePart<tour.Api>({
+export const TourTitle = definePart<tour.Api>({
   tag: 'ark-tour-title',
   root,
   props: (api) => api.getTitleProps(),
@@ -45,7 +53,7 @@ definePart<tour.Api>({
   render: (api, el) => fillText(el, api.step?.title),
 })
 
-definePart<tour.Api>({
+export const TourDescription = definePart<tour.Api>({
   tag: 'ark-tour-description',
   root,
   props: (api) => api.getDescriptionProps(),
@@ -53,7 +61,7 @@ definePart<tour.Api>({
   render: (api, el) => fillText(el, api.step?.description),
 })
 
-definePart<tour.Api>({
+export const TourProgressText = definePart<tour.Api>({
   tag: 'ark-tour-progress-text',
   root,
   props: (api) => api.getProgressTextProps(),
@@ -61,16 +69,20 @@ definePart<tour.Api>({
   render: (api, el) => fillText(el, api.getProgressText()),
 })
 
-definePart<tour.Api>({
+export const TourCloseTrigger = definePart<tour.Api>({
   tag: 'ark-tour-close-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getCloseTriggerProps(),
 })
 
-definePart<tour.Api>({ tag: 'ark-tour-control', root, props: () => ({ 'data-tour-control': '' }) })
+export const TourControl = definePart<tour.Api>({
+  tag: 'ark-tour-control',
+  root,
+  props: () => ({ 'data-tour-control': '' }),
+})
 
-definePart<tour.Api>({
+export const TourActions = definePart<tour.Api>({
   tag: 'ark-tour-actions',
   root,
   display: 'contents',

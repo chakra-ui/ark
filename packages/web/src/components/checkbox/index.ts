@@ -4,6 +4,7 @@ import './root.js'
 import './parts.js'
 import type { Api, Props } from '@zag-js/checkbox'
 import type { RootElement, StateProperties } from '../../utils/define.js'
+import type { CheckboxControl, CheckboxHiddenInput, CheckboxIndicator, CheckboxLabel } from './parts.js'
 
 export type { Api as CheckboxApi } from '@zag-js/checkbox'
 export interface CheckboxElement
@@ -12,6 +13,10 @@ export interface CheckboxElement
 declare global {
   interface HTMLElementTagNameMap {
     'ark-checkbox': CheckboxElement
+    'ark-checkbox-indicator': InstanceType<typeof CheckboxIndicator>
+    'ark-checkbox-hidden-input': InstanceType<typeof CheckboxHiddenInput>
+    'ark-checkbox-label': InstanceType<typeof CheckboxLabel>
+    'ark-checkbox-control': InstanceType<typeof CheckboxControl>
   }
 }
 

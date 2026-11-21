@@ -1,7 +1,7 @@
 import * as presence from '@zag-js/presence'
 import { mergeProps, normalizeProps, VanillaMachine } from '@zag-js/vanilla'
 
-import { definePart, defineRoot, rootOf, targetOf, type PartConfig, type RootConfig } from './define.js'
+import { definePart, defineRoot, rootOf, targetOf, type PartConfig, type RootConfig, type RootState } from './define.js'
 import { emit } from './events.js'
 import { mountTemplate } from './lazy.js'
 
@@ -82,18 +82,18 @@ export function definePresenceRoot<Api>(config: RootConfig<Api> & { present: (ap
   })
 }
 
-interface PresencePartConfig<Api> extends PartConfig<Api> {
+interface PresencePartConfig<Api, State> extends PartConfig<Api, State> {
   present?: (api: Api, el: HTMLElement) => boolean
   animates?: boolean
   skipAnimationOnMount?: boolean
 }
 
-export function definePresencePart<Api>(config: PresencePartConfig<Api>) {
+export function definePresencePart<Api, State = RootState<Api>>(config: PresencePartConfig<Api, State>) {
   const { present, animates = true, skipAnimationOnMount = false, ...rest } = config
   const rootEl = (el: HTMLElement) => rootOf(el, config.root)
   const hostOf = (el: HTMLElement) => (present ? el : rootEl(el)!)
 
-  return definePart<Api>({
+  return definePart<Api, State>({
     ...rest,
     setup(el, root) {
       const stop = present

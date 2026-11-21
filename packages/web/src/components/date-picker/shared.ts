@@ -13,7 +13,8 @@ export const dates = (el: Element, name: string) => {
 
 export const date = (el: Element, name: string) => dates(el, name)?.[0]
 
-export const viewOf = (el: Element) => (el.closest('ark-date-picker-view')?.getAttribute('view') ?? 'day') as View
+export const viewOf = (el: Element) =>
+  (el.closest<HTMLElement>('ark-date-picker-view')?.getAttribute('view') ?? 'day') as View
 
 const tableIds = new WeakMap<Element, string>()
 let uid = 0
@@ -67,7 +68,7 @@ export function rowsOf(api: Api, body: Element): Row[] {
 export const items = new WeakMap<Element, unknown>()
 
 export function cellOf(part: Element) {
-  const cell = part.closest('ark-date-picker-table-cell')
+  const cell = part.closest<HTMLElement>('ark-date-picker-table-cell')
   if (!cell) return undefined
   const view = viewOf(cell)
   const item = items.get(cell) as datePicker.DateValue | datePicker.Cell | undefined

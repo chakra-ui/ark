@@ -6,14 +6,15 @@ import { itemValueOf, root } from './shared.js'
 
 const item = (el: HTMLElement) => ({ item: itemValueOf(el) })
 
-definePart<field.Api>({
+export const FieldItem = definePart<field.Api>({
   tag: 'ark-field-item',
   root,
+  attributes: ['value'],
   display: 'contents',
   props: () => ({}),
 })
 
-definePart<field.Api>({
+export const FieldLabel = definePart<field.Api>({
   tag: 'ark-field-label',
   root,
   target: wrapped('label'),
@@ -24,23 +25,24 @@ definePart<field.Api>({
   },
 })
 
-definePart<field.Api>({
+export const FieldInput = definePart<field.Api>({
   tag: 'ark-field-input',
   root,
   target: wrapped('input'),
   props: (api, el) => api.getInputProps(item(el)),
 })
 
-definePart<field.Api>({
+export const FieldSelect = definePart<field.Api>({
   tag: 'ark-field-select',
   root,
   target: wrapped('select'),
   props: (api, el) => api.getSelectProps(item(el)),
 })
 
-definePart<field.Api>({
+export const FieldTextarea = definePart<field.Api>({
   tag: 'ark-field-textarea',
   root,
+  attributes: ['autoresize'],
   target: wrapped('textarea'),
   props: (api, el) => api.getTextareaProps(item(el)),
   setup: (el) => {
@@ -51,7 +53,7 @@ definePart<field.Api>({
   },
 })
 
-definePart<field.Api>({
+export const FieldHelperText = definePart<field.Api>({
   tag: 'ark-field-helper-text',
   root,
   props: (api) => api.getHelperTextProps(),
@@ -63,15 +65,21 @@ const matchOf = (el: HTMLElement): field.ErrorTextProps['match'] => {
   return match === 'true' || match === '' ? true : (match as field.ValidityMatch)
 }
 
-definePart<field.Api>({
+export const FieldErrorText = definePart<field.Api, field.ErrorTextState>({
   tag: 'ark-field-error-text',
   root,
+  attributes: ['match'],
   props: (api, el) => api.getErrorTextProps({ match: matchOf(el) }),
+  state: (api, el) => api.getErrorTextState({ match: matchOf(el) }),
 })
 
-definePart<field.Api>({
+const indicatorTypeOf = (el: HTMLElement) => (el.getAttribute('type') ?? 'required') as field.IndicatorType
+
+export const FieldIndicator = definePart<field.Api, field.IndicatorState>({
   tag: 'ark-field-indicator',
   root,
+  attributes: ['type'],
   display: 'inline',
-  props: (api, el) => api.getIndicatorProps({ type: (el.getAttribute('type') ?? 'required') as field.IndicatorType }),
+  props: (api, el) => api.getIndicatorProps({ type: indicatorTypeOf(el) }),
+  state: (api, el) => api.getIndicatorState({ type: indicatorTypeOf(el) }),
 })

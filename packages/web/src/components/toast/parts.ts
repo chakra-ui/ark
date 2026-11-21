@@ -23,13 +23,13 @@ function fillText(el: HTMLElement | null, value: unknown) {
 
 const actionOf = (el: HTMLElement) => entries.get(rootOf(el, root)!)?.toast.action
 
-definePart<toast.Api>({
+export const ToastContent = definePart<toast.Api>({
   tag: 'ark-toast-content',
   root,
   props: (api) => api.getContentProps(),
 })
 
-definePart<toast.Api>({
+export const ToastTitle = definePart<toast.Api>({
   tag: 'ark-toast-title',
   root,
   setup: autoText,
@@ -37,7 +37,7 @@ definePart<toast.Api>({
   render: (api, el) => fillText(el, api.title),
 })
 
-definePart<toast.Api>({
+export const ToastDescription = definePart<toast.Api>({
   tag: 'ark-toast-description',
   root,
   setup: autoText,
@@ -45,7 +45,7 @@ definePart<toast.Api>({
   render: (api, el) => fillText(el, api.description),
 })
 
-definePart<toast.Api>({
+export const ToastActionTrigger = definePart<toast.Api>({
   tag: 'ark-toast-action-trigger',
   root,
   target: wrappedButton,
@@ -61,7 +61,7 @@ definePart<toast.Api>({
   },
 })
 
-definePart<toast.Api>({
+export const ToastCloseTrigger = definePart<toast.Api>({
   tag: 'ark-toast-close-trigger',
   root,
   target: wrappedButton,

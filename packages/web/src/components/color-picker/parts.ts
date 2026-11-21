@@ -16,29 +16,49 @@ import {
 
 type Api = colorPicker.Api
 
-definePart<Api>({ tag: 'ark-color-picker-label', root, props: (api) => api.getLabelProps() })
+const swatchTriggerPropsOf = (el: HTMLElement): colorPicker.SwatchTriggerProps | undefined => {
+  const value = str(el, 'value')
+  return value ? { value, disabled: el.hasAttribute('disabled') || undefined } : undefined
+}
 
-definePart<Api>({ tag: 'ark-color-picker-control', root, props: (api) => api.getControlProps() })
+export const ColorPickerLabel = definePart<Api>({
+  tag: 'ark-color-picker-label',
+  root,
+  props: (api) => api.getLabelProps(),
+})
 
-definePart<Api>({
+export const ColorPickerControl = definePart<Api>({
+  tag: 'ark-color-picker-control',
+  root,
+  props: (api) => api.getControlProps(),
+})
+
+export const ColorPickerTrigger = definePart<Api, colorPicker.TriggerState>({
   tag: 'ark-color-picker-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getTriggerProps(),
+  state: (api) => api.getTriggerState(),
 })
 
-definePresencePart<Api>({
+export const ColorPickerPositioner = definePresencePart<Api>({
   tag: 'ark-color-picker-positioner',
   root,
   animates: false,
   props: (api) => api.getPositionerProps(),
 })
 
-definePresencePart<Api>({ tag: 'ark-color-picker-content', root, props: (api) => api.getContentProps() })
+export const ColorPickerContent = definePresencePart<Api, colorPicker.ContentState>({
+  tag: 'ark-color-picker-content',
+  root,
+  props: (api) => api.getContentProps(),
+  state: (api) => api.getContentState(),
+})
 
-definePart<Api>({
+export const ColorPickerValueText = definePart<Api>({
   tag: 'ark-color-picker-value-text',
   root,
+  attributes: ['format'],
   display: 'inline',
   setup: markAutoText,
   props: (api) => api.getValueTextProps(),
@@ -49,45 +69,51 @@ definePart<Api>({
   },
 })
 
-definePart<Api>({ tag: 'ark-color-picker-area', root, props: (api, el) => api.getAreaProps(areaPropsOf(el)) })
+export const ColorPickerArea = definePart<Api>({
+  tag: 'ark-color-picker-area',
+  root,
+  attributes: ['x-channel', 'y-channel'],
+  props: (api, el) => api.getAreaProps(areaPropsOf(el)),
+})
 
-definePart<Api>({
+export const ColorPickerAreaBackground = definePart<Api>({
   tag: 'ark-color-picker-area-background',
   root,
   props: (api, el) => api.getAreaBackgroundProps(areaPropsOf(el)),
 })
 
-definePart<Api>({
+export const ColorPickerAreaThumb = definePart<Api>({
   tag: 'ark-color-picker-area-thumb',
   root,
   props: (api, el) => api.getAreaThumbProps(areaPropsOf(el)),
 })
 
-definePart<Api>({
+export const ColorPickerChannelSlider = definePart<Api>({
   tag: 'ark-color-picker-channel-slider',
   root,
+  attributes: ['channel', 'orientation'],
   props: (api, el) => api.getChannelSliderProps(channelPropsOf(el)),
 })
 
-definePart<Api>({
+export const ColorPickerChannelSliderTrack = definePart<Api>({
   tag: 'ark-color-picker-channel-slider-track',
   root,
   props: (api, el) => api.getChannelSliderTrackProps(channelPropsOf(el)),
 })
 
-definePart<Api>({
+export const ColorPickerChannelSliderThumb = definePart<Api>({
   tag: 'ark-color-picker-channel-slider-thumb',
   root,
   props: (api, el) => api.getChannelSliderThumbProps(channelPropsOf(el)),
 })
 
-definePart<Api>({
+export const ColorPickerChannelSliderLabel = definePart<Api>({
   tag: 'ark-color-picker-channel-slider-label',
   root,
   props: (api, el) => api.getChannelSliderLabelProps(channelPropsOf(el)),
 })
 
-definePart<Api>({
+export const ColorPickerChannelSliderValueText = definePart<Api>({
   tag: 'ark-color-picker-channel-slider-value-text',
   root,
   display: 'inline',
@@ -98,9 +124,10 @@ definePart<Api>({
   },
 })
 
-definePart<Api>({
+export const ColorPickerChannelInput = definePart<Api>({
   tag: 'ark-color-picker-channel-input',
   root,
+  attributes: ['channel', 'orientation'],
   target: wrapped('input'),
   props: (api, el) =>
     api.getChannelInputProps({
@@ -109,34 +136,45 @@ definePart<Api>({
     }),
 })
 
-definePart<Api>({
+export const ColorPickerTransparencyGrid = definePart<Api>({
   tag: 'ark-color-picker-transparency-grid',
   root,
+  attributes: ['size'],
   props: (api, el) => api.getTransparencyGridProps({ size: str(el, 'size') }),
 })
 
-definePart<Api>({ tag: 'ark-color-picker-swatch-group', root, props: (api) => api.getSwatchGroupProps() })
+export const ColorPickerSwatchGroup = definePart<Api>({
+  tag: 'ark-color-picker-swatch-group',
+  root,
+  props: (api) => api.getSwatchGroupProps(),
+})
 
-definePart<Api>({
+export const ColorPickerSwatchTrigger = definePart<Api, colorPicker.SwatchTriggerState | undefined>({
   tag: 'ark-color-picker-swatch-trigger',
   root,
+  attributes: ['value', 'disabled'],
   target: wrappedButton,
   props: (api, el) => {
-    const value = str(el, 'value')
-    return value ? api.getSwatchTriggerProps({ value, disabled: el.hasAttribute('disabled') || undefined }) : {}
+    const props = swatchTriggerPropsOf(el)
+    return props ? api.getSwatchTriggerProps(props) : {}
+  },
+  state: (api, el) => {
+    const props = swatchTriggerPropsOf(el)
+    return props ? api.getSwatchTriggerState(props) : undefined
   },
 })
 
-definePart<Api>({
+export const ColorPickerSwatch = definePart<Api>({
   tag: 'ark-color-picker-swatch',
   root,
+  attributes: ['value', 'respect-alpha'],
   props: (api, el) => {
     const props = swatchPropsOf(api, el)
     return props ? api.getSwatchProps(props) : {}
   },
 })
 
-definePart<Api>({
+export const ColorPickerSwatchIndicator = definePart<Api>({
   tag: 'ark-color-picker-swatch-indicator',
   root,
   props: (api, el) => {
@@ -145,27 +183,28 @@ definePart<Api>({
   },
 })
 
-definePart<Api>({
+export const ColorPickerValueSwatch = definePart<Api>({
   tag: 'ark-color-picker-value-swatch',
   root,
+  attributes: ['respect-alpha'],
   props: (api, el) => api.getSwatchProps({ value: api.valueAsString, respectAlpha: respectAlphaOf(el) }),
 })
 
-definePart<Api>({
+export const ColorPickerEyeDropperTrigger = definePart<Api>({
   tag: 'ark-color-picker-eye-dropper-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getEyeDropperTriggerProps(),
 })
 
-definePart<Api>({
+export const ColorPickerFormatTrigger = definePart<Api>({
   tag: 'ark-color-picker-format-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getFormatTriggerProps(),
 })
 
-definePart<Api>({
+export const ColorPickerFormatSelect = definePart<Api>({
   tag: 'ark-color-picker-format-select',
   root,
   target: wrapped('select'),
@@ -183,13 +222,14 @@ definePart<Api>({
   },
 })
 
-definePart<Api>({
+export const ColorPickerView = definePart<Api>({
   tag: 'ark-color-picker-view',
   root,
+  attributes: ['format'],
   props: (api, el) => ({ 'data-format': formatOf(el), hidden: api.format !== formatOf(el) }),
 })
 
-definePart<Api>({
+export const ColorPickerHiddenInput = definePart<Api>({
   tag: 'ark-color-picker-hidden-input',
   root,
   target: ownInput,

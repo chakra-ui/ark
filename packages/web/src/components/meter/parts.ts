@@ -5,13 +5,13 @@ import { root } from './shared.js'
 
 const autoText = new WeakSet<HTMLElement>()
 
-definePart<meter.Api>({
+export const MeterLabel = definePart<meter.Api>({
   tag: 'ark-meter-label',
   root,
   props: (api) => api.getLabelProps(),
 })
 
-definePart<meter.Api>({
+export const MeterValueText = definePart<meter.Api>({
   tag: 'ark-meter-value-text',
   root,
   props: (api) => api.getValueTextProps(),
@@ -24,13 +24,13 @@ definePart<meter.Api>({
   },
 })
 
-definePart<meter.Api>({
+export const MeterTrack = definePart<meter.Api>({
   tag: 'ark-meter-track',
   root,
   props: (api) => api.getTrackProps(),
 })
 
-definePart<meter.Api>({
+export const MeterRange = definePart<meter.Api>({
   tag: 'ark-meter-range',
   root,
   props: (api) => api.getIndicatorProps(),

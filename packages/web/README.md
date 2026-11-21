@@ -170,6 +170,22 @@ timer.start() // runs when the timer connects
 document.body.append(timer)
 ```
 
+Every root and part also has a read-only `state` with its machine state: Zag's `getRootState()` on roots, and the
+matching `get*State()` on parts, such as an item's `getItemState()`. Parts inside an item, like an item indicator,
+report the item's state, and parts with no state of their own report the root's. It's computed when read, so it's always
+current, and `undefined` until the element connects. Each tag is typed, so `querySelector('ark-select-item')!.state` is
+a `select.ItemState`. To react to changes, listen to the root's events and read `state` there:
+
+```ts
+select.addEventListener('highlightchange', () => {
+  for (const item of select.querySelectorAll('ark-select-item')) {
+    console.log(item.getAttribute('value'), item.state) // { value, selected, highlighted, disabled }
+  }
+})
+
+select.state // { open, disabled, invalid, readOnly, required, focused }
+```
+
 Change event details also carry `source`: `'keyboard'`, `'mouse'`, `'touch'`, or `'pen'` when the change comes from user
 input being handled, and `'programmatic'` otherwise, e.g. for `api` calls. Zag's `reason`, where it provides one, is
 kept. A callback with a bare value gets an object detail, so `pressedchange` is `{ pressed, source }`.

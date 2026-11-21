@@ -5,40 +5,42 @@ import { root } from './shared.js'
 
 const autoText = new WeakSet<HTMLElement>()
 
-definePart<clipboard.Api>({
+export const ClipboardLabel = definePart<clipboard.Api>({
   tag: 'ark-clipboard-label',
   root,
   props: (api) => api.getLabelProps(),
 })
 
-definePart<clipboard.Api>({
+export const ClipboardControl = definePart<clipboard.Api>({
   tag: 'ark-clipboard-control',
   root,
   props: (api) => api.getControlProps(),
 })
 
-definePart<clipboard.Api>({
+export const ClipboardInput = definePart<clipboard.Api>({
   tag: 'ark-clipboard-input',
   root,
   target: wrapped('input'),
   props: (api) => api.getInputProps(),
 })
 
-definePart<clipboard.Api>({
+export const ClipboardTrigger = definePart<clipboard.Api>({
   tag: 'ark-clipboard-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getTriggerProps(),
 })
 
-definePart<clipboard.Api>({
+export const ClipboardIndicator = definePart<clipboard.Api, clipboard.IndicatorState>({
   tag: 'ark-clipboard-indicator',
   root,
+  attributes: ['copied'],
   display: 'inline-flex',
   props: (api, el) => api.getIndicatorProps({ copied: el.hasAttribute('copied') }),
+  state: (api, el) => api.getIndicatorState({ copied: el.hasAttribute('copied') }),
 })
 
-definePart<clipboard.Api>({
+export const ClipboardValueText = definePart<clipboard.Api>({
   tag: 'ark-clipboard-value-text',
   root,
   display: 'inline',

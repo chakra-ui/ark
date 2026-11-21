@@ -1,8 +1,7 @@
-import { globSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Window } from 'happy-dom'
-import { createServer, createServerModuleRunner } from 'vite'
 
 const root = fileURLToPath(new URL('..', import.meta.url))
 const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'))
@@ -14,9 +13,6 @@ const globals = { window, document: window.document, customElements: window.cust
 for (const key of Object.getOwnPropertyNames(window)) {
   if (!(key in globalThis) || /^(Event|EventTarget|\w+Event)$/.test(key)) globals[key] = window[key]
 }
-
-process.on('uncaughtException', (error) => console.warn(`ignored: ${error.message}`))
-process.on('unhandledRejection', (error) => console.warn(`ignored: ${error?.message ?? error}`))
 
 for (const [key, value] of Object.entries(globals)) {
   Object.defineProperty(globalThis, key, { configurable: true, writable: true, value })
@@ -30,60 +26,7 @@ window.customElements.define = (tag, ctor, options) => {
   return define(tag, ctor, options)
 }
 
-const ignored = /^(id|class|style|hidden|role|tabindex|slot|part|for|dir|as-child|data-.*|aria-.*)$/
-const reads = new Map()
-
-for (const method of ['getAttribute', 'hasAttribute']) {
-  const original = window.Element.prototype[method]
-
-  window.Element.prototype[method] = function (name) {
-    if (this.localName.startsWith('ark-') && !ignored.test(name)) {
-      const names = reads.get(this.localName) ?? new Set()
-      names.add(name)
-      reads.set(this.localName, names)
-    }
-    return original.call(this, name)
-  }
-}
-
-const src = join(root, 'src')
-
-const server = await createServer({
-  configFile: false,
-  logLevel: 'silent',
-  root,
-  server: { middlewareMode: true, ws: false },
-  resolve: {
-    alias: [
-      { find: 'styles', replacement: join(root, '../../.storybook/modules') },
-      { find: /^@ark-ui\/web\/(async-list|locale)$/, replacement: join(src, 'utils/$1.ts') },
-      { find: /^@ark-ui\/web\/(.+)$/, replacement: join(src, 'components/$1/index.ts') },
-      { find: /^@ark-ui\/web$/, replacement: join(src, 'index.ts') },
-    ],
-  },
-})
-
-const runner = createServerModuleRunner(server.environments.ssr, { hmr: false })
-
-await runner.import(join(src, 'index.ts'))
-
-const settle = () => new Promise((resolve) => setTimeout(resolve, 30))
-
-for (const file of globSync('examples/**/*.ts', { cwd: root })) {
-  try {
-    const { mount } = await runner.import(join(root, file))
-    const host = document.createElement('div')
-    mount(host)
-    document.body.append(host)
-    await settle()
-    host.remove()
-  } catch (error) {
-    console.warn(`skipped ${file}: ${error.message}`)
-  }
-}
-
-await runner.close()
-await server.close()
+await import(join(root, 'dist/index.js'))
 
 const componentOf = (tag) => {
   const name = tag.replace(/^ark-/, '')
@@ -108,7 +51,7 @@ function elementsOf() {
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([tag, ctor]) => {
       const meta = ctor.meta ?? { kind: 'root', attributes: ctor.observedAttributes ?? [] }
-      const own = [...(meta.attributes ?? []), ...(reads.get(tag) ?? [])]
+      const own = meta.attributes ?? []
       const extra = meta.kind === 'part' ? ['as-child', 'for'] : ['as-child', 'debug']
       const attributes = [...new Set([...own, ...extra])]
 
@@ -120,8 +63,24 @@ function elementsOf() {
         events: meta.events ?? [],
         properties: meta.properties ?? [],
         methods: meta.methods ?? [],
+        members: memberDocs(meta.kind),
       }
     })
+}
+
+function memberDocs(kind) {
+  const state = {
+    kind: 'field',
+    name: 'state',
+    readonly: true,
+    description: "The machine state for this element, such as an item's `selected`. `undefined` until it connects.",
+  }
+  if (kind === 'part') return [state]
+
+  return [
+    state,
+    { kind: 'field', name: 'ready', readonly: true, description: 'Resolves once the machine has started.' },
+  ]
 }
 
 const elements = elementsOf()
@@ -150,6 +109,7 @@ const manifest = {
       members: [
         ...element.properties.map((name) => ({ kind: 'field', name })),
         ...element.methods.map((name) => ({ kind: 'method', name })),
+        ...element.members,
       ],
     })),
     exports: items.map((element) => ({

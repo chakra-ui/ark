@@ -591,6 +591,7 @@
         "@zag-js/tooltip": "2.0.0-next.4",
         "@zag-js/tour": "2.0.0-next.4",
         "@zag-js/tree-view": "2.0.0-next.4",
+        "@zag-js/types": "2.0.0-next.4",
         "@zag-js/vanilla": "2.0.0-next.4",
         "@zag-js/virtualizer": "2.0.0-next.4",
       },

@@ -4,15 +4,21 @@ import { positionOf } from '../../utils/collection.js'
 import { definePart, wrapped } from '../../utils/define.js'
 import { itemOf, root } from './shared.js'
 
-definePart<listbox.Api>({
+const itemStateOf = (api: listbox.Api, el: HTMLElement) => {
+  const item = itemOf(el)
+  return item ? api.getItemState({ item }) : undefined
+}
+
+export const ListboxLabel = definePart<listbox.Api>({
   tag: 'ark-listbox-label',
   root,
   props: (api) => api.getLabelProps(),
 })
 
-definePart<listbox.Api>({
+export const ListboxValueText = definePart<listbox.Api>({
   tag: 'ark-listbox-value-text',
   root,
+  attributes: ['placeholder'],
   display: 'inline',
   props: (api) => api.getValueTextProps(),
   render: (api, el) => {
@@ -21,20 +27,21 @@ definePart<listbox.Api>({
   },
 })
 
-definePart<listbox.Api>({
+export const ListboxInput = definePart<listbox.Api>({
   tag: 'ark-listbox-input',
   root,
   target: wrapped('input'),
   props: (api) => api.getInputProps(),
 })
 
-definePart<listbox.Api>({
+export const ListboxContent = definePart<listbox.Api, listbox.ContentState>({
   tag: 'ark-listbox-content',
   root,
   props: (api) => api.getContentProps(),
+  state: (api) => api.getContentState(),
 })
 
-definePart<listbox.Api>({
+export const ListboxEmpty = definePart<listbox.Api>({
   tag: 'ark-listbox-empty',
   root,
   props: (api) => ({
@@ -43,28 +50,32 @@ definePart<listbox.Api>({
   }),
 })
 
-definePart<listbox.Api>({
+export const ListboxList = definePart<listbox.Api, listbox.ListState>({
   tag: 'ark-listbox-list',
   root,
+  attributes: ['manual'],
   props: (api) => api.getListProps(),
+  state: (api) => api.getListState(),
 })
 
-definePart<listbox.Api>({
+export const ListboxItemGroup = definePart<listbox.Api>({
   tag: 'ark-listbox-item-group',
   root,
+  attributes: ['name'],
   props: (api, el) => api.getItemGroupProps({ id: el.getAttribute('name') ?? '' }),
 })
 
-definePart<listbox.Api>({
+export const ListboxItemGroupLabel = definePart<listbox.Api>({
   tag: 'ark-listbox-item-group-label',
   root,
   props: (api, el) =>
     api.getItemGroupLabelProps({ htmlFor: el.closest('ark-listbox-item-group')?.getAttribute('name') ?? '' }),
 })
 
-definePart<listbox.Api>({
+export const ListboxItem = definePart<listbox.Api, listbox.ItemState | undefined>({
   tag: 'ark-listbox-item',
   root,
+  attributes: ['value', 'disabled'],
   props: (api, el) => {
     const item = itemOf(el)
     if (!item) return {}
@@ -73,22 +84,25 @@ definePart<listbox.Api>({
       ...positionOf(api.collection, api.collection.getItemValue(item)),
     }
   },
+  state: (api, el) => itemStateOf(api, el),
 })
 
-definePart<listbox.Api>({
+export const ListboxItemText = definePart<listbox.Api, listbox.ItemState | undefined>({
   tag: 'ark-listbox-item-text',
   root,
   props: (api, el) => {
     const item = itemOf(el)
     return item ? api.getItemTextProps({ item }) : {}
   },
+  state: (api, el) => itemStateOf(api, el),
 })
 
-definePart<listbox.Api>({
+export const ListboxItemIndicator = definePart<listbox.Api, listbox.ItemState | undefined>({
   tag: 'ark-listbox-item-indicator',
   root,
   props: (api, el) => {
     const item = itemOf(el)
     return item ? api.getItemIndicatorProps({ item }) : {}
   },
+  state: (api, el) => itemStateOf(api, el),
 })

@@ -5,28 +5,35 @@ import { definePart, wrappedButton } from '../../utils/define.js'
 import { definePresencePart } from '../../utils/presence.js'
 import { itemOf, root, syncHiddenInputs } from './shared.js'
 
-definePart<select.Api>({
+const itemStateOf = (api: select.Api, el: HTMLElement) => {
+  const item = itemOf(el)
+  return item ? api.getItemState({ item }) : undefined
+}
+
+export const SelectLabel = definePart<select.Api>({
   tag: 'ark-select-label',
   root,
   props: (api) => api.getLabelProps(),
 })
 
-definePart<select.Api>({
+export const SelectControl = definePart<select.Api>({
   tag: 'ark-select-control',
   root,
   props: (api) => api.getControlProps(),
 })
 
-definePart<select.Api>({
+export const SelectTrigger = definePart<select.Api, select.TriggerState>({
   tag: 'ark-select-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getTriggerProps(),
+  state: (api) => api.getTriggerState(),
 })
 
-definePart<select.Api>({
+export const SelectValueText = definePart<select.Api>({
   tag: 'ark-select-value-text',
   root,
+  attributes: ['placeholder'],
   props: (api) => api.getValueTextProps(),
   render: (api, el) => {
     const text = api.valueAsString || el.getAttribute('placeholder') || ''
@@ -34,61 +41,66 @@ definePart<select.Api>({
   },
 })
 
-definePart<select.Api>({
+export const SelectIndicator = definePart<select.Api>({
   tag: 'ark-select-indicator',
   root,
   props: (api) => api.getIndicatorProps(),
 })
 
-definePart<select.Api>({
+export const SelectClearTrigger = definePart<select.Api>({
   tag: 'ark-select-clear-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getClearTriggerProps(),
 })
 
-definePresencePart<select.Api>({
+export const SelectPositioner = definePresencePart<select.Api>({
   tag: 'ark-select-positioner',
   root,
   animates: false,
   props: (api) => api.getPositionerProps(),
 })
 
-definePresencePart<select.Api>({
+export const SelectContent = definePresencePart<select.Api, select.ContentState>({
   tag: 'ark-select-content',
   root,
   props: (api) => api.getContentProps(),
+  state: (api) => api.getContentState(),
 })
 
-definePart<select.Api>({
+export const SelectList = definePart<select.Api>({
   tag: 'ark-select-list',
   root,
+  attributes: ['manual'],
   props: (api) => api.getListProps(),
 })
 
-definePart<select.Api>({
+export const SelectScrollArrow = definePart<select.Api>({
   tag: 'ark-select-scroll-arrow',
   root,
+  attributes: ['placement'],
   props: (api, el) =>
     api.getScrollArrowProps({ placement: el.getAttribute('placement') === 'bottom' ? 'bottom' : 'top' }),
 })
 
-definePart<select.Api>({
+export const SelectItemGroup = definePart<select.Api>({
   tag: 'ark-select-item-group',
   root,
+  attributes: ['name'],
   props: (api, el) => api.getItemGroupProps({ id: el.getAttribute('name') ?? '' }),
 })
 
-definePart<select.Api>({
+export const SelectItemGroupLabel = definePart<select.Api>({
   tag: 'ark-select-item-group-label',
   root,
   props: (api, el) =>
     api.getItemGroupLabelProps({ htmlFor: el.closest('ark-select-item-group')?.getAttribute('name') ?? '' }),
 })
 
-definePart<select.Api>({
+export const SelectItem = definePart<select.Api, select.ItemState | undefined>({
   tag: 'ark-select-item',
   root,
+  attributes: ['value', 'disabled'],
   props: (api, el) => {
     const item = itemOf(el)
     if (!item) return {}
@@ -97,27 +109,30 @@ definePart<select.Api>({
       ...positionOf(api.collection, api.collection.getItemValue(item)),
     }
   },
+  state: (api, el) => itemStateOf(api, el),
 })
 
-definePart<select.Api>({
+export const SelectItemText = definePart<select.Api, select.ItemState | undefined>({
   tag: 'ark-select-item-text',
   root,
   props: (api, el) => {
     const item = itemOf(el)
     return item ? api.getItemTextProps({ item }) : {}
   },
+  state: (api, el) => itemStateOf(api, el),
 })
 
-definePart<select.Api>({
+export const SelectItemIndicator = definePart<select.Api, select.ItemState | undefined>({
   tag: 'ark-select-item-indicator',
   root,
   props: (api, el) => {
     const item = itemOf(el)
     return item ? api.getItemIndicatorProps({ item }) : {}
   },
+  state: (api, el) => itemStateOf(api, el),
 })
 
-definePart<select.Api>({
+export const SelectHiddenInput = definePart<select.Api>({
   tag: 'ark-select-hidden-input',
   root,
   display: 'contents',

@@ -11,39 +11,53 @@ const trackEmpty = (el: HTMLElement) => {
 
 const typeOf = (el: HTMLElement) => (str(el, 'type') === 'rejected' ? 'rejected' : 'accepted')
 
-definePart<fileUpload.Api>({ tag: 'ark-file-upload-label', root, props: (api) => api.getLabelProps() })
+const itemStateOf = (api: fileUpload.Api, el: HTMLElement) => {
+  const item = itemOf(el)
+  return item ? api.getItemState(item) : undefined
+}
 
-definePart<fileUpload.Api>({
-  tag: 'ark-file-upload-dropzone',
+export const FileUploadLabel = definePart<fileUpload.Api>({
+  tag: 'ark-file-upload-label',
   root,
-  props: (api, el) => api.getDropzoneProps({ disableClick: el.hasAttribute('disable-click') }),
+  props: (api) => api.getLabelProps(),
 })
 
-definePart<fileUpload.Api>({
+export const FileUploadDropzone = definePart<fileUpload.Api, fileUpload.DropzoneState>({
+  tag: 'ark-file-upload-dropzone',
+  root,
+  attributes: ['disable-click'],
+  props: (api, el) => api.getDropzoneProps({ disableClick: el.hasAttribute('disable-click') }),
+  state: (api) => api.getDropzoneState(),
+})
+
+export const FileUploadTrigger = definePart<fileUpload.Api, fileUpload.TriggerState>({
   tag: 'ark-file-upload-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getTriggerProps(),
+  state: (api) => api.getTriggerState(),
 })
 
-definePart<fileUpload.Api>({
+export const FileUploadClearTrigger = definePart<fileUpload.Api>({
   tag: 'ark-file-upload-clear-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getClearTriggerProps(),
 })
 
-definePart<fileUpload.Api>({
+export const FileUploadHiddenInput = definePart<fileUpload.Api>({
   tag: 'ark-file-upload-hidden-input',
   root,
   target: ownInput,
   props: (api) => api.getHiddenInputProps(),
 })
 
-definePart<fileUpload.Api>({
+export const FileUploadItemGroup = definePart<fileUpload.Api, fileUpload.ItemGroupState>({
   tag: 'ark-file-upload-item-group',
   root,
+  attributes: ['type'],
   props: (api, el) => api.getItemGroupProps({ type: typeOf(el) }),
+  state: (api, el) => api.getItemGroupState({ type: typeOf(el) }),
   render: (api, el) => {
     const template = templateOf(el)
     if (!template) return
@@ -61,16 +75,17 @@ definePart<fileUpload.Api>({
   },
 })
 
-definePart<fileUpload.Api>({
+export const FileUploadItem = definePart<fileUpload.Api, fileUpload.ItemState | undefined>({
   tag: 'ark-file-upload-item',
   root,
   props: (api, el) => {
     const item = itemOf(el)
     return item ? api.getItemProps(item) : {}
   },
+  state: (api, el) => itemStateOf(api, el),
 })
 
-definePart<fileUpload.Api>({
+export const FileUploadItemName = definePart<fileUpload.Api, fileUpload.ItemState | undefined>({
   tag: 'ark-file-upload-item-name',
   root,
   setup: trackEmpty,
@@ -78,13 +93,14 @@ definePart<fileUpload.Api>({
     const item = itemOf(el)
     return item ? api.getItemNameProps(item) : {}
   },
+  state: (api, el) => itemStateOf(api, el),
   render: (_, el) => {
     const item = itemOf(el)
     if (item && autoText.has(el)) el.textContent = item.file.name
   },
 })
 
-definePart<fileUpload.Api>({
+export const FileUploadItemSizeText = definePart<fileUpload.Api, fileUpload.ItemState | undefined>({
   tag: 'ark-file-upload-item-size-text',
   root,
   setup: trackEmpty,
@@ -92,20 +108,23 @@ definePart<fileUpload.Api>({
     const item = itemOf(el)
     return item ? api.getItemSizeTextProps(item) : {}
   },
+  state: (api, el) => itemStateOf(api, el),
   render: (api, el) => {
     const item = itemOf(el)
     if (item && autoText.has(el)) el.textContent = api.getFileSize(item.file)
   },
 })
 
-definePart<fileUpload.Api>({
+export const FileUploadItemPreview = definePart<fileUpload.Api, fileUpload.ItemState | undefined>({
   tag: 'ark-file-upload-item-preview',
   root,
+  attributes: ['type'],
   props: (api, el) => {
     const item = itemOf(el)
     if (!item) return { hidden: true }
     return { ...api.getItemPreviewProps(item), hidden: !item.file.type.match(str(el, 'type') ?? '.*') }
   },
+  state: (api, el) => itemStateOf(api, el),
 })
 
 interface Preview {
@@ -121,7 +140,7 @@ const revokePreview = (el: HTMLElement) => {
   previews.delete(el)
 }
 
-definePart<fileUpload.Api>({
+export const FileUploadItemPreviewImage = definePart<fileUpload.Api, fileUpload.ItemState | undefined>({
   tag: 'ark-file-upload-item-preview-image',
   root,
   target: wrapped('img'),
@@ -142,9 +161,10 @@ definePart<fileUpload.Api>({
     }
     return api.getItemPreviewImageProps({ ...item, url: preview.url })
   },
+  state: (api, el) => itemStateOf(api, el),
 })
 
-definePart<fileUpload.Api>({
+export const FileUploadItemDeleteTrigger = definePart<fileUpload.Api, fileUpload.ItemState | undefined>({
   tag: 'ark-file-upload-item-delete-trigger',
   root,
   target: wrappedButton,
@@ -152,4 +172,5 @@ definePart<fileUpload.Api>({
     const item = itemOf(el)
     return item ? api.getItemDeleteTriggerProps(item) : {}
   },
+  state: (api, el) => itemStateOf(api, el),
 })

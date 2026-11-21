@@ -5,6 +5,19 @@ import type { ActionMethods, RootElement, StateProperties } from '../../utils/de
 import type { CallbackEvents, FunctionProperties } from '../../utils/events.js'
 import './root.js'
 import './parts.js'
+import type {
+  ListboxLabel,
+  ListboxValueText,
+  ListboxInput,
+  ListboxContent,
+  ListboxEmpty,
+  ListboxList,
+  ListboxItemGroup,
+  ListboxItemGroupLabel,
+  ListboxItem,
+  ListboxItemText,
+  ListboxItemIndicator,
+} from './parts.js'
 
 type PropTypes = Api extends Api<infer P> ? P : never
 
@@ -35,6 +48,17 @@ export interface ListboxElement<T extends CollectionItem = CollectionItem>
 declare global {
   interface HTMLElementTagNameMap {
     'ark-listbox': ListboxElement
+    'ark-listbox-label': InstanceType<typeof ListboxLabel>
+    'ark-listbox-value-text': InstanceType<typeof ListboxValueText>
+    'ark-listbox-input': InstanceType<typeof ListboxInput>
+    'ark-listbox-content': InstanceType<typeof ListboxContent>
+    'ark-listbox-empty': InstanceType<typeof ListboxEmpty>
+    'ark-listbox-list': InstanceType<typeof ListboxList>
+    'ark-listbox-item-group': InstanceType<typeof ListboxItemGroup>
+    'ark-listbox-item-group-label': InstanceType<typeof ListboxItemGroupLabel>
+    'ark-listbox-item': InstanceType<typeof ListboxItem>
+    'ark-listbox-item-text': InstanceType<typeof ListboxItemText>
+    'ark-listbox-item-indicator': InstanceType<typeof ListboxItemIndicator>
   }
 }
 

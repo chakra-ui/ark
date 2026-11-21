@@ -4,40 +4,55 @@ import { root } from './shared.js'
 
 const autoText = new WeakSet<HTMLElement>()
 
-definePart<numberInput.Api>({ tag: 'ark-number-input-label', root, props: (api) => api.getLabelProps() })
+export const NumberInputLabel = definePart<numberInput.Api>({
+  tag: 'ark-number-input-label',
+  root,
+  props: (api) => api.getLabelProps(),
+})
 
-definePart<numberInput.Api>({ tag: 'ark-number-input-control', root, props: (api) => api.getControlProps() })
+export const NumberInputControl = definePart<numberInput.Api>({
+  tag: 'ark-number-input-control',
+  root,
+  props: (api) => api.getControlProps(),
+})
 
-definePart<numberInput.Api>({
+export const NumberInputInput = definePart<numberInput.Api, numberInput.InputState>({
   tag: 'ark-number-input-input',
   root,
   target: wrapped('input'),
   props: (api) => api.getInputProps(),
+  state: (api) => api.getInputState(),
 })
 
-definePart<numberInput.Api>({
+export const NumberInputIncrementTrigger = definePart<numberInput.Api, numberInput.IncrementTriggerState>({
   tag: 'ark-number-input-increment-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getIncrementTriggerProps(),
+  state: (api) => api.getIncrementTriggerState(),
 })
 
-definePart<numberInput.Api>({
+export const NumberInputDecrementTrigger = definePart<numberInput.Api, numberInput.DecrementTriggerState>({
   tag: 'ark-number-input-decrement-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getDecrementTriggerProps(),
+  state: (api) => api.getDecrementTriggerState(),
 })
 
-definePart<numberInput.Api>({ tag: 'ark-number-input-scrubber', root, props: (api) => api.getScrubberProps() })
+export const NumberInputScrubber = definePart<numberInput.Api>({
+  tag: 'ark-number-input-scrubber',
+  root,
+  props: (api) => api.getScrubberProps(),
+})
 
-definePart<numberInput.Api>({
+export const NumberInputScrubberCursor = definePart<numberInput.Api>({
   tag: 'ark-number-input-scrubber-cursor',
   root,
   props: (api) => api.getScrubberCursorProps(),
 })
 
-definePart<numberInput.Api>({
+export const NumberInputValueText = definePart<numberInput.Api>({
   tag: 'ark-number-input-value-text',
   root,
   setup: (el) => {
@@ -49,7 +64,7 @@ definePart<numberInput.Api>({
   },
 })
 
-definePart<numberInput.Api>({
+export const NumberInputHiddenInput = definePart<numberInput.Api>({
   tag: 'ark-number-input-hidden-input',
   root,
   target: ownInput,

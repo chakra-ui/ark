@@ -5,10 +5,14 @@ import { indexOf, itemTag, root } from './shared.js'
 
 const dataAttr = (value: boolean) => (value ? '' : undefined)
 
-definePart<rating.Api>({ tag: 'ark-rating-group-label', root, props: (api) => api.getLabelProps() })
+export const RatingGroupLabel = definePart<rating.Api>({
+  tag: 'ark-rating-group-label',
+  root,
+  props: (api) => api.getLabelProps(),
+})
 
 // Items are stamped from the control's `<template>`, one per `api.items`, so `count` stays the single source
-definePart<rating.Api>({
+export const RatingGroupControl = definePart<rating.Api>({
   tag: 'ark-rating-group-control',
   root,
   props: (api) => api.getControlProps(),
@@ -18,14 +22,16 @@ definePart<rating.Api>({
   },
 })
 
-definePart<rating.Api>({
+export const RatingGroupItem = definePart<rating.Api, rating.ItemState>({
   tag: itemTag,
   root,
+  attributes: ['index'],
   props: (api, el) => api.getItemProps({ index: indexOf(el) }),
+  state: (api, el) => api.getItemState({ index: indexOf(el) }),
 })
 
 // Mirrors the item's state onto its visual, so indicator styles can key off it
-definePart<rating.Api>({
+export const RatingGroupItemIndicator = definePart<rating.Api, rating.ItemState>({
   tag: 'ark-rating-group-item-indicator',
   root,
   props: (api, el) => {
@@ -36,9 +42,10 @@ definePart<rating.Api>({
       'data-checked': dataAttr(state.checked),
     }
   },
+  state: (api, el) => api.getItemState({ index: indexOf(el) }),
 })
 
-definePart<rating.Api>({
+export const RatingGroupHiddenInput = definePart<rating.Api>({
   tag: 'ark-rating-group-hidden-input',
   root,
   target: ownInput,

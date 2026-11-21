@@ -6,9 +6,13 @@ import { root } from './shared.js'
 
 const autoText = new WeakSet<HTMLElement>()
 
-definePart<progress.Api>({ tag: 'ark-progress-label', root, props: (api) => api.getLabelProps() })
+export const ProgressLabel = definePart<progress.Api>({
+  tag: 'ark-progress-label',
+  root,
+  props: (api) => api.getLabelProps(),
+})
 
-definePart<progress.Api>({
+export const ProgressValueText = definePart<progress.Api>({
   tag: 'ark-progress-value-text',
   root,
   setup: (el) => {
@@ -20,18 +24,32 @@ definePart<progress.Api>({
   },
 })
 
-definePart<progress.Api>({ tag: 'ark-progress-track', root, props: (api) => api.getTrackProps() })
+export const ProgressTrack = definePart<progress.Api>({
+  tag: 'ark-progress-track',
+  root,
+  props: (api) => api.getTrackProps(),
+})
 
-definePart<progress.Api>({ tag: 'ark-progress-range', root, props: (api) => api.getRangeProps() })
+export const ProgressRange = definePart<progress.Api>({
+  tag: 'ark-progress-range',
+  root,
+  props: (api) => api.getRangeProps(),
+})
 
-definePart<progress.Api>({
+const viewOf = (el: HTMLElement): progress.ViewProps => ({
+  state: str<progress.ProgressState>(el, 'state') ?? 'loading',
+})
+
+export const ProgressView = definePart<progress.Api, progress.ViewState>({
   tag: 'ark-progress-view',
   root,
-  props: (api, el) => api.getViewProps({ state: str<progress.ProgressState>(el, 'state') ?? 'loading' }),
+  attributes: ['state'],
+  props: (api, el) => api.getViewProps(viewOf(el)),
+  state: (api, el) => api.getViewState(viewOf(el)),
 })
 
 // Custom elements can't live inside <svg>, so the circle part also props its first two <circle>s: track, then range
-definePart<progress.Api>({
+export const ProgressCircle = definePart<progress.Api>({
   tag: 'ark-progress-circle',
   root,
   target: wrapped('svg'),

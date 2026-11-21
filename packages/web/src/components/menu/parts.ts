@@ -41,27 +41,35 @@ function optionOf(item: HTMLElement): menu.OptionItemProps | null {
   }
 }
 
-const itemPart = (
-  tag: string,
-  props: (api: menu.Api, item: HTMLElement) => Record<string, any>,
-  target?: (el: HTMLElement) => HTMLElement | null,
-) =>
-  definePart<menu.Api>({
-    tag,
-    root,
-    target,
-    display: 'block',
-    props: (api, el) => {
-      const item = el.closest<HTMLElement>(itemSelector)
-      if (!item) return {}
-      // Without item attributes, navigation skips it
-      if (item === el && filteredOut(item)) return { hidden: true }
-      return props(api, item)
-    },
-  })
+const itemPropsOf = (item: HTMLElement): menu.ItemProps => ({
+  value: item.getAttribute('value') ?? '',
+  disabled: item.hasAttribute('disabled'),
+  valueText: textOf(item),
+  closeOnSelect: item.getAttribute('close-on-select') === 'false' ? false : undefined,
+})
 
-const optionPart = (tag: string, props: (api: menu.Api, option: menu.OptionItemProps) => Record<string, any>) =>
-  itemPart(tag, (api, item) => {
+const optionStateOf = (api: menu.Api, item: HTMLElement) => {
+  const option = optionOf(item)
+  return option ? api.getOptionItemState(option) : undefined
+}
+
+const itemStateOf = (api: menu.Api, el: HTMLElement) => {
+  const item = el.closest<HTMLElement>(itemSelector)
+  if (!item) return undefined
+  return item.localName === 'ark-menu-item' ? api.getItemState(itemPropsOf(item)) : optionStateOf(api, item)
+}
+
+const itemProps =
+  (props: (api: menu.Api, item: HTMLElement) => Record<string, any>) => (api: menu.Api, el: HTMLElement) => {
+    const item = el.closest<HTMLElement>(itemSelector)
+    if (!item) return {}
+    // Without item attributes, navigation skips it
+    if (item === el && filteredOut(item)) return { hidden: true }
+    return props(api, item)
+  }
+
+const optionProps = (props: (api: menu.Api, option: menu.OptionItemProps) => Record<string, any>) =>
+  itemProps((api, item) => {
     if (item.localName === 'ark-menu-item') {
       const value = item.getAttribute('value') ?? ''
       return props(api, { value, type: 'checkbox', checked: false })
@@ -70,14 +78,16 @@ const optionPart = (tag: string, props: (api: menu.Api, option: menu.OptionItemP
     return option ? props(api, option) : {}
   })
 
-definePart<menu.Api>({
+export const MenuTrigger = definePart<menu.Api, menu.TriggerState>({
   tag: 'ark-menu-trigger',
   root,
+  attributes: ['value'],
   target: wrappedButton,
   props: (api, el) => api.getTriggerProps({ value: str(el, 'value') }),
+  state: (api, el) => api.getTriggerState({ value: str(el, 'value') }),
 })
 
-definePart<menu.Api>({
+export const MenuTriggerItem = definePart<menu.Api>({
   tag: 'ark-menu-trigger-item',
   root,
   // Belongs to the submenu, but it's an item of the parent
@@ -88,24 +98,46 @@ definePart<menu.Api>({
   },
 })
 
-definePart<menu.Api>({ tag: 'ark-menu-context-trigger', root, props: (api) => api.getContextTriggerProps() })
+export const MenuContextTrigger = definePart<menu.Api>({
+  tag: 'ark-menu-context-trigger',
+  root,
+  props: (api) => api.getContextTriggerProps(),
+})
 
-definePart<menu.Api>({ tag: 'ark-menu-indicator', root, props: (api) => api.getIndicatorProps() })
+export const MenuIndicator = definePart<menu.Api>({
+  tag: 'ark-menu-indicator',
+  root,
+  props: (api) => api.getIndicatorProps(),
+})
 
-definePresencePart<menu.Api>({
+export const MenuPositioner = definePresencePart<menu.Api, menu.PositionerState>({
   tag: 'ark-menu-positioner',
   root,
   animates: false,
   props: (api) => api.getPositionerProps(),
+  state: (api) => api.getPositionerState(),
 })
 
-definePresencePart<menu.Api>({ tag: 'ark-menu-content', root, props: (api) => api.getContentProps() })
+export const MenuContent = definePresencePart<menu.Api, menu.ContentState>({
+  tag: 'ark-menu-content',
+  root,
+  props: (api) => api.getContentProps(),
+  state: (api) => api.getContentState(),
+})
 
-definePart<menu.Api>({ tag: 'ark-menu-arrow', root, props: (api) => api.getArrowProps() })
+export const MenuArrow = definePart<menu.Api>({ tag: 'ark-menu-arrow', root, props: (api) => api.getArrowProps() })
 
-definePart<menu.Api>({ tag: 'ark-menu-arrow-tip', root, props: (api) => api.getArrowTipProps() })
+export const MenuArrowTip = definePart<menu.Api>({
+  tag: 'ark-menu-arrow-tip',
+  root,
+  props: (api) => api.getArrowTipProps(),
+})
 
-definePart<menu.Api>({ tag: 'ark-menu-separator', root, props: (api) => api.getSeparatorProps() })
+export const MenuSeparator = definePart<menu.Api>({
+  tag: 'ark-menu-separator',
+  root,
+  props: (api) => api.getSeparatorProps(),
+})
 
 const groupProps = (api: menu.Api, el: HTMLElement) => {
   const items = [...el.querySelectorAll(itemSelector)]
@@ -115,11 +147,21 @@ const groupProps = (api: menu.Api, el: HTMLElement) => {
   }
 }
 
-definePart<menu.Api>({ tag: 'ark-menu-item-group', root, props: groupProps })
+export const MenuItemGroup = definePart<menu.Api>({
+  tag: 'ark-menu-item-group',
+  root,
+  attributes: ['name'],
+  props: groupProps,
+})
 
-definePart<menu.Api>({ tag: 'ark-menu-radio-item-group', root, props: groupProps })
+export const MenuRadioItemGroup = definePart<menu.Api>({
+  tag: 'ark-menu-radio-item-group',
+  root,
+  attributes: ['name', 'value'],
+  props: groupProps,
+})
 
-definePart<menu.Api>({
+export const MenuInput = definePart<menu.Api>({
   tag: 'ark-menu-input',
   root,
   target: wrapped('input'),
@@ -134,9 +176,9 @@ definePart<menu.Api>({
   },
 })
 
-definePart<menu.Api>({ tag: 'ark-menu-list', root, props: (api) => api.getListProps() })
+export const MenuList = definePart<menu.Api>({ tag: 'ark-menu-list', root, props: (api) => api.getListProps() })
 
-definePart<menu.Api>({
+export const MenuEmpty = definePart<menu.Api>({
   tag: 'ark-menu-empty',
   root,
   props: (api, el) => {
@@ -146,7 +188,7 @@ definePart<menu.Api>({
   },
 })
 
-definePart<menu.Api>({
+export const MenuItemGroupLabel = definePart<menu.Api>({
   tag: 'ark-menu-item-group-label',
   root,
   props: (api, el) =>
@@ -155,23 +197,47 @@ definePart<menu.Api>({
     }),
 })
 
-itemPart(
-  'ark-menu-item',
-  (api, item) =>
-    api.getItemProps({
-      value: item.getAttribute('value') ?? '',
-      disabled: item.hasAttribute('disabled'),
-      valueText: textOf(item),
-      closeOnSelect: item.getAttribute('close-on-select') === 'false' ? false : undefined,
-    }),
+export const MenuItem = definePart<menu.Api, menu.ItemState>({
+  tag: 'ark-menu-item',
+  root,
+  attributes: ['value', 'disabled', 'close-on-select'],
   // A wrapped link becomes the item
-  wrapped('a'),
-)
+  target: wrapped('a'),
+  display: 'block',
+  props: itemProps((api, item) => api.getItemProps(itemPropsOf(item))),
+  state: (api, el) => api.getItemState(itemPropsOf(el)),
+})
 
-optionPart('ark-menu-checkbox-item', (api, option) => api.getOptionItemProps(option))
+export const MenuCheckboxItem = definePart<menu.Api, menu.OptionItemState | undefined>({
+  tag: 'ark-menu-checkbox-item',
+  root,
+  attributes: ['value', 'disabled', 'close-on-select', 'checked'],
+  display: 'block',
+  props: optionProps((api, option) => api.getOptionItemProps(option)),
+  state: (api, el) => optionStateOf(api, el),
+})
 
-optionPart('ark-menu-radio-item', (api, option) => api.getOptionItemProps(option))
+export const MenuRadioItem = definePart<menu.Api, menu.OptionItemState | undefined>({
+  tag: 'ark-menu-radio-item',
+  root,
+  attributes: ['value', 'disabled', 'close-on-select'],
+  display: 'block',
+  props: optionProps((api, option) => api.getOptionItemProps(option)),
+  state: (api, el) => optionStateOf(api, el),
+})
 
-optionPart('ark-menu-item-text', (api, option) => api.getItemTextProps(option))
+export const MenuItemText = definePart<menu.Api, menu.ItemState | menu.OptionItemState | undefined>({
+  tag: 'ark-menu-item-text',
+  root,
+  display: 'block',
+  props: optionProps((api, option) => api.getItemTextProps(option)),
+  state: (api, el) => itemStateOf(api, el),
+})
 
-optionPart('ark-menu-item-indicator', (api, option) => api.getItemIndicatorProps(option))
+export const MenuItemIndicator = definePart<menu.Api, menu.ItemState | menu.OptionItemState | undefined>({
+  tag: 'ark-menu-item-indicator',
+  root,
+  display: 'block',
+  props: optionProps((api, option) => api.getItemIndicatorProps(option)),
+  state: (api, el) => itemStateOf(api, el),
+})

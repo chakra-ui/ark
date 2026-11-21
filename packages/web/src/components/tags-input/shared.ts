@@ -9,7 +9,7 @@ export const listOf = (el: Element, name: string) => {
 }
 
 export const itemOf = (part: HTMLElement) => {
-  const item = part.closest('ark-tags-input-item')
+  const item = part.closest<HTMLElement>('ark-tags-input-item')
   return {
     index: Number(item?.getAttribute('index') ?? 0),
     value: item?.getAttribute('value') ?? '',

@@ -8,40 +8,47 @@ const itemOf = (api: toc.Api, el: Element) => {
   return api.items.find((item) => item.value === value)
 }
 
-definePart<toc.Api>({
+const itemStateOf = (api: toc.Api, el: HTMLElement) => {
+  const item = itemOf(api, el)
+  return item ? api.getItemState({ item }) : undefined
+}
+
+export const TocContent = definePart<toc.Api>({
   tag: contentTag,
   root,
   props: () => ({}),
 })
 
-definePart<toc.Api>({
+export const TocNav = definePart<toc.Api>({
   tag: 'ark-toc-nav',
   root,
   props: (api) => api.getNavProps(),
 })
 
-definePart<toc.Api>({
+export const TocTitle = definePart<toc.Api>({
   tag: 'ark-toc-title',
   root,
   props: (api) => api.getTitleProps(),
 })
 
-definePart<toc.Api>({
+export const TocList = definePart<toc.Api>({
   tag: 'ark-toc-list',
   root,
   props: (api) => api.getListProps(),
 })
 
-definePart<toc.Api>({
+export const TocItem = definePart<toc.Api, toc.ItemState | undefined>({
   tag: itemTag,
   root,
+  attributes: ['value', 'depth'],
   props: (api, el) => {
     const item = itemOf(api, el)
     return item ? api.getItemProps({ item }) : {}
   },
+  state: (api, el) => itemStateOf(api, el),
 })
 
-definePart<toc.Api>({
+export const TocLink = definePart<toc.Api, toc.ItemState | undefined>({
   tag: 'ark-toc-link',
   root,
   target: wrapped('a'),
@@ -49,10 +56,12 @@ definePart<toc.Api>({
     const item = itemOf(api, el)
     return item ? api.getLinkProps({ item }) : {}
   },
+  state: (api, el) => itemStateOf(api, el),
 })
 
-definePart<toc.Api>({
+export const TocIndicator = definePart<toc.Api, toc.IndicatorState>({
   tag: 'ark-toc-indicator',
   root,
   props: (api) => api.getIndicatorProps(),
+  state: (api) => api.getIndicatorState(),
 })

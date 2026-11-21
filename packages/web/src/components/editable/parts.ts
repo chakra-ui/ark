@@ -2,11 +2,19 @@ import type * as editable from '@zag-js/editable'
 import { definePart, wrapped, wrappedButton } from '../../utils/define.js'
 import { root } from './shared.js'
 
-definePart<editable.Api>({ tag: 'ark-editable-label', root, props: (api) => api.getLabelProps() })
+export const EditableLabel = definePart<editable.Api>({
+  tag: 'ark-editable-label',
+  root,
+  props: (api) => api.getLabelProps(),
+})
 
-definePart<editable.Api>({ tag: 'ark-editable-area', root, props: (api) => api.getAreaProps() })
+export const EditableArea = definePart<editable.Api>({
+  tag: 'ark-editable-area',
+  root,
+  props: (api) => api.getAreaProps(),
+})
 
-definePart<editable.Api>({
+export const EditableInput = definePart<editable.Api>({
   tag: 'ark-editable-input',
   root,
   target: wrapped('input, textarea'),
@@ -15,7 +23,7 @@ definePart<editable.Api>({
 
 const previewTarget = (el: HTMLElement) => wrapped('span')(el) ?? el
 
-definePart<editable.Api>({
+export const EditablePreview = definePart<editable.Api>({
   tag: 'ark-editable-preview',
   root,
   // An optional wrapped span lets styles written for a span preview apply
@@ -32,23 +40,27 @@ definePart<editable.Api>({
   },
 })
 
-definePart<editable.Api>({ tag: 'ark-editable-control', root, props: (api) => api.getControlProps() })
+export const EditableControl = definePart<editable.Api>({
+  tag: 'ark-editable-control',
+  root,
+  props: (api) => api.getControlProps(),
+})
 
-definePart<editable.Api>({
+export const EditableEditTrigger = definePart<editable.Api>({
   tag: 'ark-editable-edit-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getEditTriggerProps(),
 })
 
-definePart<editable.Api>({
+export const EditableSubmitTrigger = definePart<editable.Api>({
   tag: 'ark-editable-submit-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getSubmitTriggerProps(),
 })
 
-definePart<editable.Api>({
+export const EditableCancelTrigger = definePart<editable.Api>({
   tag: 'ark-editable-cancel-trigger',
   root,
   target: wrappedButton,

@@ -5,35 +5,51 @@ import { indexOf, indicatorTag, itemTag, root } from './shared.js'
 
 const autoText = new WeakSet<HTMLElement>()
 
-definePart<carousel.Api>({ tag: 'ark-carousel-control', root, props: (api) => api.getControlProps() })
-
-definePart<carousel.Api>({ tag: 'ark-carousel-item-group', root, props: (api) => api.getItemGroupProps() })
-
-definePart<carousel.Api>({
-  tag: itemTag,
-  root,
-  props: (api, el) =>
-    api.getItemProps({
-      index: indexOf(el, itemTag),
-      snapAlign: (el.getAttribute('snap-align') ?? undefined) as carousel.ItemProps['snapAlign'],
-    }),
+const itemPropsOf = (el: HTMLElement): carousel.ItemProps => ({
+  index: indexOf(el, itemTag),
+  snapAlign: (el.getAttribute('snap-align') ?? undefined) as carousel.ItemProps['snapAlign'],
 })
 
-definePart<carousel.Api>({
+const indicatorPropsOf = (el: HTMLElement): carousel.IndicatorProps => ({
+  index: indexOf(el, indicatorTag),
+  readOnly: el.hasAttribute('readonly'),
+})
+
+export const CarouselControl = definePart<carousel.Api>({
+  tag: 'ark-carousel-control',
+  root,
+  props: (api) => api.getControlProps(),
+})
+
+export const CarouselItemGroup = definePart<carousel.Api>({
+  tag: 'ark-carousel-item-group',
+  root,
+  props: (api) => api.getItemGroupProps(),
+})
+
+export const CarouselItem = definePart<carousel.Api, carousel.ItemState>({
+  tag: itemTag,
+  root,
+  attributes: ['index', 'snap-align'],
+  props: (api, el) => api.getItemProps(itemPropsOf(el)),
+  state: (api, el) => api.getItemState(itemPropsOf(el)),
+})
+
+export const CarouselPrevTrigger = definePart<carousel.Api>({
   tag: 'ark-carousel-prev-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getPreviousTriggerProps(),
 })
 
-definePart<carousel.Api>({
+export const CarouselNextTrigger = definePart<carousel.Api>({
   tag: 'ark-carousel-next-trigger',
   root,
   target: wrappedButton,
   props: (api) => api.getNextTriggerProps(),
 })
 
-definePart<carousel.Api>({
+export const CarouselAutoplayTrigger = definePart<carousel.Api>({
   tag: 'ark-carousel-autoplay-trigger',
   root,
   target: wrappedButton,
@@ -41,7 +57,7 @@ definePart<carousel.Api>({
 })
 
 // Children marked `fallback` show while paused, the rest while playing
-definePart<carousel.Api>({
+export const CarouselAutoplayIndicator = definePart<carousel.Api>({
   tag: 'ark-carousel-autoplay-indicator',
   root,
   display: 'contents',
@@ -54,7 +70,7 @@ definePart<carousel.Api>({
 })
 
 // A <template> child is stamped once per page snap point
-definePart<carousel.Api>({
+export const CarouselIndicatorGroup = definePart<carousel.Api>({
   tag: 'ark-carousel-indicator-group',
   root,
   props: (api) => api.getIndicatorGroupProps(),
@@ -72,15 +88,16 @@ definePart<carousel.Api>({
   },
 })
 
-definePart<carousel.Api>({
+export const CarouselIndicator = definePart<carousel.Api, carousel.IndicatorState>({
   tag: indicatorTag,
   root,
+  attributes: ['index', 'readonly'],
   target: wrappedButton,
-  props: (api, el) =>
-    api.getIndicatorProps({ index: indexOf(el, indicatorTag), readOnly: el.hasAttribute('readonly') }),
+  props: (api, el) => api.getIndicatorProps(indicatorPropsOf(el)),
+  state: (api, el) => api.getIndicatorState(indicatorPropsOf(el)),
 })
 
-definePart<carousel.Api>({
+export const CarouselProgressText = definePart<carousel.Api>({
   tag: 'ark-carousel-progress-text',
   root,
   setup: (el) => {

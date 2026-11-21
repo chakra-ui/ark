@@ -1,9 +1,10 @@
 import { definePresencePart } from '../../utils/presence.js'
 import { root, type SwapApi, typeOf } from './shared.js'
 
-definePresencePart<SwapApi>({
+export const SwapIndicator = definePresencePart<SwapApi>({
   tag: 'ark-swap-indicator',
   root,
+  attributes: ['type'],
   display: 'inline-flex',
   skipAnimationOnMount: true,
   present: (api, el) => (typeOf(el) === 'on' ? api.swap : !api.swap),

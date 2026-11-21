@@ -3,6 +3,7 @@ import './root.js'
 import './parts.js'
 import type { Api, Props } from '@zag-js/marquee'
 import type { ActionMethods, RootElement, StateProperties } from '../../utils/define.js'
+import type { MarqueeContent, MarqueeEdge, MarqueeItem, MarqueeViewport } from './parts.js'
 
 export type { Api as MarqueeApi, PauseStatusDetails as MarqueePauseStatusDetails } from '@zag-js/marquee'
 export interface MarqueeElement
@@ -15,6 +16,10 @@ export interface MarqueeElement
 declare global {
   interface HTMLElementTagNameMap {
     'ark-marquee': MarqueeElement
+    'ark-marquee-viewport': InstanceType<typeof MarqueeViewport>
+    'ark-marquee-content': InstanceType<typeof MarqueeContent>
+    'ark-marquee-item': InstanceType<typeof MarqueeItem>
+    'ark-marquee-edge': InstanceType<typeof MarqueeEdge>
   }
 }
 

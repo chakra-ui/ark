@@ -140,6 +140,17 @@ function deferred() {
   return { promise, resolve }
 }
 
+/** Any `ark-*` element. Roots and parts expose their machine state through `state`. */
+export interface ArkElement extends HTMLElement {
+  readonly state?: object | undefined
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    [tag: `ark-${string}`]: ArkElement
+  }
+}
+
 export interface ElementMeta {
   kind: 'root' | 'part'
   root?: string
@@ -149,16 +160,23 @@ export interface ElementMeta {
   methods?: readonly string[]
 }
 
+export type RootState<Api> = Api extends { getRootState(): infer State } ? State : undefined
+
+const rootStateOf = <Api>(api: Api | undefined) =>
+  (api as { getRootState?: () => unknown } | undefined)?.getRootState?.() as RootState<Api> | undefined
+
 export interface RootElement<Api = Dict, Props extends object = {}> extends EventElement<CallbackEvents<Props>> {
   readonly api: Api | undefined
+  /** The root's state from its machine (`getRootState()`), such as `open` or `disabled`. `undefined` until it connects. */
+  readonly state: RootState<Api> | undefined
   /** Resolves once the element's machine has started, so `api`, state and parts are in place. */
   readonly ready: Promise<void>
   readonly machineId: string
   readonly service: VanillaMachine<any>['service'] | undefined
   refresh(): void
   render(): void
-  register(part: PartElement<Api>): void
-  unregister(part: PartElement<Api>): void
+  register(part: PartElement<Api, unknown>): void
+  unregister(part: PartElement<Api, unknown>): void
 }
 
 export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<Api> } {
@@ -186,7 +204,7 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
     machineId = ''
     private machine: VanillaMachine<any> | undefined
     private snapshot: Dict | undefined
-    private parts = new Set<PartElement<Api>>()
+    private parts = new Set<PartElement<Api, unknown>>()
     private cleanups: VoidFunction[] = []
     private rootTarget = new Target()
     private started = false
@@ -266,6 +284,10 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
       } else queueMicrotask(start)
     }
 
+    get state() {
+      return rootStateOf(this.api)
+    }
+
     get ready() {
       return this.readiness.promise
     }
@@ -318,12 +340,12 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
       else this.pending.push(run)
     }
 
-    register(part: PartElement<Api>) {
+    register(part: PartElement<Api, unknown>) {
       this.parts.add(part)
       if (this.api) part.update(this.api)
     }
 
-    unregister(part: PartElement<Api>) {
+    unregister(part: PartElement<Api, unknown>) {
       this.parts.delete(part)
     }
 
@@ -385,17 +407,23 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
   return Root
 }
 
-export interface PartConfig<Api> {
+export interface PartConfig<Api, State = RootState<Api>> {
   tag: string
   root: string
+  /** Attributes the part reads from itself, for the custom elements manifest. */
+  attributes?: string[]
   props: (api: Api, el: HTMLElement) => Dict
+  /** The part's machine state. Without it the part reports its root's state. */
+  state?: (api: Api, el: HTMLElement) => State
   target?: (el: HTMLElement) => HTMLElement | null
   display?: string
   render?: (api: Api, el: HTMLElement) => void
-  setup?: (el: PartElement<Api>, root: RootElement<Api>) => VoidFunction | void
+  setup?: (el: PartElement<Api, State>, root: RootElement<Api>) => VoidFunction | void
 }
 
-export interface PartElement<Api = Dict> extends HTMLElement {
+export interface PartElement<Api = Dict, State = RootState<Api>> extends HTMLElement {
+  /** The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects. */
+  readonly state: State | undefined
   update(api: Api): void
 }
 
@@ -406,9 +434,11 @@ export const wrappedButton = wrapped('button, a')
 export const ownInput = (el: HTMLElement) =>
   el.querySelector<HTMLInputElement>(':scope > input') ?? el.appendChild(document.createElement('input'))
 
-export function definePart<Api>(config: PartConfig<Api>): { new (): PartElement<Api> } {
-  class Part extends HTMLElement implements PartElement<Api> {
-    static meta: ElementMeta = { kind: 'part', root: config.root }
+export function definePart<Api, State = RootState<Api>>(
+  config: PartConfig<Api, State>,
+): { new (): PartElement<Api, State> } {
+  class Part extends HTMLElement implements PartElement<Api, State> {
+    static meta: ElementMeta = { kind: 'part', root: config.root, attributes: config.attributes ?? [] }
 
     private rootEl: RootElement<Api> | null = null
     private target = new Target()
@@ -464,6 +494,12 @@ export function definePart<Api>(config: PartConfig<Api>): { new (): PartElement<
       this.target.detach()
       this.rootEl?.unregister(this)
       this.rootEl = null
+    }
+
+    get state(): State | undefined {
+      const api = this.rootEl?.api
+      if (!api) return undefined
+      return config.state ? config.state(api, this) : (rootStateOf(api) as State)
     }
 
     update(api: Api) {

@@ -6,6 +6,17 @@ import type { CallbackEvents, FunctionProperties } from '../../utils/events.js'
 import type { CommandFilter } from './shared.js'
 import './root.js'
 import './parts.js'
+import type {
+  CommandLabel,
+  CommandControl,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandItemGroup,
+  CommandItemGroupLabel,
+  CommandItem,
+  CommandItemText,
+} from './parts.js'
 
 type PropTypes = Api extends Api<infer P> ? P : never
 
@@ -91,5 +102,14 @@ export interface CommandPages<T extends CollectionItem = CollectionItem> {
 declare global {
   interface HTMLElementTagNameMap {
     'ark-command': CommandElement
+    'ark-command-label': InstanceType<typeof CommandLabel>
+    'ark-command-control': InstanceType<typeof CommandControl>
+    'ark-command-input': InstanceType<typeof CommandInput>
+    'ark-command-list': InstanceType<typeof CommandList>
+    'ark-command-empty': InstanceType<typeof CommandEmpty>
+    'ark-command-item-group': InstanceType<typeof CommandItemGroup>
+    'ark-command-item-group-label': InstanceType<typeof CommandItemGroupLabel>
+    'ark-command-item': InstanceType<typeof CommandItem>
+    'ark-command-item-text': InstanceType<typeof CommandItemText>
   }
 }
