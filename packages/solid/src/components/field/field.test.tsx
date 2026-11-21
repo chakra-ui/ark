@@ -245,6 +245,30 @@ describe('Field / Item', () => {
     expect(screen.getByTestId('amount-input')).toHaveAttribute('aria-invalid', 'true')
   })
 
+  it('should focus the item control when target is set in mixed usage', async () => {
+    render(() => (
+      <Field.Root target="currency">
+        <Field.Label>Currency</Field.Label>
+        <Field.Item value="currency">
+          <Field.Select data-testid="currency-select">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+          </Field.Select>
+        </Field.Item>
+        <Field.Input data-testid="amount-input" />
+      </Field.Root>
+    ))
+    const select = screen.getByTestId('currency-select')
+    const input = screen.getByTestId('amount-input')
+
+    expect(select.id).toMatch(/:item:currency$/)
+    expect(input.id).toMatch(/:control$/)
+    expect(screen.getByText('Currency')).toHaveAttribute('for', select.id)
+
+    await user.click(screen.getByText('Currency'))
+    expect(select).toHaveFocus()
+  })
+
   it('should throw when Field.Item is used outside Field.Root', () => {
     expect(() =>
       render(() => (
@@ -257,6 +281,18 @@ describe('Field / Item', () => {
 })
 
 describe('Field / ids', () => {
+  it('should keep the label on the target item when ids.control is set', () => {
+    render(() => (
+      <Field.Root target="amount" ids={{ control: 'custom-control' }}>
+        <Field.Label>Amount</Field.Label>
+        <Field.Item value="amount">
+          <Field.Input />
+        </Field.Item>
+      </Field.Root>
+    ))
+    expect(screen.getByRole('textbox', { name: 'Amount' })).toHaveAttribute('id', 'custom-control')
+  })
+
   it('should give ids.root to the root and ids.control to the control', () => {
     render(() => <ComponentUnderTest ids={{ root: 'custom-root', control: 'custom-control' }} />)
     expect(screen.getByRole('textbox', { name: /label/i })).toHaveAttribute('id', 'custom-control')
