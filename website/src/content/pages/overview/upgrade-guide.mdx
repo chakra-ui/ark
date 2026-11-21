@@ -259,6 +259,29 @@ the part being a block, a rotating accordion indicator for example, give it an e
 
 In React, refs to these parts are now typed `HTMLSpanElement`.
 
+### Field and Fieldset use the Zag machines
+
+`Field` and `Fieldset` are now built on `@zag-js/field` and `@zag-js/fieldset`. Fields validate
+natively and with `validate`, show results by `validationMode`, and accept server `errors`. Most
+usage keeps working; these changes need a look:
+
+- `Field.RequiredIndicator` is replaced by `Field.Indicator`, which takes a `type`.
+- The `input`, `textarea` and `select` parts are renamed to `control`, and `required-indicator` to
+  `indicator`. Update selectors from `[data-field-input]` to `[data-field-control]` and from
+  `[data-field-required-indicator]` to `[data-field-indicator]`.
+- Generated ids are now `{id}:label` and `{id}:control`. Update any code that reads them.
+- `Field.ErrorText` stays mounted and hidden while the field is valid, so style it with `[hidden]`
+  rather than relying on it being removed.
+- `Field.Root` no longer sets `role="group"`.
+
+```diff
+  <Field.Label>
+    Email
+-   <Field.RequiredIndicator>*</Field.RequiredIndicator>
++   <Field.Indicator type="required">*</Field.Indicator>
+  </Field.Label>
+```
+
 ### `TagsInput` is no longer editable by default
 
 Tags no longer open for editing on double-click unless you pass `editable`. The

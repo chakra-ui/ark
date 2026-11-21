@@ -12,7 +12,9 @@ description: Provides a flexible container for form inputs, labels, and helper t
 
 ```tsx
 <Field.Root>
-  <Field.Label />
+  <Field.Label>
+    <Field.Indicator />
+  </Field.Label>
   <Field.Input />
   <Field.Textarea />
   <Field.Select />
@@ -32,6 +34,48 @@ form elements.
 This example shows how to use the `Field` component with a standard input field.
 
 <Example id="input" />
+
+### Disabled
+
+Set `disabled` on the root to disable the control and mark every part with `data-disabled`.
+
+<Example id="disabled" />
+
+### Invalid
+
+Set `invalid` to show the error text and mark the control with `aria-invalid`. The error text stays mounted and hidden
+while the field is valid.
+
+<Example id="invalid" />
+
+### Indicator
+
+`Field.Indicator` is shown only when its `type` matches the field state: `required`, `invalid`, `valid` or `validating`.
+Use it inside the label to show a required marker.
+
+<Example id="indicator" />
+
+### Validation
+
+The field validates the control natively, using attributes like `required` and `type="email"`. Set `validationMode` to
+choose when results show (`onSubmit`, `onBlur` or `onChange`), and pass `match` to `Field.ErrorText` to show it only for
+one native failure such as `valueMissing` or `typeMismatch`.
+
+<Example id="validation" />
+
+### Custom Validation
+
+Pass `validate` to run your own rules. Return an error message, a list of messages, or nothing when the value is valid.
+It can also return a promise. The messages are available as `errors` on the field context.
+
+<Example id="custom-validation" />
+
+### Server Errors
+
+Pass `errors` to show errors that come from outside the field, such as a server response. The field is invalid while
+`errors` is not empty.
+
+<Example id="server-errors" />
 
 ### Textarea
 
