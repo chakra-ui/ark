@@ -1,125 +1,26 @@
-import { useEnvironmentContext } from '$lib/providers'
-import type { HTMLProps } from '$lib/types'
-import { runIfFn } from '$lib/utils/run-if-fn'
-import { type MaybeFunction, ensureProps } from '@zag-js/utils'
-import { onMount } from 'svelte'
-import { dataAttr } from '../../utils/attr.ts'
-import { parts } from './fieldset.anatomy.ts'
+import { useEnvironmentContext } from '$lib/providers/environment'
+import { useLocaleContext } from '$lib/providers/locale'
+import type { Accessor } from '$lib/types'
+import * as fieldset from '@zag-js/fieldset'
+import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
+import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 
-export interface UseFieldsetProps {
-  /**
-   * The id of the fieldset.
-   */
-  id?: string
-  /**
-   * Indicates whether the fieldset is disabled.
-   */
-  disabled?: boolean
-  /**
-   * Indicates whether the fieldset is invalid.
-   */
-  invalid?: boolean
-}
+export interface UseFieldsetProps extends Omit<fieldset.Props, 'dir' | 'getRootNode'> {}
 
-export type UseFieldsetReturn = ReturnType<typeof useFieldset>
+export interface UseFieldsetReturn extends Accessor<fieldset.Api<PropTypes>> {}
 
-export const useFieldset = (inProps: MaybeFunction<UseFieldsetProps> = {}) => {
-  const props = $derived.by<UseFieldsetProps>(() => {
-    const resolvedProps = runIfFn(inProps)
-    ensureProps(resolvedProps, ['id'])
-    return resolvedProps
-  })
-
-  const id = $derived(props.id)
-
-  const disabled = $derived(props.disabled ?? false)
-  const invalid = $derived(props.invalid ?? false)
-
+export const useFieldset = (props: MaybeFunction<UseFieldsetProps>): UseFieldsetReturn => {
   const env = useEnvironmentContext()
+  const locale = useLocaleContext()
 
-  let hasErrorText = $state(false)
-  let hasHelperText = $state(false)
+  const machineProps = $derived.by(() => ({
+    dir: locale().dir,
+    getRootNode: env().getRootNode,
+    ...runIfFn(props),
+  }))
 
-  let rootRef = $state<Element | null>(null)
-  const setRootRef = (el: Element | null) => {
-    rootRef = el
-  }
-
-  const legendId = $derived(`fieldset::${id}::legend`)
-  const errorTextId = $derived(`fieldset::${id}::error-text`)
-  const helperTextId = $derived(`fieldset::${id}::helper-text`)
-
-  const checkTextElements = () => {
-    if (!rootRef) return
-    const docOrShadowRoot = env().getRootNode() as ShadowRoot | Document
-    hasErrorText = !!docOrShadowRoot.getElementById(errorTextId)
-    hasHelperText = !!docOrShadowRoot.getElementById(helperTextId)
-  }
-
-  onMount(() => {
-    checkTextElements()
-
-    if (rootRef) {
-      const win = env().getWindow()
-      const observer = new win.MutationObserver(checkTextElements)
-      observer.observe(rootRef, { childList: true, subtree: true })
-
-      return () => observer.disconnect()
-    }
-  })
-
-  const labelIds = $derived(() => {
-    const ids: string[] = []
-    if (hasErrorText && invalid) ids.push(errorTextId)
-    if (hasHelperText) ids.push(helperTextId)
-    return ids.join(' ') || undefined
-  })
-
-  const getRootProps = () =>
-    ({
-      ...parts.root.attrs(id),
-      disabled,
-      'data-disabled': dataAttr(disabled),
-      'data-invalid': dataAttr(invalid),
-      'aria-labelledby': legendId,
-      'aria-describedby': labelIds(),
-    }) as HTMLProps<'fieldset'>
-
-  const getLegendProps = () =>
-    ({
-      id: legendId,
-      ...parts.legend.attrs(id),
-      'data-disabled': dataAttr(disabled),
-      'data-invalid': dataAttr(invalid),
-    }) as HTMLProps<'legend'>
-
-  const getHelperTextProps = () =>
-    ({
-      id: helperTextId,
-      ...parts.helperText.attrs(id),
-    }) as HTMLProps<'span'>
-
-  const getErrorTextProps = () =>
-    ({
-      id: errorTextId,
-      ...parts.errorText.attrs(id),
-      'aria-live': 'polite',
-    }) as HTMLProps<'span'>
-
-  const api = $derived({
-    setRootRef,
-    ids: {
-      legend: legendId,
-      errorText: errorTextId,
-      helperText: helperTextId,
-    },
-    disabled,
-    invalid,
-    getRootProps,
-    getLegendProps,
-    getHelperTextProps,
-    getErrorTextProps,
-  })
+  const service = useMachine(fieldset.machine, () => machineProps)
+  const api = $derived(fieldset.connect(service, normalizeProps))
 
   return () => api
 }

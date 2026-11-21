@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/fieldset'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FieldsetErrorTextBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
+  export interface FieldsetErrorTextState extends RootState {}
+  export interface FieldsetErrorTextBaseProps extends PolymorphicProps<'span', FieldsetErrorTextState>, RefAttribute {}
   export interface FieldsetErrorTextProps extends Assign<HTMLProps<'span'>, FieldsetErrorTextBaseProps> {}
 </script>
 
@@ -12,9 +14,7 @@
 
   let { ref = $bindable(null), ...props }: FieldsetErrorTextProps = $props()
   const fieldset = useFieldsetContext()
-  const mergedProps = $derived(mergeProps(fieldset?.().getErrorTextProps(), props))
+  const mergedProps = $derived(mergeProps(fieldset?.().getErrorTextProps() ?? {}, props))
 </script>
 
-{#if fieldset?.().invalid}
-  <Ark as="span" bind:ref {...mergedProps} />
-{/if}
+<Ark as="span" bind:ref {...mergedProps} state={fieldset?.().getRootState()} />

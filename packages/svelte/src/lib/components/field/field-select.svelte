@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/field'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FieldSelectBaseProps extends PolymorphicProps<'select'>, RefAttribute {}
+  export interface FieldSelectState extends RootState {}
+  export interface FieldSelectBaseProps extends PolymorphicProps<'select', FieldSelectState>, RefAttribute {}
   export interface FieldSelectProps extends Assign<HTMLProps<'select'>, FieldSelectBaseProps> {}
 </script>
 
@@ -27,4 +29,4 @@
   const mergedProps = $derived(mergeProps(field?.()?.getSelectProps() ?? {}, nativeSelectProps, props))
 </script>
 
-<Ark as="select" bind:ref {...mergedProps} />
+<Ark as="select" bind:ref {...mergedProps} state={field?.()?.getRootState()} />

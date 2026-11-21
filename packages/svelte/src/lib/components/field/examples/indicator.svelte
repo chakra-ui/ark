@@ -6,7 +6,7 @@
 <Field.Root class={styles.Root} required>
   <Field.Label class={styles.Label}>
     Username
-    <Field.RequiredIndicator />
+    <Field.Indicator type="required">*</Field.Indicator>
   </Field.Label>
   <Field.Input class={styles.Input} />
 </Field.Root>

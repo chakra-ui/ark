@@ -1,8 +1,11 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/fieldset'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseFieldsetReturn } from './use-fieldset.svelte.ts'
 
-  export interface FieldsetRootProviderBaseProps extends PolymorphicProps<'fieldset'>, RefAttribute {
+  export interface FieldsetRootProviderState extends RootState {}
+  export interface FieldsetRootProviderBaseProps
+    extends PolymorphicProps<'fieldset', FieldsetRootProviderState>, RefAttribute {
     value: UseFieldsetReturn
   }
   export interface FieldsetRootProviderProps extends Assign<HTMLProps<'fieldset'>, FieldsetRootProviderBaseProps> {}
@@ -20,4 +23,4 @@
   FieldsetProvider(() => value())
 </script>
 
-<Ark as="fieldset" bind:ref {...mergedProps} />
+<Ark as="fieldset" bind:ref {...mergedProps} state={value().getRootState()} />

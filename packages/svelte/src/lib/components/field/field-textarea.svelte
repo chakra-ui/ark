@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/field'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FieldTextareaBaseProps extends PolymorphicProps<'textarea'>, RefAttribute {
+  export interface FieldTextareaState extends RootState {}
+  export interface FieldTextareaBaseProps extends PolymorphicProps<'textarea', FieldTextareaState>, RefAttribute {
     /**
      * Whether the textarea should autoresize
      * @default false
@@ -42,4 +44,4 @@
   }
 </script>
 
-<Ark as="textarea" bind:ref {...mergedProps} {@attach setNode} />
+<Ark as="textarea" bind:ref {...mergedProps} state={field?.()?.getRootState()} {@attach setNode} />

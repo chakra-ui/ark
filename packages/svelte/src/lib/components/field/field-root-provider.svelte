@@ -1,8 +1,10 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/field'
   import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
   import type { UseFieldReturn } from './use-field.svelte.ts'
 
-  export interface FieldRootProviderBaseProps extends PolymorphicProps<'div'> {
+  export interface FieldRootProviderState extends RootState {}
+  export interface FieldRootProviderBaseProps extends PolymorphicProps<'div', FieldRootProviderState> {
     value: UseFieldReturn
   }
   export interface FieldRootProviderProps extends Assign<HTMLProps<'div'>, FieldRootProviderBaseProps> {}
@@ -20,4 +22,4 @@
   FieldProvider(() => value())
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" {...mergedProps} state={value().getRootState()} />

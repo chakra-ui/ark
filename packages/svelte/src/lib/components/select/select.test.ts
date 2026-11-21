@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/svelte'
+import { render, screen, waitFor } from '@testing-library/svelte'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { describe, expect, it } from 'vitest'
@@ -35,8 +35,10 @@ describe('Select', () => {
 
   it('should describe the trigger with the helper and error text', async () => {
     render(FieldComponent)
-    expect(await screen.findByRole('combobox', { name: 'Label' })).toHaveAccessibleDescription(
-      'Error Info Additional Info',
+    await waitFor(async () =>
+      expect(await screen.findByRole('combobox', { name: 'Label' })).toHaveAccessibleDescription(
+        'Additional Info Error Info',
+      ),
     )
   })
 })

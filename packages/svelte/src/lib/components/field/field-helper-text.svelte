@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/field'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FieldHelperTextBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
+  export interface FieldHelperTextState extends RootState {}
+  export interface FieldHelperTextBaseProps extends PolymorphicProps<'span', FieldHelperTextState>, RefAttribute {}
   export interface FieldHelperTextProps extends Assign<HTMLProps<'span'>, FieldHelperTextBaseProps> {}
 </script>
 
@@ -15,4 +17,4 @@
   const mergedProps = $derived(mergeProps(field?.()?.getHelperTextProps() ?? {}, props))
 </script>
 
-<Ark as="span" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} state={field?.()?.getRootState()} />
