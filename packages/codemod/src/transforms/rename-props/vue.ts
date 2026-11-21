@@ -96,7 +96,7 @@ function applyRule(s: MagicString, node: Node, rule: PropRule, source: string, s
 
   for (const { name, value } of rule.ensure ?? []) {
     if (find(name)) continue
-    s.appendLeft(node.loc.start.offset + 1 + (node.tag?.length ?? 0), ` ${ensureAttr(name, value)}`)
+    s.appendRight(node.loc.start.offset + 1 + (node.tag?.length ?? 0), ` ${ensureAttr(name, value)}`)
     changed++
   }
 
@@ -109,6 +109,21 @@ function applyRule(s: MagicString, node: Node, rule: PropRule, source: string, s
       continue
     }
     skipped.push(`line ${lineOf(source, node.loc.start.offset)}: ${message}`)
+  }
+
+  if (rule.renamePart) {
+    const tag = node.tag ?? ''
+    const [namespace, part] = tag.split('.')
+    if (part) {
+      const next = `${namespace}.${rule.renamePart}`
+      const start = node.loc.start.offset + 1
+      s.overwrite(start, start + tag.length, next)
+      const close = source.lastIndexOf('</', node.loc.end.offset - 1)
+      if (close > start && source.startsWith(tag, close + 2)) s.overwrite(close + 2, close + 2 + tag.length, next)
+      changed++
+    } else {
+      skipped.push(`line ${lineOf(source, node.loc.start.offset)}: rename to ${rule.component}.${rule.renamePart}`)
+    }
   }
 
   return changed
@@ -142,6 +157,7 @@ function invertBoolean(prop: Prop): string {
 function ensureAttr(name: string, value: string): string {
   if (value === '{true}') return kebab(name)
   if (value === '{false}') return `:${kebab(name)}="false"`
+  if (value.startsWith('"')) return `${kebab(name)}=${value}`
   const inner = value.startsWith('{') && value.endsWith('}') ? value.slice(1, -1) : value
   return `:${kebab(name)}="${inner}"`
 }

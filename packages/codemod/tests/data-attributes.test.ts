@@ -138,6 +138,16 @@ const toggle = '[data-scope="toggle"][data-part="root"][data-state="on"]'`,
 [data-image-cropper-grid][data-axis="vertical"] { }`)
   })
 
+  it('renames field control and indicator parts', () => {
+    const result = cssDataAttributes(
+      `[data-scope="field"][data-part="input"], [data-scope="field"][data-part="textarea"], [data-scope="field"][data-part="required-indicator"], [data-scope="field"][data-part="label"] {}`,
+      'a.css',
+    )
+    expect(result.code).toBe(
+      '[data-field-control], [data-field-control], [data-field-indicator], [data-field-label] {}',
+    )
+  })
+
   it('does nothing to unrelated css', () => {
     expect(cssDataAttributes(`.foo { color: red; }`, 'a.css').code).toBeNull()
   })

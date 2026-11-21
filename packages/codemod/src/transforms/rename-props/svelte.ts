@@ -18,8 +18,9 @@ export function makeSvelteRenameTransform(config: RenameConfig) {
     const s = new MagicString(source)
     let count = 0
     const skipped: string[] = []
+    const renamed = new Map<string, string>()
 
-    const tagRe = /<([A-Z][A-Za-z0-9]*(?:\.[A-Za-z0-9]+)+)([^>]*?)(\/?)>/g
+    const tagRe = /<([A-Z][A-Za-z0-9]*(?:\.[A-Za-z0-9]+)+)(?=[\s/>])/g
     for (const match of source.matchAll(tagRe)) {
       const tag = match[1]
       if (!arkNames.has(jsxBaseNameFromText(tag))) continue
@@ -28,16 +29,33 @@ export function makeSvelteRenameTransform(config: RenameConfig) {
       if (rules.length === 0) continue
 
       const attrsStart = match.index + 1 + tag.length
-      const attrsEnd = attrsStart + match[2].length
-      const attrs = parseAttrs(match[2])
+      const attrsEnd = attrsEndOf(source, attrsStart)
+      const rawAttrs = source.slice(attrsStart, attrsEnd)
+      const attrs = parseAttrs(rawAttrs)
 
       let changed = 0
       const where = `offset ${match.index} (${tag})`
       for (const rule of rules) changed += applyRule(attrs, rule, where, skipped)
+
+      for (const rule of rules) {
+        if (!rule.renamePart) continue
+        const next = `${tag.split('.')[0]}.${rule.renamePart}`
+        s.overwrite(match.index + 1, attrsStart, next)
+        renamed.set(tag, next)
+        changed++
+      }
       if (changed === 0) continue
 
-      s.overwrite(attrsStart, attrsEnd, serialize(attrs))
+      const serialized = serialize(attrs) + (rawAttrs.match(/\s*$/)?.[0] ?? '')
+      if (attrsEnd > attrsStart) s.overwrite(attrsStart, attrsEnd, serialized)
+      else if (serialized) s.appendLeft(attrsStart, serialized)
       count += changed
+    }
+
+    for (const [tag, next] of renamed) {
+      for (const close of source.matchAll(new RegExp(`</${tag.replace('.', '\\.')}\\s*>`, 'g'))) {
+        s.overwrite(close.index + 2, close.index + 2 + tag.length, next)
+      }
     }
 
     return { code: count > 0 ? s.toString() : null, count, skipped }
@@ -157,6 +175,23 @@ function parseAttrs(input: string): Attr[] {
   }
 
   return attrs
+}
+
+function attrsEndOf(source: string, from: number): number {
+  let quote = ''
+  let depth = 0
+  for (let i = from; i < source.length; i++) {
+    const c = source[i]
+    if (quote) {
+      if (c === quote) quote = ''
+    } else if (depth > 0) {
+      if (c === '{') depth++
+      else if (c === '}') depth--
+    } else if (c === '"' || c === "'") quote = c
+    else if (c === '{') depth++
+    else if (c === '>') return source[i - 1] === '/' ? i - 1 : i
+  }
+  return source.length
 }
 
 function matchBrace(input: string, open: number): number {

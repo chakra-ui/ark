@@ -61,6 +61,18 @@ export const renameTransforms: RenameTransformDef[] = [
     rules: [{ component: 'TagsInput', part: 'Root', ensure: [{ name: 'editable', value: '{true}' }] }],
   },
   {
+    slug: 'field-indicator',
+    description: 'Field.RequiredIndicator → Field.Indicator type="required"',
+    rules: [
+      {
+        component: 'Field',
+        part: 'RequiredIndicator',
+        ensure: [{ name: 'type', value: '"required"' }],
+        renamePart: 'Indicator',
+      },
+    ],
+  },
+  {
     slug: 'pin-input-count',
     description: 'PinInput.Root: length → count (count is now required)',
     rules: [

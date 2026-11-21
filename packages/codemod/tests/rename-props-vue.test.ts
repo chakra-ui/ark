@@ -88,3 +88,30 @@ describe('vue aliased components', () => {
     expect(result.code).toBeNull()
   })
 })
+
+describe('vue field-indicator', () => {
+  const field = renameRun('field-indicator', 'vue')
+
+  it('renames RequiredIndicator to Indicator with type="required"', () => {
+    const result = field(wrap('Field', `<Field.RequiredIndicator class="mark">*</Field.RequiredIndicator>`), 'a.vue')
+    expect(result.code).toContain('<Field.Indicator type="required" class="mark">*</Field.Indicator>')
+  })
+
+  it('renames a self-closing RequiredIndicator', () => {
+    const result = field(wrap('Field', `<Field.RequiredIndicator />`), 'a.vue')
+    expect(result.code).toContain('<Field.Indicator type="required" />')
+  })
+})
+
+describe('vue field-indicator closing tags', () => {
+  const field = renameRun('field-indicator', 'vue')
+
+  it('renames a closing tag with whitespace before >', () => {
+    const result = field(
+      wrap('Field', `<Field.RequiredIndicator\n    class="a"\n  >*</Field.RequiredIndicator >`),
+      'a.vue',
+    )
+    expect(result.code).toContain('</Field.Indicator >')
+    expect(result.code).not.toContain('RequiredIndicator')
+  })
+})

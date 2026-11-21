@@ -28,7 +28,15 @@ const TREE_VIEW_V2_PARTS = new Set([
   'tree',
 ])
 
+const FIELD_PARTS: Record<string, string> = {
+  input: 'control',
+  textarea: 'control',
+  select: 'control',
+  'required-indicator': 'indicator',
+}
+
 const toSelector = (scope: string, part: string) => {
+  if (scope === 'field' && FIELD_PARTS[part]) return `[data-field-${FIELD_PARTS[part]}]`
   if (scope !== 'tree-view' && scope !== 'json-tree-view') return `[data-${scope}-${part}]`
   if (TREE_VIEW_PARTS[part]) return TREE_VIEW_PARTS[part]
   if (TREE_VIEW_V2_PARTS.has(part)) return `[data-tree-view-${part}]`

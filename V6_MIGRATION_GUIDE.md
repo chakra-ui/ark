@@ -77,6 +77,7 @@ Beyond `as-child-to-render`, prop renames ship for every framework — `react/*`
 | `popover-portalled`        | removes the `portalled` prop                                               |
 | `tags-input-editable`      | adds `editable` to keep the old default                                    |
 | `pin-input-count`          | `length` → `count`, or flags a missing `count`                             |
+| `field-indicator`          | `Field.RequiredIndicator` → `Field.Indicator type="required"`              |
 | `css/data-attributes`      | merge scope/part selectors, rename the attributes zag v2 changed           |
 
 The rest is left to do by hand because it reshapes markup, values, or styles, not just props: the `popover` `Portal`
