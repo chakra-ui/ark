@@ -561,6 +561,7 @@
         "@zag-js/menu": "2.0.0-next.4",
         "@zag-js/menubar": "2.0.0-next.4",
         "@zag-js/meter": "2.0.0-next.4",
+        "@zag-js/navigation-menu": "2.0.0-next.4",
         "@zag-js/number-flow": "2.0.0-next.4",
         "@zag-js/number-input": "2.0.0-next.4",
         "@zag-js/pagination": "2.0.0-next.4",
