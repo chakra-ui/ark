@@ -29,6 +29,9 @@ const users = [
   { id: 20, name: 'Jack Carter', email: 'jack@example.com' },
 ]
 
+const userCard = ({ name, email }: { name: string; email: string }) =>
+  /* html */ `<div class="${styles.GridItem}"><span class="${styles.GridItemTitle}">${name}</span><span class="${styles.GridItemText}">${email}</span></div>`
+
 function onPaginationChange(el: HTMLElement, update: VoidFunction) {
   el.addEventListener('pagechange', () => queueMicrotask(update))
   el.addEventListener('pagesizechange', () => queueMicrotask(update))
@@ -53,10 +56,7 @@ export function mount(root: HTMLElement) {
     if (!el.api) return
     root.querySelector(`.${styles.Grid}`)!.innerHTML = el.api
       .slice(users)
-      .map(
-        (user) =>
-          /* html */ `<div class="${styles.GridItem}"><span class="${styles.GridItemTitle}">${user.name}</span><span class="${styles.GridItemText}">${user.email}</span></div>`,
-      )
+      .map((user) => userCard(user))
       .join('')
   })
 }

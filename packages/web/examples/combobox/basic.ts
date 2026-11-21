@@ -4,10 +4,29 @@ import '../../src/components/combobox/index.js'
 
 import styles from 'styles/combobox.module.css'
 
+interface Item {
+  value: string
+  label: string
+}
+
+const item = ({ value, label }: Item) => /* html */ `
+  <ark-combobox-item class="${styles.Item}" value="${value}">
+    <ark-combobox-item-text class="${styles.ItemText}">${label}</ark-combobox-item-text>
+    <ark-combobox-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-combobox-item-indicator>
+  </ark-combobox-item>`
+
+const fruits: Item[] = [
+  { value: 'apple', label: 'Apple' },
+  { value: 'banana', label: 'Banana' },
+  { value: 'orange', label: 'Orange' },
+  { value: 'mango', label: 'Mango' },
+  { value: 'pineapple', label: 'Pineapple' },
+  { value: 'strawberry', label: 'Strawberry' },
+]
+
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
-  <ark-combobox class="${styles.Root}" >
-    
+  <ark-combobox class="${styles.Root}">
     <ark-combobox-label class="${styles.Label}">Favorite Fruit</ark-combobox-label>
     <ark-combobox-control class="${styles.Control}">
       <ark-combobox-input><input class="${styles.Input}" placeholder="e.g. Apple" /></ark-combobox-input>
@@ -19,31 +38,7 @@ export function mount(root: HTMLElement) {
     <ark-combobox-positioner class="${styles.Positioner}">
       <ark-combobox-content class="${styles.Content}">
         <ark-combobox-empty class="${styles.Empty}">No results found</ark-combobox-empty>
-        <ark-combobox-list class="${styles.List}">
-  <ark-combobox-item class="${styles.Item}" value="apple">
-    <ark-combobox-item-text class="${styles.ItemText}">Apple</ark-combobox-item-text>
-    <ark-combobox-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-combobox-item-indicator>
-  </ark-combobox-item>
-  <ark-combobox-item class="${styles.Item}" value="banana">
-    <ark-combobox-item-text class="${styles.ItemText}">Banana</ark-combobox-item-text>
-    <ark-combobox-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-combobox-item-indicator>
-  </ark-combobox-item>
-  <ark-combobox-item class="${styles.Item}" value="orange">
-    <ark-combobox-item-text class="${styles.ItemText}">Orange</ark-combobox-item-text>
-    <ark-combobox-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-combobox-item-indicator>
-  </ark-combobox-item>
-  <ark-combobox-item class="${styles.Item}" value="mango">
-    <ark-combobox-item-text class="${styles.ItemText}">Mango</ark-combobox-item-text>
-    <ark-combobox-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-combobox-item-indicator>
-  </ark-combobox-item>
-  <ark-combobox-item class="${styles.Item}" value="pineapple">
-    <ark-combobox-item-text class="${styles.ItemText}">Pineapple</ark-combobox-item-text>
-    <ark-combobox-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-combobox-item-indicator>
-  </ark-combobox-item>
-  <ark-combobox-item class="${styles.Item}" value="strawberry">
-    <ark-combobox-item-text class="${styles.ItemText}">Strawberry</ark-combobox-item-text>
-    <ark-combobox-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-combobox-item-indicator>
-  </ark-combobox-item></ark-combobox-list>
+        <ark-combobox-list class="${styles.List}">${fruits.map((fruit) => item(fruit)).join('')}</ark-combobox-list>
       </ark-combobox-content>
     </ark-combobox-positioner>
   </ark-combobox>`

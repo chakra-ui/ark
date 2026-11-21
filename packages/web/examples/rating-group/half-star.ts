@@ -4,9 +4,17 @@ import '../../src/components/rating-group/index.js'
 
 import styles from 'styles/rating-group.module.css'
 
-const ratingGroup = (attrs: string) => /* html */ `
-  <ark-rating-group class="${styles.Root}" ${attrs}>
-    <ark-rating-group-label class="${styles.Label}">Label</ark-rating-group-label>
+const attr = (name: string, on?: boolean) => (on ? name : '')
+
+interface RatingGroupProps {
+  label: string
+  defaultValue: number
+  allowHalf?: boolean
+}
+
+const ratingGroup = ({ label, defaultValue, allowHalf }: RatingGroupProps) => /* html */ `
+  <ark-rating-group class="${styles.Root}" default-value="${defaultValue}" ${attr('allow-half', allowHalf)}>
+    <ark-rating-group-label class="${styles.Label}">${label}</ark-rating-group-label>
     <ark-rating-group-control class="${styles.Control}">
       <template>
         <ark-rating-group-item class="${styles.Item}">
@@ -21,5 +29,5 @@ const ratingGroup = (attrs: string) => /* html */ `
   </ark-rating-group>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = ratingGroup(`default-value="2.5" allow-half`)
+  root.innerHTML = ratingGroup({ label: 'Label', defaultValue: 2.5, allowHalf: true })
 }

@@ -17,20 +17,40 @@ const actions = [
   { label: 'Invite people', value: 'invite', group: 'Share' },
 ]
 
+const attr = (name: string, on?: boolean) => (on ? name : '')
+
 const fragment = (html: string) => {
   const host = document.createElement('div')
   host.innerHTML = html
   return host
 }
 
-const item = (value: string, label: string, extra = '') =>
-  /* html */ `<ark-menu-item class="${styles.Item}" value="${value}" ${extra}>${label}</ark-menu-item>`
+const item = ({ value, label }: { value: string; label: string }) =>
+  /* html */ `<ark-menu-item class="${styles.Item}" value="${value}">${label}</ark-menu-item>`
 
-const option = (tag: string, className: string, value: string, label: string, extra = '') => /* html */ `
-  <${tag} class="${className}" value="${value}" ${extra}>
+const group = ({ name, label }: { name: string; label: string }, items: string[]) => /* html */ `
+  <ark-menu-item-group class="${styles.ItemGroup}" name="${name}">
+    <ark-menu-item-group-label class="${styles.ItemGroupLabel}">${label}</ark-menu-item-group-label>
+    ${items.join('')}
+  </ark-menu-item-group>`
+
+interface CheckboxItemProps {
+  value: string
+  label: string
+  checked?: boolean
+}
+
+const checkboxItem = ({ value, label, checked = false }: CheckboxItemProps) => /* html */ `
+  <ark-menu-checkbox-item class="${styles.CheckboxItem}" value="${value}" ${attr('checked', checked)} close-on-select="false">
     <ark-menu-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-item-indicator>
     <ark-menu-item-text class="${styles.ItemText}">${label}</ark-menu-item-text>
-  </${tag}>`
+  </ark-menu-checkbox-item>`
+
+const viewOptions: CheckboxItemProps[] = [
+  { value: 'details', label: 'Show details', checked: true },
+  { value: 'sidebar', label: 'Show sidebar' },
+  { value: 'offline', label: 'Keep available offline' },
+]
 
 export function mount(root: HTMLElement) {
   const groups = [...new Set(actions.map((action) => action.group))]
@@ -48,23 +68,9 @@ export function mount(root: HTMLElement) {
           <ark-menu-empty class="${styles.Empty}">No actions found</ark-menu-empty>
           <ark-menu-list class="${styles.List}">
             ${groups
-              .map(
-                (group) => /* html */ `
-              <ark-menu-item-group class="${styles.ItemGroup}" name="${group}">
-                <ark-menu-item-group-label class="${styles.ItemGroupLabel}">${group}</ark-menu-item-group-label>
-                ${actions
-                  .filter((action) => action.group === group)
-                  .map((action) => item(action.value, action.label))
-                  .join('')}
-              </ark-menu-item-group>`,
-              )
+              .map((name) => group({ name, label: name }, actions.filter((action) => action.group === name).map(item)))
               .join('')}
-            <ark-menu-item-group class="${styles.ItemGroup}" name="view">
-              <ark-menu-item-group-label class="${styles.ItemGroupLabel}">View</ark-menu-item-group-label>
-              ${option('ark-menu-checkbox-item', styles.CheckboxItem, 'details', 'Show details', 'checked close-on-select="false"')}
-              ${option('ark-menu-checkbox-item', styles.CheckboxItem, 'sidebar', 'Show sidebar', 'close-on-select="false"')}
-              ${option('ark-menu-checkbox-item', styles.CheckboxItem, 'offline', 'Keep available offline', 'close-on-select="false"')}
-            </ark-menu-item-group>
+            ${group({ name: 'view', label: 'View' }, viewOptions.map(checkboxItem))}
           </ark-menu-list>
         </ark-menu-content>
       </ark-menu-positioner>

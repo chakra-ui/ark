@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@zag-js/accordion": "2.0.0-next.4",
+    "@zag-js/angle-slider": "2.0.0-next.4",
     "@zag-js/async-list": "2.0.0-next.4",
     "@zag-js/avatar": "2.0.0-next.4",
     "@zag-js/carousel": "2.0.0-next.4",
@@ -24,6 +25,7 @@
     "@zag-js/collapsible": "2.0.0-next.4",
     "@zag-js/collection": "2.0.0-next.4",
     "@zag-js/combobox": "2.0.0-next.4",
+    "@zag-js/date-input": "2.0.0-next.4",
     "@zag-js/date-picker": "2.0.0-next.4",
     "@zag-js/dialog": "2.0.0-next.4",
     "@zag-js/drawer": "2.0.0-next.4",
@@ -33,6 +35,7 @@
     "@zag-js/hover-card": "2.0.0-next.4",
     "@zag-js/listbox": "2.0.0-next.4",
     "@zag-js/menu": "2.0.0-next.4",
+    "@zag-js/menubar": "2.0.0-next.4",
     "@zag-js/meter": "2.0.0-next.4",
     "@zag-js/number-input": "2.0.0-next.4",
     "@zag-js/pagination": "2.0.0-next.4",
@@ -41,10 +44,12 @@
     "@zag-js/popover": "2.0.0-next.4",
     "@zag-js/presence": "2.0.0-next.4",
     "@zag-js/progress": "2.0.0-next.4",
+    "@zag-js/qr-code": "2.0.0-next.4",
     "@zag-js/radio-group": "2.0.0-next.4",
     "@zag-js/rating-group": "2.0.0-next.4",
     "@zag-js/scroll-area": "2.0.0-next.4",
     "@zag-js/select": "2.0.0-next.4",
+    "@zag-js/signature-pad": "2.0.0-next.4",
     "@zag-js/slider": "2.0.0-next.4",
     "@zag-js/splitter": "2.0.0-next.4",
     "@zag-js/steps": "2.0.0-next.4",
@@ -265,6 +270,26 @@
     "./virtualizer": {
       "types": "./dist/components/virtualizer/index.d.ts",
       "import": "./dist/components/virtualizer/index.js"
+    },
+    "./menubar": {
+      "types": "./dist/components/menubar/index.d.ts",
+      "import": "./dist/components/menubar/index.js"
+    },
+    "./angle-slider": {
+      "types": "./dist/components/angle-slider/index.d.ts",
+      "import": "./dist/components/angle-slider/index.js"
+    },
+    "./date-input": {
+      "types": "./dist/components/date-input/index.d.ts",
+      "import": "./dist/components/date-input/index.js"
+    },
+    "./qr-code": {
+      "types": "./dist/components/qr-code/index.d.ts",
+      "import": "./dist/components/qr-code/index.js"
+    },
+    "./signature-pad": {
+      "types": "./dist/components/signature-pad/index.d.ts",
+      "import": "./dist/components/signature-pad/index.js"
     }
   },
   "sideEffects": true,

@@ -14,11 +14,14 @@ const users = [
   { id: '3', name: 'Carol Davis', email: 'carol@example.com' },
 ]
 
+const trigger = ({ id, name }: { id: string; name: string }) =>
+  /* html */ `<ark-dialog-trigger value="${id}"><button class="${button.Root}">Edit ${name}</button></ark-dialog-trigger>`
+
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
   <ark-dialog >
     <div class="${button.Group}">
-        <ark-dialog-trigger value="1"><button class="${button.Root}">Edit Alice Johnson</button></ark-dialog-trigger><ark-dialog-trigger value="2"><button class="${button.Root}">Edit Bob Smith</button></ark-dialog-trigger><ark-dialog-trigger value="3"><button class="${button.Root}">Edit Carol Davis</button></ark-dialog-trigger>
+        ${users.map((user) => trigger(user)).join('')}
       </div>
     <ark-dialog-backdrop class="${styles.Backdrop}"></ark-dialog-backdrop>
     <ark-dialog-positioner class="${styles.Positioner}">

@@ -18,20 +18,21 @@ const typeStyle = /* html */ `<style>${['info', 'success', 'error', 'warning', '
   .map((type) => `ark-toast:not([data-type='${type}']) [data-icon='${type}'] { display: none; }`)
   .join('\n')}</style>`
 
-const toaster = (body: string) => /* html */ `
+const toaster = (children: string[]) => /* html */ `
   ${typeStyle}
   <ark-toaster>
     <template>
-      <ark-toast class="${styles.Root}">${body}</ark-toast>
+      <ark-toast class="${styles.Root}">${children.join('')}</ark-toast>
     </template>
   </ark-toaster>`
 
-const title = (prefix = '') => /* html */ `<ark-toast-title class="${styles.Title}">${prefix}</ark-toast-title>`
+const title = (children: string[] = []) =>
+  /* html */ `<ark-toast-title class="${styles.Title}">${children.join('')}</ark-toast-title>`
 
 const description = /* html */ `<ark-toast-description class="${styles.Description}"></ark-toast-description>`
 
-const content = (body = `${title()}${description}`, style = '') =>
-  /* html */ `<ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ${style}">${body}</ark-toast-content>`
+const content = ({ style = '' }: { style?: string } = {}, children = [title(), description]) =>
+  /* html */ `<ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ${style}">${children.join('')}</ark-toast-content>`
 
 const closeTrigger = /* html */ `<ark-toast-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-toast-close-trigger>`
 
@@ -57,7 +58,7 @@ export function mount(root: HTMLElement) {
   let count = 0
   const host = fragment(/* html */ `
     <button type="button" class="${button.Root}">Create toast</button>
-    ${toaster(`${content()}${closeTrigger}`)}`)
+    ${toaster([content(), closeTrigger])}`)
   onClick(host, 'button', () => {
     count += 1
     store.create({

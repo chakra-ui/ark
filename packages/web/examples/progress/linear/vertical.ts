@@ -2,8 +2,8 @@ import '../../../src/components/progress/index.js'
 
 import styles from 'styles/progress.module.css'
 
-const linear = (attrs: string) => /* html */ `
-  <ark-progress class="${styles.Root}" ${attrs}>
+const linear = ({ orientation }: { orientation: 'horizontal' | 'vertical' }) => /* html */ `
+  <ark-progress class="${styles.Root}" orientation="${orientation}">
     <ark-progress-label class="${styles.Label}">Label</ark-progress-label>
     <ark-progress-value-text class="${styles.ValueText}"></ark-progress-value-text>
     <ark-progress-track class="${styles.Track}">
@@ -12,5 +12,5 @@ const linear = (attrs: string) => /* html */ `
   </ark-progress>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = linear('orientation="vertical"')
+  root.innerHTML = linear({ orientation: 'vertical' })
 }

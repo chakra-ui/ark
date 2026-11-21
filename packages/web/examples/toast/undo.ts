@@ -22,20 +22,21 @@ const typeStyle = /* html */ `<style>${['info', 'success', 'error', 'warning', '
   .map((type) => `ark-toast:not([data-type='${type}']) [data-icon='${type}'] { display: none; }`)
   .join('\n')}</style>`
 
-const toaster = (body: string) => /* html */ `
+const toaster = (children: string[]) => /* html */ `
   ${typeStyle}
   <ark-toaster>
     <template>
-      <ark-toast class="${styles.Root}">${body}</ark-toast>
+      <ark-toast class="${styles.Root}">${children.join('')}</ark-toast>
     </template>
   </ark-toaster>`
 
-const title = (prefix = '') => /* html */ `<ark-toast-title class="${styles.Title}">${prefix}</ark-toast-title>`
+const title = (children: string[] = []) =>
+  /* html */ `<ark-toast-title class="${styles.Title}">${children.join('')}</ark-toast-title>`
 
 const description = /* html */ `<ark-toast-description class="${styles.Description}"></ark-toast-description>`
 
-const content = (body = `${title()}${description}`, style = '') =>
-  /* html */ `<ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ${style}">${body}</ark-toast-content>`
+const content = ({ style = '' }: { style?: string } = {}, children = [title(), description]) =>
+  /* html */ `<ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ${style}">${children.join('')}</ark-toast-content>`
 
 const actionTrigger = /* html */ `<ark-toast-action-trigger><button class="${styles.ActionTrigger}"></button></ark-toast-action-trigger>`
 
@@ -48,7 +49,7 @@ const connect = (host: HTMLElement, store: toast.Store<string>) => {
 
 export function mount(root: HTMLElement) {
   let files = initialFiles
-  const host = fragment(/* html */ `<div class="stack" data-files></div>${toaster(`${content()}${actionTrigger}`)}`)
+  const host = fragment(/* html */ `<div class="stack" data-files></div>${toaster([content(), actionTrigger])}`)
   const list = host.querySelector<HTMLElement>('[data-files]')!
 
   const render = () => {

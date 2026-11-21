@@ -4,8 +4,13 @@ import '../../src/components/tags-input/index.js'
 
 import styles from 'styles/tags-input.module.css'
 
-const tagsInputMarkup = (attrs = '', { label = 'Frameworks', placeholder = 'Add Framework' } = {}) => /* html */ `
-  <ark-tags-input class="${styles.Root}" ${attrs}>
+interface TagsInputProps {
+  label?: string
+  placeholder?: string
+}
+
+const tagsInputMarkup = ({ label = 'Frameworks', placeholder = 'Add Framework' }: TagsInputProps = {}) => /* html */ `
+  <ark-tags-input class="${styles.Root}">
     <ark-tags-input-label class="${styles.Label}">${label}</ark-tags-input-label>
     <ark-tags-input-control class="${styles.Control}">
       <template>

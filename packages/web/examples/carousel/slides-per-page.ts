@@ -4,38 +4,41 @@ import '../../src/components/carousel/index.js'
 
 import styles from 'styles/carousel.module.css'
 
-const carouselMarkup = (attrs: string, children: string) =>
-  /* html */ `<ark-carousel class="${styles.Root}" ${attrs}>${children}</ark-carousel>`
+const slides = Array.from({ length: 6 }, (_, index) => `Slide ${index + 1}`)
 
-const control = (children: string, attrs = '') =>
-  /* html */ `<ark-carousel-control class="${styles.Control}" ${attrs}>${children}</ark-carousel-control>`
+const icon = (node: typeof ArrowLeft) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
-const prev = (icon = createElement(ArrowLeft, { 'aria-hidden': 'true' }).outerHTML) =>
-  /* html */ `<ark-carousel-prev-trigger><button class="${styles.Trigger}">${icon}</button></ark-carousel-prev-trigger>`
+const carousel = (
+  { slidesPerPage, spacing }: { slidesPerPage: number; spacing: string },
+  children: string[],
+) => /* html */ `
+  <ark-carousel class="${styles.Root}" slides-per-page="${slidesPerPage}" spacing="${spacing}">${children.join('')}</ark-carousel>`
 
-const next = (icon = createElement(ArrowRight, { 'aria-hidden': 'true' }).outerHTML) =>
-  /* html */ `<ark-carousel-next-trigger><button class="${styles.Trigger}">${icon}</button></ark-carousel-next-trigger>`
+const control = (children: string[]) => /* html */ `
+  <ark-carousel-control class="${styles.Control}">${children.join('')}</ark-carousel-control>`
 
-const itemGroup = (items: string) =>
-  /* html */ `<ark-carousel-item-group class="${styles.ItemGroup}">${items}</ark-carousel-item-group>`
+const prevTrigger = () => /* html */ `
+  <ark-carousel-prev-trigger><button class="${styles.Trigger}">${icon(ArrowLeft)}</button></ark-carousel-prev-trigger>`
 
-const item = (content: string, attrs = `class="${styles.Item}"`) =>
-  /* html */ `<ark-carousel-item ${attrs}>${content}</ark-carousel-item>`
+const nextTrigger = () => /* html */ `
+  <ark-carousel-next-trigger><button class="${styles.Trigger}">${icon(ArrowRight)}</button></ark-carousel-next-trigger>`
 
-const slideItems = (count: number, label = (index: number) => `Slide ${index + 1}`) =>
-  Array.from({ length: count }, (_, index) =>
-    item(/* html */ `<div class="${styles.Slide}">${label(index)}</div>`),
-  ).join('')
+const itemGroup = (children: string[]) => /* html */ `
+  <ark-carousel-item-group class="${styles.ItemGroup}">${children.join('')}</ark-carousel-item-group>`
 
-const indicator = (content = '', className = styles.Indicator) =>
-  /* html */ `<ark-carousel-indicator><button class="${className}">${content}</button></ark-carousel-indicator>`
+const slideItem = ({ label }: { label: string }) => /* html */ `
+  <ark-carousel-item class="${styles.Item}"><div class="${styles.Slide}">${label}</div></ark-carousel-item>`
 
-const pageIndicators = () =>
-  /* html */ `<ark-carousel-indicator-group class="${styles.IndicatorGroup}"><template>${indicator()}</template></ark-carousel-indicator-group>`
+const indicator = () => /* html */ `
+  <ark-carousel-indicator><button class="${styles.Indicator}"></button></ark-carousel-indicator>`
+
+const pageIndicators = () => /* html */ `
+  <ark-carousel-indicator-group class="${styles.IndicatorGroup}"><template>${indicator()}</template></ark-carousel-indicator-group>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = carouselMarkup(
-    'slides-per-page="2" spacing="20px"',
-    `${control(`${prev()}${next()}`)}${itemGroup(slideItems(6))}${pageIndicators()}`,
-  )
+  root.innerHTML = carousel({ slidesPerPage: 2, spacing: '20px' }, [
+    control([prevTrigger(), nextTrigger()]),
+    itemGroup(slides.map((label) => slideItem({ label }))),
+    pageIndicators(),
+  ])
 }

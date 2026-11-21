@@ -10,8 +10,8 @@ const element = (html: string) => {
   return host.firstElementChild as HTMLElement
 }
 
-const linear = (attrs: string) => /* html */ `
-  <ark-progress class="${styles.Root}" ${attrs}>
+const linear = () => /* html */ `
+  <ark-progress class="${styles.Root}">
     <ark-progress-label class="${styles.Label}">Label</ark-progress-label>
     <ark-progress-value-text class="${styles.ValueText}"></ark-progress-value-text>
     <ark-progress-track class="${styles.Track}">
@@ -20,7 +20,7 @@ const linear = (attrs: string) => /* html */ `
   </ark-progress>`
 
 export function mount(root: HTMLElement) {
-  const progressEl = element(linear('')) as ProgressElement & { translations: unknown }
+  const progressEl = element(linear()) as ProgressElement & { translations: unknown }
   progressEl.translations = {
     value({ value, max }: { value: number | null; max: number }) {
       if (value === null) return 'Loading...'

@@ -4,40 +4,42 @@ import '../../src/components/listbox/index.js'
 
 import styles from 'styles/listbox.module.css'
 
-const listbox = (attrs: string, label: string, list: string, data = '') => /* html */ `
-  <ark-listbox class="${styles.Root}" ${attrs}>
-    ${data}
+const attr = (name: string, on?: boolean) => (on ? name : '')
+
+interface ListboxProps {
+  label: string
+}
+
+const listbox = ({ label }: ListboxProps, children: string[]) => /* html */ `
+  <ark-listbox class="${styles.Root}">
     <ark-listbox-label class="${styles.Label}">${label}</ark-listbox-label>
     <ark-listbox-content class="${styles.Content}">
-      <ark-listbox-list class="${styles.List}">${list}</ark-listbox-list>
+      <ark-listbox-list class="${styles.List}">${children.join('')}</ark-listbox-list>
     </ark-listbox-content>
   </ark-listbox>`
 
-const item = (value = '', label = '') => /* html */ `
-  <ark-listbox-item class="${styles.Item}" ${value ? `value="${value}"` : ''}>
+interface Item {
+  value: string
+  label: string
+  disabled?: boolean
+}
+
+const item = ({ value, label, disabled }: Item) => /* html */ `
+  <ark-listbox-item class="${styles.Item}" ${attr('disabled', disabled)} value="${value}">
     <ark-listbox-item-text class="${styles.ItemText}">${label}</ark-listbox-item-text>
     <ark-listbox-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-listbox-item-indicator>
   </ark-listbox-item>`
 
-const options = (items: { value: string; label: string; disabled?: boolean }[]) =>
-  items
-    .map((it) =>
-      item(it.value, it.label).replace(
-        '<ark-listbox-item ',
-        /* html */ `<ark-listbox-item ${it.disabled ? 'disabled ' : ''}`,
-      ),
-    )
-    .join('')
+const plans: Item[] = [
+  { label: 'Free', value: 'free' },
+  { label: 'Pro', value: 'pro' },
+  { label: 'Enterprise', value: 'enterprise', disabled: true },
+  { label: 'Custom', value: 'custom' },
+]
 
 export function mount(root: HTMLElement) {
   root.innerHTML = listbox(
-    '',
-    'Select Plan',
-    options([
-      { label: 'Free', value: 'free' },
-      { label: 'Pro', value: 'pro' },
-      { label: 'Enterprise', value: 'enterprise', disabled: true },
-      { label: 'Custom', value: 'custom' },
-    ]),
+    { label: 'Select Plan' },
+    plans.map((plan) => item(plan)),
   )
 }

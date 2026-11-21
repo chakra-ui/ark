@@ -21,16 +21,24 @@ const tools = [
   },
 ]
 
+interface Tool {
+  id: string
+  label: string
+  icon: string
+}
+
+const trigger = ({ id, label, icon }: Tool) =>
+  /* html */ `<ark-tooltip-trigger value="${id}"><button class="${styles.ToolbarButton}" aria-label="${label}">${icon}</button></ark-tooltip-trigger>`
+
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
     <ark-tooltip>
       <div class="${styles.Toolbar}">
-        <ark-tooltip-trigger value="bold"><button class="${styles.ToolbarButton}" aria-label="Bold">${createElement(Bold, { 'aria-hidden': 'true' }).outerHTML}</button></ark-tooltip-trigger><ark-tooltip-trigger value="italic"><button class="${styles.ToolbarButton}" aria-label="Italic">${createElement(Italic, { 'aria-hidden': 'true' }).outerHTML}</button></ark-tooltip-trigger><ark-tooltip-trigger value="underline"><button class="${styles.ToolbarButton}" aria-label="Underline">${createElement(Underline, { 'aria-hidden': 'true' }).outerHTML}</button></ark-tooltip-trigger><ark-tooltip-trigger value="strikethrough"><button class="${styles.ToolbarButton}" aria-label="Strikethrough">${createElement(Strikethrough, { 'aria-hidden': 'true' }).outerHTML}</button></ark-tooltip-trigger>
+        ${tools.map(trigger).join('')}
       </div>
-      
-  <ark-tooltip-positioner class="${styles.Positioner}">
-    <ark-tooltip-content class="${styles.Content}"></ark-tooltip-content>
-  </ark-tooltip-positioner>
+      <ark-tooltip-positioner class="${styles.Positioner}">
+        <ark-tooltip-content class="${styles.Content}"></ark-tooltip-content>
+      </ark-tooltip-positioner>
     </ark-tooltip>`
   root.querySelector('ark-tooltip')!.addEventListener('triggervaluechange', (event) => {
     const tool = tools.find((tool) => tool.id === event.detail.value)

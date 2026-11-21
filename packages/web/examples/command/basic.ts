@@ -4,9 +4,26 @@ import '../../src/components/command/index.js'
 
 import styles from 'styles/command.module.css'
 
-const icon = (node: Parameters<typeof createElement>[0]) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
+type IconNode = Parameters<typeof createElement>[0]
 
-const item = (value: string, label: string, node: Parameters<typeof createElement>[0], shortcut: string) => /* html */ `
+interface CommandItem {
+  value: string
+  label: string
+  icon: IconNode
+  shortcut: string
+}
+
+const commands: CommandItem[] = [
+  { value: 'new-file', label: 'New file', icon: FilePlus, shortcut: '⌘N' },
+  { value: 'open-file', label: 'Open file', icon: FolderOpen, shortcut: '⌘O' },
+  { value: 'save', label: 'Save', icon: Save, shortcut: '⌘S' },
+  { value: 'copy-path', label: 'Copy path', icon: Copy, shortcut: '⌥⌘C' },
+  { value: 'settings', label: 'Open settings', icon: Settings, shortcut: '⌘,' },
+]
+
+const icon = (node: IconNode) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
+
+const item = ({ value, label, icon: node, shortcut }: CommandItem) => /* html */ `
   <ark-command-item class="${styles.Item}" value="${value}">
     <span class="${styles.ItemStart}">${icon(node)}<ark-command-item-text class="${styles.ItemText}">${label}</ark-command-item-text></span>
     <kbd class="${styles.Shortcut}">${shortcut}</kbd>
@@ -22,11 +39,7 @@ export function mount(root: HTMLElement) {
       <ark-command-input><input class="${styles.Input}" placeholder="Type a command or search..." aria-label="Search commands" /></ark-command-input>
     </ark-command-control>
     <ark-command-list class="${styles.List}">
-      ${item('new-file', 'New file', FilePlus, '⌘N')}
-      ${item('open-file', 'Open file', FolderOpen, '⌘O')}
-      ${item('save', 'Save', Save, '⌘S')}
-      ${item('copy-path', 'Copy path', Copy, '⌥⌘C')}
-      ${item('settings', 'Open settings', Settings, '⌘,')}
+      ${commands.map((command) => item(command)).join('')}
     </ark-command-list>
     <ark-command-empty class="${styles.Empty}">No commands found</ark-command-empty>
   </ark-command>`

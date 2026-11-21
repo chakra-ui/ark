@@ -2,31 +2,29 @@ import '../../src/components/slider/index.js'
 
 import styles from 'styles/slider.module.css'
 
-const thumb = (index: number, indicator = false) =>
-  /* html */ `<ark-slider-thumb class="${styles.Thumb}" index="${index}">${indicator ? /* html */ `<ark-slider-dragging-indicator class="${styles.DraggingIndicator}"></ark-slider-dragging-indicator>` : ''}<ark-slider-hidden-input></ark-slider-hidden-input></ark-slider-thumb>`
+const attr = (name: string, value?: string | number) => (value === undefined ? '' : `${name}="${value}"`)
 
-const sliderMarkup = (
-  attrs: string,
-  thumbs: number,
-  extra = '',
-  { valueText = true, indicator = false } = {},
-) => /* html */ `
-  <ark-slider class="${styles.Root}" ${attrs}>
-    ${
-      valueText
-        ? /* html */ `<div style="display: flex; justify-content: space-between">
+interface SliderProps {
+  thumbAlignment?: 'center' | 'contain'
+  defaultValue: number[]
+}
+
+const thumb = ({ index }: { index: number }) =>
+  /* html */ `<ark-slider-thumb class="${styles.Thumb}" index="${index}"><ark-slider-hidden-input></ark-slider-hidden-input></ark-slider-thumb>`
+
+const slider = ({ thumbAlignment, defaultValue }: SliderProps, children: string[] = []) => /* html */ `
+  <ark-slider class="${styles.Root}" ${attr('thumb-alignment', thumbAlignment)} default-value="${defaultValue.join(',')}">
+    <div style="display: flex; justify-content: space-between">
       <ark-slider-label class="${styles.Label}">Label</ark-slider-label>
       <ark-slider-value-text class="${styles.ValueText}"></ark-slider-value-text>
-    </div>`
-        : /* html */ `<ark-slider-label class="${styles.Label}">Label</ark-slider-label>`
-    }
+    </div>
     <ark-slider-control class="${styles.Control}">
       <ark-slider-track class="${styles.Track}"><ark-slider-range class="${styles.Range}"></ark-slider-range></ark-slider-track>
-      ${Array.from({ length: thumbs }, (_, index) => thumb(index, indicator)).join('')}
+      ${defaultValue.map((_, index) => thumb({ index })).join('')}
     </ark-slider-control>
-    ${extra}
+    ${children.join('')}
   </ark-slider>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = sliderMarkup(`thumb-alignment="center" default-value="50"`, 1)
+  root.innerHTML = slider({ thumbAlignment: 'center', defaultValue: [50] })
 }

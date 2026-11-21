@@ -11,24 +11,19 @@ const fragment = (html: string) => {
   return host
 }
 
-const item = (value = '', label = '') => /* html */ `
-  <ark-listbox-item class="${styles.Item}" ${value ? `value="${value}"` : ''}>
+interface Item {
+  value: string
+  label: string
+}
+
+const item = ({ value, label }: Item) => /* html */ `
+  <ark-listbox-item class="${styles.Item}" value="${value}">
     <ark-listbox-item-text class="${styles.ItemText}">${label}</ark-listbox-item-text>
     <ark-listbox-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-listbox-item-indicator>
   </ark-listbox-item>`
 
-const options = (items: { value: string; label: string; disabled?: boolean }[]) =>
-  items
-    .map((it) =>
-      item(it.value, it.label).replace(
-        '<ark-listbox-item ',
-        /* html */ `<ark-listbox-item ${it.disabled ? 'disabled ' : ''}`,
-      ),
-    )
-    .join('')
-
 export function mount(root: HTMLElement) {
-  const all = [
+  const all: Item[] = [
     { label: 'React', value: 'react' },
     { label: 'Vue', value: 'vue' },
     { label: 'Angular', value: 'angular' },
@@ -46,7 +41,7 @@ export function mount(root: HTMLElement) {
         <span class="${styles.Label}">Select All</span>
       </button>
       <ark-listbox-content class="${styles.Content}">
-        <ark-listbox-list class="${styles.List}">${options(all)}</ark-listbox-list>
+        <ark-listbox-list class="${styles.List}">${all.map((entry) => item(entry)).join('')}</ark-listbox-list>
       </ark-listbox-content>
     </ark-listbox>`)
   const el = host.querySelector('ark-listbox')!

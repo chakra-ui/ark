@@ -4,8 +4,18 @@ import '../../src/components/tags-input/index.js'
 
 import styles from 'styles/tags-input.module.css'
 
-const tagsInputMarkup = (attrs = '', { label = 'Frameworks', placeholder = 'Add Framework' } = {}) => /* html */ `
-  <ark-tags-input class="${styles.Root}" ${attrs}>
+interface TagsInputProps {
+  label?: string
+  placeholder?: string
+  blurBehavior: 'add' | 'clear'
+}
+
+const tagsInputMarkup = ({
+  label = 'Frameworks',
+  placeholder = 'Add Framework',
+  blurBehavior,
+}: TagsInputProps) => /* html */ `
+  <ark-tags-input class="${styles.Root}" blur-behavior="${blurBehavior}">
     <ark-tags-input-label class="${styles.Label}">${label}</ark-tags-input-label>
     <ark-tags-input-control class="${styles.Control}">
       <template>
@@ -24,5 +34,5 @@ const tagsInputMarkup = (attrs = '', { label = 'Frameworks', placeholder = 'Add 
   </ark-tags-input>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = tagsInputMarkup('blur-behavior="add"')
+  root.innerHTML = tagsInputMarkup({ blurBehavior: 'add' })
 }

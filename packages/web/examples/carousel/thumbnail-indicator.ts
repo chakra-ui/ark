@@ -4,19 +4,12 @@ import '../../src/components/carousel/index.js'
 
 import styles from 'styles/carousel.module.css'
 
-const carouselMarkup = (attrs: string, children: string) =>
-  /* html */ `<ark-carousel class="${styles.Root}" ${attrs}>${children}</ark-carousel>`
+interface Image {
+  src: string
+  alt: string
+}
 
-const control = (children: string, attrs = '') =>
-  /* html */ `<ark-carousel-control class="${styles.Control}" ${attrs}>${children}</ark-carousel-control>`
-
-const prev = (icon = createElement(ArrowLeft, { 'aria-hidden': 'true' }).outerHTML) =>
-  /* html */ `<ark-carousel-prev-trigger><button class="${styles.Trigger}">${icon}</button></ark-carousel-prev-trigger>`
-
-const itemGroup = (items: string) =>
-  /* html */ `<ark-carousel-item-group class="${styles.ItemGroup}">${items}</ark-carousel-item-group>`
-
-const images = [
+const images: Image[] = [
   { src: 'https://picsum.photos/seed/1/500/300', alt: 'Nature landscape' },
   { src: 'https://picsum.photos/seed/2/500/300', alt: 'City skyline' },
   { src: 'https://picsum.photos/seed/3/500/300', alt: 'Mountain view' },
@@ -24,26 +17,37 @@ const images = [
   { src: 'https://picsum.photos/seed/5/500/300', alt: 'Forest path' },
 ]
 
-const item = (content: string, attrs = `class="${styles.Item}"`) =>
-  /* html */ `<ark-carousel-item ${attrs}>${content}</ark-carousel-item>`
+const icon = (node: typeof ArrowLeft) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
-const image = ({ src, alt }: { src: string; alt: string }) =>
-  /* html */ `<img src="${src}" alt="${alt}" width="500" height="300" />`
+const carousel = ({ defaultPage }: { defaultPage: number }, children: string[]) => /* html */ `
+  <ark-carousel class="${styles.Root}" default-page="${defaultPage}">${children.join('')}</ark-carousel>`
 
-const imageItems = () => images.map((img) => item(image(img))).join('')
+const control = (children: string[]) => /* html */ `
+  <ark-carousel-control class="${styles.Control}">${children.join('')}</ark-carousel-control>`
 
-const next = (icon = createElement(ArrowRight, { 'aria-hidden': 'true' }).outerHTML) =>
-  /* html */ `<ark-carousel-next-trigger><button class="${styles.Trigger}">${icon}</button></ark-carousel-next-trigger>`
+const prevTrigger = () => /* html */ `
+  <ark-carousel-prev-trigger><button class="${styles.Trigger}">${icon(ArrowLeft)}</button></ark-carousel-prev-trigger>`
 
-const indicator = (content = '', className = styles.Indicator) =>
-  /* html */ `<ark-carousel-indicator><button class="${className}">${content}</button></ark-carousel-indicator>`
+const nextTrigger = () => /* html */ `
+  <ark-carousel-next-trigger><button class="${styles.Trigger}">${icon(ArrowRight)}</button></ark-carousel-next-trigger>`
 
-const thumbnailIndicators = () =>
-  /* html */ `<ark-carousel-indicator-group class="${styles.IndicatorGroup}">${images.map((img) => indicator(image(img), styles.ThumbnailIndicator)).join('')}</ark-carousel-indicator-group>`
+const itemGroup = (children: string[]) => /* html */ `
+  <ark-carousel-item-group class="${styles.ItemGroup}">${children.join('')}</ark-carousel-item-group>`
+
+const image = ({ src, alt }: Image) => /* html */ `<img src="${src}" alt="${alt}" width="500" height="300" />`
+
+const imageItem = (img: Image) => /* html */ `
+  <ark-carousel-item class="${styles.Item}">${image(img)}</ark-carousel-item>`
+
+const indicatorGroup = (children: string[]) => /* html */ `
+  <ark-carousel-indicator-group class="${styles.IndicatorGroup}">${children.join('')}</ark-carousel-indicator-group>`
+
+const thumbnailIndicator = (img: Image) => /* html */ `
+  <ark-carousel-indicator><button class="${styles.ThumbnailIndicator}">${image(img)}</button></ark-carousel-indicator>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = carouselMarkup(
-    'default-page="0"',
-    `${control(`${prev()}${itemGroup(imageItems())}${next()}`)}${thumbnailIndicators()}`,
-  )
+  root.innerHTML = carousel({ defaultPage: 0 }, [
+    control([prevTrigger(), itemGroup(images.map(imageItem)), nextTrigger()]),
+    indicatorGroup(images.map(thumbnailIndicator)),
+  ])
 }

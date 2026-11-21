@@ -10,7 +10,7 @@ import field from 'styles/field.module.css'
 
 const closeButton = /* html */ `<ark-popover-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-popover-close-trigger>`
 
-const heading = (title: string, description: string) => /* html */ `
+const heading = ({ title, description }: { title: string; description: string }) => /* html */ `
   <ark-popover-title class="${styles.Title}">${title}</ark-popover-title>
   <ark-popover-description class="${styles.Description}">${description}</ark-popover-description>`
 
@@ -24,7 +24,7 @@ export function mount(root: HTMLElement) {
       </ark-popover-anchor>
     </div>
     <ark-popover-positioner class="${styles.Positioner}">
-      <ark-popover-content class="${styles.Content}">${closeButton}${heading('Title', 'Description')}</ark-popover-content>
+      <ark-popover-content class="${styles.Content}">${closeButton}${heading({ title: 'Title', description: 'Description' })}</ark-popover-content>
     </ark-popover-positioner>
   </ark-popover>`
 }

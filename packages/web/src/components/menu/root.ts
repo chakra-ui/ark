@@ -3,7 +3,7 @@ import * as menu from '@zag-js/menu'
 import { controlled, positioning, positioningAttributes, str } from '../../utils/attrs.js'
 import { rootOf, type RootElement } from '../../utils/define.js'
 import { definePresenceRoot } from '../../utils/presence.js'
-import { link, queries, root, submenus } from './shared.js'
+import { link, menubarOf, queries, root, submenus } from './shared.js'
 
 function clearQuery(el: RootElement<menu.Api>) {
   if (!queries.delete(el)) return
@@ -42,6 +42,7 @@ definePresenceRoot<menu.Api>({
     closeOnSelect: el.getAttribute('close-on-select') !== 'false',
     typeahead: el.getAttribute('typeahead') !== 'false',
     positioning: positioning(el),
+    menubar: menubarOf(el),
   }),
   events: {
     onHighlightChange: 'highlightchange',

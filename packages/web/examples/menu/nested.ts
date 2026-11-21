@@ -4,12 +4,15 @@ import '../../src/components/menu/index.js'
 
 import styles from 'styles/menu.module.css'
 
-const arrow = /* html */ `<ark-menu-arrow class="${styles.Arrow}"><ark-menu-arrow-tip class="${styles.ArrowTip}"></ark-menu-arrow-tip></ark-menu-arrow>`
+interface Item {
+  value: string
+  label: string
+}
 
-const list = (items: string) => /* html */ `<ark-menu-list class="${styles.List}">${items}</ark-menu-list>`
+const list = (items: string[]) => /* html */ `<ark-menu-list class="${styles.List}">${items.join('')}</ark-menu-list>`
 
-const menuMarkup = (label: string, items: string, attrs = '', options: { arrow?: boolean } = {}) => /* html */ `
-  <ark-menu ${attrs}>
+const menu = ({ label }: { label: string }, items: string[]) => /* html */ `
+  <ark-menu>
     <ark-menu-trigger>
       <button class="${styles.Trigger}">
         ${label}
@@ -17,34 +20,49 @@ const menuMarkup = (label: string, items: string, attrs = '', options: { arrow?:
       </button>
     </ark-menu-trigger>
     <ark-menu-positioner class="${styles.Positioner}">
-      <ark-menu-content class="${styles.Content}">${options.arrow ? arrow : ''}${list(items)}</ark-menu-content>
+      <ark-menu-content class="${styles.Content}">${list(items)}</ark-menu-content>
     </ark-menu-positioner>
   </ark-menu>`
 
-const item = (value: string, label: string, extra = '') =>
-  /* html */ `<ark-menu-item class="${styles.Item}" value="${value}" ${extra}>${label}</ark-menu-item>`
-
-const submenu = (label: string, items: string, attrs = '', options: { lazy?: boolean } = {}) => /* html */ `
-  <ark-menu ${attrs}>
+const submenu = ({ label }: { label: string }, items: string[]) => /* html */ `
+  <ark-menu>
     <ark-menu-trigger-item class="${styles.TriggerItem}">${label}</ark-menu-trigger-item>
     <ark-menu-positioner class="${styles.Positioner}">
-      <ark-menu-content class="${styles.Content}">${options.lazy ? /* html */ `<template>${list(items)}</template>` : list(items)}</ark-menu-content>
+      <ark-menu-content class="${styles.Content}">${list(items)}</ark-menu-content>
     </ark-menu-positioner>
   </ark-menu>`
 
-const shareItems = `${item('email', 'Email')}${item('message', 'Message')}${submenu('More', `${item('airdrop', 'AirDrop')}${item('nearby', 'Nearby Share')}`)}`
+const item = ({ value, label }: Item) =>
+  /* html */ `<ark-menu-item class="${styles.Item}" value="${value}">${label}</ark-menu-item>`
+
+const separator = () => /* html */ `<ark-menu-separator class="${styles.Separator}"></ark-menu-separator>`
+
+const exportItems: Item[] = [
+  { value: 'pdf', label: 'PDF' },
+  { value: 'png', label: 'PNG' },
+  { value: 'svg', label: 'SVG' },
+]
 
 export function mount(root: HTMLElement) {
   const host = document.createElement('div')
-  host.innerHTML = /* html */ `<output>Selected: none</output>${menuMarkup(
-    'File',
-    /* html */ `${item('new', 'New File')}${item('open', 'Open...')}
-     <ark-menu-separator class="${styles.Separator}"></ark-menu-separator>
-     ${submenu('Share', shareItems)}
-     ${submenu('Export', `${item('pdf', 'PDF')}${item('png', 'PNG')}${item('svg', 'SVG')}`)}
-     <ark-menu-separator class="${styles.Separator}"></ark-menu-separator>
-     ${item('print', 'Print...')}`,
-  )}`
+  host.innerHTML = /* html */ `
+  <output>Selected: none</output>
+  ${menu({ label: 'File' }, [
+    item({ value: 'new', label: 'New File' }),
+    item({ value: 'open', label: 'Open...' }),
+    separator(),
+    submenu({ label: 'Share' }, [
+      item({ value: 'email', label: 'Email' }),
+      item({ value: 'message', label: 'Message' }),
+      submenu({ label: 'More' }, [
+        item({ value: 'airdrop', label: 'AirDrop' }),
+        item({ value: 'nearby', label: 'Nearby Share' }),
+      ]),
+    ]),
+    submenu({ label: 'Export' }, exportItems.map(item)),
+    separator(),
+    item({ value: 'print', label: 'Print...' }),
+  ])}`
   host.querySelector('ark-menu')!.addEventListener(
     'itemselect',
     (event) => {

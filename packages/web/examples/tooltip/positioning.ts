@@ -2,8 +2,14 @@ import '../../src/components/tooltip/index.js'
 
 import styles from 'styles/tooltip.module.css'
 
-const tooltipMarkup = (attrs: string, content = 'I am a tooltip!') => /* html */ `
-  <ark-tooltip ${attrs}>
+interface TooltipProps {
+  placement: string
+  offset: string
+  content?: string
+}
+
+const tooltip = ({ placement, offset, content = 'I am a tooltip!' }: TooltipProps) => /* html */ `
+  <ark-tooltip placement="${placement}" offset="${offset}">
     <ark-tooltip-trigger><button class="${styles.Trigger}">Hover Me</button></ark-tooltip-trigger>
     <ark-tooltip-positioner class="${styles.Positioner}">
       <ark-tooltip-content class="${styles.Content}">${content}</ark-tooltip-content>
@@ -11,5 +17,5 @@ const tooltipMarkup = (attrs: string, content = 'I am a tooltip!') => /* html */
   </ark-tooltip>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = tooltipMarkup(`placement="left-start" offset="12,12"`)
+  root.innerHTML = tooltip({ placement: 'left-start', offset: '12,12' })
 }

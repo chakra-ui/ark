@@ -4,7 +4,13 @@ import '../../src/components/accordion/index.js'
 
 import styles from 'styles/accordion.module.css'
 
-const items = [
+interface Item {
+  value: string
+  title: string
+  content: string
+}
+
+const items: Item[] = [
   {
     value: 'ark-ui',
     title: 'What is Ark UI?',
@@ -22,30 +28,32 @@ const items = [
   },
 ]
 
+const indicator = /* html */ `
+  <ark-accordion-item-indicator class="${styles.ItemIndicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-accordion-item-indicator>`
+
+const attr = (name: string, on?: boolean) => (on ? name : '')
+
 const accordion = (
-  attrs: string,
-  options: { indicator?: boolean; lazy?: boolean; disabled?: string; bodyClass?: string; extra?: string } = {},
+  { collapsible, unmountOnExit }: { collapsible?: boolean; unmountOnExit?: boolean },
+  children: string[],
 ) => /* html */ `
-  <ark-accordion class="${styles.Root}" ${attrs}>
-    ${items
-      .map((item) => {
-        const body = /* html */ `<div class="${options.bodyClass ?? styles.ItemBody}">${item.content}${options.extra ?? ''}</div>`
-        return /* html */ `
-      <ark-accordion-item class="${styles.Item}" value="${item.value}" ${options.disabled === item.value ? 'disabled' : ''}>
-        <ark-accordion-item-header class="${styles.ItemHeader}">
-          <ark-accordion-item-trigger>
-            <button class="${styles.ItemTrigger}">
-              ${item.title}
-              ${options.indicator === false ? '' : /* html */ `<ark-accordion-item-indicator class="${styles.ItemIndicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-accordion-item-indicator>`}
-            </button>
-          </ark-accordion-item-trigger>
-        </ark-accordion-item-header>
-        <ark-accordion-item-content class="${styles.ItemContent}">${options.lazy ? /* html */ `<template>${body}</template>` : body}</ark-accordion-item-content>
-      </ark-accordion-item>`
-      })
-      .join('')}
+  <ark-accordion class="${styles.Root}" ${attr('collapsible', collapsible)} ${attr('unmount-on-exit', unmountOnExit)}>
+    ${children.join('')}
   </ark-accordion>`
 
+const accordionItem = ({ value, title, content }: Item) => /* html */ `
+  <ark-accordion-item class="${styles.Item}" value="${value}">
+    <ark-accordion-item-header class="${styles.ItemHeader}">
+      <ark-accordion-item-trigger>
+        <button class="${styles.ItemTrigger}">
+          ${title}
+          ${indicator}
+        </button>
+      </ark-accordion-item-trigger>
+    </ark-accordion-item-header>
+    <ark-accordion-item-content class="${styles.ItemContent}"><template><div class="${styles.ItemBody}">${content}</div></template></ark-accordion-item-content>
+  </ark-accordion-item>`
+
 export function mount(root: HTMLElement) {
-  root.innerHTML = accordion(`collapsible unmount-on-exit`, { lazy: true })
+  root.innerHTML = accordion({ collapsible: true, unmountOnExit: true }, items.map(accordionItem))
 }

@@ -11,29 +11,32 @@ const fragment = (html: string) => {
   return host
 }
 
-const combobox = (
-  label: string,
-  placeholder: string,
-  list: string,
-  { attrs = '', data = '', clear = true, empty = false } = {},
-) => /* html */ `
-  <ark-combobox class="${styles.Root}" ${attrs}>
-    ${data}
+interface ComboboxProps {
+  label: string
+  placeholder: string
+}
+
+const combobox = ({ label, placeholder }: ComboboxProps, children: string[]) => /* html */ `
+  <ark-combobox class="${styles.Root}">
     <ark-combobox-label class="${styles.Label}">${label}</ark-combobox-label>
     <ark-combobox-control class="${styles.Control}">
       <ark-combobox-input><input class="${styles.Input}" placeholder="${placeholder}" /></ark-combobox-input>
       <div class="${styles.Indicators}">
-        ${clear ? /* html */ `<ark-combobox-clear-trigger><button class="${styles.ClearTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-clear-trigger>` : ''}
+        <ark-combobox-clear-trigger><button class="${styles.ClearTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-clear-trigger>
         <ark-combobox-trigger><button class="${styles.Trigger}">${createElement(ChevronsUpDown, { 'aria-hidden': 'true' }).outerHTML}</button></ark-combobox-trigger>
       </div>
     </ark-combobox-control>
     <ark-combobox-positioner class="${styles.Positioner}">
       <ark-combobox-content class="${styles.Content}">
-        ${empty ? /* html */ `<ark-combobox-empty><div class="${styles.Empty}">No results found</div></ark-combobox-empty>` : ''}
-        <ark-combobox-list class="${styles.List}">${list}</ark-combobox-list>
+        <ark-combobox-list class="${styles.List}">${children.join('')}</ark-combobox-list>
       </ark-combobox-content>
     </ark-combobox-positioner>
   </ark-combobox>`
+
+const item = ({ value, label }: { value: string; label: string }) => /* html */ `
+  <ark-combobox-item class="${styles.Item}" value="${value}">
+    <ark-combobox-item-text class="${styles.ItemText}">${label}</ark-combobox-item-text>
+  </ark-combobox-item>`
 
 const escapeHtml = (text: string) => text.replace(/[&<>"']/g, (char) => `&#${char.charCodeAt(0)};`)
 
@@ -50,16 +53,8 @@ export function mount(root: HTMLElement) {
   const people = ['John Smith', 'Jane Doe', 'Bob Johnson', 'Alice Williams', 'Charlie Brown', 'Diana Ross']
   const host = fragment(
     combobox(
-      'Assignee',
-      'e.g. John Smith',
-      people
-        .map(
-          (label) => /* html */ `
-          <ark-combobox-item class="${styles.Item}" value="${label.toLowerCase().replace(' ', '-')}">
-            <ark-combobox-item-text class="${styles.ItemText}">${label}</ark-combobox-item-text>
-          </ark-combobox-item>`,
-        )
-        .join(''),
+      { label: 'Assignee', placeholder: 'e.g. John Smith' },
+      people.map((label) => item({ value: label.toLowerCase().replace(' ', '-'), label })),
     ),
   )
   host.querySelector('ark-combobox')!.addEventListener('inputvaluechange', (event) => {

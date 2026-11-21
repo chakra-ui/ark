@@ -1,59 +1,79 @@
-import { createElement, ChevronsUpDown, Check, ChevronUp, ChevronDown } from 'lucide'
+import { createElement, Check, ChevronDown, ChevronsUpDown, ChevronUp } from 'lucide'
 
 import '../../src/components/select/index.js'
 
 import styles from 'styles/select.module.css'
 
-const root = (attrs: string, body: string, label = 'Framework') => /* html */ `
-  <ark-select class="${styles.Root}" ${attrs}>
+interface Item {
+  value: string
+  label: string
+  disabled?: boolean
+}
+
+const frameworks: Item[] = [
+  { value: 'angular', label: 'Angular' },
+  { value: 'ember', label: 'Ember' },
+  { value: 'lit', label: 'Lit' },
+  { value: 'preact', label: 'Preact' },
+  { value: 'qwik', label: 'Qwik' },
+  { value: 'react', label: 'React' },
+  { value: 'solid', label: 'Solid' },
+  { value: 'svelte', label: 'Svelte' },
+  { value: 'vue', label: 'Vue' },
+]
+
+const icon = (node: typeof Check) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
+
+const attr = (name: string, on?: boolean) => (on ? name : '')
+
+interface SelectProps {
+  label: string
+  defaultValue: string
+  alignItemWithTrigger?: boolean
+}
+
+const select = ({ label, defaultValue, alignItemWithTrigger }: SelectProps, children: string[]) => /* html */ `
+  <ark-select class="${styles.Root}" ${attr('align-item-with-trigger', alignItemWithTrigger)} default-value="${defaultValue}">
     <ark-select-label class="${styles.Label}">${label}</ark-select-label>
-    ${body}
+    ${children.join('')}
   </ark-select>`
 
-const clearText = /* html */ `<ark-select-clear-trigger><button class="${styles.ClearTrigger}">Clear</button></ark-select-clear-trigger>`
+const valueText = ({ placeholder }: { placeholder: string }) => /* html */ `
+  <ark-select-value-text class="${styles.ValueText}" placeholder="${placeholder}"></ark-select-value-text>`
 
-const valueText = (placeholder: string) =>
-  /* html */ `<ark-select-value-text class="${styles.ValueText}" placeholder="${placeholder}"></ark-select-value-text>`
+const indicator = () => /* html */ `
+  <ark-select-indicator class="${styles.Indicator}">${icon(ChevronsUpDown)}</ark-select-indicator>`
 
-const indicator = /* html */ `<ark-select-indicator class="${styles.Indicator}">${createElement(ChevronsUpDown, { 'aria-hidden': 'true' }).outerHTML}</ark-select-indicator>`
-
-const inlineControl = (placeholder: string, clear = clearText) => /* html */ `
+const control = ({ placeholder, clearable = false }: { placeholder: string; clearable?: boolean }) => /* html */ `
   <ark-select-control class="${styles.Control}">
-    <ark-select-trigger><button class="${styles.Trigger}">${valueText(placeholder)}${indicator}</button></ark-select-trigger>
-    ${clear}
+    <ark-select-trigger>
+      <button class="${styles.Trigger}">${valueText({ placeholder })}${indicator()}</button>
+    </ark-select-trigger>
+    ${clearable ? /* html */ `<ark-select-clear-trigger><button class="${styles.ClearTrigger}">Clear</button></ark-select-clear-trigger>` : ''}
   </ark-select-control>`
 
-const popup = (list: string, { before = '', after = '', style = '' } = {}) => /* html */ `
+const content = (children: string[]) => /* html */ `
   <ark-select-positioner class="${styles.Positioner}">
-    <ark-select-content class="${styles.Content}" ${style ? `style="${style}"` : ''}>
-      ${before}<ark-select-list class="${styles.List}">${list}</ark-select-list>${after}
+    <ark-select-content class="${styles.Content}">
+      ${children.join('')}
     </ark-select-content>
   </ark-select-positioner>`
 
-const item = (value = '', label = '', disabled = false) => /* html */ `
-  <ark-select-item class="${styles.Item}" ${value ? `value="${value}"` : ''} ${disabled ? 'disabled' : ''}>
+const scrollArrow = ({ placement }: { placement: 'top' | 'bottom' }) => /* html */ `
+  <ark-select-scroll-arrow class="${styles.ScrollArrow}" placement="${placement}">${icon(placement === 'top' ? ChevronUp : ChevronDown)}</ark-select-scroll-arrow>`
+
+const list = (children: string[]) => /* html */ `
+  <ark-select-list class="${styles.List}">${children.join('')}</ark-select-list>`
+
+const item = ({ value, label }: Item) => /* html */ `
+  <ark-select-item class="${styles.Item}" value="${value}">
     <ark-select-item-text class="${styles.ItemText}">${label}</ark-select-item-text>
-    <ark-select-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-select-item-indicator>
+    <ark-select-item-indicator class="${styles.ItemIndicator}">${icon(Check)}</ark-select-item-indicator>
   </ark-select-item>`
 
 export function mount(container: HTMLElement) {
-  container.innerHTML = root(
-    'align-item-with-trigger default-value="solid"',
-    inlineControl('Select', '') +
-      popup(
-        item('angular', 'Angular') +
-          item('ember', 'Ember') +
-          item('lit', 'Lit') +
-          item('preact', 'Preact') +
-          item('qwik', 'Qwik') +
-          item('react', 'React') +
-          item('solid', 'Solid') +
-          item('svelte', 'Svelte') +
-          item('vue', 'Vue'),
-        {
-          before: /* html */ `<ark-select-scroll-arrow class="${styles.ScrollArrow}" placement="top">${createElement(ChevronUp, { 'aria-hidden': 'true' }).outerHTML}</ark-select-scroll-arrow>`,
-          after: /* html */ `<ark-select-scroll-arrow class="${styles.ScrollArrow}" placement="bottom">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-select-scroll-arrow>`,
-        },
-      ),
-  )
+  container.innerHTML = select({ label: 'Framework', defaultValue: 'solid', alignItemWithTrigger: true }, [
+    control({ placeholder: 'Select' }),
+    content([scrollArrow({ placement: 'top' }), list(frameworks.map(item)), scrollArrow({ placement: 'bottom' })]),
+  ])
 }

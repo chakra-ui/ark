@@ -2,8 +2,16 @@ import '../../src/components/pin-input/index.js'
 
 import styles from 'styles/pin-input.module.css'
 
-const pinInput = (attrs: string, count = 3, label = 'Label') => /* html */ `
-  <ark-pin-input class="${styles.Root}" ${attrs}>
+const attr = (name: string, on?: boolean) => (on ? name : '')
+
+interface PinInputProps {
+  count?: number
+  label?: string
+  otp?: boolean
+}
+
+const pinInput = ({ count = 3, label = 'Label', otp }: PinInputProps = {}) => /* html */ `
+  <ark-pin-input class="${styles.Root}" ${attr('otp', otp)}>
     <ark-pin-input-label class="${styles.Label}">${label}</ark-pin-input-label>
     <ark-pin-input-control class="${styles.Control}">
       ${Array.from({ length: count }, () => /* html */ `<ark-pin-input-input><input class="${styles.Input}" /></ark-pin-input-input>`).join('')}
@@ -12,5 +20,5 @@ const pinInput = (attrs: string, count = 3, label = 'Label') => /* html */ `
   </ark-pin-input>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = pinInput('otp')
+  root.innerHTML = pinInput({ otp: true })
 }

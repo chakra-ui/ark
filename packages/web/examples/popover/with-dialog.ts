@@ -12,7 +12,7 @@ import styles from 'styles/popover.module.css'
 
 const closeButton = /* html */ `<ark-popover-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-popover-close-trigger>`
 
-const heading = (title: string, description: string) => /* html */ `
+const heading = ({ title, description }: { title: string; description: string }) => /* html */ `
   <ark-popover-title class="${styles.Title}">${title}</ark-popover-title>
   <ark-popover-description class="${styles.Description}">${description}</ark-popover-description>`
 
@@ -34,7 +34,7 @@ export function mount(root: HTMLElement) {
                 <template>
                   <ark-popover-arrow class="${styles.Arrow}"><ark-popover-arrow-tip class="${styles.ArrowTip}"></ark-popover-arrow-tip></ark-popover-arrow>
                   ${closeButton}
-                  ${heading('Additional Settings', 'This popover renders correctly above the dialog.')}
+                  ${heading({ title: 'Additional Settings', description: 'This popover renders correctly above the dialog.' })}
                 </template>
               </ark-popover-content>
             </ark-popover-positioner>

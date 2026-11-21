@@ -2,22 +2,32 @@ import '../../src/components/tabs/index.js'
 
 import styles from 'styles/tabs.module.css'
 
+interface Pane {
+  value: string
+  label: string
+  content: string
+}
+
+const panes: Pane[] = [
+  { value: 'account', label: 'Account', content: 'Make changes to your account here.' },
+  { value: 'password', label: 'Password', content: 'Change your password here.' },
+  { value: 'billing', label: 'Billing', content: 'Manage your billing and payment details.' },
+]
+
+const tabs = ({ defaultValue }: { defaultValue: string }, children: string[]) => /* html */ `
+  <ark-tabs class="${styles.Root}" default-value="${defaultValue}">${children.join('')}</ark-tabs>`
+
+const list = (triggers: string[]) => /* html */ `
+  <ark-tabs-list class="${styles.List}">${triggers.join('')}</ark-tabs-list>`
+
+const trigger = ({ value, label }: Pane) => /* html */ `
+  <ark-tabs-trigger value="${value}">
+    <button class="${styles.Trigger}">${label}</button>
+  </ark-tabs-trigger>`
+
+const content = ({ value, content }: Pane) =>
+  /* html */ `<ark-tabs-content class="${styles.Content}" value="${value}">${content}</ark-tabs-content>`
+
 export function mount(root: HTMLElement) {
-  root.innerHTML = /* html */ `
-  <ark-tabs class="${styles.Root}" default-value="account" >
-    <ark-tabs-list class="${styles.List}">
-      
-        <ark-tabs-trigger value="account" >
-          <button class="${styles.Trigger}">Account</button>
-        </ark-tabs-trigger>
-        <ark-tabs-trigger value="password" >
-          <button class="${styles.Trigger}">Password</button>
-        </ark-tabs-trigger>
-        <ark-tabs-trigger value="billing" >
-          <button class="${styles.Trigger}">Billing</button>
-        </ark-tabs-trigger>
-      
-    </ark-tabs-list>
-    <ark-tabs-content class="${styles.Content}" value="account">Make changes to your account here.</ark-tabs-content><ark-tabs-content class="${styles.Content}" value="password">Change your password here.</ark-tabs-content><ark-tabs-content class="${styles.Content}" value="billing">Manage your billing and payment details.</ark-tabs-content>
-  </ark-tabs>`
+  root.innerHTML = tabs({ defaultValue: 'account' }, [list(panes.map(trigger)), ...panes.map(content)])
 }

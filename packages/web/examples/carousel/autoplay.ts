@@ -1,16 +1,15 @@
-import { createElement, ArrowLeft, ChevronLeft, Play, Pause, ArrowRight, ChevronRight } from 'lucide'
+import { createElement, ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from 'lucide'
 
 import '../../src/components/carousel/index.js'
 
 import styles from 'styles/carousel.module.css'
 
-const carouselMarkup = (attrs: string, children: string) =>
-  /* html */ `<ark-carousel class="${styles.Root}" ${attrs}>${children}</ark-carousel>`
+interface Image {
+  src: string
+  alt: string
+}
 
-const itemGroup = (items: string) =>
-  /* html */ `<ark-carousel-item-group class="${styles.ItemGroup}">${items}</ark-carousel-item-group>`
-
-const images = [
+const images: Image[] = [
   { src: 'https://picsum.photos/seed/1/500/300', alt: 'Nature landscape' },
   { src: 'https://picsum.photos/seed/2/500/300', alt: 'City skyline' },
   { src: 'https://picsum.photos/seed/3/500/300', alt: 'Mountain view' },
@@ -18,35 +17,42 @@ const images = [
   { src: 'https://picsum.photos/seed/5/500/300', alt: 'Forest path' },
 ]
 
-const item = (content: string, attrs = `class="${styles.Item}"`) =>
-  /* html */ `<ark-carousel-item ${attrs}>${content}</ark-carousel-item>`
+const icon = (node: typeof ArrowLeft) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
-const image = ({ src, alt }: { src: string; alt: string }) =>
-  /* html */ `<img src="${src}" alt="${alt}" width="500" height="300" />`
+const attr = (name: string, on?: boolean) => (on ? name : '')
 
-const imageItems = () => images.map((img) => item(image(img))).join('')
+const carousel = ({ autoPlay, loop }: { autoPlay?: boolean; loop?: boolean }, children: string[]) => /* html */ `
+  <ark-carousel class="${styles.Root}" ${attr('auto-play', autoPlay)} ${attr('loop', loop)}>${children.join('')}</ark-carousel>`
 
-const control = (children: string, attrs = '') =>
-  /* html */ `<ark-carousel-control class="${styles.Control}" ${attrs}>${children}</ark-carousel-control>`
+const control = ({ justify }: { justify?: string }, children: string[]) => /* html */ `
+  <ark-carousel-control class="${styles.Control}" ${justify ? `data-justify="${justify}"` : ''}>${children.join('')}</ark-carousel-control>`
 
-const prev = (icon = createElement(ArrowLeft, { 'aria-hidden': 'true' }).outerHTML) =>
-  /* html */ `<ark-carousel-prev-trigger><button class="${styles.Trigger}">${icon}</button></ark-carousel-prev-trigger>`
+const prevTrigger = ({ icon: node = ArrowLeft }: { icon?: typeof ArrowLeft } = {}) => /* html */ `
+  <ark-carousel-prev-trigger><button class="${styles.Trigger}">${icon(node)}</button></ark-carousel-prev-trigger>`
 
-const next = (icon = createElement(ArrowRight, { 'aria-hidden': 'true' }).outerHTML) =>
-  /* html */ `<ark-carousel-next-trigger><button class="${styles.Trigger}">${icon}</button></ark-carousel-next-trigger>`
+const nextTrigger = ({ icon: node = ArrowRight }: { icon?: typeof ArrowRight } = {}) => /* html */ `
+  <ark-carousel-next-trigger><button class="${styles.Trigger}">${icon(node)}</button></ark-carousel-next-trigger>`
+
+const autoplayTrigger = () => /* html */ `
+  <ark-carousel-autoplay-trigger>
+    <button class="${styles.AutoplayTrigger}">
+      <ark-carousel-autoplay-indicator>${icon(Play).replace('<svg', '<svg fallback')}${icon(Pause)}</ark-carousel-autoplay-indicator>
+    </button>
+  </ark-carousel-autoplay-trigger>`
+
+const itemGroup = (children: string[]) => /* html */ `
+  <ark-carousel-item-group class="${styles.ItemGroup}">${children.join('')}</ark-carousel-item-group>`
+
+const imageItem = ({ src, alt }: Image) => /* html */ `
+  <ark-carousel-item class="${styles.Item}"><img src="${src}" alt="${alt}" width="500" height="300" /></ark-carousel-item>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = carouselMarkup(
-    'auto-play loop',
-    `${itemGroup(imageItems())}${control(
-      /* html */ `${prev(createElement(ChevronLeft, { 'aria-hidden': 'true' }).outerHTML)}
-      <ark-carousel-autoplay-trigger>
-        <button class="${styles.AutoplayTrigger}">
-          <ark-carousel-autoplay-indicator>${createElement(Play, { 'aria-hidden': 'true' }).outerHTML.replace('<svg', '<svg fallback')}${createElement(Pause, { 'aria-hidden': 'true' }).outerHTML}</ark-carousel-autoplay-indicator>
-        </button>
-      </ark-carousel-autoplay-trigger>
-      ${next(createElement(ChevronRight, { 'aria-hidden': 'true' }).outerHTML)}`,
-      'data-justify="center"',
-    )}`,
-  )
+  root.innerHTML = carousel({ autoPlay: true, loop: true }, [
+    itemGroup(images.map(imageItem)),
+    control({ justify: 'center' }, [
+      prevTrigger({ icon: ChevronLeft }),
+      autoplayTrigger(),
+      nextTrigger({ icon: ChevronRight }),
+    ]),
+  ])
 }

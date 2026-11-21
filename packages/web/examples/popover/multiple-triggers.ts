@@ -10,11 +10,14 @@ const actions = [
   { id: 'archive', label: 'Archive', detail: 'Move this item to the archive for later reference.' },
 ]
 
+const trigger = ({ id, label }: { id: string; label: string }) =>
+  /* html */ `<ark-popover-trigger value="${id}"><button class="${button.Root}">${label}</button></ark-popover-trigger>`
+
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
     <ark-popover>
       <div class="${button.Group}">
-        <ark-popover-trigger value="share"><button class="${button.Root}">Share</button></ark-popover-trigger><ark-popover-trigger value="export"><button class="${button.Root}">Export</button></ark-popover-trigger><ark-popover-trigger value="archive"><button class="${button.Root}">Archive</button></ark-popover-trigger>
+        ${actions.map((action) => trigger(action)).join('')}
       </div>
       <ark-popover-positioner class="${styles.Positioner}">
         <ark-popover-content class="${styles.Content}">

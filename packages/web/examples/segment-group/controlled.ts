@@ -4,24 +4,22 @@ import styles from 'styles/segment-group.module.css'
 
 const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
 
+const item = ({ value }: { value: string }) => /* html */ `
+  <ark-segment-group-item value="${value}">
+    <label class="${styles.Item}">
+      <ark-segment-group-item-text class="${styles.ItemText}">${value}</ark-segment-group-item-text>
+      <ark-segment-group-item-control class="${styles.ItemControl}"></ark-segment-group-item-control>
+      <ark-segment-group-item-hidden-input></ark-segment-group-item-hidden-input>
+    </label>
+  </ark-segment-group-item>`
+
 export function mount(root: HTMLElement) {
   const host = document.createElement('div')
   host.className = 'stack'
   host.innerHTML = /* html */ `
   <ark-segment-group class="${styles.Root}" value="" name="framework">
     <ark-segment-group-indicator class="${styles.Indicator}"></ark-segment-group-indicator>
-    ${frameworks
-      .map(
-        (framework) => /* html */ `
-    <ark-segment-group-item value="${framework}">
-      <label class="${styles.Item}">
-        <ark-segment-group-item-text class="${styles.ItemText}">${framework}</ark-segment-group-item-text>
-        <ark-segment-group-item-control class="${styles.ItemControl}"></ark-segment-group-item-control>
-        <ark-segment-group-item-hidden-input></ark-segment-group-item-hidden-input>
-      </label>
-    </ark-segment-group-item>`,
-      )
-      .join('')}
+    ${frameworks.map((framework) => item({ value: framework })).join('')}
   </ark-segment-group>
   <output>value: null</output>`
   const el = host.querySelector('ark-segment-group')!

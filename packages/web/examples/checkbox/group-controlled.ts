@@ -1,49 +1,45 @@
-import { createElement, Check, Minus } from 'lucide'
+import { createElement, Check } from 'lucide'
 
 import '../../src/components/checkbox/index.js'
 
 import styles from 'styles/checkbox.module.css'
 
+interface Framework {
+  label: string
+  value: string
+}
+
+const frameworks: Framework[] = [
+  { label: 'React', value: 'react' },
+  { label: 'Solid', value: 'solid' },
+  { label: 'Vue', value: 'vue' },
+]
+
+const checkIcon = createElement(Check, { 'aria-hidden': 'true' }).outerHTML
+
 const json = (value: string[]) => JSON.stringify(value)
+
+const group = ({ value, name }: { value: string; name: string }, children: string[]) => /* html */ `
+  <ark-checkbox-group class="${styles.Group}" value="${value}" name="${name}">
+    ${children.join('')}
+  </ark-checkbox-group>`
+
+const checkbox = ({ label, value }: Framework) => /* html */ `
+  <ark-checkbox value="${value}">
+    <label class="${styles.Root}">
+      <ark-checkbox-control class="${styles.Control}">
+        <ark-checkbox-indicator class="${styles.Indicator}">${checkIcon}</ark-checkbox-indicator>
+      </ark-checkbox-control>
+      <ark-checkbox-label class="${styles.Label}">${label}</ark-checkbox-label>
+      <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
+    </label>
+  </ark-checkbox>`
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
     <div class="vstack">
       <output>value: ["react"]</output>
-      
-  <ark-checkbox-group class="${styles.Group}" value="react" name="framework">
-    
-  <ark-checkbox value="react">
-    <label class="${styles.Root}">
-      <ark-checkbox-control class="${styles.Control}">
-        <ark-checkbox-indicator class="${styles.Indicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-checkbox-indicator>
-        
-      </ark-checkbox-control>
-      <ark-checkbox-label class="${styles.Label}">React</ark-checkbox-label>
-      <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
-    </label>
-  </ark-checkbox>
-  <ark-checkbox value="solid">
-    <label class="${styles.Root}">
-      <ark-checkbox-control class="${styles.Control}">
-        <ark-checkbox-indicator class="${styles.Indicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-checkbox-indicator>
-        
-      </ark-checkbox-control>
-      <ark-checkbox-label class="${styles.Label}">Solid</ark-checkbox-label>
-      <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
-    </label>
-  </ark-checkbox>
-  <ark-checkbox value="vue">
-    <label class="${styles.Root}">
-      <ark-checkbox-control class="${styles.Control}">
-        <ark-checkbox-indicator class="${styles.Indicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-checkbox-indicator>
-        
-      </ark-checkbox-control>
-      <ark-checkbox-label class="${styles.Label}">Vue</ark-checkbox-label>
-      <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
-    </label>
-  </ark-checkbox>
-  </ark-checkbox-group>
+      ${group({ value: 'react', name: 'framework' }, frameworks.map(checkbox))}
     </div>`
   const el = root.querySelector('ark-checkbox-group')!
   el.addEventListener('valuechange', (event) => {

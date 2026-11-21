@@ -6,6 +6,11 @@ import styles from 'styles/pagination.module.css'
 
 import '../../src/components/pagination/index.js'
 
+const pageSizes = [5, 10, 20, 50]
+
+const option = ({ value, selected = false }: { value: number; selected?: boolean }) =>
+  /* html */ `<option value="${value}" ${selected ? 'selected' : ''}>${value}</option>`
+
 function onPaginationChange(el: HTMLElement, update: VoidFunction) {
   el.addEventListener('pagechange', () => queueMicrotask(update))
   el.addEventListener('pagesizechange', () => queueMicrotask(update))
@@ -16,7 +21,7 @@ export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `<ark-pagination class="${styles.Root}" count="100" default-page-size="10"><div class="hstack">
         <label class="${styles.Text}">Items per page:</label>
         <select class="${styles.PageSizeSelect}">
-          <option value="5" >5</option><option value="10" selected>10</option><option value="20" >20</option><option value="50" >50</option>
+          ${pageSizes.map((size) => option({ value: size, selected: size === 10 })).join('')}
         </select>
       </div>
       

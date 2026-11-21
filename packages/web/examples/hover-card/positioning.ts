@@ -2,14 +2,14 @@ import '../../src/components/hover-card/index.js'
 
 import styles from 'styles/hover-card.module.css'
 
-const trigger = (text: string, value?: string) =>
+const trigger = ({ text, value }: { text: string; value?: string }) =>
   /* html */ `<ark-hover-card-trigger${value ? ` value="${value}"` : ''}><a href="#${value ? '' : 'profile'}" class="${styles.Trigger}">${text}</a></ark-hover-card-trigger>`
 
-const card = (body: string) => /* html */ `
+const card = (children: string[]) => /* html */ `
   <ark-hover-card-positioner class="${styles.Positioner}">
     <ark-hover-card-content class="${styles.Content}">
       <ark-hover-card-arrow class="${styles.Arrow}"><ark-hover-card-arrow-tip class="${styles.ArrowTip}"></ark-hover-card-arrow-tip></ark-hover-card-arrow>
-      ${body}
+      ${children.join('')}
     </ark-hover-card-content>
   </ark-hover-card-positioner>`
 
@@ -23,12 +23,12 @@ const profile = /* html */ `
     <p class="${styles.Bio}">Design Engineer at Acme Inc.</p>
   </div>`
 
-const likedBy = (attrs = '') => /* html */ `
-  <ark-hover-card ${attrs}>
-    <p>Liked by ${trigger('@sarah_chen')} and 3 others</p>
-    ${card(profile)}
+const likedBy = ({ placement, gutter }: { placement: string; gutter: number }) => /* html */ `
+  <ark-hover-card placement="${placement}" gutter="${gutter}">
+    <p>Liked by ${trigger({ text: '@sarah_chen' })} and 3 others</p>
+    ${card([profile])}
   </ark-hover-card>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = likedBy('placement="right" gutter="12"')
+  root.innerHTML = likedBy({ placement: 'right', gutter: 12 })
 }

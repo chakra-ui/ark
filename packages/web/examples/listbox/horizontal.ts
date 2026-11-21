@@ -4,16 +4,26 @@ import '../../src/components/listbox/index.js'
 
 import styles from 'styles/listbox.module.css'
 
-const listbox = (attrs: string, label: string, list: string, data = '') => /* html */ `
-  <ark-listbox class="${styles.Root}" ${attrs}>
-    ${data}
+interface ListboxProps {
+  label: string
+  orientation: 'horizontal' | 'vertical'
+}
+
+const listbox = ({ label, orientation }: ListboxProps, children: string[]) => /* html */ `
+  <ark-listbox class="${styles.Root}" orientation="${orientation}">
     <ark-listbox-label class="${styles.Label}">${label}</ark-listbox-label>
     <ark-listbox-content class="${styles.Content}">
-      <ark-listbox-list class="${styles.List}">${list}</ark-listbox-list>
+      <ark-listbox-list class="${styles.List}">${children.join('')}</ark-listbox-list>
     </ark-listbox-content>
   </ark-listbox>`
 
-const albums = [
+interface Album {
+  title: string
+  artist: string
+  image: string
+}
+
+const albums: Album[] = [
   { title: 'Midnight Dreams', artist: 'Luna Ray', image: 'https://picsum.photos/seed/album1/300/300' },
   { title: 'Neon Skyline', artist: 'The Electric', image: 'https://picsum.photos/seed/album2/300/300' },
   { title: 'Acoustic Sessions', artist: 'Sarah Woods', image: 'https://picsum.photos/seed/album3/300/300' },
@@ -21,20 +31,17 @@ const albums = [
   { title: 'Summer Vibes', artist: 'Coastal Waves', image: 'https://picsum.photos/seed/album5/300/300' },
 ]
 
+const albumItem = ({ title, artist, image }: Album) => /* html */ `
+  <ark-listbox-item class="${styles.ItemCard}" value="${title}">
+    <ark-listbox-item-indicator class="${styles.ItemCardIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-listbox-item-indicator>
+    <img class="${styles.ItemCardImage}" src="${image}" alt="${title}" />
+    <ark-listbox-item-text class="${styles.ItemCardTitle}">${title}</ark-listbox-item-text>
+    <span class="${styles.ItemCardArtist}">${artist}</span>
+  </ark-listbox-item>`
+
 export function mount(root: HTMLElement) {
   root.innerHTML = listbox(
-    'orientation="horizontal"',
-    'Select Album',
-    albums
-      .map(
-        (album) => /* html */ `
-        <ark-listbox-item class="${styles.ItemCard}" value="${album.title}">
-          <ark-listbox-item-indicator class="${styles.ItemCardIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-listbox-item-indicator>
-          <img class="${styles.ItemCardImage}" src="${album.image}" alt="${album.title}" />
-          <ark-listbox-item-text class="${styles.ItemCardTitle}">${album.title}</ark-listbox-item-text>
-          <span class="${styles.ItemCardArtist}">${album.artist}</span>
-        </ark-listbox-item>`,
-      )
-      .join(''),
+    { label: 'Select Album', orientation: 'horizontal' },
+    albums.map((album) => albumItem(album)),
   )
 }

@@ -4,22 +4,13 @@ import '../../src/components/carousel/index.js'
 
 import styles from 'styles/carousel.module.css'
 
-const carouselMarkup = (attrs: string, children: string) =>
-  /* html */ `<ark-carousel class="${styles.Root}" ${attrs}>${children}</ark-carousel>`
+interface Slide {
+  id: string
+  width: string
+  label: string
+}
 
-const control = (children: string, attrs = '') =>
-  /* html */ `<ark-carousel-control class="${styles.Control}" ${attrs}>${children}</ark-carousel-control>`
-
-const prev = (icon = createElement(ArrowLeft, { 'aria-hidden': 'true' }).outerHTML) =>
-  /* html */ `<ark-carousel-prev-trigger><button class="${styles.Trigger}">${icon}</button></ark-carousel-prev-trigger>`
-
-const next = (icon = createElement(ArrowRight, { 'aria-hidden': 'true' }).outerHTML) =>
-  /* html */ `<ark-carousel-next-trigger><button class="${styles.Trigger}">${icon}</button></ark-carousel-next-trigger>`
-
-const itemGroup = (items: string) =>
-  /* html */ `<ark-carousel-item-group class="${styles.ItemGroup}">${items}</ark-carousel-item-group>`
-
-const items = [
+const slides: Slide[] = [
   { id: '1', width: '120px', label: 'Small' },
   { id: '2', width: '200px', label: 'Medium Size' },
   { id: '3', width: '80px', label: 'XS' },
@@ -27,27 +18,40 @@ const items = [
   { id: '5', width: '150px', label: 'Regular' },
 ]
 
-const item = (content: string, attrs = `class="${styles.Item}"`) =>
-  /* html */ `<ark-carousel-item ${attrs}>${content}</ark-carousel-item>`
+const icon = (node: typeof ArrowLeft) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
-const indicator = (content = '', className = styles.Indicator) =>
-  /* html */ `<ark-carousel-indicator><button class="${className}">${content}</button></ark-carousel-indicator>`
+const attr = (name: string, on?: boolean) => (on ? name : '')
 
-const pageIndicators = () =>
-  /* html */ `<ark-carousel-indicator-group class="${styles.IndicatorGroup}"><template>${indicator()}</template></ark-carousel-indicator-group>`
+const carousel = ({ autoSize, spacing }: { autoSize?: boolean; spacing: string }, children: string[]) => /* html */ `
+  <ark-carousel class="${styles.Root}" ${attr('auto-size', autoSize)} spacing="${spacing}">${children.join('')}</ark-carousel>`
+
+const control = (children: string[]) => /* html */ `
+  <ark-carousel-control class="${styles.Control}">${children.join('')}</ark-carousel-control>`
+
+const prevTrigger = () => /* html */ `
+  <ark-carousel-prev-trigger><button class="${styles.Trigger}">${icon(ArrowLeft)}</button></ark-carousel-prev-trigger>`
+
+const nextTrigger = () => /* html */ `
+  <ark-carousel-next-trigger><button class="${styles.Trigger}">${icon(ArrowRight)}</button></ark-carousel-next-trigger>`
+
+const itemGroup = (children: string[]) => /* html */ `
+  <ark-carousel-item-group class="${styles.ItemGroup}">${children.join('')}</ark-carousel-item-group>`
+
+const sizedItem = ({ width, label }: Slide) => /* html */ `
+  <ark-carousel-item snap-align="center">
+    <div class="${styles.Slide}" style="width: ${width}; height: 6rem">${label}</div>
+  </ark-carousel-item>`
+
+const indicator = () => /* html */ `
+  <ark-carousel-indicator><button class="${styles.Indicator}"></button></ark-carousel-indicator>`
+
+const pageIndicators = () => /* html */ `
+  <ark-carousel-indicator-group class="${styles.IndicatorGroup}"><template>${indicator()}</template></ark-carousel-indicator-group>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = carouselMarkup(
-    'auto-size spacing="8px"',
-    `${control(`${prev()}${next()}`)}${itemGroup(
-      items
-        .map((it) =>
-          item(
-            /* html */ `<div class="${styles.Slide}" style="width: ${it.width}; height: 6rem">${it.label}</div>`,
-            'snap-align="center"',
-          ),
-        )
-        .join(''),
-    )}${pageIndicators()}`,
-  )
+  root.innerHTML = carousel({ autoSize: true, spacing: '8px' }, [
+    control([prevTrigger(), nextTrigger()]),
+    itemGroup(slides.map(sizedItem)),
+    pageIndicators(),
+  ])
 }

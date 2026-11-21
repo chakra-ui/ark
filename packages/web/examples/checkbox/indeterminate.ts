@@ -4,12 +4,16 @@ import '../../src/components/checkbox/index.js'
 
 import styles from 'styles/checkbox.module.css'
 
-const checkbox = (attrs: string, label = 'Checkbox', indeterminate = false) => /* html */ `
-  <ark-checkbox ${attrs}>
+const checkIcon = createElement(Check, { 'aria-hidden': 'true' }).outerHTML
+
+const minusIcon = createElement(Minus, { 'aria-hidden': 'true' }).outerHTML
+
+const checkbox = ({ label, defaultChecked }: { label: string; defaultChecked: 'indeterminate' }) => /* html */ `
+  <ark-checkbox default-checked="${defaultChecked}">
     <label class="${styles.Root}">
       <ark-checkbox-control class="${styles.Control}">
-        <ark-checkbox-indicator class="${styles.Indicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-checkbox-indicator>
-        ${indeterminate ? /* html */ `<ark-checkbox-indicator class="${styles.Indicator}" indeterminate>${createElement(Minus, { 'aria-hidden': 'true' }).outerHTML}</ark-checkbox-indicator>` : ''}
+        <ark-checkbox-indicator class="${styles.Indicator}">${checkIcon}</ark-checkbox-indicator>
+        <ark-checkbox-indicator class="${styles.Indicator}" indeterminate>${minusIcon}</ark-checkbox-indicator>
       </ark-checkbox-control>
       <ark-checkbox-label class="${styles.Label}">${label}</ark-checkbox-label>
       <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
@@ -17,5 +21,5 @@ const checkbox = (attrs: string, label = 'Checkbox', indeterminate = false) => /
   </ark-checkbox>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = checkbox(`default-checked="indeterminate"`, 'Indeterminate', true)
+  root.innerHTML = checkbox({ label: 'Indeterminate', defaultChecked: 'indeterminate' })
 }

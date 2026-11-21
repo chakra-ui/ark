@@ -6,9 +6,15 @@ import button from 'styles/button.module.css'
 
 import styles from 'styles/rating-group.module.css'
 
-const ratingGroup = (attrs: string) => /* html */ `
-  <ark-rating-group class="${styles.Root}" ${attrs}>
-    <ark-rating-group-label class="${styles.Label}">Label</ark-rating-group-label>
+interface RatingGroupProps {
+  label: string
+  name: string
+  defaultValue: number
+}
+
+const ratingGroup = ({ label, name, defaultValue }: RatingGroupProps) => /* html */ `
+  <ark-rating-group class="${styles.Root}" name="${name}" default-value="${defaultValue}">
+    <ark-rating-group-label class="${styles.Label}">${label}</ark-rating-group-label>
     <ark-rating-group-control class="${styles.Control}">
       <template>
         <ark-rating-group-item class="${styles.Item}">
@@ -25,7 +31,8 @@ const ratingGroup = (attrs: string) => /* html */ `
 export function mount(root: HTMLElement) {
   const form = document.createElement('form')
   form.className = 'stack'
-  form.innerHTML = /* html */ `${ratingGroup(`name="review" default-value="3"`)}
+  form.innerHTML = /* html */ `
+    ${ratingGroup({ label: 'Label', name: 'review', defaultValue: 3 })}
     <button type="submit" class="${button.Root}">Submit</button>
     <output></output>`
   form.addEventListener('submit', (event) => {

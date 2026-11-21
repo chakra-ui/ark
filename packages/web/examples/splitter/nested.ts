@@ -2,27 +2,34 @@ import '../../src/components/splitter/index.js'
 
 import styles from 'styles/splitter.module.css'
 
-const splitterMarkup = (attrs: string, children: string, className = styles.Root) =>
-  /* html */ `<ark-splitter${className ? ` class="${className}"` : ''} ${attrs}>${children}</ark-splitter>`
+interface SplitterProps {
+  orientation: 'horizontal' | 'vertical'
+  className?: string
+}
 
-const panel = (value: string, content: string, attrs = '') =>
-  /* html */ `<ark-splitter-panel class="${styles.Panel}" value="${value}" ${attrs}>${content}</ark-splitter-panel>`
+const splitter = ({ orientation, className }: SplitterProps, children: string[]) => /* html */ `
+  <ark-splitter ${className ? `class="${className}"` : ''} orientation="${orientation}">${children.join('')}</ark-splitter>`
 
-const trigger = (value: string, label = 'Resize') => /* html */ `
+const panel = ({ value }: { value: string }, children: string[]) => /* html */ `
+  <ark-splitter-panel class="${styles.Panel}" value="${value}">${children.join('')}</ark-splitter-panel>`
+
+const resizeTrigger = ({ value, label = 'Resize' }: { value: string; label?: string }) => /* html */ `
   <ark-splitter-resize-trigger class="${styles.ResizeTrigger}" value="${value}" aria-label="${label}">
     <ark-splitter-resize-trigger-indicator class="${styles.ResizeTriggerIndicator}"></ark-splitter-resize-trigger-indicator>
   </ark-splitter-resize-trigger>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = splitterMarkup(
-    'orientation="horizontal"',
-    `${panel('left', 'Left')}${trigger('left:center')}${panel(
-      'center',
-      splitterMarkup(
-        'orientation="vertical"',
-        `${panel('top', 'Top')}${trigger('top:bottom')}${panel('bottom', 'Bottom')}`,
-        '',
-      ),
-    )}${trigger('center:right')}${panel('right', 'Right')}`,
-  )
+  root.innerHTML = splitter({ orientation: 'horizontal', className: styles.Root }, [
+    panel({ value: 'left' }, ['Left']),
+    resizeTrigger({ value: 'left:center' }),
+    panel({ value: 'center' }, [
+      splitter({ orientation: 'vertical' }, [
+        panel({ value: 'top' }, ['Top']),
+        resizeTrigger({ value: 'top:bottom' }),
+        panel({ value: 'bottom' }, ['Bottom']),
+      ]),
+    ]),
+    resizeTrigger({ value: 'center:right' }),
+    panel({ value: 'right' }, ['Right']),
+  ])
 }

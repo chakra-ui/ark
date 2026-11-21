@@ -4,12 +4,8 @@ import '../../src/components/menu/index.js'
 
 import styles from 'styles/menu.module.css'
 
-const arrow = /* html */ `<ark-menu-arrow class="${styles.Arrow}"><ark-menu-arrow-tip class="${styles.ArrowTip}"></ark-menu-arrow-tip></ark-menu-arrow>`
-
-const list = (items: string) => /* html */ `<ark-menu-list class="${styles.List}">${items}</ark-menu-list>`
-
-const menuMarkup = (label: string, items: string, attrs = '', options: { arrow?: boolean } = {}) => /* html */ `
-  <ark-menu ${attrs}>
+const menu = ({ label }: { label: string }, items: string[]) => /* html */ `
+  <ark-menu>
     <ark-menu-trigger>
       <button class="${styles.Trigger}">
         ${label}
@@ -17,24 +13,35 @@ const menuMarkup = (label: string, items: string, attrs = '', options: { arrow?:
       </button>
     </ark-menu-trigger>
     <ark-menu-positioner class="${styles.Positioner}">
-      <ark-menu-content class="${styles.Content}">${options.arrow ? arrow : ''}${list(items)}</ark-menu-content>
+      <ark-menu-content class="${styles.Content}">
+        <ark-menu-list class="${styles.List}">${items.join('')}</ark-menu-list>
+      </ark-menu-content>
     </ark-menu-positioner>
   </ark-menu>`
 
-const option = (tag: string, className: string, value: string, label: string, extra = '') => /* html */ `
-  <${tag} class="${className}" value="${value}" ${extra}>
+const radioGroup = (
+  { name, value, label }: { name: string; value: string; label: string },
+  items: string[],
+) => /* html */ `
+  <ark-menu-radio-item-group class="${styles.ItemGroup}" name="${name}" value="${value}">
+    <ark-menu-item-group-label class="${styles.ItemGroupLabel}">${label}</ark-menu-item-group-label>
+    ${items.join('')}
+  </ark-menu-radio-item-group>`
+
+const radioItem = ({ value, label }: { value: string; label: string }) => /* html */ `
+  <ark-menu-radio-item class="${styles.RadioItem}" value="${value}">
     <ark-menu-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-item-indicator>
     <ark-menu-item-text class="${styles.ItemText}">${label}</ark-menu-item-text>
-  </${tag}>`
+  </ark-menu-radio-item>`
+
+const sortOptions = [
+  { value: 'name', label: 'Name' },
+  { value: 'date', label: 'Date Modified' },
+  { value: 'size', label: 'Size' },
+]
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = menuMarkup(
-    'Sort',
-    /* html */ `<ark-menu-radio-item-group class="${styles.ItemGroup}" name="sort" value="date">
-       <ark-menu-item-group-label class="${styles.ItemGroupLabel}">Sort By</ark-menu-item-group-label>
-       ${option('ark-menu-radio-item', styles.RadioItem, 'name', 'Name')}
-       ${option('ark-menu-radio-item', styles.RadioItem, 'date', 'Date Modified')}
-       ${option('ark-menu-radio-item', styles.RadioItem, 'size', 'Size')}
-     </ark-menu-radio-item-group>`,
-  )
+  root.innerHTML = menu({ label: 'Sort' }, [
+    radioGroup({ name: 'sort', value: 'date', label: 'Sort By' }, sortOptions.map(radioItem)),
+  ])
 }

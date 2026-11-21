@@ -18,20 +18,21 @@ const typeStyle = /* html */ `<style>${['info', 'success', 'error', 'warning', '
   .map((type) => `ark-toast:not([data-type='${type}']) [data-icon='${type}'] { display: none; }`)
   .join('\n')}</style>`
 
-const toaster = (body: string) => /* html */ `
+const toaster = (children: string[]) => /* html */ `
   ${typeStyle}
   <ark-toaster>
     <template>
-      <ark-toast class="${styles.Root}">${body}</ark-toast>
+      <ark-toast class="${styles.Root}">${children.join('')}</ark-toast>
     </template>
   </ark-toaster>`
 
-const title = (prefix = '') => /* html */ `<ark-toast-title class="${styles.Title}">${prefix}</ark-toast-title>`
+const title = (children: string[] = []) =>
+  /* html */ `<ark-toast-title class="${styles.Title}">${children.join('')}</ark-toast-title>`
 
 const description = /* html */ `<ark-toast-description class="${styles.Description}"></ark-toast-description>`
 
-const content = (body = `${title()}${description}`, style = '') =>
-  /* html */ `<ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ${style}">${body}</ark-toast-content>`
+const content = ({ style = '' }: { style?: string } = {}, children = [title(), description]) =>
+  /* html */ `<ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ${style}">${children.join('')}</ark-toast-content>`
 
 const closeTrigger = /* html */ `<ark-toast-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-toast-close-trigger>`
 
@@ -53,15 +54,22 @@ const connect = (host: HTMLElement, store: toast.Store<string>) => {
   return host
 }
 
+const typeButtons = [
+  { type: 'success', label: 'Success' },
+  { type: 'error', label: 'Error' },
+  { type: 'warning', label: 'Warning' },
+  { type: 'info', label: 'Info' },
+]
+
+const typeButton = ({ type, label }: { type: string; label: string }) =>
+  /* html */ `<button type="button" class="${button.Root}" data-type="${type}">${label}</button>`
+
 export function mount(root: HTMLElement) {
   const host = fragment(/* html */ `
     <div style="display: flex; gap: 12px; flex-wrap: wrap">
-      <button type="button" class="${button.Root}" data-type="success">Success</button>
-      <button type="button" class="${button.Root}" data-type="error">Error</button>
-      <button type="button" class="${button.Root}" data-type="warning">Warning</button>
-      <button type="button" class="${button.Root}" data-type="info">Info</button>
+      ${typeButtons.map((entry) => typeButton(entry)).join('')}
     </div>
-    ${toaster(`${content(`${title(typeIndicators(['success', 'error', 'warning', 'info']))}${description}`)}${closeTrigger}`)}`)
+    ${toaster([content({}, [title(typeIndicators(['success', 'error', 'warning', 'info'])), description]), closeTrigger])}`)
   onClick(host, 'button[data-type]', (el) => actions[el.dataset.type as keyof typeof actions]())
   root.replaceChildren(connect(host, store))
 }
@@ -75,10 +83,15 @@ const indicatorIcons = {
   loading: LoaderCircle,
 }
 
-const indicator = (name: keyof typeof indicatorIcons, attrs: Record<string, string> = {}) =>
+interface IndicatorProps {
+  name: keyof typeof indicatorIcons
+  attrs?: Record<string, string>
+}
+
+const indicator = ({ name, attrs = {} }: IndicatorProps) =>
   createElement(indicatorIcons[name], { 'aria-hidden': 'true', class: styles.Indicator, ...attrs }).outerHTML
 
 const typeIndicators = (types: (keyof typeof indicatorIcons)[]) =>
-  types
-    .map((type) => indicator(type, { 'data-icon': type, ...(type === 'loading' ? { 'data-type': 'loading' } : {}) }))
-    .join('')
+  types.map((type) =>
+    indicator({ name: type, attrs: { 'data-icon': type, ...(type === 'loading' ? { 'data-type': 'loading' } : {}) } }),
+  )

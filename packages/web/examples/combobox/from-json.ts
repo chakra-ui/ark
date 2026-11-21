@@ -4,9 +4,16 @@ import '../../src/components/combobox/index.js'
 
 import styles from 'styles/combobox.module.css'
 
-const comboboxMarkup = (attrs: string, list: string, data = '') => /* html */ `
-  <ark-combobox class="${styles.Root}" ${attrs}>
-    ${data}
+const json = (items: unknown[]) => /* html */ `<script type="application/json">${JSON.stringify(items)}</script>`
+
+interface ComboboxProps {
+  filter: 'contains' | 'starts-with' | 'none'
+  items: unknown[]
+}
+
+const comboboxMarkup = ({ filter, items }: ComboboxProps, children: string[]) => /* html */ `
+  <ark-combobox class="${styles.Root}" filter="${filter}">
+    ${json(items)}
     <ark-combobox-label class="${styles.Label}">Favorite Fruit</ark-combobox-label>
     <ark-combobox-control class="${styles.Control}">
       <ark-combobox-input><input class="${styles.Input}" placeholder="e.g. Apple" /></ark-combobox-input>
@@ -18,14 +25,14 @@ const comboboxMarkup = (attrs: string, list: string, data = '') => /* html */ `
     <ark-combobox-positioner class="${styles.Positioner}">
       <ark-combobox-content class="${styles.Content}">
         <ark-combobox-empty class="${styles.Empty}">No results found</ark-combobox-empty>
-        <ark-combobox-list class="${styles.List}">${list}</ark-combobox-list>
+        <ark-combobox-list class="${styles.List}">${children.join('')}</ark-combobox-list>
       </ark-combobox-content>
     </ark-combobox-positioner>
   </ark-combobox>`
 
-const item = (value = '', label = '') => /* html */ `
-  <ark-combobox-item class="${styles.Item}" ${value ? `value="${value}"` : ''}>
-    <ark-combobox-item-text class="${styles.ItemText}">${label}</ark-combobox-item-text>
+const item = () => /* html */ `
+  <ark-combobox-item class="${styles.Item}">
+    <ark-combobox-item-text class="${styles.ItemText}"></ark-combobox-item-text>
     <ark-combobox-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-combobox-item-indicator>
   </ark-combobox-item>`
 
@@ -39,9 +46,7 @@ const fruits = [
 ]
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = comboboxMarkup(
-    `filter="starts-with"`,
+  root.innerHTML = comboboxMarkup({ filter: 'starts-with', items: fruits }, [
     /* html */ `<template>${item()}</template>`,
-    /* html */ `<script type="application/json">${JSON.stringify(fruits)}</script>`,
-  )
+  ])
 }

@@ -10,8 +10,8 @@ const element = (html: string) => {
   return host.firstElementChild as HTMLElement
 }
 
-const linear = (attrs: string) => /* html */ `
-  <ark-progress class="${styles.Root}" ${attrs}>
+const linear = ({ value }: { value: number }) => /* html */ `
+  <ark-progress class="${styles.Root}" value="${value}">
     <ark-progress-label class="${styles.Label}">Label</ark-progress-label>
     <ark-progress-value-text class="${styles.ValueText}"></ark-progress-value-text>
     <ark-progress-track class="${styles.Track}">
@@ -20,7 +20,7 @@ const linear = (attrs: string) => /* html */ `
   </ark-progress>`
 
 export function mount(root: HTMLElement) {
-  const progressEl = element(linear('value="42"')) as ProgressElement
+  const progressEl = element(linear({ value: 42 })) as ProgressElement
   progressEl.addEventListener('valuechange', (event) => {
     const { value } = event.detail
     progressEl.setAttribute('value', value == null ? '' : String(value))

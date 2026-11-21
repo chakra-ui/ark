@@ -4,12 +4,13 @@ import '../../src/components/menu/index.js'
 
 import styles from 'styles/menu.module.css'
 
-const arrow = /* html */ `<ark-menu-arrow class="${styles.Arrow}"><ark-menu-arrow-tip class="${styles.ArrowTip}"></ark-menu-arrow-tip></ark-menu-arrow>`
+interface Item {
+  value: string
+  label: string
+}
 
-const list = (items: string) => /* html */ `<ark-menu-list class="${styles.List}">${items}</ark-menu-list>`
-
-const menuMarkup = (label: string, items: string, attrs = '', options: { arrow?: boolean } = {}) => /* html */ `
-  <ark-menu ${attrs}>
+const menu = ({ label }: { label: string }, items: string[]) => /* html */ `
+  <ark-menu>
     <ark-menu-trigger>
       <button class="${styles.Trigger}">
         ${label}
@@ -17,16 +18,32 @@ const menuMarkup = (label: string, items: string, attrs = '', options: { arrow?:
       </button>
     </ark-menu-trigger>
     <ark-menu-positioner class="${styles.Positioner}">
-      <ark-menu-content class="${styles.Content}">${options.arrow ? arrow : ''}${list(items)}</ark-menu-content>
+      <ark-menu-content class="${styles.Content}">
+        <ark-menu-list class="${styles.List}">${items.join('')}</ark-menu-list>
+      </ark-menu-content>
     </ark-menu-positioner>
   </ark-menu>`
 
-const item = (value: string, label: string, extra = '') =>
-  /* html */ `<ark-menu-item class="${styles.Item}" value="${value}" ${extra}>${label}</ark-menu-item>`
+const item = ({ value, label }: Item) =>
+  /* html */ `<ark-menu-item class="${styles.Item}" value="${value}">${label}</ark-menu-item>`
+
+const fileItems: Item[] = [
+  { value: 'new', label: 'New File' },
+  { value: 'open', label: 'Open...' },
+  { value: 'save', label: 'Save' },
+]
+
+const editItems: Item[] = [
+  { value: 'undo', label: 'Undo' },
+  { value: 'redo', label: 'Redo' },
+  { value: 'cut', label: 'Cut' },
+  { value: 'copy', label: 'Copy' },
+]
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = /* html */ `<div style="display: flex; gap: 0.5rem">
-    ${menuMarkup('File', `${item('new', 'New File')}${item('open', 'Open...')}${item('save', 'Save')}`)}
-    ${menuMarkup('Edit', `${item('undo', 'Undo')}${item('redo', 'Redo')}${item('cut', 'Cut')}${item('copy', 'Copy')}`)}
+  root.innerHTML = /* html */ `
+  <div style="display: flex; gap: 0.5rem">
+    ${menu({ label: 'File' }, fileItems.map(item))}
+    ${menu({ label: 'Edit' }, editItems.map(item))}
   </div>`
 }

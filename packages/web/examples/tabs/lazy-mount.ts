@@ -2,40 +2,45 @@ import '../../src/components/tabs/index.js'
 
 import styles from 'styles/tabs.module.css'
 
-const panes = [
+interface Pane {
+  value: string
+  label: string
+  content: string
+}
+
+const panes: Pane[] = [
   { value: 'account', label: 'Account', content: 'Make changes to your account here.' },
   { value: 'password', label: 'Password', content: 'Change your password here.' },
   { value: 'billing', label: 'Billing', content: 'Manage your billing and payment details.' },
 ]
 
-const tabsMarkup = (
-  attrs: string,
-  { indicator = false, disabled = '', links = false, lazy = false } = {},
-) => /* html */ `
-  <ark-tabs class="${styles.Root}" ${attrs.includes('value=') ? '' : 'default-value="account"'} ${attrs}>
-    <ark-tabs-list class="${styles.List}">
-      ${panes
-        .map(
-          (pane) => /* html */ `
-        <ark-tabs-trigger value="${pane.value}" ${disabled === pane.value ? 'disabled' : ''}>
-          ${
-            links
-              ? /* html */ `<a class="${styles.Trigger}" href="#${pane.value}">${pane.label}</a>`
-              : /* html */ `<button class="${indicator ? styles.TriggerIndicator : styles.Trigger}">${pane.label}</button>`
-          }
-        </ark-tabs-trigger>`,
-        )
-        .join('')}
-      ${indicator ? /* html */ `<ark-tabs-indicator class="${styles.Indicator}"></ark-tabs-indicator>` : ''}
-    </ark-tabs-list>
-    ${panes
-      .map(
-        (pane) =>
-          /* html */ `<ark-tabs-content class="${styles.Content}" value="${pane.value}">${lazy ? /* html */ `<template>${pane.content}</template>` : pane.content}</ark-tabs-content>`,
-      )
-      .join('')}
-  </ark-tabs>`
+interface TabsProps {
+  defaultValue: string
+  unmountOnExit?: boolean
+}
+
+const attr = (name: string, on?: boolean) => (on ? name : '')
+
+const tabs = ({ defaultValue, unmountOnExit = false }: TabsProps, children: string[]) => /* html */ `
+  <ark-tabs class="${styles.Root}" default-value="${defaultValue}" ${attr('unmount-on-exit', unmountOnExit)}>${children.join('')}</ark-tabs>`
+
+const list = (triggers: string[]) => /* html */ `
+  <ark-tabs-list class="${styles.List}">
+    ${triggers.join('')}
+    <ark-tabs-indicator class="${styles.Indicator}"></ark-tabs-indicator>
+  </ark-tabs-list>`
+
+const trigger = ({ value, label }: Pane) => /* html */ `
+  <ark-tabs-trigger value="${value}">
+    <button class="${styles.TriggerIndicator}">${label}</button>
+  </ark-tabs-trigger>`
+
+const content = ({ value, content }: Pane) => /* html */ `
+  <ark-tabs-content class="${styles.Content}" value="${value}"><template>${content}</template></ark-tabs-content>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = tabsMarkup('unmount-on-exit', { indicator: true, lazy: true })
+  root.innerHTML = tabs({ defaultValue: 'account', unmountOnExit: true }, [
+    list(panes.map(trigger)),
+    ...panes.map(content),
+  ])
 }

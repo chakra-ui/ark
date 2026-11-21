@@ -15,6 +15,14 @@ export function filteredOut(item: Element) {
   return !!query && !textOf(item).toLocaleLowerCase().includes(query)
 }
 
+type MenubarElement = RootElement<{ getMenuContext(): menu.MenubarContext }>
+
+export function menubarOf(el: MenuElement): menu.MenubarContext | undefined {
+  const parent = el.parentElement
+  if (!parent || rootOf(parent, root)) return undefined
+  return rootOf<MenubarElement>(parent, 'ark-menubar')?.api?.getMenuContext()
+}
+
 export const parents = new WeakMap<MenuElement, MenuElement>()
 
 export const submenus = new WeakMap<MenuElement, Set<MenuElement>>()

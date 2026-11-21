@@ -13,13 +13,16 @@ const itemKey = (item: VirtualItem) => item.key
 
 const itemClass = (index: number) => (index % 2 ? `${styles.Item} ${styles.ItemAlt}` : styles.Item)
 
+const scrollTargets = ['top', 'middle', 'bottom']
+
+const scrollButton = (target: string) => /* html */ `
+  <button type="button" class="${styles.Trigger}" data-scroll="${target}">Scroll to ${target}</button>`
+
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
   <div>
     <div class="${styles.Controls}">
-      <button type="button" class="${styles.Trigger}" data-scroll="top">Scroll to top</button>
-      <button type="button" class="${styles.Trigger}" data-scroll="middle">Scroll to middle</button>
-      <button type="button" class="${styles.Trigger}" data-scroll="bottom">Scroll to bottom</button>
+      ${scrollTargets.map(scrollButton).join('')}
     </div>
     <div class="${styles.Root}" data-testid="list">
       <div></div>

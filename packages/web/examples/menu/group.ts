@@ -4,12 +4,10 @@ import '../../src/components/menu/index.js'
 
 import styles from 'styles/menu.module.css'
 
-const arrow = /* html */ `<ark-menu-arrow class="${styles.Arrow}"><ark-menu-arrow-tip class="${styles.ArrowTip}"></ark-menu-arrow-tip></ark-menu-arrow>`
+const attr = (name: string, on?: boolean) => (on ? name : '')
 
-const list = (items: string) => /* html */ `<ark-menu-list class="${styles.List}">${items}</ark-menu-list>`
-
-const menuMarkup = (label: string, items: string, attrs = '', options: { arrow?: boolean } = {}) => /* html */ `
-  <ark-menu ${attrs}>
+const menu = ({ label }: { label: string }, items: string[]) => /* html */ `
+  <ark-menu>
     <ark-menu-trigger>
       <button class="${styles.Trigger}">
         ${label}
@@ -17,24 +15,34 @@ const menuMarkup = (label: string, items: string, attrs = '', options: { arrow?:
       </button>
     </ark-menu-trigger>
     <ark-menu-positioner class="${styles.Positioner}">
-      <ark-menu-content class="${styles.Content}">${options.arrow ? arrow : ''}${list(items)}</ark-menu-content>
+      <ark-menu-content class="${styles.Content}">
+        <ark-menu-list class="${styles.List}">${items.join('')}</ark-menu-list>
+      </ark-menu-content>
     </ark-menu-positioner>
   </ark-menu>`
 
-const item = (value: string, label: string, extra = '') =>
-  /* html */ `<ark-menu-item class="${styles.Item}" value="${value}" ${extra}>${label}</ark-menu-item>`
+const group = ({ name, label }: { name: string; label: string }, items: string[]) => /* html */ `
+  <ark-menu-item-group class="${styles.ItemGroup}" name="${name}">
+    <ark-menu-item-group-label class="${styles.ItemGroupLabel}">${label}</ark-menu-item-group-label>
+    ${items.join('')}
+  </ark-menu-item-group>`
+
+const item = ({ value, label, disabled = false }: { value: string; label: string; disabled?: boolean }) =>
+  /* html */ `<ark-menu-item class="${styles.Item}" value="${value}" ${attr('disabled', disabled)}>${label}</ark-menu-item>`
+
+const separator = () => /* html */ `<ark-menu-separator class="${styles.Separator}"></ark-menu-separator>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = menuMarkup(
-    'Edit',
-    /* html */ `<ark-menu-item-group class="${styles.ItemGroup}" name="clipboard">
-       <ark-menu-item-group-label class="${styles.ItemGroupLabel}">Clipboard</ark-menu-item-group-label>
-       ${item('cut', 'Cut')}${item('copy', 'Copy')}${item('paste', 'Paste', 'disabled')}
-     </ark-menu-item-group>
-     <ark-menu-separator class="${styles.Separator}"></ark-menu-separator>
-     <ark-menu-item-group class="${styles.ItemGroup}" name="history">
-       <ark-menu-item-group-label class="${styles.ItemGroupLabel}">History</ark-menu-item-group-label>
-       ${item('undo', 'Undo')}${item('redo', 'Redo')}
-     </ark-menu-item-group>`,
-  )
+  root.innerHTML = menu({ label: 'Edit' }, [
+    group({ name: 'clipboard', label: 'Clipboard' }, [
+      item({ value: 'cut', label: 'Cut' }),
+      item({ value: 'copy', label: 'Copy' }),
+      item({ value: 'paste', label: 'Paste', disabled: true }),
+    ]),
+    separator(),
+    group({ name: 'history', label: 'History' }, [
+      item({ value: 'undo', label: 'Undo' }),
+      item({ value: 'redo', label: 'Redo' }),
+    ]),
+  ])
 }

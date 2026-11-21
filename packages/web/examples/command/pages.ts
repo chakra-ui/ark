@@ -24,27 +24,32 @@ const settings: Setting[] = [
 
 const chevron = () => createElement(ChevronRight, { 'aria-hidden': 'true' }).outerHTML
 
-const isPage = (setting: Setting) => settings.some((item) => item.parent === setting.value)
+const hasChildren = (value: string) => settings.some((item) => item.parent === value)
 
-const item = (setting: Setting) => /* html */ `
-  <ark-command-item class="${styles.Item}" value="${setting.value}" ${setting.parent ? `parent="${setting.parent}"` : ''}>
-    <ark-command-item-text class="${styles.ItemText}">${setting.label}</ark-command-item-text>
+const item = ({ value, label, parent }: Setting) => /* html */ `
+  <ark-command-item class="${styles.Item}" value="${value}" ${parent ? `parent="${parent}"` : ''}>
+    <ark-command-item-text class="${styles.ItemText}">${label}</ark-command-item-text>
     <span class="${styles.ItemPath}" hidden></span>
-    ${isPage(setting) ? chevron() : ''}
+    ${hasChildren(value) ? chevron() : ''}
   </ark-command-item>`
+
+const crumb = ({ value, label }: { value: string; label: string }) =>
+  /* html */ `<button type="button" data-page="${value}">${label}</button>`
+
+const pathCrumb = (page: { value: string; label: string }) => /* html */ `<span>${chevron()}${crumb(page)}</span>`
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
   <output>Selected: none</output>
   <ark-command class="${styles.Root}">
     <ark-command-label class="${styles.Label}">Settings</ark-command-label>
-    <div class="${styles.Breadcrumb}"><button type="button" data-page="">Home</button></div>
+    <div class="${styles.Breadcrumb}">${crumb({ value: '', label: 'Home' })}</div>
     <ark-command-control class="${styles.Control}">
       ${createElement(Search, { 'aria-hidden': 'true' }).outerHTML}
       <ark-command-input><input class="${styles.Input}" placeholder="Search settings..." aria-label="Search settings" /></ark-command-input>
     </ark-command-control>
     <ark-command-list class="${styles.List}">
-      ${settings.map(item).join('')}
+      ${settings.map((setting) => item(setting)).join('')}
     </ark-command-list>
     <ark-command-empty class="${styles.Empty}">No results found</ark-command-empty>
   </ark-command>`
@@ -69,12 +74,9 @@ export function mount(root: HTMLElement) {
   }
 
   command.addEventListener('pagechange', () => {
-    breadcrumb.innerHTML = /* html */ `<button type="button" data-page="">Home</button>${command.path
-      .map(
-        (page) =>
-          /* html */ `<span>${chevron()}<button type="button" data-page="${page.value}">${page.label}</button></span>`,
-      )
-      .join('')}`
+    breadcrumb.innerHTML = [crumb({ value: '', label: 'Home' }), ...command.path.map((page) => pathCrumb(page))].join(
+      '',
+    )
     input.placeholder = command.page ? 'Search... (Backspace to go back)' : 'Search settings...'
   })
 

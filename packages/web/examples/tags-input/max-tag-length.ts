@@ -4,8 +4,18 @@ import '../../src/components/tags-input/index.js'
 
 import styles from 'styles/tags-input.module.css'
 
-const tagsInputMarkup = (attrs = '', { label = 'Frameworks', placeholder = 'Add Framework' } = {}) => /* html */ `
-  <ark-tags-input class="${styles.Root}" ${attrs}>
+interface TagsInputProps {
+  label?: string
+  placeholder?: string
+  maxLength: number
+}
+
+const tagsInputMarkup = ({
+  label = 'Frameworks',
+  placeholder = 'Add Framework',
+  maxLength,
+}: TagsInputProps) => /* html */ `
+  <ark-tags-input class="${styles.Root}" max-length="${maxLength}">
     <ark-tags-input-label class="${styles.Label}">${label}</ark-tags-input-label>
     <ark-tags-input-control class="${styles.Control}">
       <template>
@@ -24,5 +34,5 @@ const tagsInputMarkup = (attrs = '', { label = 'Frameworks', placeholder = 'Add 
   </ark-tags-input>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = tagsInputMarkup('max-length="10"', { label: 'Frameworks (Max 10 characters)' })
+  root.innerHTML = tagsInputMarkup({ maxLength: 10, label: 'Frameworks (Max 10 characters)' })
 }

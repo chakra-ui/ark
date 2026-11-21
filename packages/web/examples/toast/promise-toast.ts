@@ -18,20 +18,21 @@ const typeStyle = /* html */ `<style>${['info', 'success', 'error', 'warning', '
   .map((type) => `ark-toast:not([data-type='${type}']) [data-icon='${type}'] { display: none; }`)
   .join('\n')}</style>`
 
-const toaster = (body: string) => /* html */ `
+const toaster = (children: string[]) => /* html */ `
   ${typeStyle}
   <ark-toaster>
     <template>
-      <ark-toast class="${styles.Root}">${body}</ark-toast>
+      <ark-toast class="${styles.Root}">${children.join('')}</ark-toast>
     </template>
   </ark-toaster>`
 
-const title = (prefix = '') => /* html */ `<ark-toast-title class="${styles.Title}">${prefix}</ark-toast-title>`
+const title = (children: string[] = []) =>
+  /* html */ `<ark-toast-title class="${styles.Title}">${children.join('')}</ark-toast-title>`
 
 const description = /* html */ `<ark-toast-description class="${styles.Description}"></ark-toast-description>`
 
-const content = (body = `${title()}${description}`, style = '') =>
-  /* html */ `<ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ${style}">${body}</ark-toast-content>`
+const content = ({ style = '' }: { style?: string } = {}, children = [title(), description]) =>
+  /* html */ `<ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ${style}">${children.join('')}</ark-toast-content>`
 
 const closeTrigger = /* html */ `<ark-toast-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-toast-close-trigger>`
 
@@ -56,7 +57,7 @@ const connect = (host: HTMLElement, store: toast.Store<string>) => {
 export function mount(root: HTMLElement) {
   const host = fragment(/* html */ `
     <button type="button" class="${button.Root}">Upload file</button>
-    ${toaster(`${content(`${title(typeIndicators(['loading', 'success', 'error']))}${description}`)}${closeTrigger}`)}`)
+    ${toaster([content({}, [title(typeIndicators(['loading', 'success', 'error'])), description]), closeTrigger])}`)
   onClick(host, 'button', () => {
     store.promise(uploadFile, {
       loading: { title: 'Uploading file...', description: 'Please wait while we upload your document.' },
@@ -76,10 +77,15 @@ const indicatorIcons = {
   loading: LoaderCircle,
 }
 
-const indicator = (name: keyof typeof indicatorIcons, attrs: Record<string, string> = {}) =>
+interface IndicatorProps {
+  name: keyof typeof indicatorIcons
+  attrs?: Record<string, string>
+}
+
+const indicator = ({ name, attrs = {} }: IndicatorProps) =>
   createElement(indicatorIcons[name], { 'aria-hidden': 'true', class: styles.Indicator, ...attrs }).outerHTML
 
 const typeIndicators = (types: (keyof typeof indicatorIcons)[]) =>
-  types
-    .map((type) => indicator(type, { 'data-icon': type, ...(type === 'loading' ? { 'data-type': 'loading' } : {}) }))
-    .join('')
+  types.map((type) =>
+    indicator({ name: type, attrs: { 'data-icon': type, ...(type === 'loading' ? { 'data-type': 'loading' } : {}) } }),
+  )

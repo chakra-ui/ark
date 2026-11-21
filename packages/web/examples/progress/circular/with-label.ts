@@ -2,9 +2,9 @@ import '../../../src/components/progress/index.js'
 
 import styles from 'styles/progress-circular.module.css'
 
-const circular = (attrs: string, { label = false } = {}) => /* html */ `
-  <ark-progress class="${styles.Root}" ${attrs}>
-    ${label ? /* html */ `<ark-progress-label class="${styles.Label}">Label</ark-progress-label>` : ''}
+const circular = ({ defaultValue, label }: { defaultValue: number; label?: string }) => /* html */ `
+  <ark-progress class="${styles.Root}" default-value="${defaultValue}">
+    ${label ? /* html */ `<ark-progress-label class="${styles.Label}">${label}</ark-progress-label>` : ''}
     <div class="${styles.CircleContainer}">
       <ark-progress-circle>
         <svg class="${styles.Circle}">
@@ -17,5 +17,5 @@ const circular = (attrs: string, { label = false } = {}) => /* html */ `
   </ark-progress>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = circular('default-value="42"', { label: true })
+  root.innerHTML = circular({ defaultValue: 42, label: 'Label' })
 }

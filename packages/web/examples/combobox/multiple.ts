@@ -4,9 +4,13 @@ import '../../src/components/combobox/index.js'
 
 import styles from 'styles/combobox.module.css'
 
-const comboboxMarkup = (attrs: string, list: string, data = '') => /* html */ `
-  <ark-combobox class="${styles.Root}" ${attrs}>
-    ${data}
+interface ComboboxProps {
+  multiple?: boolean
+  selectionBehavior: 'clear' | 'replace' | 'preserve'
+}
+
+const comboboxMarkup = ({ multiple, selectionBehavior }: ComboboxProps, children: string[]) => /* html */ `
+  <ark-combobox class="${styles.Root}" ${multiple ? 'multiple' : ''} selection-behavior="${selectionBehavior}">
     <ark-combobox-label class="${styles.Label}">Favorite Fruit</ark-combobox-label>
     <ark-combobox-control class="${styles.Control}">
       <ark-combobox-input><input class="${styles.Input}" placeholder="e.g. Apple" /></ark-combobox-input>
@@ -18,12 +22,23 @@ const comboboxMarkup = (attrs: string, list: string, data = '') => /* html */ `
     <ark-combobox-positioner class="${styles.Positioner}">
       <ark-combobox-content class="${styles.Content}">
         <ark-combobox-empty class="${styles.Empty}">No results found</ark-combobox-empty>
-        <ark-combobox-list class="${styles.List}">${list}</ark-combobox-list>
+        <ark-combobox-list class="${styles.List}">${children.join('')}</ark-combobox-list>
       </ark-combobox-content>
     </ark-combobox-positioner>
   </ark-combobox>`
 
-const fruits = [
+interface Item {
+  value: string
+  label: string
+}
+
+const item = ({ value, label }: Item) => /* html */ `
+  <ark-combobox-item class="${styles.Item}" value="${value}">
+    <ark-combobox-item-text class="${styles.ItemText}">${label}</ark-combobox-item-text>
+    <ark-combobox-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-combobox-item-indicator>
+  </ark-combobox-item>`
+
+const fruits: Item[] = [
   { label: 'Apple', value: 'apple' },
   { label: 'Banana', value: 'banana' },
   { label: 'Orange', value: 'orange' },
@@ -32,15 +47,9 @@ const fruits = [
   { label: 'Strawberry', value: 'strawberry' },
 ]
 
-const item = (value = '', label = '') => /* html */ `
-  <ark-combobox-item class="${styles.Item}" ${value ? `value="${value}"` : ''}>
-    <ark-combobox-item-text class="${styles.ItemText}">${label}</ark-combobox-item-text>
-    <ark-combobox-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-combobox-item-indicator>
-  </ark-combobox-item>`
-
 export function mount(root: HTMLElement) {
   root.innerHTML = comboboxMarkup(
-    `multiple selection-behavior="clear"`,
-    fruits.map((fruit) => item(fruit.value, fruit.label)).join(''),
+    { multiple: true, selectionBehavior: 'clear' },
+    fruits.map((fruit) => item(fruit)),
   )
 }

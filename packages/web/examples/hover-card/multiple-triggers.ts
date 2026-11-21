@@ -26,7 +26,7 @@ const profiles = [
   },
 ]
 
-const trigger = (text: string, value?: string) =>
+const trigger = ({ text, value }: { text: string; value?: string }) =>
   /* html */ `<ark-hover-card-trigger${value ? ` value="${value}"` : ''}><a href="#${value ? '' : 'profile'}" class="${styles.Trigger}">${text}</a></ark-hover-card-trigger>`
 
 const fragment = (html: string) => {
@@ -35,11 +35,11 @@ const fragment = (html: string) => {
   return host
 }
 
-const card = (body: string) => /* html */ `
+const card = (children: string[]) => /* html */ `
   <ark-hover-card-positioner class="${styles.Positioner}">
     <ark-hover-card-content class="${styles.Content}">
       <ark-hover-card-arrow class="${styles.Arrow}"><ark-hover-card-arrow-tip class="${styles.ArrowTip}"></ark-hover-card-arrow-tip></ark-hover-card-arrow>
-      ${body}
+      ${children.join('')}
     </ark-hover-card-content>
   </ark-hover-card-positioner>`
 
@@ -58,11 +58,11 @@ const profileBody = (profile: Profile) => /* html */ `
   </div>`
 
 export function mount(root: HTMLElement) {
-  const [sarah, alex, jordan] = profiles.map((profile) => trigger(profile.username, profile.id))
+  const [sarah, alex, jordan] = profiles.map((profile) => trigger({ text: profile.username, value: profile.id }))
   const host = fragment(/* html */ `
     <ark-hover-card>
       <p class="${styles.Paragraph}">Reviewed by ${sarah}, ${alex}, and ${jordan}</p>
-      ${card('<div data-profile></div>')}
+      ${card([/* html */ `<div data-profile></div>`])}
     </ark-hover-card>`)
   host.querySelector('ark-hover-card')!.addEventListener('triggervaluechange', (event) => {
     const profile = profiles.find((profile) => profile.id === event.detail.value)

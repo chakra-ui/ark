@@ -10,22 +10,33 @@ import dialog from 'styles/dialog.module.css'
 
 import button from 'styles/button.module.css'
 
+const item = ({ value, label }: { value: string; label: string }) =>
+  /* html */ `<ark-menu-item class="${styles.Item}" value="${value}">${label}</ark-menu-item>`
+
+const separator = () => /* html */ `<ark-menu-separator class="${styles.Separator}"></ark-menu-separator>`
+
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
-    
-  <ark-menu >
-    <ark-menu-trigger>
-      <button class="${styles.Trigger}">
-        Actions
-        <ark-menu-indicator class="${styles.Indicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-indicator>
-      </button>
-    </ark-menu-trigger>
-    <ark-menu-positioner class="${styles.Positioner}">
-      <ark-menu-content class="${styles.Content}"><ark-menu-list class="${styles.List}"><ark-menu-item class="${styles.Item}" value="edit" >Edit</ark-menu-item><ark-menu-item class="${styles.Item}" value="duplicate" >Duplicate</ark-menu-item>
-       <ark-menu-separator class="${styles.Separator}"></ark-menu-separator>
-       <ark-menu-item class="${styles.Item}" value="delete" >Delete...</ark-menu-item></ark-menu-list></ark-menu-content>
-    </ark-menu-positioner>
-  </ark-menu>
+    <ark-menu>
+      <ark-menu-trigger>
+        <button class="${styles.Trigger}">
+          Actions
+          <ark-menu-indicator class="${styles.Indicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-indicator>
+        </button>
+      </ark-menu-trigger>
+      <ark-menu-positioner class="${styles.Positioner}">
+        <ark-menu-content class="${styles.Content}">
+          <ark-menu-list class="${styles.List}">
+            ${[
+              item({ value: 'edit', label: 'Edit' }),
+              item({ value: 'duplicate', label: 'Duplicate' }),
+              separator(),
+              item({ value: 'delete', label: 'Delete...' }),
+            ].join('')}
+          </ark-menu-list>
+        </ark-menu-content>
+      </ark-menu-positioner>
+    </ark-menu>
     <ark-dialog role="alertdialog">
       <ark-dialog-backdrop class="${dialog.Backdrop}"></ark-dialog-backdrop>
       <ark-dialog-positioner class="${dialog.Positioner}">

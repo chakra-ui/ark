@@ -16,20 +16,21 @@ const typeStyle = /* html */ `<style>${['info', 'success', 'error', 'warning', '
   .map((type) => `ark-toast:not([data-type='${type}']) [data-icon='${type}'] { display: none; }`)
   .join('\n')}</style>`
 
-const toaster = (body: string) => /* html */ `
+const toaster = (children: string[]) => /* html */ `
   ${typeStyle}
   <ark-toaster>
     <template>
-      <ark-toast class="${styles.Root}">${body}</ark-toast>
+      <ark-toast class="${styles.Root}">${children.join('')}</ark-toast>
     </template>
   </ark-toaster>`
 
-const title = (prefix = '') => /* html */ `<ark-toast-title class="${styles.Title}">${prefix}</ark-toast-title>`
+const title = (children: string[] = []) =>
+  /* html */ `<ark-toast-title class="${styles.Title}">${children.join('')}</ark-toast-title>`
 
 const description = /* html */ `<ark-toast-description class="${styles.Description}"></ark-toast-description>`
 
-const content = (body = `${title()}${description}`, style = '') =>
-  /* html */ `<ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ${style}">${body}</ark-toast-content>`
+const content = ({ style = '' }: { style?: string } = {}, children = [title(), description]) =>
+  /* html */ `<ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ${style}">${children.join('')}</ark-toast-content>`
 
 const onClick = (host: HTMLElement, selector: string, listener: (el: HTMLElement) => void) => {
   for (const el of host.querySelectorAll<HTMLElement>(selector)) el.addEventListener('click', () => listener(el))
@@ -49,7 +50,7 @@ export function mount(root: HTMLElement) {
       <button type="button" class="${button.Root}" data-create>Send message</button>
       <button type="button" class="${button.Root}" data-update>Mark as sent</button>
     </div>
-    ${toaster(content())}`)
+    ${toaster([content()])}`)
   onClick(host, '[data-create]', () => {
     id = store.create({
       title: 'Sending message...',

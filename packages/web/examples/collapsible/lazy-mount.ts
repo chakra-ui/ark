@@ -4,6 +4,8 @@ import '../../src/components/collapsible/index.js'
 
 import styles from 'styles/collapsible.module.css'
 
+const attr = (name: string, on?: boolean) => (on ? name : '')
+
 const trigger = (label: string) => /* html */ `
   <ark-collapsible-trigger>
     <button class="${styles.Trigger}">
@@ -12,14 +14,21 @@ const trigger = (label: string) => /* html */ `
     </button>
   </ark-collapsible-trigger>`
 
-const collapsible = (attrs: string, label: string, body: string, className = styles.Root) => /* html */ `
-  <ark-collapsible class="${className}" ${attrs}>
+interface CollapsibleProps {
+  label: string
+  unmountOnExit?: boolean
+}
+
+const collapsible = ({ label, unmountOnExit }: CollapsibleProps, children: string[]) => /* html */ `
+  <ark-collapsible class="${styles.Root}" ${attr('unmount-on-exit', unmountOnExit)}>
     ${trigger(label)}
-    <ark-collapsible-content class="${styles.Content}">${body}</ark-collapsible-content>
+    <ark-collapsible-content class="${styles.Content}">${children.join('')}</ark-collapsible-content>
   </ark-collapsible>`
 
 const about = /* html */ `<div class="${styles.Body}">Ark UI is a headless component library for building accessible, high-quality UI components for React, Solid, Vue, and Svelte.</div>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = collapsible('unmount-on-exit', 'What is Ark UI?', /* html */ `<template>${about}</template>`)
+  root.innerHTML = collapsible({ label: 'What is Ark UI?', unmountOnExit: true }, [
+    /* html */ `<template>${about}</template>`,
+  ])
 }

@@ -5,38 +5,55 @@ import '../../src/components/timer/index.js'
 import button from 'styles/button.module.css'
 import styles from 'styles/timer.module.css'
 
+interface Segment {
+  type: string
+  label: string
+}
+
+interface Action {
+  action: string
+  icon: typeof Play
+  label: string
+}
+
+const segments: Segment[] = ['days', 'hours', 'minutes', 'seconds'].map((type) => ({ type, label: type }))
+
+const actions: Action[] = [
+  { action: 'start', icon: Play, label: 'Play' },
+  { action: 'resume', icon: Play, label: 'Resume' },
+  { action: 'pause', icon: Pause, label: 'Pause' },
+]
+
 const icon = (node: typeof Play) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
-const item = (type: string, label: string) => /* html */ `
+const timerItem = ({ type, label }: Segment) => /* html */ `
   <div class="${styles.ItemGroup}">
     <ark-timer-item class="${styles.Item}" type="${type}"></ark-timer-item>
     <span class="${styles.ItemLabel}">${label}</span>
   </div>`
 
-const separator = /* html */ `<ark-timer-separator class="${styles.Separator}">:</ark-timer-separator>`
+const separator = (text: string) =>
+  /* html */ `<ark-timer-separator class="${styles.Separator}">${text}</ark-timer-separator>`
+
+const area = ({ segments, separator: text = ':' }: { segments: Segment[]; separator?: string }) => /* html */ `
+  <ark-timer-area class="${styles.Area}">
+    ${segments.map(timerItem).join(separator(text))}
+  </ark-timer-area>`
+
+const actionTrigger = ({ action, icon: node, label }: Action) => /* html */ `
+  <ark-timer-action-trigger action="${action}">
+    <button class="${button.Root}">${icon(node)} ${label}</button>
+  </ark-timer-action-trigger>`
+
+const control = (actions: Action[]) => /* html */ `
+  <ark-timer-control class="hstack">
+    ${actions.map(actionTrigger).join('')}
+  </ark-timer-control>`
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
   <ark-timer class="stack" target-ms="${60 * 60 * 1000}" start-ms="${40 * 60 * 1000}">
-    <ark-timer-area class="${styles.Area}">
-      ${item('days', 'days')}
-      ${separator}
-      ${item('hours', 'hours')}
-      ${separator}
-      ${item('minutes', 'minutes')}
-      ${separator}
-      ${item('seconds', 'seconds')}
-    </ark-timer-area>
-    <ark-timer-control class="hstack">
-      <ark-timer-action-trigger action="start">
-        <button class="${button.Root}">${icon(Play)} Play</button>
-      </ark-timer-action-trigger>
-      <ark-timer-action-trigger action="resume">
-        <button class="${button.Root}">${icon(Play)} Resume</button>
-      </ark-timer-action-trigger>
-      <ark-timer-action-trigger action="pause">
-        <button class="${button.Root}">${icon(Pause)} Pause</button>
-      </ark-timer-action-trigger>
-    </ark-timer-control>
+    ${area({ segments })}
+    ${control(actions)}
   </ark-timer>`
 }

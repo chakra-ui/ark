@@ -6,13 +6,39 @@ import '../../src/components/dialog/index.js'
 import button from 'styles/button.module.css'
 import styles from 'styles/command.module.css'
 
-const icon = (node: Parameters<typeof createElement>[0]) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
+type IconNode = Parameters<typeof createElement>[0]
 
-const item = (value: string, label: string, node: Parameters<typeof createElement>[0], shortcut: string) => /* html */ `
+const icon = (node: IconNode) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
+
+interface CommandItem {
+  value: string
+  label: string
+  icon: IconNode
+  shortcut: string
+}
+
+const commands: CommandItem[] = [
+  { value: 'new-file', label: 'New file', icon: FilePlus, shortcut: '⌘N' },
+  { value: 'open-file', label: 'Open file', icon: FolderOpen, shortcut: '⌘O' },
+  { value: 'save', label: 'Save', icon: Save, shortcut: '⌘S' },
+  { value: 'terminal', label: 'Toggle terminal', icon: Terminal, shortcut: '⌃`' },
+  { value: 'settings', label: 'Open settings', icon: Settings, shortcut: '⌘,' },
+]
+
+const hints = [
+  { key: '↑↓', label: 'Navigate' },
+  { key: icon(CornerDownLeft), label: 'Run' },
+  { key: 'esc', label: 'Close' },
+]
+
+const item = ({ value, label, icon: node, shortcut }: CommandItem) => /* html */ `
   <ark-command-item class="${styles.Item}" value="${value}">
     <span class="${styles.ItemStart}">${icon(node)}<ark-command-item-text class="${styles.ItemText}">${label}</ark-command-item-text></span>
     <kbd class="${styles.Shortcut}">${shortcut}</kbd>
   </ark-command-item>`
+
+const hint = ({ key, label }: { key: string; label: string }) => /* html */ `
+  <span class="${styles.FooterHint}"><kbd class="${styles.Shortcut}">${key}</kbd> ${label}</span>`
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
@@ -29,18 +55,12 @@ export function mount(root: HTMLElement) {
             <ark-command-input><input class="${styles.Input}" placeholder="Type a command or search..." aria-label="Search commands" /></ark-command-input>
           </ark-command-control>
           <ark-command-list class="${styles.List}">
-            ${item('new-file', 'New file', FilePlus, '⌘N')}
-            ${item('open-file', 'Open file', FolderOpen, '⌘O')}
-            ${item('save', 'Save', Save, '⌘S')}
-            ${item('terminal', 'Toggle terminal', Terminal, '⌃`')}
-            ${item('settings', 'Open settings', Settings, '⌘,')}
+            ${commands.map((command) => item(command)).join('')}
           </ark-command-list>
           <ark-command-empty class="${styles.Empty}">No commands found</ark-command-empty>
         </ark-command>
         <div class="${styles.Footer}">
-          <span class="${styles.FooterHint}"><kbd class="${styles.Shortcut}">↑↓</kbd> Navigate</span>
-          <span class="${styles.FooterHint}"><kbd class="${styles.Shortcut}">${icon(CornerDownLeft)}</kbd> Run</span>
-          <span class="${styles.FooterHint}"><kbd class="${styles.Shortcut}">esc</kbd> Close</span>
+          ${hints.map((entry) => hint(entry)).join('')}
         </div>
       </ark-dialog-content>
     </ark-dialog-positioner>

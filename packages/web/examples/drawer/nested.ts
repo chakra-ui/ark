@@ -4,12 +4,20 @@ import '../../src/components/drawer/index.js'
 
 import styles from 'styles/drawer-nested.module.css'
 
+interface Field {
+  id: string
+  label: string
+  value: string
+  rows?: number
+}
+
 interface Sheet {
   name: string
   title: string
   description: string
   backdrop?: boolean
-  body?: string
+  list?: string[]
+  fields?: Field[]
   next?: { name: string; label: string }
   close: string
 }
@@ -27,12 +35,7 @@ const sheets: Sheet[] = [
     name: 'security',
     title: 'Security',
     description: 'Review sign-in activity and update your security preferences.',
-    body: /* html */ `
-      <ul class="${styles.list}">
-        <li>Passkeys enabled</li>
-        <li>2FA via authenticator app</li>
-        <li>3 signed-in devices</li>
-      </ul>`,
+    list: ['Passkeys enabled', '2FA via authenticator app', '3 signed-in devices'],
     next: { name: 'advanced', label: 'Advanced options' },
     close: 'Close',
   },
@@ -40,34 +43,39 @@ const sheets: Sheet[] = [
     name: 'advanced',
     title: 'Advanced',
     description: 'This drawer is taller to demonstrate variable-height stacking.',
-    body: /* html */ `
-      <div class="${styles.field}">
-        <label class="${styles.label}" for="device-name">Device name</label>
-        <input id="device-name" class="${styles.input}" value="Personal laptop" />
-      </div>
-      <div class="${styles.field}">
-        <label class="${styles.label}" for="notes">Notes</label>
-        <textarea id="notes" class="${styles.textarea}" rows="3">Rotate recovery codes and revoke older sessions.</textarea>
-      </div>`,
+    fields: [
+      { id: 'device-name', label: 'Device name', value: 'Personal laptop' },
+      { id: 'notes', label: 'Notes', value: 'Rotate recovery codes and revoke older sessions.', rows: 3 },
+    ],
     close: 'Done',
   },
 ]
 
-const backdropOf = (sheet: Sheet) => {
-  return sheet.backdrop ? /* html */ `<ark-drawer-backdrop class="${styles.backdrop}"></ark-drawer-backdrop>` : ''
-}
+const list = (items: string[]) => /* html */ `
+  <ul class="${styles.list}">
+    ${items.map((item) => /* html */ `<li>${item}</li>`).join('')}
+  </ul>`
 
-const nextOf = (sheet: Sheet) => {
-  if (!sheet.next) return ''
-  return /* html */ `
-    <div class="${styles.actionsLeft}">
-      <button class="${styles.ghostButton}" data-open="${sheet.next.name}">${sheet.next.label}</button>
-    </div>`
-}
+const field = ({ id, label, value, rows }: Field) => /* html */ `
+  <div class="${styles.field}">
+    <label class="${styles.label}" for="${id}">${label}</label>
+    ${
+      rows
+        ? /* html */ `<textarea id="${id}" class="${styles.textarea}" rows="${rows}">${value}</textarea>`
+        : /* html */ `<input id="${id}" class="${styles.input}" value="${value}" />`
+    }
+  </div>`
 
-const drawerOf = (sheet: Sheet) => /* html */ `
+const backdrop = () => /* html */ `<ark-drawer-backdrop class="${styles.backdrop}"></ark-drawer-backdrop>`
+
+const nextAction = ({ name, label }: { name: string; label: string }) => /* html */ `
+  <div class="${styles.actionsLeft}">
+    <button class="${styles.ghostButton}" data-open="${name}">${label}</button>
+  </div>`
+
+const drawer = (sheet: Sheet) => /* html */ `
   <ark-drawer data-name="${sheet.name}">
-    ${backdropOf(sheet)}
+    ${sheet.backdrop ? backdrop() : ''}
     <ark-drawer-positioner class="${styles.positioner}">
       <ark-drawer-content class="${styles.contentHost}">
         <div class="${styles.popup}">
@@ -77,9 +85,10 @@ const drawerOf = (sheet: Sheet) => /* html */ `
           <div class="${styles.content}">
             <ark-drawer-title class="${styles.title}">${sheet.title}</ark-drawer-title>
             <ark-drawer-description class="${styles.description}">${sheet.description}</ark-drawer-description>
-            ${sheet.body ?? ''}
+            ${sheet.list ? list(sheet.list) : ''}
+            ${sheet.fields ? sheet.fields.map(field).join('') : ''}
             <div class="${styles.actions}">
-              ${nextOf(sheet)}
+              ${sheet.next ? nextAction(sheet.next) : ''}
               <ark-drawer-close-trigger><button class="${styles.button}">${sheet.close}</button></ark-drawer-close-trigger>
             </div>
           </div>
@@ -92,7 +101,7 @@ export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
   <div class="${styles.main}">
     <button class="${styles.button}" data-open="account">Open drawer stack</button>
-    ${sheets.map(drawerOf).join('')}
+    ${sheets.map(drawer).join('')}
   </div>`
 
   for (const button of root.querySelectorAll<HTMLButtonElement>('[data-open]')) {

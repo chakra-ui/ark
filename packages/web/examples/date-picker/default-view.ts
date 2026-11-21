@@ -6,63 +6,36 @@ import button from 'styles/button.module.css'
 
 import styles from 'styles/date-picker.module.css'
 
-interface ViewOptions {
-  gridTriggers?: boolean
-  dayFooter?: string
-}
+const attr = (name: string, value?: string | number | boolean) =>
+  value === undefined || value === false ? '' : value === true ? name : `${name}="${value}"`
 
-interface Options extends ViewOptions {
-  label?: string
-  control?: string
-  afterControl?: string
-}
+const icon = (node: typeof Calendar) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
-const input = (index?: number) =>
-  /* html */ `<ark-date-picker-input${index == null ? '' : ` index="${index}"`}><input class="${styles.Input}" /></ark-date-picker-input>`
+const input = ({ index }: { index?: number } = {}) =>
+  /* html */ `<ark-date-picker-input ${attr('index', index)}><input class="${styles.Input}" /></ark-date-picker-input>`
 
-const trigger = /* html */ `<ark-date-picker-trigger><button class="${styles.Trigger}">${createElement(Calendar, { 'aria-hidden': 'true' }).outerHTML}</button></ark-date-picker-trigger>`
+const trigger = () =>
+  /* html */ `<ark-date-picker-trigger><button class="${styles.Trigger}">${icon(Calendar)}</button></ark-date-picker-trigger>`
 
-const clearTrigger = /* html */ `<ark-date-picker-clear-trigger><button class="${button.Root}">Clear</button></ark-date-picker-clear-trigger>`
+const clearTrigger = ({ label = 'Clear' }: { label?: string } = {}) =>
+  /* html */ `<ark-date-picker-clear-trigger><button class="${button.Root}">${label}</button></ark-date-picker-clear-trigger>`
 
-const control = (body = `${input()}${trigger}${clearTrigger}`) =>
-  /* html */ `<ark-date-picker-control class="${styles.Control}">${body}</ark-date-picker-control>`
+const control = (children: string[]) =>
+  /* html */ `<ark-date-picker-control class="${styles.Control}">${children.join('')}</ark-date-picker-control>`
 
-const content = (body: string) => /* html */ `
+const content = (children: string[]) => /* html */ `
   <ark-date-picker-positioner class="${styles.Positioner}">
-    <ark-date-picker-content class="${styles.Content}">${body}</ark-date-picker-content>
+    <ark-date-picker-content class="${styles.Content}">${children.join('')}</ark-date-picker-content>
   </ark-date-picker-positioner>`
 
-const viewControl = (
-  rangeText = /* html */ `<ark-date-picker-view-trigger><button class="${styles.ViewTrigger}"><ark-date-picker-range-text></ark-date-picker-range-text></button></ark-date-picker-view-trigger>`,
-) => /* html */ `
+const viewControl = () => /* html */ `
   <ark-date-picker-view-control class="${styles.ViewControl}">
-    <ark-date-picker-prev-trigger><button class="${styles.PrevTrigger}">${createElement(ChevronLeft, { 'aria-hidden': 'true' }).outerHTML}</button></ark-date-picker-prev-trigger>
-    ${rangeText}
-    <ark-date-picker-next-trigger><button class="${styles.NextTrigger}">${createElement(ChevronRight, { 'aria-hidden': 'true' }).outerHTML}</button></ark-date-picker-next-trigger>
+    <ark-date-picker-prev-trigger><button class="${styles.PrevTrigger}">${icon(ChevronLeft)}</button></ark-date-picker-prev-trigger>
+    <ark-date-picker-view-trigger><button class="${styles.ViewTrigger}"><ark-date-picker-range-text></ark-date-picker-range-text></button></ark-date-picker-view-trigger>
+    <ark-date-picker-next-trigger><button class="${styles.NextTrigger}">${icon(ChevronRight)}</button></ark-date-picker-next-trigger>
   </ark-date-picker-view-control>`
 
-const dayTable = (attrs = '') => /* html */ `
-  <ark-date-picker-table class="${styles.Table}" ${attrs}>
-    <ark-date-picker-table-head>
-      <ark-date-picker-table-row>
-        <template><ark-date-picker-table-header class="${styles.TableHeader}"></ark-date-picker-table-header></template>
-      </ark-date-picker-table-row>
-    </ark-date-picker-table-head>
-    <ark-date-picker-table-body>
-      <template>
-        <ark-date-picker-table-row>
-          <template>
-            <ark-date-picker-table-cell class="${styles.TableCell}">
-              <ark-date-picker-table-cell-trigger class="${styles.TableCellTrigger}"></ark-date-picker-table-cell-trigger>
-            </ark-date-picker-table-cell>
-          </template>
-        </ark-date-picker-table-row>
-      </template>
-    </ark-date-picker-table-body>
-  </ark-date-picker-table>`
-
-const gridTable = (attrs: string, triggerClass: string) => /* html */ `
-  <ark-date-picker-table class="${styles.Table}" ${attrs}>
+const tableBody = ({ triggerClass }: { triggerClass: string }) => /* html */ `
     <ark-date-picker-table-body>
       <template>
         <ark-date-picker-table-row>
@@ -73,35 +46,65 @@ const gridTable = (attrs: string, triggerClass: string) => /* html */ `
           </template>
         </ark-date-picker-table-row>
       </template>
-    </ark-date-picker-table-body>
+    </ark-date-picker-table-body>`
+
+const dayTable = ({ offset }: { offset?: number } = {}) => /* html */ `
+  <ark-date-picker-table class="${styles.Table}" ${attr('offset', offset)}>
+    <ark-date-picker-table-head>
+      <ark-date-picker-table-row>
+        <template><ark-date-picker-table-header class="${styles.TableHeader}"></ark-date-picker-table-header></template>
+      </ark-date-picker-table-row>
+    </ark-date-picker-table-head>
+    ${tableBody({ triggerClass: styles.TableCellTrigger })}
   </ark-date-picker-table>`
 
-const views = ({ gridTriggers = false, dayFooter = '' }: ViewOptions = {}) => /* html */ `
+interface GridTableProps {
+  columns: number
+  format?: 'short' | 'long'
+  triggerClass: string
+}
+
+const gridTable = ({ columns, format, triggerClass }: GridTableProps) => /* html */ `
+  <ark-date-picker-table class="${styles.Table}" ${attr('columns', columns)} ${attr('format', format)}>
+    ${tableBody({ triggerClass })}
+  </ark-date-picker-table>`
+
+const views = ({ gridTriggers = false }: { gridTriggers?: boolean } = {}) => /* html */ `
   <ark-date-picker-view view="day" class="${styles.View}">
     ${viewControl()}
     ${dayTable()}
-    ${dayFooter}
   </ark-date-picker-view>
   <ark-date-picker-view view="month" class="${styles.View}">
     ${viewControl()}
-    ${gridTable('columns="4" format="short"', gridTriggers ? styles.MonthTableCellTrigger : styles.TableCellTrigger)}
+    ${gridTable({
+      columns: 4,
+      format: 'short',
+      triggerClass: gridTriggers ? styles.MonthTableCellTrigger : styles.TableCellTrigger,
+    })}
   </ark-date-picker-view>
   <ark-date-picker-view view="year" class="${styles.View}">
     ${viewControl()}
-    ${gridTable('columns="4"', gridTriggers ? styles.YearTableCellTrigger : styles.TableCellTrigger)}
+    ${gridTable({ columns: 4, triggerClass: gridTriggers ? styles.YearTableCellTrigger : styles.TableCellTrigger })}
   </ark-date-picker-view>`
 
-const datePickerMarkup = (
-  attrs: string,
-  { label = 'Label', control: ctrl = control(), afterControl = '', ...rest }: Options = {},
+interface DatePickerProps {
+  label?: string
+  defaultView?: 'day' | 'month' | 'year'
+  gridTriggers?: boolean
+}
+
+const datePicker = (
+  { label = 'Label', defaultView, gridTriggers = false }: DatePickerProps,
+  children: string[],
 ) => /* html */ `
-  <ark-date-picker class="${styles.Root}" ${attrs}>
+  <ark-date-picker class="${styles.Root}" ${attr('default-view', defaultView)}>
     <ark-date-picker-label class="${styles.Label}">${label}</ark-date-picker-label>
-    ${ctrl}
-    ${afterControl}
-    ${content(views(rest))}
+    ${children.join('')}
+    ${content([views({ gridTriggers })])}
   </ark-date-picker>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = datePickerMarkup('default-view="month"', { gridTriggers: true })
+  root.innerHTML = datePicker({ defaultView: 'month', gridTriggers: true }, [
+    control([input(), trigger(), clearTrigger()]),
+  ])
 }

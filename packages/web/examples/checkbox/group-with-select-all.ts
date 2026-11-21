@@ -4,65 +4,49 @@ import '../../src/components/checkbox/index.js'
 
 import styles from 'styles/checkbox.module.css'
 
-import type { CheckedState } from '@zag-js/checkbox'
+interface Framework {
+  label: string
+  value: string
+}
 
-const frameworks = [
+const frameworks: Framework[] = [
   { label: 'React', value: 'react' },
   { label: 'Solid', value: 'solid' },
   { label: 'Vue', value: 'vue' },
 ]
 
+const checkIcon = createElement(Check, { 'aria-hidden': 'true' }).outerHTML
+
+const minusIcon = createElement(Minus, { 'aria-hidden': 'true' }).outerHTML
+
 const json = (value: string[]) => JSON.stringify(value)
+
+const group = (
+  { value, name, style }: { value: string; name: string; style?: string },
+  children: string[],
+) => /* html */ `
+  <ark-checkbox-group class="${styles.Group}" value="${value}" name="${name}" ${style ? `style="${style}"` : ''}>
+    ${children.join('')}
+  </ark-checkbox-group>`
+
+const checkbox = ({ label, value, checked }: Framework & { checked?: boolean }) => /* html */ `
+  <ark-checkbox value="${value}" ${checked === undefined ? '' : `checked="${checked}"`}>
+    <label class="${styles.Root}">
+      <ark-checkbox-control class="${styles.Control}">
+        <ark-checkbox-indicator class="${styles.Indicator}">${checkIcon}</ark-checkbox-indicator>
+        <ark-checkbox-indicator class="${styles.Indicator}" indeterminate>${minusIcon}</ark-checkbox-indicator>
+      </ark-checkbox-control>
+      <ark-checkbox-label class="${styles.Label}">${label}</ark-checkbox-label>
+      <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
+    </label>
+  </ark-checkbox>`
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
     <div style="display: flex; flex-direction: column; gap: 10px">
       <output>Selected: []</output>
-      
-  <ark-checkbox value="all" checked="false">
-    <label class="${styles.Root}">
-      <ark-checkbox-control class="${styles.Control}">
-        <ark-checkbox-indicator class="${styles.Indicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-checkbox-indicator>
-        <ark-checkbox-indicator class="${styles.Indicator}" indeterminate>${createElement(Minus, { 'aria-hidden': 'true' }).outerHTML}</ark-checkbox-indicator>
-      </ark-checkbox-control>
-      <ark-checkbox-label class="${styles.Label}">JSX Frameworks</ark-checkbox-label>
-      <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
-    </label>
-  </ark-checkbox>
-      
-  <ark-checkbox-group class="${styles.Group}" value="" name="framework" style="margin-inline-start: 1rem">
-    
-  <ark-checkbox value="react">
-    <label class="${styles.Root}">
-      <ark-checkbox-control class="${styles.Control}">
-        <ark-checkbox-indicator class="${styles.Indicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-checkbox-indicator>
-        <ark-checkbox-indicator class="${styles.Indicator}" indeterminate>${createElement(Minus, { 'aria-hidden': 'true' }).outerHTML}</ark-checkbox-indicator>
-      </ark-checkbox-control>
-      <ark-checkbox-label class="${styles.Label}">React</ark-checkbox-label>
-      <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
-    </label>
-  </ark-checkbox>
-  <ark-checkbox value="solid">
-    <label class="${styles.Root}">
-      <ark-checkbox-control class="${styles.Control}">
-        <ark-checkbox-indicator class="${styles.Indicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-checkbox-indicator>
-        <ark-checkbox-indicator class="${styles.Indicator}" indeterminate>${createElement(Minus, { 'aria-hidden': 'true' }).outerHTML}</ark-checkbox-indicator>
-      </ark-checkbox-control>
-      <ark-checkbox-label class="${styles.Label}">Solid</ark-checkbox-label>
-      <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
-    </label>
-  </ark-checkbox>
-  <ark-checkbox value="vue">
-    <label class="${styles.Root}">
-      <ark-checkbox-control class="${styles.Control}">
-        <ark-checkbox-indicator class="${styles.Indicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-checkbox-indicator>
-        <ark-checkbox-indicator class="${styles.Indicator}" indeterminate>${createElement(Minus, { 'aria-hidden': 'true' }).outerHTML}</ark-checkbox-indicator>
-      </ark-checkbox-control>
-      <ark-checkbox-label class="${styles.Label}">Vue</ark-checkbox-label>
-      <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
-    </label>
-  </ark-checkbox>
-  </ark-checkbox-group>
+      ${checkbox({ label: 'JSX Frameworks', value: 'all', checked: false })}
+      ${group({ value: '', name: 'framework', style: 'margin-inline-start: 1rem' }, frameworks.map(checkbox))}
     </div>`
   const all = root.querySelector('ark-checkbox')!
   const el = root.querySelector('ark-checkbox-group')!

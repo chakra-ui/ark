@@ -4,15 +4,20 @@ import '../../src/components/toggle-group/index.js'
 
 import styles from 'styles/toggle-group.module.css'
 
-const item = (value: string, content: string, attrs = '') =>
-  /* html */ `<ark-toggle-group-item value="${value}"><button class="${styles.Item}" ${attrs}>${content}</button></ark-toggle-group-item>`
+interface Item {
+  value: string
+  icon: string
+}
 
-const toggleGroup = (attrs: string, items: { value: string; icon: string }[]) => /* html */ `
-  <ark-toggle-group class="${styles.Root}" ${attrs}>
-    ${items.map((entry) => item(entry.value, entry.icon)).join('')}
+const item = ({ value, icon }: Item) =>
+  /* html */ `<ark-toggle-group-item value="${value}"><button class="${styles.Item}">${icon}</button></ark-toggle-group-item>`
+
+const toggleGroup = ({ value }: { value: string }, children: string[]) => /* html */ `
+  <ark-toggle-group class="${styles.Root}" value="${value}">
+    ${children.join('')}
   </ark-toggle-group>`
 
-const alignItems = [
+const alignItems: Item[] = [
   { value: 'left', icon: createElement(AlignLeft, { 'aria-hidden': 'true' }).outerHTML },
   { value: 'center', icon: createElement(AlignCenter, { 'aria-hidden': 'true' }).outerHTML },
   { value: 'right', icon: createElement(AlignRight, { 'aria-hidden': 'true' }).outerHTML },
@@ -21,7 +26,10 @@ const alignItems = [
 
 export function mount(root: HTMLElement) {
   const host = document.createElement('div')
-  host.innerHTML = toggleGroup(`value="left"`, alignItems)
+  host.innerHTML = toggleGroup(
+    { value: 'left' },
+    alignItems.map((entry) => item(entry)),
+  )
   const el = host.querySelector('ark-toggle-group')!
   el.addEventListener('valuechange', (event) => {
     el.setAttribute('value', event.detail.value.join(','))

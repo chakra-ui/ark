@@ -4,7 +4,13 @@ import '../../src/components/command/index.js'
 
 import styles from 'styles/command.module.css'
 
-const item = (value: string, label: string) => /* html */ `
+const fruits = [
+  { value: 'apple', label: 'Apple' },
+  { value: 'banana', label: 'Banana' },
+  { value: 'cherry', label: 'Cherry' },
+]
+
+const item = ({ value, label }: { value: string; label: string }) => /* html */ `
   <ark-command-item class="${styles.Item}" value="${value}">
     <ark-command-item-text class="${styles.ItemText}">${label}</ark-command-item-text>
   </ark-command-item>`
@@ -18,7 +24,7 @@ export function mount(root: HTMLElement) {
       <ark-command-input><input class="${styles.Input}" placeholder="Search fruits..." aria-label="Search fruits" /></ark-command-input>
     </ark-command-control>
     <ark-command-list class="${styles.List}">
-      ${item('apple', 'Apple')}${item('banana', 'Banana')}${item('cherry', 'Cherry')}
+      ${fruits.map((fruit) => item(fruit)).join('')}
     </ark-command-list>
     <ark-command-empty class="${styles.Empty}">No results for “<span></span>”</ark-command-empty>
   </ark-command>`

@@ -4,34 +4,27 @@ import fieldset from 'styles/fieldset.module.css'
 
 import styles from 'styles/radio-group.module.css'
 
-const radioGroup = (
-  attrs: string,
-  { disabled = '', indicator = false, hstack = false, label = true } = {},
-) => /* html */ `
-  <ark-radio-group class="${styles.Root}" ${attrs}>
-    ${label ? /* html */ `<ark-radio-group-label class="${styles.Label}">Framework</ark-radio-group-label>` : ''}
-    ${indicator ? /* html */ `<ark-radio-group-indicator class="${styles.Indicator}"></ark-radio-group-indicator>` : ''}
-    ${hstack ? /* html */ `<div class="hstack">` : ''}
-    ${['React', 'Solid', 'Vue']
-      .map(
-        (framework) => /* html */ `
-      <ark-radio-group-item value="${framework}" ${disabled === framework ? 'disabled' : ''}>
-        <label class="${styles.Item}">
-          <ark-radio-group-item-control class="${styles.ItemControl}"></ark-radio-group-item-control>
-          <ark-radio-group-item-text class="${styles.ItemText}">${framework}</ark-radio-group-item-text>
-          <ark-radio-group-item-hidden-input></ark-radio-group-item-hidden-input>
-        </label>
-      </ark-radio-group-item>`,
-      )
-      .join('')}
-    ${hstack ? '</div>' : ''}
+const frameworks = ['React', 'Solid', 'Vue']
+
+const item = (value: string) => /* html */ `
+  <ark-radio-group-item value="${value}">
+    <label class="${styles.Item}">
+      <ark-radio-group-item-control class="${styles.ItemControl}"></ark-radio-group-item-control>
+      <ark-radio-group-item-text class="${styles.ItemText}">${value}</ark-radio-group-item-text>
+      <ark-radio-group-item-hidden-input></ark-radio-group-item-hidden-input>
+    </label>
+  </ark-radio-group-item>`
+
+const radioGroup = (items: string[]) => /* html */ `
+  <ark-radio-group class="${styles.Root}">
+    ${items.join('')}
   </ark-radio-group>`
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
   <fieldset class="${fieldset.Root}">
     <legend class="${fieldset.Legend}">Select a framework</legend>
-    ${radioGroup('', { label: false })}
+    ${radioGroup(frameworks.map(item))}
     <span class="${fieldset.HelperText}">Choose your preferred framework</span>
     <span class="${fieldset.ErrorText}" hidden>Please select a framework</span>
   </fieldset>`

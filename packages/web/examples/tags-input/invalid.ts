@@ -4,8 +4,20 @@ import '../../src/components/tags-input/index.js'
 
 import styles from 'styles/tags-input.module.css'
 
-const tagsInputMarkup = (attrs = '', { label = 'Frameworks', placeholder = 'Add Framework' } = {}) => /* html */ `
-  <ark-tags-input class="${styles.Root}" ${attrs}>
+const attr = (name: string, on?: boolean) => (on ? name : '')
+
+interface TagsInputProps {
+  label?: string
+  placeholder?: string
+  invalid?: boolean
+}
+
+const tagsInputMarkup = ({
+  label = 'Frameworks',
+  placeholder = 'Add Framework',
+  invalid,
+}: TagsInputProps = {}) => /* html */ `
+  <ark-tags-input class="${styles.Root}" ${attr('invalid', invalid)}>
     <ark-tags-input-label class="${styles.Label}">${label}</ark-tags-input-label>
     <ark-tags-input-control class="${styles.Control}">
       <template>
@@ -24,5 +36,5 @@ const tagsInputMarkup = (attrs = '', { label = 'Frameworks', placeholder = 'Add 
   </ark-tags-input>`
 
 export function mount(root: HTMLElement) {
-  root.innerHTML = tagsInputMarkup('invalid')
+  root.innerHTML = tagsInputMarkup({ invalid: true })
 }
