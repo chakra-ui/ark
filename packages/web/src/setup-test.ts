@@ -42,6 +42,7 @@ class IntersectionObserverStub {
   }
 
   observe(target: Element) {
+    IntersectionObserverStub.instances.add(this)
     this.targets.add(target)
   }
 
@@ -50,6 +51,7 @@ class IntersectionObserverStub {
   }
 
   disconnect() {
+    this.targets.clear()
     IntersectionObserverStub.instances.delete(this)
   }
 
