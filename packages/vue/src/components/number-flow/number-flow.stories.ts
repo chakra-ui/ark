@@ -11,6 +11,7 @@ import PricingExample from './examples/pricing.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import TimingExample from './examples/timing.vue'
 import TrendExample from './examples/trend.vue'
+import WithTimerExample from './examples/with-timer.vue'
 
 const meta: Meta = {
   title: 'Components / Number Flow',
@@ -91,6 +92,13 @@ export const Timing = {
 export const Trend = {
   render: () => ({
     components: { Component: TrendExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithTimer = {
+  render: () => ({
+    components: { Component: WithTimerExample },
     template: '<Component />',
   }),
 }

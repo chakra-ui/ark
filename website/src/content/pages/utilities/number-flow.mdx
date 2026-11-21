@@ -103,6 +103,14 @@ when the number gains or loses a digit.
 
 <Example id="composition" />
 
+### With Timer
+
+Pair `NumberFlow` with the [Timer](/docs/components/timer) to roll a countdown. Read the time from `useTimer`, render
+one `NumberFlow.Root` per unit with `minimumIntegerDigits: 2`, and set `trend={-1}` so every digit rolls down as the
+time runs out.
+
+<Example id="with-timer" />
+
 ### Live Announcements
 
 Set `live` to announce changes to screen readers. The value is announced through `HiddenValueText` once the roll

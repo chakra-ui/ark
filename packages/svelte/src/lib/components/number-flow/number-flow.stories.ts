@@ -10,6 +10,7 @@ import PricingExample from './examples/pricing.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import TimingExample from './examples/timing.svelte'
 import TrendExample from './examples/trend.svelte'
+import WithTimerExample from './examples/with-timer.svelte'
 
 const meta = {
   title: 'Components / Number Flow',
@@ -80,5 +81,11 @@ export const Timing = {
 export const Trend = {
   render: () => ({
     Component: TrendExample,
+  }),
+}
+
+export const WithTimer = {
+  render: () => ({
+    Component: WithTimerExample,
   }),
 }
