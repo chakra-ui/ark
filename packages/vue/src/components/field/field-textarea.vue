@@ -1,7 +1,9 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/field'
 import type { TextareaHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory.ts'
 
+export interface FieldTextareaState extends RootState {}
 export interface FieldTextareaBaseProps extends PolymorphicProps {
   /**
    * Whether the textarea should autoresize
@@ -24,11 +26,12 @@ export interface FieldTextareaProps
 import { autoresizeTextarea } from '@zag-js/auto-resize'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
-import { ark } from '../factory.ts'
+import { type PolymorphicSlots, ark } from '../factory.ts'
 import { useFieldContext } from './use-field-context.ts'
 import { unrefElement } from '../../utils/unref-element.ts'
 
 const props = defineProps<FieldTextareaProps>()
+defineSlots<PolymorphicSlots<FieldTextareaState>>()
 const field = useFieldContext()
 const emit = defineEmits(['update:modelValue'])
 
@@ -50,6 +53,7 @@ useForwardExpose()
     v-bind="{ ...field?.getTextareaProps(), ...(modelValue !== undefined ? { value: modelValue } : {}) }"
     @input="(event) => emit('update:modelValue', (event.target as HTMLTextAreaElement).value)"
     :style="props.autoresize ? { resize: 'none', overflow: 'hidden' } : undefined"
+    :state="field?.getRootState()"
     :as-child="asChild"
   >
     <template v-if="$slots.render" #render="scope">

@@ -1,7 +1,10 @@
 <script module lang="ts">
+  import type { ErrorTextProps, ErrorTextState } from '@zag-js/field'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FieldErrorTextBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
+  export interface FieldErrorTextState extends ErrorTextState {}
+  export interface FieldErrorTextBaseProps
+    extends ErrorTextProps, PolymorphicProps<'span', FieldErrorTextState>, RefAttribute {}
   export interface FieldErrorTextProps extends Assign<HTMLProps<'span'>, FieldErrorTextBaseProps> {}
 </script>
 
@@ -10,11 +13,10 @@
   import { Ark } from '../factory/index.ts'
   import { useFieldContext } from './use-field-context.ts'
 
-  let { ref = $bindable(null), ...props }: FieldErrorTextProps = $props()
+  let { ref = $bindable(null), match, id, ...props }: FieldErrorTextProps = $props()
   const field = useFieldContext()
-  const mergedProps = $derived(mergeProps(field?.()?.getErrorTextProps() ?? {}, props))
+  const errorTextProps = $derived({ match, id })
+  const mergedProps = $derived(mergeProps(field?.()?.getErrorTextProps(errorTextProps) ?? {}, props))
 </script>
 
-{#if field?.()?.invalid}
-  <Ark as="span" bind:ref {...mergedProps} />
-{/if}
+<Ark as="span" bind:ref {...mergedProps} state={field?.()?.getErrorTextState(errorTextProps)} />

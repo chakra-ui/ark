@@ -7,7 +7,10 @@ import InputExample from './examples/input.vue'
 import InvalidExample from './examples/invalid.vue'
 import ReactiveInvalidExample from './examples/reactive-invalid.vue'
 import RequiredExample from './examples/required.vue'
-import RequiredIndicatorExample from './examples/required-indicator.vue'
+import IndicatorExample from './examples/indicator.vue'
+import ValidationExample from './examples/validation.vue'
+import CustomValidationExample from './examples/custom-validation.vue'
+import ServerErrorsExample from './examples/server-errors.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import SelectControlledExample from './examples/select-controlled.vue'
 import SelectExample from './examples/select.vue'
@@ -63,9 +66,30 @@ export const ReactiveInvalid = {
   }),
 }
 
-export const RequiredIndicator = {
+export const Indicator = {
   render: () => ({
-    components: { Component: RequiredIndicatorExample },
+    components: { Component: IndicatorExample },
+    template: '<Component />',
+  }),
+}
+
+export const Validation = {
+  render: () => ({
+    components: { Component: ValidationExample },
+    template: '<Component />',
+  }),
+}
+
+export const CustomValidation = {
+  render: () => ({
+    components: { Component: CustomValidationExample },
+    template: '<Component />',
+  }),
+}
+
+export const ServerErrors = {
+  render: () => ({
+    components: { Component: ServerErrorsExample },
     template: '<Component />',
   }),
 }

@@ -80,14 +80,16 @@ describe('Checkbox / Field', () => {
     expect(screen.getByText('Label')).toHaveAttribute('data-readonly')
   })
 
-  it('should describe the checkbox with the helper text', () => {
+  it('should describe the checkbox with the helper text', async () => {
     render(WithField)
-    expect(screen.getByRole('checkbox', { name: /label/i })).toHaveAccessibleDescription('Additional Info')
+    await waitFor(async () =>
+      expect(screen.getByRole('checkbox', { name: /label/i })).toHaveAccessibleDescription('Additional Info'),
+    )
   })
 
   it('should show the error text only when invalid', () => {
     const { unmount } = render(WithField)
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
     unmount()
 
     render(WithField, { props: { invalid: true } })

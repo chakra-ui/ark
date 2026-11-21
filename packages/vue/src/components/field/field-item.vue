@@ -7,8 +7,8 @@ export interface FieldItemProps extends FieldItemBaseProps {}
 </script>
 
 <script setup lang="ts">
+import type { ItemProps } from '@zag-js/field'
 import { computed, toValue } from 'vue'
-import { parts } from './field.anatomy.ts'
 import { FieldProvider, useFieldContext } from './use-field-context.ts'
 
 const props = defineProps<FieldItemProps>()
@@ -20,38 +20,18 @@ const itemField = computed(() => {
     throw new Error('Field.Item must be used within Field.Root')
   }
 
-  const controlId = `field::${parent.ids.control}::item::${props.value}`
-  const labelId = `${controlId}::label`
-
-  const getControlProps = <T extends Record<string, unknown>>(getParentProps: () => T) => ({
-    ...getParentProps(),
-    id: controlId,
-  })
+  const control = parent.getItemControlId(props.value)
+  const label = `${control}:label`
+  const item = (itemProps?: ItemProps) => ({ item: props.value, ...itemProps })
 
   return {
     ...parent,
-    ids: {
-      ...parent.ids,
-      control: controlId,
-      label: labelId,
-    },
-    getLabelProps: () => ({
-      ...parent.getLabelProps(),
-      id: labelId,
-      htmlFor: controlId,
-    }),
-    getInputProps: () => ({
-      ...getControlProps(parent.getInputProps),
-      ...parts.input.attrs(controlId),
-    }),
-    getSelectProps: () => ({
-      ...getControlProps(parent.getSelectProps),
-      ...parts.select.attrs(controlId),
-    }),
-    getTextareaProps: () => ({
-      ...getControlProps(parent.getTextareaProps),
-      ...parts.textarea.attrs(controlId),
-    }),
+    ids: { ...parent.ids, control, label },
+    getLabelProps: (itemProps?: ItemProps) => ({ ...parent.getLabelProps(item(itemProps)), id: label }),
+    getControlProps: (itemProps?: ItemProps) => parent.getControlProps(item(itemProps)),
+    getInputProps: (itemProps?: ItemProps) => parent.getInputProps(item(itemProps)),
+    getTextareaProps: (itemProps?: ItemProps) => parent.getTextareaProps(item(itemProps)),
+    getSelectProps: (itemProps?: ItemProps) => parent.getSelectProps(item(itemProps)),
   }
 })
 

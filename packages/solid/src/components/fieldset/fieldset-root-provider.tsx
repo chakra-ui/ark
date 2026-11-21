@@ -1,3 +1,4 @@
+import type { RootState } from '@zag-js/fieldset'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
@@ -8,8 +9,10 @@ interface RootProviderProps {
   value: UseFieldsetReturn
 }
 
-export interface FieldsetRootProviderBaseProps extends RootProviderProps, PolymorphicProps<'fieldset'> {}
-export interface FieldsetRootProviderProps extends HTMLProps<'fieldset'>, FieldsetRootProviderBaseProps {}
+export interface FieldsetRootProviderState extends RootState {}
+export interface FieldsetRootProviderBaseProps extends PolymorphicProps<'fieldset', FieldsetRootProviderState> {}
+export interface FieldsetRootProviderProps
+  extends HTMLProps<'fieldset'>, RootProviderProps, FieldsetRootProviderBaseProps {}
 
 export const FieldsetRootProvider = (props: FieldsetRootProviderProps) => {
   const [{ value: fieldset }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
@@ -17,7 +20,7 @@ export const FieldsetRootProvider = (props: FieldsetRootProviderProps) => {
 
   return (
     <FieldsetProvider value={fieldset}>
-      <ark.fieldset {...mergedProps} />
+      <ark.fieldset {...mergedProps} state={fieldset().getRootState()} />
     </FieldsetProvider>
   )
 }

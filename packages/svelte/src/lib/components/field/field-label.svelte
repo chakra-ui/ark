@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/field'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FieldLabelBaseProps extends PolymorphicProps<'label'>, RefAttribute {}
+  export interface FieldLabelState extends RootState {}
+  export interface FieldLabelBaseProps extends PolymorphicProps<'label', FieldLabelState>, RefAttribute {}
   export interface FieldLabelProps extends Assign<HTMLProps<'label'>, FieldLabelBaseProps> {}
 </script>
 
@@ -15,4 +17,4 @@
   const mergedProps = $derived(mergeProps(field?.()?.getLabelProps() ?? {}, props))
 </script>
 
-<Ark as="label" bind:ref {...mergedProps} />
+<Ark as="label" bind:ref {...mergedProps} state={field?.()?.getRootState()} />

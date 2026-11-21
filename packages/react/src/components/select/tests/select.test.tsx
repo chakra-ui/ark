@@ -150,12 +150,12 @@ describe('Select / Field', () => {
 
   it('should not display error text when no error is present', async () => {
     render(<SelectWithField />)
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
   })
 
   it('should describe the trigger with the helper and error text', async () => {
     render(<SelectWithField invalid />)
-    expect(screen.getByRole('combobox')).toHaveAccessibleDescription('Error Info Additional Info')
+    await waitFor(() => expect(screen.getByRole('combobox')).toHaveAccessibleDescription('Additional Info Error Info'))
   })
 
   it('should submit the value through hidden inputs', async () => {

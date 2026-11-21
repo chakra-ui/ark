@@ -64,7 +64,7 @@ describe('Checkbox / Field', () => {
 
   it('should not display error text when no error is present', async () => {
     render(CheckboxWithField)
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
   })
 })
 

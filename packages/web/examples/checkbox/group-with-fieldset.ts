@@ -1,6 +1,7 @@
 import { createElement, Check } from 'lucide'
 
 import '@ark-ui/web/checkbox'
+import '@ark-ui/web/fieldset'
 
 import fieldset from 'styles/fieldset.module.css'
 
@@ -32,11 +33,13 @@ const checkbox = ({ label, value }: Framework) => /* html */ `
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
-  <fieldset class="${fieldset.Root}">
-    <legend class="${fieldset.Legend}">Select frameworks</legend>
-    <span class="${fieldset.HelperText}">Choose your preferred frameworks</span>
-    <ark-checkbox-group class="${styles.Group}" default-value="react" name="framework">
-      ${frameworks.map(checkbox).join('')}
-    </ark-checkbox-group>
-  </fieldset>`
+  <ark-fieldset>
+    <fieldset class="${fieldset.Root}">
+      <ark-fieldset-legend class="${fieldset.Legend}">Select frameworks</ark-fieldset-legend>
+      <ark-fieldset-helper-text class="${fieldset.HelperText}">Choose your preferred frameworks</ark-fieldset-helper-text>
+      <ark-checkbox-group class="${styles.Group}" default-value="react" name="framework">
+        ${frameworks.map(checkbox).join('')}
+      </ark-checkbox-group>
+    </fieldset>
+  </ark-fieldset>`
 }

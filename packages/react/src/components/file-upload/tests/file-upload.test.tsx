@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { ComponentUnderTest, FileUploadWithField } from './basic.tsx'
@@ -42,13 +42,19 @@ describe('File Upload / Field', () => {
   })
   it('should not display error text when no error is present', async () => {
     render(<FileUploadWithField />)
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
   })
 
   it('should describe the trigger and dropzone with the helper and error text', async () => {
     render(<FileUploadWithField invalid />)
-    expect(screen.getByRole('button', { name: 'Select' })).toHaveAccessibleDescription('Error Info Additional Info')
-    expect(screen.getByRole('button', { name: 'dropzone' })).toHaveAccessibleDescription('Error Info Additional Info')
+    await waitFor(() =>
+      expect(screen.getByRole('button', { name: 'Select' })).toHaveAccessibleDescription('Additional Info Error Info'),
+    )
+    await waitFor(() =>
+      expect(screen.getByRole('button', { name: 'dropzone' })).toHaveAccessibleDescription(
+        'Additional Info Error Info',
+      ),
+    )
   })
 })
 

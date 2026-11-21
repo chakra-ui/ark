@@ -83,14 +83,16 @@ describe('Rating Group / Field', () => {
   it('should not display error text when no error is present', async () => {
     render(<RatingGroupWithField />)
     await screen.findByRole('textbox', { hidden: true })
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
   })
 
   it('should describe the group and its items with the helper and error text', async () => {
     render(<RatingGroupWithField invalid />)
-    expect(screen.getByRole('radiogroup')).toHaveAccessibleDescription('Error Info Additional Info')
+    await waitFor(() =>
+      expect(screen.getByRole('radiogroup')).toHaveAccessibleDescription('Additional Info Error Info'),
+    )
     for (const radio of screen.getAllByRole('radio')) {
-      expect(radio).toHaveAccessibleDescription('Error Info Additional Info')
+      await waitFor(() => expect(radio).toHaveAccessibleDescription('Additional Info Error Info'))
     }
   })
 })

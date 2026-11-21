@@ -1,7 +1,7 @@
-import { createMemo } from 'solid-js'
+import type { ItemProps } from '@zag-js/field'
 import type { JSX } from '@solidjs/web'
-import { parts } from './field.anatomy.ts'
-import { FieldProvider, useFieldContext, type UseFieldContext } from './use-field-context.ts'
+import { createMemo } from 'solid-js'
+import { FieldProvider, type UseFieldContext, useFieldContext } from './use-field-context.ts'
 
 export interface FieldItemBaseProps {
   value: string
@@ -20,39 +20,19 @@ export const FieldItem = (props: FieldItemProps) => {
       throw new Error('Field.Item must be used within Field.Root')
     }
 
-    const controlId = `field::${parent.ids.control}::item::${props.value}`
-    const labelId = `${controlId}::label`
-
-    const getControlProps = (getParentProps: () => Record<string, unknown>) => ({
-      ...getParentProps(),
-      id: controlId,
-    })
+    const control = parent.getItemControlId(props.value)
+    const label = `${control}:label`
+    const item = (itemProps?: ItemProps) => ({ item: props.value, ...itemProps })
 
     return {
       ...parent,
-      ids: {
-        ...parent.ids,
-        control: controlId,
-        label: labelId,
-      },
-      getLabelProps: () => ({
-        ...parent.getLabelProps(),
-        id: labelId,
-        for: controlId,
-      }),
-      getInputProps: () => ({
-        ...getControlProps(parent.getInputProps),
-        ...parts.input.attrs(controlId),
-      }),
-      getSelectProps: () => ({
-        ...getControlProps(parent.getSelectProps),
-        ...parts.select.attrs(controlId),
-      }),
-      getTextareaProps: () => ({
-        ...getControlProps(parent.getTextareaProps),
-        ...parts.textarea.attrs(controlId),
-      }),
-    } as ReturnType<UseFieldContext>
+      ids: { ...parent.ids, control, label },
+      getLabelProps: (itemProps?: ItemProps) => ({ ...parent.getLabelProps(item(itemProps)), id: label }),
+      getControlProps: (itemProps?: ItemProps) => parent.getControlProps(item(itemProps)),
+      getInputProps: (itemProps?: ItemProps) => parent.getInputProps(item(itemProps)),
+      getTextareaProps: (itemProps?: ItemProps) => parent.getTextareaProps(item(itemProps)),
+      getSelectProps: (itemProps?: ItemProps) => parent.getSelectProps(item(itemProps)),
+    }
   })
 
   return <FieldProvider value={itemField}>{props.children}</FieldProvider>

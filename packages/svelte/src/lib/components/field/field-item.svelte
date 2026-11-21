@@ -11,8 +11,7 @@
 </script>
 
 <script lang="ts">
-  import type { HTMLProps } from '$lib/types'
-  import { parts } from './field.anatomy.ts'
+  import type { ItemProps } from '@zag-js/field'
   import { FieldProvider, useFieldContext } from './use-field-context.ts'
 
   let { value, children }: FieldItemProps = $props()
@@ -24,42 +23,18 @@
       throw new Error('Field.Item must be used within Field.Root')
     }
 
-    const controlId = `${parent.ids.root}::item::${value}`
-    const labelId = `${controlId}::label`
-
-    const getControlProps = <T extends object>(getParentProps: () => T) => ({
-      ...getParentProps(),
-      id: controlId,
-    })
+    const control = parent.getItemControlId(value)
+    const label = `${control}:label`
+    const item = (itemProps?: ItemProps) => ({ item: value, ...itemProps })
 
     return {
       ...parent,
-      ids: {
-        ...parent.ids,
-        control: controlId,
-        label: labelId,
-      },
-      getLabelProps: () =>
-        ({
-          ...parent.getLabelProps(),
-          id: labelId,
-          for: controlId,
-        }) as HTMLProps<'label'>,
-      getInputProps: () =>
-        ({
-          ...getControlProps(parent.getInputProps),
-          ...parts.input.attrs(controlId),
-        }) as HTMLProps<'input'>,
-      getSelectProps: () =>
-        ({
-          ...getControlProps(parent.getSelectProps),
-          ...parts.select.attrs(controlId),
-        }) as HTMLProps<'select'>,
-      getTextareaProps: () =>
-        ({
-          ...getControlProps(parent.getTextareaProps),
-          ...parts.textarea.attrs(controlId),
-        }) as HTMLProps<'textarea'>,
+      ids: { ...parent.ids, control, label },
+      getLabelProps: (itemProps?: ItemProps) => ({ ...parent.getLabelProps(item(itemProps)), id: label }),
+      getControlProps: (itemProps?: ItemProps) => parent.getControlProps(item(itemProps)),
+      getInputProps: (itemProps?: ItemProps) => parent.getInputProps(item(itemProps)),
+      getTextareaProps: (itemProps?: ItemProps) => parent.getTextareaProps(item(itemProps)),
+      getSelectProps: (itemProps?: ItemProps) => parent.getSelectProps(item(itemProps)),
     }
   })
 

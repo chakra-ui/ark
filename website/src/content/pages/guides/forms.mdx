@@ -74,7 +74,8 @@ const Demo = () => (
 ### Required Fields
 
 To indicate that a field is required, you can pass the `required` prop to the `Field.Root` component. Optionally, you
-can use the `Field.RequiredIndicator` component to indicate that the field is required.
+can use `Field.Indicator` with `type="required"` to show that the field is required. It's hidden unless the field is
+required.
 
 > **Best practice**: Don't rely solely on color to indicate required status
 
@@ -86,7 +87,7 @@ export const Demo = () => (
     <Field.Root required>
       <Field.Label>
         Username
-        <Field.RequiredIndicator>(required)</Field.RequiredIndicator>
+        <Field.Indicator type="required">(required)</Field.Indicator>
       </Field.Label>
       <Field.Input placeholder="Enter your username" />
       <Field.ErrorText>Username is required.</Field.ErrorText>
@@ -95,10 +96,10 @@ export const Demo = () => (
 )
 ```
 
-To indicate that a field is optional, use the `fallback` prop on the `Field.RequiredIndicator` component.
+To indicate that a field is optional instead, read the field's state with `Field.Context`.
 
 ```tsx
-<Field.RequiredIndicator fallback="Optional">(required)</Field.RequiredIndicator>
+<Field.Context>{(field) => !field.required && <span>(optional)</span>}</Field.Context>
 ```
 
 ### Native Controls

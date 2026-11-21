@@ -1,110 +1,26 @@
-import { mergeProps } from '@zag-js/solid'
-import { createMemo, createSignal, createUniqueId, onSettled } from 'solid-js'
-import { useEnvironmentContext } from '../../providers/index.tsx'
-import { dataAttr } from '../../utils/attr.ts'
-import type { MaybeAccessor } from '../../types.ts'
+import * as fieldset from '@zag-js/fieldset'
+import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
+import { type Accessor, createMemo, createUniqueId } from 'solid-js'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.tsx'
+import type { MaybeAccessor, Optional } from '../../types.ts'
 import { runIfFn } from '../../utils/run-if-fn.ts'
-import { parts } from './fieldset.anatomy.ts'
+import { compact } from '@zag-js/utils'
 
-export interface UseFieldsetProps {
-  /**
-   * The id of the fieldset.
-   */
-  id?: string
-  /**
-   * Indicates whether the fieldset is disabled.
-   */
-  disabled?: boolean
-  /**
-   * Indicates whether the fieldset is invalid.
-   */
-  invalid?: boolean
-}
+export interface UseFieldsetProps extends Optional<Omit<fieldset.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export type UseFieldsetReturn = Accessor<fieldset.Api<PropTypes>>
 
-export type UseFieldsetReturn = ReturnType<typeof useFieldset>
+export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>): UseFieldsetReturn => {
+  const id = createUniqueId()
+  const environment = useEnvironmentContext()
+  const locale = useLocaleContext()
 
-export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
-  const env = useEnvironmentContext()
-
-  const mergedProps = mergeProps({ disabled: false, invalid: false }, runIfFn(props))
-
-  const [rootRef, setRootRef] = createSignal<HTMLFieldSetElement | undefined>(undefined)
-  const id = mergedProps.id ?? createUniqueId()
-
-  const legendId = `fieldset::${id}::legend`
-  const errorTextId = `fieldset::${id}::error-text`
-  const helperTextId = `fieldset::${id}::helper-text`
-
-  const [hasErrorText, setHasErrorText] = createSignal(false)
-  const [hasHelperText, setHasHelperText] = createSignal(false)
-
-  onSettled(() => {
-    const rootNode = rootRef()
-    if (!rootNode) return
-
-    const checkTextElements = () => {
-      const docOrShadowRoot = env().getRootNode() as DocumentFragment
-      setHasErrorText(!!docOrShadowRoot.getElementById(errorTextId))
-      setHasHelperText(!!docOrShadowRoot.getElementById(helperTextId))
-    }
-
-    checkTextElements()
-
-    const win = env().getWindow()
-    const observer = new win.MutationObserver(checkTextElements)
-    observer.observe(rootNode, { childList: true, subtree: true })
-
-    return () => observer.disconnect()
-  })
-
-  const labelIds = createMemo(() => {
-    const ids: string[] = []
-    if (hasErrorText() && mergedProps.invalid) ids.push(errorTextId)
-    if (hasHelperText()) ids.push(helperTextId)
-    return ids
-  })
-
-  const getRootProps = () => ({
-    ...parts.root.attrs(id),
-    disabled: mergedProps.disabled,
-    'data-disabled': dataAttr(mergedProps.disabled),
-    'data-invalid': dataAttr(mergedProps.invalid),
-    'aria-labelledby': legendId,
-    'aria-describedby': labelIds().join(' ') || undefined,
-  })
-
-  const getLegendProps = () => ({
-    id: legendId,
-    ...parts.legend.attrs(id),
-    'data-disabled': dataAttr(mergedProps.disabled),
-    'data-invalid': dataAttr(mergedProps.invalid),
-  })
-
-  const getHelperTextProps = () => ({
-    id: helperTextId,
-    ...parts.helperText.attrs(id),
-  })
-
-  const getErrorTextProps = () => ({
-    id: errorTextId,
-    ...parts.errorText.attrs(id),
-    'aria-live': 'polite',
-  })
-
-  return createMemo(() => ({
-    refs: {
-      rootRef: setRootRef,
-    },
-    ids: {
-      legend: legendId,
-      errorText: errorTextId,
-      helperText: helperTextId,
-    },
-    disabled: mergedProps.disabled,
-    invalid: mergedProps.invalid,
-    getRootProps,
-    getLegendProps,
-    getHelperTextProps,
-    getErrorTextProps,
+  const machineProps = createMemo<fieldset.Props>(() => ({
+    id,
+    dir: locale().dir,
+    getRootNode: environment().getRootNode,
+    ...compact(runIfFn(props) ?? {}),
   }))
+
+  const service = useMachine(fieldset.machine, machineProps)
+  return createMemo(() => fieldset.connect(service, normalizeProps))
 }

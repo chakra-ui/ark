@@ -1,5 +1,5 @@
 import user from '@testing-library/user-event'
-import { render, screen } from '@testing-library/vue'
+import { render, screen, waitFor } from '@testing-library/vue'
 import SignaturePadWithField from './signature-pad-with-field.test.vue'
 
 describe('Signature Pad / Field', () => {
@@ -36,11 +36,13 @@ describe('Signature Pad / Field', () => {
 
   it('should not display error text when no error is present', async () => {
     render(SignaturePadWithField)
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
   })
 
   it('should describe the control with the helper and error text', async () => {
     render(SignaturePadWithField, { props: { invalid: true } })
-    expect(await screen.findByRole('application')).toHaveAccessibleDescription('Error Info Additional Info')
+    await waitFor(async () =>
+      expect(await screen.findByRole('application')).toHaveAccessibleDescription('Additional Info Error Info'),
+    )
   })
 })

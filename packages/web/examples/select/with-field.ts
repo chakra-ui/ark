@@ -1,6 +1,7 @@
 import { createElement, Check, ChevronsUpDown } from 'lucide'
 
 import '@ark-ui/web/select'
+import '@ark-ui/web/field'
 
 import field from 'styles/field.module.css'
 
@@ -24,7 +25,7 @@ const item = ({ value, label }: Item) => /* html */ `
 
 export function mount(container: HTMLElement) {
   container.innerHTML = /* html */ `
-    <div class="${field.Root}">
+    <ark-field class="${field.Root}">
       <ark-select class="${styles.Root}">
         <ark-select-label class="${styles.Label}">Label</ark-select-label>
         <ark-select-control class="${styles.Control}">
@@ -41,6 +42,6 @@ export function mount(container: HTMLElement) {
           </ark-select-content>
         </ark-select-positioner>
       </ark-select>
-      <span class="${field.HelperText}">Additional Info</span>
-    </div>`
+      <ark-field-helper-text class="${field.HelperText}">Additional Info</ark-field-helper-text>
+    </ark-field>`
 }

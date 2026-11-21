@@ -114,6 +114,6 @@ describe('Combobox / Field', () => {
   it('should not display error text when no error is present', async () => {
     render(<ComboboxWithField />)
     await screen.findByRole('combobox', { name: /label/i })
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
   })
 })

@@ -1,11 +1,13 @@
-import { render, screen } from '@solidjs/testing-library'
+import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { SignaturePadWithField } from './basic.tsx'
 
 describe('Signature Pad / Field', () => {
   it('should describe the control with the helper and error text', async () => {
     render(() => <SignaturePadWithField invalid />)
-    expect(screen.getByRole('application')).toHaveAccessibleDescription('Error Info Additional Info')
+    await waitFor(() =>
+      expect(screen.getByRole('application')).toHaveAccessibleDescription('Additional Info Error Info'),
+    )
   })
 
   it('should set signature pad as required', async () => {
@@ -41,6 +43,6 @@ describe('Signature Pad / Field', () => {
 
   it('should not display error text when no error is present', async () => {
     render(() => <SignaturePadWithField />)
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
   })
 })

@@ -1,8 +1,8 @@
 'use client'
 
-import { useMemo, type PropsWithChildren } from 'react'
-import type { HTMLProps } from '../factory.ts'
-import { parts } from './field.anatomy.ts'
+import type { ItemProps } from '@zag-js/field'
+import { type PropsWithChildren, useMemo } from 'react'
+import type { UseFieldContext } from './use-field-context.ts'
 import { FieldProvider, useFieldContext } from './use-field-context.ts'
 
 export interface FieldItemBaseProps {
@@ -15,48 +15,23 @@ export const FieldItem = (props: FieldItemProps) => {
   const { value, children } = props
   const parentField = useFieldContext()
 
-  const itemField = useMemo(() => {
+  const itemField = useMemo<UseFieldContext>(() => {
     if (!parentField) {
       throw new Error('Field.Item must be used within Field.Root')
     }
 
-    const controlId = `field::${parentField.ids.control}::item::${value}`
-    const labelId = `${controlId}::label`
-
-    const getControlProps = (getParentProps: () => Record<string, unknown>) =>
-      ({
-        ...getParentProps(),
-        id: controlId,
-      }) as HTMLProps<'input'>
+    const control = parentField.getItemControlId(value)
+    const label = `${control}:label`
+    const item = (props?: ItemProps) => ({ item: value, ...props })
 
     return {
       ...parentField,
-      ids: {
-        ...parentField.ids,
-        control: controlId,
-        label: labelId,
-      },
-      getLabelProps: () =>
-        ({
-          ...parentField.getLabelProps(),
-          id: labelId,
-          htmlFor: controlId,
-        }) as HTMLProps<'label'>,
-      getInputProps: () =>
-        ({
-          ...getControlProps(parentField.getInputProps),
-          ...parts.input.attrs(controlId),
-        }) as HTMLProps<'input'>,
-      getSelectProps: () =>
-        ({
-          ...getControlProps(parentField.getSelectProps),
-          ...parts.select.attrs(controlId),
-        }) as HTMLProps<'select'>,
-      getTextareaProps: () =>
-        ({
-          ...getControlProps(parentField.getTextareaProps),
-          ...parts.textarea.attrs(controlId),
-        }) as HTMLProps<'textarea'>,
+      ids: { ...parentField.ids, control, label },
+      getLabelProps: (props) => ({ ...parentField.getLabelProps(item(props)), id: label }),
+      getControlProps: (props) => parentField.getControlProps(item(props)),
+      getInputProps: (props) => parentField.getInputProps(item(props)),
+      getTextareaProps: (props) => parentField.getTextareaProps(item(props)),
+      getSelectProps: (props) => parentField.getSelectProps(item(props)),
     }
   }, [parentField, value])
 

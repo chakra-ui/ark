@@ -1,3 +1,4 @@
+import type { RootState } from '@zag-js/field'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
@@ -8,7 +9,8 @@ interface RootProviderProps {
   value: UseFieldReturn
 }
 
-export interface FieldRootProviderBaseProps extends PolymorphicProps<'div'> {}
+export interface FieldRootProviderState extends RootState {}
+export interface FieldRootProviderBaseProps extends PolymorphicProps<'div', FieldRootProviderState> {}
 export interface FieldRootProviderProps extends HTMLProps<'div'>, RootProviderProps, FieldRootProviderBaseProps {}
 
 export const FieldRootProvider = (props: FieldRootProviderProps) => {
@@ -17,7 +19,7 @@ export const FieldRootProvider = (props: FieldRootProviderProps) => {
 
   return (
     <FieldProvider value={field}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={field().getRootState()} />
     </FieldProvider>
   )
 }

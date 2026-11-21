@@ -36,8 +36,10 @@ describe('Select', () => {
 
   it('should describe the trigger with the helper and error text', async () => {
     render(FieldComponent)
-    expect(await screen.findByRole('combobox', { name: 'Label' })).toHaveAccessibleDescription(
-      'Error Info Additional Info',
+    await waitFor(async () =>
+      expect(await screen.findByRole('combobox', { name: 'Label' })).toHaveAccessibleDescription(
+        'Additional Info Error Info',
+      ),
     )
   })
   it('should submit the value through hidden inputs', async () => {

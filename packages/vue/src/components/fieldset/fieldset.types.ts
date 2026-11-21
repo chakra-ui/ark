@@ -1,6 +1,9 @@
+import type { ElementIds } from '@zag-js/fieldset'
+
 export interface RootProps {
   /**
-   * Indicates whether the fieldset is disabled.
+   * Whether the fieldset is disabled. Native `<fieldset disabled>` semantics carry the disabled
+   * state to all descendant form controls.
    */
   disabled?: boolean | 'true' | 'false'
   /**
@@ -8,7 +11,12 @@ export interface RootProps {
    */
   id?: string
   /**
-   * Indicates whether the fieldset is invalid.
+   * The ids of the fieldset parts.
+   */
+  ids?: ElementIds
+  /**
+   * Whether the fieldset is invalid. Not inherited by descendant fields,
+   * but their controls are described by the fieldset's error text.
    */
   invalid?: boolean
 }

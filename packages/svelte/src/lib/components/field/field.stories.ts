@@ -6,7 +6,10 @@ import InputControlledExample from './examples/input-controlled.svelte'
 import InvalidExample from './examples/invalid.svelte'
 import ReactiveInvalidExample from './examples/reactive-invalid.svelte'
 import RequiredExample from './examples/required.svelte'
-import RequiredIndicatorExample from './examples/required-indicator.svelte'
+import IndicatorExample from './examples/indicator.svelte'
+import ValidationExample from './examples/validation.svelte'
+import CustomValidationExample from './examples/custom-validation.svelte'
+import ServerErrorsExample from './examples/server-errors.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import SelectExample from './examples/select.svelte'
 import SelectControlledExample from './examples/select-controlled.svelte'
@@ -51,9 +54,27 @@ export const Required = {
   }),
 }
 
-export const RequiredIndicator = {
+export const Indicator = {
   render: () => ({
-    Component: RequiredIndicatorExample,
+    Component: IndicatorExample,
+  }),
+}
+
+export const Validation = {
+  render: () => ({
+    Component: ValidationExample,
+  }),
+}
+
+export const CustomValidation = {
+  render: () => ({
+    Component: CustomValidationExample,
+  }),
+}
+
+export const ServerErrors = {
+  render: () => ({
+    Component: ServerErrorsExample,
   }),
 }
 

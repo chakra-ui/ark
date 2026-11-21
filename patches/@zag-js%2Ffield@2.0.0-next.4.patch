@@ -1,0 +1,78 @@
+diff --git a/node_modules/@zag-js/field/.bun-tag-3b03b78981bb8802 b/.bun-tag-3b03b78981bb8802
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/field/.bun-tag-84da2b3c3eebc6a1 b/.bun-tag-84da2b3c3eebc6a1
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/dist/field.connect.js b/dist/field.connect.js
+index b1bcfebfa9bb3d055e674375e43b4517105e2140..73eb86543c6ff9e8d82d7d2d2d9cf2267d15b3a6 100644
+--- a/dist/field.connect.js
++++ b/dist/field.connect.js
+@@ -73,14 +73,14 @@ function connect(service, normalize) {
+ 		};
+ 	}
+ 	function getItemControlId$1(item) {
+-		return require_field_dom.getItemControlId(scope, item);
++		return require_field_dom.getItemControlId(scope, item, prop("target"));
+ 	}
+ 	function resolveControlId(item) {
+ 		return item ? getItemControlId$1(item) : ids.control;
+ 	}
+ 	function getControlBaseProps(props = {}) {
+ 		const rootState = getRootState();
+-		const controlId = resolveControlId(props.item);
++		const controlId = props.item ? getItemControlId$1(props.item) : scope.ids?.control ?? `${scope.id}:control`;
+ 		const tracked = controlId === ids.control;
+ 		return {
+ 			...require_field_anatomy.parts.control.attrs(scope.id),
+diff --git a/dist/field.connect.mjs b/dist/field.connect.mjs
+index 3fcebde2baa3527ab1dd0eff7b80d2fa5b136419..025362c130f5e537b98619a5c70978cf91c4c970 100644
+--- a/dist/field.connect.mjs
++++ b/dist/field.connect.mjs
+@@ -69,14 +69,14 @@ function connect(service, normalize) {
+ 		};
+ 	}
+ 	function getItemControlId$1(item) {
+-		return getItemControlId(scope, item);
++		return getItemControlId(scope, item, prop("target"));
+ 	}
+ 	function resolveControlId(item) {
+ 		return item ? getItemControlId$1(item) : ids.control;
+ 	}
+ 	function getControlBaseProps(props = {}) {
+ 		const rootState = getRootState();
+-		const controlId = resolveControlId(props.item);
++		const controlId = props.item ? getItemControlId$1(props.item) : scope.ids?.control ?? `${scope.id}:control`;
+ 		const tracked = controlId === ids.control;
+ 		return {
+ 			...parts.control.attrs(scope.id),
+diff --git a/dist/field.dom.js b/dist/field.dom.js
+index fd11123c9ca91d030b1a36c8da1b96a008a75e73..7970400d1b3eae62a765300bd47fdbed4b879216 100644
+--- a/dist/field.dom.js
++++ b/dist/field.dom.js
+@@ -5,8 +5,8 @@ Object.defineProperties(exports, {
+ const require_field_anatomy = require("./field.anatomy.js");
+ // src/field.dom.ts
+ const getRootId = (ctx) => ctx.ids?.root ?? ctx.id;
+-const getItemControlId = (ctx, item) => `${ctx.id}:item:${item}`;
+-const getControlId = (ctx, target) => ctx.ids?.control ?? (target ? getItemControlId(ctx, target) : `${ctx.id}:control`);
++const getItemControlId = (ctx, item, target) => ctx.ids?.control && item === target ? ctx.ids.control : `${ctx.id}:item:${item}`;
++const getControlId = (ctx, target) => target ? getItemControlId(ctx, target, target) : ctx.ids?.control ?? `${ctx.id}:control`;
+ const getLabelId = (ctx) => ctx.ids?.label ?? `${ctx.id}:label`;
+ const getErrorTextId = (ctx, match, id) => {
+ 	if (id) return id;
+diff --git a/dist/field.dom.mjs b/dist/field.dom.mjs
+index cbc2e8576bbb285a05b96cae0331551aba00b34a..0bc63e8b39a779f7dba7a299c7bd4ee5cf148083 100644
+--- a/dist/field.dom.mjs
++++ b/dist/field.dom.mjs
+@@ -1,8 +1,8 @@
+ import { parts } from "./field.anatomy.mjs";
+ // src/field.dom.ts
+ const getRootId = (ctx) => ctx.ids?.root ?? ctx.id;
+-const getItemControlId = (ctx, item) => `${ctx.id}:item:${item}`;
+-const getControlId = (ctx, target) => ctx.ids?.control ?? (target ? getItemControlId(ctx, target) : `${ctx.id}:control`);
++const getItemControlId = (ctx, item, target) => ctx.ids?.control && item === target ? ctx.ids.control : `${ctx.id}:item:${item}`;
++const getControlId = (ctx, target) => target ? getItemControlId(ctx, target, target) : ctx.ids?.control ?? `${ctx.id}:control`;
+ const getLabelId = (ctx) => ctx.ids?.label ?? `${ctx.id}:label`;
+ const getErrorTextId = (ctx, match, id) => {
+ 	if (id) return id;

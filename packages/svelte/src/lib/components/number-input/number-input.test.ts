@@ -108,14 +108,16 @@ describe('NumberInput / Field', () => {
     expect(screen.getByRole('textbox', { name: /label/i })).toHaveAttribute('readonly')
   })
 
-  it('should describe the input with the helper text', () => {
+  it('should describe the input with the helper text', async () => {
     render(WithField)
-    expect(screen.getByRole('textbox', { name: /label/i })).toHaveAccessibleDescription('Additional Info')
+    await waitFor(async () =>
+      expect(screen.getByRole('textbox', { name: /label/i })).toHaveAccessibleDescription('Additional Info'),
+    )
   })
 
   it('should show the error text only when invalid', () => {
     const { unmount } = render(WithField)
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
     unmount()
 
     render(WithField, { props: { invalid: true } })

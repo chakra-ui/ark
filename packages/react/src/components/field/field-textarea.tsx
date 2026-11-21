@@ -1,13 +1,15 @@
 'use client'
 
 import { autoresizeTextarea } from '@zag-js/auto-resize'
+import type { RootState } from '@zag-js/field'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, useEffect, useRef } from 'react'
 import { useComposedRefs } from '../../utils/compose-refs.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { useFieldContext } from './use-field-context.ts'
 
-export interface FieldTextareaBaseProps extends PolymorphicProps {
+export interface FieldTextareaState extends RootState {}
+export interface FieldTextareaBaseProps extends PolymorphicProps<FieldTextareaState> {
   /**
    * Whether the textarea should autoresize
    * @default false
@@ -25,6 +27,7 @@ export const FieldTextarea = forwardRef<HTMLTextAreaElement, FieldTextareaProps>
     { style: { resize: autoresize ? 'none' : undefined } },
     textareaProps,
   )
+
   const composedRefs = useComposedRefs(ref, textareaRef)
 
   useEffect(() => {
@@ -32,7 +35,7 @@ export const FieldTextarea = forwardRef<HTMLTextAreaElement, FieldTextareaProps>
     return autoresizeTextarea(textareaRef.current)
   }, [autoresize])
 
-  return <ark.textarea {...mergedProps} ref={composedRefs} />
+  return <ark.textarea {...mergedProps} ref={composedRefs} state={field?.getRootState()} />
 })
 
 FieldTextarea.displayName = 'FieldTextarea'

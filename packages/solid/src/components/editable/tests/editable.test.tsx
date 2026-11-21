@@ -84,6 +84,6 @@ describe('Editable / Field', () => {
 
   it('should not display error text when no error is present', async () => {
     render(() => <EditableWithField />)
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
   })
 })
