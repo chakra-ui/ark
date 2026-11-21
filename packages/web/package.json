@@ -25,6 +25,7 @@
     "@zag-js/clipboard": "2.0.0-next.4",
     "@zag-js/collapsible": "2.0.0-next.4",
     "@zag-js/collection": "2.0.0-next.4",
+    "@zag-js/color-picker": "2.0.0-next.4",
     "@zag-js/combobox": "2.0.0-next.4",
     "@zag-js/date-input": "2.0.0-next.4",
     "@zag-js/date-picker": "2.0.0-next.4",
@@ -355,6 +356,10 @@
     "./navigation-menu": {
       "types": "./dist/components/navigation-menu/index.d.ts",
       "import": "./dist/components/navigation-menu/index.js"
+    },
+    "./color-picker": {
+      "types": "./dist/components/color-picker/index.d.ts",
+      "import": "./dist/components/color-picker/index.js"
     }
   },
   "sideEffects": true,

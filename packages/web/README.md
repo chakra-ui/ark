@@ -3,12 +3,7 @@
 Unstyled, accessible web components powered by Zag.js state machines. Components use light DOM, native controls, and
 ordinary CSS. No framework runtime is required.
 
-This package is a prerelease. It includes accordion, angle slider, avatar, carousel, checkbox and checkbox group,
-clipboard, collapsible, combobox, command, date input, date picker, dialog, drawer, editable, field, fieldset, file
-upload, floating panel, highlight, hover card, listbox, marquee, menu, menubar, meter, navigation menu, number flow,
-number input, pagination, password input, pin input, popover, progress, qr code, radio group, rating group, scroll area,
-segment group, select, signature pad, slider, splitter, steps, swap, switch, table of contents, tabs, tags input, timer,
-toast, toggle, toggle group, tooltip, tour, tree view, and virtualizer.
+This package is a prerelease. It includes accordion, angle slider, avatar, carousel, checkbox and checkbox group, clipboard, collapsible, color picker, combobox, command, date input, date picker, dialog, drawer, editable, field, fieldset, file upload, floating panel, highlight, hover card, listbox, marquee, menu, menubar, meter, navigation menu, number flow, number input, pagination, password input, pin input, popover, progress, qr code, radio group, rating group, scroll area, segment group, select, signature pad, slider, splitter, steps, swap, switch, table of contents, tabs, tags input, timer, toast, toggle, toggle group, tooltip, tour, tree view, and virtualizer.
 
 ## Usage
 
