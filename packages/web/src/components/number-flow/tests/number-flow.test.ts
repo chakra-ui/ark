@@ -1,0 +1,50 @@
+import { screen, waitFor } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
+
+import { mount as Basic } from '../../../../examples/number-flow/basic.js'
+import { mount as Formatting } from '../../../../examples/number-flow/formatting.js'
+import { mount as PrefixSuffix } from '../../../../examples/number-flow/prefix-suffix.js'
+import { mount } from '../../../test-utils.js'
+
+const user = userEvent.setup()
+
+afterEach(() => {
+  document.body.innerHTML = ''
+})
+
+const digits = (flow: Element) => Array.from(flow.querySelectorAll('[data-number-flow-digit]'))
+
+test('number flow renders a digit per place and announces the value', async () => {
+  mount(Basic)
+  const flow = document.querySelector('ark-number-flow')!
+  await waitFor(() => expect(digits(flow)).toHaveLength(4))
+  expect(flow.querySelector('[data-number-flow-digit-track]')).toBeInTheDocument()
+  expect(document.querySelector('ark-number-flow-value-text')).toHaveTextContent('1,248')
+})
+
+test('number flow updates when the value property changes and reuses its digits', async () => {
+  mount(Basic)
+  const flow = document.querySelector('ark-number-flow')!
+  await waitFor(() => expect(digits(flow)).toHaveLength(4))
+  const first = digits(flow)[0]
+  await user.click(screen.getByRole('button', { name: 'Follow' }))
+  await waitFor(() => expect(flow.value).toBe(1249))
+  await waitFor(() => expect(flow.api?.valueText).toBe('1,249'))
+  expect(digits(flow)[0]).toBe(first)
+})
+
+test('number flow renders prefix and suffix as symbols', async () => {
+  mount(PrefixSuffix)
+  const flow = document.querySelector('ark-number-flow')!
+  await waitFor(() => expect(flow.querySelectorAll('[data-number-flow-symbol]').length).toBeGreaterThan(0))
+  expect(flow.querySelector('[data-key=prefix]')).toHaveTextContent('~')
+  expect(flow.querySelector('[data-key=suffix]')).toHaveTextContent('req/s')
+})
+
+test('number flow formats with formatOptions', async () => {
+  mount(Formatting)
+  const texts = () => Array.from(document.querySelectorAll('ark-number-flow-value-text'), (el) => el.textContent)
+  await waitFor(() => expect(texts()[0]).toBe('$48,250.75'))
+  expect(texts()[1]).toBe('+12.4%')
+  expect(texts()[2]).toBe('1.3M')
+})
