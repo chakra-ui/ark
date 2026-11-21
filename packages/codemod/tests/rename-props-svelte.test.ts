@@ -88,3 +88,36 @@ describe('svelte aliased components', () => {
     expect(result.code).toBeNull()
   })
 })
+
+describe('svelte field-indicator', () => {
+  const field = renameRun('field-indicator', 'svelte')
+
+  it('renames RequiredIndicator to Indicator with type="required"', () => {
+    const result = field(wrap('Field', `<Field.RequiredIndicator class="mark">*</Field.RequiredIndicator>`), 'a.svelte')
+    expect(result.code).toContain('<Field.Indicator class="mark" type="required">*</Field.Indicator>')
+  })
+
+  it('renames a RequiredIndicator without attributes', () => {
+    const result = field(wrap('Field', `<Field.RequiredIndicator>*</Field.RequiredIndicator>`), 'a.svelte')
+    expect(result.code).toContain('<Field.Indicator type="required">*</Field.Indicator>')
+  })
+})
+
+describe('svelte field-indicator self-closing', () => {
+  it('keeps the space before />', () => {
+    const result = renameRun('field-indicator', 'svelte')(wrap('Field', `<Field.RequiredIndicator />`), 'a.svelte')
+    expect(result.code).toContain('<Field.Indicator type="required" />')
+  })
+})
+
+describe('svelte attributes containing >', () => {
+  it('reads the whole tag when an attribute value contains >', () => {
+    const result = renameRun('field-indicator', 'svelte')(
+      wrap('Field', `<Field.RequiredIndicator title="a>b" class={x > 1 ? 'a' : 'b'}>y</Field.RequiredIndicator>`),
+      'a.svelte',
+    )
+    expect(result.code).toContain(
+      `<Field.Indicator title="a>b" class={x > 1 ? 'a' : 'b'} type="required">y</Field.Indicator>`,
+    )
+  })
+})

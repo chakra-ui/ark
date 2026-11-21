@@ -14,6 +14,7 @@ export interface PropRule {
   removes?: string[]
   ensure?: { name: string; value: string }[]
   require?: { name: string; from?: string; message: string }[]
+  renamePart?: string
 }
 
 export interface RenameConfig {
@@ -107,6 +108,22 @@ function applyRule(opening: JsxOpening, rule: PropRule, skipped: string[]): numb
       continue
     }
     skipped.push(`${where}: ${message}`)
+  }
+
+  if (rule.renamePart) {
+    const tagNode = opening.getTagNameNode()
+    const [namespace, part] = tagNode.getText().split('.')
+    if (part) {
+      const next = `${namespace}.${rule.renamePart}`
+      if (Node.isJsxOpeningElement(opening)) {
+        const parent = opening.getParent()
+        if (Node.isJsxElement(parent)) parent.getClosingElement().getTagNameNode().replaceWithText(next)
+      }
+      tagNode.replaceWithText(next)
+      changed++
+    } else {
+      skipped.push(`${where}: rename to ${rule.component}.${rule.renamePart}`)
+    }
   }
 
   return changed

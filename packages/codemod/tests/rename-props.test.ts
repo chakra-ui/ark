@@ -201,3 +201,39 @@ const A = () => <TabsRoot slideCount={5} />`,
     expect(result.code).toBeNull()
   })
 })
+
+describe('field-indicator', () => {
+  const field = renameRun('field-indicator')
+
+  it('renames RequiredIndicator to Indicator with type="required"', () => {
+    const result = field(
+      `import { Field } from '@ark-ui/react/field'
+const A = () => (
+  <Field.Label>
+    Email <Field.RequiredIndicator className="mark">*</Field.RequiredIndicator>
+  </Field.Label>
+)`,
+      'a.tsx',
+    )
+    expect(result.code).toContain('<Field.Indicator className="mark" type="required">*</Field.Indicator>')
+    expect(result.code).not.toContain('RequiredIndicator')
+  })
+
+  it('renames a self-closing RequiredIndicator', () => {
+    const result = field(
+      `import { Field } from '@ark-ui/react/field'
+const A = () => <Field.RequiredIndicator />`,
+      'a.tsx',
+    )
+    expect(result.code).toContain('<Field.Indicator type="required" />')
+  })
+
+  it('reports a RequiredIndicator imported on its own', () => {
+    const result = field(
+      `import { FieldRequiredIndicator } from '@ark-ui/react/field'
+const A = () => <FieldRequiredIndicator>*</FieldRequiredIndicator>`,
+      'a.tsx',
+    )
+    expect(result.skipped[0]).toContain('rename to Field.Indicator')
+  })
+})
