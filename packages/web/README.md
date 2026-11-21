@@ -26,7 +26,8 @@ import '@ark-ui/web'
 
 Imports register custom elements as a side effect. Import them in the browser; server rendering can output their HTML,
 but must defer registration to a client entry point. The package ships ESM and TypeScript declarations for use with a
-bundler. Registration is idempotent; the first loaded version owns each `ark-*` tag for the document.
+bundler, and a CDN build that needs no bundler (see [Without a bundler](#without-a-bundler)). Registration is
+idempotent; the first loaded version owns each `ark-*` tag for the document.
 
 ```html
 <ark-accordion collapsible default-value="intro">
@@ -51,6 +52,57 @@ goes inside the child. If the child is replaced, the new child receives the prop
 <ark-menu-item value="settings" as-child><a href="/settings">Settings</a></ark-menu-item>
 <ark-dialog-content as-child><section class="sheet">…</section></ark-dialog-content>
 ```
+
+### Without a bundler
+
+Load every component from a CDN with one module script:
+
+```html
+<script type="module" src="https://cdn.jsdelivr.net/npm/@ark-ui/web@0/dist/cdn/ark-web.js"></script>
+```
+
+`ark-web.js` is a single file with all components and their dependencies. To load only what a page uses, import the
+per-component entries instead. They share one common chunk:
+
+```html
+<script type="module">
+  import 'https://cdn.jsdelivr.net/npm/@ark-ui/web@0/dist/cdn/select.js'
+  import 'https://cdn.jsdelivr.net/npm/@ark-ui/web@0/dist/cdn/dialog.js'
+</script>
+```
+
+Helpers such as `createListCollection` are exported from the same files. Pin an exact version in production.
+
+### Editor support
+
+The package ships a [Custom Elements Manifest](https://custom-elements-manifest.open-wc.org/) at
+`dist/custom-elements.json`, referenced from `package.json` through `customElements`. It lists every element with its
+attributes, events and properties, for tools such as Storybook, linters and documentation generators.
+
+For tag and attribute completion in VS Code's HTML editor, add the generated custom data to your workspace settings:
+
+```json
+{
+  "html.customData": ["./node_modules/@ark-ui/web/dist/vscode.html-data.json"]
+}
+```
+
+### Debugging
+
+Add `debug` to a root, or to any ancestor such as `<body>`, to log its props, state transitions and events to the
+console:
+
+```html
+<ark-dialog id="profile" debug>…</ark-dialog>
+```
+
+```
+[ark] ark-dialog#profile props {…}
+[ark] ark-dialog#profile event openchange {open: true, reason: 'trigger-click'}
+[ark] ark-dialog#profile state closed → open
+```
+
+Logs use `console.debug`, so enable verbose messages in the browser console. Remove the attribute to stop logging.
 
 ## State and events
 

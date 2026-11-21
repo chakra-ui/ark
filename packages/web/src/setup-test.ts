@@ -7,15 +7,6 @@ const uaStyle = document.createElement('style')
 uaStyle.textContent = '[hidden]{display:none !important}'
 document.head.appendChild(uaStyle)
 
-if (typeof globalThis.Option !== 'function') {
-  globalThis.Option = function (text = '', value?: string) {
-    const option = document.createElement('option')
-    option.text = text
-    if (value !== undefined) option.value = value
-    return option
-  } as unknown as typeof Option
-}
-
 Object.defineProperty(Event.prototype, 'isTrusted', {
   configurable: true,
   get(this: Event & { pointerType?: string }) {

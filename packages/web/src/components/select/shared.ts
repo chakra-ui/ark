@@ -27,7 +27,12 @@ const syncedOptions = new WeakMap<HTMLSelectElement, unknown>()
 function syncOptions(hidden: HTMLSelectElement, items: ListCollection) {
   if (syncedOptions.get(hidden) === items) return
   syncedOptions.set(hidden, items)
-  const options = items.items.map((item) => new Option(items.stringifyItem(item) ?? '', items.getItemValue(item) ?? ''))
+  const options = items.items.map((item) => {
+    const option = hidden.ownerDocument.createElement('option')
+    option.text = items.stringifyItem(item) ?? ''
+    option.value = items.getItemValue(item) ?? ''
+    return option
+  })
   hidden.replaceChildren(...options)
 }
 

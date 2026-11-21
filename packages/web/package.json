@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "bun run storybook",
-    "lint": "biome lint src examples .storybook",
+    "lint": "biome lint src examples .storybook scripts",
     "typecheck": "tsc",
     "test": "vitest",
     "test:ci": "vitest --run",
@@ -102,6 +102,9 @@
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
+  "unpkg": "./dist/cdn/ark-web.js",
+  "jsdelivr": "./dist/cdn/ark-web.js",
+  "customElements": "./dist/custom-elements.json",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -315,7 +318,10 @@
     "./signature-pad": {
       "types": "./dist/components/signature-pad/index.d.ts",
       "import": "./dist/components/signature-pad/index.js"
-    }
+    },
+    "./cdn/*": "./dist/cdn/*",
+    "./custom-elements.json": "./dist/custom-elements.json",
+    "./vscode.html-data.json": "./dist/vscode.html-data.json"
   },
   "sideEffects": true,
   "publishConfig": {

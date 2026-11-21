@@ -1,5 +1,6 @@
 import { normalizeProps, spreadProps, VanillaMachine } from '@zag-js/vanilla'
 
+import { debug, traceState } from './debug.js'
 import { emit, silently, trackInput, type CallbackEvents, type EventElement } from './events.js'
 
 type Dict = Record<string, any>
@@ -123,6 +124,14 @@ export interface RootConfig<Api> {
   render?: (api: Api, el: RootElement<Api>) => void
 }
 
+export interface ElementMeta {
+  kind: 'root' | 'part'
+  root?: string
+  attributes?: readonly string[]
+  events?: readonly string[]
+  properties?: readonly string[]
+}
+
 export interface RootElement<Api = Dict, Props extends object = {}> extends EventElement<CallbackEvents<Props>> {
   readonly api: Api | undefined
   readonly machineId: string
@@ -145,6 +154,13 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
 
   class Root extends HTMLElement implements RootElement<Api> {
     static observedAttributes = config.attributes ?? []
+
+    static meta: ElementMeta = {
+      kind: 'root',
+      attributes: config.attributes ?? [],
+      events: Object.values(config.events ?? {}),
+      properties: [...propertyNames, ...Object.keys(config.state ?? {})],
+    }
 
     api: Api | undefined
     machineId = ''
@@ -185,10 +201,12 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
           const callback = props[prop]
           props[prop] = (detail: unknown) => {
             callback?.(detail)
+            debug(this, `event ${type}`, detail)
             emit(this, type, detailOf(prop, detail))
           }
         }
         this.snapshot = props
+        debug(this, 'props', props)
         return props
       })
 
@@ -198,7 +216,13 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
       const unobserve = observeChild(this, () => this.render())
       if (unobserve) this.cleanups.push(unobserve)
 
-      this.cleanups.push(this.machine.subscribe(() => this.render()))
+      const trace = traceState(this, () => this.machine?.service.state.get())
+      this.cleanups.push(
+        this.machine.subscribe(() => {
+          trace()
+          this.render()
+        }),
+      )
       // Parts render the initial state first; effects that query them run once they're in place
       this.render()
       const machine = this.machine
@@ -340,6 +364,8 @@ export const ownInput = (el: HTMLElement) =>
 
 export function definePart<Api>(config: PartConfig<Api>): { new (): PartElement<Api> } {
   class Part extends HTMLElement implements PartElement<Api> {
+    static meta: ElementMeta = { kind: 'part', root: config.root }
+
     private rootEl: RootElement<Api> | null = null
     private target = new Target()
     private setupCleanup: VoidFunction | undefined = undefined
