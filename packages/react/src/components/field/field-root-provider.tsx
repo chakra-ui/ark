@@ -1,5 +1,6 @@
 'use client'
 
+import type { RootState } from '@zag-js/field'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -11,7 +12,8 @@ interface RootProviderProps {
   value: UseFieldReturn
 }
 
-export interface FieldRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
+export interface FieldRootProviderState extends RootState {}
+export interface FieldRootProviderBaseProps extends RootProviderProps, PolymorphicProps<FieldRootProviderState> {}
 export interface FieldRootProviderProps extends HTMLProps<'div'>, FieldRootProviderBaseProps {}
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
@@ -22,7 +24,7 @@ export const FieldRootProvider = forwardRef<HTMLDivElement, FieldRootProviderPro
 
   return (
     <FieldProvider value={field}>
-      <ark.div {...mergedProps} ref={ref} />
+      <ark.div {...mergedProps} ref={ref} state={field.getRootState()} />
     </FieldProvider>
   )
 })

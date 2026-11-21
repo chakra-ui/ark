@@ -90,6 +90,8 @@
         "@zag-js/dom-query": "2.0.0-next.4",
         "@zag-js/drawer": "2.0.0-next.4",
         "@zag-js/editable": "2.0.0-next.4",
+        "@zag-js/field": "2.0.0-next.4",
+        "@zag-js/fieldset": "2.0.0-next.4",
         "@zag-js/file-upload": "2.0.0-next.4",
         "@zag-js/file-utils": "2.0.0-next.4",
         "@zag-js/floating-panel": "2.0.0-next.4",
@@ -1983,6 +1985,10 @@
     "@zag-js/drawer": ["@zag-js/drawer@2.0.0-next.4", "", { "dependencies": { "@zag-js/anatomy": "2.0.0-next.4", "@zag-js/aria-hidden": "2.0.0-next.4", "@zag-js/core": "2.0.0-next.4", "@zag-js/dismissable": "2.0.0-next.4", "@zag-js/dom-query": "2.0.0-next.4", "@zag-js/focus-trap": "2.0.0-next.4", "@zag-js/remove-scroll": "2.0.0-next.4", "@zag-js/types": "2.0.0-next.4", "@zag-js/utils": "2.0.0-next.4" } }, "sha512-tTZDuMMSmLWzHbjWphUfIo2bsLaQKt8ZHWF7lj12PM8ALz+8IlE2Lnpoz4L4WsneWKF2uX6Er06UgZohFoP7uw=="],
 
     "@zag-js/editable": ["@zag-js/editable@2.0.0-next.4", "", { "dependencies": { "@zag-js/anatomy": "2.0.0-next.4", "@zag-js/core": "2.0.0-next.4", "@zag-js/dom-query": "2.0.0-next.4", "@zag-js/interact-outside": "2.0.0-next.4", "@zag-js/types": "2.0.0-next.4", "@zag-js/utils": "2.0.0-next.4" } }, "sha512-2XD3XbowlmhOtxLGczkAvf4GR+cvcMUy2hzo9zwlJpH7bHF54hp+Rg3qq8NyVOPl49K+a5jwR6NNw3Kql+g+gg=="],
+
+    "@zag-js/field": ["@zag-js/field@2.0.0-next.4", "", { "dependencies": { "@zag-js/anatomy": "2.0.0-next.4", "@zag-js/core": "2.0.0-next.4", "@zag-js/dom-query": "2.0.0-next.4", "@zag-js/types": "2.0.0-next.4", "@zag-js/utils": "2.0.0-next.4" } }, "sha512-k5SnRKN0LTpACyyRTb8XgsMbW4k78Nf3ZoZSBwtXcWzfMIc1adbV8QUvbZMx20ovjyljrAgwfjibY6ufuvC6mQ=="],
+
+    "@zag-js/fieldset": ["@zag-js/fieldset@2.0.0-next.4", "", { "dependencies": { "@zag-js/anatomy": "2.0.0-next.4", "@zag-js/core": "2.0.0-next.4", "@zag-js/dom-query": "2.0.0-next.4", "@zag-js/types": "2.0.0-next.4", "@zag-js/utils": "2.0.0-next.4" } }, "sha512-tv/VVj83U9uSeuta37wNEDi/GxqH47xrFvng3Sx9tBD3V+YzBJajfsQT31XB+TCT2/xF0EGd1tRVN7/F+heW9A=="],
 
     "@zag-js/file-upload": ["@zag-js/file-upload@2.0.0-next.4", "", { "dependencies": { "@zag-js/anatomy": "2.0.0-next.4", "@zag-js/core": "2.0.0-next.4", "@zag-js/dom-query": "2.0.0-next.4", "@zag-js/file-utils": "2.0.0-next.4", "@zag-js/i18n-utils": "2.0.0-next.4", "@zag-js/live-region": "2.0.0-next.4", "@zag-js/types": "2.0.0-next.4", "@zag-js/utils": "2.0.0-next.4" } }, "sha512-XEqH7/I7RKGDJcOWaSwgCyZm/Y3eYqNn53x58Qi0zf5GEIr4r3U0DKyKMBEOFZf6HAZp7/4w+ihQKlIjJwqaZQ=="],
 

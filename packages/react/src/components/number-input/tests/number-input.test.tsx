@@ -132,7 +132,7 @@ describe('NumberInput / Field', () => {
   it('should not display error text when no error is present', async () => {
     render(<NumberInputWithField />)
     await screen.findByRole('textbox', { name: /label/i })
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
   })
 
   describe('prop: largeStep', () => {

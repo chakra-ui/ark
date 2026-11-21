@@ -97,12 +97,14 @@ describe('Color Picker / Field', () => {
 
   it('should not display error text when no error is present', async () => {
     render(<WithField />)
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
   })
 
   it('should describe the trigger and channel input with the helper and error text', async () => {
     render(<WithField invalid />)
-    expect(screen.getByRole('button')).toHaveAccessibleDescription('Error Info Additional Info')
-    expect(screen.getByDisplayValue('#EB5E41')).toHaveAccessibleDescription('Error Info Additional Info')
+    await waitFor(() => expect(screen.getByRole('button')).toHaveAccessibleDescription('Additional Info Error Info'))
+    await waitFor(() =>
+      expect(screen.getByDisplayValue('#EB5E41')).toHaveAccessibleDescription('Additional Info Error Info'),
+    )
   })
 })
