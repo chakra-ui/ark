@@ -338,7 +338,7 @@ export function definePart<Api>(config: PartConfig<Api>): { new (): PartElement<
   class Part extends HTMLElement implements PartElement<Api> {
     private rootEl: RootElement<Api> | null = null
     private target = new Target()
-    private setupCleanup: VoidFunction | void = undefined
+    private setupCleanup: VoidFunction | undefined = undefined
     private unobserve: VoidFunction | undefined
     private unwait: VoidFunction | undefined
 
@@ -356,7 +356,7 @@ export function definePart<Api>(config: PartConfig<Api>): { new (): PartElement<
       this.rootEl = rootOf<RootElement<Api> & HTMLElement>(this, config.root)
       if (!this.rootEl) return this.waitForRoot()
 
-      this.setupCleanup = config.setup?.(this, this.rootEl)
+      this.setupCleanup = config.setup?.(this, this.rootEl) || undefined
       this.unobserve = observeChild(this, () => {
         if (this.rootEl?.api) this.update(this.rootEl.api)
       })
