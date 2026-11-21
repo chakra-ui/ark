@@ -582,6 +582,7 @@
         "@zag-js/tags-input": "2.0.0-next.4",
         "@zag-js/timer": "2.0.0-next.4",
         "@zag-js/toast": "2.0.0-next.4",
+        "@zag-js/toc": "2.0.0-next.4",
         "@zag-js/toggle": "2.0.0-next.4",
         "@zag-js/toggle-group": "2.0.0-next.4",
         "@zag-js/tooltip": "2.0.0-next.4",
