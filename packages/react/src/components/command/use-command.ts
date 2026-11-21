@@ -122,12 +122,16 @@ export const useCommand = <T extends CollectionItem>(props: UseCommandProps<T>):
     [collection],
   )
 
+  const source = useMemo(() => (pages ? pages.getDescendants() : collection.items), [pages, collection])
+
+  const filterRef = useRef(filter)
+  filterRef.current = filter
+
   const filteredCollection = useMemo((): ListCollection<T> => {
     if (!query) return pages ?? collection
-    const source = pages ? pages.getDescendants() : collection.items
-    const items = filter ? filter(source, query) : fuzzy.search(source, query)
+    const items = filterRef.current ? filterRef.current(source, query) : fuzzy.search(source, query)
     return (pages ?? collection).setItems(items) as ListCollection<T>
-  }, [collection, pages, query, filter, fuzzy])
+  }, [collection, pages, source, query, fuzzy])
 
   const pendingHighlightRef = useRef<string | null>(null)
   const apiRef = useRef<combobox.Api<PropTypes, T> | null>(null)

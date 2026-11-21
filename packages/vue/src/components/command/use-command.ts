@@ -2,7 +2,7 @@ import { isPageListCollection, type PageListCollection } from '@zag-js/collectio
 import * as combobox from '@zag-js/combobox'
 import { createFuzzySearch } from '@zag-js/fuzzy'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRefOrGetter, computed, ref, shallowRef, toValue, useId, watch } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, ref, shallowRef, toRaw, toValue, useId, watch } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -120,14 +120,15 @@ export const useCommand = <T extends CollectionItem>(
     return createFuzzySearch<T>({ itemToString: (item) => items.stringifyItem(item) ?? '', itemToKeywords: keywordsOf })
   })
 
+  const source = computed(() => pages.value?.getDescendants() ?? collection.value.items)
+
   const filteredCollection = computed((): ListCollection<T> => {
     const items = collection.value
     const pageList = pages.value
     const inputValue = query.value
     if (!inputValue) return pageList ?? items
-    const source = pageList ? pageList.getDescendants() : items.items
-    const filter = toValue(props).filter
-    const matches = filter ? filter(source, inputValue) : fuzzy.value.search(source, inputValue)
+    const filter = toRaw(toValue(props)).filter
+    const matches = filter ? filter(source.value, inputValue) : fuzzy.value.search(source.value, inputValue)
     return (pageList ?? items).setItems(matches) as ListCollection<T>
   })
 

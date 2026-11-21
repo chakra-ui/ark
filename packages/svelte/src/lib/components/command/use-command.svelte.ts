@@ -119,9 +119,10 @@ export const useCommand = <T extends CollectionItem>(props: MaybeFunction<UseCom
     createFuzzySearch<T>({ itemToString: (item) => collection.stringifyItem(item) ?? '', itemToKeywords: keywordsOf }),
   )
 
+  const source = $derived(pages ? pages.getDescendants() : collection.items)
+
   const filteredCollection = $derived.by((): ListCollection<T> => {
     if (!query) return pages ?? collection
-    const source = pages ? pages.getDescendants() : collection.items
     const filter = resolvedProps.filter
     const items = filter ? filter(source, query) : fuzzy.search(source, query)
     return (pages ?? collection).setItems(items) as ListCollection<T>

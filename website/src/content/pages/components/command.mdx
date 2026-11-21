@@ -60,18 +60,46 @@ matching items are not rendered. Disabled items are skipped by the keyboard.
 
 Items are fuzzy-matched on their text and an optional `keywords` array, best match first.
 
+```tsx
+{ value: 'settings', label: 'Open settings', keywords: ['preferences', 'config'] }
+```
+
 <Example id="keywords" />
 
 ### Pages
 
 Use `createPageListCollection` and give an item a `parent` to put it on that item's page. Selecting the parent opens the
-page, Backspace in an empty input goes up, and typing also searches nested pages.
+page, Backspace in an empty input goes up, and typing also searches nested pages. Pass `page` to start on one.
 
-Render breadcrumbs with `path` and a result's location with `getAncestors`. To make Escape go back, call `back()` from
-the dialog's `onEscapeKeyDown` when `canGoBack` is true.
+```tsx
+const collection = createPageListCollection({
+  items: [
+    { value: 'theme', label: 'Change theme' },
+    { value: 'dark', label: 'Dark', parent: 'theme' },
+    { value: 'light', label: 'Light', parent: 'theme' },
+  ],
+  page: 'theme',
+})
+```
 
-To start on a page, pass `page` to `createPageListCollection`. To navigate from outside, use `useCommand` with
-`RootProvider` and call `setPage`, `back`, or `up`.
+Render breadcrumbs with `path` and a result's location with `getAncestors`. To make Escape go back before the dialog
+closes, call `back()` from `onEscapeKeyDown`:
+
+```tsx
+const command = useCommand({ collection })
+
+<Dialog.Root
+  onEscapeKeyDown={(event) => {
+    if (command.canGoBack) {
+      event.preventDefault()
+      command.back()
+    }
+  }}
+>
+  {/* ... */}
+  <Command.RootProvider value={command}>{/* ... */}</Command.RootProvider>
+</Dialog.Root>
+```
 
 <Example id="pages" />
 

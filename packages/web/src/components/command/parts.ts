@@ -13,7 +13,6 @@ definePart<combobox.Api>({
   props: (api) => api.getInputProps(),
 })
 
-// Keep focus in the input when an item is pressed
 const keepFocus = (event: PointerEvent) => {
   if (event.button === 0) event.preventDefault()
 }

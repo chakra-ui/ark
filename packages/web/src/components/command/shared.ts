@@ -75,6 +75,8 @@ function searchOf(source: Pages) {
 export const queryOf = (el: HTMLElement) =>
   el.getAttribute('input-value') ?? queries.get(el) ?? el.getAttribute('default-input-value') ?? ''
 
+const descendants = new WeakMap<Pages, Item[]>()
+
 const filtered = new WeakMap<HTMLElement, { pages: Pages; query: string; filter: unknown; result: Pages }>()
 
 export function filteredOf(el: HTMLElement) {
@@ -86,9 +88,12 @@ export function filteredOf(el: HTMLElement) {
   if (!query) return pages
   const cached = filtered.get(el)
   if (cached && cached.pages === pages && cached.query === query && cached.filter === filter) return cached.result
-  const items = pages.getDescendants()
+  let items = descendants.get(pages)
+  if (!items) {
+    items = pages.getDescendants()
+    descendants.set(pages, items)
+  }
   const matches = new Set(filter ? filter(items, query) : searchOf(source).search(items, query))
-  // Markup items keep their DOM order, so the matches do too
   const result = pages.setItems(pages.allItems.filter((item) => matches.has(item)))
   filtered.set(el, { pages, query, filter, result })
   return result

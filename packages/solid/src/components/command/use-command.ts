@@ -105,34 +105,38 @@ export const useCommand = <T extends CollectionItem>(props: MaybeAccessor<UseCom
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
 
-  const resolved = () => runIfFn(props)
+  const resolvedProps = () => runIfFn(props)
 
-  const [localInputValue, setLocalInputValue] = createSignal(untrack(() => resolved().defaultInputValue) ?? '')
-  const query = createMemo(() => (resolved().inputValue ?? localInputValue()).trim())
+  const [localInputValue, setLocalInputValue] = createSignal(untrack(() => resolvedProps().defaultInputValue) ?? '')
+  const query = createMemo(() => (resolvedProps().inputValue ?? localInputValue()).trim())
 
   const [navigation, setNavigation] = createSignal<{ source: unknown; pages: PageListCollection<T> } | null>(null)
   const pages = createMemo(() => {
-    const collection = resolved().collection
+    const collection = resolvedProps().collection
     const current = navigation()
     if (current?.source === collection) return current.pages
     return isPageListCollection(collection) ? (collection as PageListCollection<T>) : null
   })
 
   const fuzzy = createMemo(() => {
-    const collection = resolved().collection
+    const collection = resolvedProps().collection
     return createFuzzySearch<T>({
       itemToString: (item) => collection.stringifyItem(item) ?? '',
       itemToKeywords: keywordsOf,
     })
   })
 
+  const source = createMemo(() => {
+    const current = pages()
+    return current ? current.getDescendants() : resolvedProps().collection.items
+  })
+
   const filteredCollection = createMemo((): ListCollection<T> => {
-    const { collection, filter } = resolved()
+    const { collection, filter } = resolvedProps()
     const current = pages()
     const search = query()
     if (!search) return current ?? collection
-    const source = current ? current.getDescendants() : collection.items
-    const items = filter ? filter(source, search) : fuzzy().search(source, search)
+    const items = filter ? filter(source(), search) : fuzzy().search(source(), search)
     return (current ?? collection).setItems(items) as ListCollection<T>
   })
 
@@ -140,10 +144,10 @@ export const useCommand = <T extends CollectionItem>(props: MaybeAccessor<UseCom
 
   const navigate = (next: PageListCollection<T>, nextQuery: string) => {
     if (next === pages()) return false
-    setNavigation({ source: resolved().collection, pages: next })
+    setNavigation({ source: resolvedProps().collection, pages: next })
     pendingHighlight = next.restore.highlightedValue
     api().setInputValue(nextQuery)
-    resolved().onPageChange?.({ page: next.page, item: next.pageItem })
+    resolvedProps().onPageChange?.({ page: next.page, item: next.pageItem })
     return true
   }
 
@@ -169,7 +173,7 @@ export const useCommand = <T extends CollectionItem>(props: MaybeAccessor<UseCom
   const getAncestors = (item: T) => pages()?.getAncestors(item) ?? []
 
   const machineProps = createMemo<combobox.Props<T>>(() => {
-    const [, rest] = splitProps(resolved(), [...ownKeys])
+    const [, rest] = splitProps(resolvedProps(), [...ownKeys])
     return {
       id,
       dir: locale().dir,

@@ -75,7 +75,7 @@
           <div class={styles.Footer}>
             <span class={styles.FooterHint}>
               <kbd class={styles.Shortcut}>↑↓</kbd>
-               Navigate
+              Navigate
             </span>
             <span class={styles.FooterHint}>
               <kbd class={styles.Shortcut}>
@@ -85,7 +85,7 @@
             </span>
             <span class={styles.FooterHint}>
               <kbd class={styles.Shortcut}>esc</kbd>
-               Close
+              Close
             </span>
           </div>
         </Dialog.Content>
