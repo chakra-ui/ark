@@ -4,6 +4,9 @@ index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2
 diff --git a/node_modules/@zag-js/field/.bun-tag-84da2b3c3eebc6a1 b/.bun-tag-84da2b3c3eebc6a1
 new file mode 100644
 index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/field/.bun-tag-abed446d541fdf2d b/.bun-tag-abed446d541fdf2d
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 diff --git a/dist/field.connect.js b/dist/field.connect.js
 index b1bcfebfa9bb3d055e674375e43b4517105e2140..73eb86543c6ff9e8d82d7d2d2d9cf2267d15b3a6 100644
 --- a/dist/field.connect.js
@@ -76,3 +79,47 @@ index cbc2e8576bbb285a05b96cae0331551aba00b34a..0bc63e8b39a779f7dba7a299c7bd4ee5
  const getLabelId = (ctx) => ctx.ids?.label ?? `${ctx.id}:label`;
  const getErrorTextId = (ctx, match, id) => {
  	if (id) return id;
+diff --git a/dist/field.machine.js b/dist/field.machine.js
+index a39ac4c59221f4344cca5d96046a17d13302b9f3..6861df65250a8e0001949a1533e2647e9311f798 100644
+--- a/dist/field.machine.js
++++ b/dist/field.machine.js
+@@ -159,7 +159,7 @@ const machine = createMachine({
+ 					context.set("hasHelperText", !!scope.getById(require_field_dom.getHelperTextId(scope)));
+ 				};
+ 				sync();
+-				return (0, _zag_js_dom_query.observeChildren)(() => require_field_dom.getRootEl(scope), {
++				return (0, _zag_js_dom_query.observeChildren)(() => (sync(), require_field_dom.getRootEl(scope)), {
+ 					defer: true,
+ 					callback: sync,
+ 					attributes: true,
+@@ -173,7 +173,7 @@ const machine = createMachine({
+ 					context.set("fieldsetErrorTextId", fieldsetEl ? require_field_dom.getFieldsetErrorTextId(fieldsetEl) : null);
+ 				};
+ 				sync();
+-				return (0, _zag_js_dom_query.observeChildren)(getFieldsetEl$1, {
++				return (0, _zag_js_dom_query.observeChildren)(() => (sync(), getFieldsetEl$1()), {
+ 					defer: true,
+ 					callback: sync,
+ 					attributes: true,
+diff --git a/dist/field.machine.mjs b/dist/field.machine.mjs
+index cf3a0e983cfd551e17b85a8996cd32b97c9d66d0..1cb8887c5d28e21e7ec062e9a16e5f07cc0f4078 100644
+--- a/dist/field.machine.mjs
++++ b/dist/field.machine.mjs
+@@ -156,7 +156,7 @@ const machine = createMachine({
+ 					context.set("hasHelperText", !!scope.getById(getHelperTextId(scope)));
+ 				};
+ 				sync();
+-				return observeChildren(() => getRootEl(scope), {
++				return observeChildren(() => (sync(), getRootEl(scope)), {
+ 					defer: true,
+ 					callback: sync,
+ 					attributes: true,
+@@ -170,7 +170,7 @@ const machine = createMachine({
+ 					context.set("fieldsetErrorTextId", fieldsetEl ? getFieldsetErrorTextId(fieldsetEl) : null);
+ 				};
+ 				sync();
+-				return observeChildren(getFieldsetEl$1, {
++				return observeChildren(() => (sync(), getFieldsetEl$1()), {
+ 					defer: true,
+ 					callback: sync,
+ 					attributes: true,

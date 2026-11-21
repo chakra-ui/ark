@@ -1,0 +1,26 @@
+diff --git a/dist/fieldset.machine.js b/dist/fieldset.machine.js
+index d7deadbb768bc621b137f4733a6ce1210111fb5a..7dd23d742919220f2d2f962a03185e6f629b2b00 100644
+--- a/dist/fieldset.machine.js
++++ b/dist/fieldset.machine.js
+@@ -37,7 +37,7 @@ const machine = createMachine({
+ 				context.set("hasLegend", !!scope.getById(require_fieldset_dom.getLegendId(scope)));
+ 			};
+ 			sync();
+-			return (0, _zag_js_dom_query.observeChildren)(() => require_fieldset_dom.getRootEl(scope), {
++			return (0, _zag_js_dom_query.observeChildren)(() => (sync(), require_fieldset_dom.getRootEl(scope)), {
+ 				defer: true,
+ 				callback: sync
+ 			});
+diff --git a/dist/fieldset.machine.mjs b/dist/fieldset.machine.mjs
+index 684352f4426c70837d3a35a73690e8544b4b9898..1f7d0d0071db3056185672bbc298e6ba88305a33 100644
+--- a/dist/fieldset.machine.mjs
++++ b/dist/fieldset.machine.mjs
+@@ -34,7 +34,7 @@ const machine = createMachine({
+ 				context.set("hasLegend", !!scope.getById(getLegendId(scope)));
+ 			};
+ 			sync();
+-			return observeChildren(() => getRootEl(scope), {
++			return observeChildren(() => (sync(), getRootEl(scope)), {
+ 				defer: true,
+ 				callback: sync
+ 			});

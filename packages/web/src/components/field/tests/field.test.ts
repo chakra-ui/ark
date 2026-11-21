@@ -60,7 +60,6 @@ test('field states reach the native control and update with the attributes', asy
   const helper = document.querySelector('ark-field-helper-text')!
 
   await waitFor(() => expect(input).toHaveAttribute('aria-describedby', helper.id))
-  await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))
 
   field.setAttribute('required', '')
   field.setAttribute('readonly', '')
