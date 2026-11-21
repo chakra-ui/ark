@@ -39,7 +39,9 @@ describe('Command', () => {
   })
 
   it('should support a custom filter', async () => {
-    render(ComponentUnderTest, { props: { filter: (text: string, query: string) => text.startsWith(query) } })
+    const filter = <T extends { label: string }>(items: T[], query: string) =>
+      items.filter((item) => item.label.startsWith(query))
+    render(ComponentUnderTest, { props: { filter } })
     await user.type(screen.getByRole('combobox'), 'S')
     await waitFor(() => expect(screen.getAllByRole('option')).toHaveLength(1))
   })
@@ -114,5 +116,13 @@ describe('Command', () => {
     await waitFor(() => expect(screen.getAllByRole('option')).toHaveLength(5))
     expect(onPageChange).toHaveBeenLastCalledWith(expect.objectContaining({ page: null }))
     await waitFor(() => expect(highlighted()).toHaveTextContent('Theme'))
+  })
+
+  it('should search nested pages while typing', async () => {
+    render(ComponentUnderTest)
+    expect(screen.queryByRole('option', { name: 'Dark' })).not.toBeInTheDocument()
+
+    await user.type(screen.getByRole('combobox'), 'dark')
+    await waitFor(() => expect(screen.getByRole('option', { name: 'Dark' })).toBeInTheDocument())
   })
 })

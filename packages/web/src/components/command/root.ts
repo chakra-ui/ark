@@ -1,41 +1,50 @@
 import * as combobox from '@zag-js/combobox'
 import { str } from '../../utils/attrs.js'
+import type { Item } from '../../utils/collection.js'
 import { defineRoot, type RootElement } from '../../utils/define.js'
 import { emit } from '../../utils/events.js'
-import { collection, filteredOf, pageOf, queries, queryOf, root, treeOf } from './shared.js'
+import { collection, filteredOf, type Pages, pagesOf, queries, queryOf, root, setPages } from './shared.js'
 
-type CommandHost = RootElement<combobox.Api> & HTMLElement & { page?: string | null }
+type CommandHost = RootElement<combobox.Api> & HTMLElement
 
-const shownPages = new WeakMap<HTMLElement, string | null>()
-
-const pathOf = (el: HTMLElement, page: string | null) => {
-  const path: string[] = []
-  const { parentOf } = treeOf(el)
-  for (let value = page; value != null && !path.includes(value); value = parentOf(value)) path.unshift(value)
-  return path
+function navigate(el: CommandHost, next: Pages | undefined, query: string) {
+  if (!next || next === pagesOf(el)) return false
+  setPages(el, next)
+  el.refresh()
+  el.render()
+  el.api?.setInputValue(query)
+  emit(el, 'pagechange', { page: next.page, item: next.pageItem })
+  const value = next.restore.highlightedValue
+  if (value != null) {
+    requestAnimationFrame(() => {
+      if (el.api?.collection.has(value)) el.api.setHighlightedValue(value)
+    })
+  }
+  return true
 }
 
-function pageChanged(el: CommandHost) {
-  const previous = shownPages.get(el) ?? null
-  const page = pageOf(el)
-  if (page === previous) return
-  shownPages.set(el, page)
-  const path = pathOf(el, previous)
-  const depth = page == null ? 0 : path.indexOf(page) + 1
-  const from = page == null || depth > 0 ? path[depth] : undefined
-  el.api?.setInputValue('')
-  emit(el, 'pagechange', { page, item: page != null ? (collection.get(el)?.find(page) ?? null) : null })
-  if (from == null) return
-  requestAnimationFrame(() => {
-    if (el.api?.collection.has(from)) el.api.setHighlightedValue(from)
-  })
+const currentQuery = (el: HTMLElement) => queryOf(el).trim()
+
+const setPage = (el: CommandHost, value: string | null) => {
+  navigate(el, pagesOf(el)?.setPage(value, currentQuery(el)), '')
 }
 
-defineRoot<combobox.Api>({
-  properties: ['filter', 'page', 'navigate', 'scrollToIndexFn', 'ids', 'translations', 'items'],
+const back = (el: CommandHost) => {
+  const pages = pagesOf(el)
+  if (!pages?.canGoBack) return false
+  const next = pages.back(currentQuery(el))
+  return navigate(el, next, next.restore.query)
+}
+
+const up = (el: CommandHost) => {
+  const pages = pagesOf(el)
+  return pages?.page != null ? navigate(el, pages.up(currentQuery(el)), '') : false
+}
+
+const Command = defineRoot<combobox.Api>({
+  properties: ['filter', 'navigate', 'scrollToIndexFn', 'ids', 'translations', 'items'],
   propertyChanged: (el, name) => {
     if (name === 'items') collection.update(el)
-    if (name === 'page') queueMicrotask(() => pageChanged(el as CommandHost))
   },
 
   tag: root,
@@ -59,7 +68,9 @@ defineRoot<combobox.Api>({
       loopFocus: el.hasAttribute('loop-focus'),
       placeholder: str(el, 'placeholder'),
       onSelect(details: combobox.SelectionDetails) {
-        if (treeOf(el).owners.has(details.itemValue)) (el as CommandHost).page = details.itemValue
+        const pages = pagesOf(el)
+        const item = pages?.getItem(details.itemValue)
+        if (item && pages?.isPage(item)) setPage(el as CommandHost, details.itemValue)
         else emit(el, 'itemselect', details)
       },
     }
@@ -71,8 +82,6 @@ defineRoot<combobox.Api>({
     if (first != null && el.api?.highlightedValue == null) el.api?.setHighlightedValue(first)
   },
   setup: (el) => {
-    const host = el as CommandHost
-    shownPages.set(el, pageOf(el))
     const cleanup = collection.setup(el)
     const onInput = (event: Event) => {
       const { inputValue } = (event as CustomEvent<combobox.InputValueChangeDetails>).detail
@@ -83,10 +92,7 @@ defineRoot<combobox.Api>({
     const onKeyDown = (event: KeyboardEvent) => {
       const input = event.target as HTMLInputElement
       if (event.key !== 'Backspace' || !input.matches?.('ark-command-input > input') || input.value) return
-      const page = pageOf(el)
-      if (page == null) return
-      event.preventDefault()
-      host.page = treeOf(el).parentOf(page)
+      if (up(el as CommandHost)) event.preventDefault()
     }
     el.addEventListener('inputvaluechange', onInput)
     el.addEventListener('keydown', onKeyDown)
@@ -95,5 +101,56 @@ defineRoot<combobox.Api>({
       el.removeEventListener('inputvaluechange', onInput)
       el.removeEventListener('keydown', onKeyDown)
     }
+  },
+})
+
+Object.defineProperties(Command.prototype, {
+  page: {
+    configurable: true,
+    get(this: CommandHost) {
+      return pagesOf(this)?.page ?? null
+    },
+  },
+  path: {
+    configurable: true,
+    get(this: CommandHost) {
+      return pagesOf(this)?.getPath() ?? []
+    },
+  },
+  canGoBack: {
+    configurable: true,
+    get(this: CommandHost) {
+      return pagesOf(this)?.canGoBack ?? false
+    },
+  },
+  setPage: {
+    configurable: true,
+    value(this: CommandHost, value: string | null) {
+      setPage(this, value)
+    },
+  },
+  back: {
+    configurable: true,
+    value(this: CommandHost) {
+      return back(this)
+    },
+  },
+  up: {
+    configurable: true,
+    value(this: CommandHost) {
+      return up(this)
+    },
+  },
+  isPage: {
+    configurable: true,
+    value(this: CommandHost, item: Item) {
+      return pagesOf(this)?.isPage(item) ?? false
+    },
+  },
+  getAncestors: {
+    configurable: true,
+    value(this: CommandHost, item: Item) {
+      return pagesOf(this)?.getAncestors(item) ?? []
+    },
   },
 })

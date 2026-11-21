@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import type { CommandElement } from '../src/components/command/index.js'
 
 const story = (name: string) => `/iframe.html?id=components-command--${name}&viewMode=story`
 
@@ -102,11 +103,16 @@ test('command renders grouped items from JSON with keywords', async ({ page }) =
 
 test('command loads items asynchronously', async ({ page }) => {
   await page.goto(story('async'))
+  const command = page.locator('ark-command')
   await expect(page.getByRole('option')).toHaveCount(6)
+  await expect(command).not.toHaveAttribute('loading')
   await page.getByRole('combobox').fill('grace')
+  await expect(command).toHaveAttribute('loading')
+  await expect(page.getByText('Loading...')).toBeVisible()
+  await expect(command).not.toHaveAttribute('loading')
+  await expect(page.getByText('Loading...')).toBeHidden()
   await expect(page.getByRole('option')).toHaveCount(1)
   await expect(page.getByRole('option')).toHaveText('Grace Hopper')
-  await expect(page.locator('ark-command')).not.toHaveAttribute('loading')
 })
 
 test('command opens item pages and goes back with Backspace', async ({ page }) => {
@@ -128,6 +134,43 @@ test('command opens item pages and goes back with Backspace', async ({ page }) =
   await page.keyboard.press('Backspace')
   await expect(options).toHaveCount(3)
   await expect(page.locator('[role=option][data-highlighted]')).toHaveText('Change theme')
+})
+
+test('command searches nested pages from the top level', async ({ page }) => {
+  await page.goto(story('pages'))
+  await expect(page.getByRole('option', { name: 'Dark' })).toBeHidden()
+  await page.getByRole('combobox').fill('dark')
+  const option = page.getByRole('option', { name: /Dark/ })
+  await expect(page.getByRole('option')).toHaveCount(1)
+  await expect(option).toBeVisible()
+  await expect(option).toContainText('Change theme')
+  await page.keyboard.press('Enter')
+  await expect(page.locator('output')).toHaveText('Selected: dark')
+})
+
+test('command goes back to the previous page and restores its query', async ({ page }) => {
+  await page.goto(story('pages'))
+  const command = page.locator('ark-command')
+  const input = page.getByRole('combobox')
+  await input.fill('lang')
+  await expect(page.locator('[role=option][data-highlighted]')).toHaveText('Change language')
+  await page.keyboard.press('Enter')
+  await expect(input).toHaveValue('')
+  await expect(page.getByRole('option')).toHaveText(['English', 'French'])
+  await expect(page.getByRole('button', { name: 'Change language' })).toBeVisible()
+  await expect(
+    command.evaluate((el: CommandElement) => [el.page, el.canGoBack, el.path.map((item) => item.value)]),
+  ).resolves.toEqual(['language', true, ['language']])
+
+  await expect(command.evaluate((el: CommandElement) => el.back())).resolves.toBe(true)
+  await expect(input).toHaveValue('lang')
+  await expect(page.locator('[role=option][data-highlighted]')).toHaveText('Change language')
+  await expect(command.evaluate((el: CommandElement) => [el.page, el.canGoBack])).resolves.toEqual([null, false])
+
+  await command.evaluate((el: CommandElement) => el.setPage('theme'))
+  await expect(page.getByRole('option')).toHaveCount(3)
+  await expect(command.evaluate((el: CommandElement) => el.up())).resolves.toBe(true)
+  await expect(command.evaluate((el: CommandElement) => el.up())).resolves.toBe(false)
 })
 
 test('command palette opens with the keyboard shortcut and runs a command', async ({ page }) => {

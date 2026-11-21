@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Command, createListCollection } from '@ark-ui/vue/command'
+import { Command, createPageListCollection } from '@ark-ui/vue/command'
 import { ChevronRightIcon, SearchIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import styles from 'styles/command.module.css'
 
-const collection = createListCollection({
+const collection = createPageListCollection({
   items: [
     { value: 'theme', label: 'Change theme' },
     { value: 'language', label: 'Change language' },
@@ -28,7 +28,7 @@ const selected = ref<string | null>(null)
       <Command.Context v-slot="command">
         <div :class="styles.Breadcrumb">
           <button type="button" @click="command.setPage(null)">Home</button>
-          <span v-for="page in command.pages" :key="page.value">
+          <span v-for="page in command.path" :key="page.value">
             <ChevronRightIcon />
             <button type="button" @click="command.setPage(page.value)">{{ page.label }}</button>
           </span>
@@ -43,6 +43,14 @@ const selected = ref<string | null>(null)
         <Command.List :class="styles.List">
           <Command.Item v-for="item in command.collection.items" :key="item.value" :item="item" :class="styles.Item">
             <Command.ItemText :class="styles.ItemText">{{ item.label }}</Command.ItemText>
+            <span v-if="command.getAncestors(item).length > 0" :class="styles.ItemPath">
+              {{
+                command
+                  .getAncestors(item)
+                  .map((page) => page.label)
+                  .join(' › ')
+              }}
+            </span>
             <ChevronRightIcon v-if="command.isPage(item)" />
           </Command.Item>
         </Command.List>

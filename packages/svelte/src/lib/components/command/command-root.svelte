@@ -43,7 +43,6 @@
       'collection',
       'defaultHighlightedValue',
       'defaultInputValue',
-      'defaultPage',
       'disabled',
       'filter',
       'highlightedValue',

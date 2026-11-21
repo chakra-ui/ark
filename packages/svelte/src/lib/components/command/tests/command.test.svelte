@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Command, createListCollection } from '@ark-ui/svelte/command'
+  import { Command, createPageListCollection } from '@ark-ui/svelte/command'
 
   interface Item {
     label: string
@@ -10,7 +10,7 @@
     parent?: string | undefined
   }
 
-  const collection = createListCollection<Item>({
+  const collection = createPageListCollection<Item>({
     items: [
       { label: 'New file', value: 'new-file', group: 'File' },
       { label: 'Save', value: 'save', group: 'File', keywords: ['write'] },

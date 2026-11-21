@@ -1,17 +1,20 @@
-import * as combobox from '@zag-js/combobox'
+import { PageListCollection } from '@zag-js/collection'
+import { createFuzzySearch, type FuzzySearch } from '@zag-js/fuzzy'
 import { defineCollection, grouping, type CollectionConfig, type Item } from '../../utils/collection.js'
 export const root = 'ark-command'
 
-export type CommandFilter = (itemText: string, inputValue: string, item: Item) => boolean
+export type CommandFilter = (items: Item[], query: string) => Item[]
 
 const toCollection = (items: Item[]) =>
-  combobox.collection<Item>({
+  new PageListCollection<Item>({
     items,
     ...grouping(items),
     itemToValue: (item) => item.value,
     itemToString: (item) => item.label,
     isItemDisabled: (item) => item.disabled,
   })
+
+export type Pages = ReturnType<typeof toCollection>
 
 const keywordsOf = (value: string | null) =>
   value
@@ -43,76 +46,58 @@ export const collection = defineCollection({
 
 export const queries = new WeakMap<HTMLElement, string>()
 
-type CommandHost = HTMLElement & { filter?: CommandFilter; page?: string | null }
+type CommandHost = HTMLElement & { filter?: CommandFilter }
 
-interface Tree {
-  parentOf: (value: string) => string | null
-  owners: Set<string>
-}
+const navigation = new WeakMap<HTMLElement, { source: Pages; pages: Pages }>()
 
-const trees = new WeakMap<object, Tree>()
-
-export function treeOf(el: HTMLElement): Tree {
+export function pagesOf(el: HTMLElement): Pages | undefined {
   const source = collection.get(el)
-  const cached = source && trees.get(source)
-  if (cached) return cached
-  const parents = new Map((source?.items ?? []).map((item) => [item.value, item.parent ?? null]))
-  const parentOf = (value: string) => {
-    const parent = parents.get(value) ?? null
-    return parent != null && parents.has(parent) ? parent : null
-  }
-  const owners = new Set<string>()
-  for (const value of parents.keys()) {
-    const parent = parentOf(value)
-    if (parent != null) owners.add(parent)
-  }
-  const tree = { parentOf, owners }
-  if (source) trees.set(source, tree)
-  return tree
+  const current = navigation.get(el)
+  return current && current.source === source ? current.pages : source
 }
 
-export const pageOf = (el: HTMLElement) => {
-  const page = (el as CommandHost).page ?? null
-  return page != null && treeOf(el).owners.has(page) ? page : null
+export function setPages(el: HTMLElement, pages: Pages) {
+  const source = collection.get(el)
+  if (source) navigation.set(el, { source, pages })
 }
 
-const filtered = new WeakMap<
-  HTMLElement,
-  { source: unknown; key: string; filter: unknown; result: ReturnType<typeof toCollection> }
->()
+const searches = new WeakMap<Pages, FuzzySearch<Item>>()
 
-const contains = (text: string, query: string) => text.toLocaleLowerCase().includes(query.toLocaleLowerCase())
-
-export const defaultFilter: CommandFilter = (itemText, inputValue, item) =>
-  contains(itemText, inputValue) || !!item.keywords?.some((keyword) => contains(keyword, inputValue))
+function searchOf(source: Pages) {
+  let search = searches.get(source)
+  if (!search) {
+    search = createFuzzySearch<Item>({ itemToString: (item) => item.label, itemToKeywords: (item) => item.keywords })
+    searches.set(source, search)
+  }
+  return search
+}
 
 export const queryOf = (el: HTMLElement) =>
   el.getAttribute('input-value') ?? queries.get(el) ?? el.getAttribute('default-input-value') ?? ''
 
+const filtered = new WeakMap<HTMLElement, { pages: Pages; query: string; filter: unknown; result: Pages }>()
+
 export function filteredOf(el: HTMLElement) {
   const source = collection.get(el)
-  if (!source) return undefined
+  const pages = pagesOf(el)
+  if (!source || !pages) return undefined
   const filter = (el as CommandHost).filter
   const query = queryOf(el).trim()
-  const page = pageOf(el)
-  const key = `${page ?? ''}\u0000${query}`
+  if (!query) return pages
   const cached = filtered.get(el)
-  if (cached && cached.source === source && cached.key === key && cached.filter === filter) return cached.result
-  const tree = treeOf(el)
-  const scoped = tree.owners.size > 0
-  const match = filter ?? defaultFilter
-  const items = source.items.filter(
-    (item) => (!scoped || tree.parentOf(item.value) === page) && (!query || match(item.label, query, item)),
-  )
-  const result = toCollection(items)
-  filtered.set(el, { source, key, filter, result })
+  if (cached && cached.pages === pages && cached.query === query && cached.filter === filter) return cached.result
+  const items = pages.getDescendants()
+  const matches = new Set(filter ? filter(items, query) : searchOf(source).search(items, query))
+  // Markup items keep their DOM order, so the matches do too
+  const result = pages.setItems(pages.allItems.filter((item) => matches.has(item)))
+  filtered.set(el, { pages, query, filter, result })
   return result
 }
 
 export const itemOf = (part: HTMLElement) => {
   const value = collection.valueOf(part)
   const rootEl = part.closest<HTMLElement>(root)
-  return value != null && rootEl ? collection.get(rootEl)?.find(value) : null
+  return value != null && rootEl ? collection.get(rootEl)?.getItem(value) : null
 }
 
 export const isFilteredOut = (part: HTMLElement, value: string) => {

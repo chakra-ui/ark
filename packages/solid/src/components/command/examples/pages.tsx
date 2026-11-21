@@ -1,9 +1,9 @@
-import { Command, createListCollection } from '@ark-ui/solid/command'
+import { Command, createPageListCollection } from '@ark-ui/solid/command'
 import { ChevronRightIcon, SearchIcon } from 'lucide-solid'
 import { For, Show, createSignal } from 'solid-js'
 import styles from 'styles/command.module.css'
 
-const collection = createListCollection({
+const collection = createPageListCollection({
   items: [
     { value: 'theme', label: 'Change theme' },
     { value: 'language', label: 'Change language' },
@@ -31,7 +31,7 @@ export const Pages = () => {
                 <button type="button" onClick={() => command().setPage(null)}>
                   Home
                 </button>
-                <For each={command().pages}>
+                <For each={command().path}>
                   {(page) => (
                     <span>
                       <ChevronRightIcon />
@@ -54,6 +54,14 @@ export const Pages = () => {
                   {(item) => (
                     <Command.Item item={item} class={styles.Item}>
                       <Command.ItemText class={styles.ItemText}>{item.label}</Command.ItemText>
+                      <Show when={command().getAncestors(item).length > 0}>
+                        <span class={styles.ItemPath}>
+                          {command()
+                            .getAncestors(item)
+                            .map((page) => page.label)
+                            .join(' › ')}
+                        </span>
+                      </Show>
                       <Show when={command().isPage(item)}>
                         <ChevronRightIcon />
                       </Show>

@@ -1,9 +1,9 @@
-import { Command, createListCollection } from '@ark-ui/react/command'
+import { Command, createPageListCollection } from '@ark-ui/react/command'
 import { ChevronRightIcon, SearchIcon } from 'lucide-react'
 import { useState } from 'react'
 import styles from 'styles/command.module.css'
 
-const collection = createListCollection({
+const collection = createPageListCollection({
   items: [
     { value: 'theme', label: 'Change theme' },
     { value: 'language', label: 'Change language' },
@@ -35,7 +35,7 @@ export const Pages = () => {
                 <button type="button" onClick={() => command.setPage(null)}>
                   Home
                 </button>
-                {command.pages.map((page) => (
+                {command.path.map((page) => (
                   <span key={page.value}>
                     <ChevronRightIcon />
                     <button type="button" onClick={() => command.setPage(page.value)}>
@@ -55,6 +55,14 @@ export const Pages = () => {
                 {command.collection.items.map((item) => (
                   <Command.Item key={item.value} item={item} className={styles.Item}>
                     <Command.ItemText className={styles.ItemText}>{item.label}</Command.ItemText>
+                    {command.getAncestors(item).length > 0 && (
+                      <span className={styles.ItemPath}>
+                        {command
+                          .getAncestors(item)
+                          .map((page) => page.label)
+                          .join(' › ')}
+                      </span>
+                    )}
                     {command.isPage(item) && <ChevronRightIcon />}
                   </Command.Item>
                 ))}

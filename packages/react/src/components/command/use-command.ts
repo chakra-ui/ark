@@ -1,16 +1,14 @@
 'use client'
 
+import { isPageListCollection, type PageListCollection } from '@zag-js/collection'
 import * as combobox from '@zag-js/combobox'
+import { createFuzzySearch } from '@zag-js/fuzzy'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/react'
 import { type KeyboardEvent, useEffect, useId, useMemo, useRef, useState } from 'react'
-import { useEnvironmentContext, useFilter, useLocaleContext } from '../../providers/index.ts'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { CollectionItem, ListCollection } from '../collection/index.ts'
 
-export type CommandFilter<T extends CollectionItem = CollectionItem> = (
-  itemText: string,
-  inputValue: string,
-  item: T,
-) => boolean
+export type CommandFilter<T extends CollectionItem = CollectionItem> = (items: T[], query: string) => T[]
 
 export interface CommandPageChangeDetails<T extends CollectionItem = CollectionItem> {
   page: string | null
@@ -41,19 +39,15 @@ export interface UseCommandProps<T extends CollectionItem> extends Pick<
    */
   id?: string | undefined
   /**
-   * The collection of items. Items are filtered by the input value.
-   * An item with a `parent` value is shown on the page of that item.
+   * The collection of items. Use `createPageListCollection` for nested pages,
+   * where an item with a `parent` value is shown on the page of that item.
    */
-  collection: ListCollection<T>
+  collection: ListCollection<T> | PageListCollection<T>
   /**
-   * The function used to match an item against the input value.
-   * Defaults to a case-insensitive contains match on the item text and its `keywords`.
+   * Returns the items that match the query, best match first.
+   * Defaults to a fuzzy search of the item text and its `keywords`.
    */
   filter?: CommandFilter<T> | undefined
-  /**
-   * The initial page to show, as the value of the item that owns it.
-   */
-  defaultPage?: string | null | undefined
   /**
    * Function called when the page changes
    */
@@ -68,108 +62,96 @@ export interface UseCommandReturn<T extends CollectionItem> extends combobox.Api
   /**
    * The items from the top level to the open page
    */
-  pages: T[]
+  path: T[]
+  /**
+   * Whether there's a page to go back to
+   */
+  canGoBack: boolean
   /**
    * Opens the page of an item, or the top level for `null`
    */
   setPage: (value: string | null) => void
   /**
-   * Goes up one page. Returns `false` at the top level.
+   * Goes back to the previous page, restoring its query. Returns `false` when there's none.
    */
-  popPage: () => boolean
+  back: () => boolean
   /**
-   * Whether the item has a page of child items
+   * Goes up to the parent page. Returns `false` at the top level.
+   */
+  up: () => boolean
+  /**
+   * Whether the item opens a page
    */
   isPage: (item: T) => boolean
+  /**
+   * The item's pages below the open page, e.g. to show where a search result lives
+   */
+  getAncestors: (item: T) => T[]
 }
 
-const filterOptions = { sensitivity: 'base' } as const
 const noValue: string[] = []
 
-const keywordsOf = (item: unknown): string[] => {
+const keywordsOf = (item: unknown): string[] | undefined => {
   const keywords = (item as { keywords?: unknown } | null)?.keywords
-  return Array.isArray(keywords) ? keywords.filter((keyword) => typeof keyword === 'string') : []
-}
-
-const parentOf = (item: unknown): string | null => {
-  const parent = (item as { parent?: unknown } | null)?.parent
-  return typeof parent === 'string' ? parent : null
+  return Array.isArray(keywords) ? keywords.filter((keyword) => typeof keyword === 'string') : undefined
 }
 
 export const useCommand = <T extends CollectionItem>(props: UseCommandProps<T>): UseCommandReturn<T> => {
-  const { collection, filter, defaultPage, onPageChange, ...rest } = props
+  const { collection, filter, onPageChange, ...rest } = props
   const id = useId()
   const { dir } = useLocaleContext()
   const { getRootNode } = useEnvironmentContext()
-  const { contains } = useFilter(filterOptions)
 
   const [localInputValue, setLocalInputValue] = useState(props.defaultInputValue ?? '')
-  const [page, setPageValue] = useState<string | null>(defaultPage ?? null)
   const query = (props.inputValue ?? localInputValue).trim()
 
-  const tree = useMemo(() => {
-    const parents = new Map<string, string | null>()
-    for (const item of collection.items) parents.set(collection.getItemValue(item) ?? '', parentOf(item))
-    const parentValue = (value: string) => {
-      const parent = parents.get(value) ?? null
-      return parent != null && parents.has(parent) ? parent : null
-    }
-    const owners = new Set<string>()
-    for (const value of parents.keys()) {
-      const parent = parentValue(value)
-      if (parent != null) owners.add(parent)
-    }
-    return { parentValue, owners }
-  }, [collection])
+  const [navigation, setNavigation] = useState<{ source: unknown; pages: PageListCollection<T> } | null>(null)
+  const pages =
+    navigation?.source === collection
+      ? navigation.pages
+      : isPageListCollection(collection)
+        ? (collection as PageListCollection<T>)
+        : null
 
-  const currentPage = page != null && tree.owners.has(page) ? page : null
+  const fuzzy = useMemo(
+    () =>
+      createFuzzySearch<T>({
+        itemToString: (item) => collection.stringifyItem(item) ?? '',
+        itemToKeywords: keywordsOf,
+      }),
+    [collection],
+  )
 
-  const pages = useMemo(() => {
-    const path: T[] = []
-    let value = currentPage
-    while (value != null && path.length <= collection.size) {
-      const item = collection.find(value)
-      if (!item) break
-      path.unshift(item)
-      value = tree.parentValue(value)
-    }
-    return path
-  }, [collection, tree, currentPage])
-
-  const filteredCollection = useMemo(() => {
-    const scoped = tree.owners.size > 0
-    if (!query && !scoped) return collection
-    const match: CommandFilter<T> =
-      filter ??
-      ((itemText, inputValue, item) =>
-        contains(itemText, inputValue) || keywordsOf(item).some((keyword) => contains(keyword, inputValue)))
-    return collection.filter((itemText, _index, item) => {
-      if (scoped && tree.parentValue(collection.getItemValue(item) ?? '') !== currentPage) return false
-      return !query || match(itemText, query, item)
-    })
-  }, [collection, tree, currentPage, query, filter, contains])
+  const filteredCollection = useMemo((): ListCollection<T> => {
+    if (!query) return pages ?? collection
+    const source = pages ? pages.getDescendants() : collection.items
+    const items = filter ? filter(source, query) : fuzzy.search(source, query)
+    return (pages ?? collection).setItems(items) as ListCollection<T>
+  }, [collection, pages, query, filter, fuzzy])
 
   const pendingHighlightRef = useRef<string | null>(null)
   const apiRef = useRef<combobox.Api<PropTypes, T> | null>(null)
 
-  const setPage = (value: string | null) => {
-    const next = value != null && tree.owners.has(value) ? value : null
-    if (next === currentPage) return
-    const values = pages.map((item) => collection.getItemValue(item))
-    const depth = next == null ? 0 : values.indexOf(next) + 1
-    pendingHighlightRef.current = next == null || depth > 0 ? (values[depth] ?? null) : null
-    setPageValue(next)
-    apiRef.current?.setInputValue('')
-    onPageChange?.({ page: next, item: next != null ? collection.find(next) : null })
-  }
-
-  const popPage = () => {
-    if (currentPage == null) return false
-    setPage(tree.parentValue(currentPage))
+  const navigate = (next: PageListCollection<T>, nextQuery: string) => {
+    if (next === pages) return false
+    setNavigation({ source: collection, pages: next })
+    pendingHighlightRef.current = next.restore.highlightedValue
+    apiRef.current?.setInputValue(nextQuery)
+    onPageChange?.({ page: next.page, item: next.pageItem })
     return true
   }
 
-  const isPage = (item: T) => tree.owners.has(collection.getItemValue(item) ?? '')
+  const setPage = (value: string | null) => {
+    if (pages) navigate(pages.setPage(value, query), '')
+  }
+
+  const back = () => {
+    if (!pages?.canGoBack) return false
+    const next = pages.back(query)
+    return navigate(next, next.restore.query)
+  }
+
+  const up = () => (pages?.page != null ? navigate(pages.up(query), '') : false)
 
   const machineProps: combobox.Props<T> = {
     id,
@@ -189,7 +171,8 @@ export const useCommand = <T extends CollectionItem>(props: UseCommandProps<T>):
       props.onInputValueChange?.(details)
     },
     onSelect(details) {
-      if (tree.owners.has(details.itemValue)) {
+      const item = pages?.getItem(details.itemValue)
+      if (item && pages?.isPage(item)) {
         setPage(details.itemValue)
         return
       }
@@ -214,15 +197,18 @@ export const useCommand = <T extends CollectionItem>(props: UseCommandProps<T>):
     getInputProps() {
       return mergeProps(api.getInputProps(), {
         onKeyDown(event: KeyboardEvent<HTMLInputElement>) {
-          if (event.key !== 'Backspace' || event.currentTarget.value || !popPage()) return
+          if (event.key !== 'Backspace' || event.currentTarget.value || !up()) return
           event.preventDefault()
         },
       })
     },
-    page: currentPage,
-    pages,
+    page: pages?.page ?? null,
+    path: pages?.getPath() ?? [],
+    canGoBack: pages?.canGoBack ?? false,
     setPage,
-    popPage,
-    isPage,
+    back,
+    up,
+    isPage: (item) => pages?.isPage(item) ?? false,
+    getAncestors: (item) => pages?.getAncestors(item) ?? [],
   }
 }

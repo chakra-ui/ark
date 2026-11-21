@@ -5,9 +5,11 @@ export type {
 } from '@zag-js/combobox'
 export {
   createListCollection,
+  createPageListCollection,
   useListCollection,
   type CollectionItem,
   type ListCollection,
+  type PageListCollection,
   type UseListCollectionProps,
 } from '../collection/index.ts'
 export { default as CommandContext, type CommandContextProps } from './command-context.vue'

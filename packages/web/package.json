@@ -16,14 +16,17 @@
   },
   "dependencies": {
     "@zag-js/accordion": "2.0.0-next.4",
+    "@zag-js/async-list": "2.0.0-next.4",
     "@zag-js/carousel": "2.0.0-next.4",
     "@zag-js/checkbox": "2.0.0-next.4",
     "@zag-js/collapsible": "2.0.0-next.4",
+    "@zag-js/collection": "2.0.0-next.4",
     "@zag-js/combobox": "2.0.0-next.4",
     "@zag-js/date-picker": "2.0.0-next.4",
     "@zag-js/dialog": "2.0.0-next.4",
     "@zag-js/editable": "2.0.0-next.4",
     "@zag-js/file-upload": "2.0.0-next.4",
+    "@zag-js/fuzzy": "2.0.0-next.4",
     "@zag-js/hover-card": "2.0.0-next.4",
     "@zag-js/listbox": "2.0.0-next.4",
     "@zag-js/menu": "2.0.0-next.4",
@@ -83,6 +86,10 @@
     "./accordion": {
       "types": "./dist/components/accordion/index.d.ts",
       "import": "./dist/components/accordion/index.js"
+    },
+    "./async-list": {
+      "types": "./dist/utils/async-list.d.ts",
+      "import": "./dist/utils/async-list.js"
     },
     "./checkbox": {
       "types": "./dist/components/checkbox/index.d.ts",

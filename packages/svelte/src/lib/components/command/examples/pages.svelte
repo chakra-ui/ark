@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Command, createListCollection } from '@ark-ui/svelte/command'
+  import { Command, createPageListCollection } from '@ark-ui/svelte/command'
   import { ChevronRightIcon, SearchIcon } from 'lucide-svelte'
   import styles from 'styles/command.module.css'
 
-  const collection = createListCollection({
+  const collection = createPageListCollection({
     items: [
       { value: 'theme', label: 'Change theme' },
       { value: 'language', label: 'Change language' },
@@ -27,7 +27,7 @@
       {#snippet render(command)}
         <div class={styles.Breadcrumb}>
           <button type="button" onclick={() => command().setPage(null)}>Home</button>
-          {#each command().pages as page (page.value)}
+          {#each command().path as page (page.value)}
             <span>
               <ChevronRightIcon />
               <button type="button" onclick={() => command().setPage(page.value)}>{page.label}</button>
@@ -45,6 +45,14 @@
           {#each command().collection.items as item (item.value)}
             <Command.Item {item} class={styles.Item}>
               <Command.ItemText class={styles.ItemText}>{item.label}</Command.ItemText>
+              {#if command().getAncestors(item).length > 0}
+                <span class={styles.ItemPath}>
+                  {command()
+                    .getAncestors(item)
+                    .map((page) => page.label)
+                    .join(' › ')}
+                </span>
+              {/if}
               {#if command().isPage(item)}
                 <ChevronRightIcon />
               {/if}

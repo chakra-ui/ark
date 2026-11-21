@@ -19,7 +19,6 @@ const CommandImpl = <T extends CollectionItem>(props: CommandRootProps<T>, ref: 
     'collection',
     'defaultHighlightedValue',
     'defaultInputValue',
-    'defaultPage',
     'disabled',
     'filter',
     'highlightedValue',

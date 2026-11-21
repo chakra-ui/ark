@@ -6,6 +6,11 @@ export {
   type ListCollection,
 } from './list-collection.ts'
 export {
+  createPageListCollection,
+  type PageListCollection,
+  type PageListCollectionOptions,
+} from './page-list-collection.ts'
+export {
   createFileTreeCollection,
   createTreeCollection,
   type FilePathTreeNode,

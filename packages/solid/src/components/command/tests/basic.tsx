@@ -1,4 +1,4 @@
-import { Command, createListCollection } from '@ark-ui/solid/command'
+import { Command, createPageListCollection } from '@ark-ui/solid/command'
 import { For } from 'solid-js'
 
 interface Item {
@@ -10,7 +10,7 @@ interface Item {
   parent?: string | undefined
 }
 
-const collection = createListCollection<Item>({
+const collection = createPageListCollection<Item>({
   items: [
     { label: 'New file', value: 'new-file', group: 'File' },
     { label: 'Save', value: 'save', group: 'File', keywords: ['write'] },

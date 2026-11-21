@@ -186,6 +186,7 @@
     "@zag-js/floating-panel": "2.0.0-next.4",
     "@zag-js/focus-trap": "2.0.0-next.4",
     "@zag-js/focus-visible": "2.0.0-next.4",
+    "@zag-js/fuzzy": "2.0.0-next.4",
     "@zag-js/highlight-word": "2.0.0-next.4",
     "@zag-js/hotkeys": "2.0.0-next.4",
     "@zag-js/hover-card": "2.0.0-next.4",

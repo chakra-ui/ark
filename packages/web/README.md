@@ -104,7 +104,27 @@ select.items = items
 ```
 
 Assign a new `items` array when data changes. Markup and JSON changes are observed automatically. Tree items can include
-`children`; flat collections can include a `group`; command items can also include `keywords`.
+`children`; flat collections can include a `group`; command items can also include `keywords` and a `parent`, the value
+of the item whose page they appear on.
+
+For data that loads asynchronously, `createAsyncList` from `@ark-ui/web/async-list` wraps Zag's async list in a small
+store. Subscribe to it and assign its items to the component; see `examples/command/async.ts`.
+
+```ts
+import { createAsyncList } from '@ark-ui/web/async-list'
+
+const list = createAsyncList<{ id: string; name: string }>({
+  async load({ filter, signal }) {
+    const response = await fetch(`/api/people?q=${filter}`, { signal })
+    return { items: await response.json() }
+  },
+})
+list.subscribe(() => {
+  command.items = list.items.map((person) => ({ value: person.id, label: person.name }))
+  command.toggleAttribute('loading', list.isLoading)
+})
+command.addEventListener('inputvaluechange', (event) => list.setFilter(event.detail.inputValue))
+```
 
 Form controls use native hidden inputs or a hidden select for submission and validation. Include the component's
 hidden-input part where shown in its examples. Set `name` and `value` on the root. Select creates its hidden select

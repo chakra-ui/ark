@@ -1,50 +1,40 @@
 <script setup lang="ts">
+import { useAsyncList } from '@ark-ui/vue/collection'
 import { Command, createListCollection } from '@ark-ui/vue/command'
 import { SearchIcon } from 'lucide-vue-next'
-import { computed, ref, watch } from 'vue'
+import { computed } from 'vue'
 import styles from 'styles/command.module.css'
 
-const people = [
-  'Ada Lovelace',
-  'Alan Turing',
-  'Grace Hopper',
-  'Katherine Johnson',
-  'Linus Torvalds',
-  'Margaret Hamilton',
+interface Person {
+  id: string
+  name: string
+}
+
+const people: Person[] = [
+  { id: 'ada', name: 'Ada Lovelace' },
+  { id: 'alan', name: 'Alan Turing' },
+  { id: 'grace', name: 'Grace Hopper' },
+  { id: 'katherine', name: 'Katherine Johnson' },
+  { id: 'linus', name: 'Linus Torvalds' },
+  { id: 'margaret', name: 'Margaret Hamilton' },
 ]
 
-const search = (query: string) =>
-  new Promise<string[]>((resolve) => {
-    const q = query.toLowerCase()
-    setTimeout(() => resolve(people.filter((name) => name.toLowerCase().includes(q))), 300)
-  })
+const matchAll = <T,>(items: T[]) => items
 
-const matchAll = () => true
-
-const inputValue = ref('')
-const names = ref<string[]>([])
-const loading = ref(true)
-
-watch(
-  inputValue,
-  (value, _prev, onCleanup) => {
-    let active = true
-    loading.value = true
-    search(value).then((result) => {
-      if (!active) return
-      names.value = result
-      loading.value = false
-    })
-    onCleanup(() => {
-      active = false
-    })
+const list = useAsyncList<Person>({
+  async load({ filter, signal }) {
+    await new Promise((resolve) => setTimeout(resolve, 300))
+    if (signal?.aborted) return { items: [] }
+    const query = (filter ?? '').toLowerCase()
+    return { items: people.filter((person) => person.name.toLowerCase().includes(query)) }
   },
-  { immediate: true },
-)
+})
 
 const collection = computed(() =>
   createListCollection({
-    items: names.value.map((name) => ({ value: name.toLowerCase().replace(/\s+/g, '-'), label: name })),
+    items: list.value.items,
+    itemToValue: (item) => item.id,
+    itemToString: (item) => item.name,
   }),
 )
 </script>
@@ -54,8 +44,8 @@ const collection = computed(() =>
     :class="styles.Root"
     :collection="collection"
     :filter="matchAll"
-    :loading="loading"
-    @input-value-change="(details) => (inputValue = details.inputValue)"
+    :loading="list.isLoading"
+    @input-value-change="(details) => list.setFilter(details.inputValue)"
   >
     <Command.Label :class="styles.Label">People</Command.Label>
     <Command.Control :class="styles.Control">
@@ -63,11 +53,12 @@ const collection = computed(() =>
       <Command.Input :class="styles.Input" placeholder="Search people..." />
     </Command.Control>
     <Command.List :class="styles.List">
-      <Command.Item v-for="item in collection.items" :key="item.value" :item="item" :class="styles.Item">
-        <Command.ItemText :class="styles.ItemText">{{ item.label }}</Command.ItemText>
+      <Command.Item v-for="item in collection.items" :key="item.id" :item="item" :class="styles.Item">
+        <Command.ItemText :class="styles.ItemText">{{ item.name }}</Command.ItemText>
       </Command.Item>
     </Command.List>
-    <div v-if="loading" :class="styles.Loading">Loading...</div>
+    <div v-if="list.isLoading" :class="styles.Loading">Loading...</div>
+    <div v-else-if="list.error" :class="styles.Empty">{{ list.error.message }}</div>
     <Command.Empty v-else :class="styles.Empty">No people found</Command.Empty>
   </Command.Root>
 </template>

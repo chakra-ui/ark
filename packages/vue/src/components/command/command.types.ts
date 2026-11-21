@@ -1,11 +1,7 @@
 import type * as combobox from '@zag-js/combobox'
-import type { CollectionItem, ListCollection } from '../collection/index.ts'
+import type { CollectionItem, ListCollection, PageListCollection } from '../collection/index.ts'
 
-export type CommandFilter<T extends CollectionItem = CollectionItem> = (
-  itemText: string,
-  inputValue: string,
-  item: T,
-) => boolean
+export type CommandFilter<T extends CollectionItem = CollectionItem> = (items: T[], query: string) => T[]
 
 export interface CommandPageChangeDetails<T extends CollectionItem = CollectionItem> {
   page: string | null
@@ -18,10 +14,10 @@ export interface RootProps<T extends CollectionItem> {
    */
   autoFocus?: boolean
   /**
-   * The collection of items. Items are filtered by the input value.
-   * An item with a `parent` value is shown on the page of that item.
+   * The collection of items. Use `createPageListCollection` for nested pages,
+   * where an item with a `parent` value is shown on the page of that item.
    */
-  collection: ListCollection<T>
+  collection: ListCollection<T> | PageListCollection<T>
   /**
    * The initial highlighted value of the command when rendered.
    * Use when you don't need to control the highlighted value of the command.
@@ -34,16 +30,12 @@ export interface RootProps<T extends CollectionItem> {
    */
   defaultInputValue?: string
   /**
-   * The initial page to show, as the value of the item that owns it.
-   */
-  defaultPage?: string | null
-  /**
    * Whether the command is disabled
    */
   disabled?: boolean
   /**
-   * The function used to match an item against the input value.
-   * Defaults to a case-insensitive contains match on the item text and its `keywords`.
+   * Returns the items that match the query, best match first.
+   * Defaults to a fuzzy search of the item text and its `keywords`.
    */
   filter?: CommandFilter<T>
   /**

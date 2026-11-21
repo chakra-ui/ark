@@ -1,58 +1,47 @@
+import { useAsyncList } from '@ark-ui/react/collection'
 import { Command, createListCollection } from '@ark-ui/react/command'
 import { SearchIcon } from 'lucide-react'
-import { useEffect, useMemo, useState } from 'react'
 import styles from 'styles/command.module.css'
 
-const people = [
-  'Ada Lovelace',
-  'Alan Turing',
-  'Grace Hopper',
-  'Katherine Johnson',
-  'Linus Torvalds',
-  'Margaret Hamilton',
+interface Person {
+  id: string
+  name: string
+}
+
+const people: Person[] = [
+  { id: 'ada', name: 'Ada Lovelace' },
+  { id: 'alan', name: 'Alan Turing' },
+  { id: 'grace', name: 'Grace Hopper' },
+  { id: 'katherine', name: 'Katherine Johnson' },
+  { id: 'linus', name: 'Linus Torvalds' },
+  { id: 'margaret', name: 'Margaret Hamilton' },
 ]
 
-const search = (query: string) =>
-  new Promise<string[]>((resolve) => {
-    const q = query.toLowerCase()
-    setTimeout(() => resolve(people.filter((name) => name.toLowerCase().includes(q))), 300)
-  })
-
-const matchAll = () => true
+const matchAll = <T,>(items: T[]) => items
 
 export const Async = () => {
-  const [inputValue, setInputValue] = useState('')
-  const [names, setNames] = useState<string[]>([])
-  const [loading, setLoading] = useState(true)
+  const list = useAsyncList<Person>({
+    async load({ filter, signal }) {
+      await new Promise((resolve) => setTimeout(resolve, 300))
+      if (signal?.aborted) return { items: [] }
+      const query = (filter ?? '').toLowerCase()
+      return { items: people.filter((person) => person.name.toLowerCase().includes(query)) }
+    },
+  })
 
-  useEffect(() => {
-    let active = true
-    setLoading(true)
-    search(inputValue).then((result) => {
-      if (!active) return
-      setNames(result)
-      setLoading(false)
-    })
-    return () => {
-      active = false
-    }
-  }, [inputValue])
-
-  const collection = useMemo(
-    () =>
-      createListCollection({
-        items: names.map((name) => ({ value: name.toLowerCase().replace(/\s+/g, '-'), label: name })),
-      }),
-    [names],
-  )
+  const collection = createListCollection({
+    items: list.items,
+    itemToValue: (item) => item.id,
+    itemToString: (item) => item.name,
+  })
 
   return (
     <Command.Root
       className={styles.Root}
       collection={collection}
       filter={matchAll}
-      loading={loading}
-      onInputValueChange={(details) => setInputValue(details.inputValue)}
+      loading={list.isLoading}
+      onInputValueChange={(details) => list.setFilter(details.inputValue)}
     >
       <Command.Label className={styles.Label}>People</Command.Label>
       <Command.Control className={styles.Control}>
@@ -61,13 +50,14 @@ export const Async = () => {
       </Command.Control>
       <Command.List className={styles.List}>
         {collection.items.map((item) => (
-          <Command.Item key={item.value} item={item} className={styles.Item}>
-            <Command.ItemText className={styles.ItemText}>{item.label}</Command.ItemText>
+          <Command.Item key={item.id} item={item} className={styles.Item}>
+            <Command.ItemText className={styles.ItemText}>{item.name}</Command.ItemText>
           </Command.Item>
         ))}
       </Command.List>
-      {loading && <div className={styles.Loading}>Loading...</div>}
-      {!loading && <Command.Empty className={styles.Empty}>No people found</Command.Empty>}
+      {list.isLoading && <div className={styles.Loading}>Loading...</div>}
+      {!list.isLoading && list.error && <div className={styles.Empty}>{list.error.message}</div>}
+      {!list.isLoading && !list.error && <Command.Empty className={styles.Empty}>No people found</Command.Empty>}
     </Command.Root>
   )
 }

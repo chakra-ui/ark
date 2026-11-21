@@ -5,8 +5,10 @@ export type {
 } from '@zag-js/combobox'
 export {
   createListCollection,
+  createPageListCollection,
   type CollectionItem,
   type ListCollection,
+  type PageListCollection,
   useListCollection,
   type UseListCollectionProps,
 } from '../collection/index.tsx'

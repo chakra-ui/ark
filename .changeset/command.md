@@ -5,9 +5,8 @@
 '@ark-ui/vue': minor
 ---
 
-Add the `Command` component, a searchable list of actions for command palettes and quick switchers. Typing filters the
-items, the arrow keys, Home, and End move the highlight while focus stays in the input, and Enter or a click calls
-`onSelect`. Render it inline or inside a `Dialog`.
+Add the `Command` component for command palettes and quick switchers. Focus stays in the input while the arrow keys move
+the highlight, and Enter or a click calls `onSelect`.
 
 ```tsx
 <Command.Root collection={collection} onSelect={(details) => run(details.itemValue)}>
@@ -30,5 +29,5 @@ items, the arrow keys, Home, and End move the highlight while focus stays in the
 </Command.Root>
 ```
 
-Items match on their text and on an optional `keywords` array; pass `filter` to match your own way. Items with a
-`parent` value form nested pages: selecting the parent opens its page, and Backspace in an empty input goes back.
+Items are fuzzy-matched on their text and `keywords`; pass `filter` to replace it. Build the collection with the new
+`createPageListCollection` for nested pages: an item's `parent` puts it on that item's page, and Backspace goes up.

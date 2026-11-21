@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Command, type CommandRootEmits, type CommandRootProps, createListCollection } from '@ark-ui/vue/command'
+import { Command, type CommandRootEmits, type CommandRootProps, createPageListCollection } from '@ark-ui/vue/command'
 import { useForwardPropsEmits } from '@ark-ui/vue'
 
 interface Item {
@@ -15,7 +15,7 @@ const props = defineProps<Partial<CommandRootProps<Item>>>()
 const emits = defineEmits<CommandRootEmits<Item>>()
 const localProps = useForwardPropsEmits(props, emits)
 
-const collection = createListCollection<Item>({
+const collection = createPageListCollection<Item>({
   items: [
     { label: 'New file', value: 'new-file', group: 'File' },
     { label: 'Save', value: 'save', group: 'File', keywords: ['write'] },

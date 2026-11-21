@@ -1,4 +1,4 @@
-import { Command, createListCollection } from '@ark-ui/react/command'
+import { Command, createPageListCollection } from '@ark-ui/react/command'
 
 interface Item {
   label: string
@@ -9,7 +9,7 @@ interface Item {
   parent?: string | undefined
 }
 
-const collection = createListCollection<Item>({
+const collection = createPageListCollection<Item>({
   items: [
     { label: 'New file', value: 'new-file', group: 'File' },
     { label: 'Save', value: 'save', group: 'File', keywords: ['write'] },

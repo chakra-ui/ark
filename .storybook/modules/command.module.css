@@ -249,6 +249,12 @@
   }
 }
 
+.ItemPath {
+  margin-inline-start: auto;
+  font-size: 0.75rem;
+  color: var(--demo-neutral-fg-muted);
+}
+
 .Empty {
   padding: 2rem 1rem;
   text-align: center;

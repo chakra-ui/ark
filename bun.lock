@@ -95,6 +95,7 @@
         "@zag-js/floating-panel": "2.0.0-next.4",
         "@zag-js/focus-trap": "2.0.0-next.4",
         "@zag-js/focus-visible": "2.0.0-next.4",
+        "@zag-js/fuzzy": "2.0.0-next.4",
         "@zag-js/highlight-word": "2.0.0-next.4",
         "@zag-js/hotkeys": "2.0.0-next.4",
         "@zag-js/hover-card": "2.0.0-next.4",
@@ -211,6 +212,7 @@
         "@zag-js/floating-panel": "2.0.0-next.4",
         "@zag-js/focus-trap": "2.0.0-next.4",
         "@zag-js/focus-visible": "2.0.0-next.4",
+        "@zag-js/fuzzy": "2.0.0-next.4",
         "@zag-js/highlight-word": "2.0.0-next.4",
         "@zag-js/hotkeys": "2.0.0-next.4",
         "@zag-js/hover-card": "2.0.0-next.4",
@@ -326,6 +328,7 @@
         "@zag-js/floating-panel": "2.0.0-next.4",
         "@zag-js/focus-trap": "2.0.0-next.4",
         "@zag-js/focus-visible": "2.0.0-next.4",
+        "@zag-js/fuzzy": "2.0.0-next.4",
         "@zag-js/highlight-word": "2.0.0-next.4",
         "@zag-js/hotkeys": "2.0.0-next.4",
         "@zag-js/hover-card": "2.0.0-next.4",
@@ -436,6 +439,7 @@
         "@zag-js/floating-panel": "2.0.0-next.4",
         "@zag-js/focus-trap": "2.0.0-next.4",
         "@zag-js/focus-visible": "2.0.0-next.4",
+        "@zag-js/fuzzy": "2.0.0-next.4",
         "@zag-js/highlight-word": "2.0.0-next.4",
         "@zag-js/hotkeys": "2.0.0-next.4",
         "@zag-js/hover-card": "2.0.0-next.4",
@@ -521,14 +525,17 @@
       "version": "0.1.0-next.0",
       "dependencies": {
         "@zag-js/accordion": "2.0.0-next.4",
+        "@zag-js/async-list": "2.0.0-next.4",
         "@zag-js/carousel": "2.0.0-next.4",
         "@zag-js/checkbox": "2.0.0-next.4",
         "@zag-js/collapsible": "2.0.0-next.4",
+        "@zag-js/collection": "2.0.0-next.4",
         "@zag-js/combobox": "2.0.0-next.4",
         "@zag-js/date-picker": "2.0.0-next.4",
         "@zag-js/dialog": "2.0.0-next.4",
         "@zag-js/editable": "2.0.0-next.4",
         "@zag-js/file-upload": "2.0.0-next.4",
+        "@zag-js/fuzzy": "2.0.0-next.4",
         "@zag-js/hover-card": "2.0.0-next.4",
         "@zag-js/listbox": "2.0.0-next.4",
         "@zag-js/menu": "2.0.0-next.4",
@@ -1967,6 +1974,8 @@
     "@zag-js/focus-trap": ["@zag-js/focus-trap@2.0.0-next.4", "", { "dependencies": { "@zag-js/dom-query": "2.0.0-next.4" } }, "sha512-aWft6N+y/hWOCPoCLnSsJcUhxlm5//VOzx94qyeFVZcviF4lgQa/1ONNaILPrFT9AqnZXw0L+9WvJWCK5KTTdw=="],
 
     "@zag-js/focus-visible": ["@zag-js/focus-visible@2.0.0-next.4", "", { "dependencies": { "@zag-js/dom-query": "2.0.0-next.4" } }, "sha512-Mzgr9flka+PU4CWXsD5Zt8ETmtAGoKBr2nue2dz0aRT4fsIT2FgUjrZo86CdDxpzB4cv20zvFTN3+tnmhnQR3A=="],
+
+    "@zag-js/fuzzy": ["@zag-js/fuzzy@2.0.0-next.4", "", {}, "sha512-Y8JGZ1LDZspU2ZSttW+/JfDroBIUXybj07nH6e/zd6OeZrPz0WphFvssl7tFEyBpunVOembIe4aMyFILYU4AIw=="],
 
     "@zag-js/highlight-word": ["@zag-js/highlight-word@2.0.0-next.4", "", {}, "sha512-brHqWaJ34rLXS8SaNyyAWdpWWEUqRay22s6kLBcBQrJWavJ2x1daYszW7wUpyVWTGTJvd00fZK/Efry0rikMaQ=="],
 

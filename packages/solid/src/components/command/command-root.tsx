@@ -17,7 +17,6 @@ export const CommandRoot = <T extends CollectionItem>(props: CommandRootProps<T>
     'collection',
     'defaultHighlightedValue',
     'defaultInputValue',
-    'defaultPage',
     'disabled',
     'filter',
     'highlightedValue',
