@@ -82,6 +82,7 @@ export const sidebarConfig: SidebarTabConfig[] = [
           { id: 'color-picker' },
           { id: 'tags-input' },
           { id: 'combobox' },
+          { id: 'command' },
           { id: 'select' },
           { id: 'listbox' },
         ],

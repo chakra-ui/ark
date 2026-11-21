@@ -1,0 +1,25 @@
+<script module lang="ts">
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+
+  export interface CommandItemGroupLabelBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface CommandItemGroupLabelProps extends Assign<HTMLProps<'div'>, CommandItemGroupLabelBaseProps> {}
+</script>
+
+<script lang="ts">
+  import { mergeProps } from '@zag-js/svelte'
+  import { Ark } from '../factory/index.ts'
+  import { parts } from './command.anatomy.ts'
+  import { useCommandContext } from './use-command-context.ts'
+  import { useCommandItemGroupPropsContext } from './use-command-item-group-props-context.ts'
+
+  let { ref = $bindable(null), ...props }: CommandItemGroupLabelProps = $props()
+
+  const command = useCommandContext()
+  const groupProps = useCommandItemGroupPropsContext()
+
+  const mergedProps = $derived(
+    mergeProps(command().getItemGroupLabelProps({ htmlFor: groupProps().id }), parts.itemGroupLabel.attrs(''), props),
+  )
+</script>
+
+<Ark as="div" bind:ref {...mergedProps} />

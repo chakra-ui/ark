@@ -1,0 +1,112 @@
+---
+id: command
+title: Command
+description: A searchable list of actions for command palettes and quick switchers.
+status: new
+---
+
+<ComponentPreview id="Command" />
+
+## Anatomy
+
+```tsx
+<Command.Root>
+  <Command.Label />
+  <Command.Control>
+    <Command.Input />
+  </Command.Control>
+  <Command.List>
+    <Command.ItemGroup>
+      <Command.ItemGroupLabel />
+      <Command.Item>
+        <Command.ItemText />
+      </Command.Item>
+    </Command.ItemGroup>
+  </Command.List>
+  <Command.Empty />
+</Command.Root>
+```
+
+## Examples
+
+### Basic
+
+Pass a `collection` to `Command.Root` and render the filtered items from `Command.Context`. Typing filters the items,
+the arrow keys, Home, and End move the highlight while focus stays in the input, and Enter or a click calls `onSelect`.
+
+<Example id="basic" />
+
+### Dialog
+
+Put the command inside a `Dialog` to build a command palette. Open it with a keyboard shortcut using `useHotkey`, and
+give the dialog content an `aria-label`.
+
+<Example id="with-dialog" />
+
+### Groups
+
+Use `groupBy` on the collection and render `collection.group()` with `ItemGroup` and `ItemGroupLabel`. Groups with no
+matching items are not rendered. Disabled items are skipped by the keyboard.
+
+<Example id="groups" />
+
+### Empty State
+
+`Command.Empty` renders its children when no item matches the input.
+
+<Example id="empty-state" />
+
+### Keywords
+
+Items match on their text and on an optional `keywords` array, so a command can be found by words that aren't in its
+label.
+
+<Example id="keywords" />
+
+### Pages
+
+Give an item a `parent` value to place it on that item's page. Selecting the parent opens its page instead of calling
+`onSelect`, and Backspace in an empty input goes back. Use `pages`, `setPage`, and `isPage` from the context to render
+breadcrumbs and page indicators.
+
+<Example id="pages" />
+
+### Async
+
+To load items from a server, update the collection as the input value changes, pass a `filter` that keeps every item,
+and set `loading` while the request is in flight.
+
+<Example id="async" />
+
+### Root Provider
+
+Use the `useCommand` hook with `RootProvider` to control the command from outside, for example to clear the input.
+
+<Example id="root-provider" />
+
+## Guides
+
+### Custom filtering
+
+The default filter is a case-insensitive, accent-insensitive match on the item text and its `keywords`. Pass `filter` to
+match your own way.
+
+```tsx
+<Command.Root collection={collection} filter={(itemText, inputValue) => itemText.startsWith(inputValue)} />
+```
+
+### Accessibility
+
+The input is a `combobox` that controls the `listbox` and points to the highlighted option with `aria-activedescendant`,
+so focus never leaves the input. Result counts are announced to screen readers. Label the command with `Command.Label`,
+and label the dialog when you render it in one.
+
+## API Reference
+
+### Props
+
+<ComponentTypes id="command" />
+
+### Context
+
+<ContextType id="command" />

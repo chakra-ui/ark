@@ -96,6 +96,10 @@
       "types": "./dist/components/combobox/index.d.ts",
       "import": "./dist/components/combobox/index.js"
     },
+    "./command": {
+      "types": "./dist/components/command/index.d.ts",
+      "import": "./dist/components/command/index.js"
+    },
     "./dialog": {
       "types": "./dist/components/dialog/index.d.ts",
       "import": "./dist/components/dialog/index.js"
