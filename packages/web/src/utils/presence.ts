@@ -41,11 +41,11 @@ const apiOf = (entry: Entry) => presence.connect(entry.service.service, normaliz
 const within = (host: HTMLElement, root: HTMLElement | null, selector: string) =>
   !!(host.closest(selector) ?? root?.closest(selector))
 
-function presenceProps(host: HTMLElement, root: HTMLElement | null) {
+function presenceProps(host: HTMLElement, root: HTMLElement | null, skipOnMount = false) {
   const entry = machines.get(host)
   if (!entry) return {}
   const api = apiOf(entry)
-  const skip = api.skip && within(host, root, '[skip-animation-on-mount]')
+  const skip = api.skip && (skipOnMount || within(host, root, '[skip-animation-on-mount]'))
   return {
     'data-state': skip ? undefined : entry.present() ? 'open' : 'closed',
     hidden: !api.present,
@@ -83,12 +83,13 @@ export function definePresenceRoot<Api>(config: RootConfig<Api> & { present: (ap
 }
 
 interface PresencePartConfig<Api> extends PartConfig<Api> {
-  present?: (api: Api) => boolean
+  present?: (api: Api, el: HTMLElement) => boolean
   animates?: boolean
+  skipAnimationOnMount?: boolean
 }
 
 export function definePresencePart<Api>(config: PresencePartConfig<Api>) {
-  const { present, animates = true, ...rest } = config
+  const { present, animates = true, skipAnimationOnMount = false, ...rest } = config
   const rootEl = (el: HTMLElement) => rootOf(el, config.root)
   const hostOf = (el: HTMLElement) => (present ? el : rootEl(el)!)
 
@@ -98,7 +99,7 @@ export function definePresencePart<Api>(config: PresencePartConfig<Api>) {
       const stop = present
         ? startPresence(
             el,
-            () => (root.api ? present(root.api) : false),
+            () => (root.api ? present(root.api, el) : false),
             () => root.api && el.update(root.api),
           )
         : undefined
@@ -110,7 +111,7 @@ export function definePresencePart<Api>(config: PresencePartConfig<Api>) {
         cleanup?.()
       }
     },
-    props: (api, el) => mergeProps(rest.props(api, el), presenceProps(hostOf(el), rootEl(el))),
+    props: (api, el) => mergeProps(rest.props(api, el), presenceProps(hostOf(el), rootEl(el), skipAnimationOnMount)),
     render(api, el) {
       if (present) machines.get(el)?.sync()
       if (animates) mountContent(el, hostOf(el), rootEl(el))
