@@ -38,6 +38,8 @@
       'highlightedValue',
       'id',
       'ids',
+      'finalFocusEl',
+      'initialFocusEl',
       'loopFocus',
       'navigate',
       'onEscapeKeyDown',

@@ -171,6 +171,18 @@ can let the browser handle <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Enter</kbd> and
 </Menu.Root>
 ```
 
+### Focus Management
+
+By default, the menu focuses its content when it opens and returns focus to the trigger when it closes. Use
+`initialFocusEl` and `finalFocusEl` to pick other elements. Return `null` to keep the default, or return `false` from
+`initialFocusEl` to leave focus where it is.
+
+```tsx
+<Menu.Root initialFocusEl={() => searchInputRef.current} finalFocusEl={() => saveButtonRef.current}>
+  {/* ... */}
+</Menu.Root>
+```
+
 ## API Reference
 
 ### Props

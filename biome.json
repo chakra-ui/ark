@@ -28,7 +28,8 @@
         "useConst": "off"
       },
       "correctness": {
-        "useUniqueElementIds": "off"
+        "useUniqueElementIds": "off",
+        "noComponentHookFactories": "off"
       }
     }
   },

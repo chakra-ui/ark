@@ -288,6 +288,11 @@
         "isRequired": false,
         "description": "The initial trigger value when rendered.\nUse when you don't need to control the trigger value."
       },
+      "finalFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "description": "The element to focus when the menu closes.\nReturn `null` to use the default (the trigger, or the element focused before a context menu opened)."
+      },
       "highlightedValue": {
         "type": "string",
         "isRequired": false,
@@ -298,6 +303,11 @@
         "type": "Partial<{\n  trigger: string\n  contextTrigger: string\n  content: string\n  groupLabel(id: string): string\n  group(id: string): string\n  positioner: string\n  arrow: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the menu. Useful for composition."
+      },
+      "initialFocusEl": {
+        "type": "() => false | HTMLElement | null",
+        "isRequired": false,
+        "description": "The element to focus when the menu opens.\nReturn `false` to skip moving focus, or `null` to use the default."
       },
       "lazyMount": {
         "type": "boolean",
