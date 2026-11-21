@@ -5,11 +5,22 @@ export interface Item {
   label: string
   disabled: boolean
   group?: string
+  keywords?: string[]
+  parent?: string
   children?: Item[]
 }
 
 export type ItemInput =
-  string | { value: string; label?: string; disabled?: boolean; group?: string; children?: ItemInput[] }
+  | string
+  | {
+      value: string
+      label?: string
+      disabled?: boolean
+      group?: string
+      keywords?: string[]
+      parent?: string
+      children?: ItemInput[]
+    }
 
 export interface CollectionConfig<C> {
   item: string
@@ -31,6 +42,8 @@ const toItem = (input: ItemInput): Item =>
         label: input.label ?? input.value,
         disabled: !!input.disabled,
         group: input.group,
+        keywords: input.keywords,
+        parent: input.parent,
         children: input.children?.map(toItem),
       }
 

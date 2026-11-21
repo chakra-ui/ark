@@ -4,7 +4,7 @@ Unstyled, accessible web components powered by Zag.js state machines. Components
 ordinary CSS. No framework runtime is required.
 
 This package is a prerelease. Its initial surface includes accordion, checkbox and checkbox group, collapsible,
-combobox, dialog, listbox, menu, popover, radio group, select, slider, switch, tabs, tooltip, and tree view.
+combobox, command, dialog, listbox, menu, popover, radio group, select, slider, switch, tabs, tooltip, and tree view.
 
 ## Usage
 
@@ -88,7 +88,7 @@ is typed.
 
 ## Collections and forms
 
-Select, combobox, listbox, and tree view accept items from their child markup, a direct
+Select, combobox, command, listbox, and tree view accept items from their child markup, a direct
 `<script type="application/json">`, or an `items` property. Data-driven collections need item templates in the list; see
 `examples/select/from-json.ts` and `examples/tree-view/from-json.ts` for complete markup.
 
@@ -104,7 +104,7 @@ select.items = items
 ```
 
 Assign a new `items` array when data changes. Markup and JSON changes are observed automatically. Tree items can include
-`children`; flat collections can include a `group`.
+`children`; flat collections can include a `group`; command items can also include `keywords`.
 
 Form controls use native hidden inputs or a hidden select for submission and validation. Include the component's
 hidden-input part where shown in its examples. Set `name` and `value` on the root. Select creates its hidden select

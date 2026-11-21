@@ -1,0 +1,54 @@
+import { Command, createListCollection } from '@ark-ui/solid/command'
+import { For } from 'solid-js'
+
+interface Item {
+  label: string
+  value: string
+  group: string
+  disabled?: boolean | undefined
+  keywords?: string[] | undefined
+  parent?: string | undefined
+}
+
+const collection = createListCollection<Item>({
+  items: [
+    { label: 'New file', value: 'new-file', group: 'File' },
+    { label: 'Save', value: 'save', group: 'File', keywords: ['write'] },
+    { label: 'Print', value: 'print', group: 'File', disabled: true },
+    { label: 'Zoom in', value: 'zoom-in', group: 'View' },
+    { label: 'Theme', value: 'theme', group: 'View' },
+    { label: 'Dark', value: 'dark', group: 'Theme', parent: 'theme' },
+    { label: 'Light', value: 'light', group: 'Theme', parent: 'theme' },
+  ],
+  groupBy: (item) => item.group,
+})
+
+export const ComponentUnderTest = (props: Partial<Command.RootProps<Item>>) => (
+  <Command.Root collection={collection} {...props}>
+    <Command.Label>Commands</Command.Label>
+    <Command.Control>
+      <Command.Input placeholder="Search" />
+    </Command.Control>
+    <Command.Context>
+      {(command) => (
+        <Command.List>
+          <For each={command().collection.group()} keyed={([group]) => group}>
+            {(entry) => (
+              <Command.ItemGroup>
+                <Command.ItemGroupLabel>{entry()[0]}</Command.ItemGroupLabel>
+                <For each={entry()[1]}>
+                  {(item) => (
+                    <Command.Item item={item}>
+                      <Command.ItemText>{item.label}</Command.ItemText>
+                    </Command.Item>
+                  )}
+                </For>
+              </Command.ItemGroup>
+            )}
+          </For>
+        </Command.List>
+      )}
+    </Command.Context>
+    <Command.Empty>No results</Command.Empty>
+  </Command.Root>
+)
