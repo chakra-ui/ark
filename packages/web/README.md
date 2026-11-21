@@ -230,9 +230,9 @@ The package is organized as follows:
 
 ## Release prerequisite
 
-The current `2.0.0-next.4` Zag dependencies use repository patches for vanilla prop resolution, tree state caching, and
-menu behavior. In particular, menu cleanup calls the patched `removeChild` API. A package consumer does not inherit this
-repository's patches.
+The current `2.0.0-next.4` Zag dependencies use repository patches for vanilla prop resolution, tree state caching, menu
+behavior, and combobox highlighting in inline lists such as command. In particular, menu cleanup calls the patched
+`removeChild` API. A package consumer does not inherit this repository's patches.
 
 Before publishing, release those changes in Zag, update this package's dependency versions, and verify the package in a
 clean consumer install without patches. Then run the checks above and `npm pack --dry-run`. The archive should contain

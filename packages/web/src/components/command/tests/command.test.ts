@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, type Page, test } from '@playwright/test'
 import type { CommandElement } from '../index.js'
 
 const story = (name: string) => `/iframe.html?id=components-command--${name}&viewMode=story`
@@ -15,6 +15,36 @@ test('command filters items as the user types', async ({ page }) => {
   await expect(options).toHaveCount(0)
   await input.fill('')
   await expect(options).toHaveCount(5)
+})
+
+// Presses keys as soon as `match` is highlighted, waiting only on microtasks so no frame can pass, like a fast typist.
+const typeThenPress = (page: Page, text: string, match: string, ...keys: string[]) =>
+  page.getByRole('combobox').evaluate(
+    async (input: HTMLInputElement, [text, match, keys]) => {
+      const highlighted = () => document.querySelector('[role=option][data-highlighted]')?.textContent?.includes(match)
+      input.focus()
+      input.value = text
+      input.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText', data: text }))
+      for (let i = 0; i < 100 && !highlighted(); i++) await Promise.resolve()
+      for (const key of keys)
+        input.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true }))
+    },
+    [text, match, keys] as const,
+  )
+
+test('command selects the first match when Enter follows typing', async ({ page }) => {
+  await page.goto(story('pages'))
+  await expect(page.getByRole('option')).toHaveCount(3)
+  await typeThenPress(page, 'dark', 'Dark', 'Enter')
+  await expect(page.locator('output')).toHaveText('Selected: dark')
+})
+
+test('command keeps an arrow key pressed right after typing', async ({ page }) => {
+  await page.goto(story('basic'))
+  await expect(page.getByRole('option')).toHaveCount(5)
+  await typeThenPress(page, 'open', 'Open file', 'ArrowDown')
+  await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))))
+  await expect(page.locator('[role=option][data-highlighted]')).toHaveText(/Open settings/)
 })
 
 test('command navigates with the keyboard while focus stays in the input', async ({ page }) => {
