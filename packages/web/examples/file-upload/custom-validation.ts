@@ -17,11 +17,11 @@ export function mount(root: HTMLElement) {
     <ark-file-upload-hidden-input></ark-file-upload-hidden-input>
   </ark-file-upload><output aria-live="polite"></output>`
   const upload = root.querySelector('ark-file-upload')!
-  upload.validate = (file) =>
-    file.name.endsWith('.txt') ? null : [{ code: 'FILE_INVALID_TYPE', message: 'Choose a text file.' }]
+  const messages: Record<string, string> = { NOT_TEXT_FILE: 'Choose a text file.' }
+  upload.validate = (file) => (file.name.endsWith('.txt') ? null : ['NOT_TEXT_FILE'])
   upload.addEventListener('filereject', (event) => {
     root.querySelector('output')!.textContent = event.detail.files
-      .flatMap(({ errors }) => errors.map(({ message }) => message))
+      .flatMap(({ errors }) => errors.map((error) => messages[error] ?? error))
       .join(', ')
   })
 }
