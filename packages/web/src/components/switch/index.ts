@@ -5,7 +5,7 @@ import type { Api, Props } from '@zag-js/switch'
 import type { RootElement, StateProperties } from '../../utils/define.js'
 
 export type { Api as SwitchApi } from '@zag-js/switch'
-export type SwitchElement = RootElement<Api, Props> & Pick<Props, 'ids'> & StateProperties<Props, 'checked'>
+export interface SwitchElement extends RootElement<Api, Props>, Pick<Props, 'ids'>, StateProperties<Props, 'checked'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

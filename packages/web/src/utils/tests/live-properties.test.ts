@@ -9,10 +9,6 @@ import '@ark-ui/web/toggle'
 
 const user = userEvent.setup()
 
-const nextFrame = () => new Promise(requestAnimationFrame)
-
-const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
-
 const dialogMarkup = /* html */ `
   <ark-dialog>
     <ark-dialog-trigger><button>Open</button></ark-dialog-trigger>
@@ -21,31 +17,32 @@ const dialogMarkup = /* html */ `
     </ark-dialog-positioner>
   </ark-dialog>`
 
-test('setting a live property updates state without dispatching a change event', async () => {
+test('setting a live property changes the state without a change event', async () => {
   document.body.innerHTML = dialogMarkup
   const dialog = document.querySelector('ark-dialog')!
-  await nextFrame()
-
+  await dialog.ready
   const events: string[] = []
   dialog.addEventListener('openchange', (event) => events.push(String(event.detail.open)))
+  expect(dialog.open).toBe(false)
 
-  const before = dialog.open
   dialog.open = true
-  expect({ before, immediate: dialog.open }).toEqual({ before: false, immediate: true })
 
+  expect(dialog.open).toBe(true)
   await waitFor(() => expect(screen.getByRole('dialog')).toBeVisible())
   expect(dialog.open).toBe(true)
 
   dialog.open = false
+
   await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument())
   expect(events).toEqual([])
 
   await user.click(screen.getByRole('button', { name: 'Open' }))
+
   await waitFor(() => expect(screen.getByRole('dialog')).toBeVisible())
   expect(events).toEqual(['true'])
 })
 
-test('live properties read and write the machine values of each component', async () => {
+test('live properties read and write the value of each component', async () => {
   document.body.innerHTML = /* html */ `
     <ark-toggle><button>Bold</button></ark-toggle>
     <ark-checkbox><label><ark-checkbox-control></ark-checkbox-control><ark-checkbox-label>Accept</ark-checkbox-label><ark-checkbox-hidden-input></ark-checkbox-hidden-input></label></ark-checkbox>
@@ -61,87 +58,82 @@ test('live properties read and write the machine values of each component', asyn
         <ark-select-item value="solid"><ark-select-item-text>Solid</ark-select-item-text></ark-select-item>
       </ark-select-list>
     </ark-select>`
-  await nextFrame()
-
   const toggle = document.querySelector('ark-toggle')!
   const checkbox = document.querySelector('ark-checkbox')!
   const tabs = document.querySelector('ark-tabs')!
   const select = document.querySelector('ark-select')!
-
+  await Promise.all([toggle.ready, checkbox.ready, tabs.ready, select.ready])
   const events: string[] = []
-  for (const el of [toggle, checkbox, tabs, select]) {
+  for (const element of [toggle, checkbox, tabs, select]) {
     for (const type of ['pressedchange', 'checkedchange', 'valuechange', 'openchange']) {
-      el.addEventListener(type, () => events.push(`${el.localName}:${type}`))
+      element.addEventListener(type, () => events.push(`${element.localName}:${type}`))
     }
   }
-
-  const initial = { pressed: toggle.pressed, checked: checkbox.checked, tab: tabs.value, value: select.value }
+  expect(toggle.pressed).toBe(false)
+  expect(checkbox.checked).toBe(false)
+  expect(tabs.value).toBe('a')
+  expect(select.value).toEqual([])
 
   toggle.pressed = true
   checkbox.checked = true
   tabs.value = 'b'
   select.value = ['solid']
-  await wait(50)
 
-  expect(initial).toEqual({ pressed: false, checked: false, tab: 'a', value: [] })
-  expect({ pressed: toggle.pressed, checked: checkbox.checked, tab: tabs.value, value: select.value }).toEqual({
-    pressed: true,
-    checked: true,
-    tab: 'b',
-    value: ['solid'],
-  })
-  expect(toggle.querySelector('button')).toHaveAttribute('aria-pressed', 'true')
+  await waitFor(() => expect(toggle.querySelector('button')).toHaveAttribute('aria-pressed', 'true'))
+  await waitFor(() => expect(screen.getByRole('tab', { name: 'B' })).toHaveAttribute('aria-selected', 'true'))
+  await waitFor(() => expect(checkbox.querySelector('input')).toBeChecked())
+  expect(toggle.pressed).toBe(true)
+  expect(checkbox.checked).toBe(true)
+  expect(tabs.value).toBe('b')
+  expect(select.value).toEqual(['solid'])
   expect(events).toEqual([])
 })
 
-test('the controlled attribute wins over property writes', async () => {
+test('a controlled attribute wins over a property write', async () => {
   document.body.innerHTML = /* html */ `<ark-toggle pressed="false"><button>Bold</button></ark-toggle>`
   const toggle = document.querySelector('ark-toggle')!
-  await nextFrame()
+  await toggle.ready
 
   toggle.pressed = true
-  await wait(50)
 
-  expect(toggle.pressed).toBe(false)
+  await waitFor(() => expect(toggle.pressed).toBe(false))
   expect(screen.getByRole('button', { name: 'Bold' })).toHaveAttribute('aria-pressed', 'false')
 })
 
-test('values written before connection apply once the machine starts', async () => {
+test('a value written before the element is connected applies once it starts', async () => {
   const toggle = document.createElement('ark-toggle')
   toggle.innerHTML = '<button>Bold</button>'
-  toggle.pressed = true
-  const early = toggle.pressed
-
   const events: unknown[] = []
   toggle.addEventListener('pressedchange', (event) => events.push(event.detail))
 
-  document.body.append(toggle)
-  await wait(50)
+  toggle.pressed = true
 
-  expect({ early, pressed: toggle.pressed, events }).toEqual({ early: true, pressed: true, events: [] })
+  expect(toggle.pressed).toBe(true)
+
+  document.body.append(toggle)
+  await toggle.ready
+
   await waitFor(() => expect(screen.getByRole('button', { name: 'Bold' })).toHaveAttribute('aria-pressed', 'true'))
+  expect(toggle.pressed).toBe(true)
+  expect(events).toEqual([])
 })
 
-test('checkbox group value can be written without an event', async () => {
+test('a checkbox group value can be written without a change event', async () => {
   document.body.innerHTML = /* html */ `
     <ark-checkbox-group>
       <ark-checkbox value="a"><label><ark-checkbox-control></ark-checkbox-control><ark-checkbox-label>A</ark-checkbox-label></label></ark-checkbox>
       <ark-checkbox value="b"><label><ark-checkbox-control></ark-checkbox-control><ark-checkbox-label>B</ark-checkbox-label></label></ark-checkbox>
     </ark-checkbox-group>`
   const group = document.querySelector('ark-checkbox-group')!
-
   const events: unknown[] = []
   group.addEventListener('valuechange', (event) => events.push(event.detail))
-  await nextFrame()
+  const [a, b] = document.querySelectorAll('ark-checkbox')
+  await Promise.all([a.ready, b.ready])
 
   group.value = ['b']
-  await wait(50)
 
-  const [a, b] = document.querySelectorAll('ark-checkbox')
-  expect({ value: group.value, a: a.checked, b: b.checked, events }).toEqual({
-    value: ['b'],
-    a: false,
-    b: true,
-    events: [],
-  })
+  await waitFor(() => expect(b.checked).toBe(true))
+  expect(group.value).toEqual(['b'])
+  expect(a.checked).toBe(false)
+  expect(events).toEqual([])
 })

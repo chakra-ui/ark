@@ -17,6 +17,11 @@ defineRoot<clipboard.Api>({
       set: (api, value) => api.setValue(value),
     },
   },
+
+  actions: {
+    copy: (api) => api.copy(),
+  },
+
   props: (el) => ({
     value: str(el, 'value'),
     defaultValue: str(el, 'default-value'),

@@ -9,7 +9,7 @@ export type {
   LoadStatus as AvatarLoadStatus,
   StatusChangeDetails as AvatarStatusChangeDetails,
 } from '@zag-js/avatar'
-export type AvatarElement = RootElement<Api, Props> & Pick<Props, 'ids'>
+export interface AvatarElement extends RootElement<Api, Props>, Pick<Props, 'ids'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

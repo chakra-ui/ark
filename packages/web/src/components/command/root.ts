@@ -42,6 +42,13 @@ const up = (el: CommandHost) => {
   return pages?.page != null ? navigate(el, pages.up(currentQuery(el)), '') : false
 }
 
+function trackQuery(el: RootElement<combobox.Api>, query: string) {
+  if (query === (queries.get(el) ?? '')) return
+
+  queries.set(el, query)
+  el.refresh()
+}
+
 const Command = defineRoot<combobox.Api>({
   tag: root,
   machine: combobox.machine,
@@ -53,6 +60,14 @@ const Command = defineRoot<combobox.Api>({
   propertyChanged: (el, name) => {
     if (name === 'collection') collection.update(el)
   },
+
+  state: {
+    inputValue: {
+      get: (api) => api.inputValue,
+      set: (api, value) => api.setInputValue(value),
+    },
+  },
+
   props: (el) => {
     const items = filteredOf(el)
     return {
@@ -69,6 +84,7 @@ const Command = defineRoot<combobox.Api>({
       loading: el.hasAttribute('loading'),
       loopFocus: el.hasAttribute('loop-focus'),
       placeholder: str(el, 'placeholder'),
+      onInputValueChange: (details: combobox.InputValueChangeDetails) => trackQuery(el, details.inputValue),
       onSelect(details: combobox.SelectionDetails) {
         const pages = pagesOf(el)
         const item = pages?.getItem(details.itemValue)
@@ -90,22 +106,14 @@ const Command = defineRoot<combobox.Api>({
   },
   setup: (el) => {
     const cleanup = collection.setup(el)
-    const onInput = (event: Event) => {
-      const { inputValue } = (event as CustomEvent<combobox.InputValueChangeDetails>).detail
-      if (inputValue === (queries.get(el) ?? '')) return
-      queries.set(el, inputValue)
-      el.refresh()
-    }
     const onKeyDown = (event: KeyboardEvent) => {
       const input = event.target as HTMLInputElement
       if (event.key !== 'Backspace' || !input.matches?.('ark-command-input > input') || input.value) return
       if (up(el as CommandHost)) event.preventDefault()
     }
-    el.addEventListener('inputvaluechange', onInput)
     el.addEventListener('keydown', onKeyDown)
     return () => {
       cleanup()
-      el.removeEventListener('inputvaluechange', onInput)
       el.removeEventListener('keydown', onKeyDown)
     }
   },

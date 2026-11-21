@@ -1,7 +1,7 @@
 import type { Api, Props } from '@zag-js/select'
 
 import type { CollectionItem, ListCollection } from '../collection/index.js'
-import type { RootElement, StateProperties } from '../../utils/define.js'
+import type { ActionMethods, RootElement, StateProperties } from '../../utils/define.js'
 import type { CallbackEvents, FunctionProperties } from '../../utils/events.js'
 import './root.js'
 import './parts.js'
@@ -16,14 +16,18 @@ export {
   type ListCollection,
 } from '../collection/index.js'
 
-export type SelectElement<T extends CollectionItem = CollectionItem> = RootElement<Api<PropTypes, T>, Props<T>> &
-  FunctionProperties<Props<T>> &
-  Pick<Props<T>, 'ids' | 'translations' | 'positioning'> & {
-    /**
-     * The items to choose from, e.g. from `createListCollection`. Assign a new collection to update the list.
-     */
-    collection?: ListCollection<T> | undefined
-  } & StateProperties<Props<T>, 'open' | 'value'>
+export interface SelectElement<T extends CollectionItem = CollectionItem>
+  extends
+    ActionMethods<Api<PropTypes, T>, 'clearValue'>,
+    RootElement<Api<PropTypes, T>, Props<T>>,
+    FunctionProperties<Props<T>>,
+    Pick<Props<T>, 'ids' | 'translations' | 'positioning'>,
+    StateProperties<Props<T>, 'open' | 'value'> {
+  /**
+   * The items to choose from, e.g. from `createListCollection`. Assign a new collection to update the list.
+   */
+  collection?: ListCollection<T> | undefined
+}
 
 declare global {
   interface HTMLElementTagNameMap {

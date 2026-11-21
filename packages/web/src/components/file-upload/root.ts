@@ -27,6 +27,12 @@ defineRoot<fileUpload.Api>({
     'name',
     'locale',
   ],
+
+  actions: {
+    clearFiles: (api) => api.clearFiles(),
+    openFilePicker: (api) => api.openFilePicker(),
+  },
+
   props: (el) => {
     const { acceptedFiles, defaultAcceptedFiles, validate, transformFiles, translations } = el as FileUploadElement
     return withField(el, 'hiddenInput', {

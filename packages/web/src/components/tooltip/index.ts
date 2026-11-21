@@ -5,9 +5,8 @@ import type { Api, Props } from '@zag-js/tooltip'
 import type { RootElement, StateProperties } from '../../utils/define.js'
 
 export type { Api as TooltipApi } from '@zag-js/tooltip'
-export type TooltipElement = RootElement<Api, Props> &
-  Pick<Props, 'ids' | 'positioning'> &
-  StateProperties<Props, 'open'>
+export interface TooltipElement
+  extends RootElement<Api, Props>, Pick<Props, 'ids' | 'positioning'>, StateProperties<Props, 'open'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

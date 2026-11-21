@@ -5,7 +5,7 @@ import type { Api, Props } from '@zag-js/toggle'
 import type { RootElement, StateProperties } from '../../utils/define.js'
 
 export type { Api as ToggleApi } from '@zag-js/toggle'
-export type ToggleElement = RootElement<Api, Props> & StateProperties<Props, 'pressed'>
+export interface ToggleElement extends RootElement<Api, Props>, StateProperties<Props, 'pressed'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

@@ -119,6 +119,7 @@ function elementsOf() {
         attributes,
         events: meta.events ?? [],
         properties: meta.properties ?? [],
+        methods: meta.methods ?? [],
       }
     })
 }
@@ -146,7 +147,10 @@ const manifest = {
       description: element.description,
       attributes: element.attributes.map((name) => ({ name, description: attributeDescription(name) })),
       events: element.events.map((name) => ({ name, type: { text: 'CustomEvent' } })),
-      members: element.properties.map((name) => ({ kind: 'field', name })),
+      members: [
+        ...element.properties.map((name) => ({ kind: 'field', name })),
+        ...element.methods.map((name) => ({ kind: 'method', name })),
+      ],
     })),
     exports: items.map((element) => ({
       kind: 'custom-element-definition',

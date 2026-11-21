@@ -8,47 +8,51 @@ import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()
 
-test('checkbox group enforces its maximum and submits native form values', async () => {
-  const root = mount(GroupWithMaxSelected)
-  const inputs = () => document.querySelectorAll<HTMLInputElement>('input[type=checkbox]')
+const inputs = () => document.querySelectorAll<HTMLInputElement>('input[type=checkbox]')
 
+const output = () => document.querySelector('output')
+
+test('a group disables the remaining checkboxes once its maximum is selected', async () => {
+  mount(GroupWithMaxSelected)
   await waitFor(() => expect(inputs()).toHaveLength(4))
   await waitFor(() => expect(inputs()[0]).toBeChecked())
 
   await user.click(screen.getByText('Solid', { exact: true }))
+
   await waitFor(() => expect(inputs()[1]).toBeChecked())
   await waitFor(() => expect(inputs()[2]).toBeDisabled())
 
   await user.click(screen.getByText('React', { exact: true }))
-  await waitFor(() => expect(inputs()[2]).toBeEnabled())
 
-  root.remove()
+  await waitFor(() => expect(inputs()[2]).toBeEnabled())
+})
+
+test('a group submits its checked values with the form', async () => {
   mount(GroupWithForm)
 
   await user.click(await screen.findByText('Solid', { exact: true }))
   await user.click(screen.getByRole('button', { name: 'Submit' }))
-  await waitFor(() => expect(document.querySelector('output')).toHaveTextContent('["react","solid"]'))
+
+  await waitFor(() => expect(output()).toHaveTextContent('["react","solid"]'))
 })
 
-test('controlled checkbox can disconnect and reconnect without duplicate events', async () => {
+test('moving a controlled checkbox around the page does not duplicate its change event', async () => {
   mount(Controlled)
-  const input = document.querySelector<HTMLInputElement>('input[type=checkbox]')!
-
+  const input = inputs()[0]
   await waitFor(() => expect(input).toBeChecked())
-
-  const el = document.querySelector('ark-checkbox')!
-  const parent = el.parentElement!
-  let changes = 0
-  el.addEventListener('checkedchange', () => el.setAttribute('data-changes', String(++changes)))
+  const checkbox = document.querySelector('ark-checkbox')!
+  const parent = checkbox.parentElement!
+  const changed = vi.fn()
+  checkbox.addEventListener('checkedchange', changed)
 
   for (let i = 0; i < 3; i++) {
-    el.remove()
-    parent.append(el)
-    await new Promise(requestAnimationFrame)
+    checkbox.remove()
+    parent.append(checkbox)
+    await checkbox.ready
   }
-
   await user.click(screen.getByText('Checkbox', { exact: true }))
+
   await waitFor(() => expect(input).not.toBeChecked())
-  expect(el).toHaveAttribute('data-changes', '1')
-  expect(document.querySelector('output')).toHaveTextContent('checked: false')
+  expect(changed).toHaveBeenCalledTimes(1)
+  expect(output()).toHaveTextContent('checked: false')
 })

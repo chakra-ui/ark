@@ -5,7 +5,7 @@ import type { CallbackEvents } from '../../utils/events.js'
 import type { RootElement } from '../../utils/define.js'
 
 export type { Api as FieldApi } from '@zag-js/field'
-export type FieldElement = RootElement<Api, Props> & Pick<Props, 'ids' | 'errors' | 'validate'>
+export interface FieldElement extends RootElement<Api, Props>, Pick<Props, 'ids' | 'errors' | 'validate'> {}
 export type FieldEventMap = CallbackEvents<Props>
 
 declare global {

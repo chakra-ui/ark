@@ -39,6 +39,11 @@ definePresenceRoot<select.Api>({
       set: (api, value) => api.setValue(value),
     },
   },
+
+  actions: {
+    clearValue: (api, value?: string) => api.clearValue(value),
+  },
+
   props: (el) =>
     withField(el, 'hiddenSelect', {
       collection: collection.get(el),

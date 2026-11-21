@@ -5,48 +5,59 @@ import { mount as Horizontal } from '../../../../examples/scroll-area/horizontal
 import { mount as Nested } from '../../../../examples/scroll-area/nested.js'
 import { mount } from '../../../test-utils.js'
 
+const scrollbar = () => document.querySelector('ark-scroll-area-scrollbar')!
+
+const thumb = () => document.querySelector('ark-scroll-area-thumb')
+
 const setSize = (element: Element, size: Record<string, number>) => {
   for (const [key, value] of Object.entries(size)) {
     Object.defineProperty(element, key, { configurable: true, value })
   }
 }
 
-test('scroll area marks overflow on the axes that scroll', async () => {
-  mount(Basic)
-  const vertical = document.querySelector('ark-scroll-area-scrollbar')!
-  const viewport = document.querySelector('ark-scroll-area-viewport')!
+const findViewport = async (selector = 'ark-scroll-area-viewport') => {
+  const viewport = document.querySelector(selector)!
   await waitFor(() => expect(viewport).toHaveAttribute('data-scroll-area-viewport'))
-  setSize(viewport, { scrollHeight: 400, clientHeight: 200, scrollWidth: 300, clientWidth: 300 })
+  return viewport
+}
+
+const scroll = (viewport: Element, size: Record<string, number>) => {
+  setSize(viewport, size)
   viewport.dispatchEvent(new Event('scroll'))
+}
 
-  await waitFor(() => expect(vertical).toHaveAttribute('data-overflow-y', ''))
-  expect(vertical).toHaveAttribute('data-orientation', 'vertical')
-  expect(vertical).not.toHaveAttribute('data-overflow-x')
-  expect(document.querySelector('ark-scroll-area-thumb')).toHaveAttribute('data-orientation', 'vertical')
+test('content taller than the viewport marks the vertical scrollbar as overflowing', async () => {
+  mount(Basic)
+  const viewport = await findViewport()
+
+  scroll(viewport, { scrollHeight: 400, clientHeight: 200, scrollWidth: 300, clientWidth: 300 })
+
+  await waitFor(() => expect(scrollbar()).toHaveAttribute('data-overflow-y', ''))
+  expect(scrollbar()).toHaveAttribute('data-orientation', 'vertical')
+  expect(scrollbar()).not.toHaveAttribute('data-overflow-x')
+  expect(thumb()).toHaveAttribute('data-orientation', 'vertical')
   expect(viewport).toHaveAttribute('tabindex', '0')
-
-  document.body.replaceChildren()
-  mount(Horizontal)
-  const horizontal = document.querySelector('ark-scroll-area-scrollbar')!
-  const horizontalViewport = document.querySelector('ark-scroll-area-viewport')!
-  await waitFor(() => expect(horizontalViewport).toHaveAttribute('data-scroll-area-viewport'))
-  setSize(horizontalViewport, { scrollHeight: 200, clientHeight: 200, scrollWidth: 600, clientWidth: 300 })
-  horizontalViewport.dispatchEvent(new Event('scroll'))
-
-  await waitFor(() => expect(horizontal).toHaveAttribute('data-overflow-x', ''))
-  expect(horizontal).not.toHaveAttribute('data-overflow-y')
-  expect(document.querySelector('ark-scroll-area-thumb')).toHaveAttribute('data-orientation', 'horizontal')
 })
 
-test('nested scroll areas track their own scroll state', async () => {
+test('content wider than the viewport marks the horizontal scrollbar as overflowing', async () => {
+  mount(Horizontal)
+  const viewport = await findViewport()
+
+  scroll(viewport, { scrollHeight: 200, clientHeight: 200, scrollWidth: 600, clientWidth: 300 })
+
+  await waitFor(() => expect(scrollbar()).toHaveAttribute('data-overflow-x', ''))
+  expect(scrollbar()).not.toHaveAttribute('data-overflow-y')
+  expect(thumb()).toHaveAttribute('data-orientation', 'horizontal')
+})
+
+test('nested scroll areas track their scroll position separately', async () => {
   mount(Nested)
   const outer = document.querySelector('ark-scroll-area-viewport')!
-  const inner = document.querySelector('ark-scroll-area ark-scroll-area ark-scroll-area-viewport')!
-  await waitFor(() => expect(inner).toHaveAttribute('data-scroll-area-viewport'))
+  const inner = await findViewport('ark-scroll-area ark-scroll-area ark-scroll-area-viewport')
   setSize(outer, { scrollHeight: 400, clientHeight: 200, scrollTop: 0 })
-  setSize(inner, { scrollHeight: 400, clientHeight: 100, scrollTop: 300 })
 
-  inner.dispatchEvent(new Event('scroll'))
+  scroll(inner, { scrollHeight: 400, clientHeight: 100, scrollTop: 300 })
+
   await waitFor(() => expect(inner).toHaveAttribute('data-at-bottom', ''))
   expect(outer).toHaveAttribute('data-at-top', '')
   expect(outer).not.toHaveAttribute('data-at-bottom', '')

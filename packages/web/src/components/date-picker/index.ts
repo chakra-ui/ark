@@ -6,10 +6,15 @@ import type { RootElement, StateProperties } from '../../utils/define.js'
 import type { FunctionProperties } from '../../utils/events.js'
 
 export type { Api as DatePickerApi } from '@zag-js/date-picker'
-export type DatePickerElement = RootElement<Api, Props> &
-  FunctionProperties<Props> &
-  Pick<Props, 'ids' | 'translations' | 'positioning'> &
-  StateProperties<Props, 'open'> & { value: string[]; view: DateView }
+export interface DatePickerElement
+  extends
+    RootElement<Api, Props>,
+    FunctionProperties<Props>,
+    Pick<Props, 'ids' | 'translations' | 'positioning'>,
+    StateProperties<Props, 'open'> {
+  value: string[]
+  view: DateView
+}
 
 declare global {
   interface HTMLElementTagNameMap {

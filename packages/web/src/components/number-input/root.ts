@@ -46,6 +46,12 @@ defineRoot<numberInput.Api>({
       set: (api, value) => (value == null ? api.clearValue() : api.setValue(Number(value))),
     },
   },
+
+  actions: {
+    increment: (api) => api.increment(),
+    decrement: (api) => api.decrement(),
+  },
+
   props: (el) =>
     withField(el, 'input', {
       value: el.hasAttribute('value') ? (num(el, 'value') ?? null) : undefined,

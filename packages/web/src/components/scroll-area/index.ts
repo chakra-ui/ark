@@ -5,7 +5,7 @@ import type { RootElement } from '../../utils/define.js'
 import type { Api } from './shared.js'
 
 export type { Api as ScrollAreaApi } from './shared.js'
-export type ScrollAreaElement = RootElement<Api, Props> & Pick<Props, 'ids'>
+export interface ScrollAreaElement extends RootElement<Api, Props>, Pick<Props, 'ids'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

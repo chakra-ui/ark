@@ -25,6 +25,11 @@ defineRoot<listbox.Api>({
       set: (api, value) => api.setValue(value),
     },
   },
+
+  actions: {
+    clearValue: (api, value?: string) => api.clearValue(value),
+  },
+
   props: (el) => ({
     collection: collection.get(el),
     value: listOf(el, 'value'),

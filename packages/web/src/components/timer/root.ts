@@ -12,6 +12,15 @@ defineRoot<timer.Api>({
 
   attributes: ['countdown', 'start-ms', 'target-ms', 'auto-start', 'interval'],
   properties: ['ids', 'translations'],
+
+  actions: {
+    start: (api) => api.start(),
+    pause: (api) => api.pause(),
+    resume: (api) => api.resume(),
+    reset: (api) => api.reset(),
+    restart: (api) => api.restart(),
+  },
+
   props: (el) => {
     const { ids, translations } = el as TimerElement
     return {

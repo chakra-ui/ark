@@ -5,9 +5,8 @@ import type { Api, Props } from '@zag-js/rating-group'
 import type { RootElement, StateProperties } from '../../utils/define.js'
 
 export type { Api as RatingGroupApi } from '@zag-js/rating-group'
-export type RatingGroupElement = RootElement<Api, Props> &
-  Pick<Props, 'ids' | 'translations'> &
-  StateProperties<Props, 'value'>
+export interface RatingGroupElement
+  extends RootElement<Api, Props>, Pick<Props, 'ids' | 'translations'>, StateProperties<Props, 'value'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

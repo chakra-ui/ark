@@ -4,48 +4,60 @@ import { mount as Basic } from '../../../../examples/avatar/basic.js'
 import { mount as Events } from '../../../../examples/avatar/events.js'
 import { mount } from '../../../test-utils.js'
 
+const avatar = () => document.querySelector('ark-avatar')
+
 const image = () => document.querySelector('img')!
 
-const output = () => document.querySelector('output')!
+const fallback = () => screen.getByText('PA', { exact: true })
 
-test('avatar shows the fallback until the image loads', async () => {
+const status = () => document.querySelector('output')
+
+const changeSource = (src: string) => {
+  Object.defineProperty(image(), 'complete', { configurable: true, value: false })
+  image().setAttribute('src', src)
+}
+
+test('the fallback shows until the image loads', async () => {
   mount(Basic)
-  const avatar = document.querySelector('ark-avatar')!
 
-  await waitFor(() => expect(avatar).toHaveAttribute('data-status', 'loading'))
-  expect(screen.getByText('PA', { exact: true })).toBeVisible()
+  await waitFor(() => expect(avatar()).toHaveAttribute('data-status', 'loading'))
+  expect(fallback()).toBeVisible()
   expect(image()).not.toBeVisible()
 
   image().dispatchEvent(new Event('load'))
-  await waitFor(() => expect(avatar).toHaveAttribute('data-status', 'loaded'))
+
+  await waitFor(() => expect(avatar()).toHaveAttribute('data-status', 'loaded'))
   expect(image()).toBeVisible()
   expect(image()).toHaveAttribute('data-state', 'visible')
-  expect(screen.getByText('PA', { exact: true })).not.toBeVisible()
+  expect(fallback()).not.toBeVisible()
 })
 
-test('avatar keeps the fallback when the image fails', async () => {
+test('the fallback stays when the image fails to load', async () => {
   mount(Events)
-  await waitFor(() => expect(document.querySelector('ark-avatar')).toHaveAttribute('data-status', 'loading'))
+  await waitFor(() => expect(avatar()).toHaveAttribute('data-status', 'loading'))
 
   image().dispatchEvent(new Event('error'))
-  await waitFor(() => expect(output()).toHaveTextContent('Status: error'))
-  expect(document.querySelector('ark-avatar')).toHaveAttribute('data-status', 'error')
-  expect(screen.getByText('PA', { exact: true })).toBeVisible()
+
+  await waitFor(() => expect(status()).toHaveTextContent('Status: error'))
+  expect(avatar()).toHaveAttribute('data-status', 'error')
+  expect(fallback()).toBeVisible()
   expect(image()).not.toBeVisible()
 })
 
-test('avatar dispatches statuschange and resets when the source changes', async () => {
+test('changing the image source goes back to loading and reports each status', async () => {
   mount(Events)
-  await waitFor(() => expect(output()).toHaveTextContent('Status: loading'))
+  await waitFor(() => expect(status()).toHaveTextContent('Status: loading'))
 
   image().dispatchEvent(new Event('load'))
-  await waitFor(() => expect(output()).toHaveTextContent('Status: loaded'))
 
-  Object.defineProperty(image(), 'complete', { configurable: true, value: false })
-  image().setAttribute('src', 'https://i.pravatar.cc/3000?u=b')
-  await waitFor(() => expect(output()).toHaveTextContent('Status: loading'))
-  expect(screen.getByText('PA', { exact: true })).toBeVisible()
+  await waitFor(() => expect(status()).toHaveTextContent('Status: loaded'))
+
+  changeSource('https://i.pravatar.cc/3000?u=b')
+
+  await waitFor(() => expect(status()).toHaveTextContent('Status: loading'))
+  expect(fallback()).toBeVisible()
 
   image().dispatchEvent(new Event('load'))
-  await waitFor(() => expect(output()).toHaveTextContent('Status: loaded'))
+
+  await waitFor(() => expect(status()).toHaveTextContent('Status: loaded'))
 })

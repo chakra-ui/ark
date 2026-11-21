@@ -7,10 +7,12 @@ import './parts.js'
 
 export type { Api as DrawerApi, SnapPoint as DrawerSnapPoint } from '@zag-js/drawer'
 
-export type DrawerElement = RootElement<Api, Props> &
-  FunctionProperties<Props> &
-  Pick<Props, 'ids'> &
-  StateProperties<Props, 'open' | 'snapPoint'>
+export interface DrawerElement
+  extends
+    RootElement<Api, Props>,
+    FunctionProperties<Props>,
+    Pick<Props, 'ids'>,
+    StateProperties<Props, 'open' | 'snapPoint'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

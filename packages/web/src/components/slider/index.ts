@@ -6,10 +6,8 @@ import type { RootElement, StateProperties } from '../../utils/define.js'
 import type { FunctionProperties } from '../../utils/events.js'
 
 export type { Api as SliderApi } from '@zag-js/slider'
-export type SliderElement = RootElement<Api, Props> &
-  FunctionProperties<Props> &
-  Pick<Props, 'ids'> &
-  StateProperties<Props, 'value'>
+export interface SliderElement
+  extends RootElement<Api, Props>, FunctionProperties<Props>, Pick<Props, 'ids'>, StateProperties<Props, 'value'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

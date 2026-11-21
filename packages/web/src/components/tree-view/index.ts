@@ -1,7 +1,7 @@
 import type { Api, Props } from '@zag-js/tree-view'
 
 import type { TreeCollection, TreeNode } from '../collection/index.js'
-import type { RootElement, StateProperties } from '../../utils/define.js'
+import type { ActionMethods, RootElement, StateProperties } from '../../utils/define.js'
 import type { CallbackEvents, FunctionProperties } from '../../utils/events.js'
 import './root.js'
 import './parts.js'
@@ -18,14 +18,18 @@ export {
   type TreeNode,
 } from '../collection/index.js'
 
-export type TreeViewElement<T extends TreeNode = TreeNode> = RootElement<Api<PropTypes, T>, Props<T>> &
-  FunctionProperties<Props<T>> &
-  Pick<Props<T>, 'ids' | 'translations'> & {
-    /**
-     * The nodes to show, e.g. from `createTreeCollection`. Assign a new collection to update the tree.
-     */
-    collection?: TreeCollection<T> | undefined
-  } & StateProperties<Props<T>, 'expandedValue' | 'selectedValue' | 'checkedValue'>
+export interface TreeViewElement<T extends TreeNode = TreeNode>
+  extends
+    ActionMethods<Api<PropTypes, T>, 'expand' | 'collapse'>,
+    RootElement<Api<PropTypes, T>, Props<T>>,
+    FunctionProperties<Props<T>>,
+    Pick<Props<T>, 'ids' | 'translations'>,
+    StateProperties<Props<T>, 'expandedValue' | 'selectedValue' | 'checkedValue'> {
+  /**
+   * The nodes to show, e.g. from `createTreeCollection`. Assign a new collection to update the tree.
+   */
+  collection?: TreeCollection<T> | undefined
+}
 
 declare global {
   interface HTMLElementTagNameMap {

@@ -7,32 +7,39 @@ import { mount as CopyStatus } from '../../../../examples/clipboard/copy-status.
 import { mount as Timeout } from '../../../../examples/clipboard/timeout.js'
 import { mount } from '../../../test-utils.js'
 
+const clipboard = () => document.querySelector('ark-clipboard')
+
+const input = () => document.querySelector('ark-clipboard-input input')
+
+const copiedIndicator = () => document.querySelector('ark-clipboard-indicator[copied]')
+
+const idleIndicator = () => document.querySelector('ark-clipboard-indicator:not([copied])')
+
+const clipboardText = () => navigator.clipboard.readText()
+
 afterEach(() => {
   vi.useRealTimers()
 })
 
-test('clipboard copies the value and switches the indicator', async () => {
+test('clicking the trigger copies the value and shows the copied indicator', async () => {
   const user = userEvent.setup()
   mount(Basic)
-  const root = document.querySelector('ark-clipboard')!
   const trigger = await screen.findByRole('button', { name: 'Copy to clipboard' })
-
-  await waitFor(() => expect(document.querySelector('ark-clipboard-input input')).toHaveValue('https://ark-ui.com'))
-  expect(document.querySelector('ark-clipboard-indicator[copied]')).not.toBeVisible()
+  await waitFor(() => expect(input()).toHaveValue('https://ark-ui.com'))
+  expect(copiedIndicator()).not.toBeVisible()
 
   await user.click(trigger)
 
-  await waitFor(() => expect(root).toHaveAttribute('data-copied', ''))
+  await waitFor(() => expect(clipboard()).toHaveAttribute('data-copied', ''))
   expect(screen.getByRole('button', { name: 'Copied to clipboard' })).toBeVisible()
-  expect(document.querySelector('ark-clipboard-indicator[copied]')).toBeVisible()
-  expect(document.querySelector('ark-clipboard-indicator:not([copied])')).not.toBeVisible()
-  expect(await navigator.clipboard.readText()).toBe('https://ark-ui.com')
+  expect(copiedIndicator()).toBeVisible()
+  expect(idleIndicator()).not.toBeVisible()
+  expect(await clipboardText()).toBe('https://ark-ui.com')
 })
 
-test('clipboard emits statuschange and renders its value text', async () => {
+test('the value text shows the value and copying reports a status change', async () => {
   const user = userEvent.setup()
   mount(CopyStatus)
-
   await waitFor(() =>
     expect(document.querySelector('ark-clipboard-value-text')).toHaveTextContent('https://ark-ui.com'),
   )
@@ -42,35 +49,37 @@ test('clipboard emits statuschange and renders its value text', async () => {
   await waitFor(() => expect(document.querySelector('output')).toHaveTextContent('1'))
 })
 
-test('clipboard resets after its timeout', async () => {
+test('the copied state resets once the timeout passes', async () => {
   vi.useFakeTimers({ toFake: ['setTimeout', 'clearTimeout', 'Date'] })
   const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime })
   mount(Timeout)
-  const root = document.querySelector('ark-clipboard')!
-
   await vi.advanceTimersByTimeAsync(0)
+
   await user.click(screen.getByRole('button'))
   await vi.advanceTimersByTimeAsync(0)
-  expect(root).toHaveAttribute('data-copied', '')
+
+  expect(clipboard()).toHaveAttribute('data-copied', '')
 
   await vi.advanceTimersByTimeAsync(4000)
-  expect(root).toHaveAttribute('data-copied', '')
+
+  expect(clipboard()).toHaveAttribute('data-copied', '')
 
   await vi.advanceTimersByTimeAsync(1100)
-  expect(root).not.toHaveAttribute('data-copied')
-  expect(document.querySelector('ark-clipboard-indicator:not([copied])')).toBeVisible()
+
+  expect(clipboard()).not.toHaveAttribute('data-copied')
+  expect(idleIndicator()).toBeVisible()
 })
 
-test('controlled clipboard syncs the input with the value attribute', async () => {
+test('changing the value attribute updates the input and what gets copied', async () => {
   const user = userEvent.setup()
   mount(Controlled)
-  const input = document.querySelector('ark-clipboard-input input')!
-
-  await waitFor(() => expect(input).toHaveValue('https://ark-ui.com'))
+  await waitFor(() => expect(input()).toHaveValue('https://ark-ui.com'))
 
   await user.click(screen.getByRole('button', { name: 'Change Url' }))
-  await waitFor(() => expect(input).toHaveValue('https://chakra-ui.com'))
+
+  await waitFor(() => expect(input()).toHaveValue('https://chakra-ui.com'))
 
   await user.click(screen.getByRole('button', { name: 'Copy to clipboard' }))
-  await waitFor(async () => expect(await navigator.clipboard.readText()).toBe('https://chakra-ui.com'))
+
+  await waitFor(async () => expect(await clipboardText()).toBe('https://chakra-ui.com'))
 })

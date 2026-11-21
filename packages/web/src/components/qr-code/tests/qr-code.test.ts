@@ -9,47 +9,51 @@ const user = userEvent.setup()
 
 const pattern = () => document.querySelector('path[data-qr-code-pattern]')!
 
-test('qr code renders the pattern path inside the frame svg', async () => {
+const patternPath = () => pattern().getAttribute('d')
+
+const downloads = () => {
+  const names: string[] = []
+  const spy = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(function (this: HTMLAnchorElement) {
+    names.push(this.download)
+  })
+  onTestFinished(() => spy.mockRestore())
+  return names
+}
+
+test('the code is drawn as a single path inside the frame', async () => {
   mount(Basic)
   const svg = document.querySelector('ark-qr-code-frame > svg')!
 
   await waitFor(() => expect(svg).toHaveAttribute('data-qr-code-frame'))
-  expect(svg.getAttribute('viewBox')).toMatch(/^0 0 \d+ \d+$/)
+  expect(svg).toHaveAttribute('viewBox', expect.stringMatching(/^0 0 \d+ \d+$/))
   expect(svg.querySelectorAll('path[data-qr-code-pattern]')).toHaveLength(1)
-  expect(pattern().getAttribute('d')).toMatch(/^M/)
+  expect(pattern()).toHaveAttribute('d', expect.stringMatching(/^M/))
 })
 
-test('qr code re-encodes when the value attribute or property changes', async () => {
+test('the code is redrawn when the value attribute or property changes', async () => {
   mount(Basic)
   const qrCode = document.querySelector('ark-qr-code')!
-
-  await waitFor(() => expect(pattern().getAttribute('d')).toMatch(/^M/))
-  const initial = pattern().getAttribute('d')
+  await waitFor(() => expect(patternPath()).toMatch(/^M/))
+  const initial = patternPath()!
 
   qrCode.setAttribute('value', 'https://chakra-ui.com')
 
-  await waitFor(() => expect(pattern()).not.toHaveAttribute('d', initial!))
-  const controlled = pattern().getAttribute('d')
+  await waitFor(() => expect(pattern()).not.toHaveAttribute('d', initial))
 
+  const fromAttribute = patternPath()!
   qrCode.removeAttribute('value')
   qrCode.value = 'https://zagjs.com'
 
   await waitFor(() => expect(qrCode.value).toBe('https://zagjs.com'))
-  await waitFor(() => expect(pattern()).not.toHaveAttribute('d', controlled!))
+  await waitFor(() => expect(pattern()).not.toHaveAttribute('d', fromAttribute))
 })
 
-test('qr code download trigger downloads an image', async () => {
+test('the download trigger saves the code as an image', async () => {
   mount(Download)
-  const downloads: string[] = []
-  vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(function (this: HTMLAnchorElement) {
-    downloads.push(this.download)
-  })
-
-  await waitFor(() => expect(pattern().getAttribute('d')).toMatch(/^M/))
+  const downloaded = downloads()
+  await waitFor(() => expect(patternPath()).toMatch(/^M/))
 
   await user.click(screen.getByRole('button', { name: 'Download' }))
 
-  await waitFor(() => expect(downloads).toEqual(['qr-code.png']))
-
-  vi.restoreAllMocks()
+  await waitFor(() => expect(downloaded).toEqual(['qr-code.png']))
 })

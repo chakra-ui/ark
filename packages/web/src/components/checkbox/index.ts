@@ -6,7 +6,8 @@ import type { Api, Props } from '@zag-js/checkbox'
 import type { RootElement, StateProperties } from '../../utils/define.js'
 
 export type { Api as CheckboxApi } from '@zag-js/checkbox'
-export type CheckboxElement = RootElement<Api, Props> & Pick<Props, 'ids'> & StateProperties<Props, 'checked'>
+export interface CheckboxElement
+  extends RootElement<Api, Props>, Pick<Props, 'ids'>, StateProperties<Props, 'checked'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

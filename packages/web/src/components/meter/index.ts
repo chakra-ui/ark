@@ -6,7 +6,7 @@ import './root.js'
 import './parts.js'
 
 export type { Api as MeterApi, MeterValueState } from '@zag-js/meter'
-export type MeterElement = RootElement<Api, Props> & Pick<Props, 'ids' | 'formatOptions' | 'translations'>
+export interface MeterElement extends RootElement<Api, Props>, Pick<Props, 'ids' | 'formatOptions' | 'translations'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

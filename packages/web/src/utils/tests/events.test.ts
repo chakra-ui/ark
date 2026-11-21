@@ -30,16 +30,23 @@ const recordDetails = (selector: string, type: string) => {
   return details
 }
 
-const tick = (ms = 20) => new Promise((resolve) => setTimeout(resolve, ms))
+const listen = (
+  target: EventTarget,
+  type: string,
+  listener: EventListener,
+  options?: boolean | AddEventListenerOptions,
+) => {
+  target.addEventListener(type, listener, options)
+  onTestFinished(() => target.removeEventListener(type, listener, options))
+}
 
-test('user interaction reports the input source', async () => {
+test('changes made by the user report whether they came from the mouse or the keyboard', async () => {
   document.body.innerHTML = checkboxMarkup
   const details = recordDetails('ark-checkbox', 'checkedchange')
   const checkbox = await screen.findByRole('checkbox')
 
   await user.click(screen.getByText('Accept', { exact: true }))
   await waitFor(() => expect(details).toHaveLength(1))
-
   checkbox.focus()
   await user.keyboard(' ')
 
@@ -51,12 +58,12 @@ test('user interaction reports the input source', async () => {
   )
 })
 
-test('api calls report a programmatic source, even after recent input', async () => {
+test('changes made through the api report a programmatic source, even right after user input', async () => {
   document.body.innerHTML = checkboxMarkup
   const details = recordDetails('ark-checkbox', 'checkedchange')
-
   await user.click(await screen.findByText('Accept', { exact: true }))
-  await tick()
+  await waitFor(() => expect(details).toHaveLength(1))
+
   document.querySelector('ark-checkbox')!.api!.setChecked(false)
 
   await waitFor(() =>
@@ -67,7 +74,7 @@ test('api calls report a programmatic source, even after recent input', async ()
   )
 })
 
-test('bare callback values are wrapped in an object with a source', async () => {
+test('a plain callback value is wrapped in an object with its source', async () => {
   document.body.innerHTML = /* html */ `<ark-toggle><button>Bold</button></ark-toggle>`
   const details = recordDetails('ark-toggle', 'pressedchange')
 
@@ -76,17 +83,15 @@ test('bare callback values are wrapped in an object with a source', async () => 
   await waitFor(() => expect(details).toEqual([{ pressed: true, source: 'mouse' }]))
 })
 
-test('zag reasons are kept alongside the source', async () => {
+test('the reason for a change is kept alongside its source', async () => {
   document.body.innerHTML = dialogMarkup('Title')
   const details = recordDetails('ark-dialog', 'openchange')
-
   await user.click(await screen.findByRole('button', { name: 'Open' }))
   await waitFor(() => expect(screen.getByRole('dialog')).toBeVisible())
-
   await user.keyboard('{Escape}')
   await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument())
+  await waitFor(() => expect(details).toHaveLength(2))
 
-  await tick()
   document.querySelector('ark-dialog')!.api!.setOpen(true)
 
   await waitFor(() =>
@@ -98,53 +103,35 @@ test('zag reasons are kept alongside the source', async () => {
   )
 })
 
-test('notifications preserve details and compose through shadow roots without bubbling', async () => {
+test('change events are composed through shadow roots but do not bubble', async () => {
   const host = document.createElement('div')
   const shadow = host.attachShadow({ mode: 'open' })
-  shadow.innerHTML = /* html */ `<ark-checkbox><label><ark-checkbox-control></ark-checkbox-control><ark-checkbox-label>Accept</ark-checkbox-label><ark-checkbox-hidden-input></ark-checkbox-hidden-input></label></ark-checkbox>`
+  shadow.innerHTML = checkboxMarkup
   document.body.append(host)
-
   const received: unknown[] = []
   const bubbled: string[] = []
-
-  const record = (place: string, event: Event) => {
-    const change = event as CustomEvent<{ checked: boolean }>
-    received.push({
-      place,
-      checked: change.detail.checked,
-      bubbles: change.bubbles,
-      composed: change.composed,
-      cancelable: change.cancelable,
-    })
+  const record = (place: string) => (event: Event) => {
+    const { detail, bubbles, composed, cancelable } = event as CustomEvent<{ checked: boolean }>
+    received.push({ place, checked: detail.checked, bubbles, composed, cancelable })
   }
-
-  const onBubble = () => bubbled.push('document')
-  const onCapture = (event: Event) => record('capture', event)
-
-  shadow.querySelector('ark-checkbox')!.addEventListener('checkedchange', (event) => record('root', event))
+  shadow.querySelector('ark-checkbox')!.addEventListener('checkedchange', record('root'))
   shadow.addEventListener('checkedchange', () => bubbled.push('shadow'))
-  document.addEventListener('checkedchange', onBubble)
-  document.addEventListener('checkedchange', onCapture, { capture: true })
+  listen(document, 'checkedchange', () => bubbled.push('document'))
+  listen(document, 'checkedchange', record('capture'), { capture: true })
+  await waitFor(() => expect(shadow.querySelector('[data-checkbox-label]')).not.toBeNull())
 
-  try {
-    await waitFor(() => expect(shadow.querySelector('[data-checkbox-label]')).not.toBeNull())
-    await user.click(shadow.querySelector('ark-checkbox-label')!)
+  await user.click(shadow.querySelector('ark-checkbox-label')!)
 
-    await waitFor(() => expect(received).toHaveLength(2))
-    expect(bubbled).toEqual([])
-    expect(received).toEqual([
-      { place: 'capture', checked: true, bubbles: false, composed: true, cancelable: false },
-      { place: 'root', checked: true, bubbles: false, composed: true, cancelable: false },
-    ])
-  } finally {
-    document.removeEventListener('checkedchange', onBubble)
-    document.removeEventListener('checkedchange', onCapture, { capture: true })
-  }
+  await waitFor(() => expect(received).toHaveLength(2))
+  expect(bubbled).toEqual([])
+  expect(received).toEqual([
+    { place: 'capture', checked: true, bubbles: false, composed: true, cancelable: false },
+    { place: 'root', checked: true, bubbles: false, composed: true, cancelable: false },
+  ])
 })
 
-test('escape notifications forward cancellation to the original keyboard event', async () => {
+test('preventing escapekeydown keeps the dialog open', async () => {
   document.body.innerHTML = dialogMarkup('Confirm')
-
   document.querySelector('ark-dialog')!.addEventListener(
     'escapekeydown',
     (event) => {
@@ -157,8 +144,10 @@ test('escape notifications forward cancellation to the original keyboard event',
   await waitFor(() => expect(screen.getByRole('dialog')).toBeVisible())
 
   await user.keyboard('{Escape}')
+
   await waitFor(() => expect(screen.getByRole('dialog')).toBeVisible())
 
   await user.keyboard('{Escape}')
+
   await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument())
 })

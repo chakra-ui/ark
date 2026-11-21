@@ -13,6 +13,11 @@ defineRoot<signaturePad.Api>({
   attributes: ['paths', 'default-paths', 'name', 'disabled', 'readonly', 'required', ...drawingAttributes],
   properties: ['ids', 'translations'],
   ownProperties: ['drawing'],
+
+  actions: {
+    clear: (api) => api.clear(),
+  },
+
   props: (el) =>
     withField(el, 'hiddenInput', {
       paths: json<string[]>(el, 'paths'),

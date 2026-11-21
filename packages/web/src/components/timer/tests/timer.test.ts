@@ -22,7 +22,7 @@ afterEach(() => {
   vi.useRealTimers()
 })
 
-test('start advances the seconds and emits tick', async () => {
+test('a started timer counts up and reports each tick', async () => {
   mount(Events)
   await waitFor(() => expect(item('seconds')).toHaveTextContent('00'))
 
@@ -33,22 +33,24 @@ test('start advances the seconds and emits tick', async () => {
   expect(document.querySelector('output')).toHaveTextContent('Ticks: 3')
 })
 
-test('pause stops the timer and offers resume', async () => {
+test('pausing stops the count and offers resume', async () => {
   mount(Basic)
   await waitFor(() => expect(item('minutes')).toHaveTextContent('40'))
-
   await user.click(screen.getByRole('button', { name: 'Play' }))
   await vi.advanceTimersByTimeAsync(2500)
+
   await user.click(screen.getByRole('button', { name: 'Pause' }))
+
   await waitFor(() => expect(item('seconds')).toHaveTextContent('02'))
 
   await vi.advanceTimersByTimeAsync(5000)
+
   expect(item('seconds')).toHaveTextContent('02')
   await waitFor(() => expect(screen.getByRole('button', { name: 'Resume' })).toBeVisible())
   expect(actionButton('pause')).not.toBeVisible()
 })
 
-test('countdown reaches zero and emits complete', async () => {
+test('a countdown stops at zero and reports completion', async () => {
   mount(Countdown)
   const timer = document.querySelector('ark-timer')!
   const complete = vi.fn()
@@ -66,7 +68,7 @@ test('countdown reaches zero and emits complete', async () => {
   await waitFor(() => expect(actionButton('start')).toBeVisible())
 })
 
-test('action triggers are hidden when their action is unavailable', async () => {
+test('only the action triggers that apply to the current state are shown', async () => {
   mount(Basic)
   const play = actionButton('start')
   const resume = actionButton('resume')
@@ -77,6 +79,7 @@ test('action triggers are hidden when their action is unavailable', async () => 
   expect(resume).not.toBeVisible()
 
   await user.click(play)
+
   await waitFor(() => expect(play).not.toBeVisible())
   expect(pause).toBeVisible()
   expect(resume).not.toBeVisible()

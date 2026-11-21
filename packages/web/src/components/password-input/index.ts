@@ -6,9 +6,8 @@ import './root.js'
 import './parts.js'
 
 export type { Api as PasswordInputApi } from '@zag-js/password-input'
-export type PasswordInputElement = RootElement<Api, Props> &
-  Pick<Props, 'ids' | 'translations'> &
-  StateProperties<Props, 'visible'>
+export interface PasswordInputElement
+  extends RootElement<Api, Props>, Pick<Props, 'ids' | 'translations'>, StateProperties<Props, 'visible'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

@@ -6,11 +6,17 @@ import { mount as CustomObject } from '../../../../examples/select/custom-object
 import { mount as ShadowRoot } from '../../../../examples/select/shadow-root.js'
 import { mount as Virtualized } from '../../../../examples/select/virtualized.js'
 import { mount } from '../../../test-utils.js'
-import { createListCollection, type SelectElement } from '@ark-ui/web/select'
+import { createListCollection } from '@ark-ui/web/select'
 
 const user = userEvent.setup()
 
 const texts = (elements: Iterable<Element>) => Array.from(elements, (element) => element.textContent?.trim())
+
+const items = () => document.querySelectorAll('ark-select-item')
+
+const item = (value: string) => document.querySelector(`ark-select-item[data-value="${value}"]`)
+
+const valueText = () => document.querySelector('ark-select-value-text')
 
 const findTrigger = (container: ParentNode = document) =>
   waitFor(() => {
@@ -19,55 +25,58 @@ const findTrigger = (container: ParentNode = document) =>
     return trigger!
   })
 
-test('select supports keyboard selection and native form integration', async () => {
+test('an item chosen with the keyboard is shown and selected in the native select', async () => {
   mount(Basic)
   const trigger = await findTrigger()
-
   trigger.focus()
+
   await user.keyboard('{ArrowDown}')
+
   const listbox = await screen.findByRole('listbox')
   await waitFor(() => expect(listbox).toBeVisible())
   await waitFor(() => expect(listbox).toHaveFocus())
 
   await user.keyboard('{ArrowUp}')
+
   await waitFor(() => expect(screen.getByRole('option', { name: 'Solid' })).toHaveAttribute('data-highlighted', ''))
 
   await user.keyboard('{Enter}')
+
   await waitFor(() => expect(listbox).not.toBeVisible())
-  const root = document.querySelector('ark-select')!
-  const text = root.querySelector('ark-select-value-text')!.textContent
-  expect(text).toBeTruthy()
-  expect(text).toBe(root.querySelector('select')!.selectedOptions[0]?.text)
+  const nativeSelection = document.querySelector<HTMLSelectElement>('ark-select select')!.selectedOptions[0]?.text
+  expect(nativeSelection).toBeTruthy()
+  expect(valueText()!.textContent).toBe(nativeSelection)
 })
 
-test('select works inside a shadow root', async () => {
-  const container = mount(ShadowRoot)
-  const shadow = within(container.firstElementChild!.shadowRoot! as unknown as HTMLElement)
-
-  await user.click(await findTrigger(container.firstElementChild!.shadowRoot!))
+test('a select inside a shadow root opens and closes on selection', async () => {
+  const shadowRoot = mount(ShadowRoot).firstElementChild!.shadowRoot!
+  const shadow = within(shadowRoot as unknown as HTMLElement)
+  await user.click(await findTrigger(shadowRoot))
   const listbox = await shadow.findByRole('listbox')
   await waitFor(() => expect(listbox).toBeVisible())
 
   await user.click(shadow.getAllByRole('option')[0]!)
+
   await waitFor(() => expect(listbox).not.toBeVisible())
 })
 
-test('select object items render through the collection and submit their key', async () => {
+test('object items show their label and submit their key', async () => {
   mount(CustomObject)
-
   await user.click(await findTrigger())
   await waitFor(() => expect(screen.getAllByRole('group')).toHaveLength(2))
   expect(screen.getByRole('option', { name: 'Alan Turing' })).toHaveAttribute('aria-disabled', 'true')
 
   await user.click(screen.getByRole('option', { name: 'Katherine Johnson' }))
-  await waitFor(() => expect(document.querySelector('ark-select-value-text')).toHaveTextContent('Katherine Johnson'))
+
+  await waitFor(() => expect(valueText()).toHaveTextContent('Katherine Johnson'))
   expect(screen.getByTestId('selection')).toHaveTextContent('Katherine Johnson works in Research')
 
   await user.click(screen.getByRole('button', { name: 'Submit' }))
+
   await waitFor(() => expect(document.querySelector('output')).toHaveTextContent('Submitted: katherine'))
 })
 
-test('select renders bare items and groups without a template', async () => {
+test('items and groups render from the collection property without a template', async () => {
   mount((root) => {
     root.innerHTML = /* html */ `
       <form>
@@ -80,6 +89,7 @@ test('select renders bare items and groups without a template', async () => {
       </form>`
   })
   const select = document.querySelector('ark-select')!
+
   select.collection = createListCollection({
     items: [
       { id: 'a', name: 'Apple', kind: 'Fruit' },
@@ -89,7 +99,6 @@ test('select renders bare items and groups without a template', async () => {
     itemToString: (item) => item.name,
     groupBy: (item) => item.kind,
   })
-  const items = () => document.querySelectorAll('ark-select-item')
 
   await waitFor(() => expect(texts(items())).toEqual(['Apple', 'Carrot']))
   expect(document.querySelectorAll('ark-select-item-group')).toHaveLength(2)
@@ -100,9 +109,11 @@ test('select renders bare items and groups without a template', async () => {
 
   await user.click(await findTrigger())
   await user.click(await screen.findByRole('option', { name: 'Carrot' }))
+
   await waitFor(() => expect(new FormData(document.querySelector('form')!).get('fruit')).toBe('c'))
 
   select.collection = createListCollection({ items: ['Kiwi', 'Lime', 'Mango'] })
+
   await waitFor(() => expect(texts(items())).toEqual(['Kiwi', 'Lime', 'Mango']))
   expect(document.querySelectorAll('ark-select-item-group')).toHaveLength(0)
   await waitFor(() =>
@@ -110,7 +121,7 @@ test('select renders bare items and groups without a template', async () => {
   )
 })
 
-test('collection properties refresh templates and restore the JSON fallback', async () => {
+test('a collection property renders through the template and clearing it brings back the JSON items', async () => {
   mount((root) => {
     root.innerHTML = /* html */ `
       <ark-select>
@@ -120,46 +131,44 @@ test('collection properties refresh templates and restore the JSON fallback', as
         </ark-select-list>
       </ark-select>`
   })
-  const select = document.querySelector<SelectElement>('ark-select')!
-  const items = () => document.querySelectorAll('ark-select-item')
-
+  const select = document.querySelector('ark-select')!
   await waitFor(() => expect(items()).toHaveLength(1))
 
   select.collection = createListCollection({ items: ['React', 'Solid'] })
+
   await waitFor(() => expect(texts(items())).toEqual(['React', 'Solid']))
 
   select.collection = createListCollection<string>({ items: [] })
+
   await waitFor(() => expect(items()).toHaveLength(0))
 
   select.collection = undefined
+
   await waitFor(() => expect(texts(items())).toEqual(['Fallback']))
 })
 
-test('select keyboard navigation reaches off-screen items in a virtualized list', async () => {
-  const user = userEvent.setup()
+test('End reaches and selects an item that is not rendered in a virtualized list', async () => {
   mount(Virtualized)
-
   const listbox = await screen.findByRole('listbox', { hidden: true })
   expect(listbox.localName).toBe('ark-list-virtualizer')
-
-  const trigger = document.querySelector<HTMLButtonElement>('ark-select-trigger button')!
-  trigger.focus()
+  document.querySelector<HTMLButtonElement>('ark-select-trigger button')!.focus()
   await user.keyboard('{ArrowDown}')
   await waitFor(() => expect(listbox).toHaveFocus())
 
   await user.keyboard('{End}')
-  const last = () => document.querySelector('ark-select-item[data-value="item-5000"]')
-  await waitFor(() => expect(last()).toHaveAttribute('data-highlighted', ''))
-  expect(last()).toHaveAttribute('role', 'option')
-  expect(last()).toHaveAttribute('aria-posinset', '5000')
-  expect(last()).toHaveAttribute('aria-setsize', '5000')
-  expect(document.querySelectorAll('ark-select-item').length).toBeLessThan(100)
+
+  await waitFor(() => expect(item('item-5000')).toHaveAttribute('data-highlighted', ''))
+  expect(item('item-5000')).toHaveAttribute('role', 'option')
+  expect(item('item-5000')).toHaveAttribute('aria-posinset', '5000')
+  expect(item('item-5000')).toHaveAttribute('aria-setsize', '5000')
+  expect(items().length).toBeLessThan(100)
 
   await user.keyboard('{Enter}')
-  await waitFor(() => expect(document.querySelector('ark-select-value-text')).toHaveTextContent('Item 5000'))
+
+  await waitFor(() => expect(valueText()).toHaveTextContent('Item 5000'))
 })
 
-test('hidden input part submits the value instead of a hidden select', async () => {
+test('with a hidden input part the value is submitted without a native select', async () => {
   mount((root) => {
     root.innerHTML = /* html */ `
       <form>
@@ -172,11 +181,11 @@ test('hidden input part submits the value instead of a hidden select', async () 
         </ark-select>
       </form>`
   })
-  const form = () => new FormData(document.querySelector('form')!)
-
-  await waitFor(() => expect(form().getAll('fruit')).toEqual(['apple', 'pear']))
+  const submitted = () => new FormData(document.querySelector('form')!).getAll('fruit')
+  await waitFor(() => expect(submitted()).toEqual(['apple', 'pear']))
   expect(document.querySelector('ark-select select')).toBeNull()
 
   document.querySelector('ark-select')!.value = ['pear']
-  await waitFor(() => expect(form().getAll('fruit')).toEqual(['pear']))
+
+  await waitFor(() => expect(submitted()).toEqual(['pear']))
 })

@@ -5,7 +5,7 @@ import type { Api, Props } from '@zag-js/progress'
 import type { RootElement } from '../../utils/define.js'
 
 export type { Api as ProgressApi } from '@zag-js/progress'
-export type ProgressElement = RootElement<Api, Props> & Pick<Props, 'ids' | 'translations'>
+export interface ProgressElement extends RootElement<Api, Props>, Pick<Props, 'ids' | 'translations'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

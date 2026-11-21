@@ -6,10 +6,12 @@ import type { RootElement, StateProperties } from '../../utils/define.js'
 import type { FunctionProperties } from '../../utils/events.js'
 
 export type { Api as MenuApi } from '@zag-js/menu'
-export type MenuElement = RootElement<Api, Props> &
-  FunctionProperties<Props> &
-  Pick<Props, 'ids' | 'positioning'> &
-  StateProperties<Props, 'open'>
+export interface MenuElement
+  extends
+    RootElement<Api, Props>,
+    FunctionProperties<Props>,
+    Pick<Props, 'ids' | 'positioning'>,
+    StateProperties<Props, 'open'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

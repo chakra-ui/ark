@@ -6,10 +6,12 @@ import type { RootElement, StateProperties } from '../../utils/define.js'
 import type { FunctionProperties } from '../../utils/events.js'
 
 export type { Api as PopoverApi } from '@zag-js/popover'
-export type PopoverElement = RootElement<Api, Props> &
-  FunctionProperties<Props> &
-  Pick<Props, 'ids' | 'translations' | 'positioning'> &
-  StateProperties<Props, 'open'>
+export interface PopoverElement
+  extends
+    RootElement<Api, Props>,
+    FunctionProperties<Props>,
+    Pick<Props, 'ids' | 'translations' | 'positioning'>,
+    StateProperties<Props, 'open'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

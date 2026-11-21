@@ -7,46 +7,55 @@ import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()
 
-test('arrow keys change the value and emit valuechange', async () => {
+const valueText = () => document.querySelector('ark-angle-slider-value-text')
+
+const findThumb = async (name: string) => {
+  const thumb = await screen.findByRole('slider', { name })
+  await waitFor(() => expect(thumb).toHaveAttribute('aria-valuenow', '0'))
+  return thumb
+}
+
+test('arrow keys turn the slider by its step and report a keyboard change', async () => {
   mount(Step)
   const slider = document.querySelector('ark-angle-slider')!
-  const thumb = await screen.findByRole('slider', { name: '15 Step' })
-  await waitFor(() => expect(thumb).toHaveAttribute('aria-valuenow', '0'))
+  const thumb = await findThumb('15 Step')
   const changes: string[] = []
   slider.addEventListener('valuechange', (event) => changes.push(`${event.detail.value}:${event.detail.source}`))
 
   thumb.focus()
   await user.keyboard('{ArrowRight}')
+
   await waitFor(() => expect(thumb).toHaveAttribute('aria-valuenow', '15'))
   expect(changes.at(-1)).toBe('15:keyboard')
 
   await user.keyboard('{ArrowRight}')
+
   await waitFor(() => expect(thumb).toHaveAttribute('aria-valuenow', '30'))
-  expect(document.querySelector('ark-angle-slider-value-text')).toHaveTextContent('30deg')
+  expect(valueText()).toHaveTextContent('30deg')
 
   await user.keyboard('{ArrowLeft}')
+
   await waitFor(() => expect(thumb).toHaveAttribute('aria-valuenow', '15'))
   expect(changes.at(-1)).toBe('15:keyboard')
 })
 
-test('the live value property updates the thumb without an event', async () => {
+test('setting the value property moves the thumb without a change event', async () => {
   mount(Basic)
   const slider = document.querySelector('ark-angle-slider')!
-  const thumb = await screen.findByRole('slider', { name: 'Rotation' })
-  await waitFor(() => expect(thumb).toHaveAttribute('aria-valuenow', '0'))
+  const thumb = await findThumb('Rotation')
   const changed = vi.fn()
   slider.addEventListener('valuechange', changed)
 
   slider.value = 90
-  expect(slider.value).toBe(90)
 
+  expect(slider.value).toBe(90)
   await waitFor(() => expect(thumb).toHaveAttribute('aria-valuenow', '90'))
-  expect(document.querySelector('ark-angle-slider-value-text')).toHaveTextContent('90deg')
+  expect(valueText()).toHaveTextContent('90deg')
   expect(document.querySelector('ark-angle-slider-marker[value="90"]')).toHaveAttribute('data-state', 'at-value')
   expect(changed).not.toHaveBeenCalled()
 })
 
-test('the hidden input carries the value for forms', async () => {
+test('the slider value is submitted with its form', async () => {
   mount(Basic)
   const form = document.createElement('form')
   form.innerHTML = /* html */ `
@@ -56,10 +65,13 @@ test('the hidden input carries the value for forms', async () => {
     <ark-angle-slider-hidden-input></ark-angle-slider-hidden-input>
   </ark-angle-slider>`
   document.body.append(form)
+  const submitted = () => new FormData(form).get('rotation')
 
-  await waitFor(() => expect(new FormData(form).get('rotation')).toBe('30'))
+  await waitFor(() => expect(submitted()).toBe('30'))
 
-  ;(await screen.findByRole('slider', { name: 'Form rotation' })).focus()
+  const thumb = await screen.findByRole('slider', { name: 'Form rotation' })
+  thumb.focus()
   await user.keyboard('{ArrowRight}')
-  await waitFor(() => expect(new FormData(form).get('rotation')).toBe('40'))
+
+  await waitFor(() => expect(submitted()).toBe('40'))
 })

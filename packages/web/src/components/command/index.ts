@@ -1,7 +1,7 @@
 import type { Api, Props } from '@zag-js/combobox'
 
 import type { CollectionItem, ListCollection, PageListCollection } from '../collection/index.js'
-import type { RootElement } from '../../utils/define.js'
+import type { RootElement, StateProperties } from '../../utils/define.js'
 import type { CallbackEvents, FunctionProperties } from '../../utils/events.js'
 import type { CommandFilter } from './shared.js'
 import './root.js'
@@ -35,23 +35,23 @@ export type CommandEventMap<T extends CollectionItem = CollectionItem> = Pick<
   'inputvaluechange' | 'highlightchange' | 'itemselect' | 'pagechange'
 >
 
-export type CommandElement<T extends CollectionItem = CollectionItem> = RootElement<
-  Api<PropTypes, T>,
-  CommandProps<T>
-> &
-  Pick<FunctionProperties<Props<T>>, 'navigate' | 'scrollToIndexFn'> &
-  Pick<Props<T>, 'ids' | 'translations'> &
-  CommandPages<T> & {
-    /**
-     * The items, e.g. from `createListCollection`, or `createPageListCollection` for nested pages,
-     * where an item with a `parent` value is shown on the page of that item
-     */
-    collection?: ListCollection<T> | PageListCollection<T> | undefined
-    /**
-     * Returns the items that match the query. Defaults to a fuzzy search of the item text and its `keywords`.
-     */
-    filter?: CommandFilter<T> | undefined
-  }
+export interface CommandElement<T extends CollectionItem = CollectionItem>
+  extends
+    RootElement<Api<PropTypes, T>, CommandProps<T>>,
+    Pick<FunctionProperties<Props<T>>, 'navigate' | 'scrollToIndexFn'>,
+    Pick<Props<T>, 'ids' | 'translations'>,
+    StateProperties<Props<T>, 'inputValue'>,
+    CommandPages<T> {
+  /**
+   * The items, e.g. from `createListCollection`, or `createPageListCollection` for nested pages,
+   * where an item with a `parent` value is shown on the page of that item
+   */
+  collection?: ListCollection<T> | PageListCollection<T> | undefined
+  /**
+   * Returns the items that match the query. Defaults to a fuzzy search of the item text and its `keywords`.
+   */
+  filter?: CommandFilter<T> | undefined
+}
 
 export interface CommandPages<T extends CollectionItem = CollectionItem> {
   /**

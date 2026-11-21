@@ -68,12 +68,18 @@ class Target {
 
 export interface StateProperty<Api> {
   get: (api: Api) => unknown
-  set: (api: Api, value: any) => void
+  set: (api: Api, value: any, el: RootElement<Api>) => void
 }
 
 export type StateProperties<Props, Keys extends keyof Props> = {
   -readonly [Key in Keys]-?: Exclude<Props[Key], undefined>
 }
+
+export type ActionMethods<Api, Names extends keyof Api> = {
+  [Name in Names]: Api[Name] extends (...args: infer Args) => any ? (...args: Args) => void : never
+}
+
+type Action<Api> = (api: Api, ...args: any[]) => void
 
 const isBareValue = (value: unknown) => ['boolean', 'number', 'string'].includes(typeof value)
 
@@ -115,6 +121,7 @@ export interface RootConfig<Api> {
   ownProperties?: readonly string[]
   propertyChanged?: (el: RootElement<Api>, name: string) => void
   state?: Record<string, StateProperty<Api>>
+  actions?: Record<string, Action<Api>>
   props: (el: RootElement<Api>) => Dict
   events?: Record<string, string>
   rootProps?: (api: Api) => Dict
@@ -124,16 +131,28 @@ export interface RootConfig<Api> {
   render?: (api: Api, el: RootElement<Api>) => void
 }
 
+function deferred() {
+  let resolve!: VoidFunction
+  const promise = new Promise<void>((done) => {
+    resolve = done
+  })
+
+  return { promise, resolve }
+}
+
 export interface ElementMeta {
   kind: 'root' | 'part'
   root?: string
   attributes?: readonly string[]
   events?: readonly string[]
   properties?: readonly string[]
+  methods?: readonly string[]
 }
 
 export interface RootElement<Api = Dict, Props extends object = {}> extends EventElement<CallbackEvents<Props>> {
   readonly api: Api | undefined
+  /** Resolves once the element's machine has started, so `api`, state and parts are in place. */
+  readonly ready: Promise<void>
   readonly machineId: string
   readonly service: VanillaMachine<any>['service'] | undefined
   refresh(): void
@@ -160,6 +179,7 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
       attributes: config.attributes ?? [],
       events: Object.values(config.events ?? {}),
       properties: [...propertyNames, ...Object.keys(config.state ?? {})],
+      methods: Object.keys(config.actions ?? {}),
     }
 
     api: Api | undefined
@@ -171,6 +191,8 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
     private rootTarget = new Target()
     private started = false
     private assigned = new Map<string, unknown>()
+    private pending: Array<(api: Api) => void> = []
+    private readiness = deferred()
 
     constructor() {
       super()
@@ -231,6 +253,8 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
         machine.start()
         this.started = true
         for (const [name, value] of this.assigned) this.writeState(name, value)
+        for (const run of this.pending.splice(0)) run(this.api!)
+        this.readiness.resolve()
         const cleanup = config.started?.(this)
         if (cleanup) this.cleanups.push(cleanup)
         this.render()
@@ -240,6 +264,10 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
         doc.addEventListener('DOMContentLoaded', start, { once: true })
         this.cleanups.push(() => doc.removeEventListener('DOMContentLoaded', start))
       } else queueMicrotask(start)
+    }
+
+    get ready() {
+      return this.readiness.promise
     }
 
     get service() {
@@ -254,6 +282,8 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
       this.started = false
       this.snapshot = undefined
       this.api = undefined
+      this.pending = []
+      this.readiness = deferred()
     }
 
     attributeChangedCallback() {
@@ -276,11 +306,16 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
       const api = this.api
       if (!this.started || !api) return
 
-      silently(this, () => config.state![name].set(api, value))
+      silently(this, () => config.state![name].set(api, value, this))
 
       queueMicrotask(() => {
         if (Object.is(this.assigned.get(name), value)) this.assigned.delete(name)
       })
+    }
+
+    whenStarted(run: (api: Api) => void) {
+      if (this.started && this.api) run(this.api)
+      else this.pending.push(run)
     }
 
     register(part: PartElement<Api>) {
@@ -333,6 +368,15 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
       },
       set(this: Root, value: unknown) {
         this.writeState(name, value)
+      },
+    })
+  }
+
+  for (const [name, action] of Object.entries(config.actions ?? {})) {
+    Object.defineProperty(Root.prototype, name, {
+      configurable: true,
+      value(this: Root, ...args: unknown[]) {
+        this.whenStarted((api) => action(api, ...args))
       },
     })
   }

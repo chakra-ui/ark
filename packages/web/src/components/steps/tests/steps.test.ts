@@ -8,43 +8,43 @@ import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()
 
-test('steps next and back move the step and emit valuechange', async () => {
+const firstStep = () => screen.getByText('First - Contact Info')
+
+test('next and back move between steps and report the current step', async () => {
   mount(Controlled)
   const steps = document.querySelector('ark-steps')!
   const output = document.querySelector('output')!
-
-  await waitFor(() => expect(screen.getByText('First - Contact Info')).toBeVisible())
+  await waitFor(() => expect(firstStep()).toBeVisible())
 
   await user.click(screen.getByRole('button', { name: 'Next' }))
+
   await waitFor(() => expect(output).toHaveTextContent('current step: second'))
   expect(steps).toHaveAttribute('value', 'second')
   await waitFor(() => expect(screen.getByText('Second - Date & Time')).toBeVisible())
-  expect(screen.getByText('First - Contact Info')).not.toBeVisible()
+  expect(firstStep()).not.toBeVisible()
 
   await user.click(screen.getByRole('button', { name: 'Back' }))
+
   await waitFor(() => expect(output).toHaveTextContent('current step: first'))
-  await waitFor(() => expect(screen.getByText('First - Contact Info')).toBeVisible())
+  await waitFor(() => expect(firstStep()).toBeVisible())
 })
 
-test('steps trigger jumps to its step', async () => {
+test('clicking a step trigger jumps to that step', async () => {
   mount(Basic)
-  const third = await waitFor(() => {
-    const tab = screen.getByRole('tab', { name: 'Third' })
-    expect(tab).toBeInstanceOf(HTMLButtonElement)
-    return tab
-  })
+  await waitFor(() => expect(screen.getByRole('tab', { name: 'Third' })).toBeInstanceOf(HTMLButtonElement))
+  const third = screen.getByRole('tab', { name: 'Third' })
 
   await user.click(third)
+
   await waitFor(() => expect(third).toHaveAttribute('aria-selected', 'true'))
   expect(document.querySelector('ark-steps-item[value=third]')).toHaveAttribute('data-current', '')
   await waitFor(() => expect(screen.getByText('Third - Select Rooms')).toBeVisible())
 })
 
-test('steps shows completed content after the last step', async () => {
+test('the completed content shows after the last step', async () => {
   mount(Basic)
   const next = await screen.findByRole('button', { name: 'Next' })
   const completed = screen.getByText('Steps Complete - Thank you for filling out the form!')
-
   await waitFor(() => expect(completed).not.toBeVisible())
 
   for (let i = 0; i < 3; i++) await user.click(next)
@@ -55,7 +55,7 @@ test('steps shows completed content after the last step', async () => {
   expect(document.querySelectorAll('ark-steps-indicator[data-complete]')).toHaveLength(3)
 })
 
-test('steps vertical orientation sets data-orientation', async () => {
+test('vertical steps mark their parts with the vertical orientation', async () => {
   mount(Vertical)
 
   await waitFor(() => expect(document.querySelector('ark-steps')).toHaveAttribute('data-orientation', 'vertical'))

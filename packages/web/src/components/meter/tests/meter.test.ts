@@ -4,8 +4,9 @@ import { mount as Basic } from '../../../../examples/meter/basic.js'
 import { mount as ValueState } from '../../../../examples/meter/value-state.js'
 import { mount } from '../../../test-utils.js'
 
-test('meter exposes role and aria values', async () => {
+test('the meter exposes its value, range and value text to assistive tech', async () => {
   mount(Basic)
+
   const meter = await screen.findByRole('meter', { name: 'Storage used' })
 
   await waitFor(() => expect(meter).toHaveAttribute('aria-valuenow', '24'))
@@ -14,32 +15,31 @@ test('meter exposes role and aria values', async () => {
   expect(meter).toHaveAttribute('aria-valuetext', '24%')
 })
 
-test('changing the value attribute updates the range and value text', async () => {
+test('changing the value attribute updates the fill and the value text', async () => {
   mount(Basic)
   const meter = document.querySelector('ark-meter')!
   const range = document.querySelector('ark-meter-range')!
   const valueText = document.querySelector('ark-meter-value-text')!
-
   await waitFor(() => expect(valueText).toHaveTextContent('24%'))
 
   meter.setAttribute('value', '60')
 
   await waitFor(() => expect(meter).toHaveAttribute('aria-valuenow', '60'))
   await waitFor(() => expect(meter.style.getPropertyValue('--percent')).toBe('60'))
-  expect(range.getAttribute('style')).toMatch(/width: 60%/)
+  expect(range).toHaveStyle({ width: '60%' })
   await waitFor(() => expect(valueText).toHaveTextContent('60%'))
 })
 
-test('low, high and optimum set the value state', async () => {
+test('low, high and optimum decide whether the value is optimal', async () => {
   mount(ValueState)
-  const meters = document.querySelectorAll('ark-meter')
+  const [optimal, suboptimal, leastOptimal] = document.querySelectorAll('ark-meter')
 
-  await waitFor(() => expect(meters[0]).toHaveAttribute('data-state', 'optimal'))
-  expect(meters[1]).toHaveAttribute('data-state', 'suboptimal')
-  expect(meters[2]).toHaveAttribute('data-state', 'least-optimal')
-  expect(meters[2].querySelector('ark-meter-range')).toHaveAttribute('data-state', 'least-optimal')
+  await waitFor(() => expect(optimal).toHaveAttribute('data-state', 'optimal'))
+  expect(suboptimal).toHaveAttribute('data-state', 'suboptimal')
+  expect(leastOptimal).toHaveAttribute('data-state', 'least-optimal')
+  expect(leastOptimal.querySelector('ark-meter-range')).toHaveAttribute('data-state', 'least-optimal')
 
-  meters[0].setAttribute('value', '95')
+  optimal.setAttribute('value', '95')
 
-  await waitFor(() => expect(meters[0]).toHaveAttribute('data-state', 'least-optimal'))
+  await waitFor(() => expect(optimal).toHaveAttribute('data-state', 'least-optimal'))
 })

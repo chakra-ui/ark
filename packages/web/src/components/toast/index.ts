@@ -6,7 +6,7 @@ import './root.js'
 
 export type { Api as ToastApi, GroupApi as ToasterApi, Options as ToastOptions } from '@zag-js/toast'
 export { createToaster, type CreateToasterProps } from './shared.js'
-export type ToastElement = RootElement<toast.Api, toast.Props>
+export interface ToastElement extends RootElement<toast.Api, toast.Props> {}
 export interface ToasterElement extends RootElement<toast.GroupApi> {
   toaster: toast.Store<string>
 }

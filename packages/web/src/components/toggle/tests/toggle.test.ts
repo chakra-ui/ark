@@ -9,61 +9,72 @@ import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()
 
-test('toggle flips aria-pressed and emits pressedchange on click', async () => {
+const toggle = () => document.querySelector('ark-toggle')!
+
+test('clicking the toggle presses and releases it and reports each change', async () => {
   mount(Basic)
   const button = await screen.findByRole('button', { name: 'Bold' })
-  const toggle = document.querySelector('ark-toggle')!
   const pressed: boolean[] = []
-  toggle.addEventListener('pressedchange', (event) => pressed.push(event.detail.pressed))
-
+  toggle().addEventListener('pressedchange', (event) => pressed.push(event.detail.pressed))
   await waitFor(() => expect(button).toHaveAttribute('aria-pressed', 'false'))
 
   await user.click(button)
+
   await waitFor(() => expect(button).toHaveAttribute('aria-pressed', 'true'))
   expect(button).toHaveAttribute('data-pressed', '')
 
   await user.click(button)
+
   await waitFor(() => expect(button).toHaveAttribute('aria-pressed', 'false'))
   expect(pressed).toEqual([true, false])
 })
 
-test('controlled toggle waits for the pressed attribute', async () => {
+test('a controlled toggle only changes through its pressed attribute', async () => {
   mount(Controlled)
-  const toggle = document.querySelector('ark-toggle')!
   const button = await screen.findByRole('button', { name: 'Favorite' })
-  toggle.addEventListener('pressedchange', (event) => event.stopImmediatePropagation(), { capture: true })
+  const requested: boolean[] = []
+  toggle().addEventListener(
+    'pressedchange',
+    (event) => {
+      requested.push(event.detail.pressed)
+      event.stopImmediatePropagation()
+    },
+    { capture: true },
+  )
 
   await user.click(button)
-  await waitFor(() => expect(button).toHaveAttribute('aria-pressed', 'false'))
 
-  toggle.setAttribute('pressed', 'true')
+  await waitFor(() => expect(requested).toEqual([true]))
+  expect(button).toHaveAttribute('aria-pressed', 'false')
+
+  toggle().setAttribute('pressed', 'true')
+
   await waitFor(() => expect(button).toHaveAttribute('aria-pressed', 'true'))
 
-  toggle.setAttribute('pressed', 'false')
+  toggle().setAttribute('pressed', 'false')
+
   await waitFor(() => expect(button).toHaveAttribute('aria-pressed', 'false'))
 })
 
-test('disabled toggle does not change', async () => {
+test('a disabled toggle disables its button', async () => {
   mount(Disabled)
   const button = await screen.findByRole('button', { name: 'Bold' })
 
   await waitFor(() => expect(button).toBeDisabled())
   expect(button).toHaveAttribute('data-disabled', '')
-
-  await user.click(button)
   expect(button).toHaveAttribute('aria-pressed', 'false')
 })
 
-test('indicator switches between pressed content and fallback', async () => {
+test('the indicator swaps its fallback for the pressed content', async () => {
   mount(Indicator)
   const button = await screen.findByRole('button', { name: 'Favorite' })
   const pressed = document.querySelector('ark-toggle-indicator:not([fallback])')!
   const fallback = document.querySelector('ark-toggle-indicator[fallback]')!
-
   await waitFor(() => expect(pressed).not.toBeVisible())
   expect(fallback).toBeVisible()
 
   await user.click(button)
+
   await waitFor(() => expect(pressed).toBeVisible())
   expect(pressed).toHaveAttribute('data-pressed', '')
   expect(fallback).not.toBeVisible()

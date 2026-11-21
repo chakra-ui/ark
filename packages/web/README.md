@@ -147,15 +147,43 @@ ignored. Values written before the element connects apply once it starts.
 const dialog = document.querySelector('ark-dialog')!
 dialog.open = true
 select.value = ['react']
+combobox.inputValue = 'app' // filters the items, like typing
+```
+
+Actions that aren't state are element methods. Like properties, they can be called before the element connects and run
+once it starts; removing the element cancels calls that haven't run yet. Unlike property writes, they dispatch the same
+events as the matching user interaction.
+
+| Element                                     | Methods                                                  |
+| ------------------------------------------- | -------------------------------------------------------- |
+| `ark-timer`                                 | `start()`, `pause()`, `resume()`, `reset()`, `restart()` |
+| `ark-clipboard`                             | `copy()`                                                 |
+| `ark-signature-pad`                         | `clear()`                                                |
+| `ark-file-upload`                           | `clearFiles()`, `openFilePicker()`                       |
+| `ark-number-input`                          | `increment()`, `decrement()`                             |
+| `ark-tree-view`                             | `expand(values?)`, `collapse(values?)`                   |
+| `ark-combobox`, `ark-select`, `ark-listbox` | `clearValue(value?)`                                     |
+| `ark-carousel`                              | `scrollNext(instant?)`, `scrollPrevious(instant?)`       |
+
+```ts
+const timer = document.createElement('ark-timer')
+timer.start() // runs when the timer connects
+document.body.append(timer)
 ```
 
 Change event details also carry `source`: `'keyboard'`, `'mouse'`, `'touch'`, or `'pen'` when the change comes from user
 input being handled, and `'programmatic'` otherwise, e.g. for `api` calls. Zag's `reason`, where it provides one, is
 kept. A callback with a bare value gets an object detail, so `pressedchange` is `{ pressed, source }`.
 
-Root element types, such as `CheckboxElement` and `SelectElement`, expose a typed `api` after connection. Check `api`
-before using it. TypeScript's `HTMLElementTagNameMap` includes the root tags, so `document.querySelector('ark-select')`
-is typed.
+Root element types, such as `CheckboxElement` and `SelectElement`, are interfaces with the typed properties and methods
+above. They also expose the full Zag `api` once started. Await `ready` to know when that is; it resolves when the
+machine starts and is renewed each time the element reconnects:
+
+````ts
+await select.ready
+select.api!.getItemState({ item })
+``` TypeScript's
+`HTMLElementTagNameMap` includes the root tags, so `document.querySelector('ark-select')` is typed.
 
 ## Collections and forms
 
@@ -182,7 +210,7 @@ select.collection = createListCollection({
 select.addEventListener('valuechange', (event) => {
   const [member] = event.detail.items
 })
-```
+````
 
 Values stay string keys: the `value` attribute and form submissions use `itemToValue`. Assign a new collection when the
 data changes; changes inside an existing collection aren't observed. Markup and JSON changes are observed automatically.

@@ -6,10 +6,12 @@ import type { RootElement, StateProperties } from '../../utils/define.js'
 import type { FunctionProperties } from '../../utils/events.js'
 
 export type { Api as PaginationApi } from '@zag-js/pagination'
-export type PaginationElement = RootElement<Api, Props> &
-  FunctionProperties<Props> &
-  Pick<Props, 'ids' | 'translations'> &
-  StateProperties<Props, 'page' | 'pageSize'>
+export interface PaginationElement
+  extends
+    RootElement<Api, Props>,
+    FunctionProperties<Props>,
+    Pick<Props, 'ids' | 'translations'>,
+    StateProperties<Props, 'page' | 'pageSize'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

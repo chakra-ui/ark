@@ -5,7 +5,8 @@ import type { Api, Props } from '@zag-js/angle-slider'
 import type { RootElement, StateProperties } from '../../utils/define.js'
 
 export type { Api as AngleSliderApi } from '@zag-js/angle-slider'
-export type AngleSliderElement = RootElement<Api, Props> & Pick<Props, 'ids'> & StateProperties<Props, 'value'>
+export interface AngleSliderElement
+  extends RootElement<Api, Props>, Pick<Props, 'ids'>, StateProperties<Props, 'value'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

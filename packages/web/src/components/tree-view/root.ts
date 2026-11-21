@@ -41,6 +41,12 @@ defineRoot<tree.Api>({
       set: (api, value) => api.setChecked(value),
     },
   },
+
+  actions: {
+    expand: (api, value?: string[]) => api.expand(value),
+    collapse: (api, value?: string[]) => api.collapse(value),
+  },
+
   props: (el) => ({
     collection: collection.get(el),
     selectionMode: str<SelectionMode>(el, 'selection-mode') ?? 'single',

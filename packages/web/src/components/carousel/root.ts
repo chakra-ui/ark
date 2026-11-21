@@ -44,6 +44,12 @@ defineRoot<carousel.Api>({
       set: (api, value) => api.scrollTo(Number(value)),
     },
   },
+
+  actions: {
+    scrollNext: (api, instant?: boolean) => api.scrollNext(instant),
+    scrollPrevious: (api, instant?: boolean) => api.scrollPrevious(instant),
+  },
+
   props: (el) => {
     const threshold = numbers(el, 'in-view-threshold')
     return {

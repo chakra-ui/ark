@@ -15,7 +15,7 @@ interface File {
   files?: File[]
 }
 
-test('tree view renders bare nodes from a collection and updates when it is replaced', async () => {
+test('nodes render from the collection property and update when it is replaced', async () => {
   mount((root) => {
     root.innerHTML = /* html */ `
       <ark-tree-view default-expanded-value="docs">
@@ -23,7 +23,7 @@ test('tree view renders bare nodes from a collection and updates when it is repl
       </ark-tree-view>`
   })
   const treeView = document.querySelector('ark-tree-view')!
-  const items = () => document.querySelectorAll('ark-tree-view-node-text')
+  const nodeTexts = () => texts(document.querySelectorAll('ark-tree-view-node-text'))
 
   treeView.collection = createTreeCollection<File>({
     rootNode: {
@@ -39,17 +39,18 @@ test('tree view renders bare nodes from a collection and updates when it is repl
     nodeToChildren: (node) => node.files ?? [],
   })
 
-  await waitFor(() => expect(texts(items())).toEqual(['Docs', 'Intro', 'README']))
+  await waitFor(() => expect(nodeTexts()).toEqual(['Docs', 'Intro', 'README']))
   await waitFor(() => expect(screen.getByText('Intro', { exact: true })).toBeVisible())
   expect(document.querySelectorAll('ark-tree-view-node-group[value="docs"]')).toHaveLength(1)
 
   treeView.collection = createTreeCollection({
     rootNode: { value: 'root', label: '', children: [{ value: 'changelog', label: 'CHANGELOG' }] },
   })
-  await waitFor(() => expect(texts(items())).toEqual(['CHANGELOG']))
+
+  await waitFor(() => expect(nodeTexts()).toEqual(['CHANGELOG']))
 })
 
-test('tree view loads children into a new collection', async () => {
+test('expanding a branch loads its children', async () => {
   mount(AsyncLoading)
 
   await user.click(await screen.findByText('src', { exact: true }))

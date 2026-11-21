@@ -6,10 +6,12 @@ import type { RootElement, StateProperties } from '../../utils/define.js'
 import type { FunctionProperties } from '../../utils/events.js'
 
 export type { Api as EditableApi } from '@zag-js/editable'
-export type EditableElement = RootElement<Api, Props> &
-  FunctionProperties<Props> &
-  Pick<Props, 'ids' | 'translations'> &
-  StateProperties<Props, 'value'>
+export interface EditableElement
+  extends
+    RootElement<Api, Props>,
+    FunctionProperties<Props>,
+    Pick<Props, 'ids' | 'translations'>,
+    StateProperties<Props, 'value'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

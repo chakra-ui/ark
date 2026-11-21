@@ -1,9 +1,26 @@
 import * as combobox from '@zag-js/combobox'
 
 import { positioning, positioningAttributes, str } from '../../utils/attrs.js'
+import type { RootElement } from '../../utils/define.js'
 import { definePresenceRoot } from '../../utils/presence.js'
 import { collection, filteredOf, listOf, queries, root } from './shared.js'
 import { withField } from '../../utils/field.js'
+
+function setQuery(el: RootElement<combobox.Api>, query: string) {
+  if (query === (queries.get(el) ?? '')) return
+
+  queries.set(el, query)
+  el.refresh()
+}
+
+const assignedQueries = new WeakMap<HTMLElement, string>()
+
+function queryOf(el: HTMLElement, { inputValue, reason }: combobox.InputValueChangeDetails) {
+  const assigned = assignedQueries.get(el) === inputValue
+  assignedQueries.delete(el)
+
+  return reason === 'input-change' || assigned ? inputValue : ''
+}
 
 type InputBehavior = NonNullable<combobox.Props['inputBehavior']>
 type SelectionBehavior = NonNullable<combobox.Props['selectionBehavior']>
@@ -47,7 +64,19 @@ definePresenceRoot<combobox.Api>({
       get: (api) => api.value,
       set: (api, value) => api.setValue(value),
     },
+    inputValue: {
+      get: (api) => api.inputValue,
+      set: (api, value, el) => {
+        assignedQueries.set(el, value)
+        api.setInputValue(value)
+      },
+    },
   },
+
+  actions: {
+    clearValue: (api, value?: string) => api.clearValue(value),
+  },
+
   props: (el) =>
     withField(el, 'input', {
       collection: filteredOf(el),
@@ -65,6 +94,7 @@ definePresenceRoot<combobox.Api>({
       inputBehavior: str<InputBehavior>(el, 'input-behavior') ?? 'none',
       selectionBehavior: str<SelectionBehavior>(el, 'selection-behavior') ?? 'replace',
       positioning: positioning(el),
+      onInputValueChange: (details: combobox.InputValueChangeDetails) => setQuery(el, queryOf(el, details)),
     }),
 
   events: {
@@ -79,19 +109,5 @@ definePresenceRoot<combobox.Api>({
   },
 
   rootProps: (api) => api.getRootProps(),
-  setup: (el) => {
-    const cleanup = collection.setup(el)
-    const onInput = (event: Event) => {
-      const { inputValue, reason } = (event as CustomEvent<combobox.InputValueChangeDetails>).detail
-      const query = reason === 'input-change' ? inputValue : ''
-      if (query === (queries.get(el) ?? '')) return
-      queries.set(el, query)
-      el.refresh()
-    }
-    el.addEventListener('inputvaluechange', onInput)
-    return () => {
-      cleanup()
-      el.removeEventListener('inputvaluechange', onInput)
-    }
-  },
+  setup: (el) => collection.setup(el),
 })

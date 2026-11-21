@@ -10,7 +10,7 @@ export type {
   QrCodeGenerateOptions,
   ValueChangeDetails as QrCodeValueChangeDetails,
 } from '@zag-js/qr-code'
-export type QrCodeElement = RootElement<Api, Props> & Pick<Props, 'ids'> & StateProperties<Props, 'value'>
+export interface QrCodeElement extends RootElement<Api, Props>, Pick<Props, 'ids'>, StateProperties<Props, 'value'> {}
 
 declare global {
   interface HTMLElementTagNameMap {

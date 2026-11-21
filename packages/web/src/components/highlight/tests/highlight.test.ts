@@ -11,7 +11,7 @@ const user = userEvent.setup()
 
 const markTexts = () => Array.from(document.querySelectorAll('ark-highlight mark')).map((mark) => mark.textContent)
 
-test('wraps the first match in a mark', async () => {
+test('the first match of the query is wrapped in a mark', async () => {
   mount(Basic)
 
   await waitFor(() => expect(markTexts()).toEqual(['component']))
@@ -20,7 +20,7 @@ test('wraps the first match in a mark', async () => {
   )
 })
 
-test('match-all and exact-match change which words are marked', async () => {
+test('match-all marks every partial match while exact-match marks only whole words', async () => {
   mount(ExactMatch)
   const [partial, exact] = document.querySelectorAll('ark-highlight')
 
@@ -28,7 +28,7 @@ test('match-all and exact-match change which words are marked', async () => {
   expect(exact.querySelectorAll('mark')).toHaveLength(1)
 })
 
-test('the query property accepts an array and re-renders', async () => {
+test('an array query marks every term and setting a new query re-marks the text', async () => {
   mount(Multiple)
   const highlight = document.querySelector('ark-highlight')!
 
@@ -39,7 +39,7 @@ test('the query property accepts an array and re-renders', async () => {
   await waitFor(() => expect(markTexts()).toEqual(['Svelte']))
 })
 
-test('typing updates the query', async () => {
+test('typing in the search box changes what is marked', async () => {
   mount(DynamicQuery)
   const input = await screen.findByPlaceholderText('Search text...')
 
