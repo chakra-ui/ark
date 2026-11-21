@@ -38,6 +38,36 @@ export function syncHiddenSelect(el: RootElement<select.Api>, hidden: HTMLSelect
   for (const option of hidden.options) option.selected = value.has(option.value)
 }
 
+function hiddenValues(api: select.Api) {
+  if (api.value.length > 0) return api.value
+  return api.multiple ? [] : ['']
+}
+
+export function syncHiddenInputs(el: HTMLElement, api: select.Api) {
+  const { name, form, disabled } = api.getHiddenSelectProps() as { name?: string; form?: string; disabled?: boolean }
+  const values = hiddenValues(api)
+
+  const inputs = Array.from(el.querySelectorAll<HTMLInputElement>(':scope > input[type=hidden]'))
+  for (const input of inputs.slice(values.length)) input.remove()
+
+  values.forEach((value, index) => {
+    const input = inputs[index] ?? el.appendChild(el.ownerDocument.createElement('input'))
+    input.type = 'hidden'
+    input.value = value
+    input.disabled = !!disabled
+
+    toggleAttribute(input, 'name', name)
+    toggleAttribute(input, 'form', form)
+  })
+}
+
+const toggleAttribute = (el: Element, name: string, value: string | undefined) => {
+  if (value) el.setAttribute(name, value)
+  else el.removeAttribute(name)
+}
+
+export const usesHiddenInput = (el: HTMLElement) => el.querySelector('ark-select-hidden-input') != null
+
 export const listOf = (el: Element, name: string) => {
   const attr = el.getAttribute(name)
   if (attr == null) return undefined

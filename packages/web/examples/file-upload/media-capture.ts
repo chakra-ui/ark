@@ -2,7 +2,7 @@ import { createElement, X, Camera, File } from 'lucide'
 
 import styles from 'styles/file-upload.module.css'
 
-import '../../src/components/file-upload/index.js'
+import '@ark-ui/web/file-upload'
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `

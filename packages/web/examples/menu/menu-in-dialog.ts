@@ -1,8 +1,8 @@
 import { createElement, X, ChevronDown } from 'lucide'
 
-import '../../src/components/dialog/index.js'
+import '@ark-ui/web/dialog'
 
-import '../../src/components/menu/index.js'
+import '@ark-ui/web/menu'
 
 import button from 'styles/button.module.css'
 

@@ -1,4 +1,4 @@
-import '../../src/components/tooltip/index.js'
+import '@ark-ui/web/tooltip'
 
 import styles from 'styles/tooltip.module.css'
 

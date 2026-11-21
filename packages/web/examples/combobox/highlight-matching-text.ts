@@ -1,7 +1,7 @@
 import { createElement, X, ChevronsUpDown } from 'lucide'
 
-import '../../src/components/combobox/index.js'
-import '../../src/components/highlight/index.js'
+import '@ark-ui/web/combobox'
+import '@ark-ui/web/highlight'
 
 import styles from 'styles/combobox.module.css'
 

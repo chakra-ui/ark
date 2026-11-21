@@ -1,4 +1,4 @@
-import '../../src/components/radio-group/index.js'
+import '@ark-ui/web/radio-group'
 
 import styles from 'styles/radio-group.module.css'
 

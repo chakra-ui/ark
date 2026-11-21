@@ -1,39 +1,50 @@
-import { expect, test } from '@playwright/test'
-import type {} from '../index.js'
+import { screen, waitFor } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
-const story = (name: string) => `/iframe.html?id=components-highlight--${name}&viewMode=story`
+import { mount as Basic } from '../../../../examples/highlight/basic.js'
+import { mount as DynamicQuery } from '../../../../examples/highlight/dynamic-query.js'
+import { mount as ExactMatch } from '../../../../examples/highlight/exact-match.js'
+import { mount as Multiple } from '../../../../examples/highlight/multiple.js'
+import { mount } from '../../../test-utils.js'
 
-test('wraps the first match in a mark', async ({ page }) => {
-  await page.goto(story('basic'))
+const user = userEvent.setup()
 
-  const marks = page.locator('ark-highlight mark')
-  await expect(marks).toHaveText(['component'])
-  await expect(page.locator('ark-highlight')).toHaveText(
+const markTexts = () => Array.from(document.querySelectorAll('ark-highlight mark')).map((mark) => mark.textContent)
+
+test('wraps the first match in a mark', async () => {
+  mount(Basic)
+
+  await waitFor(() => expect(markTexts()).toEqual(['component']))
+  expect(document.querySelector('ark-highlight')).toHaveTextContent(
     'Ark UI is a headless component library for building accessible web applications.',
   )
 })
 
-test('match-all and exact-match change which words are marked', async ({ page }) => {
-  await page.goto(story('exact-match'))
+test('match-all and exact-match change which words are marked', async () => {
+  mount(ExactMatch)
+  const [partial, exact] = document.querySelectorAll('ark-highlight')
 
-  const [partial, exact] = await page.locator('ark-highlight').all()
-  await expect(partial.locator('mark')).toHaveCount(3)
-  await expect(exact.locator('mark')).toHaveCount(1)
+  await waitFor(() => expect(partial.querySelectorAll('mark')).toHaveLength(3))
+  expect(exact.querySelectorAll('mark')).toHaveLength(1)
 })
 
-test('the query property accepts an array and re-renders', async ({ page }) => {
-  await page.goto(story('multiple'))
+test('the query property accepts an array and re-renders', async () => {
+  mount(Multiple)
+  const highlight = document.querySelector('ark-highlight')!
 
-  const highlight = page.locator('ark-highlight')
-  await expect(highlight.locator('mark')).toHaveText(['React', 'Vue'])
+  await waitFor(() => expect(markTexts()).toEqual(['React', 'Vue']))
 
-  await highlight.evaluate((el: HTMLElementTagNameMap['ark-highlight']) => (el.query = 'Svelte'))
-  await expect(highlight.locator('mark')).toHaveText(['Svelte'])
+  highlight.query = 'Svelte'
+
+  await waitFor(() => expect(markTexts()).toEqual(['Svelte']))
 })
 
-test('typing updates the query', async ({ page }) => {
-  await page.goto(story('dynamic-query'))
+test('typing updates the query', async () => {
+  mount(DynamicQuery)
+  const input = await screen.findByPlaceholderText('Search text...')
 
-  await page.getByPlaceholder('Search text...').fill('accessible')
-  await expect(page.locator('ark-highlight mark')).toHaveText(['accessible'])
+  await user.clear(input)
+  await user.type(input, 'accessible')
+
+  await waitFor(() => expect(markTexts()).toEqual(['accessible']))
 })

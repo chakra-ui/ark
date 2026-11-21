@@ -1,71 +1,77 @@
-import { expect, test } from '@playwright/test'
-import type {} from '../index.js'
+import { screen, waitFor } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
-const story = (name: string) => `/iframe.html?id=components-password-input--${name}&viewMode=story`
+import { mount as Basic } from '../../../../examples/password-input/basic.js'
+import { mount as ControlledVisibility } from '../../../../examples/password-input/controlled-visibility.js'
+import { mount } from '../../../test-utils.js'
 
-test('password input trigger toggles the input type and emits visibilitychange', async ({ page }) => {
-  await page.goto(story('basic'))
-  const root = page.locator('ark-password-input')
-  const input = page.locator('ark-password-input-input input')
-  await expect(input).toHaveAttribute('type', 'password')
-  await root.evaluate((el) => {
-    el.addEventListener('visibilitychange', (event) => {
-      el.setAttribute('data-last', String((event as CustomEvent<{ visible: boolean }>).detail.visible))
-    })
+const user = userEvent.setup()
+
+const getInput = () => document.querySelector<HTMLInputElement>('ark-password-input-input input')!
+
+test('password input trigger toggles the input type and emits visibilitychange', async () => {
+  mount(Basic)
+  const root = document.querySelector('ark-password-input')!
+  await waitFor(() => expect(getInput()).toHaveAttribute('type', 'password'))
+  const input = getInput()
+  const changes: boolean[] = []
+  root.addEventListener('visibilitychange', (event) => {
+    changes.push((event as CustomEvent<{ visible: boolean }>).detail.visible)
   })
 
-  await page.getByRole('button', { name: 'Show password' }).click()
-  await expect(input).toHaveAttribute('type', 'text')
-  await expect(input).toBeFocused()
-  await expect(root).toHaveAttribute('data-last', 'true')
+  await user.click(screen.getByRole('button', { name: 'Show password' }))
+  await waitFor(() => expect(input).toHaveAttribute('type', 'text'))
+  await waitFor(() => expect(input).toHaveFocus())
+  expect(changes.at(-1)).toBe(true)
 
-  await page.getByRole('button', { name: 'Hide password' }).click()
-  await expect(input).toHaveAttribute('type', 'password')
-  await expect(root).toHaveAttribute('data-last', 'false')
+  await user.click(screen.getByRole('button', { name: 'Hide password' }))
+  await waitFor(() => expect(input).toHaveAttribute('type', 'password'))
+  expect(changes.at(-1)).toBe(false)
 })
 
-test('controlled password input waits for the visible attribute', async ({ page }) => {
-  await page.goto(story('controlled-visibility'))
-  const root = page.locator('ark-password-input')
-  const input = page.locator('ark-password-input-input input')
-  await root.evaluate((el) => {
-    el.addEventListener('visibilitychange', (event) => event.stopImmediatePropagation(), { capture: true })
-  })
+test('controlled password input waits for the visible attribute', async () => {
+  mount(ControlledVisibility)
+  const root = document.querySelector('ark-password-input')!
+  await waitFor(() => expect(getInput()).toHaveAttribute('type', 'password'))
+  const input = getInput()
+  root.addEventListener('visibilitychange', (event) => event.stopImmediatePropagation(), { capture: true })
 
-  await page.getByRole('button', { name: 'Show password' }).click()
-  await expect(input).toHaveAttribute('type', 'password')
-  await root.evaluate((el) => el.setAttribute('visible', 'true'))
-  await expect(input).toHaveAttribute('type', 'text')
-  await root.evaluate((el) => el.setAttribute('visible', 'false'))
-  await expect(input).toHaveAttribute('type', 'password')
+  await user.click(screen.getByRole('button', { name: 'Show password' }))
+  await new Promise((resolve) => setTimeout(resolve, 50))
+  expect(input).toHaveAttribute('type', 'password')
+
+  root.setAttribute('visible', 'true')
+  await waitFor(() => expect(input).toHaveAttribute('type', 'text'))
+
+  root.setAttribute('visible', 'false')
+  await waitFor(() => expect(input).toHaveAttribute('type', 'password'))
 })
 
-test('password input indicator switches with the visible state', async ({ page }) => {
-  await page.goto(story('basic'))
-  const shown = page.locator('ark-password-input-indicator:not([fallback])')
-  const fallback = page.locator('ark-password-input-indicator[fallback]')
-  await expect(shown).toBeHidden()
-  await expect(fallback).toBeVisible()
-  await expect(fallback).toHaveAttribute('data-state', 'hidden')
+test('password input indicator switches with the visible state', async () => {
+  mount(Basic)
+  const shown = document.querySelector('ark-password-input-indicator:not([fallback])')!
+  const fallback = document.querySelector('ark-password-input-indicator[fallback]')!
 
-  await page.getByRole('button', { name: 'Show password' }).click()
-  await expect(shown).toBeVisible()
-  await expect(shown).toHaveAttribute('data-state', 'visible')
-  await expect(fallback).toBeHidden()
+  await waitFor(() => expect(shown).not.toBeVisible())
+  expect(fallback).toBeVisible()
+  expect(fallback).toHaveAttribute('data-state', 'hidden')
+
+  await user.click(screen.getByRole('button', { name: 'Show password' }))
+  await waitFor(() => expect(shown).toBeVisible())
+  expect(shown).toHaveAttribute('data-state', 'visible')
+  expect(fallback).not.toBeVisible()
 })
 
-test('password input submits its value under the root name', async ({ page }) => {
-  await page.goto(story('basic'))
-  const root = page.locator('ark-password-input')
-  await root.evaluate((el) => {
-    const form = document.createElement('form')
-    el.before(form)
-    form.append(el)
-    el.setAttribute('name', 'password')
-  })
-  const input = page.locator('input[name=password]')
-  await expect(input).toBeAttached()
-  await input.fill('hunter22')
-  const values = await page.evaluate(() => Object.fromEntries(new FormData(document.querySelector('form')!)))
-  expect(values).toEqual({ password: 'hunter22' })
+test('password input submits its value under the root name', async () => {
+  mount(Basic)
+  const root = document.querySelector('ark-password-input')!
+  const form = document.createElement('form')
+  root.before(form)
+  form.append(root)
+  root.setAttribute('name', 'password')
+
+  await waitFor(() => expect(document.querySelector('input[name=password]')).toBeInTheDocument())
+  await user.type(document.querySelector<HTMLInputElement>('input[name=password]')!, 'hunter22')
+
+  await waitFor(() => expect(Object.fromEntries(new FormData(form))).toEqual({ password: 'hunter22' }))
 })

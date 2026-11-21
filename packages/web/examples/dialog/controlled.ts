@@ -1,6 +1,6 @@
 import { createElement, X } from 'lucide'
 
-import '../../src/components/dialog/index.js'
+import '@ark-ui/web/dialog'
 
 import styles from 'styles/dialog.module.css'
 

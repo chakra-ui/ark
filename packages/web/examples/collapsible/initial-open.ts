@@ -1,6 +1,6 @@
 import { createElement, ChevronRight } from 'lucide'
 
-import '../../src/components/collapsible/index.js'
+import '@ark-ui/web/collapsible'
 
 import styles from 'styles/collapsible.module.css'
 

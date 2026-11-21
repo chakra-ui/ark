@@ -1,5 +1,5 @@
-import '../../src/components/qr-code/index.js'
-import '../../src/components/radio-group/index.js'
+import '@ark-ui/web/qr-code'
+import '@ark-ui/web/radio-group'
 
 import styles from 'styles/qr-code.module.css'
 import radio from 'styles/radio-group.module.css'

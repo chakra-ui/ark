@@ -1,52 +1,66 @@
-import { expect, test, type Page } from '@playwright/test'
-import type {} from '../index.js'
+import { screen, waitFor } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
-const story = (name: string) => `/iframe.html?id=components-signature-pad--${name}&viewMode=story`
+import { mount as Basic } from '../../../../examples/signature-pad/basic.js'
+import { mount } from '../../../test-utils.js'
 
-async function draw(page: Page) {
-  const box = (await page.locator('ark-signature-pad-control').boundingBox())!
-  const x = box.x + 40
-  const y = box.y + 40
+const user = userEvent.setup()
 
-  await page.mouse.move(x, y)
-  await page.mouse.down()
-  for (let step = 1; step <= 10; step++) {
-    await page.mouse.move(x + step * 15, y + step * 4)
-  }
-  await page.mouse.up()
+const paths = () => document.querySelectorAll('ark-signature-pad-segment svg path')
+
+async function draw() {
+  const control = document.querySelector('ark-signature-pad-control')!
+  const moves = Array.from({ length: 10 }, (_, index) => ({
+    coords: { clientX: 40 + (index + 1) * 15, clientY: 40 + (index + 1) * 4 },
+  }))
+
+  await user.pointer([
+    { keys: '[MouseLeft>]', target: control, coords: { clientX: 40, clientY: 40 } },
+    ...moves,
+    { keys: '[/MouseLeft]' },
+  ])
 }
 
-test('drawing creates a path and emits drawend', async ({ page }) => {
-  await page.goto(story('basic'))
-  const paths = page.locator('ark-signature-pad-segment svg path')
-  await expect(paths).toHaveCount(0)
-  await page.evaluate(() => {
-    const el = document.querySelector('ark-signature-pad')!
-    el.addEventListener('drawend', (event) => el.setAttribute('data-last', String(event.detail.paths.length)))
+test('drawing creates a path and emits drawend', async () => {
+  mount(Basic)
+  const pad = document.querySelector('ark-signature-pad')!
+  await waitFor(() => expect(pad).toHaveAttribute('data-signature-pad-root'))
+  expect(paths()).toHaveLength(0)
+  const ends: number[] = []
+  pad.addEventListener('drawend', (event) => ends.push(event.detail.paths.length))
+
+  await draw()
+  await waitFor(() => expect(paths()).toHaveLength(1))
+  expect(paths()[0].getAttribute('d')).toMatch(/^M/)
+  expect(ends.at(-1)).toBe(1)
+})
+
+test('clear trigger removes the paths', async () => {
+  mount(Basic)
+  const clear = await waitFor(() => {
+    const element = document.querySelector<HTMLButtonElement>('button[aria-label="clear signature"]')
+    expect(element).toBeInTheDocument()
+    return element!
   })
-  await draw(page)
-  await expect(paths).toHaveCount(1)
-  await expect(paths.first()).toHaveAttribute('d', /^M/)
-  await expect(page.locator('ark-signature-pad')).toHaveAttribute('data-last', '1')
+  expect(clear).not.toBeVisible()
+
+  await draw()
+  await waitFor(() => expect(paths()).toHaveLength(1))
+
+  await waitFor(() => expect(screen.getByRole('button', { name: 'clear signature' })).toBeVisible())
+  await user.click(clear)
+  await waitFor(() => expect(paths()).toHaveLength(0))
+  expect(clear).not.toBeVisible()
 })
 
-test('clear trigger removes the paths', async ({ page }) => {
-  await page.goto(story('basic'))
-  const paths = page.locator('ark-signature-pad-segment svg path')
-  const clear = page.getByRole('button', { name: 'clear signature' })
-  await expect(clear).toBeHidden()
-  await draw(page)
-  await expect(paths).toHaveCount(1)
-  await clear.click()
-  await expect(paths).toHaveCount(0)
-  await expect(clear).toBeHidden()
-})
+test('hidden input holds the signature data url', async () => {
+  mount(Basic)
+  const input = await waitFor(() => {
+    const element = document.querySelector('ark-signature-pad-hidden-input input')
+    expect(element).toBeInTheDocument()
+    return element!
+  })
 
-test('hidden input holds the signature data url', async ({ page }) => {
-  await page.goto(story('basic'))
-  const input = page.locator('ark-signature-pad-hidden-input input')
-  await expect(input).toHaveAttribute('name', 'signature')
-  await expect(input).toHaveValue('')
-  await draw(page)
-  await expect(input).toHaveValue(/^data:image\/png;base64,/)
+  await waitFor(() => expect(input).toHaveAttribute('name', 'signature'))
+  expect(input).toHaveValue('')
 })

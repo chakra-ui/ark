@@ -1,6 +1,6 @@
 import { createElement, ArrowDown, ArrowUp } from 'lucide'
 
-import '../../src/components/carousel/index.js'
+import '@ark-ui/web/carousel'
 
 import styles from 'styles/carousel.module.css'
 

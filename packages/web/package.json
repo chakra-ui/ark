@@ -6,10 +6,10 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "bun run storybook",
-    "lint": "biome lint src examples .storybook tests",
+    "lint": "biome lint src examples .storybook",
     "typecheck": "tsc",
-    "test": "playwright test",
-    "test:ci": "playwright test",
+    "test": "vitest",
+    "test:ci": "vitest --run",
     "storybook": "storybook dev -p 6007",
     "build:storybook": "storybook build",
     "prepack": "npm run build"
@@ -68,14 +68,18 @@
     "@zag-js/virtualizer": "2.0.0-next.4"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.5.11",
     "@storybook/addon-a11y": "10.5.10",
     "@storybook/html-vite": "10.5.10",
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/user-event": "14.6.6",
+    "happy-dom": "20.12.0",
+    "lucide": "1.37.0",
     "storybook": "10.5.10",
-    "vite": "*",
     "typescript": "6.0.3",
-    "@playwright/test": "1.56.1",
-    "@biomejs/biome": "2.5.11",
-    "lucide": "1.37.0"
+    "vite": "8.2.2",
+    "vitest": "4.1.11"
   },
   "license": "MIT",
   "homepage": "https://ark-ui.com",

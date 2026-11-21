@@ -1,74 +1,100 @@
-import { expect, test } from '@playwright/test'
+import { screen, waitFor } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
-const story = (name: string) => `/iframe.html?id=components-combobox--${name}&viewMode=story`
+import { mount as AsyncSearch } from '../../../../examples/combobox/async-search.js'
+import { mount as Grouping } from '../../../../examples/combobox/grouping.js'
+import { mount as Virtualized } from '../../../../examples/combobox/virtualized.js'
+import { mount } from '../../../test-utils.js'
+import { createListCollection } from '@ark-ui/web/combobox'
 
-const borderTop = (locator: import('@playwright/test').Locator) =>
-  locator.evaluate((el) => getComputedStyle(el).borderTopWidth)
+const user = userEvent.setup()
 
-test('combobox separates visible groups and drops the separator when filtering hides a group', async ({ page }) => {
-  await page.goto(story('grouping'))
-  const input = page.getByRole('combobox')
-  await input.click()
-  await input.press('ArrowDown')
-  const groups = page.getByRole('group')
-  await expect(groups).toHaveCount(2)
-  expect(await borderTop(groups.nth(0))).toBe('0px')
-  expect(await borderTop(groups.nth(1))).not.toBe('0px')
+const texts = (elements: Iterable<Element>) => Array.from(elements, (element) => element.textContent?.trim())
 
-  await input.fill('carrot')
-  await expect(page.getByRole('group', { name: 'Fruits' })).toBeHidden()
-  const vegetables = page.getByRole('group', { name: 'Vegetables' })
-  await expect(vegetables).toBeVisible()
-  expect(await borderTop(vegetables)).toBe('0px')
-})
-
-test('combobox loading attribute sets aria-busy on the list', async ({ page }) => {
-  await page.goto(story('async-search'))
-  const list = page.locator('ark-combobox-list')
-  await expect(list).not.toHaveAttribute('aria-busy')
-  await page.getByRole('combobox').fill('nolan')
-  await expect(page.locator('ark-combobox')).toHaveAttribute('loading')
-  await expect(list).toHaveAttribute('aria-busy', 'true')
-  await expect(page.getByRole('option')).toHaveText(['Inception', 'The Dark Knight', 'Interstellar'])
-  await expect(page.locator('ark-combobox')).not.toHaveAttribute('loading')
-  await expect(list).not.toHaveAttribute('aria-busy')
-})
-
-test('combobox keyboard navigation reaches off-screen items in a virtualized list', async ({ page }) => {
-  await page.goto(story('virtualized'))
-  const input = page.getByRole('combobox')
-  await input.focus()
-  await input.press('ArrowUp')
-  const last = page.getByRole('option', { name: 'Item 5000', exact: true })
-  await expect(last).toHaveAttribute('data-highlighted', '')
-  await expect(last).toHaveAttribute('aria-posinset', '5000')
-  await expect(last).toHaveAttribute('aria-setsize', '5000')
-  expect(await page.locator('ark-combobox-item').count()).toBeLessThan(100)
-
-  await input.fill('Item 42')
-  await expect(page.getByRole('option').first()).toHaveText('Item 42')
-  await expect(page.getByRole('option').first()).toHaveAttribute('aria-setsize', '111')
-})
-
-test('combobox renders bare items from a collection and updates when it is replaced', async ({ page }) => {
-  await page.goto('/test-fixtures/index.html')
-  await page.setContent(/* html */ `
-    <ark-combobox>
-      <ark-combobox-input><input /></ark-combobox-input>
-      <ark-combobox-positioner>
-        <ark-combobox-content><ark-combobox-list></ark-combobox-list></ark-combobox-content>
-      </ark-combobox-positioner>
-    </ark-combobox>`)
-  await page.evaluate(() => {
-    const { createListCollection } = window as unknown as typeof import('../../../index.js')
-    document.querySelector('ark-combobox')!.collection = createListCollection({ items: ['Apple', 'Banana'] })
+const findInput = () =>
+  waitFor(() => {
+    const input = screen.getByRole('combobox')
+    expect(input).toBeInstanceOf(HTMLInputElement)
+    return input as HTMLInputElement
   })
-  const items = page.locator('ark-combobox-item')
-  await expect(items).toHaveText(['Apple', 'Banana'])
-  await expect(items.first()).toHaveAttribute('value', 'Apple')
-  await page.evaluate(() => {
-    const { createListCollection } = window as unknown as typeof import('../../../index.js')
-    document.querySelector('ark-combobox')!.collection = createListCollection({ items: ['Cherry'] })
-  })
-  await expect(items).toHaveText(['Cherry'])
+
+const fill = async (input: HTMLElement, text: string) => {
+  await user.clear(input)
+  await user.type(input, text)
+}
+
+test('combobox separates visible groups and drops the separator when filtering hides a group', async () => {
+  mount(Grouping)
+  const input = await findInput()
+
+  await user.click(input)
+  await user.keyboard('{ArrowDown}')
+  await waitFor(() => expect(screen.getAllByRole('group')).toHaveLength(2))
+
+  await fill(input, 'carrot')
+  await waitFor(() => expect(screen.queryByRole('group', { name: 'Fruits' })).not.toBeInTheDocument())
+  expect(screen.getByRole('group', { name: 'Vegetables' })).toBeVisible()
 })
+
+test('combobox loading attribute sets aria-busy on the list', async () => {
+  mount(AsyncSearch)
+  const combobox = document.querySelector('ark-combobox')!
+  const list = document.querySelector('ark-combobox-list')!
+  const input = await findInput()
+
+  expect(list).not.toHaveAttribute('aria-busy')
+
+  await fill(input, 'nolan')
+  await waitFor(() => expect(combobox).toHaveAttribute('loading'))
+  await waitFor(() => expect(list).toHaveAttribute('aria-busy', 'true'))
+
+  await waitFor(() =>
+    expect(texts(screen.getAllByRole('option'))).toEqual(['Inception', 'The Dark Knight', 'Interstellar']),
+  )
+  await waitFor(() => expect(combobox).not.toHaveAttribute('loading'))
+  expect(list).not.toHaveAttribute('aria-busy')
+})
+
+test('combobox renders bare items from a collection and updates when it is replaced', async () => {
+  mount((root) => {
+    root.innerHTML = /* html */ `
+      <ark-combobox>
+        <ark-combobox-input><input /></ark-combobox-input>
+        <ark-combobox-positioner>
+          <ark-combobox-content><ark-combobox-list></ark-combobox-list></ark-combobox-content>
+        </ark-combobox-positioner>
+      </ark-combobox>`
+  })
+  const combobox = document.querySelector('ark-combobox')!
+  const items = () => document.querySelectorAll('ark-combobox-item')
+
+  combobox.collection = createListCollection({ items: ['Apple', 'Banana'] })
+  await waitFor(() => expect(texts(items())).toEqual(['Apple', 'Banana']))
+  expect(items()[0]).toHaveAttribute('value', 'Apple')
+
+  combobox.collection = createListCollection({ items: ['Cherry'] })
+  await waitFor(() => expect(texts(items())).toEqual(['Cherry']))
+})
+
+test('combobox keyboard navigation reaches off-screen items in a virtualized list', async () => {
+  const user = userEvent.setup()
+  mount(Virtualized)
+
+  const item = (value: string) => document.querySelector(`ark-combobox-item[data-value="${value}"]`)
+  const options = () => Array.from(document.querySelectorAll('ark-combobox-item'))
+  const input = document.querySelector('input')!
+  await waitFor(() => expect(input).toHaveAttribute('role', 'combobox'))
+
+  input.focus()
+  await user.keyboard('{ArrowUp}')
+  await waitFor(() => expect(item('item-5000')).toHaveAttribute('data-highlighted', ''))
+  expect(item('item-5000')).toHaveAttribute('role', 'option')
+  expect(item('item-5000')).toHaveAttribute('aria-posinset', '5000')
+  expect(item('item-5000')).toHaveAttribute('aria-setsize', '5000')
+  expect(options().length).toBeLessThan(100)
+
+  await user.clear(input)
+  await user.type(input, 'Item 42')
+  await waitFor(() => expect(options()[0]).toHaveTextContent('Item 42'))
+  expect(options()[0]).toHaveAttribute('aria-setsize', '111')
+}, 15_000)

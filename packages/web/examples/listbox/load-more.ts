@@ -1,7 +1,7 @@
 import { createElement, Check } from 'lucide'
 
-import { createListCollection } from '../../src/components/listbox/index.js'
-import { createAsyncList } from '../../src/utils/async-list.js'
+import { createListCollection } from '@ark-ui/web/listbox'
+import { createAsyncList } from '@ark-ui/web/async-list'
 
 import styles from 'styles/listbox.module.css'
 

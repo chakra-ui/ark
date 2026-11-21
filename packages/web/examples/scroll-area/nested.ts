@@ -1,4 +1,4 @@
-import '../../src/components/scroll-area/index.js'
+import '@ark-ui/web/scroll-area'
 
 import styles from 'styles/scroll-area.module.css'
 

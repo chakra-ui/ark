@@ -1,8 +1,8 @@
 import { createElement, ChevronDown, X } from 'lucide'
 
-import '../../src/components/dialog/index.js'
+import '@ark-ui/web/dialog'
 
-import '../../src/components/menu/index.js'
+import '@ark-ui/web/menu'
 
 import styles from 'styles/menu.module.css'
 

@@ -1,14 +1,16 @@
+diff --git a/node_modules/@zag-js/menubar/.bun-tag-34c50a9841f0f3a b/.bun-tag-34c50a9841f0f3a
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 diff --git a/dist/menubar.dom.js b/dist/menubar.dom.js
-index 907e67f8faf1b5099d021df3d340e5d838bdf90b..64e09284373f928c835f2c715b58fb7ebda39124 100644
+index 907e67f8faf1b5099d021df3d340e5d838bdf90b..b7c56d1c20dacacd5958ee632703bfc6526c927f 100644
 --- a/dist/menubar.dom.js
 +++ b/dist/menubar.dom.js
-@@ -15,11 +15,11 @@ const getRootEl = (ctx) => ctx.query(ctx.selector(require_menubar_anatomy.parts.
- const getTriggerEls = (ctx) => {
+@@ -16,10 +16,10 @@ const getTriggerEls = (ctx) => {
  	const rootEl = getRootEl(ctx);
  	if (!rootEl) return [];
--	const els = rootEl.querySelectorAll("[role=menuitem]");
-+	const els = rootEl.querySelectorAll("[role=menuitem]:not([role=menu] *)");
- 	return Array.from(els).filter((el) => !el.hasAttribute("data-disabled") && !el.hasAttribute("disabled") && el.getAttribute("aria-disabled") !== "true");
+ 	const els = rootEl.querySelectorAll("[role=menuitem]");
+-	return Array.from(els).filter((el) => !el.hasAttribute("data-disabled") && !el.hasAttribute("disabled") && el.getAttribute("aria-disabled") !== "true");
++	return Array.from(els).filter((el) => !el.closest("[role=menu]") && !el.hasAttribute("data-disabled") && !el.hasAttribute("disabled") && el.getAttribute("aria-disabled") !== "true");
  };
  const isTriggerEl = (el) => {
 -	return (0, _zag_js_dom_query.isHTMLElement)(el) && el.getAttribute("role") === "menuitem";
@@ -17,16 +19,15 @@ index 907e67f8faf1b5099d021df3d340e5d838bdf90b..64e09284373f928c835f2c715b58fb7e
  const getFirstTriggerEl = (ctx) => (0, _zag_js_utils.first)(getTriggerEls(ctx));
  const getLastTriggerEl = (ctx) => (0, _zag_js_utils.last)(getTriggerEls(ctx));
 diff --git a/dist/menubar.dom.mjs b/dist/menubar.dom.mjs
-index c591a64ceefe2431b4854213018779f9acecc8e1..019c2b560b7167c483b469b5b63ebea9aa80728a 100644
+index c591a64ceefe2431b4854213018779f9acecc8e1..d1539de6bd67bf05be8e7067517685cd05ffec8c 100644
 --- a/dist/menubar.dom.mjs
 +++ b/dist/menubar.dom.mjs
-@@ -11,11 +11,11 @@ const getRootEl = (ctx) => ctx.query(ctx.selector(parts.root));
- const getTriggerEls = (ctx) => {
+@@ -12,10 +12,10 @@ const getTriggerEls = (ctx) => {
  	const rootEl = getRootEl(ctx);
  	if (!rootEl) return [];
--	const els = rootEl.querySelectorAll("[role=menuitem]");
-+	const els = rootEl.querySelectorAll("[role=menuitem]:not([role=menu] *)");
- 	return Array.from(els).filter((el) => !el.hasAttribute("data-disabled") && !el.hasAttribute("disabled") && el.getAttribute("aria-disabled") !== "true");
+ 	const els = rootEl.querySelectorAll("[role=menuitem]");
+-	return Array.from(els).filter((el) => !el.hasAttribute("data-disabled") && !el.hasAttribute("disabled") && el.getAttribute("aria-disabled") !== "true");
++	return Array.from(els).filter((el) => !el.closest("[role=menu]") && !el.hasAttribute("data-disabled") && !el.hasAttribute("disabled") && el.getAttribute("aria-disabled") !== "true");
  };
  const isTriggerEl = (el) => {
 -	return isHTMLElement(el) && el.getAttribute("role") === "menuitem";

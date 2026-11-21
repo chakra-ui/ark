@@ -1,6 +1,6 @@
-import '../../src/components/popover/index.js'
+import '@ark-ui/web/popover'
 
-import '../../src/components/tooltip/index.js'
+import '@ark-ui/web/tooltip'
 
 import button from 'styles/button.module.css'
 

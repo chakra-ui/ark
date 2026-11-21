@@ -1,6 +1,6 @@
 import { createElement, X } from 'lucide'
 
-import '../../src/components/drawer/index.js'
+import '@ark-ui/web/drawer'
 
 import styles from 'styles/drawer.module.css'
 

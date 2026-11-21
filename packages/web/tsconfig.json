@@ -7,9 +7,14 @@
     "noEmit": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
+    "types": ["vitest/globals"],
     "paths": {
+      "@ark-ui/web": ["./src/index.ts"],
+      "@ark-ui/web/async-list": ["./src/utils/async-list.ts"],
+      "@ark-ui/web/locale": ["./src/utils/locale.ts"],
+      "@ark-ui/web/*": ["./src/components/*/index.ts"],
       "styles/*": ["../../.storybook/modules/*"]
     }
   },
-  "include": ["src", "examples", ".storybook", "../../.storybook/modules/css-modules.d.ts", "type-tests"]
+  "include": ["src", "examples", ".storybook", "vitest.config.ts", "../../.storybook/modules/css-modules.d.ts", "type-tests"]
 }

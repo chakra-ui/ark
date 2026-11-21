@@ -1,4 +1,4 @@
-import '../../src/components/segment-group/index.js'
+import '@ark-ui/web/segment-group'
 
 import styles from 'styles/segment-group.module.css'
 

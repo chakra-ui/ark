@@ -2,7 +2,7 @@ import { createElement, Upload, CircleAlert, CircleCheck, X, Image } from 'lucid
 
 import styles from 'styles/file-upload.module.css'
 
-import '../../src/components/file-upload/index.js'
+import '@ark-ui/web/file-upload'
 
 interface TrackSectionsOptions {
   messages?: Record<string, string>

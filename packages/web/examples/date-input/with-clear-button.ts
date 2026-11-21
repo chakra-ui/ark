@@ -1,6 +1,6 @@
 import { createElement, X } from 'lucide'
 
-import '../../src/components/date-input/index.js'
+import '@ark-ui/web/date-input'
 
 import button from 'styles/button.module.css'
 import styles from 'styles/date-input.module.css'

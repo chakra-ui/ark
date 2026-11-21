@@ -1,6 +1,6 @@
 import { createElement, X } from 'lucide'
 
-import '../../src/components/tags-input/index.js'
+import '@ark-ui/web/tags-input'
 
 import styles from 'styles/tags-input.module.css'
 

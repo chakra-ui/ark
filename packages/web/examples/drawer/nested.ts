@@ -1,6 +1,6 @@
-import type { DrawerElement } from '../../src/components/drawer/index.js'
+import type { DrawerElement } from '@ark-ui/web/drawer'
 
-import '../../src/components/drawer/index.js'
+import '@ark-ui/web/drawer'
 
 import styles from 'styles/drawer-nested.module.css'
 

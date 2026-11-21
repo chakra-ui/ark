@@ -1,4 +1,4 @@
-import '../../src/components/editable/index.js'
+import '@ark-ui/web/editable'
 
 import styles from 'styles/editable.module.css'
 

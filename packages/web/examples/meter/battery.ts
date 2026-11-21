@@ -1,6 +1,6 @@
 import { createElement, Zap } from 'lucide'
 
-import '../../src/components/meter/index.js'
+import '@ark-ui/web/meter'
 
 import styles from 'styles/meter.module.css'
 

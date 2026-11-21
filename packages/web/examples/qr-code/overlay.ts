@@ -1,4 +1,4 @@
-import '../../src/components/qr-code/index.js'
+import '@ark-ui/web/qr-code'
 
 import styles from 'styles/qr-code.module.css'
 

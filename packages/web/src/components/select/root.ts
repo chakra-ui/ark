@@ -2,7 +2,7 @@ import * as select from '@zag-js/select'
 
 import { positioning, positioningAttributes, str } from '../../utils/attrs.js'
 import { definePresenceRoot } from '../../utils/presence.js'
-import { collection, hiddenSelects, listOf, root, syncHiddenSelect } from './shared.js'
+import { collection, hiddenSelects, listOf, root, syncHiddenSelect, usesHiddenInput } from './shared.js'
 
 definePresenceRoot<select.Api>({
   tag: root,
@@ -64,6 +64,8 @@ definePresenceRoot<select.Api>({
   rootProps: (api) => api.getRootProps(),
   setup: (el) => {
     const cleanup = collection.setup(el)
+    if (usesHiddenInput(el)) return cleanup
+
     const hidden = el.ownerDocument.createElement('select')
     el.append(hidden)
     hiddenSelects.set(el, hidden)

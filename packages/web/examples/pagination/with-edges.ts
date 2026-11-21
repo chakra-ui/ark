@@ -1,6 +1,6 @@
 import { createElement, ChevronsLeft, ChevronLeft, ChevronRight, ChevronsRight } from 'lucide'
 
-import '../../src/components/pagination/index.js'
+import '@ark-ui/web/pagination'
 
 import styles from 'styles/pagination.module.css'
 

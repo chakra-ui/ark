@@ -1,4 +1,4 @@
-import { createTreeCollection } from '../../src/components/tree-view/index.js'
+import { createTreeCollection } from '@ark-ui/web/tree-view'
 
 import styles from 'styles/tree-view.module.css'
 

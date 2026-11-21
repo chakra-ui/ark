@@ -1,8 +1,8 @@
 import { createElement, X, ChevronsUpDown, Check, LoaderCircle } from 'lucide'
 
-import { createListCollection } from '../../src/components/combobox/index.js'
-import { createAsyncList } from '../../src/utils/async-list.js'
-import { createFilter } from '../../src/utils/locale.js'
+import { createListCollection } from '@ark-ui/web/combobox'
+import { createAsyncList } from '@ark-ui/web/async-list'
+import { createFilter } from '@ark-ui/web/locale'
 
 import styles from 'styles/combobox.module.css'
 

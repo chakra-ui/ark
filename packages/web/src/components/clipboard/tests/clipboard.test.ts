@@ -1,52 +1,76 @@
-import { expect, test } from '@playwright/test'
+import { screen, waitFor } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
-const story = (name: string) => `/iframe.html?id=components-clipboard--${name}&viewMode=story`
+import { mount as Basic } from '../../../../examples/clipboard/basic.js'
+import { mount as Controlled } from '../../../../examples/clipboard/controlled.js'
+import { mount as CopyStatus } from '../../../../examples/clipboard/copy-status.js'
+import { mount as Timeout } from '../../../../examples/clipboard/timeout.js'
+import { mount } from '../../../test-utils.js'
 
-test.beforeEach(async ({ context }) => {
-  await context.grantPermissions(['clipboard-read', 'clipboard-write'])
+afterEach(() => {
+  vi.useRealTimers()
 })
 
-test('clipboard copies the value and switches the indicator', async ({ page }) => {
-  await page.goto(story('basic'))
-  const root = page.locator('ark-clipboard')
-  const trigger = page.getByRole('button', { name: 'Copy to clipboard' })
-  await expect(page.locator('ark-clipboard-input input')).toHaveValue('https://ark-ui.com')
-  await expect(page.locator('ark-clipboard-indicator[copied]')).toBeHidden()
+test('clipboard copies the value and switches the indicator', async () => {
+  const user = userEvent.setup()
+  mount(Basic)
+  const root = document.querySelector('ark-clipboard')!
+  const trigger = await screen.findByRole('button', { name: 'Copy to clipboard' })
 
-  await trigger.click()
-  await expect(root).toHaveAttribute('data-copied', '')
-  await expect(page.getByRole('button', { name: 'Copied to clipboard' })).toBeVisible()
-  await expect(page.locator('ark-clipboard-indicator[copied]')).toBeVisible()
-  await expect(page.locator('ark-clipboard-indicator:not([copied])')).toBeHidden()
-  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('https://ark-ui.com')
+  await waitFor(() => expect(document.querySelector('ark-clipboard-input input')).toHaveValue('https://ark-ui.com'))
+  expect(document.querySelector('ark-clipboard-indicator[copied]')).not.toBeVisible()
+
+  await user.click(trigger)
+
+  await waitFor(() => expect(root).toHaveAttribute('data-copied', ''))
+  expect(screen.getByRole('button', { name: 'Copied to clipboard' })).toBeVisible()
+  expect(document.querySelector('ark-clipboard-indicator[copied]')).toBeVisible()
+  expect(document.querySelector('ark-clipboard-indicator:not([copied])')).not.toBeVisible()
+  expect(await navigator.clipboard.readText()).toBe('https://ark-ui.com')
 })
 
-test('clipboard emits statuschange and renders its value text', async ({ page }) => {
-  await page.goto(story('copy-status'))
-  await expect(page.locator('ark-clipboard-value-text')).toHaveText('https://ark-ui.com')
-  await page.getByRole('button').click()
-  await expect(page.locator('output')).toHaveText('1')
+test('clipboard emits statuschange and renders its value text', async () => {
+  const user = userEvent.setup()
+  mount(CopyStatus)
+
+  await waitFor(() =>
+    expect(document.querySelector('ark-clipboard-value-text')).toHaveTextContent('https://ark-ui.com'),
+  )
+
+  await user.click(screen.getByRole('button'))
+
+  await waitFor(() => expect(document.querySelector('output')).toHaveTextContent('1'))
 })
 
-test('clipboard resets after its timeout', async ({ page }) => {
-  await page.clock.install()
-  await page.goto(story('timeout'))
-  const root = page.locator('ark-clipboard')
-  await page.getByRole('button').click()
-  await expect(root).toHaveAttribute('data-copied', '')
-  await page.clock.runFor(4000)
-  await expect(root).toHaveAttribute('data-copied', '')
-  await page.clock.runFor(1100)
-  await expect(root).not.toHaveAttribute('data-copied')
-  await expect(page.locator('ark-clipboard-indicator:not([copied])')).toBeVisible()
+test('clipboard resets after its timeout', async () => {
+  vi.useFakeTimers({ toFake: ['setTimeout', 'clearTimeout', 'Date'] })
+  const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime })
+  mount(Timeout)
+  const root = document.querySelector('ark-clipboard')!
+
+  await vi.advanceTimersByTimeAsync(0)
+  await user.click(screen.getByRole('button'))
+  await vi.advanceTimersByTimeAsync(0)
+  expect(root).toHaveAttribute('data-copied', '')
+
+  await vi.advanceTimersByTimeAsync(4000)
+  expect(root).toHaveAttribute('data-copied', '')
+
+  await vi.advanceTimersByTimeAsync(1100)
+  expect(root).not.toHaveAttribute('data-copied')
+  expect(document.querySelector('ark-clipboard-indicator:not([copied])')).toBeVisible()
 })
 
-test('controlled clipboard syncs the input with the value attribute', async ({ page }) => {
-  await page.goto(story('controlled'))
-  const input = page.locator('ark-clipboard-input input')
-  await expect(input).toHaveValue('https://ark-ui.com')
-  await page.getByRole('button', { name: 'Change Url' }).click()
-  await expect(input).toHaveValue('https://chakra-ui.com')
-  await page.getByRole('button', { name: 'Copy to clipboard' }).click()
-  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('https://chakra-ui.com')
+test('controlled clipboard syncs the input with the value attribute', async () => {
+  const user = userEvent.setup()
+  mount(Controlled)
+  const input = document.querySelector('ark-clipboard-input input')!
+
+  await waitFor(() => expect(input).toHaveValue('https://ark-ui.com'))
+
+  await user.click(screen.getByRole('button', { name: 'Change Url' }))
+  await waitFor(() => expect(input).toHaveValue('https://chakra-ui.com'))
+
+  await user.click(screen.getByRole('button', { name: 'Copy to clipboard' }))
+  await waitFor(async () => expect(await navigator.clipboard.readText()).toBe('https://chakra-ui.com'))
 })

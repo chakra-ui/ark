@@ -1,6 +1,6 @@
 import { ChevronRight, createElement, Search } from 'lucide'
 
-import '../../src/components/command/index.js'
+import '@ark-ui/web/command'
 
 import styles from 'styles/command.module.css'
 

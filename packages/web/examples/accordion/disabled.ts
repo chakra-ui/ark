@@ -1,6 +1,6 @@
 import { createElement, ChevronDown } from 'lucide'
 
-import '../../src/components/accordion/index.js'
+import '@ark-ui/web/accordion'
 
 import styles from 'styles/accordion.module.css'
 

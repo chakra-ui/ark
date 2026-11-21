@@ -1,5 +1,5 @@
-import '../../src/components/menu/index.js'
-import '../../src/components/menubar/index.js'
+import '@ark-ui/web/menu'
+import '@ark-ui/web/menubar'
 
 import menu from 'styles/menu.module.css'
 import styles from 'styles/menubar.module.css'

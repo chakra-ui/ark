@@ -1,6 +1,6 @@
 import { createElement, RotateCcw } from 'lucide'
 
-import '../../src/components/signature-pad/index.js'
+import '@ark-ui/web/signature-pad'
 
 import styles from 'styles/signature-pad.module.css'
 

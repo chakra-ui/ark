@@ -1,4 +1,4 @@
-import '../../src/components/highlight/index.js'
+import '@ark-ui/web/highlight'
 
 import field from 'styles/field.module.css'
 import styles from 'styles/highlight.module.css'

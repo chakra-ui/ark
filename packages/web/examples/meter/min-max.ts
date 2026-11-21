@@ -1,6 +1,6 @@
-import type { MeterElement } from '../../src/components/meter/index.js'
+import type { MeterElement } from '@ark-ui/web/meter'
 
-import '../../src/components/meter/index.js'
+import '@ark-ui/web/meter'
 
 import styles from 'styles/meter.module.css'
 

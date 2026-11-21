@@ -1,8 +1,8 @@
 import { createElement, X } from 'lucide'
 
-import '../../src/components/dialog/index.js'
+import '@ark-ui/web/dialog'
 
-import '../../src/components/popover/index.js'
+import '@ark-ui/web/popover'
 
 import button from 'styles/button.module.css'
 

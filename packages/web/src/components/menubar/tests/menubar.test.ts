@@ -1,52 +1,87 @@
-import { expect, test, type Page } from '@playwright/test'
+import { screen, waitFor } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
-const story = (name: string) => `/iframe.html?id=components-menubar--${name}&viewMode=story`
+import { mount as Basic } from '../../../../examples/menubar/basic.js'
+import { mount as Disabled } from '../../../../examples/menubar/disabled.js'
+import { mount as Vertical } from '../../../../examples/menubar/vertical.js'
+import { mount } from '../../../test-utils.js'
 
-const trigger = (page: Page, name: string) => page.locator('ark-menu-trigger button', { hasText: name })
+const user = userEvent.setup()
 
-test('menubar moves focus between triggers and skips a disabled one', async ({ page }) => {
-  await page.goto(story('basic'))
-  await expect(page.getByRole('menubar')).toHaveAttribute('data-orientation', 'horizontal')
-  await trigger(page, 'File').focus()
-  await page.keyboard.press('ArrowRight')
-  await expect(trigger(page, 'Edit')).toBeFocused()
-  await expect(trigger(page, 'Edit')).toHaveAttribute('tabindex', '0')
-  await page.keyboard.press('ArrowRight')
-  await expect(trigger(page, 'View')).toBeFocused()
-  await page.keyboard.press('ArrowLeft')
-  await expect(trigger(page, 'Edit')).toBeFocused()
+const trigger = (name: string) =>
+  Array.from(document.querySelectorAll<HTMLButtonElement>('ark-menu-trigger button')).find((button) =>
+    button.textContent?.includes(name),
+  )!
+
+const menuitem = (name: string) => screen.getByRole('menuitem', { name, hidden: true })
+
+const findMenubar = () =>
+  waitFor(() => {
+    const menubar = screen.getByRole('menubar')
+    expect(menubar).toHaveAttribute('data-orientation')
+    return menubar
+  })
+
+test('menubar moves focus between triggers and skips a disabled one', async () => {
+  mount(Basic)
+  const menubar = await findMenubar()
+
+  expect(menubar).toHaveAttribute('data-orientation', 'horizontal')
+
+  trigger('File').focus()
+  await user.keyboard('{ArrowRight}')
+  await waitFor(() => expect(trigger('Edit')).toHaveFocus())
+  expect(trigger('Edit')).toHaveAttribute('tabindex', '0')
+
+  await user.keyboard('{ArrowRight}')
+  await waitFor(() => expect(trigger('View')).toHaveFocus())
+
+  await user.keyboard('{ArrowLeft}')
+  await waitFor(() => expect(trigger('Edit')).toHaveFocus())
 })
 
-test('menubar switches to the next menu with ArrowRight while one is open', async ({ page }) => {
-  await page.goto(story('basic'))
-  await trigger(page, 'File').click()
-  await expect(page.getByRole('menuitem', { name: 'New File' })).toBeVisible()
-  await page.keyboard.press('ArrowRight')
-  await expect(page.getByRole('menuitem', { name: 'Undo' })).toBeVisible()
-  await expect(page.getByRole('menuitem', { name: 'New File' })).not.toBeVisible()
-  await trigger(page, 'View').hover()
-  await expect(page.getByRole('menuitem', { name: 'Zoom In' })).toBeVisible()
-  await expect(page.getByRole('menuitem', { name: 'Undo' })).not.toBeVisible()
+test('menubar switches to the next menu with ArrowRight while one is open', async () => {
+  mount(Basic)
+  await findMenubar()
+
+  await user.click(trigger('File'))
+  await waitFor(() => expect(menuitem('New File')).toBeVisible())
+
+  await user.keyboard('{ArrowRight}')
+  await waitFor(() => expect(menuitem('Undo')).toBeVisible())
+  expect(menuitem('New File')).not.toBeVisible()
+
+  await user.hover(trigger('View'))
+  await waitFor(() => expect(menuitem('Zoom In')).toBeVisible())
+  expect(menuitem('Undo')).not.toBeVisible()
 })
 
-test('menubar closes on Escape and returns focus to the trigger', async ({ page }) => {
-  await page.goto(story('basic'))
-  await trigger(page, 'Edit').focus()
-  await page.keyboard.press('ArrowDown')
-  await expect(page.getByRole('menuitem', { name: 'Undo' })).toBeVisible()
-  await page.keyboard.press('Escape')
-  await expect(page.getByRole('menuitem', { name: 'Undo' })).not.toBeVisible()
-  await expect(trigger(page, 'Edit')).toBeFocused()
-  await expect(page.getByRole('menubar')).toHaveAttribute('data-has-open-menu', 'false')
+test('menubar closes on Escape and returns focus to the trigger', async () => {
+  mount(Basic)
+  const menubar = await findMenubar()
+
+  trigger('Edit').focus()
+  await user.keyboard('{ArrowDown}')
+  await waitFor(() => expect(menuitem('Undo')).toBeVisible())
+
+  await user.keyboard('{Escape}')
+  await waitFor(() => expect(menuitem('Undo')).not.toBeVisible())
+  await waitFor(() => expect(trigger('Edit')).toHaveFocus())
+  expect(menubar).toHaveAttribute('data-has-open-menu', 'false')
 })
 
-test('vertical menubar navigates with ArrowDown and a disabled menubar disables its triggers', async ({ page }) => {
-  await page.goto(story('vertical'))
-  await trigger(page, 'Account').focus()
-  await page.keyboard.press('ArrowDown')
-  await expect(trigger(page, 'Workspace')).toBeFocused()
+test('vertical menubar navigates with ArrowDown and a disabled menubar disables its triggers', async () => {
+  const root = mount(Vertical)
+  await findMenubar()
 
-  await page.goto(story('disabled'))
-  await expect(page.getByRole('menubar')).toHaveAttribute('data-disabled', '')
-  await expect(trigger(page, 'File')).toBeDisabled()
+  trigger('Account').focus()
+  await user.keyboard('{ArrowDown}')
+  await waitFor(() => expect(trigger('Workspace')).toHaveFocus())
+
+  root.remove()
+  mount(Disabled)
+  const menubar = await findMenubar()
+
+  await waitFor(() => expect(menubar).toHaveAttribute('data-disabled', ''))
+  expect(trigger('File')).toBeDisabled()
 })

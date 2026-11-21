@@ -1,4 +1,4 @@
-import '../../src/components/popover/index.js'
+import '@ark-ui/web/popover'
 
 import button from 'styles/button.module.css'
 

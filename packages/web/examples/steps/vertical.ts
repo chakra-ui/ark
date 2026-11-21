@@ -1,4 +1,4 @@
-import '../../src/components/steps/index.js'
+import '@ark-ui/web/steps'
 
 import button from 'styles/button.module.css'
 import styles from 'styles/steps.module.css'

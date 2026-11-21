@@ -1,7 +1,7 @@
 import { createElement, CornerDownLeft, FilePlus, FolderOpen, Save, Search, Settings, Terminal } from 'lucide'
 
-import '../../src/components/command/index.js'
-import '../../src/components/dialog/index.js'
+import '@ark-ui/web/command'
+import '@ark-ui/web/dialog'
 
 import button from 'styles/button.module.css'
 import styles from 'styles/command.module.css'
