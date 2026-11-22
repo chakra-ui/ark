@@ -59,3 +59,14 @@ test('number flow follows a countdown timer and resets with it', async () => {
   await user.click(screen.getByRole('button', { name: 'Reset' }))
   await waitFor(() => expect([minutes.value, seconds.value]).toEqual([5, 0]))
 })
+
+test('number flow renders the initial timer value in place and rolls on change', async () => {
+  mount(WithTimer)
+  const [minutes, seconds] = document.querySelectorAll('ark-number-flow')
+  await document.querySelector('ark-timer')!.ready
+  await waitFor(() => expect([minutes.api?.valueText, seconds.api?.valueText]).toEqual(['05', '00']))
+  expect(minutes).toHaveAttribute('data-state', 'idle')
+  expect(seconds).toHaveAttribute('data-state', 'idle')
+  minutes.value = 4
+  await waitFor(() => expect(minutes).toHaveAttribute('data-state', 'rolling'))
+})

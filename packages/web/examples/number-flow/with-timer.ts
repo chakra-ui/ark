@@ -9,19 +9,21 @@ import timerStyles from 'styles/timer.module.css'
 
 const icon = (node: typeof Play) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
-const flow = (unit: string) => /* html */ `
-  <ark-number-flow class="${styles.Root}" data-unit="${unit}" trend="-1">
+const startMs = 5 * 60 * 1000
+
+const flow = (unit: string, value: number) => /* html */ `
+  <ark-number-flow class="${styles.Root}" data-unit="${unit}" default-value="${value}" trend="-1">
     <ark-number-flow-segments></ark-number-flow-segments>
   </ark-number-flow>`
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
-  <ark-timer class="${styles.Card}" countdown start-ms="${5 * 60 * 1000}">
+  <ark-timer class="${styles.Card}" countdown start-ms="${startMs}">
     <span class="${styles.Label}">Offer ends in</span>
     <ark-timer-area class="${timerStyles.Area} ${styles.Display}">
-      ${flow('minutes')}
+      ${flow('minutes', Math.floor(startMs / 60000))}
       <ark-timer-separator class="${timerStyles.Separator}">:</ark-timer-separator>
-      ${flow('seconds')}
+      ${flow('seconds', Math.floor(startMs / 1000) % 60)}
     </ark-timer-area>
     <ark-timer-control class="${styles.Actions}">
       <ark-timer-action-trigger action="start">
