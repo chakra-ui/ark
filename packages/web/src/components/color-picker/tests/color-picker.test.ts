@@ -93,12 +93,16 @@ test('color picker inside a field takes the field ids and states', async () => {
       <ark-color-picker-control>
         <ark-color-picker-channel-input channel="hex"><input /></ark-color-picker-channel-input>
       </ark-color-picker-control>
+      <ark-color-picker-hidden-input></ark-color-picker-hidden-input>
     </ark-color-picker>`
   await document.querySelector('ark-color-picker')!.ready
   await waitFor(() =>
     expect(document.querySelector('ark-color-picker-label')).toHaveAttribute('id', field.api!.ids.label),
   )
   expect(document.querySelector('ark-color-picker-label')).toHaveAttribute('data-invalid', '')
+  await waitFor(() =>
+    expect(document.querySelector('ark-color-picker-hidden-input input')).toHaveAttribute('id', field.api!.ids.control),
+  )
 })
 
 test('color picker fills the format select and switches format', async () => {

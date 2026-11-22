@@ -19,7 +19,7 @@ export const useColorPicker = (props?: MaybeAccessor<UseColorPickerProps>): UseC
     id,
     ids: {
       label: field?.().ids.label,
-      input: field?.().ids.control,
+      hiddenInput: field?.().ids.control,
     },
     dir: locale().dir,
     disabled: field?.().disabled,

@@ -58,6 +58,10 @@ const WithField = (props: Field.RootProps) => (
 )
 
 describe('Color Picker / Field', () => {
+  it('should give the hidden input the field control id', async () => {
+    const { container } = render(() => <WithField />)
+    await waitFor(() => expect(container.querySelector('input[tabindex="-1"]')?.id).toMatch(/:control$/))
+  })
   it('should describe the trigger and channel input with the helper and error text', async () => {
     render(() => <WithField invalid />)
     await waitFor(() =>

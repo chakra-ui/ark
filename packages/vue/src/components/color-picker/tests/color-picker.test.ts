@@ -49,6 +49,10 @@ describe('ColorPicker', () => {
 })
 
 describe('Color Picker / Field', () => {
+  it('should give the hidden input the field control id', async () => {
+    const { container } = render(ColorPickerWithField)
+    await waitFor(() => expect(container.querySelector('input[tabindex="-1"]')?.id).toMatch(/:control$/))
+  })
   it('should set color picker as required', async () => {
     render(ColorPickerWithField, { props: { required: true } })
     expect(screen.getByRole('textbox', { name: /label/i })).toBeRequired()

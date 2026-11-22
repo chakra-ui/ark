@@ -64,6 +64,10 @@ const WithField = (props: Field.RootProps) => (
 )
 
 describe('Color Picker / Field', () => {
+  it('should give the hidden input the field control id', async () => {
+    const { container } = render(<WithField />)
+    expect(container.querySelector('input[tabindex="-1"]')?.id).toMatch(/:control$/)
+  })
   it('should set color picker as required', async () => {
     render(<WithField required />)
     expect(screen.getByRole('textbox', { name: /label/i })).toBeRequired()

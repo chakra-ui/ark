@@ -32,7 +32,7 @@ export const useColorPicker = (
       id,
       ids: {
         label: field?.value.ids.label,
-        input: field?.value.ids.control,
+        hiddenInput: field?.value.ids.control,
       },
       disabled: field?.value.disabled,
       invalid: field?.value.invalid,
