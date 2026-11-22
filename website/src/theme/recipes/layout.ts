@@ -7,15 +7,14 @@ export const layout = defineSlotRecipe({
   slots: ['aside', 'main'],
   base: {
     aside: {
-      borderRightWidth: '1px',
       display: { base: 'none', md: 'block' },
       position: 'sticky',
       top: belowBars,
       height: `calc(100vh - ${belowBars})`,
       flexShrink: '0',
-      width: '18rem',
-      ps: '8',
-      pe: '6',
+      width: '15rem',
+      ps: '6',
+      pe: '4',
       pt: '8',
       pb: '10',
       overflowY: 'auto',

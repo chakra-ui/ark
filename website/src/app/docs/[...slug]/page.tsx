@@ -24,7 +24,8 @@ interface Props {
 
 const articleClass = css({
   position: 'relative',
-  lineHeight: '1.75',
+  fontSize: '0.9375rem',
+  lineHeight: '1.7',
   color: 'var(--colors-prose-body)',
   maxW: '45rem',
   mx: 'auto',
@@ -56,10 +57,10 @@ export default async function Page(props: Props) {
     <Container display="flex" py="12" gap="8" justifyContent="center">
       <Stack gap="16" px={{ base: '0', xl: '8' }} width="full">
         <article className={articleClass}>
-          <Heading as="h1" fontWeight="bold" size="4xl">
+          <Heading as="h1" fontWeight="semibold" size="3xl" letterSpacing="-0.02em">
             {meta.title === 'Introduction' ? 'Welcome to Ark UI' : meta.title}
           </Heading>
-          <Text className="lead" color="fg.muted" my="6" size="xl">
+          <Text className="lead" color="fg.muted" mt="3" mb="8" fontSize="inherit" lineHeight="inherit">
             {meta.description}
           </Text>
           <Box position={{ md: 'absolute' }} top="2" right="2">

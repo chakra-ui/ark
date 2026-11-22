@@ -62,7 +62,7 @@ export const globalCss = defineGlobalStyles({
     '--colors-prose-heading': 'colors.fg.default',
     '--colors-prose-bold': 'colors.fg.default',
     '--colors-prose-link': 'colors.fg.default',
-    '--colors-prose-code': 'colors.fg.muted',
+    '--colors-prose-code': 'colors.fg.default',
     '--colors-prose-hr-border': 'colors.border.subtle',
     '--colors-prose-quote-border': 'colors.accent.default',
   },

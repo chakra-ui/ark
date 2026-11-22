@@ -14,8 +14,6 @@ export const frameworkLabels: Record<Framework, string> = {
 
 export const isFramework = (value: string | undefined): value is Framework => frameworks.includes(value as Framework)
 
-export const hasPlusExamples = (framework: Framework) => framework !== 'web'
-
 const unavailableDocs: Partial<Record<Framework, string[]>> = {
   web: [
     'overview/changelog',
@@ -36,7 +34,9 @@ export const filterSidebarTabs = (tabs: SidebarTab[], framework: Framework): Sid
     const groups = tab.groups
       .map((group) => ({ ...group, items: group.items.filter((item) => isDocAvailable(framework, item.slug)) }))
       .filter((group) => group.items.length > 0)
-    return groups.length > 0 ? [{ ...tab, groups, landingSlug: groups[0].items[0].slug }] : []
+    if (groups.length === 0) return []
+    const landingSlug = groups.find((group) => group.link)?.link?.slug ?? groups[0].items[0].slug
+    return [{ ...tab, groups, landingSlug }]
   })
 
 export const extractFramework = (segments: string[]): { framework: Framework; slug: string[] } => {
@@ -46,11 +46,8 @@ export const extractFramework = (segments: string[]): { framework: Framework; sl
 }
 
 export const docsHref = (framework: Framework, slug: string) => `/docs/${framework}/${slug}`
-export const examplesHref = (framework: Framework, id: string) => `/examples/${framework}/${id}`
 
 export const frameworkFromPathname = (pathname: string): Framework => {
   const segments = pathname.split('/').filter(Boolean)
-  return segments[0] === 'docs' || segments[0] === 'examples'
-    ? extractFramework(segments.slice(1)).framework
-    : defaultFramework
+  return segments[0] === 'docs' ? extractFramework(segments.slice(1)).framework : defaultFramework
 }

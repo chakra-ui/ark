@@ -11,6 +11,7 @@ export interface SidebarItem {
 
 export interface SidebarGroup {
   title: string
+  link?: SidebarItem
   items: SidebarItem[]
 }
 
@@ -44,24 +45,31 @@ const resolveMeta = (id: string): PageMeta | undefined => {
   }
 }
 
+const resolveItem = (id: string, title?: string): SidebarItem | undefined => {
+  const meta = resolveMeta(id)
+  return meta ? { id: meta.id, title: title ?? meta.title, slug: meta.slug, status: meta.status } : undefined
+}
+
 const resolveGroups = (groups: SidebarGroupConfig[]): SidebarGroup[] =>
   groups
     .map((group) => ({
       title: group.title,
-      items: group.items.flatMap((item) => {
-        const meta = resolveMeta(item.id)
-        return meta ? [{ id: meta.id, title: item.title ?? meta.title, slug: meta.slug, status: meta.status }] : []
-      }),
+      link: group.id ? resolveItem(group.id) : undefined,
+      items: group.items.flatMap((item) => resolveItem(item.id, item.title) ?? []),
     }))
     .filter((group) => group.items.length > 0)
+
+export const groupPages = (group: SidebarGroup): SidebarItem[] =>
+  group.link ? [group.link, ...group.items] : group.items
 
 export const getSidebarTabs = (): SidebarTab[] =>
   sidebarConfig
     .map((tab) => {
       const groups = resolveGroups(tab.groups)
-      const slugs = groups.flatMap((group) => group.items.map((item) => item.slug))
+      const slugs = groups.flatMap((group) => groupPages(group).map((item) => item.slug))
       const categories = [...new Set(slugs.map((slug) => slug.split('/')[0]))]
-      return { key: tab.key, title: tab.title, categories, landingSlug: slugs[0], groups }
+      const landingSlug = groups.find((group) => group.link)?.link?.slug ?? slugs[0]
+      return { key: tab.key, title: tab.title, categories, landingSlug, groups }
     })
     .filter((tab) => tab.groups.length > 0)
 
@@ -72,10 +80,9 @@ export const getSidebarGroupsWithPages = (): SidebarGroupWithPages[] =>
     .flatMap((tab) => tab.groups)
     .map((group) => ({
       title: group.title,
-      items: group.items.flatMap((item) => {
-        const meta = resolveMeta(item.id)
-        return meta ? [meta] : []
-      }),
+      items: [...(group.id ? [group.id] : []), ...group.items.map((item) => item.id)].flatMap(
+        (id) => resolveMeta(id) ?? [],
+      ),
     }))
     .filter((group) => group.items.length > 0)
 

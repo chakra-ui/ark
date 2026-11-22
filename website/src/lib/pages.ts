@@ -3,7 +3,7 @@ import 'server-only'
 import { CHANGELOG_META, isChangelogSlug } from './changelog'
 import { type Framework, defaultFramework, isDocAvailable } from './frameworks'
 import type { PageMeta } from './source'
-import { getSidebarGroupsWithPages, getSidebarTabs } from './sidebar'
+import { getSidebarGroupsWithPages, getSidebarTabs, groupPages } from './sidebar'
 
 const orderedPages = getSidebarGroupsWithPages().flatMap((group) => group.items)
 const uniqueOrderedPages = orderedPages.filter(
@@ -12,7 +12,7 @@ const uniqueOrderedPages = orderedPages.filter(
 
 const tabOrders = getSidebarTabs().map((tab) => ({
   categories: tab.categories,
-  items: tab.groups.flatMap((group) => group.items),
+  items: tab.groups.flatMap(groupPages),
 }))
 
 export function getPageBySlug(slug: string[]): PageMeta | undefined {

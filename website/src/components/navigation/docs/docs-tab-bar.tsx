@@ -1,5 +1,5 @@
 'use client'
-import { BlocksIcon, BookOpenIcon, HeartIcon, WrenchIcon } from 'lucide-react'
+import { BlocksIcon, HeartIcon, RocketIcon, WrenchIcon } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -14,7 +14,7 @@ import { VersionSelect } from '../version-select'
 const styles = tabBar()
 
 const icons: Record<string, LucideIcon> = {
-  guides: BookOpenIcon,
+  guides: RocketIcon,
   components: BlocksIcon,
   utilities: WrenchIcon,
 }

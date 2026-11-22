@@ -46,11 +46,13 @@ export const table = defineSlotRecipe({
   variants: {
     variant: {
       outline: {
-        root: {
-          borderWidth: '1px',
+        header: {
+          fontWeight: 'normal',
+          fontSize: '13px',
+          height: '10',
         },
-        head: {
-          bg: 'bg.subtle',
+        row: {
+          borderColor: 'border.subtle',
         },
       },
       plain: {

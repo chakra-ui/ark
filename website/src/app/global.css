@@ -29,35 +29,43 @@ body {
   }
 }
 
-.scroller {
-  --scroller-thumb: var(--colors-gray-7);
-  --scroller-thumb-hover: var(--colors-gray-8);
-  --scroller-scrollbar-color: var(--colors-gray-7);
+.scroller,
+pre {
+  --scroller-thumb: rgb(0 0 0 / 0.14);
+  --scroller-thumb-hover: rgb(0 0 0 / 0.28);
 
   scrollbar-width: thin;
-  scrollbar-color: var(--scroller-scrollbar-color) transparent;
+  scrollbar-color: var(--scroller-thumb) transparent;
 
-  &::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  &:hover {
+    scrollbar-color: var(--scroller-thumb-hover) transparent;
   }
 
-  &::-webkit-scrollbar-track {
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-corner {
     background: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
     background-color: var(--scroller-thumb);
-    border-radius: 4px;
+    background-clip: padding-box;
+    border: 3px solid transparent;
+    border-radius: 9999px;
 
     &:hover {
       background-color: var(--scroller-thumb-hover);
     }
   }
+}
 
-  &[data-color-scheme='dark'] {
-    --scroller-thumb: var(--colors-gray-dark-7);
-    --scroller-thumb-hover: var(--colors-gray-dark-8);
-    --scroller-scrollbar-color: var(--colors-gray-dark-7);
-  }
+.scroller[data-color-scheme='dark'],
+pre,
+.dark .scroller {
+  --scroller-thumb: rgb(255 255 255 / 0.12);
+  --scroller-thumb-hover: rgb(255 255 255 / 0.28);
 }

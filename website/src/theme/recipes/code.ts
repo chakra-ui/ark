@@ -18,10 +18,13 @@ export const code = defineRecipe({
   },
   variants: {
     variant: {
-      outline: {
-        borderWidth: '1px',
+      outline: {},
+      ghost: {
+        bg: 'transparent',
+        px: '0!',
+        display: 'inline',
+        whiteSpace: 'pre-wrap',
       },
-      ghost: {},
     },
     size: {
       sm: {

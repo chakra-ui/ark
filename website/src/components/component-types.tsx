@@ -59,7 +59,7 @@ export const ComponentTypes = async (props: Props) => {
     .sort(([key]) => (key === 'Root' ? -1 : 1))
     .map(([key, types]) => (
       <Fragment key={key}>
-        <Heading as="h3" size="xl">
+        <Heading as="h3" size="md">
           {key}
         </Heading>
         {types.tag && (

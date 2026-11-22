@@ -31,14 +31,14 @@ export const DataAttrTable = (props: Props) => {
   }
 
   return (
-    <Box borderWidth="1px" borderRadius="lg" overflowX="auto" className="not-prose" my="8">
+    <Box borderRadius="lg" overflowX="auto" className="not-prose" my="8">
       <Table.Root variant="outline" size="sm" border={0}>
         <Table.Head>
           <Table.Row>
-            <Table.Header px="4" bg="gray.2" h="10">
+            <Table.Header px="4" h="10">
               Attribute
             </Table.Header>
-            <Table.Header px="4" bg="gray.2" h="10">
+            <Table.Header px="4" h="10">
               Description
             </Table.Header>
           </Table.Row>
@@ -47,7 +47,7 @@ export const DataAttrTable = (props: Props) => {
           {Object.entries(properties).map(([key, value]) => (
             <Table.Row key={key}>
               <Table.Cell px="4" py="2">
-                <Code size="sm" color="colorPalette.default">
+                <Code size="sm" variant="ghost" fontWeight="semibold!">
                   [{key}]
                 </Code>
               </Table.Cell>

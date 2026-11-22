@@ -4,6 +4,7 @@ import { Grid } from 'styled-system/jsx'
 import { defaultFramework, docsHref, isDocAvailable } from '~/lib/frameworks'
 import { getServerContext } from '~/lib/server-context'
 import { getSidebarTabs } from '~/lib/sidebar'
+import { NewMarker } from './new-marker'
 
 const link = css({
   color: 'fg.default',
@@ -15,8 +16,6 @@ const link = css({
   _hover: { textDecoration: 'underline', textUnderlineOffset: '4px' },
 })
 
-const dot = css({ boxSize: '2', rounded: 'full', bg: 'colorPalette.default' })
-
 interface Props {
   tab?: string
 }
@@ -26,7 +25,8 @@ export const ComponentGrid = ({ tab = 'components' }: Props) => {
   const active = getSidebarTabs().find((entry) => entry.key === tab)
   const items = (active?.groups ?? [])
     .flatMap((group) => group.items)
-    .filter((item) => !item.slug.endsWith('/overview') && isDocAvailable(framework, item.slug))
+    .filter((item) => item.slug.startsWith(`${tab}/`) && !item.slug.endsWith('/overview'))
+    .filter((item) => isDocAvailable(framework, item.slug))
     .sort((a, b) => a.title.localeCompare(b.title))
 
   return (
@@ -34,7 +34,7 @@ export const ComponentGrid = ({ tab = 'components' }: Props) => {
       {items.map((item) => (
         <NextLink key={item.slug} href={docsHref(framework, item.slug)} className={link}>
           {item.title}
-          {item.status === 'new' && <span className={dot} role="img" aria-label="New" />}
+          {item.status === 'new' && <NewMarker />}
         </NextLink>
       ))}
     </Grid>

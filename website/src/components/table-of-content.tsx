@@ -48,7 +48,7 @@ export const TableOfContent = (props: Props) => {
 
   return (
     <nav ref={navRef}>
-      <Text textStyle="sm" fontWeight="semibold" py="1.5" borderLeftWidth="1px" ps="4">
+      <Text textStyle="sm" fontWeight="semibold" py="1.5" ps="4">
         On this page
       </Text>
       <SegmentGroup.Root
@@ -57,6 +57,7 @@ export const TableOfContent = (props: Props) => {
         orientation="vertical"
         size={{ base: 'md', md: 'sm' }}
         gap="0"
+        borderLeftWidth="0"
       >
         {entries.map((entry) => (
           <a key={entry.url} href={entry.url} style={{ display: 'flex', width: 'fit-content' }}>

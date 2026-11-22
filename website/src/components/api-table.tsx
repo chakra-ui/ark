@@ -17,14 +17,14 @@ export const ApiTable = (props: Props) => {
   const { api } = props
 
   return (
-    <Box borderWidth="1px" borderRadius="lg" overflowX="auto" className="not-prose" my="8">
+    <Box borderRadius="lg" overflowX="auto" className="not-prose" my="8">
       <Table.Root variant="outline" size="sm" border={0}>
         <Table.Head>
           <Table.Row>
-            <Table.Header px="4" bg="gray.2" h="10">
+            <Table.Header px="4" h="10">
               Property
             </Table.Header>
-            <Table.Header px="4" bg="gray.2" h="10">
+            <Table.Header px="4" h="10">
               Type
             </Table.Header>
           </Table.Row>
@@ -32,14 +32,16 @@ export const ApiTable = (props: Props) => {
         <Table.Body>
           {Object.entries(api).map(([name, property]) => (
             <Table.Row key={name}>
-              <Table.Cell width="36" px="4" py="2" verticalAlign="top">
-                <Code size="sm" color="colorPalette.default">
+              <Table.Cell width="36" px="4" py="2.5" verticalAlign="top">
+                <Code size="sm" variant="ghost" fontWeight="semibold!">
                   {name}
                 </Code>
               </Table.Cell>
-              <Table.Cell px="4" py="2" verticalAlign="top">
+              <Table.Cell px="4" py="2.5" verticalAlign="top">
                 <Stack gap="1" align="start">
-                  <Code size="sm">{property.type}</Code>
+                  <Code size="sm" variant="ghost">
+                    {property.type}
+                  </Code>
                   <Text>{property.description}</Text>
                 </Stack>
               </Table.Cell>

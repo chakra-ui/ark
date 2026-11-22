@@ -57,11 +57,12 @@ const H1 = styled('h1', {
 
 const H2 = styled('h2', {
   base: {
-    fontSize: '1.5em',
-    marginTop: '2em',
-    marginBottom: '1em',
-    lineHeight: '1.3333333',
-    fontWeight: '700',
+    fontSize: '1.3333333em',
+    marginTop: '2.25em',
+    marginBottom: '0.75em',
+    lineHeight: '1.4',
+    fontWeight: '600',
+    letterSpacing: '-0.01em',
     color: 'var(--colors-prose-heading)',
     '& strong': {
       fontWeight: '800',
@@ -78,10 +79,10 @@ const H2 = styled('h2', {
 
 const H3 = styled('h3', {
   base: {
-    fontSize: '1.25em',
-    lineHeight: '1.6',
-    marginTop: '1.6em',
-    marginBottom: '0.6em',
+    fontSize: '1.0666667em',
+    lineHeight: '1.5',
+    marginTop: '2em',
+    marginBottom: '0.5em',
     fontWeight: '600',
     color: 'var(--colors-prose-heading)',
     '& strong': {
@@ -389,9 +390,8 @@ const Tfoot = styled('tfoot', {
 const Code = styled('code', {
   base: {
     color: 'var(--colors-prose-code)',
-    fontWeight: '600',
-    borderWidth: '1px',
-    fontSize: '0.875em',
+    fontWeight: '500',
+    fontSize: '0.8666667em',
     padding: '0.125em 0.25em',
     borderRadius: '0.25em',
     backgroundColor: 'gray.a2',

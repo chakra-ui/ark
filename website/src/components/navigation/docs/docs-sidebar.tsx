@@ -2,10 +2,10 @@
 import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
-import { Badge } from '~/components/ui/badge'
 import { getActiveTab } from '~/lib/active-tab'
 import { docsHref, filterSidebarTabs, frameworkFromPathname } from '~/lib/frameworks'
 import type { SidebarTab } from '~/lib/sidebar'
+import { NewMarker } from '../../new-marker'
 import { recipe } from '../sidebar.recipe'
 
 const styles = recipe()
@@ -33,7 +33,17 @@ export const DocsSidebar = (props: Props) => {
       <div className={styles.root}>
         {groups.map((group) => (
           <div key={group.title} className={styles.group}>
-            <p className={styles.label}>{group.title}</p>
+            {group.link ? (
+              <NextLink
+                href={docsHref(framework, group.link.slug)}
+                aria-current={pathname === docsHref(framework, group.link.slug) ? 'page' : undefined}
+                className={styles.label}
+              >
+                {group.title}
+              </NextLink>
+            ) : (
+              <p className={styles.label}>{group.title}</p>
+            )}
             <ul className={styles.list}>
               {group.items.map((item) => {
                 const href = docsHref(framework, item.slug)
@@ -51,22 +61,7 @@ export const DocsSidebar = (props: Props) => {
                       className={styles.link}
                     >
                       {item.title}
-                      {item.status && (
-                        <Badge
-                          textTransform="capitalize"
-                          size="sm"
-                          data-status={item.status}
-                          css={{
-                            '&[data-status=new]': {
-                              bg: 'colorPalette.default',
-                              color: 'colorPalette.fg',
-                              borderColor: 'transparent',
-                            },
-                          }}
-                        >
-                          {item.status}
-                        </Badge>
-                      )}
+                      {item.status === 'new' && <NewMarker />}
                     </NextLink>
                   </li>
                 )

@@ -15,7 +15,7 @@ export const ContextType = (props: Props) => {
       <Fragment>
         {apiDoc.api && Object.keys(apiDoc.api).length > 0 && (
           <>
-            <Heading as="h3" size="xl">
+            <Heading as="h3" size="md">
               API
             </Heading>
             <ApiTable api={apiDoc.api} />

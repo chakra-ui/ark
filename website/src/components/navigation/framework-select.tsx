@@ -7,12 +7,10 @@ import { Select } from '~/components/ui/select'
 import {
   type Framework,
   docsHref,
-  examplesHref,
   extractFramework,
   frameworkFromPathname,
   frameworkLabels,
   frameworks,
-  hasPlusExamples,
   isDocAvailable,
 } from '~/lib/frameworks'
 
@@ -28,10 +26,6 @@ export const FrameworkSelect = () => {
   const onValueChange = (next: Framework) => {
     const segments = pathname.split('/').filter(Boolean)
     const { slug } = extractFramework(segments.slice(1))
-    if (segments[0] === 'examples' && hasPlusExamples(next)) {
-      router.push(examplesHref(next, slug[0] ?? ''))
-      return
-    }
     const docSlug = segments[0] === 'docs' ? slug.join('/') : ''
     router.push(docsHref(next, docSlug && isDocAvailable(next, docSlug) ? docSlug : 'overview/getting-started'))
   }
@@ -43,7 +37,7 @@ export const FrameworkSelect = () => {
       size={{ base: 'md', md: 'sm' }}
       collection={collection}
       variant="ghost"
-      positioning={{ placement: 'bottom-end', sameWidth: true }}
+      positioning={{ placement: 'bottom-end' }}
     >
       <Select.Control py={{ base: '1', md: '0' }}>
         <Select.Trigger
@@ -60,10 +54,10 @@ export const FrameworkSelect = () => {
         </Select.Trigger>
       </Select.Control>
       <Select.Positioner>
-        <Select.Content minW="28">
+        <Select.Content minW="40">
           {collection.items.map((item) => (
             <Select.Item key={item.value} item={item}>
-              <Select.ItemText>{item.label}</Select.ItemText>
+              <Select.ItemText whiteSpace="nowrap">{item.label}</Select.ItemText>
               <Select.ItemIndicator>
                 <CheckIcon />
               </Select.ItemIndicator>
