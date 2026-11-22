@@ -126,6 +126,30 @@ test('the store tracks which keys are held', async () => {
   unsubscribe()
 })
 
+test('subscribers see pressed keys and registered commands change', async () => {
+  const store = getHotkeyStore()
+  const pressed: string[][] = []
+  const labels: string[][] = []
+  const offKeys = store.subscribe(
+    (state) => state.pressedKeys,
+    (keys) => pressed.push([...keys]),
+  )
+  const offCommands = store.subscribe(
+    (state) => state.commands,
+    (commands) => labels.push(Array.from(commands.values(), (command) => command.label ?? '')),
+  )
+
+  await user.keyboard('{Shift>}{/Shift}')
+  const off = createHotkey('mod+s', () => {}, { label: 'Save' })
+  off()
+
+  expect(pressed).toEqual([['Shift'], []])
+  expect(labels).toEqual([['Save'], []])
+
+  offKeys()
+  offCommands()
+})
+
 test('formatHotkey renders platform-aware labels', () => {
   expect(formatHotkey('mod+K', { platform: 'mac' })).toBe('⌘ K')
   expect(formatHotkey('mod+K', { platform: 'windows' })).toBe('Ctrl K')

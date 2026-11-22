@@ -1,0 +1,271 @@
+diff --git a/node_modules/@zag-js/hotkeys/.bun-tag-f5c6c40f1e568f67 b/.bun-tag-f5c6c40f1e568f67
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/dist/store.js b/dist/store.js
+index e2def2bf50a87ae5805351e9d13edb5ed6595785..bde1bdde03040b4f64405d45400a8f98ee198e18 100644
+--- a/dist/store.js
++++ b/dist/store.js
+@@ -75,13 +75,13 @@ var HotkeyStore = class {
+ 		return this;
+ 	}
+ 	addScope(scope) {
+-		this.state.activeScopes.add(scope);
++		this.state.activeScopes = withItem(this.state.activeScopes, scope);
+ 		this.clearAllSequences();
+ 		this.notifySubscribers();
+ 		return this;
+ 	}
+ 	removeScope(scope) {
+-		this.state.activeScopes.delete(scope);
++		this.state.activeScopes = withoutItem(this.state.activeScopes, scope);
+ 		this.clearAllSequences();
+ 		this.notifySubscribers();
+ 		return this;
+@@ -93,8 +93,8 @@ var HotkeyStore = class {
+ 		return this.state;
+ 	}
+ 	toggleScope(scope) {
+-		if (this.state.activeScopes.has(scope)) this.state.activeScopes.delete(scope);
+-		else this.state.activeScopes.add(scope);
++		if (this.state.activeScopes.has(scope)) this.state.activeScopes = withoutItem(this.state.activeScopes, scope);
++		else this.state.activeScopes = withItem(this.state.activeScopes, scope);
+ 		this.clearAllSequences();
+ 		this.notifySubscribers();
+ 		return this;
+@@ -114,6 +114,7 @@ var HotkeyStore = class {
+ 	}
+ 	register(commands) {
+ 		const commandArray = require_utils.toArray(commands);
++		this.state.commands = new Map(this.state.commands);
+ 		for (const command of commandArray) {
+ 			const scopes = command.scopes ? require_utils.toArray(command.scopes) : DEFAULT_SCOPES;
+ 			const parsed = require_parser.parseHotkey(command.hotkey, this.platform);
+@@ -149,6 +150,7 @@ var HotkeyStore = class {
+ 	unregister(id) {
+ 		const command = this.state.commands.get(id);
+ 		if (command) {
++			this.state.commands = new Map(this.state.commands);
+ 			this.state.commands.delete(id);
+ 			this.commandOptionOverrides.delete(id);
+ 			this.firedCommands.delete(id);
+@@ -162,7 +164,7 @@ var HotkeyStore = class {
+ 	enable(id) {
+ 		const command = this.state.commands.get(id);
+ 		if (command) {
+-			command.enabled = true;
++			this.state.commands = new Map(this.state.commands).set(id, { ...command, enabled: true });
+ 			this.updateListeners();
+ 			this.notifySubscribers();
+ 		}
+@@ -171,7 +173,7 @@ var HotkeyStore = class {
+ 	disable(id) {
+ 		const command = this.state.commands.get(id);
+ 		if (command) {
+-			command.enabled = false;
++			this.state.commands = new Map(this.state.commands).set(id, { ...command, enabled: false });
+ 			this.updateListeners();
+ 			this.notifySubscribers();
+ 		}
+@@ -180,7 +182,7 @@ var HotkeyStore = class {
+ 	setEnabled(id, enabled) {
+ 		const command = this.state.commands.get(id);
+ 		if (command) {
+-			command.enabled = enabled;
++			this.state.commands = new Map(this.state.commands).set(id, { ...command, enabled: enabled });
+ 			this.updateListeners();
+ 			this.notifySubscribers();
+ 		}
+@@ -188,10 +190,10 @@ var HotkeyStore = class {
+ 	}
+ 	clear() {
+ 		this.clearAllSequences();
+-		this.state.commands.clear();
++		this.state.commands = new Map();
+ 		this.commandOptionOverrides.clear();
+-		this.state.pressedKeys.clear();
+-		this.state.pressedCodes.clear();
++		this.state.pressedKeys = new Set();
++		this.state.pressedCodes = new Set();
+ 		this.firedCommands.clear();
+ 		this.hasKeyupCommands = false;
+ 		this.updateListeners();
+@@ -363,14 +365,14 @@ var HotkeyStore = class {
+ 		if (typeof event.key !== "string" || event.key.length === 0) return;
+ 		if (this.hasKeyupCommands) this.executeMatchingCommands(event, capture, "keyup");
+ 		const eventKey = require_normalize.normalizeKey(event.key);
+-		this.state.pressedKeys.delete(eventKey);
+-		if (event.code) this.state.pressedCodes.delete(event.code);
++		this.state.pressedKeys = withoutItem(this.state.pressedKeys, eventKey);
++		if (event.code) this.state.pressedCodes = withoutItem(this.state.pressedCodes, event.code);
+ 		if (this.firedCommands.size > 0) this.firedCommands.clear();
+ 		this.notifySubscribers();
+ 	}
+ 	handleBlur() {
+-		this.state.pressedKeys.clear();
+-		this.state.pressedCodes.clear();
++		this.state.pressedKeys = new Set();
++		this.state.pressedCodes = new Set();
+ 		this.firedCommands.clear();
+ 		this.clearAllSequences();
+ 		this.notifySubscribers();
+@@ -380,8 +382,8 @@ var HotkeyStore = class {
+ 		if (event.key === "Dead") return;
+ 		const eventKey = require_normalize.normalizeKey(event.key);
+ 		if (eventType === "keydown") {
+-			this.state.pressedKeys.add(eventKey);
+-			if (event.code) this.state.pressedCodes.add(event.code);
++			this.state.pressedKeys = withItem(this.state.pressedKeys, eventKey);
++			if (event.code) this.state.pressedCodes = withItem(this.state.pressedCodes, event.code);
+ 			this.notifySubscribers();
+ 		}
+ 		const matches = [];
+@@ -475,6 +477,15 @@ var HotkeyStore = class {
+ 		}
+ 	}
+ };
++function withItem(set, item) {
++	return set.has(item) ? set : new Set(set).add(item);
++}
++function withoutItem(set, item) {
++	if (!set.has(item)) return set;
++	const next = new Set(set);
++	next.delete(item);
++	return next;
++}
+ function createHotkeyStore(options) {
+ 	const store = new HotkeyStore(options);
+ 	if (options?.target) store.init(options);
+diff --git a/dist/store.mjs b/dist/store.mjs
+index b7ddb9d886234e64869f2020c561f27d501bc81f..ccaf77b8e22e45103914f20eb8d89849d0d14320 100644
+--- a/dist/store.mjs
++++ b/dist/store.mjs
+@@ -71,13 +71,13 @@ var HotkeyStore = class {
+ 		return this;
+ 	}
+ 	addScope(scope) {
+-		this.state.activeScopes.add(scope);
++		this.state.activeScopes = withItem(this.state.activeScopes, scope);
+ 		this.clearAllSequences();
+ 		this.notifySubscribers();
+ 		return this;
+ 	}
+ 	removeScope(scope) {
+-		this.state.activeScopes.delete(scope);
++		this.state.activeScopes = withoutItem(this.state.activeScopes, scope);
+ 		this.clearAllSequences();
+ 		this.notifySubscribers();
+ 		return this;
+@@ -89,8 +89,8 @@ var HotkeyStore = class {
+ 		return this.state;
+ 	}
+ 	toggleScope(scope) {
+-		if (this.state.activeScopes.has(scope)) this.state.activeScopes.delete(scope);
+-		else this.state.activeScopes.add(scope);
++		if (this.state.activeScopes.has(scope)) this.state.activeScopes = withoutItem(this.state.activeScopes, scope);
++		else this.state.activeScopes = withItem(this.state.activeScopes, scope);
+ 		this.clearAllSequences();
+ 		this.notifySubscribers();
+ 		return this;
+@@ -110,6 +110,7 @@ var HotkeyStore = class {
+ 	}
+ 	register(commands) {
+ 		const commandArray = toArray(commands);
++		this.state.commands = new Map(this.state.commands);
+ 		for (const command of commandArray) {
+ 			const scopes = command.scopes ? toArray(command.scopes) : DEFAULT_SCOPES;
+ 			const parsed = parseHotkey(command.hotkey, this.platform);
+@@ -145,6 +146,7 @@ var HotkeyStore = class {
+ 	unregister(id) {
+ 		const command = this.state.commands.get(id);
+ 		if (command) {
++			this.state.commands = new Map(this.state.commands);
+ 			this.state.commands.delete(id);
+ 			this.commandOptionOverrides.delete(id);
+ 			this.firedCommands.delete(id);
+@@ -158,7 +160,7 @@ var HotkeyStore = class {
+ 	enable(id) {
+ 		const command = this.state.commands.get(id);
+ 		if (command) {
+-			command.enabled = true;
++			this.state.commands = new Map(this.state.commands).set(id, { ...command, enabled: true });
+ 			this.updateListeners();
+ 			this.notifySubscribers();
+ 		}
+@@ -167,7 +169,7 @@ var HotkeyStore = class {
+ 	disable(id) {
+ 		const command = this.state.commands.get(id);
+ 		if (command) {
+-			command.enabled = false;
++			this.state.commands = new Map(this.state.commands).set(id, { ...command, enabled: false });
+ 			this.updateListeners();
+ 			this.notifySubscribers();
+ 		}
+@@ -176,7 +178,7 @@ var HotkeyStore = class {
+ 	setEnabled(id, enabled) {
+ 		const command = this.state.commands.get(id);
+ 		if (command) {
+-			command.enabled = enabled;
++			this.state.commands = new Map(this.state.commands).set(id, { ...command, enabled: enabled });
+ 			this.updateListeners();
+ 			this.notifySubscribers();
+ 		}
+@@ -184,10 +186,10 @@ var HotkeyStore = class {
+ 	}
+ 	clear() {
+ 		this.clearAllSequences();
+-		this.state.commands.clear();
++		this.state.commands = new Map();
+ 		this.commandOptionOverrides.clear();
+-		this.state.pressedKeys.clear();
+-		this.state.pressedCodes.clear();
++		this.state.pressedKeys = new Set();
++		this.state.pressedCodes = new Set();
+ 		this.firedCommands.clear();
+ 		this.hasKeyupCommands = false;
+ 		this.updateListeners();
+@@ -359,14 +361,14 @@ var HotkeyStore = class {
+ 		if (typeof event.key !== "string" || event.key.length === 0) return;
+ 		if (this.hasKeyupCommands) this.executeMatchingCommands(event, capture, "keyup");
+ 		const eventKey = normalizeKey(event.key);
+-		this.state.pressedKeys.delete(eventKey);
+-		if (event.code) this.state.pressedCodes.delete(event.code);
++		this.state.pressedKeys = withoutItem(this.state.pressedKeys, eventKey);
++		if (event.code) this.state.pressedCodes = withoutItem(this.state.pressedCodes, event.code);
+ 		if (this.firedCommands.size > 0) this.firedCommands.clear();
+ 		this.notifySubscribers();
+ 	}
+ 	handleBlur() {
+-		this.state.pressedKeys.clear();
+-		this.state.pressedCodes.clear();
++		this.state.pressedKeys = new Set();
++		this.state.pressedCodes = new Set();
+ 		this.firedCommands.clear();
+ 		this.clearAllSequences();
+ 		this.notifySubscribers();
+@@ -376,8 +378,8 @@ var HotkeyStore = class {
+ 		if (event.key === "Dead") return;
+ 		const eventKey = normalizeKey(event.key);
+ 		if (eventType === "keydown") {
+-			this.state.pressedKeys.add(eventKey);
+-			if (event.code) this.state.pressedCodes.add(event.code);
++			this.state.pressedKeys = withItem(this.state.pressedKeys, eventKey);
++			if (event.code) this.state.pressedCodes = withItem(this.state.pressedCodes, event.code);
+ 			this.notifySubscribers();
+ 		}
+ 		const matches = [];
+@@ -471,6 +473,15 @@ var HotkeyStore = class {
+ 		}
+ 	}
+ };
++function withItem(set, item) {
++	return set.has(item) ? set : new Set(set).add(item);
++}
++function withoutItem(set, item) {
++	if (!set.has(item)) return set;
++	const next = new Set(set);
++	next.delete(item);
++	return next;
++}
+ function createHotkeyStore(options) {
+ 	const store = new HotkeyStore(options);
+ 	if (options?.target) store.init(options);

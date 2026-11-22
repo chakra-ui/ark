@@ -57,6 +57,6 @@ export function mount(root: HTMLElement) {
   renderPressedKeys()
   renderShift()
 
-  store.subscribe((state) => [...state.pressedKeys].join('|'), renderPressedKeys)
+  store.subscribe((state) => state.pressedKeys, renderPressedKeys)
   store.subscribe(() => store.isPressed('shift'), renderShift)
 }
