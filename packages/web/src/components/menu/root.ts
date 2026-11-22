@@ -1,19 +1,15 @@
 import * as menu from '@zag-js/menu'
 
 import { controlled, positioning, positioningAttributes, str } from '../../utils/attrs.js'
-import { rootOf, type RootElement } from '../../utils/define.js'
 import { definePresenceRoot } from '../../utils/presence.js'
-import { link, menubarOf, queries, root, submenus } from './shared.js'
-
-function clearQuery(el: RootElement<menu.Api>) {
-  if (!queries.delete(el)) return
-  for (const input of el.querySelectorAll<HTMLInputElement>('ark-menu-input > input')) {
-    if (rootOf(input, root) === el) input.value = ''
-  }
-}
+import { collection, link, menubarOf, root, submenus } from './shared.js'
 
 definePresenceRoot<menu.Api>({
   properties: ['scrollToIndexFn', 'initialFocusEl', 'finalFocusEl', 'navigate', 'ids', 'positioning'],
+  ownProperties: ['collection'],
+  propertyChanged: (el, name) => {
+    if (name === 'collection') collection.update(el)
+  },
 
   tag: root,
   machine: menu.machine,
@@ -43,6 +39,7 @@ definePresenceRoot<menu.Api>({
     typeahead: el.getAttribute('typeahead') !== 'false',
     positioning: positioning(el),
     menubar: menubarOf(el),
+    collection: (el as { collection?: unknown }).collection ? collection.get(el) : undefined,
   }),
   events: {
     onHighlightChange: 'highlightchange',
@@ -55,9 +52,9 @@ definePresenceRoot<menu.Api>({
     onFocusOutside: 'focusoutside',
     onInteractOutside: 'interactoutside',
   },
+  setup: (el) => collection.setup(el),
   started: link,
-  render: (api, el) => {
-    if (!api.open) clearQuery(el)
+  render: (_api, el) => {
     for (const child of submenus.get(el) ?? []) child.render()
   },
 })

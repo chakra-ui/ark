@@ -1,9 +1,10 @@
+import { createSharedMutationObserver } from '@zag-js/dom-query'
 import type * as menu from '@zag-js/menu'
 import { str } from '../../utils/attrs.js'
 import { definePart, wrapped, wrappedButton, type RootElement, rootOf } from '../../utils/define.js'
 import { definePresencePart } from '../../utils/presence.js'
 import { emit } from '../../utils/events.js'
-import { filteredOut, itemSelector, type MenuElement, parents, queries, root, textOf } from './shared.js'
+import { itemSelector, type MenuElement, parents, root, textOf } from './shared.js'
 
 function optionOf(item: HTMLElement): menu.OptionItemProps | null {
   const value = item.getAttribute('value')
@@ -63,8 +64,6 @@ const itemProps =
   (props: (api: menu.Api, item: HTMLElement) => Record<string, any>) => (api: menu.Api, el: HTMLElement) => {
     const item = el.closest<HTMLElement>(itemSelector)
     if (!item) return {}
-    // Without item attributes, navigation skips it
-    if (item === el && filteredOut(item)) return { hidden: true }
     return props(api, item)
   }
 
@@ -139,13 +138,7 @@ export const MenuSeparator = definePart<menu.Api>({
   props: (api) => api.getSeparatorProps(),
 })
 
-const groupProps = (api: menu.Api, el: HTMLElement) => {
-  const items = [...el.querySelectorAll(itemSelector)]
-  return {
-    ...api.getItemGroupProps({ id: el.getAttribute('name') ?? '' }),
-    hidden: items.length > 0 && items.every(filteredOut),
-  }
-}
+const groupProps = (api: menu.Api, el: HTMLElement) => api.getItemGroupProps({ id: el.getAttribute('name') ?? '' })
 
 export const MenuItemGroup = definePart<menu.Api>({
   tag: 'ark-menu-item-group',
@@ -166,17 +159,11 @@ export const MenuInput = definePart<menu.Api>({
   root,
   target: wrapped('input'),
   props: (api) => api.getInputProps(),
-  setup: (el, rootEl) => {
-    const onInput = (event: Event) => {
-      queries.set(rootEl, (event.target as HTMLInputElement).value)
-      rootEl.render()
-    }
-    el.addEventListener('input', onInput)
-    return () => el.removeEventListener('input', onInput)
-  },
 })
 
 export const MenuList = definePart<menu.Api>({ tag: 'ark-menu-list', root, props: (api) => api.getListProps() })
+
+const itemsObserver = createSharedMutationObserver({ childList: true, subtree: true })
 
 export const MenuEmpty = definePart<menu.Api>({
   tag: 'ark-menu-empty',
@@ -184,8 +171,9 @@ export const MenuEmpty = definePart<menu.Api>({
   props: (api, el) => {
     const menuEl = rootOf(el, root)!
     const items = [...menuEl.querySelectorAll(itemSelector)].filter((item) => rootOf(item, root) === menuEl)
-    return { ...api.getEmptyProps(), hidden: !items.every(filteredOut) }
+    return { ...api.getEmptyProps(), hidden: items.length > 0 }
   },
+  setup: (_el, rootEl) => itemsObserver.observe(rootEl, () => rootEl.render()),
 })
 
 export const MenuItemGroupLabel = definePart<menu.Api>({

@@ -1,3 +1,4 @@
+import { createSharedMutationObserver } from '@zag-js/dom-query'
 import type { RootElement } from './define.js'
 
 export interface Item {
@@ -42,6 +43,12 @@ export interface CollectionConfig<C> {
   attributes?: string[]
   readMarkup?: (el: HTMLElement, config: CollectionConfig<C>) => Item[]
   render?: (list: HTMLElement, collection: C, config: CollectionConfig<C>) => void
+  itemType?: (item: any) => string | undefined
+  itemTags?: Record<string, string>
+  applyItem?: (node: HTMLElement, item: any) => void
+  groupType?: (items: any[]) => string | undefined
+  groupTags?: Record<string, string>
+  applyGroup?: (node: HTMLElement, items: any[]) => void
 }
 
 const toItem = (input: ItemInput): Item =>
@@ -100,53 +107,82 @@ function createPart(doc: Document, tag: string, child?: string) {
   return node
 }
 
-interface Templates {
-  item: HTMLTemplateElement | null
-  group: HTMLTemplateElement | null
+const renderedKeys = new WeakMap<Element, string>()
+
+function templateFor(list: HTMLElement, group: boolean, type: string | undefined) {
+  const kind = group ? '[data-group]' : ':not([data-group])'
+  const typed = type ? `[data-type="${type}"]` : ':not([data-type])'
+  return list.querySelector<HTMLTemplateElement>(`:scope > template${kind}${typed}`)
 }
 
-function renderGroup<C>(list: HTMLElement, templates: Templates, name: string, config: CollectionConfig<C>) {
-  const group = cloneTemplate(templates.group, () =>
-    createPart(list.ownerDocument, config.itemGroup!, config.itemGroupLabel),
-  )
-  group.setAttribute('name', name)
-
-  const label = config.itemGroupLabel && group.querySelector(config.itemGroupLabel)
-  if (label) label.textContent = name
-
-  list.append(group)
-  return group
-}
-
-function renderItem<C>(
-  list: HTMLElement,
-  templates: Templates,
-  collection: ListLike,
-  item: unknown,
-  config: CollectionConfig<C>,
-) {
-  const node = cloneTemplate(templates.item, () => createPart(list.ownerDocument, config.item, config.itemText))
-  node.setAttribute('value', collection.getItemValue(item) ?? '')
-  node.toggleAttribute('disabled', collection.getItemDisabled(item))
-
-  const text = node.querySelector(config.itemText) ?? node
-  text.textContent = collection.stringifyItem(item) ?? ''
-
+function claim(reusable: Map<string, HTMLElement>, key: string, create: () => HTMLElement) {
+  const node = reusable.get(key) ?? create()
+  reusable.delete(key)
+  renderedKeys.set(node, key)
   return node
 }
 
 function renderList<C>(list: HTMLElement, collection: C, config: CollectionConfig<C>) {
   const source = collection as unknown as ListLike
-  const templates = {
-    item: list.querySelector<HTMLTemplateElement>(':scope > template:not([data-group])'),
-    group: list.querySelector<HTMLTemplateElement>(':scope > template[data-group]'),
+  const doc = list.ownerDocument
+
+  const reusable = new Map<string, HTMLElement>()
+  for (const node of list.querySelectorAll<HTMLElement>('[data-rendered]')) {
+    const key = renderedKeys.get(node)
+    if (key) reusable.set(key, node)
   }
 
-  clearRendered(list)
+  const nodes: HTMLElement[] = []
 
   for (const [name, items] of source.group()) {
-    const parent = name && config.itemGroup ? renderGroup(list, templates, name, config) : list
-    for (const item of items) parent.append(renderItem(list, templates, source, item, config))
+    let parent: HTMLElement = list
+
+    if (name && config.itemGroup) {
+      const type = config.groupType?.(items)
+      const tag = (type && config.groupTags?.[type]) || config.itemGroup
+      parent = claim(reusable, `group|${type ?? ''}|${name}`, () =>
+        cloneTemplate(templateFor(list, true, type), () => createPart(doc, tag, config.itemGroupLabel)),
+      )
+      parent.setAttribute('name', name)
+      const label = config.itemGroupLabel && parent.querySelector(config.itemGroupLabel)
+      if (label) label.textContent = name
+      config.applyGroup?.(parent, items)
+      nodes.push(parent)
+    }
+
+    const children = items.map((item) => {
+      const type = config.itemType?.(item)
+      const tag = (type && config.itemTags?.[type]) || config.item
+      const value = source.getItemValue(item) ?? ''
+      const node = claim(reusable, `item|${type ?? ''}|${value}`, () =>
+        cloneTemplate(templateFor(list, false, type), () => createPart(doc, tag, config.itemText)),
+      )
+      node.setAttribute('value', value)
+      node.toggleAttribute('disabled', source.getItemDisabled(item))
+      const text = node.querySelector(config.itemText) ?? node
+      text.textContent = source.stringifyItem(item) ?? ''
+      config.applyItem?.(node, item)
+      return node
+    })
+
+    if (parent === list) nodes.push(...children)
+    else place(parent, children)
+  }
+
+  for (const node of reusable.values()) node.remove()
+  place(list, nodes)
+}
+
+function place(parent: Element, nodes: Element[]) {
+  let anchor: Element | null = null
+  for (const child of parent.children) if (!child.hasAttribute('data-rendered')) anchor = child
+  for (const node of nodes) {
+    const next = anchor ? anchor.nextElementSibling : parent.firstElementChild
+    if (next !== node) {
+      if (anchor) anchor.after(node)
+      else parent.prepend(node)
+    }
+    anchor = node
   }
 }
 
@@ -226,19 +262,19 @@ export function defineCollection<C>(config: CollectionConfig<C>) {
     return changed
   }
 
+  const markupObserver = createSharedMutationObserver({
+    subtree: true,
+    childList: true,
+    characterData: true,
+    attributeFilter: ['value', 'disabled', ...(config.attributes ?? [])],
+  })
+
   function setup(el: RootElement): VoidFunction {
     build(el)
 
-    const observer = new MutationObserver(() => {
+    return markupObserver.observe(el, () => {
       if (build(el)) el.refresh()
     })
-    observer.observe(el, {
-      subtree: true,
-      childList: true,
-      characterData: true,
-      attributeFilter: ['value', 'disabled', ...(config.attributes ?? [])],
-    })
-    return () => observer.disconnect()
   }
 
   return {

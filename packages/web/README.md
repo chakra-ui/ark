@@ -247,6 +247,13 @@ attribute to the list to render items yourself, e.g. a virtualized window; see
 `src/components/select/examples/virtualized.ts`. Item parts set `aria-posinset` and `aria-setsize` from the collection,
 and `scrollToIndexFn` lets keyboard navigation reach items that aren't rendered.
 
+Menu takes a `collection` too. Items render as plain items, or as checkbox or radio items when they have
+`type: 'checkbox'` or `type: 'radio'`, checked by `checked`. Add `<template data-type="checkbox">` or
+`<template data-type="radio">` to style each kind. A group whose items are all radios renders as a radio item group.
+Rendered nodes are reused by value, so an item that stays in the list keeps its node. Checked state comes from your
+data: update it on `checkedchange` or `valuechange` and assign a new collection. See
+`src/components/menu/examples/filtering.ts` and `src/components/menu/examples/async-filtering.ts`.
+
 Separators aren't items: style them between groups in CSS, e.g.
 `.group:not([hidden]) ~ .group:not([hidden]) { border-top: 1px solid }`, so groups hidden by filtering never add one.
 

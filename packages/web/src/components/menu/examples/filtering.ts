@@ -1,6 +1,7 @@
-import { createElement, ChevronDown, X, Check } from 'lucide'
+import { createElement, Check, ChevronDown, X } from 'lucide'
 
-import '@ark-ui/web/menu'
+import { createFilter } from '@ark-ui/web/locale'
+import { createListCollection } from '@ark-ui/web/menu'
 
 import styles from 'styles/menu.module.css'
 
@@ -17,44 +18,17 @@ const actions = [
   { label: 'Invite people', value: 'invite', group: 'Share' },
 ]
 
-const attr = (name: string, on?: boolean) => (on ? name : '')
-
-const fragment = (html: string) => {
-  const host = document.createElement('div')
-  host.innerHTML = html
-  return host
-}
-
-const item = ({ value, label }: { value: string; label: string }) =>
-  /* html */ `<ark-menu-item class="${styles.Item}" value="${value}">${label}</ark-menu-item>`
-
-const group = ({ name, label }: { name: string; label: string }, items: string[]) => /* html */ `
-  <ark-menu-item-group class="${styles.ItemGroup}" name="${name}">
-    <ark-menu-item-group-label class="${styles.ItemGroupLabel}">${label}</ark-menu-item-group-label>
-    ${items.join('')}
-  </ark-menu-item-group>`
-
-interface CheckboxItemProps {
-  value: string
-  label: string
-  checked?: boolean
-}
-
-const checkboxItem = ({ value, label, checked = false }: CheckboxItemProps) => /* html */ `
-  <ark-menu-checkbox-item class="${styles.CheckboxItem}" value="${value}" ${attr('checked', checked)} close-on-select="false">
-    <ark-menu-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-item-indicator>
-    <ark-menu-item-text class="${styles.ItemText}">${label}</ark-menu-item-text>
-  </ark-menu-checkbox-item>`
-
-const viewOptions: CheckboxItemProps[] = [
-  { value: 'details', label: 'Show details', checked: true },
-  { value: 'sidebar', label: 'Show sidebar' },
-  { value: 'offline', label: 'Keep available offline' },
+const viewOptions = [
+  { label: 'Show details', value: 'details', group: 'View', type: 'checkbox' as const },
+  { label: 'Show sidebar', value: 'sidebar', group: 'View', type: 'checkbox' as const },
+  { label: 'Keep available offline', value: 'offline', group: 'View', type: 'checkbox' as const },
 ]
 
 export function mount(root: HTMLElement) {
-  const groups = [...new Set(actions.map((action) => action.group))]
-  const host = fragment(/* html */ `
+  const { contains } = createFilter({ sensitivity: 'base' })
+  const checked = new Set(['details'])
+
+  root.innerHTML = /* html */ `
     <ark-menu popup-type="dialog">
       <ark-menu-trigger>
         <button class="${styles.Trigger}">Actions<ark-menu-indicator class="${styles.Indicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-indicator></button>
@@ -67,23 +41,61 @@ export function mount(root: HTMLElement) {
           </div>
           <ark-menu-empty class="${styles.Empty}">No actions found</ark-menu-empty>
           <ark-menu-list class="${styles.List}">
-            ${groups
-              .map((name) => group({ name, label: name }, actions.filter((action) => action.group === name).map(item)))
-              .join('')}
-            ${group({ name: 'view', label: 'View' }, viewOptions.map(checkboxItem))}
+            <template data-group>
+              <ark-menu-item-group class="${styles.ItemGroup}">
+                <ark-menu-item-group-label class="${styles.ItemGroupLabel}"></ark-menu-item-group-label>
+              </ark-menu-item-group>
+            </template>
+            <template>
+              <ark-menu-item class="${styles.Item}"><ark-menu-item-text></ark-menu-item-text></ark-menu-item>
+            </template>
+            <template data-type="checkbox">
+              <ark-menu-checkbox-item class="${styles.CheckboxItem}" close-on-select="false">
+                <ark-menu-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-item-indicator>
+                <ark-menu-item-text class="${styles.ItemText}"></ark-menu-item-text>
+              </ark-menu-checkbox-item>
+            </template>
           </ark-menu-list>
         </ark-menu-content>
       </ark-menu-positioner>
-    </ark-menu>`)
-  const input = host.querySelector('input')!
-  const clear = host.querySelector<HTMLButtonElement>(`.${styles.InputClear}`)!
-  const sync = () => (clear.hidden = !input.value)
-  input.addEventListener('input', sync)
-  host.querySelector('ark-menu')!.addEventListener('openchange', sync)
+    </ark-menu>`
+
+  const menu = root.querySelector('ark-menu')!
+  const input = root.querySelector('input')!
+  const clear = root.querySelector<HTMLButtonElement>(`.${styles.InputClear}`)!
+
+  const render = () => {
+    const query = input.value
+    clear.hidden = !query
+    menu.collection = createListCollection({
+      items: [...actions, ...viewOptions.map((option) => ({ ...option, checked: checked.has(option.value) }))].filter(
+        (item) => contains(item.label, query),
+      ),
+      groupBy: (item) => item.group,
+    })
+  }
+
+  menu.addEventListener(
+    'checkedchange',
+    (event) => {
+      const option = event.target as HTMLElement
+      const value = option.getAttribute('value') ?? ''
+      if (option.hasAttribute('checked')) checked.add(value)
+      else checked.delete(value)
+      render()
+    },
+    { capture: true },
+  )
+  input.addEventListener('input', render)
+  menu.addEventListener('exitcomplete', () => {
+    input.value = ''
+    render()
+  })
   clear.addEventListener('click', () => {
     input.value = ''
-    input.dispatchEvent(new Event('input', { bubbles: true }))
+    render()
     input.focus()
   })
-  root.replaceChildren(host)
+
+  render()
 }

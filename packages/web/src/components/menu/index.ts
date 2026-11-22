@@ -2,6 +2,7 @@ import type { CallbackEvents } from '../../utils/events.js'
 import './root.js'
 import './parts.js'
 import type { Api, Props } from '@zag-js/menu'
+import type { ListCollection } from '../collection/index.js'
 import type { RootElement, StateProperties } from '../../utils/define.js'
 import type { FunctionProperties } from '../../utils/events.js'
 import type {
@@ -28,12 +29,26 @@ import type {
 } from './parts.js'
 
 export type { Api as MenuApi } from '@zag-js/menu'
+export type { MenuCollectionItem } from './shared.js'
+export {
+  createListCollection,
+  type CollectionItem,
+  type CollectionOptions,
+  type ListCollection,
+} from '../collection/index.js'
+
 export interface MenuElement
   extends
     RootElement<Api, Props>,
     FunctionProperties<Props>,
     Pick<Props, 'ids' | 'positioning'>,
-    StateProperties<Props, 'open'> {}
+    StateProperties<Props, 'open'> {
+  /**
+   * Items to render into the list, e.g. from `createListCollection`. Assign a new collection to update the list.
+   * Items with `type: 'checkbox'` or `type: 'radio'` render as checkbox or radio items, checked by `checked`.
+   */
+  collection?: ListCollection | undefined
+}
 
 declare global {
   interface HTMLElementTagNameMap {
