@@ -174,9 +174,15 @@
 
 .CheckboxItem,
 .RadioItem {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1rem 1fr;
   align-items: center;
   gap: 0.5rem;
+
+  & > :not(.ItemIndicator) {
+    grid-column: 2;
+  }
+
   padding: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;

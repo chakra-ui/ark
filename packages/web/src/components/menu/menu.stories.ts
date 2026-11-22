@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/html-vite'
 import { mount as AsyncFilteringExample } from './examples/async-filtering.js'
 import { mount as BasicExample } from './examples/basic.js'
 import { mount as CheckboxItemsExample } from './examples/checkbox-items.js'
+import { mount as CollectionExample } from './examples/collection.js'
 import { mount as ContextLazyMountExample } from './examples/context-lazy-mount.js'
 import { mount as ContextExample } from './examples/context.js'
 import { mount as ControlledExample } from './examples/controlled.js'
@@ -23,6 +24,8 @@ export default meta
 export const Basic: StoryObj = { name: 'Basic', render: renderExample(BasicExample) }
 
 export const CheckboxItems: StoryObj = { name: 'Checkbox Items', render: renderExample(CheckboxItemsExample) }
+
+export const Collection: StoryObj = { name: 'Collection', render: renderExample(CollectionExample) }
 
 export const ContextLazyMount: StoryObj = { name: 'Context Lazy Mount', render: renderExample(ContextLazyMountExample) }
 

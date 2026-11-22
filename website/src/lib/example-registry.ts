@@ -343,6 +343,7 @@ const exampleModules: Record<string, () => Promise<ExampleModule>> = {
   'menu/async-filtering': () => import('@examples/menu/examples/async-filtering'),
   'menu/basic': () => import('@examples/menu/examples/basic'),
   'menu/checkbox-items': () => import('@examples/menu/examples/checkbox-items'),
+  'menu/collection': () => import('@examples/menu/examples/collection'),
   'menu/context-lazy-mount': () => import('@examples/menu/examples/context-lazy-mount'),
   'menu/context': () => import('@examples/menu/examples/context'),
   'menu/controlled': () => import('@examples/menu/examples/controlled'),

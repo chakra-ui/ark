@@ -3,6 +3,7 @@ import type { Meta } from '@storybook/svelte'
 import AsyncFilteringExample from './examples/async-filtering.svelte'
 import BasicExample from './examples/basic.svelte'
 import CheckboxItemsExample from './examples/checkbox-items.svelte'
+import CollectionExample from './examples/collection.svelte'
 import ContextExample from './examples/context.svelte'
 import ContextLazyMountExample from './examples/context-lazy-mount.svelte'
 import ControlledExample from './examples/controlled.svelte'
@@ -35,6 +36,12 @@ export const Basic = {
 export const CheckboxItems = {
   render: () => ({
     Component: CheckboxItemsExample,
+  }),
+}
+
+export const Collection = {
+  render: () => ({
+    Component: CollectionExample,
   }),
 }
 

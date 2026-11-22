@@ -3,6 +3,7 @@ import type { Meta } from '@storybook/vue3-vite'
 import AsyncFilteringExample from './examples/async-filtering.vue'
 import BasicExample from './examples/basic.vue'
 import CheckboxItemsExample from './examples/checkbox-items.vue'
+import CollectionExample from './examples/collection.vue'
 import ContextExample from './examples/context.vue'
 import ContextLazyMountExample from './examples/context-lazy-mount.vue'
 import ControlledExample from './examples/controlled.vue'
@@ -36,6 +37,13 @@ export const Basic = {
 export const CheckboxItems = {
   render: () => ({
     components: { Component: CheckboxItemsExample },
+    template: '<Component />',
+  }),
+}
+
+export const Collection = {
+  render: () => ({
+    components: { Component: CollectionExample },
     template: '<Component />',
   }),
 }

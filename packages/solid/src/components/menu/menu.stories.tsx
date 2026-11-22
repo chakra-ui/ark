@@ -9,6 +9,7 @@ export default meta
 export { AsyncFiltering } from './examples/async-filtering.tsx'
 export { Basic } from './examples/basic.tsx'
 export { CheckboxItems } from './examples/checkbox-items.tsx'
+export { Collection } from './examples/collection.tsx'
 export { Context } from './examples/context.tsx'
 export { ContextLazyMount } from './examples/context-lazy-mount.tsx'
 export { Controlled } from './examples/controlled.tsx'
