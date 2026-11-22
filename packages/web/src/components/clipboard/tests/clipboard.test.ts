@@ -1,10 +1,10 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/clipboard/basic.js'
-import { mount as Controlled } from '../../../../examples/clipboard/controlled.js'
-import { mount as CopyStatus } from '../../../../examples/clipboard/copy-status.js'
-import { mount as Timeout } from '../../../../examples/clipboard/timeout.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as Controlled } from '../examples/controlled.js'
+import { mount as CopyStatus } from '../examples/copy-status.js'
+import { mount as Timeout } from '../examples/timeout.js'
 import { mount } from '../../../test-utils.js'
 
 const clipboard = () => document.querySelector('ark-clipboard')

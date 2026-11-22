@@ -1,8 +1,8 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/angle-slider/basic.js'
-import { mount as Step } from '../../../../examples/angle-slider/step.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as Step } from '../examples/step.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

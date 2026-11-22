@@ -1,9 +1,9 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/timer/basic.js'
-import { mount as Countdown } from '../../../../examples/timer/countdown.js'
-import { mount as Events } from '../../../../examples/timer/events.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as Countdown } from '../examples/countdown.js'
+import { mount as Events } from '../examples/events.js'
 import { mount } from '../../../test-utils.js'
 
 const item = (type: string) => document.querySelector(`ark-timer-item[type="${type}"]`)!

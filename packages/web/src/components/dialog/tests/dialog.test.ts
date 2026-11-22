@@ -1,8 +1,8 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/dialog/basic.js'
-import { mount as Portal } from '../../../../examples/dialog/portal.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as Portal } from '../examples/portal.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

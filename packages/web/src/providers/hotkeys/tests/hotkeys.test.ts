@@ -1,13 +1,13 @@
 import { screen } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../examples/hotkeys/basic.js'
-import { mount as FormFields } from '../../../examples/hotkeys/form-fields.js'
-import { mount as KeyState } from '../../../examples/hotkeys/key-state.js'
-import { mount as Recorder } from '../../../examples/hotkeys/recorder.js'
-import { mount as Scopes } from '../../../examples/hotkeys/scopes.js'
-import { mount as Sequence } from '../../../examples/hotkeys/sequence.js'
-import { mount } from '../../test-utils.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as FormFields } from '../examples/form-fields.js'
+import { mount as KeyState } from '../examples/key-state.js'
+import { mount as Recorder } from '../examples/recorder.js'
+import { mount as Scopes } from '../examples/scopes.js'
+import { mount as Sequence } from '../examples/sequence.js'
+import { mount } from '../../../test-utils.js'
 import { createHotkey, createHotkeys, formatHotkey, getHotkeyStore, getPlatform } from '@ark-ui/web/hotkeys'
 
 const user = userEvent.setup()

@@ -1,11 +1,11 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as AutocompleteExample } from '../../../examples/password-input/autocomplete.js'
-import { mount as BasicExample } from '../../../examples/password-input/basic.js'
-import { mount as ControlledVisibilityExample } from '../../../examples/password-input/controlled-visibility.js'
-import { mount as IgnorePasswordManagerExample } from '../../../examples/password-input/ignore-password-manager.js'
-import { mount as StrengthMeterExample } from '../../../examples/password-input/strength-meter.js'
-import { mount as WithValidationExample } from '../../../examples/password-input/with-validation.js'
+import { mount as AutocompleteExample } from './examples/autocomplete.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as ControlledVisibilityExample } from './examples/controlled-visibility.js'
+import { mount as IgnorePasswordManagerExample } from './examples/ignore-password-manager.js'
+import { mount as StrengthMeterExample } from './examples/strength-meter.js'
+import { mount as WithValidationExample } from './examples/with-validation.js'
 
 const meta: Meta = { title: 'Components / Password Input' }
 export default meta

@@ -1,13 +1,13 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/tabs/basic.js'
-import { mount as ControlledExample } from '../../../examples/tabs/controlled.js'
-import { mount as DisabledTabExample } from '../../../examples/tabs/disabled-tab.js'
-import { mount as IndicatorExample } from '../../../examples/tabs/indicator.js'
-import { mount as LazyMountExample } from '../../../examples/tabs/lazy-mount.js'
-import { mount as LinksExample } from '../../../examples/tabs/links.js'
-import { mount as ManualActivationExample } from '../../../examples/tabs/manual-activation.js'
-import { mount as VerticalExample } from '../../../examples/tabs/vertical.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as ControlledExample } from './examples/controlled.js'
+import { mount as DisabledTabExample } from './examples/disabled-tab.js'
+import { mount as IndicatorExample } from './examples/indicator.js'
+import { mount as LazyMountExample } from './examples/lazy-mount.js'
+import { mount as LinksExample } from './examples/links.js'
+import { mount as ManualActivationExample } from './examples/manual-activation.js'
+import { mount as VerticalExample } from './examples/vertical.js'
 
 const meta: Meta = { title: 'Components / Tabs' }
 export default meta

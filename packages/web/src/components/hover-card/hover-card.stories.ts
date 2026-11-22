@@ -1,10 +1,10 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/hover-card/basic.js'
-import { mount as ControlledExample } from '../../../examples/hover-card/controlled.js'
-import { mount as DelayExample } from '../../../examples/hover-card/delay.js'
-import { mount as MultipleTriggersExample } from '../../../examples/hover-card/multiple-triggers.js'
-import { mount as PositioningExample } from '../../../examples/hover-card/positioning.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as ControlledExample } from './examples/controlled.js'
+import { mount as DelayExample } from './examples/delay.js'
+import { mount as MultipleTriggersExample } from './examples/multiple-triggers.js'
+import { mount as PositioningExample } from './examples/positioning.js'
 
 const meta: Meta = { title: 'Components / Hover Card' }
 export default meta

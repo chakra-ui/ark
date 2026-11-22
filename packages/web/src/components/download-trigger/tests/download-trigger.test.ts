@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/download-trigger/basic.js'
+import { mount as Basic } from '../examples/basic.js'
 import { mount } from '../../../test-utils.js'
 
 import '@ark-ui/web/download-trigger'

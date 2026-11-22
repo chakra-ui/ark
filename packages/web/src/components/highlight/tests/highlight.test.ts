@@ -1,10 +1,10 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/highlight/basic.js'
-import { mount as DynamicQuery } from '../../../../examples/highlight/dynamic-query.js'
-import { mount as ExactMatch } from '../../../../examples/highlight/exact-match.js'
-import { mount as Multiple } from '../../../../examples/highlight/multiple.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as DynamicQuery } from '../examples/dynamic-query.js'
+import { mount as ExactMatch } from '../examples/exact-match.js'
+import { mount as Multiple } from '../examples/multiple.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

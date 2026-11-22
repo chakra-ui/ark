@@ -1,8 +1,8 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/password-input/basic.js'
-import { mount as ControlledVisibility } from '../../../../examples/password-input/controlled-visibility.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as ControlledVisibility } from '../examples/controlled-visibility.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

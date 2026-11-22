@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/html-vite'
 
 import { renderExample } from '../../../.storybook/render-example.js'
-import { mount as BasicExample } from '../../../examples/drawer/basic.js'
-import { mount as ControlledExample } from '../../../examples/drawer/controlled.js'
-import { mount as NestedExample } from '../../../examples/drawer/nested.js'
-import { mount as NonDraggableExample } from '../../../examples/drawer/non-draggable.js'
-import { mount as ScrollableExample } from '../../../examples/drawer/scrollable.js'
-import { mount as SnapPointsExample } from '../../../examples/drawer/snap-points.js'
-import { mount as SwipeDirectionExample } from '../../../examples/drawer/swipe-direction.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as ControlledExample } from './examples/controlled.js'
+import { mount as NestedExample } from './examples/nested.js'
+import { mount as NonDraggableExample } from './examples/non-draggable.js'
+import { mount as ScrollableExample } from './examples/scrollable.js'
+import { mount as SnapPointsExample } from './examples/snap-points.js'
+import { mount as SwipeDirectionExample } from './examples/swipe-direction.js'
 
 const meta: Meta = { title: 'Components / Drawer' }
 export default meta

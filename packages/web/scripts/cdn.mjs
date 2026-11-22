@@ -11,7 +11,7 @@ const src = (path) => join(root, 'src', path)
 const components = readdirSync(src('components'))
 
 const entries = {
-  hotkeys: src('utils/hotkeys.ts'),
+  hotkeys: src('providers/hotkeys/index.ts'),
   locale: src('utils/locale.ts'),
   'async-list': src('utils/async-list.ts'),
   ...Object.fromEntries(components.map((name) => [name, src(`components/${name}/index.ts`)])),

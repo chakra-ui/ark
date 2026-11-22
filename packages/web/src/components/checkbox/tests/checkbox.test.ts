@@ -1,9 +1,9 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Controlled } from '../../../../examples/checkbox/controlled.js'
-import { mount as GroupWithForm } from '../../../../examples/checkbox/group-with-form.js'
-import { mount as GroupWithMaxSelected } from '../../../../examples/checkbox/group-with-max-selected.js'
+import { mount as Controlled } from '../examples/controlled.js'
+import { mount as GroupWithForm } from '../examples/group-with-form.js'
+import { mount as GroupWithMaxSelected } from '../examples/group-with-max-selected.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

@@ -1,9 +1,9 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as AsyncSearch } from '../../../../examples/combobox/async-search.js'
-import { mount as Grouping } from '../../../../examples/combobox/grouping.js'
-import { mount as Virtualized } from '../../../../examples/combobox/virtualized.js'
+import { mount as AsyncSearch } from '../examples/async-search.js'
+import { mount as Grouping } from '../examples/grouping.js'
+import { mount as Virtualized } from '../examples/virtualized.js'
 import { mount } from '../../../test-utils.js'
 import { createListCollection } from '@ark-ui/web/combobox'
 

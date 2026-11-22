@@ -4,8 +4,8 @@ import '@ark-ui/web/clipboard'
 import '@ark-ui/web/combobox'
 import '@ark-ui/web/command'
 import '@ark-ui/web/timer'
-import { mount as Combobox } from '../../../examples/combobox/basic.js'
-import { mount as Command } from '../../../examples/command/basic.js'
+import { mount as Combobox } from '../../components/combobox/examples/basic.js'
+import { mount as Command } from '../../components/command/examples/basic.js'
 import { mount } from '../../test-utils.js'
 
 const visibleItems = (item: string, text: string) =>

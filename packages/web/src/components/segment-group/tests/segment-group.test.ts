@@ -1,8 +1,8 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Controlled } from '../../../../examples/segment-group/controlled.js'
-import { mount as Disabled } from '../../../../examples/segment-group/disabled.js'
+import { mount as Controlled } from '../examples/controlled.js'
+import { mount as Disabled } from '../examples/disabled.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

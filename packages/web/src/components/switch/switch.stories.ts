@@ -1,10 +1,10 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/switch/basic.js'
-import { mount as ControlledExample } from '../../../examples/switch/controlled.js'
-import { mount as DisabledExample } from '../../../examples/switch/disabled.js'
-import { mount as InitialCheckedExample } from '../../../examples/switch/initial-checked.js'
-import { mount as WithFieldExample } from '../../../examples/switch/with-field.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as ControlledExample } from './examples/controlled.js'
+import { mount as DisabledExample } from './examples/disabled.js'
+import { mount as InitialCheckedExample } from './examples/initial-checked.js'
+import { mount as WithFieldExample } from './examples/with-field.js'
 
 const meta: Meta = { title: 'Components / Switch' }
 export default meta

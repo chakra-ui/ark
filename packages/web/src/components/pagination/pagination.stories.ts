@@ -1,13 +1,13 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/pagination/basic.js'
-import { mount as ControlledExample } from '../../../examples/pagination/controlled.js'
-import { mount as CustomizedExample } from '../../../examples/pagination/customized.js'
-import { mount as DataSlicingExample } from '../../../examples/pagination/data-slicing.js'
-import { mount as LinkExample } from '../../../examples/pagination/link.js'
-import { mount as PageRangeExample } from '../../../examples/pagination/page-range.js'
-import { mount as PageSizeControlExample } from '../../../examples/pagination/page-size-control.js'
-import { mount as WithEdgesExample } from '../../../examples/pagination/with-edges.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as ControlledExample } from './examples/controlled.js'
+import { mount as CustomizedExample } from './examples/customized.js'
+import { mount as DataSlicingExample } from './examples/data-slicing.js'
+import { mount as LinkExample } from './examples/link.js'
+import { mount as PageRangeExample } from './examples/page-range.js'
+import { mount as PageSizeControlExample } from './examples/page-size-control.js'
+import { mount as WithEdgesExample } from './examples/with-edges.js'
 
 const meta: Meta = { title: 'Components / Pagination' }
 export default meta

@@ -1,9 +1,9 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/segment-group/basic.js'
-import { mount as ConditionalExample } from '../../../examples/segment-group/conditional.js'
-import { mount as ControlledExample } from '../../../examples/segment-group/controlled.js'
-import { mount as DisabledExample } from '../../../examples/segment-group/disabled.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as ConditionalExample } from './examples/conditional.js'
+import { mount as ControlledExample } from './examples/controlled.js'
+import { mount as DisabledExample } from './examples/disabled.js'
 
 const meta: Meta = { title: 'Components / Segment Group' }
 export default meta

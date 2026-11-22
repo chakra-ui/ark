@@ -1,10 +1,10 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/fieldset/basic.js'
-import { mount as DisabledExample } from '../../../examples/fieldset/disabled.js'
-import { mount as InvalidExample } from '../../../examples/fieldset/invalid.js'
-import { mount as WithCheckboxExample } from '../../../examples/fieldset/with-checkbox.js'
-import { mount as WithFieldExample } from '../../../examples/fieldset/with-field.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as DisabledExample } from './examples/disabled.js'
+import { mount as InvalidExample } from './examples/invalid.js'
+import { mount as WithCheckboxExample } from './examples/with-checkbox.js'
+import { mount as WithFieldExample } from './examples/with-field.js'
 
 const meta: Meta = { title: 'Components / Fieldset' }
 export default meta

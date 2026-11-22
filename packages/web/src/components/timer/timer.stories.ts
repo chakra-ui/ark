@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/html-vite'
 
 import { renderExample } from '../../../.storybook/render-example.js'
-import { mount as BasicExample } from '../../../examples/timer/basic.js'
-import { mount as CountdownExample } from '../../../examples/timer/countdown.js'
-import { mount as EventsExample } from '../../../examples/timer/events.js'
-import { mount as IntervalExample } from '../../../examples/timer/interval.js'
-import { mount as PomodoroExample } from '../../../examples/timer/pomodoro.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as CountdownExample } from './examples/countdown.js'
+import { mount as EventsExample } from './examples/events.js'
+import { mount as IntervalExample } from './examples/interval.js'
+import { mount as PomodoroExample } from './examples/pomodoro.js'
 
 const meta: Meta = { title: 'Components / Timer' }
 export default meta

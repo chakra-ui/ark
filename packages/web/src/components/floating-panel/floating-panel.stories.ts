@@ -1,11 +1,11 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/floating-panel/basic.js'
-import { mount as ControlledOpenExample } from '../../../examples/floating-panel/controlled-open.js'
-import { mount as ControlledSizeExample } from '../../../examples/floating-panel/controlled-size.js'
-import { mount as ControlledPositionExample } from '../../../examples/floating-panel/controlled-position.js'
-import { mount as AnchorPositionExample } from '../../../examples/floating-panel/anchor-position.js'
-import { mount as LazyMountExample } from '../../../examples/floating-panel/lazy-mount.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as ControlledOpenExample } from './examples/controlled-open.js'
+import { mount as ControlledSizeExample } from './examples/controlled-size.js'
+import { mount as ControlledPositionExample } from './examples/controlled-position.js'
+import { mount as AnchorPositionExample } from './examples/anchor-position.js'
+import { mount as LazyMountExample } from './examples/lazy-mount.js'
 
 const meta: Meta = { title: 'Components / Floating Panel' }
 export default meta

@@ -1,9 +1,9 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/date-input/basic.js'
-import { mount as DefaultValue } from '../../../../examples/date-input/default-value.js'
-import { mount as WithClearButton } from '../../../../examples/date-input/with-clear-button.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as DefaultValue } from '../examples/default-value.js'
+import { mount as WithClearButton } from '../examples/with-clear-button.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

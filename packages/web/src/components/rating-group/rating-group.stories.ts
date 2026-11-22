@@ -1,10 +1,10 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/rating-group/basic.js'
-import { mount as ControlledExample } from '../../../examples/rating-group/controlled.js'
-import { mount as DisabledExample } from '../../../examples/rating-group/disabled.js'
-import { mount as FormUsageExample } from '../../../examples/rating-group/form-usage.js'
-import { mount as HalfStarExample } from '../../../examples/rating-group/half-star.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as ControlledExample } from './examples/controlled.js'
+import { mount as DisabledExample } from './examples/disabled.js'
+import { mount as FormUsageExample } from './examples/form-usage.js'
+import { mount as HalfStarExample } from './examples/half-star.js'
 
 const meta: Meta = { title: 'Components / Rating Group' }
 export default meta

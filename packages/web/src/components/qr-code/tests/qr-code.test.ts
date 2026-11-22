@@ -1,8 +1,8 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/qr-code/basic.js'
-import { mount as Download } from '../../../../examples/qr-code/download.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as Download } from '../examples/download.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

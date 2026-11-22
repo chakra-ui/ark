@@ -1,11 +1,11 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/progress/circular/basic.js'
-import { mount as ControlledExample } from '../../../examples/progress/circular/controlled.js'
-import { mount as IndeterminateExample } from '../../../examples/progress/circular/indeterminate.js'
-import { mount as InitialValueExample } from '../../../examples/progress/circular/initial-value.js'
-import { mount as MinMaxExample } from '../../../examples/progress/circular/min-max.js'
-import { mount as WithLabelExample } from '../../../examples/progress/circular/with-label.js'
+import { mount as BasicExample } from './examples/circular/basic.js'
+import { mount as ControlledExample } from './examples/circular/controlled.js'
+import { mount as IndeterminateExample } from './examples/circular/indeterminate.js'
+import { mount as InitialValueExample } from './examples/circular/initial-value.js'
+import { mount as MinMaxExample } from './examples/circular/min-max.js'
+import { mount as WithLabelExample } from './examples/circular/with-label.js'
 
 const meta: Meta = { title: 'Components / Progress - Circular' }
 export default meta

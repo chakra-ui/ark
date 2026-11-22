@@ -1,13 +1,13 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/meter/basic.js'
-import { mount as BatteryExample } from '../../../examples/meter/battery.js'
-import { mount as FormatOptionsExample } from '../../../examples/meter/format-options.js'
-import { mount as MinMaxExample } from '../../../examples/meter/min-max.js'
-import { mount as PasswordStrengthExample } from '../../../examples/meter/password-strength.js'
-import { mount as ValueStateExample } from '../../../examples/meter/value-state.js'
-import { mount as ValueTextExample } from '../../../examples/meter/value-text.js'
-import { mount as VerticalExample } from '../../../examples/meter/vertical.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as BatteryExample } from './examples/battery.js'
+import { mount as FormatOptionsExample } from './examples/format-options.js'
+import { mount as MinMaxExample } from './examples/min-max.js'
+import { mount as PasswordStrengthExample } from './examples/password-strength.js'
+import { mount as ValueStateExample } from './examples/value-state.js'
+import { mount as ValueTextExample } from './examples/value-text.js'
+import { mount as VerticalExample } from './examples/vertical.js'
 
 const meta: Meta = { title: 'Components / Meter' }
 export default meta

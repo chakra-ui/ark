@@ -1,7 +1,7 @@
 import { screen, waitFor } from '@testing-library/dom'
 
-import { mount as Basic } from '../../../../examples/avatar/basic.js'
-import { mount as Events } from '../../../../examples/avatar/events.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as Events } from '../examples/events.js'
 import { mount } from '../../../test-utils.js'
 
 const avatar = () => document.querySelector('ark-avatar')

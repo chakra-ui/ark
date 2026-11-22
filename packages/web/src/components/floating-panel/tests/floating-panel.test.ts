@@ -1,9 +1,9 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/floating-panel/basic.js'
-import { mount as ControlledSize } from '../../../../examples/floating-panel/controlled-size.js'
-import { mount as LazyMount } from '../../../../examples/floating-panel/lazy-mount.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as ControlledSize } from '../examples/controlled-size.js'
+import { mount as LazyMount } from '../examples/lazy-mount.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

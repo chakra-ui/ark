@@ -13,7 +13,8 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: 'styles', replacement: resolve(import.meta.dirname, '../../.storybook/modules') },
-      { find: /^@ark-ui\/web\/(async-list|hotkeys|locale)$/, replacement: resolve(src, 'utils/$1.ts') },
+      { find: /^@ark-ui\/web\/(async-list|locale)$/, replacement: resolve(src, 'utils/$1.ts') },
+      { find: /^@ark-ui\/web\/hotkeys$/, replacement: resolve(src, 'providers/hotkeys/index.ts') },
       { find: /^@ark-ui\/web\/(.+)$/, replacement: resolve(src, 'components/$1/index.ts') },
       { find: /^@ark-ui\/web$/, replacement: resolve(src, 'index.ts') },
     ],

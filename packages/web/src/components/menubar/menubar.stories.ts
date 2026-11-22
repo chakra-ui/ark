@@ -1,9 +1,9 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/menubar/basic.js'
-import { mount as DisabledExample } from '../../../examples/menubar/disabled.js'
-import { mount as NestedExample } from '../../../examples/menubar/nested.js'
-import { mount as VerticalExample } from '../../../examples/menubar/vertical.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as DisabledExample } from './examples/disabled.js'
+import { mount as NestedExample } from './examples/nested.js'
+import { mount as VerticalExample } from './examples/vertical.js'
 
 const meta: Meta = { title: 'Components / Menubar' }
 export default meta

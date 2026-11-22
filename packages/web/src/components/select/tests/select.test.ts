@@ -1,10 +1,10 @@
 import { screen, waitFor, within } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/select/basic.js'
-import { mount as CustomObject } from '../../../../examples/select/custom-object.js'
-import { mount as ShadowRoot } from '../../../../examples/select/shadow-root.js'
-import { mount as Virtualized } from '../../../../examples/select/virtualized.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as CustomObject } from '../examples/custom-object.js'
+import { mount as ShadowRoot } from '../examples/shadow-root.js'
+import { mount as Virtualized } from '../examples/virtualized.js'
 import { mount } from '../../../test-utils.js'
 import { createListCollection } from '@ark-ui/web/select'
 

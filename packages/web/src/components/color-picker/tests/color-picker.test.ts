@@ -1,12 +1,12 @@
 import { screen, waitFor, within } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/color-picker/basic.js'
-import { mount as Controlled } from '../../../../examples/color-picker/controlled.js'
-import { mount as FormUsage } from '../../../../examples/color-picker/form-usage.js'
-import { mount as OpenControlled } from '../../../../examples/color-picker/open-controlled.js'
-import { mount as SliderOnly } from '../../../../examples/color-picker/slider-only.js'
-import { mount as SwatchOnly } from '../../../../examples/color-picker/swatch-only.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as Controlled } from '../examples/controlled.js'
+import { mount as FormUsage } from '../examples/form-usage.js'
+import { mount as OpenControlled } from '../examples/open-controlled.js'
+import { mount as SliderOnly } from '../examples/slider-only.js'
+import { mount as SwatchOnly } from '../examples/swatch-only.js'
 import '../../field/index.js'
 import { mount } from '../../../test-utils.js'
 

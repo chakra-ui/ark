@@ -243,16 +243,17 @@ Items from a property or JSON are rendered into the list. A `<template>` in the 
 `<template data-group>` once per group, filling in the item's value, disabled state and text from the collection.
 Without templates, minimal item parts are rendered, e.g.
 `<ark-select-item value="…"><ark-select-item-text>…</ark-select-item-text></ark-select-item>`. Add the `manual`
-attribute to the list to render items yourself, e.g. a virtualized window; see `examples/select/virtualized.ts`. Item
-parts set `aria-posinset` and `aria-setsize` from the collection, and `scrollToIndexFn` lets keyboard navigation reach
-items that aren't rendered.
+attribute to the list to render items yourself, e.g. a virtualized window; see
+`src/components/select/examples/virtualized.ts`. Item parts set `aria-posinset` and `aria-setsize` from the collection,
+and `scrollToIndexFn` lets keyboard navigation reach items that aren't rendered.
 
 Separators aren't items: style them between groups in CSS, e.g.
 `.group:not([hidden]) ~ .group:not([hidden]) { border-top: 1px solid }`, so groups hidden by filtering never add one.
 
 For data that loads asynchronously, `createAsyncList` from `@ark-ui/web/async-list` wraps Zag's async list in a small
-store. Subscribe to it and assign a new collection on each change; see `examples/combobox/async-search.ts` and
-`examples/listbox/load-more.ts`. Combobox and command take a `loading` attribute, which sets `aria-busy`.
+store. Subscribe to it and assign a new collection on each change; see
+`src/components/combobox/examples/async-search.ts` and `src/components/listbox/examples/load-more.ts`. Combobox and
+command take a `loading` attribute, which sets `aria-busy`.
 
 ```ts
 import { createAsyncList } from '@ark-ui/web/async-list'
@@ -401,7 +402,7 @@ Components also work within an existing shadow root; include your styles in that
 A part can live outside its root, e.g. an overlay moved to the end of `<body>`, by pointing `for` at the root's `id`.
 Parts nested inside it find the root too. The part must be in the same document or shadow root as the root, and it
 connects once that root appears. Items that a root reads from its own markup, such as collection or carousel items, must
-stay in its subtree. See `examples/dialog/portal.ts`.
+stay in its subtree. See `src/components/dialog/examples/portal.ts`.
 
 ```html
 <ark-dialog id="settings">
@@ -438,7 +439,9 @@ The package is organized as follows:
 - `src/components/<component>/shared.ts`: internal tags, collection helpers, and shared state.
 - `src/components/<component>/index.ts`: component registration and public element types.
 - `src/utils/`: element lifecycle, collections, attributes, lazy mounting, and presence.
-- `examples/<component>/`: self-contained examples with markup, data, icons, and helpers in the same file.
+- `src/components/<component>/examples/`: self-contained examples with markup, data, icons, and helpers in the same
+  file.
+- `src/providers/hotkeys/`: keyboard shortcuts, with its own examples, stories and tests.
 - `src/components/<component>/<component>.stories.ts`: Storybook metadata and example exports.
 - `src/components/<component>/tests/`: interaction tests for that component.
 - `src/utils/tests/`: tests for the shared element runtime.

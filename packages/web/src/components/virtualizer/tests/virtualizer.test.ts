@@ -1,8 +1,8 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as List } from '../../../../examples/virtualizer/list.js'
-import { mount as ScrollToIndex } from '../../../../examples/virtualizer/scroll-to-index.js'
+import { mount as List } from '../examples/list.js'
+import { mount as ScrollToIndex } from '../examples/scroll-to-index.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

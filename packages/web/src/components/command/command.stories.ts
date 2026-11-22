@@ -1,13 +1,13 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as AsyncExample } from '../../../examples/command/async.js'
-import { mount as BasicExample } from '../../../examples/command/basic.js'
-import { mount as DialogExample } from '../../../examples/command/dialog.js'
-import { mount as EmptyStateExample } from '../../../examples/command/empty-state.js'
-import { mount as FromJsonExample } from '../../../examples/command/from-json.js'
-import { mount as GroupsExample } from '../../../examples/command/groups.js'
-import { mount as KeywordsExample } from '../../../examples/command/keywords.js'
-import { mount as PagesExample } from '../../../examples/command/pages.js'
+import { mount as AsyncExample } from './examples/async.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as DialogExample } from './examples/dialog.js'
+import { mount as EmptyStateExample } from './examples/empty-state.js'
+import { mount as FromJsonExample } from './examples/from-json.js'
+import { mount as GroupsExample } from './examples/groups.js'
+import { mount as KeywordsExample } from './examples/keywords.js'
+import { mount as PagesExample } from './examples/pages.js'
 
 const meta: Meta = { title: 'Components / Command' }
 export default meta

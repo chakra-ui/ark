@@ -1,8 +1,8 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/drawer/basic.js'
-import { mount as Controlled } from '../../../../examples/drawer/controlled.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as Controlled } from '../examples/controlled.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

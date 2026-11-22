@@ -1,9 +1,9 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/marquee/basic.js'
-import { mount as ProgrammaticControl } from '../../../../examples/marquee/programmatic-control.js'
-import { mount as WithEdges } from '../../../../examples/marquee/with-edges.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as ProgrammaticControl } from '../examples/programmatic-control.js'
+import { mount as WithEdges } from '../examples/with-edges.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

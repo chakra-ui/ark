@@ -10,5 +10,12 @@
     "paths": {}
   },
   "include": ["src"],
-  "exclude": ["dist", "src/**/tests", "src/**/*.stories.ts", "src/setup-test.ts", "src/test-utils.ts"]
+  "exclude": [
+    "dist",
+    "src/**/tests",
+    "src/**/examples",
+    "src/**/*.stories.ts",
+    "src/setup-test.ts",
+    "src/test-utils.ts"
+  ]
 }

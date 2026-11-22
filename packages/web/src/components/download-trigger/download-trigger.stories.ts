@@ -1,8 +1,8 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/download-trigger/basic.js'
-import { mount as SvgExample } from '../../../examples/download-trigger/svg.js'
-import { mount as WithPromiseExample } from '../../../examples/download-trigger/with-promise.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as SvgExample } from './examples/svg.js'
+import { mount as WithPromiseExample } from './examples/with-promise.js'
 
 const meta: Meta = { title: 'Utilities / Download Trigger' }
 export default meta

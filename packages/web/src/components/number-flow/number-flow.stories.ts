@@ -1,13 +1,13 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/number-flow/basic.js'
-import { mount as ContinuousExample } from '../../../examples/number-flow/continuous.js'
-import { mount as FormattingExample } from '../../../examples/number-flow/formatting.js'
-import { mount as LiveExample } from '../../../examples/number-flow/live.js'
-import { mount as LocaleExample } from '../../../examples/number-flow/locale.js'
-import { mount as PrefixSuffixExample } from '../../../examples/number-flow/prefix-suffix.js'
-import { mount as TimingExample } from '../../../examples/number-flow/timing.js'
-import { mount as WithTimerExample } from '../../../examples/number-flow/with-timer.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as ContinuousExample } from './examples/continuous.js'
+import { mount as FormattingExample } from './examples/formatting.js'
+import { mount as LiveExample } from './examples/live.js'
+import { mount as LocaleExample } from './examples/locale.js'
+import { mount as PrefixSuffixExample } from './examples/prefix-suffix.js'
+import { mount as TimingExample } from './examples/timing.js'
+import { mount as WithTimerExample } from './examples/with-timer.js'
 
 const meta: Meta = { title: 'Components / Number Flow' }
 export default meta

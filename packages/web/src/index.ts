@@ -72,5 +72,5 @@ export {
   type HotkeysCommand,
   type HotkeysOptions,
   type HotkeyStore,
-} from './utils/hotkeys.js'
+} from './providers/hotkeys/index.js'
 export { createCollator, createFilter, type FilterOptions, type FilterReturn } from './utils/locale.js'

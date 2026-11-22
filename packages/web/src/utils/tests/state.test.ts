@@ -3,8 +3,8 @@ import userEvent from '@testing-library/user-event'
 
 import '@ark-ui/web/accordion'
 import '@ark-ui/web/select'
-import { mount as Accordion } from '../../../examples/accordion/basic.js'
-import { mount as Select } from '../../../examples/select/basic.js'
+import { mount as Accordion } from '../../components/accordion/examples/basic.js'
+import { mount as Select } from '../../components/select/examples/basic.js'
 import { mount } from '../../test-utils.js'
 
 const selectItem = (value: string) => document.querySelector(`ark-select-item[value="${value}"]`)!

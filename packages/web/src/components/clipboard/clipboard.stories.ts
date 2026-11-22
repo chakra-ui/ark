@@ -1,10 +1,10 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/clipboard/basic.js'
-import { mount as ControlledExample } from '../../../examples/clipboard/controlled.js'
-import { mount as CopyStatusExample } from '../../../examples/clipboard/copy-status.js'
-import { mount as TimeoutExample } from '../../../examples/clipboard/timeout.js'
-import { mount as ValueTextExample } from '../../../examples/clipboard/value-text.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as ControlledExample } from './examples/controlled.js'
+import { mount as CopyStatusExample } from './examples/copy-status.js'
+import { mount as TimeoutExample } from './examples/timeout.js'
+import { mount as ValueTextExample } from './examples/value-text.js'
 
 const meta: Meta = { title: 'Components / Clipboard' }
 export default meta

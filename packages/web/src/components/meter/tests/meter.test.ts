@@ -1,7 +1,7 @@
 import { screen, waitFor } from '@testing-library/dom'
 
-import { mount as Basic } from '../../../../examples/meter/basic.js'
-import { mount as ValueState } from '../../../../examples/meter/value-state.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as ValueState } from '../examples/value-state.js'
 import { mount } from '../../../test-utils.js'
 
 test('the meter exposes its value, range and value text to assistive tech', async () => {

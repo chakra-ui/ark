@@ -1,9 +1,9 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/toc/basic.js'
-import { mount as NestedExample } from '../../../examples/toc/nested.js'
-import { mount as WithIndicatorExample } from '../../../examples/toc/with-indicator.js'
-import { mount as ActiveChangeExample } from '../../../examples/toc/active-change.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as NestedExample } from './examples/nested.js'
+import { mount as WithIndicatorExample } from './examples/with-indicator.js'
+import { mount as ActiveChangeExample } from './examples/active-change.js'
 
 const meta: Meta = { title: 'Components / Toc' }
 export default meta

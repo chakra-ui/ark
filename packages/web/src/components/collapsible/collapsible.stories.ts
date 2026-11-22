@@ -1,12 +1,12 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/collapsible/basic.js'
-import { mount as DisabledExample } from '../../../examples/collapsible/disabled.js'
-import { mount as HideModeExample } from '../../../examples/collapsible/hide-mode.js'
-import { mount as InitialOpenExample } from '../../../examples/collapsible/initial-open.js'
-import { mount as LazyMountExample } from '../../../examples/collapsible/lazy-mount.js'
-import { mount as NestedExample } from '../../../examples/collapsible/nested.js'
-import { mount as PartialCollapseExample } from '../../../examples/collapsible/partial-collapse.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as DisabledExample } from './examples/disabled.js'
+import { mount as HideModeExample } from './examples/hide-mode.js'
+import { mount as InitialOpenExample } from './examples/initial-open.js'
+import { mount as LazyMountExample } from './examples/lazy-mount.js'
+import { mount as NestedExample } from './examples/nested.js'
+import { mount as PartialCollapseExample } from './examples/partial-collapse.js'
 
 const meta: Meta = { title: 'Components / Collapsible' }
 export default meta

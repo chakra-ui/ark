@@ -1,8 +1,8 @@
 import { waitFor } from '@testing-library/dom'
 
-import { mount as Basic } from '../../../../examples/scroll-area/basic.js'
-import { mount as Horizontal } from '../../../../examples/scroll-area/horizontal.js'
-import { mount as Nested } from '../../../../examples/scroll-area/nested.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as Horizontal } from '../examples/horizontal.js'
+import { mount as Nested } from '../examples/nested.js'
 import { mount } from '../../../test-utils.js'
 
 const scrollbar = () => document.querySelector('ark-scroll-area-scrollbar')!

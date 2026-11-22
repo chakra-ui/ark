@@ -1,9 +1,9 @@
 import { screen, waitFor } from '@testing-library/dom'
 
-import { mount as Basic } from '../../../../examples/fieldset/basic.js'
-import { mount as Disabled } from '../../../../examples/fieldset/disabled.js'
-import { mount as Invalid } from '../../../../examples/fieldset/invalid.js'
-import { mount as WithCheckbox } from '../../../../examples/fieldset/with-checkbox.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as Disabled } from '../examples/disabled.js'
+import { mount as Invalid } from '../examples/invalid.js'
+import { mount as WithCheckbox } from '../examples/with-checkbox.js'
 import { mount } from '../../../test-utils.js'
 import '@ark-ui/web/field'
 import '@ark-ui/web/fieldset'

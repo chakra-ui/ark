@@ -1,9 +1,9 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/toggle/basic.js'
-import { mount as ControlledExample } from '../../../examples/toggle/controlled.js'
-import { mount as DisabledExample } from '../../../examples/toggle/disabled.js'
-import { mount as IndicatorExample } from '../../../examples/toggle/indicator.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as ControlledExample } from './examples/controlled.js'
+import { mount as DisabledExample } from './examples/disabled.js'
+import { mount as IndicatorExample } from './examples/indicator.js'
 
 const meta: Meta = { title: 'Components / Toggle' }
 export default meta

@@ -1,10 +1,10 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/number-flow/basic.js'
-import { mount as Formatting } from '../../../../examples/number-flow/formatting.js'
-import { mount as PrefixSuffix } from '../../../../examples/number-flow/prefix-suffix.js'
-import { mount as WithTimer } from '../../../../examples/number-flow/with-timer.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as Formatting } from '../examples/formatting.js'
+import { mount as PrefixSuffix } from '../examples/prefix-suffix.js'
+import { mount as WithTimer } from '../examples/with-timer.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

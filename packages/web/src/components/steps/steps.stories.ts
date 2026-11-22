@@ -1,8 +1,8 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/steps/basic.js'
-import { mount as ControlledExample } from '../../../examples/steps/controlled.js'
-import { mount as VerticalExample } from '../../../examples/steps/vertical.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as ControlledExample } from './examples/controlled.js'
+import { mount as VerticalExample } from './examples/vertical.js'
 
 const meta: Meta = { title: 'Components / Steps' }
 export default meta

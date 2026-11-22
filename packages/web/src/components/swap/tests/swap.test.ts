@@ -1,7 +1,7 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Fade } from '../../../../examples/swap/fade.js'
+import { mount as Fade } from '../examples/fade.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

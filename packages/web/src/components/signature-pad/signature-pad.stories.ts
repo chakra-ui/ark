@@ -1,8 +1,8 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/signature-pad/basic.js'
-import { mount as ControlledExample } from '../../../examples/signature-pad/controlled.js'
-import { mount as ImagePreviewExample } from '../../../examples/signature-pad/image-preview.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as ControlledExample } from './examples/controlled.js'
+import { mount as ImagePreviewExample } from './examples/image-preview.js'
 
 const meta: Meta = { title: 'Components / Signature Pad' }
 export default meta

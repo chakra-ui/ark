@@ -1,14 +1,14 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/image-cropper/basic.js'
-import { mount as Circle } from '../../../../examples/image-cropper/circle.js'
-import { mount as ControlledZoom } from '../../../../examples/image-cropper/controlled-zoom.js'
-import { mount as Fixed } from '../../../../examples/image-cropper/fixed.js'
-import { mount as Flip } from '../../../../examples/image-cropper/flip.js'
-import { mount as Reset } from '../../../../examples/image-cropper/reset.js'
-import { mount as Rotation } from '../../../../examples/image-cropper/rotation.js'
-import { mount as ZoomLimits } from '../../../../examples/image-cropper/zoom-limits.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as Circle } from '../examples/circle.js'
+import { mount as ControlledZoom } from '../examples/controlled-zoom.js'
+import { mount as Fixed } from '../examples/fixed.js'
+import { mount as Flip } from '../examples/flip.js'
+import { mount as Reset } from '../examples/reset.js'
+import { mount as Rotation } from '../examples/rotation.js'
+import { mount as ZoomLimits } from '../examples/zoom-limits.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

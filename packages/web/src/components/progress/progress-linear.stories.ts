@@ -1,12 +1,12 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/progress/linear/basic.js'
-import { mount as ControlledExample } from '../../../examples/progress/linear/controlled.js'
-import { mount as IndeterminateExample } from '../../../examples/progress/linear/indeterminate.js'
-import { mount as InitialValueExample } from '../../../examples/progress/linear/initial-value.js'
-import { mount as MinMaxExample } from '../../../examples/progress/linear/min-max.js'
-import { mount as ValueTextExample } from '../../../examples/progress/linear/value-text.js'
-import { mount as VerticalExample } from '../../../examples/progress/linear/vertical.js'
+import { mount as BasicExample } from './examples/linear/basic.js'
+import { mount as ControlledExample } from './examples/linear/controlled.js'
+import { mount as IndeterminateExample } from './examples/linear/indeterminate.js'
+import { mount as InitialValueExample } from './examples/linear/initial-value.js'
+import { mount as MinMaxExample } from './examples/linear/min-max.js'
+import { mount as ValueTextExample } from './examples/linear/value-text.js'
+import { mount as VerticalExample } from './examples/linear/vertical.js'
 
 const meta: Meta = { title: 'Components / Progress - Linear' }
 export default meta

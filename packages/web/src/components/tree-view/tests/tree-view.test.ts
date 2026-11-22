@@ -1,7 +1,7 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as AsyncLoading } from '../../../../examples/tree-view/async-loading.js'
+import { mount as AsyncLoading } from '../examples/async-loading.js'
 import { mount } from '../../../test-utils.js'
 import { createTreeCollection } from '@ark-ui/web/tree-view'
 

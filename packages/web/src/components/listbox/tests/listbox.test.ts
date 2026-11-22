@@ -1,8 +1,8 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as LoadMore } from '../../../../examples/listbox/load-more.js'
-import { mount as Virtualized } from '../../../../examples/listbox/virtualized.js'
+import { mount as LoadMore } from '../examples/load-more.js'
+import { mount as Virtualized } from '../examples/virtualized.js'
 import { intersect, mount, observedTargets } from '../../../test-utils.js'
 import { createListCollection } from '@ark-ui/web/listbox'
 

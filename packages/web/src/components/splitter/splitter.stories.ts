@@ -1,12 +1,12 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/splitter/basic.js'
-import { mount as CollapsibleExample } from '../../../examples/splitter/collapsible.js'
-import { mount as DynamicCollapsibleExample } from '../../../examples/splitter/dynamic-collapsible.js'
-import { mount as MultiplePanelsExample } from '../../../examples/splitter/multiple-panels.js'
-import { mount as NestedExample } from '../../../examples/splitter/nested.js'
-import { mount as ResizeIndicatorExample } from '../../../examples/splitter/resize-indicator.js'
-import { mount as VerticalExample } from '../../../examples/splitter/vertical.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as CollapsibleExample } from './examples/collapsible.js'
+import { mount as DynamicCollapsibleExample } from './examples/dynamic-collapsible.js'
+import { mount as MultiplePanelsExample } from './examples/multiple-panels.js'
+import { mount as NestedExample } from './examples/nested.js'
+import { mount as ResizeIndicatorExample } from './examples/resize-indicator.js'
+import { mount as VerticalExample } from './examples/vertical.js'
 
 const meta: Meta = { title: 'Components / Splitter' }
 export default meta

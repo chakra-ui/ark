@@ -1,9 +1,9 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/menubar/basic.js'
-import { mount as Disabled } from '../../../../examples/menubar/disabled.js'
-import { mount as Vertical } from '../../../../examples/menubar/vertical.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as Disabled } from '../examples/disabled.js'
+import { mount as Vertical } from '../examples/vertical.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

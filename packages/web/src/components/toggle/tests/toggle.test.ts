@@ -1,10 +1,10 @@
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import { mount as Basic } from '../../../../examples/toggle/basic.js'
-import { mount as Controlled } from '../../../../examples/toggle/controlled.js'
-import { mount as Disabled } from '../../../../examples/toggle/disabled.js'
-import { mount as Indicator } from '../../../../examples/toggle/indicator.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as Controlled } from '../examples/controlled.js'
+import { mount as Disabled } from '../examples/disabled.js'
+import { mount as Indicator } from '../examples/indicator.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()

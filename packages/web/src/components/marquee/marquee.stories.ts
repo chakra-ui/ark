@@ -1,14 +1,14 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/marquee/basic.js'
-import { mount as AutoFillExample } from '../../../examples/marquee/auto-fill.js'
-import { mount as FiniteLoopsExample } from '../../../examples/marquee/finite-loops.js'
-import { mount as PauseOnInteractionExample } from '../../../examples/marquee/pause-on-interaction.js'
-import { mount as ProgrammaticControlExample } from '../../../examples/marquee/programmatic-control.js'
-import { mount as ReverseExample } from '../../../examples/marquee/reverse.js'
-import { mount as SpeedExample } from '../../../examples/marquee/speed.js'
-import { mount as VerticalExample } from '../../../examples/marquee/vertical.js'
-import { mount as WithEdgesExample } from '../../../examples/marquee/with-edges.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as AutoFillExample } from './examples/auto-fill.js'
+import { mount as FiniteLoopsExample } from './examples/finite-loops.js'
+import { mount as PauseOnInteractionExample } from './examples/pause-on-interaction.js'
+import { mount as ProgrammaticControlExample } from './examples/programmatic-control.js'
+import { mount as ReverseExample } from './examples/reverse.js'
+import { mount as SpeedExample } from './examples/speed.js'
+import { mount as VerticalExample } from './examples/vertical.js'
+import { mount as WithEdgesExample } from './examples/with-edges.js'
 
 const meta: Meta = { title: 'Components / Marquee' }
 export default meta

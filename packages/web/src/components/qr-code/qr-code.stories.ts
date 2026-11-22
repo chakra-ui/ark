@@ -1,11 +1,11 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/qr-code/basic.js'
-import { mount as ControlledExample } from '../../../examples/qr-code/controlled.js'
-import { mount as DownloadExample } from '../../../examples/qr-code/download.js'
-import { mount as ErrorCorrectionExample } from '../../../examples/qr-code/error-correction.js'
-import { mount as FillExample } from '../../../examples/qr-code/fill.js'
-import { mount as OverlayExample } from '../../../examples/qr-code/overlay.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as ControlledExample } from './examples/controlled.js'
+import { mount as DownloadExample } from './examples/download.js'
+import { mount as ErrorCorrectionExample } from './examples/error-correction.js'
+import { mount as FillExample } from './examples/fill.js'
+import { mount as OverlayExample } from './examples/overlay.js'
 
 const meta: Meta = { title: 'Components / QR Code' }
 export default meta

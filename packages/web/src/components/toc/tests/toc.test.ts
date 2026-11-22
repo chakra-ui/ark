@@ -1,8 +1,8 @@
 import { waitFor } from '@testing-library/dom'
 
-import { mount as ActiveChange } from '../../../../examples/toc/active-change.js'
-import { mount as Basic } from '../../../../examples/toc/basic.js'
-import { mount as Nested } from '../../../../examples/toc/nested.js'
+import { mount as ActiveChange } from '../examples/active-change.js'
+import { mount as Basic } from '../examples/basic.js'
+import { mount as Nested } from '../examples/nested.js'
 import { intersect, mount, observedTargets } from '../../../test-utils.js'
 
 afterEach(() => {

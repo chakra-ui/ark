@@ -1,14 +1,14 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
-import { mount as BasicExample } from '../../../examples/accordion/basic.js'
-import { mount as CollapsibleExample } from '../../../examples/accordion/collapsible.js'
-import { mount as ControlledExample } from '../../../examples/accordion/controlled.js'
-import { mount as DisabledExample } from '../../../examples/accordion/disabled.js'
-import { mount as HorizontalExample } from '../../../examples/accordion/horizontal.js'
-import { mount as LazyMountExample } from '../../../examples/accordion/lazy-mount.js'
-import { mount as MultipleExample } from '../../../examples/accordion/multiple.js'
-import { mount as ValueChangeExample } from '../../../examples/accordion/value-change.js'
-import { mount as WithSliderExample } from '../../../examples/accordion/with-slider.js'
+import { mount as BasicExample } from './examples/basic.js'
+import { mount as CollapsibleExample } from './examples/collapsible.js'
+import { mount as ControlledExample } from './examples/controlled.js'
+import { mount as DisabledExample } from './examples/disabled.js'
+import { mount as HorizontalExample } from './examples/horizontal.js'
+import { mount as LazyMountExample } from './examples/lazy-mount.js'
+import { mount as MultipleExample } from './examples/multiple.js'
+import { mount as ValueChangeExample } from './examples/value-change.js'
+import { mount as WithSliderExample } from './examples/with-slider.js'
 
 const meta: Meta = { title: 'Components / Accordion' }
 export default meta

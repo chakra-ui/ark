@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "bun run storybook",
-    "lint": "biome lint src examples .storybook scripts",
+    "lint": "biome lint src .storybook scripts",
     "typecheck": "tsc",
     "test": "vitest",
     "test:ci": "vitest --run",
@@ -158,8 +158,8 @@
       "import": "./dist/components/listbox/index.js"
     },
     "./hotkeys": {
-      "types": "./dist/utils/hotkeys.d.ts",
-      "import": "./dist/utils/hotkeys.js"
+      "types": "./dist/providers/hotkeys/index.d.ts",
+      "import": "./dist/providers/hotkeys/index.js"
     },
     "./locale": {
       "types": "./dist/utils/locale.d.ts",
