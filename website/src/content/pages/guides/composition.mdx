@@ -6,7 +6,7 @@ description: Learn how to compose default components with custom elements
 
 ## The render Prop
 
-Every Ark part renders a sensible default element. When you want your own — a design system `Button`, a router `Link` —
+Every Ark part renders a sensible default element. When you want your own (a design system `Button`, a router `Link`),
 `render` puts it there instead, and hands you the part's props to apply.
 
 <ExampleCode id="render" component="popover" />
@@ -45,7 +45,7 @@ merge them in:
 <Popover.Trigger render={(props) => <Button {...props({ class: 'my-button', onClick: handleClick })} />} />
 ```
 
-Props that belong to your component rather than the element — a `value`, an `item` — stay outside the call:
+Props that belong to your component rather than the element (a `value`, an `item`) stay outside the call:
 
 ```tsx
 <Listbox.Item render={(props) => <ListVirtualizer.Item {...props()} item={virtualItem()} />} />
@@ -58,8 +58,8 @@ rather than from a CSS attribute selector.
 
 <ExampleCode id="render-state" component="popover" />
 
-`Popover.Trigger` gives you `open`, `current` and `value`. Each part publishes its own shape — `Checkbox.Root` has
-`checked` and `indeterminate`, `Accordion.Item` has `expanded` and `focused` — and the type comes with it, so
+`Popover.Trigger` gives you `open`, `current` and `value`. Each part publishes its own shape (`Checkbox.Root` has
+`checked` and `indeterminate`, `Accordion.Item` has `expanded` and `focused`), and the type comes with it, so
 `state.open` is checked rather than guessed.
 
 This is the difference between `render` and `asChild`. `asChild` could only place your element; `render` tells it what
@@ -71,8 +71,8 @@ the part is doing.
 
 <ExampleCode id="as-child" component="popover" />
 
-It still works, and it is deprecated. Prefer `render` in new code — it is explicit about which element is being
-replaced, and it doesn't change how children are interpreted.
+It still works, and it is deprecated. Prefer `render` in new code. It is explicit about which element is being replaced,
+and it doesn't change how children are interpreted.
 
 ## The Ark Factory
 

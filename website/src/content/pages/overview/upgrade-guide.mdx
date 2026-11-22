@@ -4,149 +4,123 @@ title: Upgrade Guide
 description: What changed in Ark UI v6, and the breaking changes to fix as you migrate.
 ---
 
-v6 keeps the components you already know and unifies how you compose them. Polymorphism moves to a
-single `render` function, every part forwards its machine state, and the frameworks line up so the
-same anatomy works across React, Solid, Svelte, and Vue. This guide covers the breaking changes and
-how to migrate.
+v6 replaces `asChild` with a `render` function, merges the `data-scope`/`data-part` attributes, and lines the four
+frameworks up on the same anatomy. Codemods handle most of the work. This guide covers what they don't.
 
-## Automated migration
+## Before you start
 
-Most of the mechanical work ships as codemods. Run `list` to see every transform, then run the ones
-you need against your files.
+- **Solid** requires Solid 2. See [Solid 2](#solid-2).
+- Commit your work. The codemods won't run on a dirty working tree.
+
+## Run the codemods
 
 ```sh
-# See every available transform
+# List every transform
 npx @ark-ui/codemod list
 
-# Preview the changes without writing them
+# Preview a transform without writing files
 npx @ark-ui/codemod react/as-child-to-render "src/**/*.tsx" --dry
 ```
 
-`--dry` prints a diff and writes nothing. Without it the codemod refuses to run on a dirty working
-tree, so a bad run is one `git checkout` away. Anything ambiguous is left untouched and reported with
-a file and a reason rather than guessed.
+- `--dry` prints a diff and writes nothing.
+- Anything ambiguous is skipped and reported with a file and a reason.
+- Add `--cross-file` when parts come through local barrels, re-exports or wrappers like `styled(ark.button)`.
 
-Only Ark UI elements are rewritten — an `asChild` from another library in the same file is left
-alone. Parts reached through local barrels, re-exports, or factory wrappers (`styled(ark.button)`)
-are resolved with the `--cross-file` flag.
+Each transform exists for `react/*`, `solid/*`, `svelte/*` and `vue/*`:
 
-Beyond `as-child-to-render`, prop renames ship for every framework — `react/*`, `solid/*`, `svelte/*`,
-and `vue/*` (Vue rewrites kebab and bound props too):
+| Transform                  | Change                                                                     |
+| -------------------------- | -------------------------------------------------------------------------- |
+| `as-child-to-render`       | `asChild` → `render`                                                       |
+| `carousel-props`           | `slideCount` → `count`, `autoplay` → `autoPlay`, `padding` → `itemSpacing` |
+| `floating-panel-placement` | `resizeTriggerAxes` → `resizeTriggerPlacements`, `axis` → `placement`      |
+| `image-cropper-placement`  | `handles` → `placements`, `position` → `placement`                         |
+| `tabs-virtual-focus`       | `composite` → `virtualFocus` (value inverted)                              |
+| `popover-portalled`        | removes `portalled`                                                        |
+| `tags-input-editable`      | adds `editable` to keep the old default                                    |
+| `pin-input-count`          | `length` → `count`, or flags a missing `count`                             |
+| `field-indicator`          | `Field.RequiredIndicator` → `Field.Indicator type="required"`              |
 
-| Transform | What it does |
-| --- | --- |
-| `carousel-props` | `slideCount` → `count`, `autoplay` → `autoPlay`, `padding` → `itemSpacing` |
-| `floating-panel-placement` | `resizeTriggerAxes` → `resizeTriggerPlacements`, `axis` → `placement` |
-| `image-cropper-placement` | `handles` → `placements`, `position` → `placement` |
-| `tabs-virtual-focus` | `composite` → `virtualFocus` (value inverted) |
-| `popover-portalled` | removes the `portalled` prop |
-| `tags-input-editable` | adds `editable` to keep the old default |
-| `pin-input-count` | `length` → `count`, or flags a missing `count` |
-| `field-indicator` | `Field.RequiredIndicator` → `Field.Indicator type="required"` |
+Stylesheets and selectors have their own transform:
 
-Data-attribute selectors, in stylesheets, components or JS/TS, have their own transform, `css/data-attributes`, covered under
-[Data attributes are merged](#data-attributes-are-merged) below.
+```sh
+npx @ark-ui/codemod css/data-attributes "src/**/*.{css,ts,tsx,vue,svelte}" --dry
+```
 
-Two changes are left to do by hand because they reshape markup, not just props: the popover
-`api.portalled ? Portal : Fragment` wrapper (drop it for a plain `Portal`), and the
-`Combobox`/`Listbox`/`Select` `content` → `content` + `list` split described under
-[the list part](#comboboxlistboxselect-gain-a-list-part).
+Everything else in this guide is a manual change.
 
 ## Migrate with an AI agent
 
-The codemod handles `asChild` → `render`. For the rest, paste this prompt into an AI agent (Claude
-Code, Cursor, Copilot) pointed at your codebase — it has the full context for the manual changes.
+Paste this prompt into an agent (Claude Code, Cursor, Copilot) pointed at your codebase.
 
 ```text
-You are migrating this codebase from Ark UI v5 to v6. Work framework-aware
-(React, Solid, Svelte, or Vue — detect which one this project uses) and change
-only Ark UI usage. After each step, run the project's typecheck/build.
+Migrate this codebase from Ark UI v5 to v6. Detect the framework (React, Solid,
+Svelte or Vue) and change only Ark UI usage. Run the typecheck after each step.
+Report anything ambiguous instead of guessing.
 
-1. Run the codemod for the mechanical rename, then review its report:
-   npx @ark-ui/codemod react/as-child-to-render "src/**/*.tsx"
-   (swap `react` for solid/svelte/vue; add `--cross-file` if parts are reached
-   through local barrels, re-exports, or factory wrappers like styled(ark.button).)
+1. Run the codemods and review their reports:
+   npx @ark-ui/codemod list
+   npx @ark-ui/codemod <framework>/as-child-to-render "src/**/*.tsx"
+   npx @ark-ui/codemod css/data-attributes "src/**/*.{css,ts,tsx,vue,svelte}"
+   Add --cross-file if parts come through barrels, re-exports or wrappers.
 
-2. Finish anything the codemod left. `asChild` is now a `render` function that
-   receives (props, state):
-   - React/Vue: move the child into the function/slot; spread `props`.
-   - Solid/Svelte/Vue: `props` is a MERGE FUNCTION — spread `{...props()}`
-     (Solid/Svelte) or `v-bind="props()"` (Vue), and call `props({ onClick })`
-     to merge your handlers instead of overwriting them. In Solid, `state` is an
-     accessor: `state().open`.
+2. Finish any `asChild` left over. `render` receives (props, state).
+   React: spread `props`. Solid/Svelte/Vue: `props` is a merge function, so
+   spread `props()` and call `props({ onClick })` to merge handlers. Solid's
+   `state` is an accessor: `state().open`.
 
-3. Toaster is no longer polymorphic: remove any `render`/`asChild` on it and
-   drop `ToasterState`. Style the group with CSS (`data-placement`, `data-side`,
-   `data-align`) or wrap your own element around it.
+3. Toaster: remove `render`/`asChild` and `ToasterState`. Style it with CSS.
 
-4. Combobox.Empty / Listbox.Empty move OUT of List to become a sibling of List.
-   Put the styled message in a child element. For loading/error states, use the
-   new `Status` part on Combobox, Listbox, and Select.
+4. Parts that now render `span` or `h2` (see the guide): add `display` where
+   styles assumed a block. React refs become HTMLSpanElement.
 
-5. Indicator and control parts inside a button or label now render `span`, not
-   `div`: Accordion.ItemIndicator, Collapsible.Indicator, Popover.Indicator,
-   Toggle.Indicator, Select.Indicator/ItemIndicator, Combobox.ItemIndicator,
-   Listbox.ItemIndicator, Menu.Indicator/ItemIndicator,
-   NavigationMenu.ItemIndicator, Checkbox.Control/Indicator,
-   RadioGroup.ItemControl, SegmentGroup.ItemControl, Clipboard.Indicator,
-   Steps.Indicator, Splitter.ResizeTriggerIndicator, Avatar.Root,
-   Tabs.Indicator, NumberInput.Scrubber. Add an explicit `display` wherever
-   styles assumed a block (sizes, transforms). React refs become HTMLSpanElement.
+5. Overlays: move `z-index` from content to the positioner, using
+   `calc(<base> + var(--layer-index))`.
 
-6. TagsInput is no longer editable by default. Add `editable` wherever tags
-   should still open for editing on double-click.
+6. Apply the component changes in the guide: Accordion, Combobox/Listbox/
+   Select (`List` part, `Empty` placement), Field, Menu, NumberInput,
+   PinInput, Popover, Slider, Steps, TagsInput, Toc, Tour, and the
+   "previous" renames.
 
-7. useCollator / useFilter now return values directly (no accessor/.value) on
-   Solid, Svelte, and Vue: `collator.compare(a, b)`, `const { contains } = useFilter(...)`.
+7. Solid: upgrade to Solid 2. Solid/Svelte/Vue: `useCollator`/`useFilter`
+   return values, not accessors. Svelte: pass `id` to `useX` hooks and update
+   renamed exports. Vue: update AngleSlider type names and NumberInput v-model.
 
-8. Svelte only:
-   - The `useX` hooks now require an `id`: `useCollapsible({ id })` where
-     `const id = $props.id()`. `$props.id()` may be called once — derive if you
-     need two. Components like `<Collapsible.Root>` are unaffected.
-   - Exports now match the other frameworks: Dialog parts are prefixed
-     (`DialogPositioner`, `DialogRoot`, ...); `StepsStepChangeDetails` →
-     `StepChangeDetails`, `ColorPickerColor` → `Color`, `TabsContentState` /
-     `TabsTriggerState` → `TabContentState` / `TabTriggerState`. Internals like
-     `CheckboxProvider` and `splitCollapsibleProps` are no longer exported.
-
-Report anything ambiguous instead of guessing. Full guide:
-https://ark-ui.com/docs/overview/upgrade-guide
+Full guide: https://ark-ui.com/docs/overview/upgrade-guide
 ```
 
-## Breaking changes to fix
-
-These are the changes you have to act on when you move a project from v5.
+## Composition
 
 ### `asChild` is now `render`
 
-Polymorphism moves from a wrapper prop to a `render` function that receives the part's props and its
-state. Every part gets one typed composition API, and you can read machine state inline.
+`render` receives the part's props and its state, so you can read state inline. React and Vue move the child into a
+function or slot. In Solid, Svelte and Vue, `props` is a function: call it to spread, and pass your handlers to merge
+them instead of overwriting.
 
-The shape differs per framework. React and Vue move the child into the function or slot; Solid and
-Svelte are a rename where the props object becomes a props **function** you must call.
+Codemod: `<framework>/as-child-to-render`.
 
-```diff
-// React
-- <Collapsible.Trigger asChild>
--   <button>Toggle</button>
-- </Collapsible.Trigger>
-+ <Collapsible.Trigger render={(props, state) => (
-+   <button {...props}>{state.open ? 'Open' : 'Closed'}</button>
-+ )} />
+**Before**
+
+```tsx
+<Collapsible.Trigger asChild>
+  <button>Toggle</button>
+</Collapsible.Trigger>
 ```
 
-```diff
-// Solid — {...props} becomes {...props()}, state is an accessor
-- <Collapsible.Trigger asChild>
--   {(props) => <button {...props}>Toggle</button>}
-- </Collapsible.Trigger>
-+ <Collapsible.Trigger render={(props, state) => (
-+   <button {...props()}>{state().open ? 'Open' : 'Closed'}</button>
-+ )} />
+**After (React)**
+
+```tsx
+<Collapsible.Trigger render={(props, state) => <button {...props}>{state.open ? 'Open' : 'Closed'}</button>} />
 ```
+
+**After (Solid)**
+
+```tsx
+<Collapsible.Trigger render={(props, state) => <button {...props()}>{state().open ? 'Open' : 'Closed'}</button>} />
+```
+
+**After (Svelte)**
 
 ```svelte
-<!-- Svelte -->
 <Collapsible.Trigger>
   {#snippet render(props, state)}
     <button {...props()}>{state.open ? 'Open' : 'Closed'}</button>
@@ -154,8 +128,9 @@ Svelte are a rename where the props object becomes a props **function** you must
 </Collapsible.Trigger>
 ```
 
+**After (Vue)**
+
 ```vue
-<!-- Vue -->
 <Collapsible.Trigger>
   <template #render="{ props, state }">
     <button v-bind="props()">{{ state.open ? 'Open' : 'Closed' }}</button>
@@ -163,296 +138,451 @@ Svelte are a rename where the props object becomes a props **function** you must
 </Collapsible.Trigger>
 ```
 
-> In Solid, Svelte, and Vue, `props` is a merge function: call `props({ onClick: mine })` to merge
-> your handlers with the part's instead of overwriting them.
-
 ### `Toaster` is no longer polymorphic
 
-`Toaster` no longer accepts `render` or `asChild`, and `ToasterState` is gone. Its children belong to
-the machine, so handing them over dropped toasts. Style the group with CSS — it carries
-`data-placement`, `data-side`, and `data-align` — or wrap your own element around `Toaster`.
+`Toaster` drops `render`, `asChild` and `ToasterState`. Its children belong to the machine, and handing them over
+dropped toasts. Style the group with `data-placement`, `data-side` and `data-align`, or wrap your own element around it.
 
-### `Popover` is no longer portalled by prop
+## Styling and markup
 
-The `portalled` prop and `api.portalled` value are gone. The popover now detects whether its content is
-portalled from where you render it and proxies tab order accordingly, so a forgotten `portalled` can no
-longer break keyboard access. Decide portalling by rendering the content inside `Portal` or not.
+### Data attributes are merged
 
-```diff
-- <Popover.Root portalled>
-+ <Popover.Root>
-    <Popover.Trigger>Open</Popover.Trigger>
-+   <Portal>
-      <Popover.Positioner>
-        <Popover.Content>...</Popover.Content>
-      </Popover.Positioner>
-+   </Portal>
-  </Popover.Root>
+`data-scope`, `data-part` and `data-ownedby` become one attribute per part, `data-{scope}-{part}`. Your JSX doesn't
+change. Your CSS and `querySelector` calls do.
+
+Codemod: `css/data-attributes`. It also turns toggle `[data-state="on"]` into `[data-pressed]`, and replaces the removed
+`data-focus` on toggle group and toolbar with `:focus-within` / `:focus-visible`.
+
+**Before**
+
+```css
+[data-scope='dialog'][data-part='trigger'] {
+  /* ... */
+}
 ```
 
-The `react/popover-portalled` codemod (and its `solid`/`svelte`/`vue` variants) removes the prop; wrap
-the content in `Portal` yourself, as this is markup the codemod won't reshape. To render inline, drop
-the `Portal` — tab order is still handled.
+**After**
 
-### `Combobox.Empty` and `Listbox.Empty` move out of `List`
-
-`Empty` used to render inside `List` and unmount when the collection was non-empty, which kept it out
-of the accessibility tree and prevented any announcement. It now stays mounted as a sibling of `List`
-with `role="status"`, swapping only its children. Move it out of `List` and put your styled message in
-a child element.
-
-```diff
-  <Combobox.Content>
--   <Combobox.List>
--     <Combobox.Empty className={styles.Item}>No results found</Combobox.Empty>
-+   <Combobox.Empty>
-+     <div className={styles.Empty}>No results found</div>
-+   </Combobox.Empty>
-+   <Combobox.List>
-      {/* items */}
-    </Combobox.List>
-  </Combobox.Content>
+```css
+[data-dialog-trigger] {
+  /* ... */
+}
 ```
 
-A new `Status` part on `Combobox`, `Listbox`, and `Select` covers loading and error states that
-`Empty` cannot distinguish (it keys off `collection.size === 0`).
+The codemod skips selectors built from variables, with escaped quotes, or where scope and part aren't adjacent. Update
+those by hand.
 
-### Combobox/Listbox/Select gain a `List` part
+Some parts were renamed:
 
-The listbox semantics (`role="listbox"`, active-descendant, keyboard focus) move off `Content` onto a
-new `List` part. `Content` becomes a plain wrapper, so you can render headers, footers, or a search
-input in the popup without polluting the listbox. Wrap the items in `List` inside `Content`. This is
-structural, so the codemod leaves it to you.
+| Component                    | v5                                      | v6                                      |
+| ---------------------------- | --------------------------------------- | --------------------------------------- |
+| TreeView                     | `branch`                                | `node-group`                            |
+| TreeView                     | `branch-control`, `item`                | `node` (`[data-branch]` on branches)    |
+| TreeView                     | `branch-content`, `branch-indent-guide` | `node-group-content`, `indent-guide`    |
+| TreeView                     | `branch-indicator`, `branch-trigger`    | `node-indicator`, `node-expand-trigger` |
+| TreeView                     | `branch-text`, `item-text`              | `node-text`                             |
+| TreeView                     | `item-indicator`                        | removed, use `node-indicator`           |
+| ImageCropper handle          | `[data-position="nw"]`                  | `[data-placement="nw"]`                 |
+| FloatingPanel resize trigger | `[data-axis="n"]`                       | `[data-placement="n"]`                  |
+| Field                        | `input`, `textarea`, `select`           | `control`                               |
+| Field                        | `required-indicator`                    | `indicator`                             |
+| Toc nav                      | `[data-toc-root]`                       | `[data-toc-nav]`                        |
 
-```diff
-  <Combobox.Content>
-+   <Combobox.List>
-      {items.map((item) => (
-        <Combobox.Item key={item.value} item={item}>{item.label}</Combobox.Item>
-      ))}
-+   </Combobox.List>
-  </Combobox.Content>
+- The codemod renames all of these except `item-indicator` and the Toc nav. It renames `data-position` and `data-axis`
+  only right after the handle or resize trigger selector.
+- A v5 `item` or `branch-control` selector becomes two attribute selectors, which raises specificity. Check overrides
+  that relied on order.
+- JsonTreeView uses the tree view's attributes: `[data-scope="json-tree-view"][data-part="branch"]` →
+  `[data-tree-view-node-group]`.
+
+### Some parts render a different element
+
+Parts inside a `button` or `label` now render `span`, since a `div` there is invalid HTML. A few others changed to match
+the same part in other frameworks. A `span` is inline, so width, height and `transform` stop applying until you set
+`display`. In React, the refs are `HTMLSpanElement`.
+
+**Before**
+
+```css
+[data-accordion-item-indicator] {
+  transition: transform 0.2s;
+}
 ```
 
-The `composite` prop is gone; pass `popupType="dialog"` where you previously set `composite={false}`.
+**After**
 
-### Indicator and control parts render `span`
+```css
+[data-accordion-item-indicator] {
+  display: inline-flex;
+  transition: transform 0.2s;
+}
+```
 
-Indicator and control parts that sit inside a `button` or `label` now render `span` instead of `div`.
-A `div` there is invalid HTML, since both only accept phrasing content. The affected parts:
+Now `span`:
 
 - `Accordion.ItemIndicator`, `Collapsible.Indicator`, `Popover.Indicator`, `Toggle.Indicator`
-- `Select.Indicator`, `Select.ItemIndicator`, `Combobox.ItemIndicator`, `Listbox.ItemIndicator`
+- `Select.Indicator`, `Select.ItemIndicator`, `Combobox.ItemIndicator`, `Listbox.ItemIndicator`, `Listbox.ItemText`
 - `Menu.Indicator`, `Menu.ItemIndicator`, `NavigationMenu.ItemIndicator`
 - `Checkbox.Control`, `Checkbox.Indicator`, `RadioGroup.ItemControl`, `SegmentGroup.ItemControl`
 - `Clipboard.Indicator`, `Steps.Indicator`, `Splitter.ResizeTriggerIndicator`
 - `Avatar.Root`, `Avatar.RootProvider`, `Tabs.Indicator`, `NumberInput.Scrubber`
+- `AngleSlider.Marker`, `AngleSlider.ValueText`
 
-A `span` is inline, so width, height and `transform` stop applying to it. If your styles relied on
-the part being a block, a rotating accordion indicator for example, give it an explicit `display`.
-
-```diff
-  [data-accordion-item-indicator] {
-+   display: inline-flex;
-    transition: transform 0.2s;
-  }
-```
-
-In React, refs to these parts are now typed `HTMLSpanElement`.
-
-### Field and Fieldset use the Zag machines
-
-`Field` and `Fieldset` are now built on `@zag-js/field` and `@zag-js/fieldset`. Fields validate
-natively and with `validate`, show results by `validationMode`, and accept server `errors`. Most
-usage keeps working; these changes need a look:
-
-- `Field.RequiredIndicator` is replaced by `Field.Indicator`, which takes a `type`. The `react/field-indicator`
-  codemod (and its `solid`/`svelte`/`vue` variants) makes the change for you.
-- The `input`, `textarea` and `select` parts are renamed to `control`, and `required-indicator` to
-  `indicator`. Update selectors from `[data-field-input]` to `[data-field-control]` and from
-  `[data-field-required-indicator]` to `[data-field-indicator]`. `css/data-attributes` rewrites the old
-  `data-scope`/`data-part` selectors to these.
-- Generated ids are now `{id}:label` and `{id}:control`. Update any code that reads them.
-- `Field.ErrorText` stays mounted and hidden while the field is valid, so style it with `[hidden]`
-  rather than relying on it being removed.
-- `Field.Root` no longer sets `role="group"`.
-
-```diff
-  <Field.Label>
-    Email
--   <Field.RequiredIndicator>*</Field.RequiredIndicator>
-+   <Field.Indicator type="required">*</Field.Indicator>
-  </Field.Label>
-```
-
-### `TagsInput` is no longer editable by default
-
-Tags no longer open for editing on double-click unless you pass `editable`. The
-`react/tags-input-editable` codemod (and its `solid`/`svelte`/`vue` variants) adds it for you; without
-the codemod, add it wherever tags should stay editable.
-
-```diff
-- <TagsInput.Root>
-+ <TagsInput.Root editable>
-```
-
-### Data attributes are merged
-
-`data-scope`, `data-part`, and `data-ownedby` collapse into one attribute per part,
-`data-{scope}-{part}`. An element can now take part in more than one machine, and selectors get
-shorter. This does not change your JSX — it changes the CSS and any `querySelector` that targets
-these attributes.
-
-```diff
-- [data-scope="dialog"][data-part="trigger"] { ... }
-+ [data-dialog-trigger] { ... }
-```
-
-The `css/data-attributes` transform rewrites stylesheets, Vue and Svelte `<style>` blocks, and the
-selectors in JS/TS files (style objects, CSS-in-JS template literals, `querySelector` strings): it
-merges scope/part selectors, turns
-toggle `[data-state="on"]` into `[data-pressed]`, and swaps the removed `data-focus` on toggle-group
-and toolbar for `:focus-within` / `:focus-visible`.
-
-```sh
-npx @ark-ui/codemod css/data-attributes "src/**/*.{css,ts,tsx,vue,svelte}" --dry
-```
-
-Selectors where scope and part are not adjacent, that use escaped quotes, or that are built from
-variables are left for you to update. Outside `.css` files, `[data-state="on"]` only becomes
-`[data-pressed]` right after a toggle or toggle-group item selector, so other libraries' selectors
-stay as they are.
-
-A few attributes changed name. The codemod renames these too, except `item-indicator`. It renames `data-position`
-and `data-axis` only when they directly follow the handle or resize trigger part selector, so selectors that target
-those parts by class are left for you:
-
-| Component | v5 | v6 |
-| --- | --- | --- |
-| TreeView | `branch` | `node-group` |
-| TreeView | `branch-control`, `item` | `node` (`[data-branch]` on branches) |
-| TreeView | `branch-content`, `branch-indent-guide` | `node-group-content`, `indent-guide` |
-| TreeView | `branch-indicator`, `branch-trigger` | `node-indicator`, `node-expand-trigger` |
-| TreeView | `branch-text`, `item-text` | `node-text` |
-| TreeView | `item-indicator` | removed; use `node-indicator` |
-| ImageCropper handle | `[data-position="nw"]`, … | `[data-placement="nw"]`, … |
-| FloatingPanel resize trigger | `[data-axis="n"]`, … | `[data-placement="n"]`, … |
-
-A v5 `item` or `branch-control` selector becomes two attribute selectors, which raises its specificity, so check any
-overrides that relied on the old order.
-
-JsonTreeView parts use the tree view's part attributes, so
-`[data-scope="json-tree-view"][data-part="branch"]` becomes `[data-tree-view-node-group]`. The codemod handles this too.
-
-Steps also keeps a step completed when the user goes back to it, so a step can carry both
-`data-current` and `data-complete`. Put your current-step style after the completed one, or scope the
-completed style with `:not([data-current])`.
+Now `h2`: `Popover.Title`, like `Dialog.Title`. Without a CSS reset it picks up the browser's heading margins and font
+size. Use `render` for another heading level.
 
 ### Overlays no longer set a `z-index`
 
-Popover, Menu, Select, Combobox, Tooltip, HoverCard, DatePicker, ColorPicker, Dialog, Drawer, Tour,
-FloatingPanel and Toast no longer put an inline `z-index` on their content. A `z-index` you set on the
-content now loses to its positioner, and overlays could drop behind each other while animating out.
+Popover, Menu, Select, Combobox, Tooltip, HoverCard, DatePicker, ColorPicker, Dialog, Drawer, Tour, FloatingPanel and
+Toast no longer put an inline `z-index` on their content. Set it on the positioner or backdrop. Each exposes
+`--layer-index`, its position among open layers, so nested overlays stay above their parent.
 
-Set the `z-index` on the positioner (or the backdrop) in CSS. Each one exposes `--layer-index`, its
-place in the stack of open layers, so nested overlays stay on top of their parent.
+**Before**
 
-```diff
-- [data-popover-content] {
--   z-index: 1400;
-- }
-+ [data-popover-positioner] {
-+   z-index: calc(1400 + var(--layer-index));
-+ }
+```css
+[data-popover-content] {
+  z-index: 1400;
+}
 ```
 
-- Dialog and Drawer no longer set `--z-index`. Use `--layer-index` on the backdrop and positioner.
-- FloatingPanel: style the positioner the same way to bring the focused panel to the front.
-- Tour no longer copies the content's `z-index` onto dialog steps. Style the positioner with
-  `--tour-layer`.
-- Toast: set the `z-index` on `[data-toast-group]`.
+**After**
 
-### `Steps` takes `items` and addresses steps by `value`
-
-Steps are defined by an `items` array and addressed by a string `value` instead of a `count` and an
-index. Each item can be `optional`, `invalid`, `disabled` or `editable`, and can carry a `title` and a
-`description`.
-
-```diff
-+ const items = [{ value: 'shipping' }, { value: 'gift', optional: true }, { value: 'payment' }]
-
-- <Steps.Root count={3} defaultStep={0} onStepChange={(details) => setStep(details.step)}>
-+ <Steps.Root items={items} defaultValue="shipping" onValueChange={(details) => setStep(details.value)}>
-    <Steps.List>
--     <Steps.Item index={0}>
-+     <Steps.Item value="shipping">
-        <Steps.Trigger>Shipping</Steps.Trigger>
-      </Steps.Item>
-    </Steps.List>
--   <Steps.Content index={0}>...</Steps.Content>
-+   <Steps.Content value="shipping">...</Steps.Content>
-    <Steps.CompletedContent>Done</Steps.CompletedContent>
-  </Steps.Root>
+```css
+[data-popover-positioner] {
+  z-index: calc(1400 + var(--layer-index));
+}
 ```
 
-| v5                                   | v6                                            |
-| ------------------------------------ | --------------------------------------------- |
-| `count`                              | `items`                                       |
-| `step` / `defaultStep`               | `value` / `defaultValue`                      |
-| `onStepChange` / `onStepComplete`    | `onValueChange` / `onComplete`                |
-| `isStepValid` / `isStepSkippable`    | `invalid` / `optional` on the item            |
-| `onStepInvalid`                      | `onNavigationBlocked` (`reason`, `blockedBy`) |
-| `index` on parts                     | `value`                                       |
-| `api.setStep(index)`                 | `api.setValue(value)`                         |
-| `api.isCompleted`                    | `api.complete`                                |
-| `api.goToPrevStep()` / `hasPrevStep` | `api.goToPreviousStep()` / `hasPreviousStep`  |
-| `Steps.ChangeDetails`                | `Steps.ValueChangeDetails`                    |
-| `Steps.InvalidDetails`               | `Steps.NavigationBlockedDetails`              |
+- Dialog and Drawer: `--z-index` is gone. Use `--layer-index` on the backdrop and positioner.
+- FloatingPanel: style the positioner the same way to raise the focused panel.
+- Tour: style the positioner with `--tour-layer`.
+- Toast: set `z-index` on `[data-toast-group]`.
 
-`Steps.SkipTrigger` skips an `optional` step, and `completedValues` makes the completed steps
-controllable. In Vue, `v-model` holds the current step's value (it was `v-model:step`). In Svelte,
-bind `value` (it was `bind:step`). The `--percent` variable on the progress part is now
-`--steps-percent`.
+## Components
+
+### Accordion
+
+- `loopFocus` is removed. Triggers are reached with `Tab`.
+- `collapsible` defaults to `true`. Pass `collapsible={false}` to keep one item open.
+
+### Combobox, Listbox and Select
+
+The listbox role, active descendant and keyboard focus move from `Content` to a new `List` part. `Content` becomes a
+plain wrapper, so headers, footers and search inputs can sit in the popup. `Empty` moves out of `List` and stays mounted
+with `role="status"`, so screen readers announce it. Put its message in a child element.
+
+**Before**
+
+```tsx
+<Combobox.Content>
+  <Combobox.Empty className={styles.Empty}>No results found</Combobox.Empty>
+  {items.map((item) => (
+    <Combobox.Item key={item.value} item={item}>
+      {item.label}
+    </Combobox.Item>
+  ))}
+</Combobox.Content>
+```
+
+**After**
+
+```tsx
+<Combobox.Content>
+  <Combobox.Empty>
+    <div className={styles.Empty}>No results found</div>
+  </Combobox.Empty>
+  <Combobox.List>
+    {items.map((item) => (
+      <Combobox.Item key={item.value} item={item}>
+        {item.label}
+      </Combobox.Item>
+    ))}
+  </Combobox.List>
+</Combobox.Content>
+```
+
+| v5                  | v6                   |
+| ------------------- | -------------------- |
+| `composite={false}` | `popupType="dialog"` |
+| `disableLayer`      | `inline` (Combobox)  |
+
+For loading and error states, use the new `Status` part.
+
+### Field and Fieldset
+
+`Field` and `Fieldset` now run on `@zag-js/field` and `@zag-js/fieldset`, with native validation, a `validate` function,
+`validationMode` and server `errors`. Most usage keeps working.
+
+Codemods: `<framework>/field-indicator` and `css/data-attributes`.
+
+**Before**
+
+```tsx
+<Field.Label>
+  Email
+  <Field.RequiredIndicator>*</Field.RequiredIndicator>
+</Field.Label>
+```
+
+**After**
+
+```tsx
+<Field.Label>
+  Email
+  <Field.Indicator type="required">*</Field.Indicator>
+</Field.Label>
+```
+
+- Generated ids are `{id}:label` and `{id}:control`.
+- `Field.ErrorText` stays mounted with `hidden` while the field is valid. Style it with `[hidden]`.
+- `Field.Root` no longer sets `role="group"`.
+
+### Menu
+
+`composite` is replaced by `popupType`.
+
+### NumberInput
+
+The value is a `number`, with `null` for an empty input. The input is a text field instead of a spinbutton.
+
+**Before**
+
+```tsx
+<NumberInput.Root onValueChange={(details) => setValue(details.valueAsNumber)}>
+```
+
+**After**
+
+```tsx
+<NumberInput.Root onValueChange={(details) => setValue(details.value)}>
+```
+
+| v5                                   | v6                |
+| ------------------------------------ | ----------------- |
+| `valueAsNumber`                      | `value`           |
+| `allowOverflow` / `clampValueOnBlur` | `allowOutOfRange` |
+| Vue `v-model`: `string`              | `number \| null`  |
+
+### PinInput
+
+| v5                                | v6                                 |
+| --------------------------------- | ---------------------------------- |
+| `length`                          | `count` (codemod)                  |
+| `sanitizeValue`                   | `normalizeValue`                   |
+| `blurOnComplete`, `selectOnFocus` | removed; blur in `onValueComplete` |
+
+### Popover
+
+The `portalled` prop and `api.portalled` are gone. The popover detects whether its content is portalled and fixes tab
+order either way. To portal it, wrap the positioner in `Portal`.
+
+Codemod: `<framework>/popover-portalled` removes the prop. Add the `Portal` yourself.
+
+**Before**
+
+```tsx
+<Popover.Root portalled>
+  <Popover.Trigger>Open</Popover.Trigger>
+  <Popover.Positioner>
+    <Popover.Content>...</Popover.Content>
+  </Popover.Positioner>
+</Popover.Root>
+```
+
+**After**
+
+```tsx
+<Popover.Root>
+  <Popover.Trigger>Open</Popover.Trigger>
+  <Portal>
+    <Popover.Positioner>
+      <Popover.Content>...</Popover.Content>
+    </Popover.Positioner>
+  </Portal>
+</Popover.Root>
+```
+
+### Slider
+
+The `aria-label` and `aria-labelledby` arrays are replaced by `getAriaLabel` and `getAriaLabelledBy` functions.
+
+### Steps
+
+Steps come from an `items` array and are addressed by a string `value`, not a `count` and an index. Each item can be
+`optional`, `invalid`, `disabled` or `editable`, and carry a `title` and `description`.
+
+**Before**
+
+```tsx
+<Steps.Root count={3} defaultStep={0} onStepChange={(details) => setStep(details.step)}>
+  <Steps.List>
+    <Steps.Item index={0}>
+      <Steps.Trigger>Shipping</Steps.Trigger>
+    </Steps.Item>
+  </Steps.List>
+  <Steps.Content index={0}>...</Steps.Content>
+</Steps.Root>
+```
+
+**After**
+
+```tsx
+const items = [{ value: 'shipping' }, { value: 'gift', optional: true }, { value: 'payment' }]
+
+<Steps.Root items={items} defaultValue="shipping" onValueChange={(details) => setStep(details.value)}>
+  <Steps.List>
+    <Steps.Item value="shipping">
+      <Steps.Trigger>Shipping</Steps.Trigger>
+    </Steps.Item>
+  </Steps.List>
+  <Steps.Content value="shipping">...</Steps.Content>
+</Steps.Root>
+```
+
+| v5                                     | v6                                            |
+| -------------------------------------- | --------------------------------------------- |
+| `count`                                | `items`                                       |
+| `step` / `defaultStep`                 | `value` / `defaultValue`                      |
+| `onStepChange` / `onStepComplete`      | `onValueChange` / `onComplete`                |
+| `isStepValid` / `isStepSkippable`      | `invalid` / `optional` on the item            |
+| `onStepInvalid`                        | `onNavigationBlocked` (`reason`, `blockedBy`) |
+| `index` on parts                       | `value`                                       |
+| `api.setStep(index)`                   | `api.setValue(value)`                         |
+| `api.isCompleted`                      | `api.complete`                                |
+| `Steps.ChangeDetails`                  | `Steps.ValueChangeDetails`                    |
+| `Steps.InvalidDetails`                 | `Steps.NavigationBlockedDetails`              |
+| `--percent`                            | `--steps-percent`                             |
+| Vue `v-model:step`, Svelte `bind:step` | `v-model`, `bind:value`                       |
+
+- `Steps.SkipTrigger` skips an `optional` step, and `completedValues` makes completed steps controllable.
+- A step the user goes back to stays complete, so it can carry `data-current` and `data-complete` together. Put the
+  current-step style last, or scope the completed one with `:not([data-current])`.
+
+### TagsInput
+
+Tags open for editing on double-click only when you pass `editable`.
+
+Codemod: `<framework>/tags-input-editable`.
+
+**Before**
+
+```tsx
+<TagsInput.Root>
+```
+
+**After**
+
+```tsx
+<TagsInput.Root editable>
+```
+
+### Toc
+
+- `multiple` defaults to `false`.
+- `Toc.Nav` renders its own props: it carries `data-toc-nav` and an `id`, and takes `aria-labelledby` from `Root`.
+- Svelte: `Toc.Nav` reads the Toc from `Toc.Root` and no longer accepts `useToc` props. Wrap it in `Toc.Root`.
+
+### Tour
+
+The `"prev"` action is now `"previous"`.
+
+### "Previous" is spelled out
+
+Context and hook APIs use `previous` instead of `prev`. Part names like `Pagination.PrevTrigger` don't change.
+
+| v5                               | v6                                       |
+| -------------------------------- | ---------------------------------------- |
+| `getPrevTriggerProps()`          | `getPreviousTriggerProps()`              |
+| `goToPrevPage()`                 | `goToPreviousPage()`                     |
+| `translations.prevTriggerLabel`  | `translations.previousTriggerLabel`      |
+| `goToPrevStep()` / `hasPrevStep` | `goToPreviousStep()` / `hasPreviousStep` |
+| `selectPrev()`                   | `selectPrevious()`                       |
+| `scrollPrev()`                   | `scrollPrevious()`                       |
+
+### Part state types
+
+These keep their names but now describe the root state: `CollapsibleTriggerState`, `EditableAreaState`,
+`EditableInputState`, `EditableLabelState`, `EditablePreviewState`, `DateInputControlState`, `PasswordInputInputState`,
+`PasswordInputVisibilityTriggerState`, `PinInputLabelState` and `RatingGroupControlState`.
+
+## Frameworks
+
+### Solid 2
+
+`@ark-ui/solid` requires `solid-js` and `@solidjs/web` `>=2.0.0-rc.19`, and no longer works with Solid 1.
+
+```sh
+npm install solid-js@next @solidjs/web@next
+```
+
+**Before**
+
+```json
+{ "compilerOptions": { "jsxImportSource": "solid-js" } }
+```
+
+**After**
+
+```json
+{ "compilerOptions": { "jsxImportSource": "@solidjs/web" } }
+```
 
 ### `useCollator` and `useFilter` return values
 
-For Solid, Svelte, and Vue, these hooks now return their values directly instead of an accessor,
-matching React. They still follow locale changes.
+In Solid, Svelte and Vue, these hooks return values instead of accessors, like React. They still follow locale changes.
 
-```diff
-- const collator = useCollator()
-- collator().compare(a, b)      // Solid, Svelte
-- collator.value.compare(a, b)  // Vue
-+ const collator = useCollator()
-+ collator.compare(a, b)
+**Before**
+
+```ts
+const collator = useCollator()
+collator().compare(a, b) // Solid, Svelte
+collator.value.compare(a, b) // Vue
+
+const filters = useFilter({ sensitivity: 'base' })
+filters().contains(text, query)
 ```
 
-```diff
-- const filters = useFilter({ sensitivity: 'base' })
-- filters().contains(text, query)     // Solid, Svelte
-- filters.value.contains(text, query) // Vue
-+ const { contains } = useFilter({ sensitivity: 'base' })
-+ contains(text, query)
+**After**
+
+```ts
+const collator = useCollator()
+collator.compare(a, b)
+
+const { contains } = useFilter({ sensitivity: 'base' })
+contains(text, query)
 ```
 
 ### Svelte: hooks require an `id`
 
-After moving to Zag 2, the `useX` hooks require an `id`. Without one, two instances on a page
-generated the same element ids. Components (`<Collapsible.Root>`) are unaffected and still mint their
-own.
+Without an `id`, two instances generated the same element ids. Components like `<Collapsible.Root>` still create their
+own. `$props.id()` can be called once per component, so derive from it if you need two.
 
-```diff
-- const collapsible = useCollapsible()
-+ const id = $props.id()
-+ const collapsible = useCollapsible({ id })
+**Before**
+
+```ts
+const collapsible = useCollapsible()
 ```
 
-`$props.id()` may only be called once per component; derive from it if you need two.
+**After**
 
-### Svelte: export parity
+```ts
+const id = $props.id()
+const collapsible = useCollapsible({ id })
+```
 
-Svelte exports now match the other frameworks. `Dialog`'s `Positioner`, `Root`, `RootProvider`,
-`Title`, and `Trigger` are prefixed (`DialogPositioner`). `StepsStepChangeDetails` →
-`StepsValueChangeDetails` (see Steps above), `ColorPickerColor` → `Color`, `TabsContentState` / `TabsTriggerState` →
-`TabContentState` / `TabTriggerState`. Internals such as `CheckboxProvider` and `splitCollapsibleProps`
-are no longer exported.
+### Svelte: exports match the other frameworks
+
+| v5                                          | v6                                               |
+| ------------------------------------------- | ------------------------------------------------ |
+| `Positioner`, `Root`, `Title`… (Dialog)     | `DialogPositioner`, `DialogRoot`, `DialogTitle`… |
+| `StepsStepChangeDetails`                    | `StepsValueChangeDetails`                        |
+| `ColorPickerColor`                          | `Color`                                          |
+| `TabsContentState` / `TabsTriggerState`     | `TabContentState` / `TabTriggerState`            |
+| `CheckboxProvider`, `splitCollapsibleProps` | removed (internal)                               |
+
+### Vue: type names
+
+- `AngleSlider` uses short type names like the other components: `AngleSlider.AngleSliderRootProps` →
+  `AngleSlider.RootProps`.
+- `RootEmits` types are now exported for AngleSlider, Drawer, FloatingPanel, JsonTreeView, PasswordInput, SignaturePad,
+  Steps and TreeView.

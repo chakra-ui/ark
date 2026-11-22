@@ -373,7 +373,7 @@
         "type": "'dialog' | 'listbox'",
         "defaultValue": "\"listbox\"",
         "isRequired": false,
-        "description": "The ARIA pattern of the popup. Drives `aria-haspopup` on the trigger, the\n`role` of the content element, the trigger's keyboard handling, and the\nlabel's click target.\n- `\"listbox\"` (default) — input-driven combobox; popup is a passive listbox.\n- `\"dialog\"` — popover-style combobox; popup is announced as a dialog,\n  trigger is keyboard-active, label-click focuses the trigger."
+        "description": "The ARIA pattern of the popup. Drives `aria-haspopup` on the trigger, the\n`role` of the content element, the trigger's keyboard handling, and the\nlabel's click target.\n- `\"listbox\"` (default): input-driven combobox; popup is a passive listbox.\n- `\"dialog\"`: popover-style combobox; popup is announced as a dialog,\n  trigger is keyboard-active, label-click focuses the trigger."
       },
       "positioning": {
         "type": "PositioningOptions",

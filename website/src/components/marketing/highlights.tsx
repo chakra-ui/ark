@@ -8,7 +8,7 @@ const features = [
   {
     icon: Paintbrush,
     title: 'Truly Headless',
-    description: 'No default styles to fight. Bring your own CSS — Panda, Tailwind, CSS-in-JS, or plain stylesheets.',
+    description: 'No default styles to fight. Bring your own CSS: Panda, Tailwind, CSS-in-JS, or plain stylesheets.',
   },
   {
     icon: Braces,

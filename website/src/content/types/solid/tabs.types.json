@@ -140,7 +140,7 @@
         "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
-        "description": "Whether the tabs use virtual focus instead of roving tabindex.\n\nWhen `true`, triggers receive no DOM focus — arrow keys update `focusedValue`\nand all triggers remain `tabIndex: -1`. Useful when tabs live inside another\nwidget that manages focus (e.g. a combobox)."
+        "description": "Whether the tabs use virtual focus instead of roving tabindex.\n\nWhen `true`, triggers receive no DOM focus. Arrow keys update `focusedValue`\nand all triggers remain `tabIndex: -1`. Useful when tabs live inside another\nwidget that manages focus (e.g. a combobox)."
       }
     }
   },

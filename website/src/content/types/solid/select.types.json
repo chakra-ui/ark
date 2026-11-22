@@ -324,7 +324,7 @@
         "type": "'dialog' | 'listbox'",
         "defaultValue": "\"listbox\"",
         "isRequired": false,
-        "description": "The ARIA pattern of the popup. Drives `aria-haspopup` on the trigger and\nthe `role` of the content element.\n- `\"listbox\"` (default) — content is a passthrough wrapper; the list bears `role=\"listbox\"`.\n- `\"dialog\"` — content is announced as a dialog; useful when composing search inputs, tabs, or other widgets inside the popup."
+        "description": "The ARIA pattern of the popup. Drives `aria-haspopup` on the trigger and\nthe `role` of the content element.\n- `\"listbox\"` (default): content is a passthrough wrapper; the list bears `role=\"listbox\"`.\n- `\"dialog\"`: content is announced as a dialog; useful when composing search inputs, tabs, or other widgets inside the popup."
       },
       "positioning": {
         "type": "PositioningOptions",
