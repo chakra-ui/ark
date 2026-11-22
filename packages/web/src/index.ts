@@ -19,7 +19,9 @@ export * from './components/field/index.js'
 export * from './components/fieldset/index.js'
 export * from './components/file-upload/index.js'
 export * from './components/floating-panel/index.js'
+export * from './components/focus-trap/index.js'
 export * from './components/format/index.js'
+export * from './components/frame/index.js'
 export * from './components/highlight/index.js'
 export * from './components/hover-card/index.js'
 export * from './components/image-cropper/index.js'
@@ -73,4 +75,15 @@ export {
   type HotkeysOptions,
   type HotkeyStore,
 } from './providers/hotkeys/index.js'
-export { createCollator, createFilter, type FilterOptions, type FilterReturn } from './utils/locale.js'
+export {
+  createCollator,
+  createDateFormatter,
+  createFilter,
+  DateFormatter,
+  getLocale,
+  type CollatorOptions,
+  type DateFormatterOptions,
+  type FilterOptions,
+  type FilterReturn,
+  type Locale,
+} from './utils/locale.js'

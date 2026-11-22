@@ -38,6 +38,34 @@ Use the `srcDoc` prop to specify the HTML content of the page to use in the ifra
 
 <Example component="frame" id="src-doc" />
 
+<FrameworkOnly framework="web">
+
+## Web Components
+
+In `@ark-ui/web`, import `@ark-ui/web/frame` and put an `<iframe>` and the content inside `<ark-frame>`. The content
+moves into the iframe's document, and an iframe is created if none is given. Put head content in a
+`<template slot="head">` or assign the `head` property, and set the `srcdoc` attribute for a custom initial document.
+Listen for `mount` and `unmount` instead of `onMount` and `onUnmount`, and read `contentDocument` from the element.
+
+```html
+<ark-frame>
+  <iframe title="Preview" style="width: 100%; height: var(--height)"></iframe>
+  <template slot="head">
+    <style>
+      body {
+        background: #f0f0f0;
+      }
+    </style>
+  </template>
+  <p>Rendered inside the iframe.</p>
+</ark-frame>
+```
+
+Register any `ark-*` elements used in the frame before it connects, since the iframe has its own custom element
+registry.
+
+</FrameworkOnly>
+
 ## API Reference
 
 ### Props

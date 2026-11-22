@@ -532,6 +532,7 @@
       "name": "@ark-ui/web",
       "version": "0.1.0-next.0",
       "dependencies": {
+        "@internationalized/date": "3.12.3",
         "@zag-js/accordion": "2.0.0-next.4",
         "@zag-js/angle-slider": "2.0.0-next.4",
         "@zag-js/async-list": "2.0.0-next.4",
@@ -555,6 +556,7 @@
         "@zag-js/file-upload": "2.0.0-next.4",
         "@zag-js/file-utils": "2.0.0-next.4",
         "@zag-js/floating-panel": "2.0.0-next.4",
+        "@zag-js/focus-trap": "2.0.0-next.4",
         "@zag-js/fuzzy": "2.0.0-next.4",
         "@zag-js/highlight-word": "2.0.0-next.4",
         "@zag-js/hotkeys": "2.0.0-next.4",

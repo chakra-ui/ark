@@ -27,6 +27,25 @@ Use the `initialFocus` prop to set the element that should receive initial focus
 
 <Example id="initial-focus" />
 
+<FrameworkOnly framework="web">
+
+## Web Components
+
+In `@ark-ui/web`, import `@ark-ui/web/focus-trap` and wrap the content in `<ark-focus-trap>`. The trap is active while
+the element is connected and not `disabled`. `initial-focus`, `fallback-focus`, and `set-return-focus` take selectors,
+and `return-focus-on-deactivate="false"` keeps focus where it is when the trap ends. Assign `initialFocus`,
+`fallbackFocus`, `setReturnFocus`, or `persistentElements` as properties to pass elements or functions. The element
+dispatches `activate` and `deactivate`.
+
+```html
+<ark-focus-trap initial-focus="[name=email]">
+  <input name="name" />
+  <input name="email" />
+</ark-focus-trap>
+```
+
+</FrameworkOnly>
+
 ## API Reference
 
 <ComponentTypes id="focus-trap" />

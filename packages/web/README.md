@@ -5,11 +5,11 @@ ordinary CSS. No framework runtime is required.
 
 This package is a prerelease. It includes accordion, angle slider, avatar, carousel, checkbox and checkbox group,
 clipboard, collapsible, color picker, combobox, command, date input, date picker, dialog, download trigger, drawer,
-editable, field, fieldset, file upload, floating panel, format, highlight, hover card, image cropper, listbox, marquee,
-menu, menubar, meter, navigation menu, number flow, number input, pagination, password input, pin input, popover,
-progress, qr code, radio group, rating group, scroll area, segment group, select, signature pad, slider, splitter,
-steps, swap, switch, table of contents, tabs, tags input, timer, toast, toggle, toggle group, tooltip, tour, tree view,
-and virtualizer.
+editable, field, fieldset, file upload, floating panel, focus trap, format, frame, highlight, hover card, image cropper,
+listbox, marquee, menu, menubar, meter, navigation menu, number flow, number input, pagination, password input, pin
+input, popover, progress, qr code, radio group, rating group, scroll area, segment group, select, signature pad, slider,
+splitter, steps, swap, switch, table of contents, tabs, tags input, timer, toast, toggle, toggle group, tooltip, tour,
+tree view, and virtualizer.
 
 ## Usage
 
@@ -369,6 +369,23 @@ Plain keys don't fire while typing in a form field unless `enableOnFormTags` is 
 shortcut from the keyboard, for settings screens. Pass `{ store }` to use your own `createHotkeyStore()`, or `{ root }`
 to listen inside a shadow root.
 
+## Locale
+
+`@ark-ui/web/locale` has no provider: components read the closest `lang` and `dir` attributes. `getLocale(el)` returns
+the same `{ locale, dir }` for any element, falling back to the document and then the browser's language.
+
+```ts
+import { createCollator, createDateFormatter, createFilter, getLocale } from '@ark-ui/web/locale'
+
+const { locale, dir } = getLocale(element)
+const { contains } = createFilter({ locale, sensitivity: 'base' })
+const collator = createCollator({ locale, numeric: true })
+const formatter = createDateFormatter({ locale, dateStyle: 'long' })
+```
+
+Without a `locale` option, the `create*` helpers use `getLocale()` for the document. Pass `getLocale(el).locale` to
+follow an element's `lang`. `createDateFormatter` returns `@internationalized/date`'s `DateFormatter`.
+
 ## Formatting and downloads
 
 `@ark-ui/web/format` renders locale-aware text. The locale comes from the `locale` attribute, then the closest `lang`.
@@ -395,6 +412,35 @@ Each element also takes `value`, `locale` and `options` as properties, for anyth
 <script type="module">
   document.querySelector('ark-download-trigger').data = () => fetch('/report.csv').then((res) => res.blob())
 </script>
+```
+
+## Focus trap and frame
+
+`<ark-focus-trap>` keeps Tab inside its content while it's connected and not `disabled`. When the trap ends, focus
+returns to the element focused before it, or to `set-return-focus` (a selector), unless
+`return-focus-on-deactivate="false"`. `initial-focus` and `fallback-focus` are selectors inside the trap; an `autofocus`
+descendant is focused first otherwise. Assign `initialFocus`, `fallbackFocus`, `setReturnFocus`, or `persistentElements`
+as properties for elements or functions. It dispatches `activate` and `deactivate`.
+
+```html
+<ark-focus-trap initial-focus="[name=email]" disabled>
+  <input name="name" />
+  <input name="email" />
+</ark-focus-trap>
+```
+
+`<ark-frame>` moves its children into the document of an `<iframe>` child, created if missing. Content in a
+`<template slot="head">`, or the `head` property, goes into the frame's `<head>`, and `srcdoc` replaces the initial
+document. The iframe gets `--width` and `--height` from the content's size. `mount` and `unmount` fire when the content
+moves in and out; read `contentDocument` then. Page styles aren't copied into the frame. Register any `ark-*` elements
+used inside before the frame connects, since the iframe has its own custom element registry.
+
+```html
+<ark-frame>
+  <iframe title="Preview" style="width: 100%; height: var(--height)"></iframe>
+  <template slot="head"><link rel="stylesheet" href="/preview.css" /></template>
+  <p>Rendered inside the iframe.</p>
+</ark-frame>
 ```
 
 ## Styling and presence

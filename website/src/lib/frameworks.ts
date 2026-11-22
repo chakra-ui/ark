@@ -19,10 +19,7 @@ const unavailableDocs: Partial<Record<Framework, string[]>> = {
     'overview/changelog',
     'utilities/client-only',
     'utilities/environment',
-    'utilities/focus-trap',
-    'utilities/frame',
-    'utilities/json-tree-view',
-    'utilities/locale',
+    'components/json-tree-view',
     'utilities/presence',
   ],
 }

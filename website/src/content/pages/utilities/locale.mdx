@@ -19,6 +19,27 @@ To access the current locale and direction settings, use the `useLocaleContext` 
 
 <ExampleCode id="usage" component="locale" />
 
+<FrameworkOnly framework="web">
+
+## Web Components
+
+`@ark-ui/web` has no locale provider. Set `lang` and `dir` on the document or any container, and components inside read
+the closest ones. `getLocale(element)` from `@ark-ui/web/locale` returns the same `{ locale, dir }`, falling back to the
+document and then the browser's language.
+
+`createCollator`, `createFilter`, and `createDateFormatter` take a `locale` option and default to the document's locale.
+Pass `getLocale(element).locale` to follow an element instead.
+
+```ts
+import { createDateFormatter, createFilter, getLocale } from '@ark-ui/web/locale'
+
+const { locale } = getLocale(element)
+const { contains } = createFilter({ locale, sensitivity: 'base' })
+const formatter = createDateFormatter({ locale, dateStyle: 'long' })
+```
+
+</FrameworkOnly>
+
 ## API Reference
 
 <ComponentTypes id="locale" />

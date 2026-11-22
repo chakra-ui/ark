@@ -15,6 +15,7 @@
     "prepack": "npm run build"
   },
   "dependencies": {
+    "@internationalized/date": "3.12.3",
     "@zag-js/accordion": "2.0.0-next.4",
     "@zag-js/angle-slider": "2.0.0-next.4",
     "@zag-js/async-list": "2.0.0-next.4",
@@ -38,6 +39,7 @@
     "@zag-js/file-upload": "2.0.0-next.4",
     "@zag-js/file-utils": "2.0.0-next.4",
     "@zag-js/floating-panel": "2.0.0-next.4",
+    "@zag-js/focus-trap": "2.0.0-next.4",
     "@zag-js/fuzzy": "2.0.0-next.4",
     "@zag-js/highlight-word": "2.0.0-next.4",
     "@zag-js/hover-card": "2.0.0-next.4",
@@ -381,6 +383,14 @@
     "./image-cropper": {
       "types": "./dist/components/image-cropper/index.d.ts",
       "import": "./dist/components/image-cropper/index.js"
+    },
+    "./focus-trap": {
+      "types": "./dist/components/focus-trap/index.d.ts",
+      "import": "./dist/components/focus-trap/index.js"
+    },
+    "./frame": {
+      "types": "./dist/components/frame/index.d.ts",
+      "import": "./dist/components/frame/index.js"
     }
   },
   "sideEffects": true,

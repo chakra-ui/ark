@@ -8,10 +8,21 @@ type Connect<Api> = (service: any, normalize: typeof normalizeProps) => Api
 
 let uid = 0
 
-const sheet = typeof CSSStyleSheet !== 'undefined' ? new CSSStyleSheet() : null
-const rules = new Set<string>()
+const sheets = new WeakMap<Document, { sheet: CSSStyleSheet; rules: Set<string> }>()
+
+function sheetOf(doc: Document) {
+  let entry = sheets.get(doc)
+  const Sheet = (doc.defaultView as (Window & typeof globalThis) | null)?.CSSStyleSheet
+  if (!entry && Sheet) {
+    entry = { sheet: new Sheet(), rules: new Set() }
+    sheets.set(doc, entry)
+  }
+  return entry
+}
 
 export function adoptDisplay(el: HTMLElement, display: string) {
+  const entry = sheetOf(el.ownerDocument)
+  const sheet = entry?.sheet
   // `:where` so page styles win over defaults; `!important` so `hidden` wins over page styles
   for (const rule of [
     `:where(${el.localName}){display:${display}}`,
@@ -19,9 +30,9 @@ export function adoptDisplay(el: HTMLElement, display: string) {
     `${el.localName}[hidden]:not([hidden=until-found]){display:none!important}`,
     `[as-child]>[hidden]:not([hidden=until-found]){display:none!important}`,
   ]) {
-    if (!sheet || rules.has(rule)) continue
-    rules.add(rule)
-    sheet.insertRule(rule, sheet.cssRules.length)
+    if (!entry || entry.rules.has(rule)) continue
+    entry.rules.add(rule)
+    entry.sheet.insertRule(rule, entry.sheet.cssRules.length)
   }
   const root = el.getRootNode() as Document | ShadowRoot
   if (sheet && 'adoptedStyleSheets' in root && !root.adoptedStyleSheets.includes(sheet)) {
