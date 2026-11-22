@@ -43,7 +43,7 @@ export const MobileNavbarLinks = () => {
         <NavbarLink
           key={link.href}
           href={resolveNavHref(link, pathname)}
-          aria-current={pathname.startsWith(link.hrefPrefix) ? 'page' : undefined}
+          aria-current={link.isActive(pathname) ? 'page' : undefined}
         >
           {link.label}
           {link.icon && <link.icon />}

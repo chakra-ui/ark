@@ -23,6 +23,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/docs/:framework/utilities/:page(json-tree-view|number-flow|swap)',
+        destination: '/docs/:framework/components/:page',
+        permanent: true,
+      },
+      {
         source: '/examples/:path*',
         destination: '/docs/react/components/overview',
         permanent: false,
