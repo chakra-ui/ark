@@ -5,3 +5,6 @@
 # generated at build from packages/*/CHANGELOG.md
 src/content/changelogs/
 public/changelog/
+
+# rewritten by next dev with dev-only paths
+next-env.d.ts
