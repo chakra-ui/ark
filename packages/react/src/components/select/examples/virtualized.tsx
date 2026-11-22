@@ -14,7 +14,6 @@ export const Virtualized = () => {
     count: collection.size,
     estimatedSize: () => 36,
     overscan: 10,
-    observeScrollElementSize: true,
   })
 
   return (

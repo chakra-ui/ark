@@ -14,7 +14,6 @@ const virtualizer = useListVirtualizer(
     count: collection.size,
     estimatedSize: () => 36,
     overscan: 10,
-    observeScrollElementSize: true,
   })),
 )
 </script>

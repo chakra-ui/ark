@@ -1,0 +1,52 @@
+diff --git a/dist/grid-virtualizer.js b/dist/grid-virtualizer.js
+index a8f4ceadbc0571e77f54fc51f2ec015fd9d0505d..82b29c6eda1bf1f0633b33cc5981cbfccc931a9a 100644
+--- a/dist/grid-virtualizer.js
++++ b/dist/grid-virtualizer.js
+@@ -428,7 +428,7 @@ var GridVirtualizer = class {
+ 	}
+ 	measureRowSync(rowIndex, size) {
+ 		if (!this.onRowMeasured(rowIndex, size)) return;
+-		if (!this.isScrolling && !this.pendingSyncNotify) {
++		if (!this.pendingSyncNotify) {
+ 			this.pendingSyncNotify = true;
+ 			queueMicrotask(() => {
+ 				this.pendingSyncNotify = false;
+diff --git a/dist/grid-virtualizer.mjs b/dist/grid-virtualizer.mjs
+index 3b895c6324abf50d8b254cff408a0780e296d8b9..4f19d3f58ba0b12d0cea77083102bfb9487c259a 100644
+--- a/dist/grid-virtualizer.mjs
++++ b/dist/grid-virtualizer.mjs
+@@ -424,7 +424,7 @@ var GridVirtualizer = class {
+ 	}
+ 	measureRowSync(rowIndex, size) {
+ 		if (!this.onRowMeasured(rowIndex, size)) return;
+-		if (!this.isScrolling && !this.pendingSyncNotify) {
++		if (!this.pendingSyncNotify) {
+ 			this.pendingSyncNotify = true;
+ 			queueMicrotask(() => {
+ 				this.pendingSyncNotify = false;
+diff --git a/dist/virtualizer.js b/dist/virtualizer.js
+index 21e070a39eeef3b8a81c2bec25fb9ddb53cc5d5f..50ffe6cffc1eb360526a81cab18cb699f514a210 100644
+--- a/dist/virtualizer.js
++++ b/dist/virtualizer.js
+@@ -731,7 +731,7 @@ var Virtualizer = class Virtualizer {
+ 		if (shouldAdjust) this.preserveScrollPosition(index, applyMeasurement);
+ 		else applyMeasurement();
+ 		if (!changed) return;
+-		if (!this.isScrolling && !this.pendingSyncNotify) {
++		if (!this.pendingSyncNotify) {
+ 			this.pendingSyncNotify = true;
+ 			queueMicrotask(() => {
+ 				this.pendingSyncNotify = false;
+diff --git a/dist/virtualizer.mjs b/dist/virtualizer.mjs
+index aa00996832bdc65a88d48491c9b138849ac0e524..d877e9a9d47830e1eb2d0773db402d177e34566b 100644
+--- a/dist/virtualizer.mjs
++++ b/dist/virtualizer.mjs
+@@ -727,7 +727,7 @@ var Virtualizer = class Virtualizer {
+ 		if (shouldAdjust) this.preserveScrollPosition(index, applyMeasurement);
+ 		else applyMeasurement();
+ 		if (!changed) return;
+-		if (!this.isScrolling && !this.pendingSyncNotify) {
++		if (!this.pendingSyncNotify) {
+ 			this.pendingSyncNotify = true;
+ 			queueMicrotask(() => {
+ 				this.pendingSyncNotify = false;

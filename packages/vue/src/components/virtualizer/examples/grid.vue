@@ -5,7 +5,6 @@ import { computed } from 'vue'
 
 const virtualizer = useGridVirtualizer(
   computed(() => ({
-    observeScrollElementSize: true,
     rowCount: 1000,
     columnCount: 50,
     estimatedRowSize: () => 40,

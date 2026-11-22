@@ -7,5 +7,5 @@ export interface UseGridVirtualizerProps extends GridVirtualizerOptions {}
 export type UseGridVirtualizerReturn = GridVirtualizer & { ref: VirtualizerRef }
 
 export function useGridVirtualizer(props: UseGridVirtualizerProps): UseGridVirtualizerReturn {
-  return useVirtualizerStore(() => new GridVirtualizer(props))
+  return useVirtualizerStore(() => new GridVirtualizer({ observeScrollElementSize: true, ...props }))
 }

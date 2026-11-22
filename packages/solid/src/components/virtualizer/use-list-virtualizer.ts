@@ -6,5 +6,5 @@ export interface UseListVirtualizerProps extends ListVirtualizerOptions {}
 export type UseListVirtualizerReturn = ListVirtualizer & { ref: VirtualizerRef }
 
 export function useListVirtualizer(props: MaybeAccessor<UseListVirtualizerProps>): UseListVirtualizerReturn {
-  return useVirtualizerStore(props, (options) => new ListVirtualizer(options))
+  return useVirtualizerStore(props, (options) => new ListVirtualizer({ observeScrollElementSize: true, ...options }))
 }
