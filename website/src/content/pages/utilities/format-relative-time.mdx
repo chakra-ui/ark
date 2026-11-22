@@ -15,6 +15,19 @@ performance issues when using the same locale and options.
 import { Format } from '@ark-ui/react'
 ```
 
+<FrameworkOnly framework="web">
+
+In `@ark-ui/web`, import `@ark-ui/web/format` to register the `<ark-format-relative-time>` element.
+
+```html
+<ark-format-relative-time value="2025-05-05" numeric="auto"></ark-format-relative-time>
+```
+
+Options are kebab-case attributes. The locale comes from the `locale` attribute, then the closest `lang`. Each element
+also takes `value`, `locale`, and `options` as properties, for anything the attributes don't cover.
+
+</FrameworkOnly>
+
 ## Examples
 
 ### Basic

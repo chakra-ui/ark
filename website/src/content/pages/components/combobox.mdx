@@ -258,6 +258,33 @@ For example, if you want to make sure the maximum height doesn't exceed the avai
 }
 ```
 
+<FrameworkOnly framework="web">
+
+### Web Components
+
+In `@ark-ui/web`, the guides above map to the `ark-combobox` element:
+
+- Assign items as a collection with `createListCollection`, including `itemToString` and `itemToValue` for custom
+  objects. Items can also come from a `<script type="application/json">` child or from `ark-combobox-item` markup.
+- Type the element with its item type to type `event.detail.items`: `querySelector<ComboboxElement<Country>>(...)`.
+- Use the `filter` attribute (`contains`, `starts-with`, or `none`) and the `limit` attribute instead of
+  `useListCollection`.
+- Assign `navigate` as a property for router links.
+
+```ts
+import { type ComboboxElement, createListCollection } from '@ark-ui/web/combobox'
+
+const combobox = document.querySelector<ComboboxElement<Country>>('ark-combobox')!
+combobox.collection = createListCollection({
+  items: countries,
+  itemToString: (item) => item.country,
+  itemToValue: (item) => item.code,
+})
+combobox.navigate = ({ href }) => router.push(href)
+```
+
+</FrameworkOnly>
+
 ## API Reference
 
 ### Props

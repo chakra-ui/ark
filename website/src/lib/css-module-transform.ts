@@ -6,6 +6,7 @@ export const stripCss = (code: string): string =>
     .replace(/\s*className=\{`\$\{\w+\.[^}]+\}`\}/g, '')
     .replace(/\s*:class="\w+\.[^"]+"/g, '')
     .replace(/\s*class=\{\w+\.[^}]+\}/g, '')
+    .replace(/\s*class="\$\{\w+\.\w+\}"/g, '')
     .replace(/\n{3,}/g, '\n\n')
     .trim()
 

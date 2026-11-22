@@ -15,6 +15,19 @@ automatic unit conversion and display options.
 import { Format } from '@ark-ui/react'
 ```
 
+<FrameworkOnly framework="web">
+
+In `@ark-ui/web`, import `@ark-ui/web/format` to register the `<ark-format-byte>` element.
+
+```html
+<ark-format-byte value="1450.45" unit-display="long"></ark-format-byte>
+```
+
+Options are kebab-case attributes. The locale comes from the `locale` attribute, then the closest `lang`. Each element
+also takes `value`, `locale`, and `options` as properties, for anything the attributes don't cover.
+
+</FrameworkOnly>
+
 ## Examples
 
 ### Basic

@@ -1,6 +1,7 @@
 import 'server-only'
 
 import { CHANGELOG_META, isChangelogSlug } from './changelog'
+import { type Framework, defaultFramework, isDocAvailable } from './frameworks'
 import type { PageMeta } from './source'
 import { getSidebarGroupsWithPages, getSidebarTabs } from './sidebar'
 
@@ -25,11 +26,14 @@ export interface NavItem {
   title: string
 }
 
-export function getPageNavigation(slug: string[]): { prev?: NavItem; next?: NavItem } {
+export function getPageNavigation(
+  slug: string[],
+  framework: Framework = defaultFramework,
+): { prev?: NavItem; next?: NavItem } {
   const slugStr = slug.join('/')
   const category = slug[0]
   const tab = tabOrders.find((t) => t.categories.includes(category)) ?? tabOrders[0]
-  const items = tab?.items ?? []
+  const items = (tab?.items ?? []).filter((item) => isDocAvailable(framework, item.slug))
   const index = items.findIndex((item) => item.slug === slugStr)
   if (index === -1) return {}
 

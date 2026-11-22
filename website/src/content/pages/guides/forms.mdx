@@ -227,6 +227,82 @@ const Demo = () => (
 )
 ```
 
+<FrameworkOnly framework="web">
+
+## Web Components
+
+In `@ark-ui/web`, form controls submit through native hidden inputs, or a hidden `select` for select. Set `name` and
+`value` on the root and include the component's hidden-input part. Custom element wrappers are not form-associated
+themselves.
+
+```html
+<form>
+  <ark-checkbox name="terms" value="accepted" default-checked>
+    <label>
+      <ark-checkbox-control></ark-checkbox-control>
+      <ark-checkbox-label>I agree to the terms</ark-checkbox-label>
+      <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
+    </label>
+  </ark-checkbox>
+  <button type="submit">Submit</button>
+</form>
+```
+
+Select creates its hidden `select` automatically. Add `<ark-select-hidden-input>` to submit through hidden inputs
+instead, which suits large or virtualized lists.
+
+### Field
+
+`ark-field` links a native control to its label, helper text, and error text. `disabled`, `invalid`, `readonly`, and
+`required` on the field reach the native `input`, `textarea`, or `select` and the components inside it.
+
+```html
+<ark-field required>
+  <ark-field-label>
+    <label>
+      Email
+      <ark-field-indicator type="required">*</ark-field-indicator>
+    </label>
+  </ark-field-label>
+  <ark-field-input><input type="email" /></ark-field-input>
+  <ark-field-helper-text>We never share it.</ark-field-helper-text>
+  <ark-field-error-text>Enter a valid email.</ark-field-error-text>
+</ark-field>
+```
+
+Fields validate with native constraints. `validation-mode` (`onSubmit`, `onBlur`, or `onChange`) sets when errors show,
+and `match` on the error text limits it to one native failure, such as `valueMissing`. For custom rules, assign a
+`validate` function or server `errors` to the field element and listen for `validitychange`:
+
+```ts
+const field = document.querySelector('ark-field')!
+const errorText = field.querySelector('ark-field-error-text')!
+
+field.validate = ({ value }) => {
+  if (value.length < 3) return 'Use at least 3 characters'
+}
+field.addEventListener('validitychange', (event) => {
+  errorText.textContent = event.detail.errors[0] ?? ''
+})
+```
+
+### Fieldset
+
+`ark-fieldset` wraps a native `fieldset`. Setting `disabled` on `ark-fieldset` disables every control inside, and the
+fields inside take that state too.
+
+```html
+<ark-fieldset disabled>
+  <fieldset>
+    <ark-fieldset-legend>Email preferences</ark-fieldset-legend>
+    <!-- checkboxes, fields… -->
+    <ark-fieldset-helper-text>Choose what we send you.</ark-fieldset-helper-text>
+  </fieldset>
+</ark-fieldset>
+```
+
+</FrameworkOnly>
+
 ## React Hook Form
 
 Ark UI integrates seamlessly with React Hook Form. Use the `register` function for simple inputs and `Controller` for

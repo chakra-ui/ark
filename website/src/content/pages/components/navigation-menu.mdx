@@ -36,7 +36,8 @@ description: A collection of links and menus for website navigation.
 
 ### Viewport
 
-Use `NavigationMenu.Viewport` for one shared panel. Add `NavigationMenu.Indicator` so the arrow follows the open trigger.
+Use `NavigationMenu.Viewport` for one shared panel. Add `NavigationMenu.Indicator` so the arrow follows the open
+trigger.
 
 <Example id="viewport" />
 
@@ -101,6 +102,17 @@ export const MenuLink = (props: NavigationMenu.LinkProps) => {
   )
 }
 ```
+
+<FrameworkOnly framework="web">
+
+In `@ark-ui/web`, `ark-navigation-menu-link` wraps your own `a` element and puts the link props on it. Mark the current
+page with the `current` attribute, and handle client-side routing by intercepting the anchor's click:
+
+```html
+<ark-navigation-menu-link current><a href="/docs">Documentation</a></ark-navigation-menu-link>
+```
+
+</FrameworkOnly>
 
 ### Viewport size
 

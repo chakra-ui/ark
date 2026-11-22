@@ -1,0 +1,760 @@
+{
+  "Root": {
+    "tag": "ark-date-picker",
+    "props": {
+      "value": {
+        "type": "DateValue[]",
+        "isRequired": false,
+        "description": "The controlled selected date(s)."
+      },
+      "default-value": {
+        "type": "DateValue[]",
+        "isRequired": false,
+        "description": "The initial selected date(s) when rendered.\nUse when you don't need to control the selected date(s) of the date picker."
+      },
+      "min": {
+        "type": "DateValue",
+        "isRequired": false,
+        "description": "The minimum date that can be selected."
+      },
+      "max": {
+        "type": "DateValue",
+        "isRequired": false,
+        "description": "The maximum date that can be selected."
+      },
+      "locale": {
+        "type": "string",
+        "defaultValue": "\"en-US\"",
+        "isRequired": false,
+        "description": "The locale (BCP 47 language tag) to use when formatting the date."
+      },
+      "time-zone": {
+        "type": "string",
+        "defaultValue": "\"UTC\"",
+        "isRequired": false,
+        "description": "The time zone to use"
+      },
+      "selection-mode": {
+        "type": "SelectionMode",
+        "defaultValue": "\"single\"",
+        "isRequired": false,
+        "description": "The selection mode of the calendar.\n- `single` - only one date can be selected\n- `multiple` - multiple dates can be selected\n- `range` - a range of dates can be selected"
+      },
+      "max-selected-dates": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The maximum number of dates that can be selected.\nThis is only applicable when `selectionMode` is `multiple`."
+      },
+      "num-of-months": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The number of months to display."
+      },
+      "start-of-week": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The first day of the week.\n `0` - Sunday\n `1` - Monday\n `2` - Tuesday\n `3` - Wednesday\n `4` - Thursday\n `5` - Friday\n `6` - Saturday"
+      },
+      "fixed-weeks": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the calendar should have a fixed number of weeks.\nThis renders the calendar with 6 weeks instead of 5 or 6."
+      },
+      "show-week-numbers": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to show the week number column in the day view."
+      },
+      "close-on-select": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether the calendar should close after the date selection is complete.\nThis is ignored when the selection mode is `multiple`."
+      },
+      "open-on-click": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to open the calendar when the input is clicked."
+      },
+      "outside-day-selectable": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether day outside the visible range can be selected."
+      },
+      "view": {
+        "type": "DateView",
+        "isRequired": false,
+        "description": "The view of the calendar"
+      },
+      "default-view": {
+        "type": "DateView",
+        "defaultValue": "\"day\"",
+        "isRequired": false,
+        "description": "The default view of the calendar"
+      },
+      "min-view": {
+        "type": "DateView",
+        "defaultValue": "\"day\"",
+        "isRequired": false,
+        "description": "The minimum view of the calendar"
+      },
+      "max-view": {
+        "type": "DateView",
+        "defaultValue": "\"year\"",
+        "isRequired": false,
+        "description": "The maximum view of the calendar"
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The controlled open state of the date picker"
+      },
+      "default-open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The initial open state of the date picker when rendered.\nUse when you don't need to control the open state of the date picker."
+      },
+      "inline": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to render the date picker inline"
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the calendar is disabled."
+      },
+      "readonly": { "type": "boolean", "isRequired": false },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the date picker is required"
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the date picker is invalid"
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The `name` attribute of the input element."
+      },
+      "placeholder": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The placeholder text to display in the input."
+      },
+      "placement": {
+        "type": "Placement",
+        "isRequired": false,
+        "defaultValue": "\"bottom\"",
+        "description": "The placement of the floating element relative to its anchor."
+      },
+      "gutter": {
+        "type": "number",
+        "isRequired": false,
+        "defaultValue": "8",
+        "description": "The gap between the floating element and its anchor."
+      },
+      "same-width": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the floating element matches the width of its anchor."
+      },
+      "skip-animation-on-mount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "debug": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Log state transitions, events and prop changes to the console. Applies to descendants too."
+      }
+    },
+    "emits": {
+      "valuechange": {
+        "type": "CustomEvent<ValueChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the value changes."
+      },
+      "focuschange": {
+        "type": "CustomEvent<FocusChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the focused date changes."
+      },
+      "viewchange": {
+        "type": "CustomEvent<ViewChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the view changes."
+      },
+      "visiblerangechange": {
+        "type": "CustomEvent<VisibleRangeChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the visible range changes."
+      },
+      "openchange": {
+        "type": "CustomEvent<OpenChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the calendar opens or closes."
+      }
+    },
+    "properties": {
+      "createCalendar": {
+        "type": "(identifier: CalendarIdentifier) => Calendar",
+        "isRequired": false,
+        "description": "A function that creates a Calendar object for a given calendar identifier.\nEnables non-Gregorian calendar support (Persian, Buddhist, Islamic, etc.)\nwithout bundling all calendars by default."
+      },
+      "isDateUnavailable": {
+        "type": "(date: DateValue, locale: string) => boolean",
+        "isRequired": false,
+        "description": "Returns whether a date of the calendar is available."
+      },
+      "format": {
+        "type": "(date: DateValue, details: LocaleDetails) => string",
+        "isRequired": false,
+        "description": "The format of the date to display in the input."
+      },
+      "parse": {
+        "type": "(value: string, details: LocaleDetails) => DateValue | undefined",
+        "isRequired": false,
+        "description": "Function to parse the date from the input back to a DateValue."
+      },
+      "ids": {
+        "type": "ElementIds",
+        "isRequired": false,
+        "description": "The ids of the elements in the date picker. Useful for composition."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "The localized messages to use."
+      },
+      "positioning": {
+        "type": "PositioningOptions",
+        "isRequired": false,
+        "description": "The user provided options used to position the date picker content"
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The controlled open state of the date picker"
+      },
+      "value": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The controlled selected date(s)."
+      },
+      "view": {
+        "type": "DateView",
+        "isRequired": false,
+        "description": "The view of the calendar"
+      },
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The root's state from its machine (`getRootState()`), such as `open` or `disabled`. `undefined` until it connects."
+      },
+      "ready": {
+        "type": "Promise<void>",
+        "isRequired": false,
+        "description": "Resolves once the element's machine has started, so `api`, state and parts are in place."
+      },
+      "api": {
+        "type": "DatePickerApi<PropTypes>",
+        "isRequired": false,
+        "description": "The Zag API of the component. `undefined` until it connects."
+      }
+    }
+  },
+  "ClearTrigger": {
+    "tag": "ark-date-picker-clear-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Content": {
+    "tag": "ark-date-picker-content",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "ContentState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Control": {
+    "tag": "ark-date-picker-control",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Input": {
+    "tag": "ark-date-picker-input",
+    "props": {
+      "index": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The index of the input to focus."
+      },
+      "fix-on-blur": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to fix the input value on blur."
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "InputState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Label": {
+    "tag": "ark-date-picker-label",
+    "props": {
+      "index": { "type": "number", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "NextTrigger": {
+    "tag": "ark-date-picker-next-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Positioner": {
+    "tag": "ark-date-picker-positioner",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "PresetTrigger": {
+    "tag": "ark-date-picker-preset-trigger",
+    "props": {
+      "value": { "type": "PresetTriggerValue", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "PrevTrigger": {
+    "tag": "ark-date-picker-prev-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "RangeText": {
+    "tag": "ark-date-picker-range-text",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Table": {
+    "tag": "ark-date-picker-table",
+    "props": {
+      "columns": { "type": "number", "isRequired": false },
+      "offset": { "type": "number", "isRequired": false },
+      "format": { "type": "string", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "TableBody": {
+    "tag": "ark-date-picker-table-body",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "TableCell": {
+    "tag": "ark-date-picker-table-cell",
+    "props": {
+      "value": { "type": "number | DateValue", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "DayTableCellState | TableCellState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "TableCellTrigger": {
+    "tag": "ark-date-picker-table-cell-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "DayTableCellState | TableCellState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "TableHead": {
+    "tag": "ark-date-picker-table-head",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "TableHeader": {
+    "tag": "ark-date-picker-table-header",
+    "props": {
+      "format": { "type": "string", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "TableRow": {
+    "tag": "ark-date-picker-table-row",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Trigger": {
+    "tag": "ark-date-picker-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "TriggerState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "View": {
+    "tag": "ark-date-picker-view",
+    "props": {
+      "view": { "type": "DateView", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "ViewControl": {
+    "tag": "ark-date-picker-view-control",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "ViewTrigger": {
+    "tag": "ark-date-picker-view-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  }
+}

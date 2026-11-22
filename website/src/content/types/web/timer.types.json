@@ -1,0 +1,192 @@
+{
+  "Root": {
+    "tag": "ark-timer",
+    "props": {
+      "countdown": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the timer should countdown, decrementing the timer on each tick."
+      },
+      "start-ms": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The total duration of the timer in milliseconds."
+      },
+      "target-ms": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The minimum count of the timer in milliseconds."
+      },
+      "auto-start": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the timer should start automatically"
+      },
+      "interval": {
+        "type": "number",
+        "defaultValue": "1000",
+        "isRequired": false,
+        "description": "The interval in milliseconds to update the timer count."
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "debug": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Log state transitions, events and prop changes to the console. Applies to descendants too."
+      }
+    },
+    "emits": {
+      "tick": {
+        "type": "CustomEvent<TickDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the timer ticks"
+      },
+      "complete": {
+        "type": "CustomEvent<undefined>",
+        "isRequired": false,
+        "description": "Fired when the timer is completed"
+      }
+    },
+    "properties": {
+      "ids": {
+        "type": "ElementIds",
+        "isRequired": false,
+        "description": "The ids of the timer parts"
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      },
+      "ready": {
+        "type": "Promise<void>",
+        "isRequired": false,
+        "description": "Resolves once the element's machine has started, so `api`, state and parts are in place."
+      },
+      "api": {
+        "type": "TimerApi<PropTypes>",
+        "isRequired": false,
+        "description": "The Zag API of the component. `undefined` until it connects."
+      }
+    },
+    "methods": {
+      "start": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function to start the timer."
+      },
+      "pause": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function to pause the timer."
+      },
+      "resume": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function to resume the timer."
+      },
+      "reset": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function to reset the timer."
+      },
+      "restart": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function to restart the timer."
+      }
+    }
+  },
+  "ActionTrigger": {
+    "tag": "ark-timer-action-trigger",
+    "props": {
+      "action": { "type": "TimerAction", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "ActionTriggerState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Area": {
+    "tag": "ark-timer-area",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "Control": {
+    "tag": "ark-timer-control",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "Item": {
+    "tag": "ark-timer-item",
+    "props": {
+      "type": { "type": "keyof Time<number>", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "Separator": {
+    "tag": "ark-timer-separator",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  }
+}

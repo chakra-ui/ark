@@ -58,3 +58,32 @@ One significant advantage of using Ark UI Elements is the control you have over 
 This is primarily facilitated through the `present` prop. The `present` prop allows the component to stay mounted even
 after its enclosing condition has been falsified, allowing for exit animations to complete before the component is
 removed from the DOM.
+
+<FrameworkOnly framework="web">
+
+## Web Components
+
+In `@ark-ui/web`, presence-aware parts such as dialog, popover, and menu content stay in the DOM while their exit
+animation runs, then get `hidden`. The CSS keyframes above work unchanged, since the parts set `data-state="open"` or
+`data-state="closed"`.
+
+To mount content lazily, put it in a `<template>` inside the content part. It is stamped the first time the content
+opens. Add `unmount-on-exit` to the root to return it to the template after each exit animation:
+
+```html
+<ark-dialog unmount-on-exit>
+  <ark-dialog-trigger><button>Open</button></ark-dialog-trigger>
+  <ark-dialog-positioner>
+    <ark-dialog-content>
+      <template>
+        <ark-dialog-title>Mounted on open</ark-dialog-title>
+      </template>
+    </ark-dialog-content>
+  </ark-dialog-positioner>
+</ark-dialog>
+```
+
+Presence-aware roots dispatch `exitcomplete` when an exit animation finishes. Add `skip-animation-on-mount` to the root
+to skip the enter animation for content that starts open.
+
+</FrameworkOnly>

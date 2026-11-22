@@ -19,10 +19,11 @@ interface Props {
     }
   >
   replace?: Record<string, string>
+  label?: string
 }
 
 export const PropsTable = (props: Props) => {
-  const { properties, framework, replace } = props
+  const { properties, framework, replace, label = 'Prop' } = props
 
   const replaceFn = (value: string | undefined) => {
     if (!replace || !value) return value
@@ -37,7 +38,7 @@ export const PropsTable = (props: Props) => {
         <Table.Head>
           <Table.Row>
             <Table.Header px="4" bg="gray.2" h="10">
-              Prop
+              {label}
             </Table.Header>
             <Table.Header px="4" bg="gray.2" h="10">
               Default

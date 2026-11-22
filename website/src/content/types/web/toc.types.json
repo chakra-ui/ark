@@ -1,0 +1,223 @@
+{
+  "Root": {
+    "tag": "ark-toc",
+    "props": {
+      "active-ids": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The controlled active heading ids."
+      },
+      "default-active-ids": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The default active heading ids when rendered.\nUse when you don't need to control the active headings."
+      },
+      "multiple": { "type": "boolean", "isRequired": false },
+      "auto-scroll": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to auto-scroll the TOC container so the first active item\nis visible when active headings change."
+      },
+      "scroll-behavior": {
+        "type": "ScrollBehavior",
+        "defaultValue": "\"smooth\"",
+        "isRequired": false,
+        "description": "The default scroll behavior used when auto-scrolling the TOC container\nand when scrolling to a heading (via link click or `api.scrollTo`).\nCan be overridden per-call by passing `behavior` to `api.scrollTo`."
+      },
+      "root-margin": {
+        "type": "string",
+        "defaultValue": "\"-20px 0px -40% 0px\"",
+        "isRequired": false,
+        "description": "The root margin for the IntersectionObserver.\nControls the effective viewport area for determining active headings."
+      },
+      "threshold": {
+        "type": "number | number[]",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The IntersectionObserver threshold. A value of `0` means the heading is\nactive as soon as even one pixel is visible within the root margin area."
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "debug": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Log state transitions, events and prop changes to the console. Applies to descendants too."
+      }
+    },
+    "emits": {
+      "activechange": {
+        "type": "CustomEvent<ActiveChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Callback when the active (visible) headings change."
+      }
+    },
+    "properties": {
+      "ids": {
+        "type": "ElementIds",
+        "isRequired": false,
+        "description": "The ids of the elements in the TOC. Useful for composition."
+      },
+      "items": {
+        "type": "TocItem[]",
+        "isRequired": false,
+        "description": "The TOC items with `value` (slug/id) and `depth` (heading level)."
+      },
+      "scrollEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "description": "Function that returns the scroll container element to observe within.\nDefaults to the document/viewport."
+      },
+      "activeIds": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The controlled active heading ids."
+      },
+      "ready": {
+        "type": "Promise<void>",
+        "isRequired": false,
+        "description": "Resolves once the element's machine has started, so `api`, state and parts are in place."
+      },
+      "api": {
+        "type": "TocApi<PropTypes>",
+        "isRequired": false,
+        "description": "The Zag API of the component. `undefined` until it connects."
+      }
+    }
+  },
+  "Content": {
+    "tag": "ark-toc-content",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "Indicator": {
+    "tag": "ark-toc-indicator",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "IndicatorState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Item": {
+    "tag": "ark-toc-item",
+    "props": {
+      "value": { "type": "string", "isRequired": false },
+      "depth": { "type": "string", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "ItemState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Link": {
+    "tag": "ark-toc-link",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "ItemState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "List": {
+    "tag": "ark-toc-list",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "Nav": {
+    "tag": "ark-toc-nav",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "Title": {
+    "tag": "ark-toc-title",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  }
+}

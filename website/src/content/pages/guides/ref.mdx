@@ -74,8 +74,8 @@ In Svelte 5, use the `bind:ref` directive to access the rendered element.
 <Slider.Root bind:ref={rootRef}>{/* ... */}</Slider.Root>
 ```
 
-When a part renders through the `render` snippet, `bind:ref` resolves to the element you spread `props()` onto. No
-extra wiring is needed.
+When a part renders through the `render` snippet, `bind:ref` resolves to the element you spread `props()` onto. No extra
+wiring is needed.
 
 ```svelte
 <script lang="ts">
@@ -90,3 +90,26 @@ extra wiring is needed.
   {/snippet}
 </Popover.Trigger>
 ```
+
+<FrameworkOnly framework="web">
+
+## Web
+
+In `@ark-ui/web`, every part is a custom element in the DOM, so there is no ref to forward. Query it like any element.
+Root tags are typed through `HTMLElementTagNameMap`.
+
+```ts
+import '@ark-ui/web/slider'
+
+const slider = document.querySelector('ark-slider')! // SliderElement
+slider.value = [40]
+```
+
+Parts that wrap a native control, such as a trigger's `button` or an input part's `input`, put the part's attributes on
+that native element. Query it directly when you need the focusable node:
+
+```ts
+const trigger = document.querySelector('ark-popover-trigger > button')!
+```
+
+</FrameworkOnly>

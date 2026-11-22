@@ -1,0 +1,148 @@
+{
+  "Root": {
+    "tag": "ark-collapsible",
+    "props": {
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The controlled open state of the collapsible."
+      },
+      "default-open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The initial open state of the collapsible when rendered.\nUse when you don't need to control the open state of the collapsible."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the collapsible is disabled."
+      },
+      "collapsed-height": {
+        "type": "string | number",
+        "isRequired": false,
+        "description": "The height of the content when collapsed."
+      },
+      "collapsed-width": {
+        "type": "string | number",
+        "isRequired": false,
+        "description": "The width of the content when collapsed."
+      },
+      "hidden-until-found": { "type": "boolean", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "debug": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Log state transitions, events and prop changes to the console. Applies to descendants too."
+      }
+    },
+    "emits": {
+      "openchange": {
+        "type": "CustomEvent<OpenChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the open state changes."
+      },
+      "exitcomplete": {
+        "type": "CustomEvent<undefined>",
+        "isRequired": false,
+        "description": "Fired when the exit animation completes."
+      }
+    },
+    "properties": {
+      "ids": {
+        "type": "ElementIds",
+        "isRequired": false,
+        "description": "The ids of the elements in the collapsible. Useful for composition."
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The controlled open state of the collapsible."
+      },
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The root's state from its machine (`getRootState()`), such as `open` or `disabled`. `undefined` until it connects."
+      },
+      "ready": {
+        "type": "Promise<void>",
+        "isRequired": false,
+        "description": "Resolves once the element's machine has started, so `api`, state and parts are in place."
+      },
+      "api": {
+        "type": "CollapsibleApi<PropTypes>",
+        "isRequired": false,
+        "description": "The Zag API of the component. `undefined` until it connects."
+      }
+    }
+  },
+  "Content": {
+    "tag": "ark-collapsible-content",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "ContentState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Indicator": {
+    "tag": "ark-collapsible-indicator",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Trigger": {
+    "tag": "ark-collapsible-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  }
+}

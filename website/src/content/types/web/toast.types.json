@@ -1,0 +1,178 @@
+{
+  "Root": {
+    "tag": "ark-toast",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "debug": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Log state transitions, events and prop changes to the console. Applies to descendants too."
+      }
+    },
+    "emits": {
+      "statuschange": {
+        "type": "CustomEvent<StatusChangeDetails & { source: InputSource; }>",
+        "isRequired": false
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The root's state from its machine (`getRootState()`), such as `open` or `disabled`. `undefined` until it connects."
+      },
+      "ready": {
+        "type": "Promise<void>",
+        "isRequired": false,
+        "description": "Resolves once the element's machine has started, so `api`, state and parts are in place."
+      },
+      "api": {
+        "type": "ToastApi<PropTypes, any>",
+        "isRequired": false,
+        "description": "The Zag API of the component. `undefined` until it connects."
+      }
+    }
+  },
+  "ActionTrigger": {
+    "tag": "ark-toast-action-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "CloseTrigger": {
+    "tag": "ark-toast-close-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Content": {
+    "tag": "ark-toast-content",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Description": {
+    "tag": "ark-toast-description",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Title": {
+    "tag": "ark-toast-title",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Toaster": {
+    "tag": "ark-toaster",
+    "props": {
+      "label": { "type": "string", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "debug": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Log state transitions, events and prop changes to the console. Applies to descendants too."
+      }
+    },
+    "properties": {
+      "ready": {
+        "type": "Promise<void>",
+        "isRequired": false,
+        "description": "Resolves once the element's machine has started, so `api`, state and parts are in place."
+      },
+      "api": {
+        "type": "ToastGroupApi<PropTypes, any>",
+        "isRequired": false,
+        "description": "The Zag API of the component. `undefined` until it connects."
+      }
+    }
+  }
+}

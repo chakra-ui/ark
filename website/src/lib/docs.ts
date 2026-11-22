@@ -1,5 +1,5 @@
 import { matchSorter } from 'match-sorter'
-import type { Framework } from '~/lib/frameworks'
+import { type Framework, isDocAvailable } from '~/lib/frameworks'
 import { cleanupPageContent } from '~/lib/llm-content'
 import type { PageMeta } from './source'
 import { getSidebarGroupsWithPages } from './sidebar'
@@ -53,7 +53,7 @@ export const listDocs = (): DocsEntry[] => getDocsSources().map(toEntry)
 export const getDoc = async (slug: string, framework: Framework = 'react'): Promise<DocsPage | null> => {
   const normalized = slug.replace(/\.mdx?$/, '')
   const source = getDocsSources().find(({ page }) => page.slug === normalized)
-  if (!source) return null
+  if (!source || !isDocAvailable(framework, source.page.slug)) return null
 
   return {
     ...toEntry(source),

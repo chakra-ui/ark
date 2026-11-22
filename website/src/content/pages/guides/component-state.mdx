@@ -13,6 +13,12 @@ Need to access a component's state? You have four options:
 | `use*Context` hooks             | Build custom child components that read state |
 | `useComponent` + `RootProvider` | Control the component from outside            |
 
+<FrameworkOnly framework="web">
+
+In `@ark-ui/web`, the elements are the API. See [Web Components](#web-components).
+
+</FrameworkOnly>
+
 ## The render Prop
 
 When you replace a part with your own element, `render` hands you that part's state alongside its props — no context
@@ -71,6 +77,71 @@ Need to control a component from outside its tree? Use a `useComponent` hook (li
 > When you use `RootProvider`, skip the `Root` component—you don't need both.
 
 <ExampleCode id="root-provider" component="accordion" />
+
+<FrameworkOnly framework="web">
+
+## Web Components
+
+`@ark-ui/web` has no context or hooks. Each root element exposes its state directly.
+
+### Properties
+
+Roots have live properties such as `open`, `value`, `checked`, and `page`, typed on each element. They work like
+`input.value`: reading returns the current state, and writing updates it without dispatching a change event.
+
+```ts
+const dialog = document.querySelector('ark-dialog')!
+dialog.open = true
+
+const select = document.querySelector('ark-select')!
+select.value = ['react']
+```
+
+Properties are for uncontrolled use. While the controlled attribute (`open`, `value`, `checked`) is present, it wins and
+writes are ignored. Values written before the element connects apply once it starts.
+
+### Events
+
+Change callbacks are lowercase events such as `valuechange`, `checkedchange`, and `openchange`. `event.detail` is the
+Zag change details object. Events bubble, so filter `event.target` when components are nested.
+
+```ts
+const checkbox = document.querySelector('ark-checkbox')!
+checkbox.addEventListener('checkedchange', (event) => {
+  if (event.target !== checkbox) return
+  checkbox.setAttribute('checked', String(event.detail.checked))
+})
+```
+
+For uncontrolled initial state, use `default-value`, `default-checked`, or `default-open`. For controlled state, set
+`value`, `checked`, or `open` and update the attribute from the change event.
+
+### Reading state
+
+Every root and part has a read-only `state`: the root's `getRootState()`, or the part's own, such as an item's
+`getItemState()`. It is computed when read and is `undefined` until the element connects.
+
+```ts
+select.addEventListener('highlightchange', () => {
+  for (const item of select.querySelectorAll('ark-select-item')) {
+    console.log(item.getAttribute('value'), item.state) // { value, selected, highlighted, disabled }
+  }
+})
+```
+
+### Methods and the full API
+
+Actions that aren't state, such as `timer.start()` or `clipboard.copy()`, are element methods. They can be called before
+the element connects, and they dispatch the same events as the matching user interaction.
+
+The full Zag API is available as `api` once the machine starts. Await `ready` to know when that is:
+
+```ts
+await select.ready
+select.api!.getItemState({ item })
+```
+
+</FrameworkOnly>
 
 ## Choosing the Right Approach
 

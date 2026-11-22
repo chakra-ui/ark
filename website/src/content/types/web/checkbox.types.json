@@ -1,0 +1,210 @@
+{
+  "Root": {
+    "tag": "ark-checkbox",
+    "props": {
+      "checked": {
+        "type": "CheckedState",
+        "isRequired": false,
+        "description": "The controlled checked state of the checkbox"
+      },
+      "default-checked": {
+        "type": "CheckedState",
+        "isRequired": false,
+        "description": "The initial checked state of the checkbox when rendered.\nUse when you don't need to control the checked state of the checkbox."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the checkbox is disabled"
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the checkbox is invalid"
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the checkbox is required"
+      },
+      "readonly": { "type": "boolean", "isRequired": false },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The name of the input field in a checkbox.\nUseful for form submission."
+      },
+      "value": {
+        "type": "string",
+        "defaultValue": "\"on\"",
+        "isRequired": false,
+        "description": "The value of checkbox input. Useful for form submission."
+      },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the form that the checkbox belongs to."
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "debug": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Log state transitions, events and prop changes to the console. Applies to descendants too."
+      }
+    },
+    "emits": {
+      "checkedchange": {
+        "type": "CustomEvent<CheckedChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the checked state changes."
+      }
+    },
+    "properties": {
+      "ids": {
+        "type": "ElementIds",
+        "isRequired": false,
+        "description": "The ids of the elements in the checkbox. Useful for composition."
+      },
+      "checked": {
+        "type": "CheckedState",
+        "isRequired": false,
+        "description": "The controlled checked state of the checkbox"
+      },
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The root's state from its machine (`getRootState()`), such as `open` or `disabled`. `undefined` until it connects."
+      },
+      "ready": {
+        "type": "Promise<void>",
+        "isRequired": false,
+        "description": "Resolves once the element's machine has started, so `api`, state and parts are in place."
+      },
+      "api": {
+        "type": "CheckboxApi<PropTypes>",
+        "isRequired": false,
+        "description": "The Zag API of the component. `undefined` until it connects."
+      }
+    }
+  },
+  "Control": {
+    "tag": "ark-checkbox-control",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Group": {
+    "tag": "ark-checkbox-group",
+    "props": {
+      "value": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The controlled value of the checkbox group"
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The name of the input fields in the checkbox group\n(Useful for form submission)."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If `true`, the checkbox group is disabled"
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If `true`, the checkbox group is invalid"
+      },
+      "readonly": { "type": "boolean", "isRequired": false },
+      "max-selected": { "type": "number", "isRequired": false }
+    },
+    "properties": {}
+  },
+  "HiddenInput": {
+    "tag": "ark-checkbox-hidden-input",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Indicator": {
+    "tag": "ark-checkbox-indicator",
+    "props": {
+      "indeterminate": { "type": "boolean", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Label": {
+    "tag": "ark-checkbox-label",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  }
+}

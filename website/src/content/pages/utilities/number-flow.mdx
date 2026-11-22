@@ -150,6 +150,31 @@ Use a font with tabular figures. Proportional digits change width as they roll, 
 The root exposes `data-state` (`idle` or `rolling`), `data-trend`, and `data-reduced-motion`. Digits carry `data-place`,
 and symbols carry `data-type` with their `Intl.NumberFormat` part type, such as `currency` or `group`.
 
+<FrameworkOnly framework="web">
+
+### Web Components
+
+In `@ark-ui/web`, `<ark-number-flow-segments>` renders the digits and symbols itself; there is no render function to
+compose them. Style them with the data attributes above. `formatOptions` is a property, and `value` is a live property
+that rolls the number when written.
+
+```html
+<ark-number-flow default-value="1248" trend="-1">
+  <ark-number-flow-segments></ark-number-flow-segments>
+  <ark-number-flow-value-text></ark-number-flow-value-text>
+</ark-number-flow>
+```
+
+```ts
+const flow = document.querySelector('ark-number-flow')!
+flow.formatOptions = { style: 'currency', currency: 'USD' }
+flow.value = 1299
+```
+
+`<ark-number-flow-value-text>` plays the role of `HiddenValueText`.
+
+</FrameworkOnly>
+
 ### Accessibility
 
 By default the root has `role="img"` and an `aria-label` with the formatted value, so assistive technology reads the

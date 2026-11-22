@@ -123,6 +123,34 @@ are not mounted. See the virtualized examples for [Select](/docs/components/sele
 [Combobox](/docs/components/combobox#virtualized), [Listbox](/docs/components/listbox#virtualized), and
 [Tree View](/docs/components/tree-view#virtualized).
 
+<FrameworkOnly framework="web">
+
+### Web Components
+
+In `@ark-ui/web`, the three flavors are elements: `<ark-list-virtualizer>`, `<ark-grid-virtualizer>`, and
+`<ark-window-virtualizer>`. Options such as `count` and `estimated-size` are attributes. Items are stamped from a
+`<template>` in the content part, and `renderItem` fills each one:
+
+```html
+<ark-list-virtualizer count="10000" estimated-size="48">
+  <ark-list-virtualizer-content>
+    <template><ark-list-virtualizer-item></ark-list-virtualizer-item></template>
+  </ark-list-virtualizer-content>
+</ark-list-virtualizer>
+```
+
+```ts
+const list = document.querySelector('ark-list-virtualizer')!
+list.renderItem = (element, item) => {
+  element.textContent = items[item.index]
+}
+```
+
+Inside a collection component, compose with `as-child` so the component keeps its roles and the virtualizer only
+positions, and set `scrollToIndexFn` to `({ index }) => list.virtualizer?.scrollToIndex(index)`.
+
+</FrameworkOnly>
+
 ## API Reference
 
 <ComponentTypes id="virtualizer" />

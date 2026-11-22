@@ -1,0 +1,86 @@
+{
+  "Byte": {
+    "tag": "ark-format-byte",
+    "props": {
+      "value": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The byte size to format"
+      },
+      "locale": { "type": "string", "isRequired": false },
+      "unit": {
+        "type": "'bit' | 'byte'",
+        "isRequired": false,
+        "description": "The unit granularity to display"
+      },
+      "unit-display": {
+        "type": "'short' | 'long' | 'narrow'",
+        "isRequired": false,
+        "description": "The unit display"
+      },
+      "unit-system": {
+        "type": "'decimal' | 'binary'",
+        "isRequired": false,
+        "description": "The unit system to use for formatting"
+      },
+      "precision": { "type": "string", "isRequired": false }
+    },
+    "properties": {}
+  },
+  "Number": {
+    "tag": "ark-format-number",
+    "props": {
+      "value": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The number to format"
+      },
+      "locale": { "type": "string", "isRequired": false },
+      "style": { "type": "CSSStyleDeclaration", "isRequired": false },
+      "currency": { "type": "string", "isRequired": false },
+      "currency-display": { "type": "string", "isRequired": false },
+      "currency-sign": { "type": "string", "isRequired": false },
+      "unit": { "type": "string", "isRequired": false },
+      "unit-display": { "type": "string", "isRequired": false },
+      "notation": { "type": "string", "isRequired": false },
+      "compact-display": { "type": "string", "isRequired": false },
+      "sign-display": { "type": "string", "isRequired": false },
+      "minimum-integer-digits": { "type": "string", "isRequired": false },
+      "minimum-fraction-digits": { "type": "string", "isRequired": false },
+      "maximum-fraction-digits": { "type": "string", "isRequired": false },
+      "minimum-significant-digits": { "type": "string", "isRequired": false },
+      "maximum-significant-digits": { "type": "string", "isRequired": false }
+    },
+    "properties": {}
+  },
+  "RelativeTime": {
+    "tag": "ark-format-relative-time",
+    "props": {
+      "value": {
+        "type": "Date",
+        "isRequired": false,
+        "description": "The date to format"
+      },
+      "locale": { "type": "string", "isRequired": false },
+      "numeric": { "type": "string", "isRequired": false },
+      "style": { "type": "CSSStyleDeclaration", "isRequired": false }
+    },
+    "properties": {}
+  },
+  "Time": {
+    "tag": "ark-format-time",
+    "props": {
+      "value": {
+        "type": "string | Date",
+        "isRequired": false,
+        "description": "The time to format"
+      },
+      "locale": { "type": "string", "isRequired": false },
+      "format": { "type": "TimeFormat", "isRequired": false },
+      "am-label": { "type": "string", "isRequired": false },
+      "pm-label": { "type": "string", "isRequired": false },
+      "with-seconds": { "type": "boolean", "isRequired": false }
+    },
+    "properties": {}
+  }
+}

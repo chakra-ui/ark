@@ -1,0 +1,361 @@
+{
+  "Root": {
+    "tag": "ark-image-cropper",
+    "props": {
+      "zoom": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The controlled zoom level of the image."
+      },
+      "default-zoom": {
+        "type": "number",
+        "defaultValue": "1",
+        "isRequired": false,
+        "description": "The initial zoom factor to apply to the image."
+      },
+      "rotation": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The controlled rotation of the image in degrees (0 - 360)."
+      },
+      "default-rotation": {
+        "type": "number",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The initial rotation to apply to the image in degrees."
+      },
+      "flip": {
+        "type": "FlipState",
+        "isRequired": false,
+        "description": "The controlled flip state of the image."
+      },
+      "default-flip": {
+        "type": "FlipState",
+        "defaultValue": "{ horizontal: false, vertical: false }",
+        "isRequired": false,
+        "description": "The initial flip state to apply to the image."
+      },
+      "aspect-ratio": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The aspect ratio to maintain for the crop area (width / height).\nFor example, an aspect ratio of 16 / 9 will maintain a width to height ratio of 16:9.\nIf not provided, the crop area can be freely resized."
+      },
+      "crop-shape": {
+        "type": "'circle' | 'rectangle'",
+        "defaultValue": "\"rectangle\"",
+        "isRequired": false,
+        "description": "The shape of the crop area."
+      },
+      "min-width": {
+        "type": "number",
+        "defaultValue": "40",
+        "isRequired": false,
+        "description": "The minimum width of the crop area"
+      },
+      "min-height": {
+        "type": "number",
+        "defaultValue": "40",
+        "isRequired": false,
+        "description": "The minimum height of the crop area"
+      },
+      "max-width": {
+        "type": "number",
+        "defaultValue": "Infinity",
+        "isRequired": false,
+        "description": "The maximum width of the crop area"
+      },
+      "max-height": {
+        "type": "number",
+        "defaultValue": "Infinity",
+        "isRequired": false,
+        "description": "The maximum height of the crop area"
+      },
+      "zoom-step": {
+        "type": "number",
+        "defaultValue": "0.1",
+        "isRequired": false,
+        "description": "The amount of zoom applied per wheel step."
+      },
+      "zoom-sensitivity": {
+        "type": "number",
+        "defaultValue": "2",
+        "isRequired": false,
+        "description": "Controls how responsive pinch-to-zoom is."
+      },
+      "min-zoom": {
+        "type": "number",
+        "defaultValue": "1",
+        "isRequired": false,
+        "description": "The minimum zoom factor allowed."
+      },
+      "max-zoom": {
+        "type": "number",
+        "defaultValue": "5",
+        "isRequired": false,
+        "description": "The maximum zoom factor allowed."
+      },
+      "nudge-step": {
+        "type": "number",
+        "defaultValue": "1",
+        "isRequired": false,
+        "description": "The base nudge step for keyboard arrow keys (in pixels)."
+      },
+      "nudge-step-shift": {
+        "type": "number",
+        "defaultValue": "10",
+        "isRequired": false,
+        "description": "The nudge step when Shift key is held (in pixels)."
+      },
+      "nudge-step-ctrl": {
+        "type": "number",
+        "defaultValue": "50",
+        "isRequired": false,
+        "description": "The nudge step when Ctrl/Cmd key is held (in pixels)."
+      },
+      "fixed-crop-area": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the crop area is fixed in size and position."
+      },
+      "dir": { "type": "string", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "debug": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Log state transitions, events and prop changes to the console. Applies to descendants too."
+      }
+    },
+    "emits": {
+      "zoomchange": {
+        "type": "CustomEvent<ZoomChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the zoom level changes."
+      },
+      "rotationchange": {
+        "type": "CustomEvent<RotationChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the rotation changes."
+      },
+      "flipchange": {
+        "type": "CustomEvent<FlipChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the flip state changes."
+      },
+      "cropchange": {
+        "type": "CustomEvent<CropChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the crop area changes."
+      }
+    },
+    "properties": {
+      "ids": {
+        "type": "ElementIds",
+        "isRequired": false,
+        "description": "The ids of the image cropper elements"
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identify accessibility elements and their states."
+      },
+      "initialCrop": {
+        "type": "Rect",
+        "isRequired": false,
+        "description": "The initial rectangle of the crop area.\nIf not provided, a smart default will be computed based on viewport size and aspect ratio."
+      },
+      "zoom": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The controlled zoom level of the image."
+      },
+      "rotation": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The controlled rotation of the image in degrees (0 - 360)."
+      },
+      "flip": {
+        "type": "FlipState",
+        "isRequired": false,
+        "description": "The controlled flip state of the image."
+      },
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The root's state from its machine (`getRootState()`), such as `open` or `disabled`. `undefined` until it connects."
+      },
+      "ready": {
+        "type": "Promise<void>",
+        "isRequired": false,
+        "description": "Resolves once the element's machine has started, so `api`, state and parts are in place."
+      },
+      "api": {
+        "type": "ImageCropperApi<PropTypes>",
+        "isRequired": false,
+        "description": "The Zag API of the component. `undefined` until it connects."
+      }
+    },
+    "methods": {
+      "zoomBy": {
+        "type": "(delta: number) => void",
+        "isRequired": false,
+        "description": "Function to zoom the image by a relative amount."
+      },
+      "rotateBy": {
+        "type": "(degrees: number) => void",
+        "isRequired": false,
+        "description": "Function to rotate the image by a relative amount in degrees."
+      },
+      "flipHorizontally": {
+        "type": "(value?: boolean | undefined) => void",
+        "isRequired": false,
+        "description": "Function to flip the image horizontally. Pass a boolean to set explicitly or omit to toggle."
+      },
+      "flipVertically": {
+        "type": "(value?: boolean | undefined) => void",
+        "isRequired": false,
+        "description": "Function to flip the image vertically. Pass a boolean to set explicitly or omit to toggle."
+      },
+      "resize": {
+        "type": "(handlePosition: HandlePosition, delta: number) => void",
+        "isRequired": false,
+        "description": "Function to resize the crop area from a handle programmatically."
+      },
+      "setCrop": {
+        "type": "(crop: Rect) => void",
+        "isRequired": false,
+        "description": "Function to set the crop area in viewport coordinates, constrained like `initialCrop`\n(min/max size, aspect ratio and viewport bounds). Zoom, rotation, flip and pan are kept.\nDoes nothing when `fixedCropArea` is set or before the viewport is measured."
+      },
+      "reset": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function to reset the cropper to its initial state."
+      }
+    }
+  },
+  "Grid": {
+    "tag": "ark-image-cropper-grid",
+    "props": {
+      "axis": {
+        "type": "'horizontal' | 'vertical'",
+        "isRequired": false,
+        "description": "The axis of the grid lines to display"
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Handle": {
+    "tag": "ark-image-cropper-handle",
+    "props": {
+      "placement": {
+        "type": "Placement",
+        "isRequired": false,
+        "defaultValue": "\"bottom\"",
+        "description": "The placement of the floating element relative to its anchor."
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Image": {
+    "tag": "ark-image-cropper-image",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "ImageState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Selection": {
+    "tag": "ark-image-cropper-selection",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "SelectionState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Viewport": {
+    "tag": "ark-image-cropper-viewport",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  }
+}

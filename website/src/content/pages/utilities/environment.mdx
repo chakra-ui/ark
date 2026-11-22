@@ -56,6 +56,15 @@ export const App = () => {
 }
 ```
 
+<FrameworkOnly framework="web">
+
+### Web Components
+
+`@ark-ui/web` has no `EnvironmentProvider`. Each element resolves its root node with `getRootNode()`, so components work
+inside a shadow root without extra setup. Include your styles in that shadow root.
+
+</FrameworkOnly>
+
 ## Context
 
 Use the `useEnvironmentContext` hook to access the `RootNode`, `Document`, and `Window`.

@@ -1,0 +1,172 @@
+{
+  "HotkeysCommand": {
+    "props": {
+      "id": { "type": "string", "isRequired": false },
+      "label": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Human-readable label for the command"
+      },
+      "keywords": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "Keywords for search/command palette integration.\nUseful for alternative names or search terms for the command."
+      },
+      "action": {
+        "type": "HotkeyAction",
+        "isRequired": false,
+        "description": "The action to perform when the hotkey is triggered."
+      },
+      "description": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Description of what the command does"
+      },
+      "hotkey": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The hotkey to trigger the command."
+      },
+      "category": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Category for organizing commands"
+      },
+      "options": {
+        "type": "HotkeyOptions",
+        "isRequired": false,
+        "description": "Options for the hotkey command."
+      },
+      "enabled": {
+        "type": "boolean | (() => boolean)",
+        "isRequired": false,
+        "description": "Whether the command is enabled."
+      },
+      "scopes": {
+        "type": "string | string[]",
+        "isRequired": false,
+        "defaultValue": "\"*\"",
+        "description": "The scopes to use for the hotkey command."
+      }
+    }
+  },
+  "HotkeysOptions": {
+    "props": {
+      "store": { "type": "HotkeyStore", "isRequired": false },
+      "root": { "type": "ShadowRoot | Document", "isRequired": false }
+    }
+  },
+  "HotkeyOptions": {
+    "props": {
+      "preventDefault": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to prevent the default browser behavior."
+      },
+      "stopPropagation": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to stop the event propagation"
+      },
+      "enableOnFormTags": {
+        "type": "boolean | FormTagName[]",
+        "isRequired": false,
+        "description": "Whether to enable the hotkey on form tags.\n- `true`: Enable on all form tags (input, textarea, select)\n- `false`: Disable on all form tags (default)\n- `FormTagName[]`: Enable only on specific form tag types"
+      },
+      "enableOnContentEditable": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to enable the hotkey on content editable elements."
+      },
+      "capture": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use capture phase for event listeners (default: true)"
+      },
+      "requireReset": {
+        "type": "boolean",
+        "isRequired": false,
+        "defaultValue": "false",
+        "description": "When true, the hotkey fires only once per key press.\nThe key must be released before it can fire again."
+      },
+      "eventType": {
+        "type": "\"keydown\" | \"keyup\"",
+        "isRequired": false,
+        "defaultValue": "\"keydown\"",
+        "description": "The event type to listen for.\n- `\"keydown\"`: Fire when the key is pressed (default)\n- `\"keyup\"`: Fire when the key is released"
+      },
+      "target": {
+        "type": "HotkeyCommandTarget",
+        "isRequired": false,
+        "description": "Scope the command to a DOM subtree. The command only fires when the event\noriginates within this element. Accepts an element or a function returning\none, resolved on every event; while it resolves to `null`, the command is\nskipped. The element must contain focus to receive keyboard events."
+      }
+    }
+  },
+  "HotkeyStoreOptions": {
+    "props": {
+      "target": {
+        "type": "HotkeyTarget",
+        "isRequired": false,
+        "description": "The target element to listen for hotkeys"
+      },
+      "defaultOptions": {
+        "type": "Partial<HotkeyOptions>",
+        "isRequired": false,
+        "description": "The default options to use for the store"
+      },
+      "sequenceTimeoutMs": {
+        "type": "number",
+        "isRequired": false,
+        "defaultValue": "1000",
+        "description": "The timeout in milliseconds for sequence completion"
+      },
+      "activeScopes": {
+        "type": "string | string[]",
+        "isRequired": false,
+        "defaultValue": "[\"*\"]",
+        "description": "The active scopes when the store is created"
+      },
+      "conflictBehavior": {
+        "type": "ConflictBehavior",
+        "isRequired": false,
+        "defaultValue": "\"warn\"",
+        "description": "How to handle conflicts when two commands register the same hotkey."
+      }
+    }
+  },
+  "HotkeyRecorderOptions": {
+    "props": {
+      "target": {
+        "type": "HotkeyTarget",
+        "isRequired": false,
+        "description": "The target element to listen for key events"
+      },
+      "onRecord": {
+        "type": "(hotkey: RecordedHotkey) => void",
+        "isRequired": false,
+        "description": "Called when a hotkey is successfully recorded"
+      },
+      "onCancel": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Called when recording is cancelled (via Escape)"
+      },
+      "onClear": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Called when the recorded hotkey is cleared (via Backspace/Delete)"
+      },
+      "formatOptions": {
+        "type": "FormatHotkeyOptions",
+        "isRequired": false,
+        "description": "Options for formatting the display string"
+      },
+      "sequenceTimeoutMs": {
+        "type": "number",
+        "isRequired": false,
+        "defaultValue": "1000",
+        "description": "Timeout in milliseconds to wait for the next sequence step.\nIf no key is pressed within this window, the recording finalizes."
+      }
+    }
+  }
+}

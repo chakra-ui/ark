@@ -25,7 +25,17 @@ export const metadata: Metadata = {
     template: '%s | Ark UI',
   },
   description,
-  keywords: ['react', 'solid', 'vue', 'svelte', 'design systems', 'headless', 'components', 'library'],
+  keywords: [
+    'react',
+    'solid',
+    'vue',
+    'svelte',
+    'web components',
+    'design systems',
+    'headless',
+    'components',
+    'library',
+  ],
   alternates: {
     types: { 'application/rss+xml': [{ url: '/rss.xml', title: 'Ark UI Blog' }] },
   },

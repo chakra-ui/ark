@@ -1,0 +1,402 @@
+{
+  "Root": {
+    "tag": "ark-drawer",
+    "props": {
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the drawer is open."
+      },
+      "default-open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The initial open state of the drawer."
+      },
+      "modal": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to prevent pointer interaction outside the element and hide all content below it."
+      },
+      "role": {
+        "type": "'dialog' | 'alertdialog'",
+        "defaultValue": "\"dialog\"",
+        "isRequired": false,
+        "description": "The sheet's role"
+      },
+      "dir": { "type": "string", "isRequired": false },
+      "swipe-direction": {
+        "type": "SwipeDirection",
+        "defaultValue": "\"down\"",
+        "isRequired": false,
+        "description": "The direction in which the drawer can be swiped."
+      },
+      "snap-points": {
+        "type": "SnapPoint[]",
+        "defaultValue": "[1]",
+        "isRequired": false,
+        "description": "The snap points of the drawer.\nArray of numbers or strings representing the snap points."
+      },
+      "snap-point": {
+        "type": "SnapPoint",
+        "isRequired": false,
+        "description": "The currently active snap point."
+      },
+      "default-snap-point": { "type": "SnapPoint", "isRequired": false },
+      "snap-to-sequential-points": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the drawer should snap to sequential points when swiping."
+      },
+      "close-threshold": {
+        "type": "number",
+        "defaultValue": "0.25",
+        "isRequired": false,
+        "description": "The threshold distance for dismissing the drawer."
+      },
+      "swipe-velocity-threshold": {
+        "type": "number",
+        "defaultValue": "700",
+        "isRequired": false,
+        "description": "The threshold velocity (in pixels/s) for closing the drawer."
+      },
+      "close-on-escape": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to close the drawer when the escape key is pressed."
+      },
+      "close-on-interact-outside": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to close the drawer when the outside is clicked."
+      },
+      "trap-focus": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to trap focus inside the sheet when it's opened."
+      },
+      "prevent-scroll": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to prevent scrolling behind the sheet when it's opened"
+      },
+      "restore-focus": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to restore focus to the element that had focus before the sheet was opened."
+      },
+      "prevent-drag-on-scroll": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to prevent dragging on scrollable elements.\nWhen enabled, the sheet will not start dragging if the user is interacting with a scrollable element."
+      },
+      "initial-focus": { "type": "string", "isRequired": false },
+      "final-focus": { "type": "string", "isRequired": false },
+      "skip-animation-on-mount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "debug": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Log state transitions, events and prop changes to the console. Applies to descendants too."
+      }
+    },
+    "emits": {
+      "openchange": {
+        "type": "CustomEvent<OpenChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the open state changes."
+      },
+      "snappointchange": {
+        "type": "CustomEvent<SnapPointChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the snap point changes."
+      },
+      "triggervaluechange": {
+        "type": "CustomEvent<TriggerValueChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Callback when the active trigger value changes."
+      },
+      "escapekeydown": {
+        "type": "CustomEvent<KeyboardEvent>",
+        "isRequired": false,
+        "description": "Fired when the escape key is pressed"
+      },
+      "requestdismiss": {
+        "type": "CustomEvent<LayerDismissEvent>",
+        "isRequired": false,
+        "description": "Fired when this layer is closed due to a parent layer being closed"
+      },
+      "pointerdownoutside": {
+        "type": "CustomEvent<PointerDownOutsideEvent>",
+        "isRequired": false,
+        "description": "Fired when the pointer is pressed down outside the component"
+      },
+      "focusoutside": {
+        "type": "CustomEvent<FocusOutsideEvent>",
+        "isRequired": false,
+        "description": "Fired when the focus is moved outside the component"
+      },
+      "interactoutside": {
+        "type": "CustomEvent<InteractOutsideEvent>",
+        "isRequired": false,
+        "description": "Fired when an interaction happens outside the component"
+      }
+    },
+    "properties": {
+      "initialFocusEl": {
+        "type": "() => MaybeElement | false",
+        "isRequired": false,
+        "description": "Element to receive focus when the sheet is opened.\nReturn `false` to skip moving focus, or `null` to use the default."
+      },
+      "finalFocusEl": {
+        "type": "() => MaybeElement",
+        "isRequired": false,
+        "description": "Element to receive focus when the sheet is closed."
+      },
+      "ids": {
+        "type": "ElementIds",
+        "isRequired": false,
+        "description": "The ids of the elements in the drawer. Useful for composition."
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the drawer is open."
+      },
+      "snapPoint": {
+        "type": "SnapPoint",
+        "isRequired": false,
+        "description": "The currently active snap point."
+      },
+      "ready": {
+        "type": "Promise<void>",
+        "isRequired": false,
+        "description": "Resolves once the element's machine has started, so `api`, state and parts are in place."
+      },
+      "api": {
+        "type": "DrawerApi<PropTypes>",
+        "isRequired": false,
+        "description": "The Zag API of the component. `undefined` until it connects."
+      }
+    }
+  },
+  "Backdrop": {
+    "tag": "ark-drawer-backdrop",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "BackdropState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "CloseTrigger": {
+    "tag": "ark-drawer-close-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "Content": {
+    "tag": "ark-drawer-content",
+    "props": {
+      "draggable": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether the drawer content is draggable.\nIf false, the drawer can only be dragged by the grabber."
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "ContentState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Description": {
+    "tag": "ark-drawer-description",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "Grabber": {
+    "tag": "ark-drawer-grabber",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "GrabberIndicator": {
+    "tag": "ark-drawer-grabber-indicator",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "Positioner": {
+    "tag": "ark-drawer-positioner",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "PositionerState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "SwipeArea": {
+    "tag": "ark-drawer-swipe-area",
+    "props": {
+      "disabled": { "type": "boolean", "isRequired": false },
+      "swipe-direction": { "type": "string", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "SwipeAreaState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Title": {
+    "tag": "ark-drawer-title",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "Trigger": {
+    "tag": "ark-drawer-trigger",
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value that identifies this specific trigger"
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "TriggerState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  }
+}

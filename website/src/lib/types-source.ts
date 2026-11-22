@@ -13,6 +13,8 @@ export interface TypePart {
   element?: string
   tag?: string
   emits?: Record<string, PropDefinition>
+  properties?: Record<string, PropDefinition>
+  methods?: Record<string, PropDefinition>
 }
 
 export interface ComponentTypes {

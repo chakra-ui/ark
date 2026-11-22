@@ -16,9 +16,8 @@ that can be used for styling or animations.
 ### Data Attributes
 
 Each part of an Ark UI component has a `data-{scope}-{part}` attribute, such as `data-accordion-item` or
-`data-date-picker-trigger`, that you can target.
-Interactive components often include `data-*` attributes to indicate their state. For example, here's what an open
-accordion item looks like:
+`data-date-picker-trigger`, that you can target. Interactive components often include `data-*` attributes to indicate
+their state. For example, here's what an open accordion item looks like:
 
 ```html
 <div data-accordion-item="" data-state="open"></div>
@@ -78,6 +77,28 @@ Then use in styles:
   }
 }
 ```
+
+<FrameworkOnly framework="web">
+
+### Web Components
+
+`@ark-ui/web` sets the same `data-{scope}-{part}` and state attributes, so the selectors above work unchanged. Parts
+that wrap a native control put them on that control: `[data-dialog-trigger]` matches the `button` inside
+`<ark-dialog-trigger>`, and `[data-checkbox-root]` the `label` inside `<ark-checkbox>`. Other parts put them on the
+custom element itself.
+
+Add classes with the `class` attribute, on the native element for wrapped parts:
+
+```html
+<ark-accordion-item class="AccordionItem" value="intro">
+  <ark-accordion-item-trigger><button class="AccordionTrigger">Introduction</button></ark-accordion-item-trigger>
+</ark-accordion-item>
+```
+
+The package ships only the default `display` of each element and hidden handling. Components also work inside an
+existing shadow root; include your styles in that root.
+
+</FrameworkOnly>
 
 ## Z-Index
 

@@ -4,12 +4,13 @@ import { cva } from 'styled-system/css'
 import { Grid, HStack } from 'styled-system/jsx'
 import { Text } from '~/components/ui/text'
 import { fetchExamples } from '~/lib/examples'
-import { defaultFramework, examplesHref } from '~/lib/frameworks'
+import { defaultFramework, examplesHref, hasPlusExamples } from '~/lib/frameworks'
 import { getServerContext } from '~/lib/server-context'
 import { Icon } from './ui/icon'
 
 export const ExamplesPreview = async () => {
   const { component, framework = defaultFramework } = getServerContext()
+  if (!hasPlusExamples(framework)) return null
   const examples = (await fetchExamples()).filter((example) => example.relatedComponents.includes(component ?? ''))
 
   return examples.length > 0 ? (

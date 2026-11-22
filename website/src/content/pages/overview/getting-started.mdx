@@ -32,6 +32,19 @@ In this guide, we will be adding a Slider component. Copy the following code to 
 
 <ExampleCode component="slider" id="basic" />
 
+<FrameworkOnly framework="web">
+
+> **Web**: importing `@ark-ui/web/slider` registers the `ark-slider-*` custom elements as a side effect, so import it
+> from a client entry point. Without a bundler, load the components from a CDN instead:
+>
+> ```html
+> <script type="module" src="https://cdn.jsdelivr.net/npm/@ark-ui/web@0/dist/cdn/slider.js"></script>
+> ```
+>
+> `dist/cdn/ark-web.js` registers every component in one file. Pin an exact version in production.
+
+</FrameworkOnly>
+
 </Step>
 
 <Step number="4" title="Style a component">
@@ -48,7 +61,7 @@ For example, to style a slider component, you can target its parts using these a
 }
 ```
 
-Check out the [Styling Components guide](/react/docs/guides/styling) to learn more about styling components in Ark UI.
+Check out the [Styling Components guide](/docs/guides/styling) to learn more about styling components in Ark UI.
 
 </Step>
 

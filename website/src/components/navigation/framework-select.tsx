@@ -4,15 +4,20 @@ import { CheckIcon, ChevronDownIcon } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
 import { Icon } from '~/components/ui/icon'
 import { Select } from '~/components/ui/select'
-import { type Framework, docsHref, examplesHref, extractFramework, frameworkFromPathname } from '~/lib/frameworks'
+import {
+  type Framework,
+  docsHref,
+  examplesHref,
+  extractFramework,
+  frameworkFromPathname,
+  frameworkLabels,
+  frameworks,
+  hasPlusExamples,
+  isDocAvailable,
+} from '~/lib/frameworks'
 
 const collection = createListCollection({
-  items: [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte' },
-  ],
+  items: frameworks.map((value) => ({ label: frameworkLabels[value], value })),
 })
 
 export const FrameworkSelect = () => {
@@ -22,13 +27,13 @@ export const FrameworkSelect = () => {
 
   const onValueChange = (next: Framework) => {
     const segments = pathname.split('/').filter(Boolean)
-    if (segments[0] === 'examples') {
-      const { slug } = extractFramework(segments.slice(1))
+    const { slug } = extractFramework(segments.slice(1))
+    if (segments[0] === 'examples' && hasPlusExamples(next)) {
       router.push(examplesHref(next, slug[0] ?? ''))
       return
     }
-    const { slug } = extractFramework(segments.slice(1))
-    router.push(docsHref(next, slug.join('/') || 'overview/getting-started'))
+    const docSlug = segments[0] === 'docs' ? slug.join('/') : ''
+    router.push(docsHref(next, docSlug && isDocAvailable(next, docSlug) ? docSlug : 'overview/getting-started'))
   }
 
   return (

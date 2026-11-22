@@ -1,0 +1,233 @@
+{
+  "Root": {
+    "tag": "ark-signature-pad",
+    "props": {
+      "paths": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The controlled paths of the signature pad."
+      },
+      "default-paths": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The default paths of the signature pad.\nUse when you don't need to control the paths of the signature pad."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The name of the signature pad. Useful for form submission."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the signature pad is disabled."
+      },
+      "readonly": { "type": "boolean", "isRequired": false },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the signature pad is required."
+      },
+      "drawing-fill": { "type": "string", "isRequired": false },
+      "drawing-size": { "type": "number", "isRequired": false },
+      "drawing-thinning": { "type": "number", "isRequired": false },
+      "drawing-smoothing": { "type": "number", "isRequired": false },
+      "drawing-streamline": { "type": "number", "isRequired": false },
+      "drawing-simulate-pressure": { "type": "boolean", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "debug": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Log state transitions, events and prop changes to the console. Applies to descendants too."
+      }
+    },
+    "emits": {
+      "draw": {
+        "type": "CustomEvent<DrawDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Callback when the signature pad is drawing or the committed paths change.\n`paths` contains only committed strokes; use `currentPath` for the in-progress stroke."
+      },
+      "drawend": {
+        "type": "CustomEvent<DrawEndDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Callback when the signature pad is done drawing."
+      }
+    },
+    "properties": {
+      "ids": {
+        "type": "ElementIds",
+        "isRequired": false,
+        "description": "The ids of the signature pad elements. Useful for composition."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "The translations of the signature pad. Useful for internationalization."
+      },
+      "drawing": {
+        "type": "DrawingOptions",
+        "isRequired": false,
+        "defaultValue": "'{ size: 2, simulatePressure: true }'",
+        "description": "The drawing options."
+      },
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The root's state from its machine (`getRootState()`), such as `open` or `disabled`. `undefined` until it connects."
+      },
+      "ready": {
+        "type": "Promise<void>",
+        "isRequired": false,
+        "description": "Resolves once the element's machine has started, so `api`, state and parts are in place."
+      },
+      "api": {
+        "type": "SignaturePadApi<PropTypes>",
+        "isRequired": false,
+        "description": "The Zag API of the component. `undefined` until it connects."
+      }
+    },
+    "methods": {
+      "clear": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Clears the signature pad."
+      }
+    }
+  },
+  "ClearTrigger": {
+    "tag": "ark-signature-pad-clear-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Control": {
+    "tag": "ark-signature-pad-control",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Guide": {
+    "tag": "ark-signature-pad-guide",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "HiddenInput": {
+    "tag": "ark-signature-pad-hidden-input",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Label": {
+    "tag": "ark-signature-pad-label",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Segment": {
+    "tag": "ark-signature-pad-segment",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  }
+}

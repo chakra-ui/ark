@@ -1,0 +1,346 @@
+{
+  "Root": {
+    "tag": "ark-editable",
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The controlled value of the editable."
+      },
+      "default-value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial value of the editable when rendered.\nUse when you don't need to control the value of the editable."
+      },
+      "placeholder": {
+        "type": "string | { edit: string; preview: string }",
+        "isRequired": false,
+        "description": "The placeholder text for the editable."
+      },
+      "edit": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the editable is in edit mode."
+      },
+      "default-edit": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the editable is in edit mode by default."
+      },
+      "activation-mode": {
+        "type": "ActivationMode",
+        "defaultValue": "\"focus\"",
+        "isRequired": false,
+        "description": "The activation mode for the preview element.\n\n- \"focus\" - Enter edit mode when the preview is focused\n- \"dblclick\" - Enter edit mode when the preview is double-clicked\n- \"click\" - Enter edit mode when the preview is clicked\n- \"none\" - Edit can be triggered programmatically only"
+      },
+      "submit-mode": {
+        "type": "SubmitMode",
+        "defaultValue": "\"both\"",
+        "isRequired": false,
+        "description": "The action that triggers submit in the edit mode:\n\n- \"enter\" - Trigger submit when the enter key is pressed\n- \"blur\" - Trigger submit when the editable is blurred\n- \"none\" - No action will trigger submit. You need to use the submit button\n- \"both\" - Pressing `Enter` and blurring the input will trigger submit"
+      },
+      "select-on-focus": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to select the text in the input when it is focused."
+      },
+      "auto-resize": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the editable should auto-resize to fit the content."
+      },
+      "max-length": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The maximum number of characters allowed in the editable"
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the editable is disabled."
+      },
+      "readonly": { "type": "boolean", "isRequired": false },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the editable is required."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the input's value is invalid."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The name attribute of the editable component. Used for form submission."
+      },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The associate form of the underlying input."
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "debug": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Log state transitions, events and prop changes to the console. Applies to descendants too."
+      }
+    },
+    "emits": {
+      "editchange": {
+        "type": "CustomEvent<EditChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the edit mode changes."
+      },
+      "valuechange": {
+        "type": "CustomEvent<ValueChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the value changes."
+      },
+      "valuerevert": {
+        "type": "CustomEvent<ValueChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the value is reverted."
+      },
+      "valuecommit": {
+        "type": "CustomEvent<ValueChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the value is committed."
+      },
+      "pointerdownoutside": {
+        "type": "CustomEvent<PointerDownOutsideEvent>",
+        "isRequired": false,
+        "description": "Fired when the pointer is pressed down outside the component"
+      },
+      "focusoutside": {
+        "type": "CustomEvent<FocusOutsideEvent>",
+        "isRequired": false,
+        "description": "Fired when the focus is moved outside the component"
+      },
+      "interactoutside": {
+        "type": "CustomEvent<InteractOutsideEvent>",
+        "isRequired": false,
+        "description": "Fired when an interaction happens outside the component"
+      }
+    },
+    "properties": {
+      "finalFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "description": "The element to receive focus when the editable is closed."
+      },
+      "ids": {
+        "type": "ElementIds",
+        "isRequired": false,
+        "description": "The ids of the elements in the editable. Useful for composition."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "The translations for the editable."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The controlled value of the editable."
+      },
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The root's state from its machine (`getRootState()`), such as `open` or `disabled`. `undefined` until it connects."
+      },
+      "ready": {
+        "type": "Promise<void>",
+        "isRequired": false,
+        "description": "Resolves once the element's machine has started, so `api`, state and parts are in place."
+      },
+      "api": {
+        "type": "EditableApi<PropTypes>",
+        "isRequired": false,
+        "description": "The Zag API of the component. `undefined` until it connects."
+      }
+    }
+  },
+  "Area": {
+    "tag": "ark-editable-area",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "CancelTrigger": {
+    "tag": "ark-editable-cancel-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Control": {
+    "tag": "ark-editable-control",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "EditTrigger": {
+    "tag": "ark-editable-edit-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Input": {
+    "tag": "ark-editable-input",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Label": {
+    "tag": "ark-editable-label",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Preview": {
+    "tag": "ark-editable-preview",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "SubmitTrigger": {
+    "tag": "ark-editable-submit-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  }
+}

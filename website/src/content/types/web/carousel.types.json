@@ -1,0 +1,330 @@
+{
+  "Root": {
+    "tag": "ark-carousel",
+    "props": {
+      "count": { "type": "number", "isRequired": false },
+      "page": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The controlled page of the carousel."
+      },
+      "default-page": {
+        "type": "number",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The initial page to scroll to when rendered.\nUse when you don't need to control the page of the carousel."
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "defaultValue": "\"horizontal\"",
+        "isRequired": false,
+        "description": "The orientation of the element."
+      },
+      "slides-per-page": {
+        "type": "number",
+        "defaultValue": "1",
+        "isRequired": false,
+        "description": "The number of slides to show at a time."
+      },
+      "slides-per-move": {
+        "type": "number | 'auto'",
+        "defaultValue": "\"auto\"",
+        "isRequired": false,
+        "description": "The number of slides to scroll at a time.\n\nWhen set to `auto`, the number of slides to scroll is determined by the\n`slidesPerPage` property."
+      },
+      "auto-size": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable variable width slides."
+      },
+      "auto-play": { "type": "number", "isRequired": false },
+      "allow-mouse-drag": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow scrolling via dragging with mouse"
+      },
+      "loop": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the carousel should loop around."
+      },
+      "spacing": {
+        "type": "string",
+        "defaultValue": "\"0px\"",
+        "isRequired": false,
+        "description": "The amount of space between items."
+      },
+      "item-spacing": { "type": "string", "isRequired": false },
+      "snap-type": {
+        "type": "'proximity' | 'mandatory'",
+        "defaultValue": "\"mandatory\"",
+        "isRequired": false,
+        "description": "The snap type of the item."
+      },
+      "in-view-threshold": {
+        "type": "number | number[]",
+        "defaultValue": "0.6",
+        "isRequired": false,
+        "description": "The threshold for determining if an item is in view."
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "debug": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Log state transitions, events and prop changes to the console. Applies to descendants too."
+      }
+    },
+    "emits": {
+      "pagechange": {
+        "type": "CustomEvent<PageChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the page changes."
+      },
+      "dragstatuschange": {
+        "type": "CustomEvent<DragStatusDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the drag status changes."
+      },
+      "autoplaystatuschange": {
+        "type": "CustomEvent<AutoplayStatusDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the autoplay status changes."
+      }
+    },
+    "properties": {
+      "ids": {
+        "type": "ElementIds",
+        "isRequired": false,
+        "description": "The ids of the elements in the carousel. Useful for composition."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "The localized messages to use."
+      },
+      "page": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The controlled page of the carousel."
+      },
+      "ready": {
+        "type": "Promise<void>",
+        "isRequired": false,
+        "description": "Resolves once the element's machine has started, so `api`, state and parts are in place."
+      },
+      "api": {
+        "type": "CarouselApi<PropTypes>",
+        "isRequired": false,
+        "description": "The Zag API of the component. `undefined` until it connects."
+      }
+    },
+    "methods": {
+      "scrollNext": {
+        "type": "(instant?: boolean | undefined) => void",
+        "isRequired": false,
+        "description": "Function to scroll to the next page"
+      },
+      "scrollPrevious": {
+        "type": "(instant?: boolean | undefined) => void",
+        "isRequired": false,
+        "description": "Function to scroll to the previous page"
+      }
+    }
+  },
+  "AutoplayIndicator": {
+    "tag": "ark-carousel-autoplay-indicator",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "AutoplayTrigger": {
+    "tag": "ark-carousel-autoplay-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "Control": {
+    "tag": "ark-carousel-control",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "Indicator": {
+    "tag": "ark-carousel-indicator",
+    "props": {
+      "index": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The index of the indicator."
+      },
+      "readonly": { "type": "boolean", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "IndicatorState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "IndicatorGroup": {
+    "tag": "ark-carousel-indicator-group",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "Item": {
+    "tag": "ark-carousel-item",
+    "props": {
+      "index": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The index of the item."
+      },
+      "snap-align": {
+        "type": "'center' | 'start' | 'end'",
+        "defaultValue": "\"start\"",
+        "isRequired": false,
+        "description": "The snap alignment of the item."
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "ItemState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "ItemGroup": {
+    "tag": "ark-carousel-item-group",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "NextTrigger": {
+    "tag": "ark-carousel-next-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "PrevTrigger": {
+    "tag": "ark-carousel-prev-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "ProgressText": {
+    "tag": "ark-carousel-progress-text",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  }
+}

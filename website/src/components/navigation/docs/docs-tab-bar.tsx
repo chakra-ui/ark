@@ -7,7 +7,7 @@ import { css } from 'styled-system/css'
 import { HStack } from 'styled-system/jsx'
 import { tabBar } from 'styled-system/recipes'
 import { getActiveTab } from '~/lib/active-tab'
-import { type Framework, docsHref, frameworkFromPathname } from '~/lib/frameworks'
+import { type Framework, docsHref, filterSidebarTabs, frameworkFromPathname } from '~/lib/frameworks'
 import type { SidebarTab } from '~/lib/sidebar'
 import { VersionSelect } from '../version-select'
 
@@ -25,9 +25,10 @@ interface Props {
 }
 
 export const DocsTabBar = (props: Props) => {
-  const { tabs, versions } = props
+  const { versions } = props
   const pathname = usePathname()
   const framework = frameworkFromPathname(pathname)
+  const tabs = filterSidebarTabs(props.tabs, framework)
   const active = getActiveTab(pathname, tabs)
 
   return (

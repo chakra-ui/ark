@@ -71,3 +71,34 @@ Style the `mark` tags using CSS to customize the appearance of highlighted text.
   border-radius: 0.125rem;
 }
 ```
+
+<FrameworkOnly framework="web">
+
+## Web Components
+
+In `@ark-ui/web`, import `@ark-ui/web/highlight` and wrap the text in `<ark-highlight>`. The element's text content is
+the text to search. `ignore-case`, `match-all`, and `exact-match` are boolean attributes.
+
+```html
+<ark-highlight query="component" ignore-case match-all>
+  Ark UI is a headless component library for building accessible web applications.
+</ark-highlight>
+```
+
+Set the `query` property to update the highlight or to pass several terms:
+
+```ts
+const highlight = document.querySelector('ark-highlight')!
+highlight.query = ['headless', 'accessible']
+```
+
+Each match is a `mark` element with a `data-highlight-mark` attribute:
+
+```css
+[data-highlight-mark] {
+  background-color: #ffe5e4;
+  color: #c9453b;
+}
+```
+
+</FrameworkOnly>

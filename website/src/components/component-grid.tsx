@@ -1,7 +1,7 @@
 import NextLink from 'next/link'
 import { css } from 'styled-system/css'
 import { Grid } from 'styled-system/jsx'
-import { defaultFramework, docsHref } from '~/lib/frameworks'
+import { defaultFramework, docsHref, isDocAvailable } from '~/lib/frameworks'
 import { getServerContext } from '~/lib/server-context'
 import { getSidebarTabs } from '~/lib/sidebar'
 
@@ -26,7 +26,7 @@ export const ComponentGrid = ({ tab = 'components' }: Props) => {
   const active = getSidebarTabs().find((entry) => entry.key === tab)
   const items = (active?.groups ?? [])
     .flatMap((group) => group.items)
-    .filter((item) => !item.slug.endsWith('/overview'))
+    .filter((item) => !item.slug.endsWith('/overview') && isDocAvailable(framework, item.slug))
     .sort((a, b) => a.title.localeCompare(b.title))
 
   return (

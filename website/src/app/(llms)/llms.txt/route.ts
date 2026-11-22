@@ -1,10 +1,8 @@
-import { frameworks } from '~/lib/frameworks'
+import { frameworkLabels as LABELS, frameworks, isDocAvailable } from '~/lib/frameworks'
 import { getSidebarGroups } from '~/lib/sidebar'
 
-const LABELS: Record<string, string> = { react: 'React', solid: 'Solid', vue: 'Vue', svelte: 'Svelte' }
-
 const SUMMARY =
-  'Ark UI is a headless component library for building design systems. It ships the same accessible, unstyled components for React, Solid, Svelte, and Vue, built on Zag.js state machines.'
+  'Ark UI is a headless component library for building design systems. It ships the same accessible, unstyled components for React, Solid, Svelte, Vue, and Web Components, built on Zag.js state machines.'
 
 export const GET = async () => {
   const pageUrl = (framework: string, slug: string) => `https://ark-ui.com/docs/${framework}/${slug}.md`
@@ -28,7 +26,9 @@ export const GET = async () => {
 
   const section = (group: ReturnType<typeof getSidebarGroups>[number]) => {
     const links = group.items.flatMap((page) =>
-      frameworks.map((f) => `- [${LABELS[f]}: ${page.title}](${pageUrl(f, page.slug)})`),
+      frameworks
+        .filter((f) => isDocAvailable(f, page.slug))
+        .map((f) => `- [${LABELS[f]}: ${page.title}](${pageUrl(f, page.slug)})`),
     )
     return `## ${group.title}\n\n${links.join('\n')}`
   }

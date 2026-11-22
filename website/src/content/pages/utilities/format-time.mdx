@@ -14,6 +14,19 @@ The time formatting logic supports both string (`HH:mm[:ss]`) and `Date` inputs.
 import { Format } from '@ark-ui/react'
 ```
 
+<FrameworkOnly framework="web">
+
+In `@ark-ui/web`, import `@ark-ui/web/format` to register the `<ark-format-time>` element.
+
+```html
+<ark-format-time value="17:15" format="12h" with-seconds></ark-format-time>
+```
+
+Options are kebab-case attributes. The locale comes from the `locale` attribute, then the closest `lang`. Each element
+also takes `value`, `locale`, and `options` as properties, for anything the attributes don't cover.
+
+</FrameworkOnly>
+
 ## Examples
 
 ### Basic

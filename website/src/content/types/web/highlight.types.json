@@ -1,0 +1,13 @@
+{
+  "Root": {
+    "tag": "ark-highlight",
+    "props": {
+      "query": { "type": "string | string[]", "isRequired": false },
+      "text": { "type": "string", "isRequired": false },
+      "ignore-case": { "type": "boolean", "isRequired": false },
+      "match-all": { "type": "boolean", "isRequired": false },
+      "exact-match": { "type": "boolean", "isRequired": false }
+    },
+    "properties": {}
+  }
+}

@@ -27,8 +27,9 @@ description: A component that allows users to draw a signature using a signature
 
 ### Controlled
 
-Use the `paths` prop with `onDraw` (React/Solid), `v-model:paths` (Vue), or `bind:paths` (Svelte) to control the
-signature pad externally. The example tracks the path count and can clear the signature from outside the component.
+Use the `paths` prop with `onDraw` (React/Solid), `v-model:paths` (Vue), `bind:paths` (Svelte), or the `paths` attribute
+as JSON with the `draw` event (Web) to control the signature pad externally. The example tracks the path count and can
+clear the signature from outside the component.
 
 <Example id="controlled" />
 

@@ -1,43 +1,17 @@
 import { readFile, readdir } from 'node:fs/promises'
 import { join } from 'node:path'
-import { Match } from 'effect'
 import { Project } from 'ts-morph'
+import { getExampleDir, getExamplePath, getExampleRelPath, getFrameworkExtension, getSrcPath } from './example-paths'
+import { frameworks } from './frameworks'
 
-export const SUPPORTED_FRAMEWORKS = ['react', 'solid', 'vue', 'svelte'] as const
+export { getExamplePath, getExampleDir, getExampleRelPath, getFrameworkExtension, getSrcPath }
+
+export const SUPPORTED_FRAMEWORKS = frameworks
 
 export type Framework = (typeof SUPPORTED_FRAMEWORKS)[number]
 
 export const validateFramework = (framework: string): framework is Framework => {
   return SUPPORTED_FRAMEWORKS.includes(framework as Framework)
-}
-
-export const getFrameworkExtension = (framework: string) => {
-  return Match.value(framework).pipe(
-    Match.when('vue', () => 'vue'),
-    Match.when('svelte', () => 'svelte'),
-    Match.orElse(() => 'tsx'),
-  )
-}
-
-export const getExamplePath = (component: string) => {
-  return Match.value(component).pipe(
-    Match.when(
-      () => ['progress-circular', 'progress-linear'].includes(component),
-      () => `components/progress/examples/${component.split('-')[1]}`,
-    ),
-    Match.when(
-      () => ['environment', 'hotkeys', 'interaction', 'locale'].includes(component),
-      () => `providers/${component}/examples`,
-    ),
-    Match.orElse(() => `components/${component}/examples`),
-  )
-}
-
-export const getSrcPath = (framework: string) => {
-  return Match.value(framework).pipe(
-    Match.when('svelte', () => 'src/lib'),
-    Match.orElse(() => 'src'),
-  )
 }
 
 export const getPackageBasePath = (framework: string) => {
@@ -138,11 +112,8 @@ export const getAllComponents = async (framework: string): Promise<string[]> => 
 }
 
 export const getComponentExamples = async (framework: string, component: string): Promise<string[]> => {
-  const basePath = getPackageBasePath(framework)
-  const examplePath = getExamplePath(component)
   const extension = getFrameworkExtension(framework)
-
-  const fullPath = join(basePath, examplePath)
+  const fullPath = getExampleDir(framework, component)
 
   try {
     const files = await readdir(fullPath)
@@ -157,10 +128,7 @@ export const getComponentExamples = async (framework: string, component: string)
 
 export const readExampleFile = async (framework: string, component: string, exampleId: string): Promise<string> => {
   const extension = getFrameworkExtension(framework)
-  const examplePath = getExamplePath(component)
-  const basePath = getPackageBasePath(framework)
-  const fileName = `${exampleId}.${extension}`
-  const fullPath = join(basePath, examplePath, fileName)
+  const fullPath = join(getExampleDir(framework, component), `${exampleId}.${extension}`)
 
   return await readFile(fullPath, 'utf-8')
 }

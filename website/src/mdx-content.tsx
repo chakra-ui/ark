@@ -8,6 +8,7 @@ import { Anatomy } from './components/anatomy'
 import { ComponentPreview } from './components/component-preview'
 import { ComponentTypes } from './components/component-types'
 import { ContextType } from './components/context-type'
+import { FrameworkOnly } from './components/framework-only'
 import { Example, ExampleCode } from './components/example'
 import { Faq } from './components/faq'
 import { InstallCmd } from './components/install-cmd'
@@ -433,6 +434,7 @@ export const sharedComponents = {
   Example,
   ExampleCode,
   Faq,
+  FrameworkOnly,
   InstallCmd,
   kbd: Kbd,
   KeyBindingsTable,

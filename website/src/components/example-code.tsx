@@ -41,7 +41,7 @@ export const ExampleCodeTabs = (props: Props) => {
   const hasGlobalCss = globalCssContent.length > 0
 
   const displayCode = hasComponentCss && showCss ? rewriteCssImports(code) : stripCss(code)
-  const codeExtension = lang === 'vue' ? 'vue' : lang === 'svelte' ? 'svelte' : 'tsx'
+  const codeExtension = lang === 'vue' ? 'vue' : lang === 'svelte' ? 'svelte' : lang === 'typescript' ? 'ts' : 'tsx'
   const cssTabs =
     hasComponentCss && showCss ? componentCss.map(([filename]) => ({ value: `css:${filename}`, label: filename })) : []
 
@@ -122,7 +122,9 @@ export const ExampleCodeTabs = (props: Props) => {
               <span className={css({ fontSize: 'sm', color: 'gray.dark.11' })}>CSS</span>
             </Switch>
           )}
-          {meta && <StackblitzButton code={code} cssModules={cssModules} localFiles={localFiles} meta={meta} />}
+          {meta && meta.framework !== 'web' && (
+            <StackblitzButton code={code} cssModules={cssModules} localFiles={localFiles} meta={meta} />
+          )}
         </HStack>
       </HStack>
 
@@ -134,7 +136,15 @@ export const ExampleCodeTabs = (props: Props) => {
         <Tabs.Content key={name} value={`local:${name}`} pt="0">
           <CodePreview
             code={stripCss(content)}
-            lang={name.endsWith('.vue') ? 'vue' : name.endsWith('.svelte') ? 'svelte' : 'tsx'}
+            lang={
+              name.endsWith('.vue')
+                ? 'vue'
+                : name.endsWith('.svelte')
+                  ? 'svelte'
+                  : name.endsWith('.ts')
+                    ? 'typescript'
+                    : 'tsx'
+            }
           />
         </Tabs.Content>
       ))}

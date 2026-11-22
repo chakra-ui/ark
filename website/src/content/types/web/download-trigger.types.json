@@ -1,0 +1,16 @@
+{
+  "Root": {
+    "tag": "ark-download-trigger",
+    "props": {
+      "file-name": { "type": "string", "isRequired": false },
+      "mime-type": { "type": "string", "isRequired": false },
+      "data": { "type": "DownloadTriggerData", "isRequired": false }
+    },
+    "properties": {
+      "data": { "type": "DownloadTriggerData", "isRequired": false }
+    },
+    "methods": {
+      "download": { "type": "() => Promise<void>", "isRequired": false }
+    }
+  }
+}

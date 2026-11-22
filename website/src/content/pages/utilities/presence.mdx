@@ -31,6 +31,17 @@ unmounted when it's no longer present:
 
 <Example id="lazy-mount-and-unmount-on-exit" />
 
+<FrameworkOnly framework="web">
+
+## Web Components
+
+`@ark-ui/web` has no standalone presence element. Presence-aware parts, such as dialog and popover content, keep their
+content mounted for exit animations. Put content in a `<template>` inside the part to mount it lazily, and add
+`unmount-on-exit` to the root to remove it after it exits. See the
+[Animation guide](/docs/guides/animation#web-components).
+
+</FrameworkOnly>
+
 ## API Reference
 
 <ComponentTypes id="presence" />

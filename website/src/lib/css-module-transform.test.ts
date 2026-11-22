@@ -67,6 +67,14 @@ export const Context = () => {
     expect(result).toBe('<Component />')
   })
 
+  test('strips Web Components class interpolation', () => {
+    const code = `<ark-accordion class="\${styles.Root}"><button class="\${button.Root}">Open</button></ark-accordion>`
+
+    const result = stripCss(code)
+
+    expect(result).toBe('<ark-accordion><button>Open</button></ark-accordion>')
+  })
+
   test('handles mixed variable names for Vue', () => {
     const code = `<div :class="button.Root">
   <span :class="styles.Label">Text</span>

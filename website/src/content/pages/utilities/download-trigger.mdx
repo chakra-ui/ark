@@ -29,6 +29,29 @@ You can also trigger downloads from a promise that returns a `Blob`, `File`, or 
 
 <Example id="with-promise" />
 
+<FrameworkOnly framework="web">
+
+## Web Components
+
+In `@ark-ui/web`, import `@ark-ui/web/download-trigger` and wrap a `button` in `<ark-download-trigger>`. Set `file-name`
+and `mime-type` as attributes, and assign `data` as a property: a string, `Blob`, `File`, or a function that returns
+one, sync or async.
+
+```html
+<ark-download-trigger file-name="report.csv" mime-type="text/csv">
+  <button>Export</button>
+</ark-download-trigger>
+```
+
+```ts
+const trigger = document.querySelector('ark-download-trigger')!
+trigger.data = () => fetch('/report.csv').then((res) => res.blob())
+```
+
+Call `trigger.download()` to start the download without a click.
+
+</FrameworkOnly>
+
 ## API Reference
 
 <ComponentTypes id="download-trigger" />

@@ -1,0 +1,179 @@
+{
+  "Root": {
+    "tag": "ark-number-flow",
+    "props": {
+      "value": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The controlled numeric value to render."
+      },
+      "default-value": {
+        "type": "number",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The initial value to render when uncontrolled."
+      },
+      "locale": {
+        "type": "string",
+        "defaultValue": "\"en-US\"",
+        "isRequired": false,
+        "description": "The current locale. Based on the BCP 47 definition."
+      },
+      "prefix": {
+        "type": "string",
+        "isRequired": false,
+        "description": "A static string rendered before the formatted value. Does not animate."
+      },
+      "suffix": {
+        "type": "string",
+        "isRequired": false,
+        "description": "A static string rendered after the formatted value. Does not animate."
+      },
+      "trend": {
+        "type": "Trend",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Controls the roll direction of each digit.\n- `false` (default): each digit takes its own shortest path (`9 -> 0` rolls forward one step).\n- `true`: every digit rolls in the direction of the overall value change.\n- `1` / `-1`: force every digit to roll up or down, regardless of the value change."
+      },
+      "continuous": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether digits spin through every intermediate value instead of taking the nearest path."
+      },
+      "stagger": {
+        "type": "string",
+        "defaultValue": "undefined",
+        "isRequired": false,
+        "description": "A CSS `<time>` delay applied between adjacent digits, e.g. `\"25ms\"`."
+      },
+      "live": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the value is announced to assistive technology as it changes.\nWhen `false`, the rendered value is still readable, but changes are not announced."
+      },
+      "respect-motion-preference": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to suppress the roll animation when the user prefers reduced motion."
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "debug": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Log state transitions, events and prop changes to the console. Applies to descendants too."
+      }
+    },
+    "emits": {
+      "valuechange": {
+        "type": "CustomEvent<ValueChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the value changes."
+      },
+      "animationstart": {
+        "type": "CustomEvent<AnimationDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when a value change starts a roll animation."
+      },
+      "animationcomplete": {
+        "type": "CustomEvent<AnimationDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the roll animation settles."
+      }
+    },
+    "properties": {
+      "ids": {
+        "type": "Partial<{ root: string; valueText: string; }>",
+        "isRequired": false,
+        "description": "The ids of the elements in the number-flow. Useful for composition."
+      },
+      "formatOptions": {
+        "type": "Intl.NumberFormatOptions",
+        "isRequired": false,
+        "description": "The options to pass to the `Intl.NumberFormat` constructor."
+      },
+      "spinTiming": {
+        "type": "TimingOptions",
+        "isRequired": false,
+        "defaultValue": "{ duration: \"900ms\", easing: \"cubic-bezier(0.4, 0, 0.2, 1)\" }",
+        "description": "The timing of the per-digit roll transition."
+      },
+      "transformTiming": {
+        "type": "TimingOptions",
+        "isRequired": false,
+        "defaultValue": "{ duration: \"500ms\", easing: \"cubic-bezier(0.4, 0, 0.2, 1)\" }",
+        "description": "The timing of layout transitions - segments entering/exiting."
+      },
+      "value": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The controlled numeric value to render."
+      },
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The root's state from its machine (`getRootState()`), such as `open` or `disabled`. `undefined` until it connects."
+      },
+      "ready": {
+        "type": "Promise<void>",
+        "isRequired": false,
+        "description": "Resolves once the element's machine has started, so `api`, state and parts are in place."
+      },
+      "api": {
+        "type": "NumberFlowApi<PropTypes>",
+        "isRequired": false,
+        "description": "The Zag API of the component. `undefined` until it connects."
+      }
+    }
+  },
+  "Segments": {
+    "tag": "ark-number-flow-segments",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "ValueText": {
+    "tag": "ark-number-flow-value-text",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  }
+}

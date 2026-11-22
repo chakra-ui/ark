@@ -26,6 +26,31 @@ console.log(list.loading) // boolean
 console.log(list.error) // Error | null
 ```
 
+<FrameworkOnly framework="web">
+
+In `@ark-ui/web`, `createAsyncList` from `@ark-ui/web/async-list` wraps the same machine in a small store. It exposes
+Zag's API, so the loading flag is `isLoading`. Subscribe to it and assign a new collection on each change:
+
+```ts
+import { createAsyncList } from '@ark-ui/web/async-list'
+import { createListCollection } from '@ark-ui/web/combobox'
+
+const list = createAsyncList<User>({
+  async load({ filter, signal }) {
+    const response = await fetch(`/api/users?q=${filter}`, { signal })
+    return { items: await response.json() }
+  },
+})
+
+list.subscribe(() => {
+  combobox.collection = createListCollection({ items: list.items, itemToValue: (user) => user.id })
+  combobox.toggleAttribute('loading', list.isLoading)
+})
+combobox.addEventListener('inputvaluechange', (event) => list.setFilter(event.detail.inputValue))
+```
+
+</FrameworkOnly>
+
 ## Examples
 
 ### Loading Data

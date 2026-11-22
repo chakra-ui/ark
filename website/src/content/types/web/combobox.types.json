@@ -1,0 +1,526 @@
+{
+  "Root": {
+    "tag": "ark-combobox",
+    "props": {
+      "value": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The controlled value of the combobox's selected items"
+      },
+      "default-value": {
+        "type": "string[]",
+        "defaultValue": "[]",
+        "isRequired": false,
+        "description": "The initial value of the combobox's selected items when rendered.\nUse when you don't need to control the value of the combobox's selected items."
+      },
+      "multiple": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to allow multiple selection.\n\n**Good to know:** When `multiple` is `true`, the `selectionBehavior` is automatically set to `clear`.\nIt is recommended to render the selected items in a separate container."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the combobox is disabled"
+      },
+      "readonly": { "type": "boolean", "isRequired": false },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the combobox is invalid"
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the combobox is required"
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The `name` attribute of the combobox's input. Useful for form submission"
+      },
+      "filter": { "type": "string", "isRequired": false },
+      "limit": { "type": "number", "isRequired": false },
+      "loading": { "type": "boolean", "isRequired": false },
+      "allow-custom-value": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to allow typing custom values in the input"
+      },
+      "open-on-click": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to open the combobox popup on initial click on the input"
+      },
+      "input-behavior": {
+        "type": "'none' | 'autohighlight' | 'autocomplete'",
+        "defaultValue": "\"none\"",
+        "isRequired": false,
+        "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused item is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the item and the input is updated"
+      },
+      "selection-behavior": {
+        "type": "'clear' | 'replace' | 'preserve'",
+        "defaultValue": "\"replace\"",
+        "isRequired": false,
+        "description": "The behavior of the combobox input when an item is selected\n\n- `replace`: The selected item string is set as the input value\n- `clear`: The input value is cleared\n- `preserve`: The input value is preserved"
+      },
+      "placement": {
+        "type": "Placement",
+        "isRequired": false,
+        "defaultValue": "\"bottom\"",
+        "description": "The placement of the floating element relative to its anchor."
+      },
+      "gutter": {
+        "type": "number",
+        "isRequired": false,
+        "defaultValue": "8",
+        "description": "The gap between the floating element and its anchor."
+      },
+      "same-width": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the floating element matches the width of its anchor."
+      },
+      "skip-animation-on-mount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "debug": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Log state transitions, events and prop changes to the console. Applies to descendants too."
+      }
+    },
+    "emits": {
+      "inputvaluechange": {
+        "type": "CustomEvent<InputValueChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the input's value changes"
+      },
+      "valuechange": {
+        "type": "CustomEvent<ValueChangeDetails<any> & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when a new item is selected"
+      },
+      "highlightchange": {
+        "type": "CustomEvent<HighlightChangeDetails<any> & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when an item is highlighted using the pointer\nor keyboard navigation."
+      },
+      "itemselect": {
+        "type": "CustomEvent<SelectionDetails & { source: InputSource; }>",
+        "isRequired": false
+      },
+      "openchange": {
+        "type": "CustomEvent<OpenChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the popup is opened"
+      },
+      "pointerdownoutside": {
+        "type": "CustomEvent<PointerDownOutsideEvent>",
+        "isRequired": false,
+        "description": "Fired when the pointer is pressed down outside the component"
+      },
+      "focusoutside": {
+        "type": "CustomEvent<FocusOutsideEvent>",
+        "isRequired": false,
+        "description": "Fired when the focus is moved outside the component"
+      },
+      "interactoutside": {
+        "type": "CustomEvent<InteractOutsideEvent>",
+        "isRequired": false,
+        "description": "Fired when an interaction happens outside the component"
+      }
+    },
+    "properties": {
+      "scrollToIndexFn": {
+        "type": "(details: ScrollToIndexDetails) => void",
+        "isRequired": false,
+        "description": "Function to scroll to a specific index"
+      },
+      "navigate": {
+        "type": "(details: NavigateDetails) => void",
+        "isRequired": false,
+        "description": "Function to navigate to the selected item"
+      },
+      "ids": {
+        "type": "Partial<{ root: string; label: string; control: string; input: string; content: string; list: string; trigger: string; clearTrigger: string; item: (id: string, index?: number) => string; positioner: string; itemGroup: (id: string | number) => string; itemGroupLabel: (id: string | number) => string; }>",
+        "isRequired": false,
+        "description": "The ids of the elements in the combobox. Useful for composition."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      },
+      "positioning": {
+        "type": "PositioningOptions",
+        "isRequired": false,
+        "defaultValue": "{ placement: \"bottom-start\" }",
+        "description": "The positioning options to dynamically position the menu"
+      },
+      "collection": {
+        "type": "ListCollection<any, never>",
+        "isRequired": false,
+        "description": "The items to choose from, e.g. from `createListCollection`. Assign a new collection to update the list."
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The controlled open state of the combobox"
+      },
+      "value": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The controlled value of the combobox's selected items"
+      },
+      "inputValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The controlled value of the combobox's input"
+      },
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The root's state from its machine (`getRootState()`), such as `open` or `disabled`. `undefined` until it connects."
+      },
+      "ready": {
+        "type": "Promise<void>",
+        "isRequired": false,
+        "description": "Resolves once the element's machine has started, so `api`, state and parts are in place."
+      },
+      "api": {
+        "type": "ComboboxApi<PropTypes, any>",
+        "isRequired": false,
+        "description": "The Zag API of the component. `undefined` until it connects."
+      }
+    },
+    "methods": {
+      "clearValue": {
+        "type": "(value?: string | undefined) => void",
+        "isRequired": false,
+        "description": "Function to clear the value of the combobox"
+      }
+    }
+  },
+  "ClearTrigger": {
+    "tag": "ark-combobox-clear-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Content": {
+    "tag": "ark-combobox-content",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "ContentState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Control": {
+    "tag": "ark-combobox-control",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Empty": {
+    "tag": "ark-combobox-empty",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Input": {
+    "tag": "ark-combobox-input",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Item": {
+    "tag": "ark-combobox-item",
+    "props": {
+      "value": { "type": "string[]", "isRequired": false },
+      "disabled": { "type": "boolean", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "ItemState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "ItemGroup": {
+    "tag": "ark-combobox-item-group",
+    "props": {
+      "name": { "type": "string", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "ItemGroupLabel": {
+    "tag": "ark-combobox-item-group-label",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "ItemIndicator": {
+    "tag": "ark-combobox-item-indicator",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "ItemState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "ItemText": {
+    "tag": "ark-combobox-item-text",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "ItemState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Label": {
+    "tag": "ark-combobox-label",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "List": {
+    "tag": "ark-combobox-list",
+    "props": {
+      "manual": { "type": "boolean", "isRequired": false },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Positioner": {
+    "tag": "ark-combobox-positioner",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Trigger": {
+    "tag": "ark-combobox-trigger",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "TriggerState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  }
+}

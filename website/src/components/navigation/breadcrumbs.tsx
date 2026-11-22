@@ -5,6 +5,7 @@ import { Fragment } from 'react'
 import { Box, HStack } from 'styled-system/jsx'
 import { Text } from '~/components/ui/text'
 import { getActiveTab } from '~/lib/active-tab'
+import { frameworks } from '~/lib/frameworks'
 import type { SidebarTab } from '~/lib/sidebar'
 
 interface Props {
@@ -16,7 +17,7 @@ export const Breadcrumbs = (props: Props) => {
   const crumbs = pathname
     .split('/')
     .filter(Boolean)
-    .filter((path) => !['docs', 'react', 'vue', 'solid', 'svelte', 'usage', 'types'].includes(path))
+    .filter((path) => !['docs', ...frameworks, 'usage', 'types'].includes(path))
     .map((path) => path.replace(/-/g, ' '))
     .map((item) => item.charAt(0).toUpperCase() + item.substring(1))
 

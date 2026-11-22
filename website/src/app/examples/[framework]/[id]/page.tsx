@@ -11,7 +11,7 @@ import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { notFound } from 'next/navigation'
 import { fetchCodeExamples, fetchExample } from '~/lib/examples'
-import { type Framework, examplesHref, isFramework } from '~/lib/frameworks'
+import { type Framework, examplesHref, hasPlusExamples, isFramework } from '~/lib/frameworks'
 import { getPublicUrl } from '~/lib/get-public-url'
 import { ogImageUrl } from '~/lib/og-template'
 
@@ -23,7 +23,7 @@ interface Props {
 
 export default async function Page(props: Props) {
   const { framework, id } = await props.params
-  if (!isFramework(framework)) notFound()
+  if (!isFramework(framework) || !hasPlusExamples(framework)) notFound()
   const example = await fetchExample(id)
   if (!example) notFound()
 

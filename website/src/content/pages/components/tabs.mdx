@@ -132,6 +132,33 @@ export default function App() {
 }
 ```
 
+<FrameworkOnly framework="web">
+
+In `@ark-ui/web`, render the `value` attribute on `ark-tabs` from the current URL. Triggers can wrap an `a` instead of a
+`button`:
+
+```html
+<ark-tabs value="home">
+  <ark-tabs-list>
+    <ark-tabs-trigger value="home"><a href="/">Home</a></ark-tabs-trigger>
+    <ark-tabs-trigger value="page-1"><a href="/page-1">Page 1</a></ark-tabs-trigger>
+  </ark-tabs-list>
+</ark-tabs>
+```
+
+With a client-side router, update the URL from the `valuechange` event and set `value` to match:
+
+```ts
+const tabs = document.querySelector('ark-tabs')!
+tabs.addEventListener('valuechange', (event) => {
+  const { value } = event.detail
+  router.navigate(value === 'home' ? '/' : `/${value}`)
+  tabs.setAttribute('value', value)
+})
+```
+
+</FrameworkOnly>
+
 ## API Reference
 
 ### Props

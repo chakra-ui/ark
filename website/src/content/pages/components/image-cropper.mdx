@@ -127,6 +127,24 @@ custom toolbars or integrate with form state.
 
 <Example id="root-provider" />
 
+<FrameworkOnly framework="web">
+
+## Guides
+
+### Web Components
+
+In `@ark-ui/web`, the actions above are methods on `ark-image-cropper`: `zoomBy`, `rotateBy`, `flipHorizontally`,
+`flipVertically`, `resize`, `setCrop`, and `reset`. Changes dispatch `cropchange`, `zoomchange`, `rotationchange`, and
+`flipchange` events. For the cropped result, await `ready` and call `getCroppedImage` on the element's `api`:
+
+```ts
+const cropper = document.querySelector('ark-image-cropper')!
+await cropper.ready
+const dataUrl = await cropper.api!.getCroppedImage({ output: 'dataUrl' })
+```
+
+</FrameworkOnly>
+
 ## API Reference
 
 ### Props

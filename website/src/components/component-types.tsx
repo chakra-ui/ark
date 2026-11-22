@@ -62,13 +62,25 @@ export const ComponentTypes = async (props: Props) => {
         <Heading as="h3" size="xl">
           {key}
         </Heading>
-        {types.element && (
+        {types.tag && (
+          <Text color="fg.muted">
+            Defines the <Code size="sm">{`<${types.tag}>`}</Code> element.
+          </Text>
+        )}
+        {!types.tag && types.element && (
           <Text color="fg.muted">
             Renders a <Code size="sm">{`<${elementToTag(types.element)}>`}</Code> element.
           </Text>
         )}
-        <PropsTable properties={types.props} framework={framework} replace={props.replace} />
-        <EmitsTable emits={types.emits} />
+        <PropsTable
+          properties={types.props}
+          framework={framework}
+          replace={props.replace}
+          label={types.tag ? 'Attribute' : undefined}
+        />
+        <EmitsTable emits={types.emits} columns={types.tag ? ['Event', 'Type'] : undefined} />
+        <EmitsTable emits={types.properties} columns={['Property', 'Type']} />
+        <EmitsTable emits={types.methods} columns={['Method', 'Type']} />
         <DataAttrTable component={props.id} part={key} replace={props.replace} />
         <CssVarTable component={props.id} part={key} replace={props.replace} />
       </Fragment>

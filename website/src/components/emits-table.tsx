@@ -15,10 +15,11 @@ interface Props {
         }
       >
     | undefined
+  columns?: [string, string]
 }
 
 export const EmitsTable = (props: Props) => {
-  const { emits } = props
+  const { emits, columns = ['Emit', 'Event'] } = props
   if (!emits) {
     return null
   }
@@ -28,10 +29,10 @@ export const EmitsTable = (props: Props) => {
         <Table.Head>
           <Table.Row>
             <Table.Header px="4" bg="gray.2" h="10">
-              Emit
+              {columns[0]}
             </Table.Header>
             <Table.Header px="4" bg="gray.2" h="10">
-              Event
+              {columns[1]}
             </Table.Header>
           </Table.Row>
         </Table.Head>

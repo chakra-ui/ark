@@ -1,0 +1,217 @@
+{
+  "Root": {
+    "tag": "ark-tooltip",
+    "props": {
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The controlled open state of the tooltip"
+      },
+      "default-open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The initial open state of the tooltip when rendered.\nUse when you don't need to control the open state of the tooltip."
+      },
+      "open-delay": {
+        "type": "number",
+        "defaultValue": "400",
+        "isRequired": false,
+        "description": "The open delay of the tooltip."
+      },
+      "close-delay": {
+        "type": "number",
+        "defaultValue": "150",
+        "isRequired": false,
+        "description": "The close delay of the tooltip."
+      },
+      "interactive": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the tooltip's content is interactive.\nIn this mode, the tooltip will remain open when user hovers over the content."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the tooltip is disabled"
+      },
+      "close-on-click": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether the tooltip should close on click"
+      },
+      "offset": { "type": "number[]", "isRequired": false },
+      "strategy": { "type": "string", "isRequired": false },
+      "placement": {
+        "type": "Placement",
+        "isRequired": false,
+        "defaultValue": "\"bottom\"",
+        "description": "The placement of the floating element relative to its anchor."
+      },
+      "gutter": {
+        "type": "number",
+        "isRequired": false,
+        "defaultValue": "8",
+        "description": "The gap between the floating element and its anchor."
+      },
+      "same-width": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the floating element matches the width of its anchor."
+      },
+      "skip-animation-on-mount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "debug": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Log state transitions, events and prop changes to the console. Applies to descendants too."
+      }
+    },
+    "emits": {
+      "openchange": {
+        "type": "CustomEvent<OpenChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the tooltip is opened."
+      },
+      "triggervaluechange": {
+        "type": "CustomEvent<TriggerValueChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the trigger value changes."
+      }
+    },
+    "properties": {
+      "ids": {
+        "type": "ElementIds",
+        "isRequired": false,
+        "description": "The ids of the elements in the tooltip. Useful for composition."
+      },
+      "positioning": {
+        "type": "PositioningOptions",
+        "isRequired": false,
+        "description": "The user provided options used to position the popover content"
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The controlled open state of the tooltip"
+      },
+      "ready": {
+        "type": "Promise<void>",
+        "isRequired": false,
+        "description": "Resolves once the element's machine has started, so `api`, state and parts are in place."
+      },
+      "api": {
+        "type": "TooltipApi<PropTypes>",
+        "isRequired": false,
+        "description": "The Zag API of the component. `undefined` until it connects."
+      }
+    }
+  },
+  "Arrow": {
+    "tag": "ark-tooltip-arrow",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "ArrowTip": {
+    "tag": "ark-tooltip-arrow-tip",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "Content": {
+    "tag": "ark-tooltip-content",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "ContentState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Positioner": {
+    "tag": "ark-tooltip-positioner",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {}
+  },
+  "Trigger": {
+    "tag": "ark-tooltip-trigger",
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value that identifies this specific trigger"
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "TriggerState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  }
+}

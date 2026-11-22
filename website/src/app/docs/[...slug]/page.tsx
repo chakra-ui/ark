@@ -10,7 +10,7 @@ import { TableOfContent } from '~/components/table-of-content'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { getChangelogContent, isChangelogSlug } from '~/lib/changelog'
-import { docsHref, extractFramework, frameworks } from '~/lib/frameworks'
+import { docsHref, extractFramework, frameworks, isDocAvailable } from '~/lib/frameworks'
 import { getPublicUrl } from '~/lib/get-public-url'
 import { ogImageUrl } from '~/lib/og-template'
 import { getAllPageSlugs, getPageBySlug, getPageNavigation } from '~/lib/pages'
@@ -37,7 +37,8 @@ export default async function Page(props: Props) {
   const params = await props.params
   const { framework, slug } = extractFramework(params.slug)
   const slugStr = slug.join('/')
-  const { prev, next } = getPageNavigation(slug)
+  if (!isDocAvailable(framework, slugStr)) return notFound()
+  const { prev, next } = getPageNavigation(slug, framework)
 
   const serverContext = getServerContext()
   serverContext.component = slug[1]
@@ -110,4 +111,8 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
 }
 
 export const generateStaticParams = () =>
-  getAllPageSlugs().flatMap(({ slug }) => frameworks.map((framework) => ({ slug: [framework, ...slug] })))
+  getAllPageSlugs().flatMap(({ slug }) =>
+    frameworks
+      .filter((framework) => isDocAvailable(framework, slug.join('/')))
+      .map((framework) => ({ slug: [framework, ...slug] })),
+  )

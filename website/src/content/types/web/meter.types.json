@@ -1,0 +1,193 @@
+{
+  "Root": {
+    "tag": "ark-meter",
+    "props": {
+      "value": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The controlled value of the meter."
+      },
+      "default-value": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The initial value of the meter when rendered.\nUse when you don't need to control the value of the meter."
+      },
+      "min": {
+        "type": "number",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The minimum allowed value of the meter."
+      },
+      "max": {
+        "type": "number",
+        "defaultValue": "100",
+        "isRequired": false,
+        "description": "The maximum allowed value of the meter."
+      },
+      "low": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The upper numeric bound of the low end of the measured range.\nDefaults to `min`."
+      },
+      "high": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The lower numeric bound of the high end of the measured range.\nDefaults to `max`."
+      },
+      "optimum": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The optimal numeric value. Combined with `low` and `high`, this decides\nwhich region is preferred (HTML `<meter>` algorithm).\nDefaults to the midpoint of `min` and `max`."
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "defaultValue": "\"horizontal\"",
+        "isRequired": false,
+        "description": "The orientation of the element."
+      },
+      "locale": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The locale to use for formatting the value."
+      },
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "debug": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Log state transitions, events and prop changes to the console. Applies to descendants too."
+      }
+    },
+    "emits": {
+      "valuechange": {
+        "type": "CustomEvent<ValueChangeDetails & { source: InputSource; }>",
+        "isRequired": false,
+        "description": "Fired when the value changes."
+      }
+    },
+    "properties": {
+      "ids": {
+        "type": "Partial<{ label: string; }>",
+        "isRequired": false,
+        "description": "The ids of the elements in the meter. Useful when the label lives outside\nthe machine and you need to control `aria-labelledby`."
+      },
+      "formatOptions": {
+        "type": "Intl.NumberFormatOptions",
+        "isRequired": false,
+        "defaultValue": "{ style: \"percent\" }",
+        "description": "The options to use for formatting the value."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "The localized messages to use."
+      },
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The root's state from its machine (`getRootState()`), such as `open` or `disabled`. `undefined` until it connects."
+      },
+      "ready": {
+        "type": "Promise<void>",
+        "isRequired": false,
+        "description": "Resolves once the element's machine has started, so `api`, state and parts are in place."
+      },
+      "api": {
+        "type": "MeterApi<PropTypes>",
+        "isRequired": false,
+        "description": "The Zag API of the component. `undefined` until it connects."
+      }
+    }
+  },
+  "Label": {
+    "tag": "ark-meter-label",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Range": {
+    "tag": "ark-meter-range",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "Track": {
+    "tag": "ark-meter-track",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  },
+  "ValueText": {
+    "tag": "ark-meter-value-text",
+    "props": {
+      "as-child": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Apply the props to the first child element instead of this element."
+      },
+      "for": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the root this part belongs to, when it is not a descendant."
+      }
+    },
+    "properties": {
+      "state": {
+        "type": "RootState",
+        "isRequired": false,
+        "description": "The part's state from its machine, such as an item's `selected` and `highlighted`. `undefined` until it connects."
+      }
+    }
+  }
+}

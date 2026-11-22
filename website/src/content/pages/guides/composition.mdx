@@ -22,8 +22,10 @@ Each framework spells this the way that framework composes:
 | Solid     | a `render` prop, taking a function                      |
 | Vue       | a `render` slot, written `#render` directly on the part |
 | Svelte    | a `render` snippet                                      |
+| Web       | an `as-child` attribute on the part's element           |
 
-The capability is the same in all four: each one hands you the part's props to apply, and the part's state.
+The capability is the same in the four framework packages: each one hands you the part's props to apply, and the part's
+state. The web package has no render function; see [Web Components](#web-components).
 
 ### Merging your own props
 
@@ -87,6 +89,31 @@ The factory renders the child element in place of the `span`, so this produces:
 Any props you pass to `ark.span` are merged onto the child element, which is how the factory forwards styling and
 behavior to whatever you render.
 
+<FrameworkOnly framework="web">
+
+## Web Components
+
+In `@ark-ui/web`, interactive parts already wrap a native element you write yourself: triggers wrap a `button` or `a`,
+input parts wrap an `input`. Your element is the one that gets the part's props, so a link or a styled button needs no
+extra API.
+
+```html
+<ark-tabs-trigger value="account"><a href="#account">Account</a></ark-tabs-trigger>
+```
+
+For other parts, add `as-child` to put the part's props on its first element child instead of the custom element. The
+wrapper gets `display: contents`, and `template` and `script` children are skipped.
+
+```html
+<ark-menu-item value="settings" as-child><a href="/settings">Settings</a></ark-menu-item>
+<ark-dialog-content as-child><section class="sheet">…</section></ark-dialog-content>
+```
+
+If the child is replaced, the new child receives the props and the old one loses them. To read a part's state, use its
+`state` property; see [Component State](/docs/guides/component-state#web-components).
+
+</FrameworkOnly>
+
 ## ID Composition
 
 When composing components that need to work together, share IDs between them using the `ids` prop for proper
@@ -118,6 +145,17 @@ export const TooltipWithAvatar = () => {
 
 Both components share the same `id` through their `ids` props, creating proper accessibility bindings, `aria-*`
 attributes and interaction behavior.
+
+<FrameworkOnly framework="web">
+
+In `@ark-ui/web`, `ids` is a property on the root element:
+
+```ts
+tooltip.ids = { trigger: 'avatar' }
+avatar.ids = { root: 'avatar' }
+```
+
+</FrameworkOnly>
 
 ## Limitations
 

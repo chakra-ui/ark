@@ -131,6 +131,45 @@ useHotkey({ hotkey: 'mod+S', action: save, enabled: () => !isReadOnly })
 `options: { eventType: 'keyup' }` fires on release instead of press. Pair it with a `keydown` command on the same key
 for push-to-talk.
 
+<FrameworkOnly framework="web">
+
+### Web Components
+
+`@ark-ui/web/hotkeys` exposes the same store through plain functions. Each registration returns a function that removes
+it.
+
+| Hook                     | Web                                                     |
+| ------------------------ | ------------------------------------------------------- |
+| `useHotkey`              | `createHotkey(hotkey, action, options?)`                |
+| `useHotkeys`             | `createHotkeys(commands, options?)`                     |
+| `usePressedKeys`         | `getHotkeyStore().getCurrentlyPressed()`                |
+| `useIsKeyPressed`        | `getHotkeyStore().isPressed(key)`                       |
+| `useHotkeyRecorder`      | `createHotkeyRecorder({ onRecord, onCancel, onClear })` |
+| `useHotkeyRegistrations` | `getHotkeyStore().getState().commands`                  |
+| `useFormatHotkey`        | `formatHotkey(hotkey)`                                  |
+
+```ts
+import { createHotkey, createHotkeys, formatHotkey, getHotkeyStore } from '@ark-ui/web/hotkeys'
+
+const off = createHotkey('mod+K', () => (palette.open = true), { label: 'Open palette' })
+
+createHotkeys([
+  { hotkey: 'G > H', action: goHome, label: 'Go home' },
+  { hotkey: 'escape', action: clear, scopes: ['editor'], options: { enableOnFormTags: true } },
+])
+
+const store = getHotkeyStore()
+store.setScope('editor')
+store.subscribe((state) => state.pressedKeys, render)
+
+button.title = formatHotkey('mod+K')
+```
+
+Pass `{ store }` to use your own `createHotkeyStore()`, or `{ root }` to listen inside a shadow root. The recorder
+returns an object with `start()` and `subscribe()`.
+
+</FrameworkOnly>
+
 ## API Reference
 
 <ComponentTypes id="hotkeys" />

@@ -1,0 +1,40 @@
+{
+  "GridVirtualizer": {
+    "tag": "ark-grid-virtualizer",
+    "props": {
+      "row-count": { "type": "number", "isRequired": false },
+      "column-count": { "type": "number", "isRequired": false },
+      "estimated-row-size": { "type": "number", "isRequired": false },
+      "estimated-column-size": { "type": "number", "isRequired": false },
+      "overscan": { "type": "number", "isRequired": false },
+      "gap": { "type": "number", "isRequired": false }
+    },
+    "properties": {}
+  },
+  "ListVirtualizer": {
+    "tag": "ark-list-virtualizer",
+    "props": {
+      "count": { "type": "number", "isRequired": false },
+      "estimated-size": { "type": "number", "isRequired": false },
+      "overscan": { "type": "number", "isRequired": false },
+      "gap": { "type": "number", "isRequired": false },
+      "orientation": { "type": "string", "isRequired": false },
+      "padding-start": { "type": "number", "isRequired": false },
+      "padding-end": { "type": "number", "isRequired": false }
+    },
+    "properties": {}
+  },
+  "WindowVirtualizer": {
+    "tag": "ark-window-virtualizer",
+    "props": {
+      "count": { "type": "number", "isRequired": false },
+      "estimated-size": { "type": "number", "isRequired": false },
+      "overscan": { "type": "number", "isRequired": false },
+      "gap": { "type": "number", "isRequired": false },
+      "orientation": { "type": "string", "isRequired": false },
+      "padding-start": { "type": "number", "isRequired": false },
+      "padding-end": { "type": "number", "isRequired": false }
+    },
+    "properties": {}
+  }
+}

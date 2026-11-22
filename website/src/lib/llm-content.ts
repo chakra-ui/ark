@@ -1,6 +1,7 @@
 import { type AccessibilityDocKey, type DataAttrDocKey, getAccessibilityDoc, getDataAttrDoc } from '@zag-js/docs'
 import { frameworkExample } from '~/components/example'
 import { cmdMap } from '~/components/install-cmd'
+import { type Framework, frameworkLabels } from '~/lib/frameworks'
 import { getChangelogContent, isChangelogSlug } from './changelog'
 import { replaceContextType } from './mdx-transform'
 import type { PageMeta } from './source'
@@ -130,7 +131,15 @@ const applyReplacements = (content: string, rest: string) => {
   return res
 }
 
-const replaceExamples = async (content: string, page: PageMeta, framework: string) => {
+const FRAMEWORK_ONLY_RE = /<FrameworkOnly\s+framework=(?:"([^"]*)"|\{\[([^\]]*)\]\})\s*>([\s\S]*?)<\/FrameworkOnly>/g
+
+const replaceFrameworkOnly = (content: string, framework: string) =>
+  content.replace(FRAMEWORK_ONLY_RE, (_, single: string | undefined, list: string | undefined, body: string) => {
+    const allowed = single ? [single] : (list ?? '').split(',').map((value) => value.trim().replace(/['"]/g, ''))
+    return allowed.includes(framework) ? body.trim() : ''
+  })
+
+const replaceExamples = async (content: string, page: PageMeta, framework: Framework) => {
   const examples = content.match(PATTERNS.EXAMPLE) || []
   let res = content
 
@@ -142,17 +151,22 @@ const replaceExamples = async (content: string, page: PageMeta, framework: strin
     if (!id) continue
 
     const component = componentMatch?.[1] || page.slug.split('/')[1]
-    const { code, extension } = await frameworkExample(framework, component, id)
-    res = res.replace(example, `\`\`\`${extension}\n${code}\`\`\``)
+    const { code, extension, found } = await frameworkExample(framework, component, id)
+    res = res.replace(
+      example,
+      found
+        ? `\`\`\`${extension}\n${code}\`\`\``
+        : `_This example isn't available for ${frameworkLabels[framework]} yet._`,
+    )
   }
 
   return res
 }
 
-export const cleanupPageContent = async (page: PageMeta, framework: 'react' | 'solid' | 'vue' | 'svelte') => {
+export const cleanupPageContent = async (page: PageMeta, framework: Framework) => {
   const raw = isChangelogSlug(page.slug) ? getChangelogContent(framework) : await getRawBySlug(page.slug)
   if (!raw) return ''
-  let res = replaceContextType(raw)
+  let res = replaceFrameworkOnly(replaceContextType(raw), framework)
 
   // Remove unwanted components
   res = res.replace(PATTERNS.ANATOMY, '')

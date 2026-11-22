@@ -1,12 +1,12 @@
 import { existsSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { extname, join } from 'node:path'
-import { Match } from 'effect'
 import { cache } from 'react'
 import { css, cx } from 'styled-system/css'
 import { Stack } from 'styled-system/jsx'
 import type { SupportedLang } from '~/lib/shiki-client'
-import { defaultFramework } from '~/lib/frameworks'
+import { getExampleDir, getFrameworkExtension } from '~/lib/example-paths'
+import { type Framework, defaultFramework, frameworkLabels } from '~/lib/frameworks'
 import { getServerContext } from '~/lib/server-context'
 import { CollapsibleCode } from './collapsible-code'
 import { ExampleCodeTabs } from './example-code'
@@ -22,7 +22,8 @@ export const Example = async (props: Props) => {
   const component = props.component ?? serverContext.component
 
   const framework = serverContext.framework ?? defaultFramework
-  const { code, lang, localFiles } = await fetchFrameworkCode(framework, component, props.id)
+  const { code, lang, localFiles, found } = await fetchFrameworkCode(framework, component, props.id)
+  if (!found) return <ExampleUnavailable framework={framework} />
   const cssModules = await fetchCssModulesFromCode(code)
   const hasPreview = component ? exampleExists(component, props.id) : false
 
@@ -51,7 +52,8 @@ export const ExampleCode = async (props: Props) => {
   const component = props.component ?? serverContext.component
 
   const framework = serverContext.framework ?? defaultFramework
-  const { code, lang, localFiles } = await fetchFrameworkCode(framework, component, props.id)
+  const { code, lang, localFiles, found } = await fetchFrameworkCode(framework, component, props.id)
+  if (!found) return <ExampleUnavailable framework={framework} />
   const cssModules = await fetchCssModulesFromCode(code)
 
   return (
@@ -69,34 +71,21 @@ export const ExampleCode = async (props: Props) => {
   )
 }
 
-const getExamplePath = (component: string) =>
-  Match.value(component).pipe(
-    Match.when(
-      () => ['progress-circular', 'progress-linear'].includes(component),
-      () => `components/progress/examples/${component.split('-')[1]}`,
-    ),
-    Match.when(
-      () => ['environment', 'hotkeys', 'interaction', 'locale'].includes(component),
-      () => `providers/${component}/examples`,
-    ),
-    Match.orElse(() => `components/${component}/examples`),
-  )
+const ExampleUnavailable = (props: { framework: Framework }) => (
+  <p
+    className={cx(
+      'not-prose',
+      css({ borderWidth: '1px', borderRadius: 'lg', px: '4', py: '3', textStyle: 'sm', color: 'fg.muted' }),
+    )}
+  >
+    This example isn't available for {frameworkLabels[props.framework]} yet.
+  </p>
+)
 
 const cleanExampleCode = (content: string) =>
   content.replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`).replace(/.*@ts-expect-error.*\n/g, '')
 
-const getExtension = (framework: string) =>
-  Match.value(framework).pipe(
-    Match.when('vue', () => 'vue'),
-    Match.when('svelte', () => 'svelte'),
-    Match.orElse(() => 'tsx'),
-  )
-
-const getSrcPath = (framework: string) =>
-  Match.value(framework).pipe(
-    Match.when('svelte', () => 'src/lib'),
-    Match.orElse(() => 'src'),
-  )
+const toLang = (extension: string): SupportedLang => (extension === 'ts' ? 'typescript' : (extension as SupportedLang))
 
 const LOCAL_IMPORT_RE = /from\s+['"](\.\/[\w./-]+)['"]/g
 
@@ -106,7 +95,7 @@ const LOCAL_IMPORT_RE = /from\s+['"](\.\/[\w./-]+)['"]/g
  * and return each one to render as its own tab.
  */
 const readLocalFiles = async (framework: string, component: string, entryCode: string) => {
-  const dir = join(process.cwd(), '..', 'packages', framework, getSrcPath(framework), getExamplePath(component))
+  const dir = getExampleDir(framework, component)
   const files: Record<string, string> = {}
 
   const visit = async (code: string, depth: number) => {
@@ -134,51 +123,33 @@ export const frameworkExample = async (
   framework: string,
   component: string,
   id: string,
-): Promise<{ code: string; extension: string }> => {
-  const extension = getExtension(framework)
-  const examplePath = getExamplePath(component)
-  const srcPath = getSrcPath(framework)
-
-  const basePath = `../packages/${framework}/${srcPath}`
-  const fileName = [id, extension].join('.')
-
-  const content = await readFile(join(process.cwd(), basePath, examplePath, fileName), 'utf-8').catch(
-    () => 'Example not found',
+): Promise<{ code: string; extension: string; found: boolean }> => {
+  const extension = getFrameworkExtension(framework)
+  const content = await readFile(join(getExampleDir(framework, component), `${id}.${extension}`), 'utf-8').catch(
+    () => null,
   )
 
-  return { code: cleanExampleCode(content), extension }
+  if (content === null) return { code: 'Example not found', extension, found: false }
+  return { code: cleanExampleCode(content), extension, found: true }
 }
 
 const fetchFrameworkCode = async (
   framework: string,
   component: string | undefined,
   id: string,
-): Promise<{ code: string; lang: SupportedLang; localFiles: Record<string, string> }> => {
-  if (!component) return { code: 'Example not found', lang: 'tsx', localFiles: {} }
+): Promise<{ code: string; lang: SupportedLang; localFiles: Record<string, string>; found: boolean }> => {
+  if (!component) return { code: 'Example not found', lang: 'tsx', localFiles: {}, found: false }
 
-  const { code, extension } = await frameworkExample(framework, component, id)
-  const localFiles = await readLocalFiles(framework, component, code)
-  return { code, lang: extension as SupportedLang, localFiles }
+  const { code, extension, found } = await frameworkExample(framework, component, id)
+  const localFiles = found ? await readLocalFiles(framework, component, code) : {}
+  return { code, lang: toLang(extension), localFiles, found }
 }
 
 /**
  * Check if a React example file exists (server-side only)
  */
 function exampleExists(component: string, id: string): boolean {
-  const examplePath = Match.value(component).pipe(
-    Match.when(
-      () => ['progress-circular', 'progress-linear'].includes(component),
-      () => `components/progress/examples/${component.split('-')[1]}`,
-    ),
-    Match.when(
-      () => ['environment', 'hotkeys', 'interaction', 'locale'].includes(component),
-      () => `providers/${component}/examples`,
-    ),
-    Match.orElse(() => `components/${component}/examples`),
-  )
-
-  const filePath = join(process.cwd(), '..', 'packages', 'react', 'src', examplePath, `${id}.tsx`)
-  return existsSync(filePath)
+  return existsSync(join(getExampleDir('react', component), `${id}.tsx`))
 }
 
 /**
