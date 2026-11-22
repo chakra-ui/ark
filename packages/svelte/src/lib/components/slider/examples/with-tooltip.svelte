@@ -19,8 +19,7 @@
       {#snippet render(slider)}
         <Tooltip.Root
           ids={{ trigger: thumbId }}
-          open={open || slider().dragging}
-          onOpenChange={(details) => (open = details.open)}
+          bind:open={() => open || slider().dragging, (value) => (open = value)}
           openDelay={0}
           closeOnClick={false}
           closeOnPointerDown={false}

@@ -143,6 +143,19 @@ select.api!.getItemState({ item })
 
 </FrameworkOnly>
 
+<FrameworkOnly framework="svelte">
+
+## Computed Controlled Values
+
+To control a prop with a computed value, use a function binding. With `open={a || b}` and `onOpenChange`, the
+component's own update wins until the expression changes.
+
+```svelte
+<Tooltip.Root bind:open={() => open || dragging, (value) => (open = value)}>
+```
+
+</FrameworkOnly>
+
 ## Choosing the Right Approach
 
 - **`Component.Context`**: Quick inline access for conditional rendering
