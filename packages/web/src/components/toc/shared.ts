@@ -1,3 +1,4 @@
+import { createSharedMutationObserver } from '@zag-js/dom-query'
 import type { TocItem } from '@zag-js/toc'
 
 export const root = 'ark-toc'
@@ -14,10 +15,16 @@ export function itemsOf(el: HTMLElement): TocItem[] {
   }))
 }
 
+const itemsObserver = createSharedMutationObserver({
+  childList: true,
+  subtree: true,
+  attributeFilter: ['value', 'depth'],
+})
+
 export function observeItems(el: HTMLElement, onChange: VoidFunction) {
   const changed = (node: Node) =>
     node instanceof Element && (node.localName === itemTag || !!node.querySelector(itemTag))
-  const observer = new MutationObserver((records) => {
+  return itemsObserver.observe(el, (records) => {
     if (
       records.some(
         (record) =>
@@ -28,6 +35,4 @@ export function observeItems(el: HTMLElement, onChange: VoidFunction) {
     )
       onChange()
   })
-  observer.observe(el, { childList: true, subtree: true, attributeFilter: ['value', 'depth'] })
-  return () => observer.disconnect()
 }

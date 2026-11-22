@@ -1,15 +1,12 @@
+import { createSharedMutationObserver } from '@zag-js/dom-query'
 import type * as drawer from '@zag-js/drawer'
-
 import { str } from '../../utils/attrs.js'
 import { definePart, wrappedButton } from '../../utils/define.js'
 import { definePresencePart } from '../../utils/presence.js'
 import { root, swipeDirectionOf } from './shared.js'
 
-const observeAttributes = (el: HTMLElement, names: string[], onChange: VoidFunction) => {
-  const observer = new MutationObserver(onChange)
-  observer.observe(el, { attributeFilter: names })
-  return () => observer.disconnect()
-}
+const triggerObserver = createSharedMutationObserver({ attributeFilter: ['draggable'] })
+const contentObserver = createSharedMutationObserver({ attributeFilter: ['disabled', 'swipe-direction'] })
 
 export const DrawerTrigger = definePart<drawer.Api, drawer.TriggerState>({
   tag: 'ark-drawer-trigger',
@@ -43,7 +40,7 @@ export const DrawerContent = definePresencePart<drawer.Api, drawer.ContentState>
   props: (api, el) => api.getContentProps({ draggable: el.getAttribute('draggable') !== 'false' }),
   state: (api) => api.getContentState(),
 
-  setup: (el, rootEl) => observeAttributes(el, ['draggable'], () => rootEl.render()),
+  setup: (el, rootEl) => triggerObserver.observe(el, () => rootEl.render()),
 })
 
 export const DrawerGrabber = definePart<drawer.Api>({
@@ -70,7 +67,7 @@ export const DrawerSwipeArea = definePart<drawer.Api, drawer.SwipeAreaState>({
   props: (api, el) => api.getSwipeAreaProps(swipeAreaPropsOf(el)),
   state: (api, el) => api.getSwipeAreaState(swipeAreaPropsOf(el)),
 
-  setup: (el, rootEl) => observeAttributes(el, ['disabled', 'swipe-direction'], () => rootEl.render()),
+  setup: (el, rootEl) => contentObserver.observe(el, () => rootEl.render()),
 })
 
 export const DrawerTitle = definePart<drawer.Api>({

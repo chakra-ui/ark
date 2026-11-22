@@ -1,7 +1,10 @@
 import * as carousel from '@zag-js/carousel'
+import { createSharedMutationObserver } from '@zag-js/dom-query'
 import { num, numbers, str } from '../../utils/attrs.js'
 import { defineRoot } from '../../utils/define.js'
 import { itemTag, ownParts, root } from './shared.js'
+
+const slidesObserver = createSharedMutationObserver({ subtree: true, childList: true })
 
 const count = (el: HTMLElement) => num(el, 'count') ?? ownParts(el, itemTag).length
 
@@ -76,14 +79,12 @@ defineRoot<carousel.Api>({
   },
   setup: (el) => {
     let last = count(el)
-    const observer = new MutationObserver(() => {
+    return slidesObserver.observe(el, () => {
       const next = count(el)
       if (next === last) return
       last = next
       el.refresh()
     })
-    observer.observe(el, { subtree: true, childList: true })
-    return () => observer.disconnect()
   },
   rootProps: (api) => api.getRootProps(),
 })

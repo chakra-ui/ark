@@ -1,5 +1,5 @@
+import { createSharedMutationObserver } from '@zag-js/dom-query'
 import { normalizeProps, spreadProps, VanillaMachine } from '@zag-js/vanilla'
-
 import { debug, traceState } from './debug.js'
 import { emit, silently, trackInput, type CallbackEvents, type EventElement } from './events.js'
 
@@ -36,11 +36,12 @@ export const asChild = (el: HTMLElement) =>
 export const targetOf = (el: HTMLElement, target?: (el: HTMLElement) => HTMLElement | null) =>
   asChild(el) ?? target?.(el) ?? el
 
+const childObserver = createSharedMutationObserver({ childList: true })
+const rootObserver = createSharedMutationObserver({ childList: true, subtree: true, attributeFilter: ['id', 'for'] })
+
 function observeChild(el: HTMLElement, onChange: VoidFunction): VoidFunction | undefined {
   if (!el.hasAttribute('as-child')) return
-  const observer = new MutationObserver(onChange)
-  observer.observe(el, { childList: true })
-  return () => observer.disconnect()
+  return childObserver.observe(el, onChange)
 }
 
 class Target {
@@ -470,14 +471,11 @@ export function definePart<Api, State = RootState<Api>>(
     private waitForRoot() {
       if (this.unwait || !this.closest('[for]')) return
 
-      const observer = new MutationObserver(() => {
+      this.unwait = rootObserver.observe(this.getRootNode(), () => {
         if (!rootOf(this, config.root)) return
         this.stopWaiting()
         this.connect()
       })
-
-      observer.observe(this.getRootNode(), { childList: true, subtree: true, attributeFilter: ['id', 'for'] })
-      this.unwait = () => observer.disconnect()
     }
 
     private stopWaiting() {

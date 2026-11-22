@@ -1,7 +1,14 @@
+import { createSharedMutationObserver } from '@zag-js/dom-query'
 import * as splitter from '@zag-js/splitter'
 import { num, str } from '../../utils/attrs.js'
 import { defineRoot } from '../../utils/define.js'
 import { panelAttributes, readPanels, root, sizes } from './shared.js'
+
+const panelsObserver = createSharedMutationObserver({
+  subtree: true,
+  childList: true,
+  attributeFilter: panelAttributes,
+})
 
 const registries = new WeakMap<Element, splitter.SplitterRegistry>()
 
@@ -53,14 +60,12 @@ defineRoot<splitter.Api>({
   },
   setup: (el) => {
     let key = panelsKey(el)
-    const observer = new MutationObserver(() => {
+    return panelsObserver.observe(el, () => {
       const next = panelsKey(el)
       if (next === key) return
       key = next
       el.refresh()
     })
-    observer.observe(el, { subtree: true, childList: true, attributeFilter: panelAttributes })
-    return () => observer.disconnect()
   },
   rootProps: (api) => api.getRootProps(),
 })

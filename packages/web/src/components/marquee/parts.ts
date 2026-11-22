@@ -1,7 +1,9 @@
+import { createSharedMutationObserver } from '@zag-js/dom-query'
 import type * as marquee from '@zag-js/marquee'
-
 import { definePart } from '../../utils/define.js'
 import { contentIndexOf, contentTag, root, syncCopies } from './shared.js'
+
+const sourceObserver = createSharedMutationObserver({ childList: true, subtree: true, characterData: true })
 
 const counts = new WeakMap<HTMLElement, number>()
 
@@ -17,9 +19,7 @@ export const MarqueeViewport = definePart<marquee.Api>({
   setup: (el) => {
     const source = el.querySelector(`:scope > ${contentTag}:not([data-rendered])`)
     if (!source) return
-    const observer = new MutationObserver(() => syncCopies(el, counts.get(el) ?? 1, true))
-    observer.observe(source, { childList: true, subtree: true, characterData: true })
-    return () => observer.disconnect()
+    return sourceObserver.observe(source, () => syncCopies(el, counts.get(el) ?? 1, true))
   },
 })
 

@@ -1,7 +1,9 @@
+import { createSharedMutationObserver } from '@zag-js/dom-query'
 import type * as scrollArea from '@zag-js/scroll-area'
-
 import { definePart } from '../../utils/define.js'
 import { type Api, orientationOf, root, scrollbarTag } from './shared.js'
+
+const orientationObserver = createSharedMutationObserver({ attributeFilter: ['orientation'] })
 
 export const ScrollAreaViewport = definePart<Api, scrollArea.ViewportState>({
   tag: 'ark-scroll-area-viewport',
@@ -24,9 +26,7 @@ export const ScrollAreaScrollbar = definePart<Api, scrollArea.ScrollbarState>({
   state: (api, el) => api.getScrollbarState({ orientation: orientationOf(el) }),
 
   setup: (el, rootEl) => {
-    const observer = new MutationObserver(() => rootEl.render())
-    observer.observe(el, { attributeFilter: ['orientation'] })
-    return () => observer.disconnect()
+    return orientationObserver.observe(el, () => rootEl.render())
   },
 })
 

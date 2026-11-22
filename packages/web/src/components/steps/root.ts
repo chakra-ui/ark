@@ -1,8 +1,10 @@
+import { createSharedMutationObserver } from '@zag-js/dom-query'
 import * as steps from '@zag-js/steps'
-
 import { list, str } from '../../utils/attrs.js'
 import { defineRoot } from '../../utils/define.js'
 import { itemAttributes, readItems, root } from './shared.js'
+
+const itemsObserver = createSharedMutationObserver({ subtree: true, childList: true, attributeFilter: itemAttributes })
 
 type Orientation = NonNullable<steps.Props['orientation']>
 
@@ -18,20 +20,12 @@ const itemsKey = (el: HTMLElement) => JSON.stringify(readItems(el))
 const observeItems = (el: HTMLElement & { refresh(): void }) => {
   let key = itemsKey(el)
 
-  const observer = new MutationObserver(() => {
+  return itemsObserver.observe(el, () => {
     const next = itemsKey(el)
     if (next === key) return
     key = next
     el.refresh()
   })
-
-  observer.observe(el, {
-    subtree: true,
-    childList: true,
-    attributeFilter: itemAttributes,
-  })
-
-  return () => observer.disconnect()
 }
 
 defineRoot<steps.Api>({
