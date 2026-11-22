@@ -3,7 +3,13 @@
 Unstyled, accessible web components powered by Zag.js state machines. Components use light DOM, native controls, and
 ordinary CSS. No framework runtime is required.
 
-This package is a prerelease. It includes accordion, angle slider, avatar, carousel, checkbox and checkbox group, clipboard, collapsible, color picker, combobox, command, date input, date picker, dialog, drawer, editable, field, fieldset, file upload, floating panel, highlight, hover card, listbox, marquee, menu, menubar, meter, navigation menu, number flow, number input, pagination, password input, pin input, popover, progress, qr code, radio group, rating group, scroll area, segment group, select, signature pad, slider, splitter, steps, swap, switch, table of contents, tabs, tags input, timer, toast, toggle, toggle group, tooltip, tour, tree view, and virtualizer.
+This package is a prerelease. It includes accordion, angle slider, avatar, carousel, checkbox and checkbox group,
+clipboard, collapsible, color picker, combobox, command, date input, date picker, dialog, download trigger, drawer,
+editable, field, fieldset, file upload, floating panel, format, highlight, hover card, image cropper, listbox, marquee,
+menu, menubar, meter, navigation menu, number flow, number input, pagination, password input, pin input, popover,
+progress, qr code, radio group, rating group, scroll area, segment group, select, signature pad, slider, splitter,
+steps, swap, switch, table of contents, tabs, tags input, timer, toast, toggle, toggle group, tooltip, tour, tree view,
+and virtualizer.
 
 ## Usage
 
@@ -150,19 +156,20 @@ Actions that aren't state are element methods. Like properties, they can be call
 once it starts; removing the element cancels calls that haven't run yet. Unlike property writes, they dispatch the same
 events as the matching user interaction.
 
-| Element                                     | Methods                                                  |
-| ------------------------------------------- | -------------------------------------------------------- |
-| `ark-timer`                                 | `start()`, `pause()`, `resume()`, `reset()`, `restart()` |
-| `ark-clipboard`                             | `copy()`                                                 |
-| `ark-signature-pad`                         | `clear()`                                                |
-| `ark-file-upload`                           | `clearFiles()`, `openFilePicker()`                       |
-| `ark-number-input`                          | `increment()`, `decrement()`                             |
-| `ark-tree-view`                             | `expand(values?)`, `collapse(values?)`                   |
-| `ark-combobox`, `ark-select`, `ark-listbox` | `clearValue(value?)`                                     |
-| `ark-carousel`                              | `scrollNext(instant?)`, `scrollPrevious(instant?)`       |
-| `ark-floating-panel`                        | `minimize()`, `maximize()`, `restore()`                  |
-| `ark-marquee`                               | `restart()`                                              |
-| `ark-tour`                                  | `start(id?)`, `next()`, `previous()`                     |
+| Element                                     | Methods                                                                                                                                            |
+| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ark-timer`                                 | `start()`, `pause()`, `resume()`, `reset()`, `restart()`                                                                                           |
+| `ark-clipboard`                             | `copy()`                                                                                                                                           |
+| `ark-signature-pad`                         | `clear()`                                                                                                                                          |
+| `ark-file-upload`                           | `clearFiles()`, `openFilePicker()`                                                                                                                 |
+| `ark-number-input`                          | `increment()`, `decrement()`                                                                                                                       |
+| `ark-tree-view`                             | `expand(values?)`, `collapse(values?)`                                                                                                             |
+| `ark-combobox`, `ark-select`, `ark-listbox` | `clearValue(value?)`                                                                                                                               |
+| `ark-carousel`                              | `scrollNext(instant?)`, `scrollPrevious(instant?)`                                                                                                 |
+| `ark-floating-panel`                        | `minimize()`, `maximize()`, `restore()`                                                                                                            |
+| `ark-marquee`                               | `restart()`                                                                                                                                        |
+| `ark-tour`                                  | `start(id?)`, `next()`, `previous()`                                                                                                               |
+| `ark-image-cropper`                         | `zoomBy(delta)`, `rotateBy(degrees)`, `flipHorizontally(value?)`, `flipVertically(value?)`, `resize(placement, delta)`, `setCrop(crop)`, `reset()` |
 
 ```ts
 const timer = document.createElement('ark-timer')
@@ -326,6 +333,34 @@ native `fieldset`, so `disabled` on it disables every control inside, and its fi
   <ark-field-helper-text>We never share it.</ark-field-helper-text>
   <ark-field-error-text>Enter a valid email.</ark-field-error-text>
 </ark-field>
+```
+
+## Formatting and downloads
+
+`@ark-ui/web/format` renders locale-aware text. The locale comes from the `locale` attribute, then the closest `lang`.
+
+```html
+<p lang="de-DE">
+  <ark-format-number value="1234.45" style="currency" currency="EUR"></ark-format-number>
+  <ark-format-byte value="5000000"></ark-format-byte>
+  <ark-format-relative-time value="2025-05-05" numeric="auto"></ark-format-relative-time>
+  <ark-format-time value="17:15" format="12h"></ark-format-time>
+</p>
+```
+
+Each element also takes `value`, `locale` and `options` as properties, for anything the attributes don't cover.
+
+`@ark-ui/web/download-trigger` downloads its `data` when the button inside it is clicked. `data` can be a string, a
+`Blob`, a `File`, or a function that returns one, sync or async.
+
+```html
+<ark-download-trigger file-name="report.csv" mime-type="text/csv">
+  <button>Export</button>
+</ark-download-trigger>
+
+<script type="module">
+  document.querySelector('ark-download-trigger').data = () => fetch('/report.csv').then((res) => res.blob())
+</script>
 ```
 
 ## Styling and presence

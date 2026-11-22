@@ -40,6 +40,7 @@ const title = (value) => value.replace(/(^|-)([a-z])/g, (_, __, char) => ` ${cha
 function describe(tag, meta) {
   const component = componentOf(tag)
   const name = title(component)
+  if (meta.kind === 'element') return `The ${title(tag.replace(/^ark-/, ''))} element.`
   if (meta.kind !== 'part') return `The ${name} root.`
 
   const part = tag.replace(`ark-${component}-`, '')
@@ -50,9 +51,9 @@ function elementsOf() {
   return [...defined.entries()]
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([tag, ctor]) => {
-      const meta = ctor.meta ?? { kind: 'root', attributes: ctor.observedAttributes ?? [] }
+      const meta = ctor.meta ?? { kind: 'element', attributes: ctor.observedAttributes ?? [] }
       const own = meta.attributes ?? []
-      const extra = meta.kind === 'part' ? ['as-child', 'for'] : ['as-child', 'debug']
+      const extra = { part: ['as-child', 'for'], root: ['as-child', 'debug'] }[meta.kind] ?? []
       const attributes = [...new Set([...own, ...extra])]
 
       return {
@@ -69,6 +70,8 @@ function elementsOf() {
 }
 
 function memberDocs(kind) {
+  if (kind === 'element') return []
+
   const state = {
     kind: 'field',
     name: 'state',
