@@ -184,8 +184,8 @@ where the props object becomes a props **function** you must call.
 > In Solid, Svelte, and Vue, `props` is a merge function: call `props({ onClick: mine })` to merge your handlers with
 > the part's instead of overwriting them. In Solid, `state` is an accessor (`state().open`).
 
-**Status.** Shipped in React, Solid, Svelte, and Vue. `asChild` still works and is deprecated — pairing it with `render`
-throws in dev. Removal is a future major, not v6.
+**Status.** Shipped in React, Solid, Svelte, and Vue. `asChild` stays supported, matching web's `as-child`. Use `render`
+when you need the part's state. Pairing the two on one part throws in dev.
 
 ---
 

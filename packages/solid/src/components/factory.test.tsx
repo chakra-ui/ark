@@ -123,7 +123,7 @@ describe('Ark Factory', () => {
     })
   })
 
-  describe('asChild (deprecated)', () => {
+  describe('asChild', () => {
     it('should render only the child', () => {
       render(() => <ComponentUnderTest />)
       expect(screen.getByText('Child')).toBeVisible()

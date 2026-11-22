@@ -150,7 +150,7 @@ describe('Ark Factory', () => {
     })
   })
 
-  describe('asChild (deprecated)', () => {
+  describe('asChild', () => {
     it('should still render only the child', () => {
       render(
         <ark.div data-testid="parent" asChild>

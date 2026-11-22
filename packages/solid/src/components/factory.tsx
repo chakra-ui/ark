@@ -25,8 +25,7 @@ export type PolymorphicProps<T extends ElementType, State = EmptyState> = {
   /**
    * Use the provided child element as the default rendered element, combining their props and behavior.
    *
-   * @deprecated Use `render` instead. It takes the same props function, plus the part's state.
-   * `asChild` is still supported, but `render` is preferred.
+   * Use `render` when you need the part's state. It takes the same props function, plus the state.
    */
   asChild?: (props: PropsFn<T>) => JSX.Element
   /**

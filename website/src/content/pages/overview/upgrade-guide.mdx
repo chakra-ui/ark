@@ -4,8 +4,9 @@ title: Upgrade Guide
 description: What changed in Ark UI v6, and the breaking changes to fix as you migrate.
 ---
 
-v6 replaces `asChild` with a `render` function, merges the `data-scope`/`data-part` attributes, and lines the four
-frameworks up on the same anatomy. Codemods handle most of the work. This guide covers what they don't.
+v6 adds a `render` function that can read a part's state, merges the `data-scope`/`data-part` attributes, and lines the
+four frameworks up on the same anatomy. `asChild` still works. Codemods handle most of the work. This guide covers what
+they don't.
 
 ## Before you start
 
@@ -30,7 +31,7 @@ Each transform exists for `react/*`, `solid/*`, `svelte/*` and `vue/*`:
 
 | Transform                  | Change                                                                     |
 | -------------------------- | -------------------------------------------------------------------------- |
-| `as-child-to-render`       | `asChild` → `render`                                                       |
+| `as-child-to-render`       | `asChild` → `render` (optional)                                            |
 | `carousel-props`           | `slideCount` → `count`, `autoplay` → `autoPlay`, `padding` → `itemSpacing` |
 | `floating-panel-placement` | `resizeTriggerAxes` → `resizeTriggerPlacements`, `axis` → `placement`      |
 | `image-cropper-placement`  | `handles` → `placements`, `position` → `placement`                         |
@@ -59,14 +60,13 @@ Report anything ambiguous instead of guessing.
 
 1. Run the codemods and review their reports:
    npx @ark-ui/codemod list
-   npx @ark-ui/codemod <framework>/as-child-to-render "src/**/*.tsx"
    npx @ark-ui/codemod css/data-attributes "src/**/*.{css,ts,tsx,vue,svelte}"
    Add --cross-file if parts come through barrels, re-exports or wrappers.
 
-2. Finish any `asChild` left over. `render` receives (props, state).
-   React: spread `props`. Solid/Svelte/Vue: `props` is a merge function, so
-   spread `props()` and call `props({ onClick })` to merge handlers. Solid's
-   `state` is an accessor: `state().open`.
+2. Leave `asChild` as is; it is still supported. Where a part needs its
+   state, use `render`, which receives (props, state). React: spread `props`.
+   Solid/Svelte/Vue: `props` is a merge function, so spread `props()` and call
+   `props({ onClick })` to merge handlers. Solid's `state` is an accessor.
 
 3. Toaster: remove `render`/`asChild` and `ToasterState`. Style it with CSS.
 
@@ -90,13 +90,13 @@ Full guide: https://ark-ui.com/docs/overview/upgrade-guide
 
 ## Composition
 
-### `asChild` is now `render`
+### `render` alongside `asChild`
 
-`render` receives the part's props and its state, so you can read state inline. React and Vue move the child into a
-function or slot. In Solid, Svelte and Vue, `props` is a function: call it to spread, and pass your handlers to merge
-them instead of overwriting.
+`asChild` still works, so this change is optional. `render` receives the part's props and its state, so you can read
+state inline. React and Vue move the child into a function or slot. In Solid, Svelte and Vue, `props` is a function:
+call it to spread, and pass your handlers to merge them instead of overwriting.
 
-Codemod: `<framework>/as-child-to-render`.
+Codemod (optional): `<framework>/as-child-to-render`.
 
 **Before**
 

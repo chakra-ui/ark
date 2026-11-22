@@ -27,9 +27,7 @@ export interface PolymorphicProps<State = EmptyState> {
   /**
    * Use the provided child element as the default rendered element, combining their props and behavior.
    *
-   * @deprecated Use `render` instead. Pass the element directly (`render={<MyButton />}`) or a function
-   * (`render={(props, state) => <MyButton {...props} />}`) to access the part's state.
-   * `asChild` is still supported, but `render` is preferred.
+   * Use `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`.
    */
   asChild?: boolean | undefined
   /**

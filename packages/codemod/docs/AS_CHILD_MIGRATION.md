@@ -115,5 +115,5 @@ written by hand.
 
 ## After the codemod
 
-`asChild` still works in v6 and is marked deprecated, so a partial migration is not a broken one. Run `--dry` first,
-land the mechanical part, then work through whatever the summary lists.
+`asChild` stays supported in v6, so the migration is optional and a partial one is not broken. Run `--dry` first, land
+the mechanical part, then work through whatever the summary lists.
