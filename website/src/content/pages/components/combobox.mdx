@@ -193,11 +193,15 @@ After typing, the combobox announces the result count to screen readers, or "No 
 the messages with the `resultsCount`, `noResults` and `loading` translations, or set one to `""` to turn that
 announcement off.
 
+On Apple platforms, the highlighted option is announced as well. Customize it with the `highlightedItem` translation, or
+return `""` to turn it off.
+
 ```tsx
 <Combobox.Root
   translations={{
     resultsCount: (count) => `${count} matches`,
     noResults: 'Nothing found',
+    highlightedItem: ({ label, selected }) => (selected ? `${label}, selected` : label),
   }}
 >
   {/* ... */}
