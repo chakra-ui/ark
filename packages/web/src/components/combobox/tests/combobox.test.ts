@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event'
 
 import { mount as AsyncSearch } from '../examples/async-search.js'
 import { mount as Grouping } from '../examples/grouping.js'
+import { mount as TextareaMention } from '../examples/textarea-mention.js'
 import { mount as Virtualized } from '../examples/virtualized.js'
 import { mount } from '../../../test-utils.js'
 import { createListCollection } from '@ark-ui/web/combobox'
@@ -98,3 +99,23 @@ test('arrow keys and filtering reach items that are not rendered in a virtualize
   await waitFor(() => expect(items()[0]).toHaveTextContent('Item 42'))
   expect(items()[0]).toHaveAttribute('aria-setsize', '111')
 }, 15_000)
+
+test('typing @ in the textarea suggests people and inserts the chosen mention', async () => {
+  mount(TextareaMention)
+  const textarea = await waitFor(() => {
+    const textarea = screen.getByRole('combobox')
+    expect(textarea).toBeInstanceOf(HTMLTextAreaElement)
+    return textarea as HTMLTextAreaElement
+  })
+
+  await user.type(textarea, 'Hi')
+  expect(document.querySelector('ark-combobox')!.open).toBe(false)
+
+  await user.type(textarea, ' @gr')
+
+  await waitFor(() => expect(texts(screen.getAllByRole('option'))).toEqual(['Grace Hopper']))
+  await user.keyboard('{Enter}')
+
+  await waitFor(() => expect(textarea).toHaveValue('Hi @Grace Hopper '))
+  expect(document.querySelector('ark-combobox')!.open).toBe(false)
+})

@@ -14,6 +14,7 @@ import RenderExample from './examples/render.vue'
 import RenderStateExample from './examples/render-state.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import SameWidthExample from './examples/same-width.vue'
+import TextSelectionExample from './examples/text-selection.vue'
 import WithDialogExample from './examples/with-dialog.vue'
 
 const meta: Meta = {
@@ -123,6 +124,13 @@ export const SameWidth = {
 export const WithDialog = {
   render: () => ({
     components: { Component: WithDialogExample },
+    template: '<Component />',
+  }),
+}
+
+export const TextSelection = {
+  render: () => ({
+    components: { Component: TextSelectionExample },
     template: '<Component />',
   }),
 }

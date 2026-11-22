@@ -37,7 +37,7 @@ export interface ComboboxElement<T extends CollectionItem = CollectionItem>
     ActionMethods<Api<PropTypes, T>, 'clearValue'>,
     RootElement<Api<PropTypes, T>, Props<T>>,
     FunctionProperties<Props<T>>,
-    Pick<Props<T>, 'ids' | 'translations' | 'positioning'>,
+    Pick<Props<T>, 'ids' | 'translations' | 'positioning' | 'openOnChange'>,
     StateProperties<Props<T>, 'open' | 'value' | 'inputValue'> {
   /**
    * The items to choose from, e.g. from `createListCollection`. Assign a new collection to update the list.

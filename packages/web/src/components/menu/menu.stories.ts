@@ -1,5 +1,6 @@
 import { renderExample } from '../../../.storybook/render-example.js'
 import type { Meta, StoryObj } from '@storybook/html-vite'
+import { mount as AsyncFilteringExample } from './examples/async-filtering.js'
 import { mount as BasicExample } from './examples/basic.js'
 import { mount as CheckboxItemsExample } from './examples/checkbox-items.js'
 import { mount as ContextLazyMountExample } from './examples/context-lazy-mount.js'
@@ -48,3 +49,5 @@ export const Nested: StoryObj = { name: 'Nested', render: renderExample(NestedEx
 export const RadioItems: StoryObj = { name: 'Radio Items', render: renderExample(RadioItemsExample) }
 
 export const SelectEvent: StoryObj = { name: 'Select Event', render: renderExample(SelectEventExample) }
+
+export const AsyncFiltering: StoryObj = { name: 'Async Filtering', render: renderExample(AsyncFilteringExample) }

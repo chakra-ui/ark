@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/svelte'
 
+import AsyncFilteringExample from './examples/async-filtering.svelte'
 import BasicExample from './examples/basic.svelte'
 import CheckboxItemsExample from './examples/checkbox-items.svelte'
 import ContextExample from './examples/context.svelte'
@@ -130,5 +131,11 @@ export const RootProvider = {
 export const SelectEvent = {
   render: () => ({
     Component: SelectEventExample,
+  }),
+}
+
+export const AsyncFiltering = {
+  render: () => ({
+    Component: AsyncFilteringExample,
   }),
 }

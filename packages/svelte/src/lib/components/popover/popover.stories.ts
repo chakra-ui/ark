@@ -11,6 +11,7 @@ import NestedExample from './examples/nested.svelte'
 import PositioningExample from './examples/positioning.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import SameWidthExample from './examples/same-width.svelte'
+import TextSelectionExample from './examples/text-selection.svelte'
 import WithDialogExample from './examples/with-dialog.svelte'
 
 const meta: Meta = {
@@ -94,5 +95,11 @@ export const SameWidth = {
 export const WithDialog = {
   render: () => ({
     Component: WithDialogExample,
+  }),
+}
+
+export const TextSelection = {
+  render: () => ({
+    Component: TextSelectionExample,
   }),
 }

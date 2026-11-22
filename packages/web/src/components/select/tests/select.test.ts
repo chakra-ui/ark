@@ -5,6 +5,7 @@ import { mount as Basic } from '../examples/basic.js'
 import { mount as CustomObject } from '../examples/custom-object.js'
 import { mount as ShadowRoot } from '../examples/shadow-root.js'
 import { mount as Virtualized } from '../examples/virtualized.js'
+import { mount as WithTabs } from '../examples/with-tabs.js'
 import { mount } from '../../../test-utils.js'
 import { createListCollection } from '@ark-ui/web/select'
 
@@ -188,4 +189,18 @@ test('with a hidden input part the value is submitted without a native select', 
   document.querySelector('ark-select')!.value = ['pear']
 
   await waitFor(() => expect(submitted()).toEqual(['pear']))
+})
+
+test('switching tabs inside the content swaps the items', async () => {
+  mount(WithTabs)
+  const trigger = await findTrigger()
+  await user.click(trigger)
+  await waitFor(() => expect(texts(screen.getAllByRole('option'))).toContain('develop'))
+
+  await user.click(screen.getByRole('tab', { name: 'Tags' }))
+  await waitFor(() => expect(texts(screen.getAllByRole('option'))).toContain('v5.36.1'))
+  await user.click(screen.getByRole('option', { name: 'v5.36.1' }))
+
+  await waitFor(() => expect(trigger).toHaveTextContent('v5.36.1'))
+  expect(document.querySelector('ark-select')!.value).toEqual(['v5.36.1'])
 })

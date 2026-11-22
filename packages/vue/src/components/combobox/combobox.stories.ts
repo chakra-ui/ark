@@ -11,6 +11,7 @@ import MultipleExample from './examples/multiple.vue'
 import ContextExample from './examples/context.vue'
 import RehydrateValueExample from './examples/rehydrate-value.vue'
 import RootProviderExample from './examples/root-provider.vue'
+import TextareaMentionExample from './examples/textarea-mention.vue'
 import WithFieldExample from './examples/with-field.vue'
 import HighlightMatchingTextExample from './examples/highlight-matching-text.vue'
 import AutoHighlightExample from './examples/auto-highlight.vue'
@@ -147,6 +148,13 @@ export const Virtualized = {
 export const AsyncSearch = {
   render: () => ({
     components: { Component: AsyncSearchExample },
+    template: '<Component />',
+  }),
+}
+
+export const TextareaMention = {
+  render: () => ({
+    components: { Component: TextareaMentionExample },
     template: '<Component />',
   }),
 }

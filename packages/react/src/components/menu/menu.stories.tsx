@@ -6,6 +6,7 @@ const meta: Meta = {
 
 export default meta
 
+export { AsyncFiltering } from './examples/async-filtering.tsx'
 export { Basic } from './examples/basic.tsx'
 export { CheckboxItems } from './examples/checkbox-items.tsx'
 export { Context } from './examples/context.tsx'

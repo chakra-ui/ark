@@ -5,6 +5,7 @@ import BasicExample from './examples/basic.vue'
 import ContextExample from './examples/context.vue'
 import ControlledExample from './examples/controlled.vue'
 import DelayExample from './examples/delay.vue'
+import FollowCursorExample from './examples/follow-cursor.vue'
 import MultipleTriggersExample from './examples/multiple-triggers.vue'
 import PositioningExample from './examples/positioning.vue'
 import RootProviderExample from './examples/root-provider.vue'
@@ -115,6 +116,13 @@ export const WithPopover = {
 export const WithinFixed = {
   render: () => ({
     components: { Component: WithinFixedExample },
+    template: '<Component />',
+  }),
+}
+
+export const FollowCursor = {
+  render: () => ({
+    components: { Component: FollowCursorExample },
     template: '<Component />',
   }),
 }

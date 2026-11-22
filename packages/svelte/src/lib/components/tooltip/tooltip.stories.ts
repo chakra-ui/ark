@@ -4,6 +4,7 @@ import BasicExample from './examples/basic.svelte'
 import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import DelayExample from './examples/delay.svelte'
+import FollowCursorExample from './examples/follow-cursor.svelte'
 import MultipleTriggersExample from './examples/multiple-triggers.svelte'
 import PositioningExample from './examples/positioning.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
@@ -101,5 +102,11 @@ export const WithPopover = {
 export const WithinFixed = {
   render: () => ({
     Component: WithinFixedExample,
+  }),
+}
+
+export const FollowCursor = {
+  render: () => ({
+    Component: FollowCursorExample,
   }),
 }

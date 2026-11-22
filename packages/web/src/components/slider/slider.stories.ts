@@ -13,6 +13,8 @@ import { mount as ThumbCollisionExample } from './examples/thumb-collision.js'
 import { mount as ThumbOverlapExample } from './examples/thumb-overlap.js'
 import { mount as VerticalExample } from './examples/vertical.js'
 import { mount as WithMarksExample } from './examples/with-marks.js'
+import { mount as WithNumberInputExample } from './examples/with-number-input.js'
+import { mount as WithTooltipExample } from './examples/with-tooltip.js'
 
 const meta: Meta = { title: 'Components / Slider' }
 export default meta
@@ -45,3 +47,7 @@ export const Vertical: StoryObj = { name: 'Vertical', render: renderExample(Vert
 export const WithMarks: StoryObj = { name: 'With Marks', render: renderExample(WithMarksExample) }
 
 export const AccessibleLabels: StoryObj = { name: 'Accessible Labels', render: renderExample(AccessibleLabelsExample) }
+
+export const WithNumberInput: StoryObj = { name: 'With Number Input', render: renderExample(WithNumberInputExample) }
+
+export const WithTooltip: StoryObj = { name: 'With Tooltip', render: renderExample(WithTooltipExample) }

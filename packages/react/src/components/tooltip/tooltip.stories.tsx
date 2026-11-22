@@ -9,6 +9,7 @@ export default meta
 export { Arrow } from './examples/arrow.tsx'
 export { Basic } from './examples/basic.tsx'
 export { Controlled } from './examples/controlled.tsx'
+export { FollowCursor } from './examples/follow-cursor.tsx'
 export { Positioning } from './examples/positioning.tsx'
 export { Context } from './examples/context.tsx'
 export { MultipleTriggers } from './examples/multiple-triggers.tsx'

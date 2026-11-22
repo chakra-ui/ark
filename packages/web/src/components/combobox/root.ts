@@ -45,11 +45,12 @@ definePresenceRoot<combobox.Api>({
     'loading',
     'allow-custom-value',
     'open-on-click',
+    'open-on-key-press',
     'input-behavior',
     'selection-behavior',
     ...positioningAttributes,
   ],
-  properties: ['scrollToIndexFn', 'navigate', 'ids', 'translations', 'positioning'],
+  properties: ['scrollToIndexFn', 'navigate', 'ids', 'translations', 'positioning', 'openOnChange'],
   ownProperties: ['collection'],
   propertyChanged: (el, name) => {
     if (name === 'collection') collection.update(el)
@@ -90,6 +91,7 @@ definePresenceRoot<combobox.Api>({
       loading: el.hasAttribute('loading'),
       name: str(el, 'name'),
       openOnClick: el.hasAttribute('open-on-click'),
+      openOnKeyPress: el.getAttribute('open-on-key-press') !== 'false',
       allowCustomValue: el.hasAttribute('allow-custom-value'),
       inputBehavior: str<InputBehavior>(el, 'input-behavior') ?? 'none',
       selectionBehavior: str<SelectionBehavior>(el, 'selection-behavior') ?? 'replace',

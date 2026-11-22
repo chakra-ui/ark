@@ -17,6 +17,7 @@ import WithFieldExample from './examples/with-field.svelte'
 import VirtualizedExample from './examples/virtualized.svelte'
 import OverflowExample from './examples/overflow.svelte'
 import SelectAllExample from './examples/select-all.svelte'
+import WithTabsExample from './examples/with-tabs.svelte'
 
 const meta: Meta = {
   title: 'Components/Select',
@@ -126,5 +127,11 @@ export const Overflow = {
 export const SelectAll = {
   render: () => ({
     Component: SelectAllExample,
+  }),
+}
+
+export const WithTabs = {
+  render: () => ({
+    Component: WithTabsExample,
   }),
 }

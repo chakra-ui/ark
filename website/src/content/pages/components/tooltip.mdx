@@ -57,6 +57,12 @@ To customize the position of the Tooltip relative to the trigger, use the `posit
 
 <Example id="positioning" />
 
+### Follow Cursor
+
+Use `positioning.getAnchorElement` with the pointer position to make the tooltip follow the cursor.
+
+<Example id="follow-cursor" />
+
 ### Context
 
 Access the tooltip's state and methods with `Tooltip.Context` or the `useTooltipContext` hook:
@@ -72,7 +78,7 @@ positioning.
 
 ### Multiple Triggers
 
-Share a single tooltip across multiple trigger elements. Pass a `value` to each `Tooltip.Trigger` — the tooltip
+Share a single tooltip across multiple trigger elements. Pass a `value` to each `Tooltip.Trigger`. The tooltip
 repositions to whichever trigger is hovered without closing.
 
 <Example id="multiple-triggers" />

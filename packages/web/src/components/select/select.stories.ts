@@ -17,6 +17,7 @@ import { mount as SelectOnHighlightExample } from './examples/select-on-highligh
 import { mount as ShadowRootExample } from './examples/shadow-root.js'
 import { mount as VirtualizedExample } from './examples/virtualized.js'
 import { mount as WithFieldExample } from './examples/with-field.js'
+import { mount as WithTabsExample } from './examples/with-tabs.js'
 
 const meta: Meta = { title: 'Components / Select' }
 export default meta
@@ -60,3 +61,5 @@ export const WithField: StoryObj = { name: 'With Field', render: renderExample(W
 export const CustomObject: StoryObj = { name: 'Custom Object', render: renderExample(CustomObjectExample) }
 
 export const Virtualized: StoryObj = { name: 'Virtualized', render: renderExample(VirtualizedExample) }
+
+export const WithTabs: StoryObj = { name: 'With Tabs', render: renderExample(WithTabsExample) }

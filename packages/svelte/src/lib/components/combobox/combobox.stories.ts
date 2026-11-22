@@ -10,6 +10,7 @@ import MultipleExample from './examples/multiple.svelte'
 import RehydrateValueExample from './examples/rehydrate-value.svelte'
 import ContextExample from './examples/context.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import TextareaMentionExample from './examples/textarea-mention.svelte'
 import WithFieldExample from './examples/with-field.svelte'
 import HighlightMatchingTextExample from './examples/highlight-matching-text.svelte'
 import AutoHighlightExample from './examples/auto-highlight.svelte'
@@ -129,5 +130,11 @@ export const Virtualized = {
 export const AsyncSearch = {
   render: () => ({
     Component: AsyncSearchExample,
+  }),
+}
+
+export const TextareaMention = {
+  render: () => ({
+    Component: TextareaMentionExample,
   }),
 }

@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/vue3-vite'
 
+import AsyncFilteringExample from './examples/async-filtering.vue'
 import BasicExample from './examples/basic.vue'
 import CheckboxItemsExample from './examples/checkbox-items.vue'
 import ContextExample from './examples/context.vue'
@@ -147,6 +148,13 @@ export const RootProvider = {
 export const SelectEvent = {
   render: () => ({
     components: { Component: SelectEventExample },
+    template: '<Component />',
+  }),
+}
+
+export const AsyncFiltering = {
+  render: () => ({
+    components: { Component: AsyncFilteringExample },
     template: '<Component />',
   }),
 }

@@ -13,6 +13,7 @@ import { mount as InlineAutocompleteExample } from './examples/inline-autocomple
 import { mount as LimitResultsExample } from './examples/limit-results.js'
 import { mount as LinksExample } from './examples/links.js'
 import { mount as MultipleExample } from './examples/multiple.js'
+import { mount as TextareaMentionExample } from './examples/textarea-mention.js'
 import { mount as VirtualizedExample } from './examples/virtualized.js'
 import { mount as WithFieldExample } from './examples/with-field.js'
 
@@ -54,3 +55,5 @@ export const WithField: StoryObj = { name: 'With Field', render: renderExample(W
 export const AsyncSearch: StoryObj = { name: 'Async Search', render: renderExample(AsyncSearchExample) }
 
 export const Virtualized: StoryObj = { name: 'Virtualized', render: renderExample(VirtualizedExample) }
+
+export const TextareaMention: StoryObj = { name: 'Textarea Mention', render: renderExample(TextareaMentionExample) }

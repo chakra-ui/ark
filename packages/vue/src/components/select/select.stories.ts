@@ -19,6 +19,7 @@ import ShadowRootExample from './examples/shadow-root.vue'
 import WithFieldExample from './examples/with-field.vue'
 import VirtualizedExample from './examples/virtualized.vue'
 import OverflowExample from './examples/overflow.vue'
+import WithTabsExample from './examples/with-tabs.vue'
 
 const meta: Meta = {
   title: 'Components / Select',
@@ -155,6 +156,13 @@ export const Virtualized = {
 export const Overflow = {
   render: () => ({
     components: { Component: OverflowExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithTabs = {
+  render: () => ({
+    components: { Component: WithTabsExample },
     template: '<Component />',
   }),
 }

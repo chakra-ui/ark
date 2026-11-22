@@ -14,6 +14,8 @@ import ThumbCollisionExample from './examples/thumb-collision.vue'
 import ThumbOverlapExample from './examples/thumb-overlap.vue'
 import VerticalExample from './examples/vertical.vue'
 import WithMarksExample from './examples/with-marks.vue'
+import WithNumberInputExample from './examples/with-number-input.vue'
+import WithTooltipExample from './examples/with-tooltip.vue'
 
 const meta: Meta = {
   title: 'Components / Slider',
@@ -115,6 +117,20 @@ export const Vertical = {
 export const WithMarks = {
   render: () => ({
     components: { Component: WithMarksExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithNumberInput = {
+  render: () => ({
+    components: { Component: WithNumberInputExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithTooltip = {
+  render: () => ({
+    components: { Component: WithTooltipExample },
     template: '<Component />',
   }),
 }

@@ -13,6 +13,8 @@ import ThumbCollisionExample from './examples/thumb-collision.svelte'
 import ThumbOverlapExample from './examples/thumb-overlap.svelte'
 import VerticalExample from './examples/vertical.svelte'
 import WithMarksExample from './examples/with-marks.svelte'
+import WithNumberInputExample from './examples/with-number-input.svelte'
+import WithTooltipExample from './examples/with-tooltip.svelte'
 
 const meta = {
   title: 'Components/Slider',
@@ -103,5 +105,17 @@ export const Vertical: Story = {
 export const WithMarks: Story = {
   render: () => ({
     Component: WithMarksExample,
+  }),
+}
+
+export const WithNumberInput = {
+  render: () => ({
+    Component: WithNumberInputExample,
+  }),
+}
+
+export const WithTooltip = {
+  render: () => ({
+    Component: WithTooltipExample,
   }),
 }

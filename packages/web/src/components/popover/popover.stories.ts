@@ -14,6 +14,7 @@ import { mount as NestedExample } from './examples/nested.js'
 import { mount as PlacementExample } from './examples/placement.js'
 import { mount as PositioningExample } from './examples/positioning.js'
 import { mount as SameWidthExample } from './examples/same-width.js'
+import { mount as TextSelectionExample } from './examples/text-selection.js'
 import { mount as WithDialogExample } from './examples/with-dialog.js'
 
 const meta: Meta = { title: 'Components / Popover' }
@@ -51,3 +52,5 @@ export const Positioning: StoryObj = { name: 'Positioning', render: renderExampl
 export const SameWidth: StoryObj = { name: 'Same Width', render: renderExample(SameWidthExample) }
 
 export const WithDialog: StoryObj = { name: 'With Dialog', render: renderExample(WithDialogExample) }
+
+export const TextSelection: StoryObj = { name: 'Text Selection', render: renderExample(TextSelectionExample) }

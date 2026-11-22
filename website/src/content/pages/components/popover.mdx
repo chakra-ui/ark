@@ -54,8 +54,8 @@ Use `Popover.Arrow` and `Popover.ArrowTip` to render an arrow pointing to the tr
 
 To change the placement of the popover, set the `positioning` prop.
 
-By default it only flips to the opposite side when there isn't room. Pass a list of placements to `positioning.flip`
-to choose the fallbacks, so it can move above or below instead.
+By default it only flips to the opposite side when there isn't room. Pass a list of placements to `positioning.flip` to
+choose the fallbacks, so it can move above or below instead.
 
 <Example id="positioning" />
 
@@ -89,6 +89,12 @@ Use `Popover.Anchor` to position the popover relative to a different element tha
 
 <Example id="anchor" />
 
+### Text Selection
+
+Use `positioning.getAnchorElement` to anchor the popover to the current text selection.
+
+<Example id="text-selection" />
+
 ### Same Width
 
 Use `positioning.sameWidth` to make the popover match the width of its trigger element.
@@ -115,7 +121,7 @@ Popovers can be nested within each other. Each nested popover maintains its own 
 
 ### Multiple Triggers
 
-Share a single popover across multiple trigger elements. Pass a `value` to each `Popover.Trigger` — the popover
+Share a single popover across multiple trigger elements. Pass a `value` to each `Popover.Trigger`. The popover
 repositions to whichever trigger is activated without closing.
 
 <Example id="multiple-triggers" />

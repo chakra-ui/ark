@@ -4,6 +4,7 @@ import { mount as ArrowExample } from './examples/arrow.js'
 import { mount as BasicExample } from './examples/basic.js'
 import { mount as ControlledExample } from './examples/controlled.js'
 import { mount as DelayExample } from './examples/delay.js'
+import { mount as FollowCursorExample } from './examples/follow-cursor.js'
 import { mount as MultipleTriggersExample } from './examples/multiple-triggers.js'
 import { mount as PlacementExample } from './examples/placement.js'
 import { mount as PositioningExample } from './examples/positioning.js'
@@ -42,3 +43,5 @@ export const WithMenuTrigger: StoryObj = { name: 'With Menu Trigger', render: re
 export const WithPopover: StoryObj = { name: 'With Popover', render: renderExample(WithPopoverExample) }
 
 export const WithinFixed: StoryObj = { name: 'Within Fixed', render: renderExample(WithinFixedExample) }
+
+export const FollowCursor: StoryObj = { name: 'Follow Cursor', render: renderExample(FollowCursorExample) }
