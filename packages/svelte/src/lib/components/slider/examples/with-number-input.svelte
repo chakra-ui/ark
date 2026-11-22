@@ -43,7 +43,7 @@
       </Slider.Thumb>
     </Slider.Control>
   </Slider.Root>
-  <div class="hstack">
+  <div class={styles.NumberInputs}>
     <NumberInput.Root
       class={numberInput.Root}
       value={value[0]}

@@ -52,7 +52,7 @@ const getAriaLabel = ({ index }: { index: number }) => (index === 0 ? 'Minimum p
         </Slider.Thumb>
       </Slider.Control>
     </Slider.Root>
-    <div class="hstack">
+    <div :class="styles.NumberInputs">
       <NumberInput.Root
         :class="numberInput.Root"
         :model-value="value[0]"

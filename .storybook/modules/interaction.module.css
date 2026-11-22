@@ -1,61 +1,57 @@
 .Container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 16px;
-  font-family: system-ui, sans-serif;
+  gap: 0.75rem;
+  color: var(--demo-neutral-fg);
 }
 
 .Badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 9999px;
-  font-size: 14px;
-  font-weight: 500;
-  background: #f0f0f0;
-  color: #333;
+  gap: 0.375rem;
   width: fit-content;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: var(--demo-neutral-subtle);
+  color: var(--demo-neutral-fg);
 
   &[data-modality='keyboard'] {
-    background: #dbeafe;
-    color: #1d4ed8;
+    background: var(--demo-coral-subtle);
+    color: var(--demo-coral-fg);
   }
 
-  &[data-modality='pointer'] {
-    background: #dcfce7;
-    color: #15803d;
-  }
-
+  &[data-modality='pointer'],
   &[data-modality='virtual'] {
-    background: #fef3c7;
-    color: #b45309;
+    background: var(--demo-neutral-muted);
   }
 }
 
 .Hint,
 .Status {
-  font-size: 14px;
-  color: #666;
+  font-size: 0.875rem;
+  color: var(--demo-neutral-fg-muted);
 }
 
 .Button {
-  padding: 8px 16px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  background: white;
-  cursor: pointer;
-  font-size: 14px;
   width: fit-content;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: var(--demo-neutral-fg);
+  background: transparent;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.375rem;
+  cursor: pointer;
   outline: none;
 
   &:hover {
-    background: #f9fafb;
+    background: var(--demo-neutral-subtle);
   }
 
   &[data-focus-visible] {
-    outline: 2px solid #3b82f6;
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: 2px;
   }
 }
@@ -63,23 +59,26 @@
 .Field {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.25rem;
 }
 
 .Label {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
 }
 
 .Input {
-  padding: 6px 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-size: 14px;
+  padding: 0.375rem 0.625rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: var(--demo-neutral-fg);
+  background: transparent;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.375rem;
   outline: none;
 
   &[data-focus-visible] {
-    outline: 2px solid #3b82f6;
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: 2px;
   }
 }

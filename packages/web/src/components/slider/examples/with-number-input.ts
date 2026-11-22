@@ -30,7 +30,7 @@ export function mount(root: HTMLElement) {
         <ark-slider-thumb class="${styles.Thumb}" index="1"><ark-slider-hidden-input></ark-slider-hidden-input></ark-slider-thumb>
       </ark-slider-control>
     </ark-slider>
-    <div class="hstack">${input('Min')}${input('Max')}</div>
+    <div class="${styles.NumberInputs}">${input('Min')}${input('Max')}</div>
   </div>`
 
   const slider = root.querySelector('ark-slider')!

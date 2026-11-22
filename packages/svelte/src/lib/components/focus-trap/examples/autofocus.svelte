@@ -1,5 +1,7 @@
 <script lang="ts">
   import { FocusTrap } from '@ark-ui/svelte/focus-trap'
+  import button from 'styles/button.module.css'
+  import field from 'styles/field.module.css'
 
   let trapped = $state(false)
   let buttonNode: HTMLButtonElement | null = $state(null)
@@ -11,16 +13,16 @@
 </script>
 
 <div>
-  <button bind:this={buttonNode} onclick={() => (trapped = !trapped)}>
+  <button class={button.Root} type="button" bind:this={buttonNode} onclick={() => (trapped = !trapped)}>
     {trapped ? 'End Trap' : 'Start Trap'}
   </button>
   {#if trapped}
     <FocusTrap disabled={!trapped} setReturnFocus={getButtonNode}>
-      <div style="display: flex; flex-direction: column; gap: 1rem; padding-block: 1rem">
-        <input type="text" placeholder="Regular input" />
+      <div class="stack" style="padding-block: 1rem">
+        <input class={field.Input} type="text" placeholder="Regular input" />
         <!-- svelte-ignore a11y_autofocus -->
-        <input type="text" placeholder="Autofocused input" autofocus />
-        <button onclick={() => (trapped = false)}>End Trap</button>
+        <input class={field.Input} type="text" placeholder="Autofocused input" autofocus />
+        <button class={button.Root} type="button" onclick={() => (trapped = false)}>End Trap</button>
       </div>
     </FocusTrap>
   {/if}

@@ -23,7 +23,7 @@ const handleInputChange = (details: { inputValue: string }) => {
 <template>
   <Combobox.Root :class="styles.Root" :collection="collection" @input-value-change="handleInputChange">
     <Combobox.Context v-slot="combobox">
-      <p>Selected: {{ combobox.valueAsString || 'None' }}</p>
+      <output>selected: {{ combobox.valueAsString || 'none' }}</output>
     </Combobox.Context>
     <Combobox.Label :class="styles.Label">Size</Combobox.Label>
     <Combobox.Control :class="styles.Control">

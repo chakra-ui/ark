@@ -27,6 +27,7 @@ output {
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+  min-width: min(16rem, 100%);
 }
 
 .vstack {

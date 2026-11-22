@@ -28,7 +28,7 @@
 <Combobox.Root class={styles.Root} {collection} onInputValueChange={handleInputChange}>
   <Combobox.Context>
     {#snippet render(combobox)}
-      <p>Selected: {combobox().valueAsString || 'None'}</p>
+      <output>selected: {combobox().valueAsString || 'none'}</output>
     {/snippet}
   </Combobox.Context>
   <Combobox.Label class={styles.Label}>Size</Combobox.Label>

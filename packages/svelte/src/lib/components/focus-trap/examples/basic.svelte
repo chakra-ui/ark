@@ -1,15 +1,17 @@
 <script lang="ts">
   import { FocusTrap } from '@ark-ui/svelte/focus-trap'
+  import button from 'styles/button.module.css'
+  import field from 'styles/field.module.css'
 
   let trapped = $state(false)
 </script>
 
-<button onclick={() => (trapped = true)}>Start Trap</button>
+<button class={button.Root} type="button" onclick={() => (trapped = true)}>Start Trap</button>
 
 <FocusTrap returnFocusOnDeactivate={false} disabled={!trapped}>
-  <div style="display: flex; flex-direction: column; gap: 1rem; padding-block: 1rem">
-    <input type="text" placeholder="input" />
-    <textarea placeholder="textarea"></textarea>
-    <button onclick={() => (trapped = false)}>End Trap</button>
+  <div class="stack" style="padding-block: 1rem">
+    <input class={field.Input} type="text" placeholder="input" />
+    <textarea class={field.Textarea} placeholder="textarea"></textarea>
+    <button class={button.Root} type="button" onclick={() => (trapped = false)}>End Trap</button>
   </div>
 </FocusTrap>

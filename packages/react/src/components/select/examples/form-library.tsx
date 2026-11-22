@@ -22,7 +22,7 @@ export const FormLibrary = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className="stack" onSubmit={handleSubmit(onSubmit)}>
       <Controller
         name="framework"
         control={control}

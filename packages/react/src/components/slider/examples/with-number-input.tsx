@@ -44,7 +44,7 @@ export const WithNumberInput = () => {
           </Slider.Thumb>
         </Slider.Control>
       </Slider.Root>
-      <div className="hstack">
+      <div className={styles.NumberInputs}>
         <NumberInput.Root
           className={numberInput.Root}
           value={value[0]}

@@ -202,7 +202,7 @@
   position: absolute;
   right: -0.5rem;
   top: 50%;
-  background: var(--colors-bg-default, #fff);
+  background: var(--demo-bg-popover);
   transform: translateY(-50%);
   width: 1.5rem;
   padding: 1rem;
@@ -214,7 +214,7 @@
 
   &[data-expanded] {
     width: 12rem;
-    background: var(--colors-bg-default);
+    background: var(--demo-bg-popover);
     box-shadow:
       0 6px 24px 0 rgba(0, 0, 0, 0.13),
       0 3px 12px 0 rgba(0, 0, 0, 0.07);

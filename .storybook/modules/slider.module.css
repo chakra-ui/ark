@@ -138,3 +138,11 @@
     background: var(--demo-coral-solid);
   }
 }
+
+.NumberInputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 16rem;
+}

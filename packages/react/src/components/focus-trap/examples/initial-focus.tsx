@@ -1,5 +1,7 @@
 import { FocusTrap } from '@ark-ui/react/focus-trap'
 import { useRef, useState } from 'react'
+import button from 'styles/button.module.css'
+import field from 'styles/field.module.css'
 
 export const InitialFocus = () => {
   const [trapped, setTrapped] = useState(false)
@@ -9,20 +11,17 @@ export const InitialFocus = () => {
 
   return (
     <div>
-      <button onClick={toggle}>{trapped ? 'End Trap' : 'Start Trap'}</button>
+      <button className={button.Root} type="button" onClick={toggle}>
+        {trapped ? 'End Trap' : 'Start Trap'}
+      </button>
       <FocusTrap disabled={!trapped} initialFocus={() => inputRef.current}>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1rem',
-            paddingBlock: '1rem',
-          }}
-        >
-          <input type="text" placeholder="First input" />
-          <input ref={inputRef} type="text" placeholder="Second input (initial focus)" />
-          <textarea placeholder="textarea" />
-          <button onClick={() => setTrapped(false)}>End Trap</button>
+        <div className="stack" style={{ paddingBlock: '1rem' }}>
+          <input className={field.Input} type="text" placeholder="First input" />
+          <input className={field.Input} ref={inputRef} type="text" placeholder="Second input (initial focus)" />
+          <textarea className={field.Textarea} placeholder="textarea" />
+          <button className={button.Root} type="button" onClick={() => setTrapped(false)}>
+            End Trap
+          </button>
         </div>
       </FocusTrap>
     </div>

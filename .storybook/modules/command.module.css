@@ -48,7 +48,8 @@
 .Root {
   display: flex;
   flex-direction: column;
-  width: min(30rem, 100%);
+  width: 30rem;
+  max-width: 100%;
   max-height: 22rem;
   overflow: hidden;
   background: var(--demo-bg-popover);

@@ -9,7 +9,7 @@ export const RootProvider = () => {
 
   return (
     <div className="stack">
-      <span>hasOpenMenu: {String(menubar.hasOpenMenu)}</span>
+      <output>hasOpenMenu: {String(menubar.hasOpenMenu)}</output>
       <Menubar.RootProvider className={styles.Root} value={menubar}>
         <Menu.Root>
           <Menu.Trigger className={styles.Trigger}>File</Menu.Trigger>

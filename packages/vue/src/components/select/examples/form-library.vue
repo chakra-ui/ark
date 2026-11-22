@@ -30,7 +30,7 @@ const onSubmit = handleSubmit((values) => {
 <template>
   <div>
     <div style="margin-bottom: 1rem">Value is {{ values.framework }}</div>
-    <form @submit="onSubmit">
+    <form class="stack" @submit="onSubmit">
       <Select.Root
         :class="styles.Root"
         :collection="frameworks"

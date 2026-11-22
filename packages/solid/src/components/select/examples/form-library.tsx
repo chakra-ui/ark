@@ -20,6 +20,7 @@ export const FormLibrary = () => {
     <>
       <div style={{ 'margin-bottom': '1rem' }}>Value is {value()}</div>
       <form
+        class="stack"
         onSubmit={(e) => {
           e.preventDefault()
           window.alert(JSON.stringify(Object.fromEntries(new FormData(e.currentTarget))))

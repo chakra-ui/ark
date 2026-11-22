@@ -9,7 +9,7 @@
 </script>
 
 <div class="stack">
-  <span>hasOpenMenu: {String(menubar().hasOpenMenu)}</span>
+  <output>hasOpenMenu: {String(menubar().hasOpenMenu)}</output>
   <Menubar.RootProvider class={styles.Root} value={menubar}>
     <Menu.Root>
       <Menu.Trigger class={styles.Trigger}>File</Menu.Trigger>

@@ -10,7 +10,7 @@ const menubar = useMenubar()
 
 <template>
   <div class="stack">
-    <span>hasOpenMenu: {{ menubar.hasOpenMenu }}</span>
+    <output>hasOpenMenu: {{ menubar.hasOpenMenu }}</output>
     <Menubar.RootProvider :class="styles.Root" :value="menubar">
       <Menu.Root>
         <Menu.Trigger :class="styles.Trigger">File</Menu.Trigger>

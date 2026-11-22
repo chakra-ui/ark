@@ -3,7 +3,9 @@ import { JsonTreeView } from '@ark-ui/vue/json-tree-view'
 import { ChevronRightIcon } from 'lucide-vue-next'
 import styles from 'styles/json-tree-view.module.css'
 
-const data = new Error('Error')
+const data = Object.assign(new Error('Could not load user'), {
+  stack: 'Error: Could not load user\n    at fetchUser (api.ts:12:9)\n    at loadProfile (profile.ts:4:3)',
+})
 </script>
 
 <template>

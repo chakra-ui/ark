@@ -29,6 +29,7 @@
 <div style="margin-bottom: 1rem;">Value is {formData.framework}</div>
 
 <form
+  class="stack"
   onsubmit={(e) => {
     e.preventDefault()
     form.handleSubmit()

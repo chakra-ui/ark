@@ -23,7 +23,7 @@ export const Context = () => {
 
   return (
     <Combobox.Root className={styles.Root} collection={collection} onInputValueChange={handleInputChange}>
-      <Combobox.Context>{(combobox) => <p>Selected: {combobox.valueAsString || 'None'}</p>}</Combobox.Context>
+      <Combobox.Context>{(combobox) => <output>selected: {combobox.valueAsString || 'none'}</output>}</Combobox.Context>
       <Combobox.Label className={styles.Label}>Size</Combobox.Label>
       <Combobox.Control className={styles.Control}>
         <Combobox.Input className={styles.Input} placeholder="e.g. Medium" />

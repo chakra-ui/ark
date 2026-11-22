@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { FocusTrap } from '@ark-ui/vue/focus-trap'
 import { ref } from 'vue'
+import button from 'styles/button.module.css'
+import field from 'styles/field.module.css'
 
 const trapped = ref(false)
 const inputRef = ref<HTMLInputElement>()
@@ -11,13 +13,13 @@ const toggle = () => {
 
 <template>
   <div>
-    <button @click="toggle">{{ trapped ? 'End Trap' : 'Start Trap' }}</button>
+    <button :class="button.Root" type="button" @click="toggle">{{ trapped ? 'End Trap' : 'Start Trap' }}</button>
     <FocusTrap :disabled="!trapped" :initial-focus="() => inputRef">
-      <div style="display: flex; flex-direction: column; gap: 1rem; padding-block: 1rem">
-        <input type="text" placeholder="First input" />
-        <input ref="inputRef" type="text" placeholder="Second input (initial focus)" />
-        <textarea placeholder="textarea" />
-        <button @click="trapped = false">End Trap</button>
+      <div class="stack" style="padding-block: 1rem">
+        <input :class="field.Input" type="text" placeholder="First input" />
+        <input :class="field.Input" ref="inputRef" type="text" placeholder="Second input (initial focus)" />
+        <textarea :class="field.Textarea" placeholder="textarea" />
+        <button :class="button.Root" type="button" @click="trapped = false">End Trap</button>
       </div>
     </FocusTrap>
   </div>
