@@ -1,4 +1,3 @@
-import { fetchExamplesGroupedByCategory } from './examples'
 import type { SearchItem } from './search-query'
 import { pagesWithToc } from './source'
 
@@ -49,18 +48,7 @@ const sections: SearchItem[] = uniquePages
   .filter((page) => categoryToGroup[page.category] && page.toc?.length)
   .flatMap((page) => flattenToc(page.toc as TocEntry[], page.title, page.slug))
 
-const examples: SearchItem[] = await fetchExamplesGroupedByCategory().then((groups) =>
-  groups.flatMap((group) =>
-    group.items.map((item) => ({
-      label: item.title,
-      value: `/examples/${item.id}`,
-      group: 'Examples',
-      description: item.description,
-    })),
-  ),
-)
-
-export const searchItems: SearchItem[] = [...docsPages, ...sections, ...examples]
+export const searchItems: SearchItem[] = [...docsPages, ...sections]
 
 const popularComponentSlugs = [
   'components/accordion',

@@ -2,7 +2,6 @@ import NextLink from 'next/link'
 import { Box, Divider, HStack, Stack } from 'styled-system/jsx'
 import { ColorModeButton } from '~/components/color-mode-button'
 import { Logo } from '~/components/logo'
-import { UserButton } from '../auth/user-button'
 import { CommandMenu } from '../command-menu'
 import { Announcement } from '../marketing/annoucement'
 import { FrameworkSelect } from './framework-select'
@@ -38,7 +37,6 @@ export const Navbar = () => {
                 <ColorModeButton />
                 <GitHubLink />
               </HStack>
-              <UserButton />
             </HStack>
           </HStack>
           <HStack gap="1" py="0.5" display={{ base: 'flex', md: 'none' }}>
@@ -50,7 +48,6 @@ export const Navbar = () => {
                 <HStack gap="3" justifyContent="center" px="3" pt="6">
                   <ColorModeButton />
                   <GitHubLink />
-                  <UserButton />
                 </HStack>
               </Stack>
             </MobileNavbar>

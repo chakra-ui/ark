@@ -1,7 +1,6 @@
 import { cacheLife } from 'next/cache'
 import type { MetadataRoute } from 'next'
-import { fetchExamples } from '~/lib/examples'
-import { docsHref, examplesHref, frameworks, hasPlusExamples, isDocAvailable } from '~/lib/frameworks'
+import { docsHref, frameworks, isDocAvailable } from '~/lib/frameworks'
 import { getPublicUrl } from '~/lib/get-public-url'
 import { getSidebarGroups } from '~/lib/sidebar'
 import { blogs } from '~/lib/source'
@@ -9,7 +8,7 @@ import { blogs } from '~/lib/source'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   'use cache'
   cacheLife('hours')
-  const staticPages = ['', '/blog', '/showcase', '/plus', '/team', '/brand', '/license'].map((path) => ({
+  const staticPages = ['', '/blog', '/showcase', '/team', '/brand'].map((path) => ({
     url: getPublicUrl(path),
   }))
 
@@ -26,10 +25,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(blog.date),
   }))
 
-  const examples = await fetchExamples()
-  const examplePages = examples.flatMap((example) =>
-    frameworks.filter(hasPlusExamples).map((framework) => ({ url: getPublicUrl(examplesHref(framework, example.id)) })),
-  )
-
-  return [...staticPages, ...docsPages, ...blogPages, ...examplePages]
+  return [...staticPages, ...docsPages, ...blogPages]
 }

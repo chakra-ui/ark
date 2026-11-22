@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { Badge } from '~/components/ui/badge'
 import { Icon } from '../ui/icon'
 
-const excludePaths = ['/plus', '/showcase']
+const excludePaths = ['/showcase']
 
 export const Announcement = () => {
   const pathname = usePathname()

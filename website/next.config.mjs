@@ -23,13 +23,8 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/examples',
-        destination: '/examples/react/checkbox-group',
-        permanent: false,
-      },
-      {
-        source: '/examples/:id',
-        destination: '/examples/react/:id',
+        source: '/examples/:path*',
+        destination: '/docs/react/components/overview',
         permanent: false,
       },
       {

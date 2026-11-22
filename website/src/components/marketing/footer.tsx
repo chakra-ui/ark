@@ -42,7 +42,6 @@ const columns: { title: string; links: FooterLink[] }[] = [
     links: [
       { label: 'Showcase', href: '/showcase' },
       { label: 'Team', href: '/team' },
-      { label: 'Ark Plus', href: '/plus' },
     ],
   },
 ]

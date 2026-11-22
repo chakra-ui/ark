@@ -1,5 +1,4 @@
 import { DemoPreview } from './demo-preview'
-import { ExamplesPreview } from './examples-preview'
 
 interface Props {
   id: string
@@ -7,10 +6,5 @@ interface Props {
 
 export const ComponentPreview = (props: Props) => {
   const { id } = props
-  return (
-    <>
-      <DemoPreview id={id} />
-      <ExamplesPreview />
-    </>
-  )
+  return <DemoPreview id={id} />
 }

@@ -1,4 +1,3 @@
-import { SparklesIcon } from 'lucide-react'
 import { docsHref, frameworkFromPathname } from './frameworks'
 
 interface NavLinkItem {
@@ -23,12 +22,6 @@ export const navLinks: NavLinkItem[] = [
     label: 'Blog',
     href: '/blog',
     hrefPrefix: '/blog',
-  },
-  {
-    label: 'Plus',
-    href: '/plus',
-    hrefPrefix: '/plus',
-    icon: SparklesIcon,
   },
 ]
 

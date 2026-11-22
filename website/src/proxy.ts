@@ -3,7 +3,6 @@ import { defaultFramework, isFramework } from '~/lib/frameworks'
 
 const fallbackSlug: Record<string, string> = {
   docs: 'overview/getting-started',
-  examples: 'checkbox-group',
 }
 
 export function proxy(request: NextRequest) {
@@ -20,5 +19,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/docs', '/docs/:path*', '/examples', '/examples/:path*'],
+  matcher: ['/docs', '/docs/:path*'],
 }

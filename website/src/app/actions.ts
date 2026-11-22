@@ -1,13 +1,6 @@
 'use server'
 import { Effect, pipe } from 'effect'
-import { headers } from 'next/headers'
-import { auth } from '~/lib/auth'
 import { InternalServerError } from '~/lib/errors'
-
-export const hasUserPermission = async () => {
-  const session = await auth.api.getSession({ headers: await headers() })
-  return session?.purchases.some((purchase) => purchase.startsWith('ark-ui-plus'))
-}
 
 interface FormState {
   success?: boolean | undefined
