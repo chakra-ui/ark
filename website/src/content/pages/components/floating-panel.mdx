@@ -37,41 +37,37 @@ description: Used to display content in a non-modal floating window.
 
 ### Controlled size
 
-To control the size of the floating panel programmatically, you can pass the `size` `onResize` prop to the machine.
+Use `size` and `onSizeChange` to control the size.
 
 <Example id="controlled-size" />
 
 ### Controlled position
 
-To control the position of the floating panel programmatically, you can pass the `position` and `onPositionChange` prop
-to the machine.
+Use `position` and `onPositionChange` to control the position.
 
 <Example id="controlled-position" />
 
 ### Anchor Position
 
-Use the `getAnchorPosition` function to compute the initial position of the floating panel. This function is called when
-the panel is opened and receives the `triggerRect` and `boundaryRect`.
+Use `getAnchorPosition` to compute the initial position. It runs on open and receives `triggerRect` and `boundaryRect`.
 
 <Example id="anchor-position" />
 
 ### Open State
 
-To control the open state of the floating panel programmatically, you can pass the `open` and `onOpenChange` prop to the
-machine.
+Use `open` and `onOpenChange` to control the open state.
 
 <Example id="controlled-open" />
 
 ### Lazy Mount
 
-To lazy mount the floating panel, you can pass the `lazyMount` prop to the machine.
+Set `lazyMount` to render the panel only when first opened.
 
 <Example id="lazy-mount" />
 
 ### Context
 
-To access the context of the floating panel, you can use the `useFloatingPanelContext` hook or the
-`FloatingPanel.Context` component.
+Use `FloatingPanel.Context` or the `useFloatingPanelContext` hook to access the panel's state.
 
 <Example id="context" />
 

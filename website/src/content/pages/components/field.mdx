@@ -25,13 +25,12 @@ description: Provides a flexible container for form inputs, labels, and helper t
 
 ## Examples
 
-The `Field` component provides contexts such as `invalid`, `disabled`, `required`, and `readOnly` for form elements.
-While most Ark UI components natively support these contexts, you can also use the `Field` component with standard HTML
-form elements.
+`Field` provides `invalid`, `disabled`, `required`, and `readOnly` context to form elements. Most Ark UI components read
+it natively, and it also works with standard HTML form elements.
 
 ### Input
 
-This example shows how to use the `Field` component with a standard input field.
+Use `Field.Input` for a standard input.
 
 <Example id="input" />
 
@@ -58,8 +57,8 @@ Use it inside the label to show a required marker.
 ### Validation
 
 The field validates the control natively, using attributes like `required` and `type="email"`. Set `validationMode` to
-choose when results show (`onSubmit`, `onBlur` or `onChange`), and pass `match` to `Field.ErrorText` to show it only for
-one native failure such as `valueMissing` or `typeMismatch`.
+choose when results show (`onSubmit`, `onBlur` or `onChange`). Pass `match` to `Field.ErrorText` to show it only for one
+native failure, such as `valueMissing` or `typeMismatch`.
 
 <Example id="validation" />
 
@@ -72,46 +71,44 @@ It can also return a promise. The messages are available as `errors` on the fiel
 
 ### Server Errors
 
-Pass `errors` to show errors that come from outside the field, such as a server response. The field is invalid while
-`errors` is not empty.
+Pass `errors` to show errors from outside the field, such as a server response. The field is invalid while `errors` is
+not empty.
 
 <Example id="server-errors" />
 
 ### Textarea
 
-This example illustrates how to use the `Field` component with a textarea element.
+Use `Field.Textarea` for a textarea.
 
 <Example id="textarea" />
 
 ### Textarea Autoresize
 
-Pass the `autoresize` prop to the `Textarea` component to enable automatic resizing as the user types.
+Set `autoresize` on `Field.Textarea` to grow it as the user types.
 
 <Example id="textarea-autoresize" />
 
 ### Select
 
-This example demonstrates how to integrate the `Field` component with a select dropdown.
+Use `Field.Select` for a native select.
 
 <Example id="select" />
 
 ### Checkbox
 
-This example demonstrates how to integrate the `Field` and `Checkbox` components.
+Wrap a `Checkbox` in `Field`.
 
 <Example component="checkbox" id="with-field" />
 
 ### Root Provider
 
-An alternative way to control the field is to use the `RootProvider` component and the `useField` hook. This way you can
-access the state and methods from outside the component.
+Use `RootProvider` with the `useField` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Custom Control
 
-Use the `Field.Context` or `useFieldContext` hook to access the internal state of the field.This can help you wire up
-custom controls with the `Field` component.
+Use `Field.Context` or the `useFieldContext` hook to read the field state and wire up a custom control.
 
 <Example id="custom-control" />
 

@@ -26,35 +26,31 @@ description: A component that generates a QR code based on the provided data.
 
 ### With Overlay
 
-You can also add a logo or overlay to the QR code. This is useful when you want to brand the QR code.
+Add a logo or overlay to brand the QR code.
 
 <Example id="overlay" />
 
 ### Error Correction
 
-In cases where the link is too long or the logo overlay covers a significant area, the error correction level can be
-increased.
+Raise the error correction level when the link is long or the overlay covers much of the code. Set it with
+`encoding.ecc` or `encoding.boostEcc`:
 
-Use the `encoding.ecc` or `encoding.boostEcc` property to set the error correction level:
-
-- `L`: Allows recovery of up to 7% data loss (default)
-- `M`: Allows recovery of up to 15% data loss
-- `Q`: Allows recovery of up to 25% data loss
-- `H`: Allows recovery of up to 30% data loss
+- `L`: recovers up to 7% data loss (default)
+- `M`: up to 15%
+- `Q`: up to 25%
+- `H`: up to 30%
 
 <Example id="error-correction" />
 
 ### Root Provider
 
-An alternative way to control the QR code is to use the `RootProvider` component and the `useQrCode` hook. This way you
-can access the state and methods from outside the component.
+Use `RootProvider` with the `useQrCode` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Download
 
-Use the `QrCode.DownloadTrigger` component to allow users to download the QR code as an image. Specify the `fileName`
-and `mimeType` props for the downloaded file.
+`QrCode.DownloadTrigger` downloads the QR code as an image. Set `fileName` and `mimeType` for the file.
 
 <Example id="download" />
 

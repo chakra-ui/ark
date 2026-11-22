@@ -28,41 +28,38 @@ description: A card that appears when a user hovers over an element.
 
 ### Controlled
 
-The controlled `HoverCard` component provides an interface for managing the state of the hover card using the `open` and
-`onOpenChange` props:
+Use `open` and `onOpenChange` to control the open state.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the hover card is to use the `RootProvider` component and the `useHoverCard` hook. This
-way you can access the state and methods from outside the component.
+Use `RootProvider` with the `useHoverCard` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Delay
 
-Control the open and close delay of the hover card using the `openDelay` and `closeDelay` props:
+Use `openDelay` and `closeDelay` to set the open and close delays.
 
 <Example id="delay" />
 
 ### Positioning
 
-The `HoverCard` component can be customized in its placement and distance from the trigger element through the
-`positioning` prop:
+Use `positioning` to set the placement and distance from the trigger.
 
 <Example id="positioning" />
 
 ### Context
 
-Access the hover card's state with `HoverCard.Context` or the `useHoverCardContext` hook:
+Read the state with `HoverCard.Context` or the `useHoverCardContext` hook.
 
 <Example id="context" />
 
 ### Multiple Triggers
 
-Share a single hover card across multiple trigger elements. Pass a `value` to each `HoverCard.Trigger`. The card
-repositions to the active trigger without closing.
+Give each `HoverCard.Trigger` a `value` to share one card across triggers. The card moves to the active trigger without
+closing.
 
 <Example id="multiple-triggers" />
 

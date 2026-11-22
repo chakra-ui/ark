@@ -27,21 +27,19 @@ description: Organizes and navigates between sections in a view.
 
 ### Controlled
 
-To create a controlled SegmentGroup component, manage the current selected segment using the `value` prop and update it
-when the `onValueChange` event handler is called:
+Use `value` and `onValueChange` to control the selected segment.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the segment group is to use the `RootProvider` component and the `useSegmentGroup` hook.
-This way you can access the state and methods from outside the component.
+Use `RootProvider` with the `useSegmentGroup` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Disabled
 
-To disable a segment, simply pass the `disabled` prop to the `SegmentGroup.Item` component:
+Pass `disabled` to a `SegmentGroup.Item` to disable that segment.
 
 <Example id="disabled" />
 

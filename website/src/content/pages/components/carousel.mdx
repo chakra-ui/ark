@@ -31,80 +31,71 @@ description: An interactive slideshow component for cycling through elements.
 
 ### Controlled
 
-To create a controlled Carousel component, you can manage the state of the carousel using the `page` prop and update it
-when the `onPageChange` event handler is called:
+Use `page` and `onPageChange` to control the current page.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the carousel is to use the `RootProvider` component and the `useCarousel` hook. This way
-you can access the state and methods from outside the component.
+Use `RootProvider` with the `useCarousel` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Autoplay
 
-Pass the `autoplay` and `loop` props to `Carousel.Root` to make the carousel play automatically.
+Set `autoplay` and `loop` on `Carousel.Root` to play the slides automatically.
 
 <Example id="autoplay" />
 
 ### Pause on Hover
 
-This feature isn't built-in, but you can use the `play()` and `pause()` methods from `Carousel.Context` to implement
-pause on hover.
+Pause on hover isn't built in. Call `play()` and `pause()` from `Carousel.Context` to add it.
 
 <Example id="pause-on-hover" />
 
 ### Thumbnail Indicators
 
-Replace default indicator dots with image thumbnails. Render each thumbnail inside `Carousel.Indicator` to create a
-visual preview of each slide:
+Render an image thumbnail inside each `Carousel.Indicator` in place of the default dots.
 
 <Example id="thumbnail-indicator" />
 
 ### Vertical
 
-Add the `orientation="vertical"` prop to `Carousel.Root` to switch the carousel to vertical scrolling. This can be
-helpful for displaying vertical galleries or content feeds.
+Set `orientation="vertical"` on `Carousel.Root` to scroll vertically.
 
 <Example id="vertical" />
 
 ### Dynamic
 
-Manage slides dynamically by storing them in state and syncing the carousel page. Pass the `page` prop and
-`onPageChange` handler to `Carousel.Root`, and update `slideCount` when slides are added or removed. This demonstrates
-bidirectional state synchronization between your component state and the carousel.
+Store slides in state and keep the page in sync. Pass `page` and `onPageChange` to `Carousel.Root`, and update
+`slideCount` when slides are added or removed.
 
 <Example id="dynamic-slides" />
 
 ### Scroll to Slide
 
-Use `Carousel.Context` to access the carousel API and call `api.scrollToIndex(index)` to programmatically navigate to a
-specific slide. This is useful for creating custom navigation or jump-to-slide functionality.
+Call `api.scrollToIndex(index)` from `Carousel.Context` to jump to a specific slide.
 
 <Example id="scroll-to" />
 
 ### Slides Per Page
 
-Display multiple slides simultaneously by setting the `slidesPerPage` prop on `Carousel.Root`. Use `api.pageSnapPoints`
-from `Carousel.Context` to render the correct number of indicators based on pages rather than individual slides. Add the
-`spacing` prop to control the gap between slides.
+Set `slidesPerPage` on `Carousel.Root` to show several slides at once. Render indicators from `api.pageSnapPoints` so
+there is one per page, not per slide. Use `spacing` to set the gap.
 
 <Example id="slides-per-page" />
 
 ### Spacing
 
-Control the gap between slides using the `spacing` prop on `Carousel.Root`. Combine it with `slidesPerPage` to create
-layouts that show partial previews of adjacent slides.
+Set `spacing` on `Carousel.Root` to control the gap between slides. Combine it with `slidesPerPage` to show partial
+previews of adjacent slides.
 
 <Example id="spacing" />
 
 ### Variable Sizes
 
-To allow slides with different widths, set the `autoSize` prop on `Carousel.Root`. This lets each `Carousel.Item` define
-its own width, and the carousel will adjust automatically. You can also use the `snapAlign` prop on individual items to
-control where each one snaps into view.
+Set `autoSize` on `Carousel.Root` so each `Carousel.Item` can define its own width. Use `snapAlign` on an item to
+control where it snaps into view.
 
 <Example id="variable-size" />
 

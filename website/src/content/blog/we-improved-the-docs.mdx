@@ -24,8 +24,8 @@ before deciding if it's the right fit. Click "Show Code" when you're ready to di
 
 ## Real CSS Modules
 
-This was the big one. We wrote CSS modules for every single component — over 50 of them — so you can see exactly how to
-style Ark UI in a real project.
+This was the big one. We wrote CSS modules for every component, over 50 of them, so you can see exactly how to style Ark
+UI in a real project.
 
 Here's what a Collapsible looks like:
 
@@ -97,7 +97,7 @@ And the CSS that powers it:
 ```
 
 Notice how we're using Ark UI's `data-state` and `data-disabled` attributes for styling. No JavaScript state wiring
-needed — the component handles all of that, and you just write CSS selectors. The styles work the same across React,
+needed. The component handles all of that, and you just write CSS selectors. The styles work the same across React,
 Solid, Svelte, and Vue.
 
 We also set up a simple design token system with CSS variables (`--demo-border`, `--demo-neutral-subtle`, etc.) that you
@@ -105,18 +105,18 @@ can swap out for your own tokens. Dark mode support is baked in.
 
 ## Streamlined Pages
 
-We trimmed a lot of fat from the component pages. The "Features" bullet lists are gone — if you want to know what a
+We trimmed a lot of fat from the component pages. The "Features" bullet lists are gone. If you want to know what a
 component can do, the examples show you. Each page now follows a simple structure:
 
-- **Preview** — See the component in action
-- **Anatomy** — Understand the parts
-- **Examples** — Learn the API through real code
+- **Preview**: see the component in action
+- **Anatomy**: understand the parts
+- **Examples**: learn the API through real code
 
 ## CSS Toggle
 
 Here's a small detail we're proud of: every code block has a CSS toggle in the top right corner.
 
-Turn it **on** to see the full picture — component code with CSS module imports, plus tabs for `index.module.css` and
+Turn it **on** to see the full picture: component code with CSS module imports, plus tabs for `index.module.css` and
 `global.css`. This is what you'd actually copy into a real project.
 
 Turn it **off** and the code strips down to just the component logic. No `className` props, no style imports, just the

@@ -25,66 +25,59 @@ description: A navigation component that allows users to browse through pages.
 
 ### Controlled
 
-To create a controlled Pagination component, manage the state of the current page using the `page` prop and update it
-when the `onPageChange` event handler is called:
+Use `page` and `onPageChange` to control the current page.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the pagination is to use the `RootProvider` component and the `usePagination` hook. This
-way you can access the state and methods from outside the component.
+Use `RootProvider` with the `usePagination` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Customization
 
-You can customize the Pagination component by setting various props such as `dir`, `pageSize`, `siblingCount`, and
-`translations`. Here's an example of a customized Pagination:
+Customize with props like `dir`, `pageSize`, `siblingCount` and `translations`.
 
 <Example id="customized" />
 
 ### Context
 
-Access pagination state and methods with `Pagination.Context` or the `usePaginationContext` hook. You get methods like
-`setPage`, `setPageSize`, `goToNextPage`, `goToPreviousPage`, `goToFirstPage`, `goToLastPage`, as well as properties like
-`totalPages` and `pageRange`.
+`Pagination.Context` and the `usePaginationContext` hook expose methods like `setPage`, `setPageSize`, `goToNextPage`,
+`goToPreviousPage`, `goToFirstPage` and `goToLastPage`, and properties like `totalPages` and `pageRange`.
 
 <Example id="context" />
 
 ### Data Slicing
 
-Use the `slice()` method to paginate actual data arrays. This method automatically slices your data based on the current
-page and page size.
+`slice()` returns the items of a data array for the current page and page size.
 
 <Example id="data-slicing" />
 
 ### Page Range
 
-Display the current page range information using the `pageRange` property. This shows which items are currently visible
-(e.g., "Showing 1-10 of 100 results").
+Use `pageRange` to show which items are visible (e.g., "Showing 1-10 of 100 results").
 
 <Example id="page-range" />
 
 ### Page Size
 
-Control the number of items per page dynamically using `setPageSize()`. This example shows how to integrate a native
-select element to change the page size.
+Call `setPageSize()` to change items per page, here from a native select.
 
-> **Note:** For uncontrolled behavior, use `defaultPageSize` to set the initial value. For controlled behavior, use
-> `pageSize` and `onPageSizeChange` to programmatically manage the page size.
+> **Note:** Use `defaultPageSize` for the initial value when uncontrolled. Use `pageSize` and `onPageSizeChange` to
+> control it.
 
 <Example id="page-size-control" />
 
 ### Links
 
-Set `type="link"` and supply `getPageUrl` to paginate with real navigation, which crawlers can follow and users can open
-in a new tab. The items and the triggers render as anchors carrying the generated `href`, so no other change is needed:
+Set `type="link"` and pass `getPageUrl` for real navigation that crawlers can follow and users can open in a new tab.
+Items and triggers render as anchors with the generated `href`:
 
 <Example id="link" />
 
-To render a router's link component instead, pass it through `asChild` on the items and the triggers. See the
-[Composition guide](/docs/guides/composition) for details.
+To use a router's link component, pass it through `asChild` on the items and triggers. See the
+[Composition guide](/docs/guides/composition).
 
 ## API Reference
 

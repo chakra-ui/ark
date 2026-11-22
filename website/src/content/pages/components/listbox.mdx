@@ -30,88 +30,81 @@ description: A component for selecting a single or multiple items from a list.
 
 ### Basic
 
-Here's a basic example of the Listbox component.
-
 <Example id="basic" />
 
 ### Controlled
 
-The Listbox component can be controlled by using the `value` and `onValueChange` props. This allows you to manage the
-selected value externally.
+Use `value` and `onValueChange` to control the selected value.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the listbox is to use the `RootProvider` component and the `useListbox` hook. This way you
-can access the state and methods from outside the component.
+Use `RootProvider` with the `useListbox` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Disabled Item
 
-Listbox items can be disabled using the `disabled` prop on the collection item.
+Set `disabled` on a collection item to disable it.
 
 <Example id="disabled-item" />
 
-> You can also use the `isItemDisabled` within the `createListCollection` to disable items based on a condition.
+> To disable items by condition, pass `isItemDisabled` to `createListCollection`.
 
 ### Multiple
 
-You can set the `selectionMode` property as `multiple` to allow the user to select multiple items at a time.
+Set `selectionMode="multiple"` to let users select more than one item.
 
 <Example id="multiple" />
 
 ### Grouping
 
-The Listbox component supports grouping items. You can use the `groupBy` function to group items based on a specific
-property.
+Pass a `groupBy` function to group items by a property.
 
 <Example id="group" />
 
 ### Extended Selection
 
-The extended selection mode allows users to select multiple items using keyboard modifiers like `Cmd` (Mac) or `Ctrl`
-(Windows/Linux).
+Extended selection lets users select multiple items with `Cmd` (Mac) or `Ctrl` (Windows/Linux).
 
 <Example id="extended-select" />
 
 ### Horizontal
 
-Use the `orientation` prop to display the listbox items horizontally.
+Set `orientation="horizontal"` to lay items out in a row.
 
 <Example id="horizontal" />
 
 ### Grid Layout
 
-Use `createGridCollection` to display items in a grid layout with keyboard navigation support.
+Use `createGridCollection` for a grid with keyboard navigation.
 
 <Example id="grid" />
 
 ### Filtering
 
-Use `useListCollection` with the `filter` function to enable filtering of items.
+Use the `filter` function from `useListCollection` to filter items.
 
 <Example id="filtering" />
 
 ### Select All
 
-Use `useListboxContext` to implement a "Select All" functionality that allows users to select or deselect all items at
-once.
+Use `useListboxContext` to build a "Select All" control that selects or clears every item.
 
 <Example id="select-all" />
 
 ### Value Text
 
-Use `Listbox.ValueText` to display the selected values as a comma-separated string.
+`Listbox.ValueText` shows the selected values as a comma-separated string.
 
 <Example id="value-text" />
 
 ### Virtualized
 
-For very large collections, render only the visible options with the [Virtualizer](/docs/utilities/virtualizer). Render
-`Listbox.List` as `ListVirtualizer.Root` and each `Listbox.Item` as `ListVirtualizer.Item`, and pass `scrollToIndexFn`
-so keyboard navigation can scroll to options that are not mounted yet.
+For large collections, use the [Virtualizer](/docs/utilities/virtualizer) to render only visible options. Render
+`Listbox.List` as `ListVirtualizer.Root` and each `Listbox.Item` as `ListVirtualizer.Item`. Pass `scrollToIndexFn` so
+keyboard navigation can reach unmounted options.
 
 <Example id="virtualized" />
 
@@ -119,8 +112,7 @@ so keyboard navigation can scroll to options that are not mounted yet.
 
 ### Type Safety
 
-The `Listbox.RootComponent` type enables you to create typed wrapper components that maintain full type safety for
-collection items.
+Use the `Listbox.RootComponent` type to build wrappers that keep collection items typed.
 
 ```tsx
 const Listbox: ArkListbox.RootComponent = (props) => {
@@ -128,7 +120,7 @@ const Listbox: ArkListbox.RootComponent = (props) => {
 }
 ```
 
-Use the wrapper with full type inference on `onValueChange` and other callbacks:
+Callbacks like `onValueChange` then infer the item type:
 
 ```tsx
 const App = () => {

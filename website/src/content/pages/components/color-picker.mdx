@@ -47,81 +47,77 @@ description: A component that allows users to select a color from a color picker
 
 ### Controlled
 
-Use the `value` and `onValueChange` props to programatically control the color picker's state.
+Use `value` and `onValueChange` to control the color.
 
 <Example id="controlled" />
 
 ### Open Controlled
 
-Control the open state of the color picker popover programmatically using the `open` and `onOpenChange` props.
+Use `open` and `onOpenChange` to control the popover.
 
 <Example id="open-controlled" />
 
 ### Root Provider
 
-An alternative way to control the color picker is to use the `RootProvider` component and the `useColorPicker` hook.
-This way you can access the state and methods from outside the component.
+Use `RootProvider` with the `useColorPicker` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Disabled
 
-Use the `disabled` prop to disable the color picker.
+Set `disabled` to disable the color picker.
 
 <Example id="disabled" />
 
 ### Inline
 
-Render the color picker inline without a popover by using the `inline` prop.
+Set `inline` to render the picker without a popover.
 
 <Example id="inline" />
 
 ### Input Only
 
-A minimal color picker with just an input field, value swatch, and eye dropper trigger.
+An input, value swatch and eye dropper trigger, with no popover content.
 
 <Example id="input-only" />
 
 ### Slider Only
 
-Display only the channel sliders for RGB color selection.
+Only the RGB channel sliders.
 
 <Example id="slider-only" />
 
 ### Swatch Only
 
-A simple color picker with only preset color swatches.
+Only preset swatches.
 
 <Example id="swatch-only" />
 
 ### Swatches
 
-Include preset color swatches in the color picker content for quick color selection.
+Add preset swatches to the content for quick selection.
 
 <Example id="swatches" />
 
 ### Value Swatch
 
-Display the current color value as a swatch alongside the color area and sliders.
+Show the current color as a swatch next to the area and sliders.
 
 <Example id="value-swatch" />
 
 ### Field
 
-The `Field` component helps manage form-related state and accessibility attributes of a color picker. It includes
-handling ARIA labels, helper text, and error text to ensure proper accessibility.
+Wrap the color picker in `Field` to wire up the label, helper text and error text accessibly.
 
 <Example id="with-field" />
 
 ### Form Usage
 
-Integrate the color picker with form libraries like React Hook Form using the `HiddenInput` component.
+Use `HiddenInput` to connect the color picker to form libraries like React Hook Form.
 
 <Example id="form-usage" />
 
 ### Inside Dialog
-
-Here's an example of how to use the color picker inside a dialog.
 
 <Example id="inside-dialog" />
 

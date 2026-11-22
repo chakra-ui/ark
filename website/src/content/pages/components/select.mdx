@@ -41,93 +41,92 @@ description: Displays a list of options for the user to pick from.
 
 ### Controlled
 
-Use the `value` and `onValueChange` props to control the selected items.
+Use `value` and `onValueChange` to control the selected items.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the select is to use the `RootProvider` component and the `useSelect` hook. This way you
-can access the state and methods from outside the component.
+Use `RootProvider` with the `useSelect` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Multiple
 
-To enable `multiple` item selection:
+Set `multiple` to allow selecting more than one item.
 
 <Example id="multiple" />
 
 ### Grouping
 
-Grouping related options can be useful for organizing options into categories.
+Group options into categories:
 
-- Use the `groupBy` prop to configure the grouping of the items.
-- Use the `collection.group()` method to get the grouped items.
-- Use the `Select.ItemGroup` and `Select.ItemGroupLabel` components to render the grouped items.
+- Set `groupBy` on the collection to define the groups.
+- Call `collection.group()` to get the grouped items.
+- Render them with `Select.ItemGroup` and `Select.ItemGroupLabel`.
 
 <Example id="grouping" />
 
 ### With Tabs
 
-Render tabs inside the content to switch between two lists of items, like branches and tags.
+Render tabs in the content to switch between two lists, like branches and tags.
 
 <Example id="with-tabs" />
 
 ### Field
 
-Use `Field` to manage form state, ARIA labels, helper text, and error text.
+`Field` wires up the label, helper text, error text and ARIA attributes.
 
 <Example id="with-field" />
 
 ### Form Usage
 
-Here's an example of integrating the `Select` component with a form library.
+Integrate the select with a form library.
 
 <Example id="form-library" />
 
 ### Async Loading
 
-Here's an example of how to load the items asynchronously when the select is opened.
+Load items asynchronously when the select opens.
 
 <Example id="async" />
 
 ### Lazy Mount
 
-Use `lazyMount` and `unmountOnExit` to control when content is mounted, improving performance.
+Use `lazyMount` and `unmountOnExit` to mount content only when needed.
 
 <Example id="lazy-mount" />
 
 ### Select on Highlight
 
-Here's an example of automatically selecting items when they are highlighted (hovered or navigated to with keyboard).
+Select items as they are highlighted by hover or keyboard.
 
 <Example id="select-on-highlight" />
 
 ### Max Selection
 
-Here's an example of limiting the number of items that can be selected in a multiple select.
+Limit how many items a multiple select accepts.
 
 <Example id="max-selected" />
 
 ### Select All
 
-Use `selectAll()` from the select context to select all items at once.
+Call `selectAll()` from the select context to select every item.
 
 <Example id="select-all" />
 
 ### Overflow
 
-For selects with many items, use `positioning.fitViewport` to ensure the dropdown fits within the viewport. Combine with
-a max-height on the content to enable scrolling.
+Set `positioning.fitViewport` to keep a long list within the viewport. Add a max-height on the content to make it
+scroll.
 
 <Example id="overflow" />
 
 ### Virtualized
 
-For very large collections, render only the visible options with the [Virtualizer](/docs/utilities/virtualizer). Render
-`Select.List` as `ListVirtualizer.Root` and each `Select.Item` as `ListVirtualizer.Item`, and pass `scrollToIndexFn` so
-keyboard navigation can scroll to options that are not mounted yet.
+Use the [Virtualizer](/docs/utilities/virtualizer) to render only visible options in large collections. Render
+`Select.List` as `ListVirtualizer.Root` and each `Select.Item` as `ListVirtualizer.Item`. Pass `scrollToIndexFn` so
+keyboard navigation can reach unmounted options.
 
 <Example id="virtualized" />
 
@@ -135,8 +134,7 @@ keyboard navigation can scroll to options that are not mounted yet.
 
 ### Type Safety
 
-The `Select.RootComponent` type enables you to create typed wrapper components that maintain full type safety for
-collection items.
+Use the `Select.RootComponent` type to build wrappers that keep collection items typed.
 
 ```tsx
 const Select: ArkSelect.RootComponent = (props) => {
@@ -144,7 +142,7 @@ const Select: ArkSelect.RootComponent = (props) => {
 }
 ```
 
-Use the wrapper with full type inference on `onValueChange` and other callbacks:
+`onValueChange` and other callbacks then infer the item type:
 
 ```tsx
 const App = () => {
@@ -170,13 +168,11 @@ const App = () => {
 
 ### Hidden Select
 
-The `Select.HiddenSelect` component renders a native HTML `<select>` element that's visually hidden but remains in the
-DOM. This component is essential for:
+`Select.HiddenSelect` renders a visually hidden native `<select>`. It enables:
 
-- **Form submission**: Native form submission and serialization work seamlessly since the actual `<select>` element
-  exists in the DOM
-- **Browser auto-fill**: Browsers can properly auto-fill the select based on previously submitted form data
-- **Progressive enhancement**: Forms remain functional even if JavaScript fails to load
+- **Form submission**: native submission and serialization work because a real `<select>` exists.
+- **Browser auto-fill**: browsers can fill it from previously submitted data.
+- **Progressive enhancement**: forms still work if JavaScript fails to load.
 
 ```tsx
 <Select.Root>
@@ -185,13 +181,13 @@ DOM. This component is essential for:
 </Select.Root>
 ```
 
-The hidden select automatically syncs with the Select component's value, ensuring form data is always up-to-date.
+It stays in sync with the select's value.
 
 ### Virtualization
 
-When virtualizing a large collection, avoid `Select.HiddenSelect`: it renders an `<option>` for every item in the
-collection. Use `Select.HiddenInput` instead. It renders one hidden `<input>` per selected value, using the root's
-`name`, `form` and `disabled`:
+Avoid `Select.HiddenSelect` with virtualized collections. It renders an `<option>` for every item. Use
+`Select.HiddenInput` instead. It renders one hidden `<input>` per selected value, using the root's `name`, `form` and
+`disabled`:
 
 ```tsx
 <Select.Root collection={collection} name="item">
@@ -202,8 +198,7 @@ collection. Use `Select.HiddenInput` instead. It renders one hidden `<input>` pe
 
 ### Empty State
 
-You can create an empty state component that displays when there are no items in the collection. Use the
-`useSelectContext` hook to check the collection size:
+Check the collection size with `useSelectContext` to show an empty state:
 
 ```tsx
 const SelectEmpty = (props: React.ComponentProps<'div'>) => {
@@ -215,7 +210,7 @@ const SelectEmpty = (props: React.ComponentProps<'div'>) => {
 }
 ```
 
-Then use it within your Select content:
+Render it inside the content:
 
 ```tsx
 <Select.Content>
@@ -226,7 +221,7 @@ Then use it within your Select content:
 
 ### Available Size
 
-The following css variables are exposed to the `Select.Positioner` which you can use to style the `Select.Content`
+`Select.Positioner` exposes these CSS variables for styling `Select.Content`:
 
 ```css
 /* width of the select trigger */
@@ -237,7 +232,7 @@ The following css variables are exposed to the `Select.Positioner` which you can
 --available-height: <pixel-value>;
 ```
 
-For example, if you want to make sure the maximum height doesn't exceed the available height, you can use the following:
+For example, to keep the content within the available height:
 
 ```css
 [data-select-content] {

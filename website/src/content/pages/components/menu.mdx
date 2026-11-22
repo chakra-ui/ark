@@ -37,89 +37,84 @@ description: A list of options that appears when a user interacts with a button.
 
 ### Item Selection
 
-Use `onSelect` to handle item selection. The callback receives the item's `id`.
+`onSelect` receives the selected item's `id`.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the menu is to use the `RootProvider` component and the `useMenu` hook. This way you can
-access the state and methods from outside the component.
+Use `RootProvider` with the `useMenu` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Grouping
 
-Use `Menu.ItemGroup` and `Menu.ItemGroupLabel` to organize related menu items.
+Use `Menu.ItemGroup` and `Menu.ItemGroupLabel` to group related items.
 
 <Example id="group" />
 
 ### Links
 
-To render menu items as links, use the `asChild` prop to replace the default element with an anchor tag.
+Use `asChild` to render a menu item as an anchor.
 
 <Example id="links" />
 
 ### Checkbox
 
-To add a checkbox to a menu item, use the `Menu.Checkbox` component.
+Use `Menu.Checkbox` for checkbox items.
 
 <Example id="checkbox-items" />
 
 ### Radio Group
 
-To group radio option items, use the `Menu.RadioGroup` component.
+Use `Menu.RadioGroup` to group radio items.
 
 <Example id="radio-items" />
 
 ### Collection
 
-Pass a `collection` to `Menu.Root` to render plain, checkbox and radio items from one list of data. Set `groupSort` so
-the groups render in the same order that keyboard navigation follows.
+Pass a `collection` to `Menu.Root` to render plain, checkbox and radio items from one data list. Set `groupSort` so
+groups render in keyboard navigation order.
 
 <Example id="collection" />
 
 ### Context Menu
 
-To show the menu when a trigger element is right-clicked, use the `Menu.ContextTrigger` component.
+Use `Menu.ContextTrigger` to open the menu on right-click. With pen or touch, a long-press of about `700ms` also opens
+it.
 
-Context menus are also opened during a long-press of roughly `700ms` when the pointer is pen or touch.
-
-Pass a `value` to each `Menu.ContextTrigger` to share one menu across several targets. Right-clicking another trigger
-while the menu is open moves it there, and `onTriggerValueChange` reports which trigger is active.
+Pass a `value` to each `Menu.ContextTrigger` to share one menu across targets. Right-clicking another trigger while open
+moves the menu there. `onTriggerValueChange` reports the active trigger.
 
 <Example id="context" />
 
 ### Nested
 
-To show a nested menu, render another `Menu` component and use the `Menu.TriggerItem` component to open the submenu.
+Render another `Menu` and open it with `Menu.TriggerItem`.
 
 <Example id="nested" />
 
 ### Menu in Dialog
 
-When rendering a menu inside a dialog, use `lazyMount` and `unmountOnExit` to ensure proper cleanup when the dialog
-closes.
+Inside a dialog, set `lazyMount` and `unmountOnExit` so the menu cleans up when the dialog closes.
 
 <Example id="menu-in-dialog" />
 
 ### Menu Item Dialog
 
-Open a confirmation dialog from a menu item. This pattern is useful for destructive actions like delete that require
-user confirmation.
+Open a confirmation dialog from a menu item, e.g. before a destructive delete.
 
 <Example id="menu-item-dialog" />
 
 ### Multiple Triggers
 
-Share a single menu across multiple trigger elements. Pass a `value` to each `Menu.Trigger`. The menu repositions to
-whichever trigger is activated.
+Pass a `value` to each `Menu.Trigger` to share one menu. It repositions to the activated trigger.
 
 <Example id="multiple-triggers" />
 
 ### Async Filtering
 
-Use `Menu.Input` with `useAsyncList` to load matching items asynchronously as the user types.
+Use `Menu.Input` with `useAsyncList` to load matching items as the user types.
 
 <Example id="async-filtering" />
 
@@ -127,8 +122,7 @@ Use `Menu.Input` with `useAsyncList` to load matching items asynchronously as th
 
 ### Custom IDs
 
-Ark UI autogenerates ids for menu items internally. Passing a custom `id` prop breaks the internal `getElementById`
-functionality used by the component.
+Ark UI generates menu item ids. A custom `id` breaks the component's internal `getElementById` lookups.
 
 ```tsx
 // ❌ Don't do this
@@ -144,13 +138,11 @@ functionality used by the component.
 
 ### Links
 
-To render a menu item as a link, render the link as the menu item itself using the `asChild` prop, not as a child of the
-menu item.
+Render the link as the menu item itself with `asChild`, not as its child.
 
-> This pattern ensures the link element receives the correct ARIA attributes and keyboard interactions from the menu
-> item.
+> This gives the link the menu item's ARIA attributes and keyboard interactions.
 
-Here's an example of a reusable `MenuItemLink` component:
+A reusable `MenuItemLink`:
 
 ```tsx
 interface MenuItemLinkProps extends Menu.ItemProps {

@@ -2,13 +2,13 @@
 title: Using Ark UI with Storybook
 featured: true
 description:
-  How to set up Storybook with Ark UI — writing stories for compound components, styling, and prop documentation
+  How to set up Storybook with Ark UI, with stories for compound components, styling, and prop documentation
 date: '2026-04-05'
 author: 'Sage'
 tags: ['storybook', 'react', 'developer-experience']
 ---
 
-Storybook is a great way to develop and document your design system in isolation. Ark UI works well with it — you just
+Storybook is a great way to develop and document your design system in isolation. Ark UI works well with it. You just
 need to know how the pieces fit together. Here's a walkthrough of setting up Storybook with Ark UI React.
 
 ## Installation
@@ -24,7 +24,7 @@ This sets up Storybook with `@storybook/react-vite` and creates a `.storybook` d
 
 ## Writing Stories
 
-Ark UI uses compound components — `Checkbox.Root`, `Checkbox.Control`, `Checkbox.Label`, etc. Each story composes these
+Ark UI uses compound components: `Checkbox.Root`, `Checkbox.Control`, `Checkbox.Label`, etc. Each story composes these
 parts together, just like you would in your app:
 
 ```tsx
@@ -56,7 +56,7 @@ export const Basic: Story = {
 }
 ```
 
-This renders a fully functional, accessible checkbox. No state management needed — the `@zag-js` state machine handles
+This renders a fully functional, accessible checkbox. No state management needed. The `@zag-js` state machine handles
 that internally.
 
 ## Styling
@@ -169,8 +169,8 @@ export const Basic: Story = {
 }
 ```
 
-With both in place, Storybook will display the full props table — `checked`, `disabled`, `readOnly`, `onCheckedChange`,
-and everything else — with descriptions and types.
+With both in place, Storybook will display the full props table, with descriptions and types for `checked`, `disabled`,
+`readOnly`, `onCheckedChange` and everything else.
 
 ## Wrapping Up
 

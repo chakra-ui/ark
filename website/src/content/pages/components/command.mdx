@@ -31,15 +31,15 @@ status: new
 
 ### Basic
 
-Pass a `collection` to `Command.Root` and render the filtered items from `Command.Context`. Typing filters the items,
-the arrow keys, Home, and End move the highlight while focus stays in the input, and Enter or a click calls `onSelect`.
+Pass a `collection` to `Command.Root` and render the filtered items from `Command.Context`. Typing filters the items.
+Arrow keys, Home and End move the highlight while focus stays in the input. Enter or a click calls `onSelect`.
 
 <Example id="basic" />
 
 ### Dialog
 
-Put the command inside a `Dialog` to build a command palette. Open it with a keyboard shortcut using `useHotkey`, and
-give the dialog content an `aria-label`.
+Put the command in a `Dialog` for a command palette. Open it with a `useHotkey` shortcut and give the dialog content an
+`aria-label`.
 
 <Example id="with-dialog" />
 
@@ -112,7 +112,7 @@ Load items with `useAsyncList`, call `setFilter` as the input changes, and pass 
 
 ### Root Provider
 
-Use the `useCommand` hook with `RootProvider` to control the command from outside, for example to clear the input.
+Use `RootProvider` with the `useCommand` hook to control the command from outside, for example to clear the input.
 
 <Example id="root-provider" />
 

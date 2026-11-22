@@ -26,56 +26,48 @@ description: A component that divides your interface into resizable sections
 
 ### Context
 
-Access the splitter's API with `Splitter.Context` or the `useSplitterContext` hook. This lets you resize panels
-programmatically:
+Use `Splitter.Context` or the `useSplitterContext` hook to resize panels programmatically.
 
 <Example id="context" />
 
 ### Vertical
 
-By default, the Splitter component is horizontal. If you need a vertical splitter, use the `orientation` prop:
+Set `orientation="vertical"` for a vertical splitter.
 
 <Example id="vertical" />
 
 ### Collapsible Panels
 
-To make a panel collapsible, set the `collapsible` prop to `true` on the panel you want to make collapsible.
-Additionally, you can use the `collapsedSize` prop to set the size of the panel when it's collapsed.
-
-> This can be useful for building sidebar layouts.
+Set `collapsible` on a panel to let it collapse. `collapsedSize` sets its collapsed size. This suits sidebar layouts.
 
 <Example id="collapsible" />
 
 ### Multiple Panels
 
-Here's an example of how to use the `Splitter` component with multiple panels.
-
 <Example id="multiple-panels" />
 
 ### Root Provider
 
-An alternative way to control the splitter is to use the `RootProvider` component and the `useSplitter` hook. This way
-you can access the state and methods from outside the component.
+Use `RootProvider` with the `useSplitter` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Resize Indicator
 
-Use the `Splitter.ResizeTriggerIndicator` component to show a visual indicator on the resize handle.
+`Splitter.ResizeTriggerIndicator` shows an indicator on the resize handle.
 
 <Example id="resize-indicator" />
 
 ### Dynamic Collapsible
 
-Use the `collapsePanel()` and `expandPanel()` methods to programmatically control panel collapse based on viewport size.
-This is useful for responsive sidebar layouts that collapse on smaller screens.
+Call `collapsePanel()` and `expandPanel()` based on viewport size, for example to collapse a sidebar on small screens.
 
 <Example id="dynamic-collapsible" />
 
 ### Nested
 
-Nest splitters to build grid-like layouts. Use `Splitter.createRegistry()` to create a shared registry between splitter
-instances. This enables multi-drag at intersection points where horizontal and vertical splitters meet.
+Nest splitters for grid-like layouts. Share a registry from `Splitter.createRegistry()` between them to drag both at
+points where horizontal and vertical splitters meet.
 
 <Example id="nested" />
 

@@ -22,27 +22,26 @@ description: A set of two-state buttons that can be toggled on or off.
 
 ### Controlled
 
-Use the `value` and `onValueChange` props to control the toggle group state.
+Pass `value` and update it in `onValueChange`.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the toggle group is to use the `RootProvider` component and the `useToggleGroup` hook.
-This way you can access the state and methods from outside the component.
+Use `RootProvider` with the `useToggleGroup` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Multiple
 
-Demonstrates how to enable `multiple` selection within the group.
+Set `multiple` to allow selecting more than one item.
 
 <Example id="multiple" />
 
 ### With Tooltip
 
-Pair an item with a `Tooltip.Trigger` via `asChild`, matching their ids with `ids.item` and `ids.trigger` so they share
-one element and tab stop.
+Compose an item with `Tooltip.Trigger` via `asChild`. Match `ids.item` and `ids.trigger` so they share one element and
+tab stop.
 
 <Example id="with-tooltip" />
 

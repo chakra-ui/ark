@@ -42,15 +42,13 @@ Read `depth` in your own markup to indent sub-headings. Nothing is indented for 
 
 ### Root Provider
 
-Use `useToc` with `Toc.RootProvider` to reach `activeIds` from outside the tree, so other parts of your UI can follow
-the reading position.
+Use `useToc` with `Toc.RootProvider` to read `activeIds` from outside the tree.
 
 <Example id="root-provider" />
 
 ### With Collapsible
 
-Wrap `Toc.Nav` in a `Collapsible` to let users hide the navigation. `Toc.Context` exposes `activeItems`, here driving a
-progress ring.
+Wrap `Toc.Nav` in a `Collapsible` to let users hide it. Here `activeItems` from `Toc.Context` drives a progress ring.
 
 <Example id="with-collapsible" />
 
@@ -58,8 +56,8 @@ progress ring.
 
 Expand the navigation on `onMouseEnter` and collapse it on `onMouseLeave`, with a pin toggle to keep it open.
 
-> **Note:** Hover does not exist on touch screens. Pair this with a pin button or a disclosure control so the navigation
-> stays reachable on mobile.
+> **Note:** Touch screens have no hover. Keep a pin button or disclosure control so the navigation stays reachable on
+> mobile.
 
 <Example id="with-hover" />
 
@@ -102,8 +100,8 @@ const items = [
 
 Ids are global to the page, so prefix them when a page holds more than one TOC.
 
-Extra properties are fine, a `label` for link text being the common one. `TocItemData` covers only `value` and `depth`,
-so extend it rather than annotating with it directly:
+Extra properties, such as a `label` for link text, are fine. `TocItemData` covers only `value` and `depth`, so extend it
+instead of using it directly:
 
 ```tsx
 import type { TocItemData } from '@ark-ui/react/toc'

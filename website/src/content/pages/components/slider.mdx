@@ -34,73 +34,58 @@ description: A control element that allows for a range of selections.
 
 ### Range
 
-You can add multiple thumbs to the slider by adding multiple `Slider.Thumb`
+Render multiple `Slider.Thumb` parts for a range slider.
 
 <Example id="range" />
 
 ### Marks
 
-You can add marks to the slider track by using the `Slider.MarkerGroup` and `Slider.Marker` components.
-
-Position the `Slider.Marker` components relative to the track by providing the `value` prop.
+Add marks with `Slider.MarkerGroup` and `Slider.Marker`. Each marker's `value` sets its position on the track.
 
 <Example id="with-marks" />
 
 ### Min and Max
 
-By default, the minimum is `0` and the maximum is `100`. If that's not what you want, you can easily specify different
-bounds by changing the values of the `min` and/or `max` props.
-
-For example, to ask the user for a value between `-10` and `10`, you can use:
+Set `min` and `max` to change the bounds. They default to `0` and `100`. This example accepts `-10` to `10`.
 
 <Example id="min-max" />
 
 ### Granularity
 
-By default, the granularity, is `1`, meaning that the value is always an integer. You can change the step attribute to
-control the granularity.
-
-For example, If you need a value between `5` and `10`, accurate to two decimal places, you should set the value of step
-to `0.01`:
+`step` sets the granularity. It defaults to `1`, so values are integers. This example sets `step` to `0.01` for a value
+between `5` and `10` with two decimal places.
 
 <Example id="step" />
 
 ### Change Events
 
-When the slider value changes, the `onValueChange` and `onValueChangeEnd` callbacks are invoked. You can use this to set
-up custom behaviors in your app.
+`onValueChange` fires as the value changes. `onValueChangeEnd` fires when the interaction ends.
 
 <Example id="on-event" />
 
 ### Orientation
 
-By default, the slider is assumed to be horizontal. To change the orientation to vertical, set the orientation property
-in the machine's context to vertical.
+Set `orientation="vertical"` for a vertical slider. The up and down arrow keys then change the value.
 
-In this mode, the slider will use the arrow up and down keys to increment/decrement its value.
-
-> Don't forget to change the styles of the vertical slider by specifying its height
+> Give the vertical slider a height in your styles.
 
 <Example id="vertical" />
 
 ### Origin
 
-By default, the slider's origin is at the start of the track. To change the origin to the center of the track, set the
-`origin` prop to `center`.
+The origin defaults to the start of the track. Set `origin` to `center` to start from the middle.
 
 <Example id="center-origin" />
 
 ### Root Provider
 
-An alternative way to control the slider is to use the `RootProvider` component and the `useSlider` hook. This way you
-can access the state and methods from outside the component.
+Use `RootProvider` with the `useSlider` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Dragging Indicator
 
-Use the `Slider.DraggingIndicator` component inside `Slider.Thumb` to show a visual indicator while the thumb is being
-dragged.
+Place `Slider.DraggingIndicator` inside `Slider.Thumb` to show an indicator while dragging.
 
 <Example id="dragging-indicator" />
 
@@ -118,15 +103,13 @@ Sync a range slider with number inputs so either one can set the value.
 
 ### Thumb Overlap
 
-Use the `minStepsBetweenThumbs` prop to prevent range slider thumbs from overlapping. This ensures a minimum gap between
-thumbs, which is useful for price range filters and similar use cases.
+Set `minStepsBetweenThumbs` to keep a minimum gap between range thumbs, as in a price filter.
 
 <Example id="thumb-overlap" />
 
 ### Thumb Collision
 
-Use the `thumbCollisionBehavior` prop to control how thumbs behave when they collide during pointer interactions.
-Supported values are `push` (default), `swap`, and `none`.
+`thumbCollisionBehavior` sets what happens when thumbs collide while dragging: `push` (default), `swap` or `none`.
 
 <Example id="thumb-collision" />
 

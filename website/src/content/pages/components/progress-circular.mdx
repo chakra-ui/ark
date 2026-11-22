@@ -27,30 +27,25 @@ description: An element that shows either determinate or indeterminate progress.
 
 ### Min and Max
 
-By default, the maximum is `100`. If that's not what you want, you can easily specify a different bound by changing the
-value of the `max` prop. You can do the same with the minimum value by setting the `min` prop.
-
-For example, to show the user a progress from `10` to `30`, you can use:
+Set `min` and `max` to change the range. The default max is `100`. This example shows progress from `10` to `30`.
 
 <Example id="min-max" />
 
 ### Indeterminate
 
-The progress component is determinate by default, with the value and max set to 50 and 100 respectively. To render an
-indeterminate progress, you will have to set the `value` to `null`.
+Progress is determinate by default, with `value` 50 and `max` 100. Set `value` to `null` for indeterminate progress.
 
 <Example id="indeterminate" />
 
 ### Label
 
-Add a label to provide additional context for the progress indicator.
+Add a label to give the indicator context.
 
 <Example id="with-label" />
 
 ### Root Provider
 
-An alternative way to control the progress is to use the `RootProvider` component and the `useProgress` hook. This way
-you can access the state and methods from outside the component.
+Use `RootProvider` with the `useProgress` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
@@ -58,8 +53,7 @@ you can access the state and methods from outside the component.
 
 ### Styling the Circle
 
-The circular progress component uses CSS variables to control the size and thickness of the circle. Set these variables
-on `Progress.Circle` to customize the appearance:
+Set these CSS variables on `Progress.Circle` to control its size and thickness:
 
 ```css
 [data-progress-circle] {
@@ -79,4 +73,4 @@ on `Progress.Circle` to customize the appearance:
 
 ## Accessibility
 
-Complies with the [the progressbar role requirements.](https://w3c.github.io/aria/#progressbar).
+Complies with the [progressbar role requirements](https://w3c.github.io/aria/#progressbar).

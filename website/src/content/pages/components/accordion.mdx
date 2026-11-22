@@ -25,45 +25,43 @@ description: A collapsible component for displaying content in a vertical stack.
 
 ### Default Value
 
-Set the `defaultValue` prop to specify which item should be expanded by default.
+Set `defaultValue` to choose which items start expanded.
 
 <Example id="basic" />
 
 ### Controlled
 
-Use the `value` and `onValueChange` props to control the expanded items.
+Use `value` and `onValueChange` to control the expanded items.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the accordion is to use the `RootProvider` component and the `useAccordion` hook. This way
-you can access the state and methods from outside the component.
+Use `RootProvider` with the `useAccordion` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Collapsible
 
-Use the `collapsible` prop to allow the user to collapse all panels.
+Set `collapsible` to let users close every panel.
 
 <Example id="collapsible" />
 
 ### Multiple
 
-Use the `multiple` prop to allow multiple panels to be expanded simultaneously.
+Set `multiple` to let several panels stay open at once.
 
 <Example id="multiple" />
 
 ### Horizontal
 
-By default, the Accordion is oriented vertically. Use the `orientation` prop to switch to a horizontal layout.
+The accordion is vertical by default. Set `orientation="horizontal"` for a horizontal layout.
 
 <Example id="horizontal" />
 
 ### Lazy Mount
 
-Use the `lazyMount` prop to defer rendering of accordion content until the item is expanded. Combine with
-`unmountOnExit` to unmount content when collapsed, freeing up resources.
+Set `lazyMount` to render content only once an item expands. Add `unmountOnExit` to remove it again on collapse.
 
 <Example id="lazy-mount" />
 
@@ -75,7 +73,7 @@ Use `Accordion.Context` or `useAccordionContext` to access the accordion state.
 
 ### Item State
 
-Use `Accordion.ItemContext` or `useAccordionItemContext` to access the state of an accordion item.
+Use `Accordion.ItemContext` or `useAccordionItemContext` to access an item's state.
 
 <Example id="item-context" />
 
@@ -83,7 +81,7 @@ Use `Accordion.ItemContext` or `useAccordionItemContext` to access the state of 
 
 ### Content Animation
 
-Use the `--height` and/or `--width` CSS variables to animate the size of the content when it expands or closes:
+Animate the content size with the `--height` and `--width` CSS variables:
 
 ```css
 @keyframes slideDown {
@@ -129,8 +127,7 @@ Use the `--height` and/or `--width` CSS variables to animate the size of the con
 
 ## Accessibility
 
-This component complies with the
-[Accordion WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/).
+Follows the [Accordion WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/).
 
 ### Keyboard Support
 

@@ -26,58 +26,49 @@ description: For pin or verification codes with auto-focus transfer and masking 
 
 ### Placeholder
 
-To customize the default pin input placeholder `○` for each input, pass the placeholder prop and set it to your desired
-value.
+Set `placeholder` to replace the default `○`.
 
 <Example id="custom-placeholder" />
 
 ### Blur on Complete
 
-By default, the last input keeps focus when filled, and we invoke the `onValueComplete` callback. To blur the last input
-when the user completes the input, blur the focused element in `onValueComplete`.
+The last input keeps focus when filled. To blur it on completion, blur the focused element in `onValueComplete`.
 
 <Example id="blur-on-complete" />
 
 ### OTP Mode
 
-To trigger smartphone OTP auto-suggestion, it is recommended to set the `autocomplete` attribute to "one-time-code". The
-pin input component provides support for this automatically when you set the `otp` prop to true.
+Set `otp` to `true` to add `autocomplete="one-time-code"`, which triggers OTP auto-suggestion on phones.
 
 <Example id="otp-mode" />
 
 ### Masking
 
-When collecting private or sensitive information using the pin input, you might need to mask the value entered, similar
-to `<input type="password"/>`. Pass the `mask` prop to `true`.
+Set `mask` to `true` to hide sensitive values, like `<input type="password"/>`.
 
 <Example id="mask" />
 
 ### Change Events
 
-The pin input component invokes several callback functions when the user enters:
-
-- `onValueChange`: Callback invoked when the value is changed.
-- `onValueComplete`: Callback invoked when all fields have been completed (by typing or pasting).
-- `onValueInvalid`: Callback invoked when an invalid value is entered into the input. An invalid value is any value that
-  doesn't match the specified "type".
+- `onValueChange`: the value changed.
+- `onValueComplete`: all fields are filled, by typing or pasting.
+- `onValueInvalid`: the entered value doesn't match the `type`.
 
 ### Verify on Complete
 
-Call `onValueComplete` when every field is filled. If the code is wrong, set `invalid`. The control shakes.
+Verify the code in `onValueComplete`. If it's wrong, set `invalid` and the control shakes.
 
 <Example id="verify-on-complete" />
 
 ### Field
 
-The `Field` component helps manage form-related state and accessibility attributes of a pin input. It includes handling
-ARIA labels, helper text, and error text to ensure proper accessibility.
+`Field` wires up the label, helper text, error text and ARIA attributes.
 
 <Example id="with-field" />
 
 ### Root Provider
 
-An alternative way to control the pin input is to use the `RootProvider` component and the `usePinInput` hook. This way
-you can access the state and methods from outside the component.
+Use `RootProvider` with the `usePinInput` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 

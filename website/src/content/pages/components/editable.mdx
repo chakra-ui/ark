@@ -31,41 +31,38 @@ description: A component that allows users to edit text in place.
 
 ### Controlled
 
-Use the `value` and `onValueChange` props to control the editable state.
+Use `value` and `onValueChange` to control the value.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the editable is to use the `RootProvider` component and the `useEditable` hook. This way
-you can access the state and methods from outside the component.
+Use `RootProvider` with the `useEditable` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Context
 
-Access the editable's state with `Editable.Context` or the `useEditableContext` hook. This is great for showing keyboard
-hints when editing.
+Read the state with `Editable.Context` or the `useEditableContext` hook, for example to show keyboard hints while
+editing.
 
 <Example id="context" />
 
 ### Controls
 
-In some cases, you might need to use custom controls to toggle the edit and read mode. We use the render prop pattern to
-provide access to the internal state of the component.
+Build custom controls to toggle edit and read mode. A render prop exposes the internal state.
 
 <Example id="controls" />
 
 ### Textarea
 
-Use the `asChild` prop on `Editable.Input` to render a textarea for multi-line editing.
+Use `asChild` on `Editable.Input` to render a textarea for multi-line editing.
 
 <Example id="textarea" />
 
 ### Field
 
-The `Field` component helps manage form-related state and accessibility attributes of an editable. It includes handling
-ARIA labels, helper text, and error text to ensure proper accessibility.
+Wrap the editable in `Field` to wire up the label, helper text, error text, and their ARIA attributes.
 
 <Example id="with-field" />
 
@@ -73,7 +70,7 @@ ARIA labels, helper text, and error text to ensure proper accessibility.
 
 ### Auto-resizing
 
-To auto-grow the editable as the content changes, set the `autoResize` prop to `true`.
+Set `autoResize` to grow the editable with its content.
 
 ```tsx
 <Editable.Root placeholder="Placeholder" autoResize>
@@ -83,7 +80,7 @@ To auto-grow the editable as the content changes, set the `autoResize` prop to `
 
 ### Max Length
 
-Use the `maxLength` prop to set a maximum number of characters that can be entered into the editable.
+Use `maxLength` to cap the number of characters.
 
 ```tsx
 <Editable.Root placeholder="Placeholder" autoResize maxLength={10}>
@@ -93,12 +90,8 @@ Use the `maxLength` prop to set a maximum number of characters that can be enter
 
 ### Double Click
 
-The editable supports two modes of activating the "edit" state:
-
-- when the preview part is focused (with pointer or keyboard).
-- when the preview part is double-clicked.
-
-To change the mode to double-click, pass the prop `activationMode="dblclick"`.
+By default, edit mode starts when the preview is focused (by pointer or keyboard). Set `activationMode="dblclick"` to
+start it on double-click instead.
 
 ```tsx
 <Editable.Root placeholder="Placeholder" activationMode="dblclick">

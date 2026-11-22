@@ -28,97 +28,92 @@ description: A segment-based date input that allows users to enter dates by navi
 
 ### Default Value
 
-Use the `defaultValue` prop with `parseDate` to set the initial date value.
+Set `defaultValue` with `parseDate` for the initial date.
 
 <Example id="default-value" />
 
 ### Controlled
 
-Use the `value` and `onValueChange` props to control the date input's value programmatically.
+Use `value` and `onValueChange` to control the value.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the date input is to use the `RootProvider` component and the `useDateInput` hook. This
-way you can access the state and methods from outside the component.
+Use `RootProvider` with the `useDateInput` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Granularity
 
-Use the `granularity` prop to control which date fields are displayed. Supported values are `day`, `hour`, `minute`, and
-`second`.
+Set `granularity` to choose which fields show: `day`, `hour`, `minute` or `second`.
 
 <Example id="granularity" />
 
 ### Time Only
 
-To create a time-only input, set `granularity` to `minute` (or `second`) and provide a `formatter` that only includes
-time fields. Use the `hourCycle` prop to switch between 12 and 24 hour formats.
+Set `granularity` to `minute` or `second` and pass a `formatter` with only time fields. Set `hourCycle` to switch
+between 12 and 24 hour formats.
 
 <Example id="time-only" />
 
 ### Range
 
-To create a date input that allows a range selection, set the `selectionMode` prop to `range` and render two
-`SegmentGroup` components with `index` props set to `0` and `1`.
+Set `selectionMode="range"` and render two `SegmentGroup` components with `index` set to `0` and `1`.
 
 <Example id="range" />
 
 ### Min and Max
 
-Use the `min` and `max` props with `parseDate` to restrict the selectable date range. Dates outside this range will be
-marked as invalid.
+Set `min` and `max` with `parseDate` to restrict the range. Dates outside it are marked invalid.
 
 <Example id="min-max" />
 
 ### Disabled
 
-Use the `disabled` prop to prevent user interaction with the date input.
+Set `disabled` to block interaction.
 
 <Example id="disabled" />
 
 ### Read Only
 
-Use the `readOnly` prop to make the date input non-editable while still being focusable.
+Set `readOnly` to prevent edits while keeping the input focusable.
 
 <Example id="read-only" />
 
 ### Invalid
 
-Use the `invalid` prop to indicate an error state on the date input.
+Set `invalid` to show an error state.
 
 <Example id="invalid" />
 
 ### Leading Zeros
 
-Use the `shouldForceLeadingZeros` prop to toggle whether numeric segments are padded with a leading zero.
+Set `shouldForceLeadingZeros` to pad numeric segments with a leading zero.
 
 <Example id="leading-zeros" />
 
 ### Localized
 
-Use the `locale` prop to set the language and regional formatting of the date segments.
+Set `locale` for the language and regional format of the segments.
 
 <Example id="localized" />
 
 ### RTL
 
-Set the `dir` prop to `rtl` for right-to-left language support.
+Set `dir="rtl"` for right-to-left languages.
 
 <Example id="rtl" />
 
 ### With Clear Button
 
-Use `useDateInput` via `RootProvider` to access the `clearValue` method and render a clear button alongside the input.
+Call `clearValue` from `useDateInput` (via `RootProvider`) to build a clear button.
 
 <Example id="with-clear-button" />
 
 ### With Date Picker
 
-Combine `DateInput` with `DatePicker` by syncing their values using `onValueChange` to provide both typed and
-calendar-based date selection.
+Sync `DateInput` and `DatePicker` through `onValueChange` so users can type a date or pick one from a calendar.
 
 <Example id="with-date-picker" />
 

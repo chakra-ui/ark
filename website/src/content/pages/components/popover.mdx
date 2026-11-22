@@ -33,14 +33,13 @@ description: An overlay that displays additional information or options when tri
 
 ### Controlled
 
-Use the `open` and `onOpenChange` props to control the open state of the popover.
+Use `open` and `onOpenChange` to control the open state.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the popover is to use the `RootProvider` component and the `usePopover` hook. This way you
-can access the state and methods from outside the component.
+Use `RootProvider` with the `usePopover` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
@@ -52,34 +51,32 @@ Use `Popover.Arrow` and `Popover.ArrowTip` to render an arrow pointing to the tr
 
 ### Placement
 
-To change the placement of the popover, set the `positioning` prop.
+Set `positioning` to change the placement.
 
-By default it only flips to the opposite side when there isn't room. Pass a list of placements to `positioning.flip` to
-choose the fallbacks, so it can move above or below instead.
+By default it flips to the opposite side only when there isn't room. Pass a list of placements to `positioning.flip` to
+choose other fallbacks, such as above or below.
 
 <Example id="positioning" />
 
 ### Close Behavior
 
-The popover is designed to close on blur and when the <kbd>esc</kbd> key is pressed.
+The popover closes on blur and on <kbd>esc</kbd>.
 
-- To prevent it from closing on blur (clicking or focusing outside), pass the `closeOnInteractOutside` prop and set it
-  to `false`.
-- To prevent it from closing when the <kbd>esc</kbd> key is pressed, pass the `closeOnEsc` prop and set it to `false`.
+- Set `closeOnInteractOutside={false}` to keep it open when clicking or focusing outside.
+- Set `closeOnEsc={false}` to keep it open on <kbd>esc</kbd>.
 
 <Example id="close-behavior" />
 
 ### Modality
 
-In some cases, you might want the popover to be modal. This means that it'll:
+Set `modal` to `true` to make the popover:
 
 - trap focus within its content
-- block scrolling on the body
-- disable pointer interactions outside the popover
-- hide content behind the popover from screen readers
+- block body scrolling
+- disable pointer interactions outside
+- hide content behind it from screen readers
 
-To make the popover modal, set the `modal` prop to `true`. When `modal={true}`, we set the `portalled` attribute to
-`true` as well.
+`modal={true}` also sets `portalled` to `true`.
 
 <Example id="modal" />
 
@@ -97,32 +94,30 @@ Use `positioning.getAnchorElement` to anchor the popover to the current text sel
 
 ### Same Width
 
-Use `positioning.sameWidth` to make the popover match the width of its trigger element.
+Use `positioning.sameWidth` to match the trigger's width.
 
 <Example id="same-width" />
 
 ### Dialog Integration
 
-When rendering a popover inside a dialog, you have two options for proper layering:
+Inside a dialog, you have two layering options:
 
-1. **Keep the Portal with `lazyMount` and `unmountOnExit`** - This ensures the popover is properly unmounted when the
-   dialog closes, preventing stale DOM nodes.
+1. **Keep the Portal with `lazyMount` and `unmountOnExit`**: the popover unmounts when the dialog closes, so no stale
+   DOM nodes remain.
 
-2. **Remove the Portal** - Render the popover inline within the dialog content. This works well but may have z-index
-   considerations.
+2. **Remove the Portal**: render the popover inline in the dialog content. Watch for z-index issues.
 
 <Example id="with-dialog" />
 
 ### Nested
 
-Popovers can be nested within each other. Each nested popover maintains its own open state and positioning.
+Each nested popover keeps its own open state and positioning.
 
 <Example id="nested" />
 
 ### Multiple Triggers
 
-Share a single popover across multiple trigger elements. Pass a `value` to each `Popover.Trigger`. The popover
-repositions to whichever trigger is activated without closing.
+Pass a `value` to each `Popover.Trigger` to share one popover. It repositions to the active trigger without closing.
 
 <Example id="multiple-triggers" />
 
@@ -130,7 +125,7 @@ repositions to whichever trigger is activated without closing.
 
 ### Available Size
 
-The following css variables are exposed to the `Popover.Positioner` which you can use to style the `Popover.Content`
+`Popover.Positioner` exposes these CSS variables for styling `Popover.Content`:
 
 ```css
 /* width of the popover trigger */
@@ -141,7 +136,7 @@ The following css variables are exposed to the `Popover.Positioner` which you ca
 --available-height: <pixel-value>;
 ```
 
-For example, if you want to make sure the maximum height doesn't exceed the available height, use the following css:
+For example, to keep the content within the available height:
 
 ```css
 [data-popover-content] {

@@ -33,8 +33,7 @@ Use `onStatusChange` to listen for loading state changes.
 
 ### Root Provider
 
-An alternative way to control the avatar is to use the `RootProvider` component and the `useAvatar` hook. This way you
-can access the state and methods from outside the component.
+Use `RootProvider` with the `useAvatar` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
@@ -48,7 +47,7 @@ Stack the first 3 avatars. The `+N` overflow is a `Menu.Trigger` that lists ever
 
 ### Next.js Image
 
-Here's an example of how to use the `Image` component from `next/image`.
+Render the `Image` component from `next/image` inside the avatar.
 
 ```tsx
 import { Avatar, useAvatarContext } from '@ark-ui/react/avatar'
@@ -83,7 +82,7 @@ const Demo = () => {
 }
 ```
 
-> Refer to this [Github Discussion](https://github.com/chakra-ui/ark/discussions/3147) for more information.
+> See this [GitHub Discussion](https://github.com/chakra-ui/ark/discussions/3147) for details.
 
 ## API Reference
 

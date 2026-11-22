@@ -27,53 +27,51 @@ description: A continuous scrolling component for displaying content in a seamle
 
 ### Auto Fill
 
-Use the `autoFill` prop to automatically duplicate content to fill the viewport. The `spacing` prop controls the gap
-between duplicated content instances:
+Set `autoFill` to duplicate content until it fills the viewport. `spacing` sets the gap between copies.
 
 <Example id="auto-fill" />
 
 ### Reverse
 
-Set the `reverse` prop to reverse the scroll direction:
+Set `reverse` to flip the scroll direction.
 
 <Example id="reverse" />
 
 ### Vertical
 
-Set `side="bottom"` (or `side="top"`) to create a vertical marquee:
+Set `side="bottom"` or `side="top"` for a vertical marquee.
 
 <Example id="vertical" />
 
 ### Speed
 
-Control the animation speed using the `speed` prop, which accepts values in pixels per second:
+Set `speed` in pixels per second.
 
 <Example id="speed" />
 
 ### Pause on Interaction
 
-Enable `pauseOnInteraction` to pause the marquee when users hover or focus on it, improving accessibility:
+Set `pauseOnInteraction` to pause on hover or focus. This helps accessibility.
 
 <Example id="pause-on-interaction" />
 
 ### Programmatic Control
 
-Use the `useMarquee` hook with `Marquee.RootProvider` to access the marquee API and control playback programmatically:
+Use the `useMarquee` hook with `Marquee.RootProvider` to control playback through the API.
 
 <Example id="programmatic-control" />
 
-> If you're using the `Marquee.RootProvider` component, you don't need to use the `Marquee.Root` component.
+> `Marquee.RootProvider` replaces `Marquee.Root`. Don't use both.
 
 ### Loops
 
-Set the `loopCount` prop to run the marquee a specific number of times. Use `onLoopComplete` to track each loop
-iteration and `onComplete` to know when all loops finish:
+Set `loopCount` to run a fixed number of loops. `onLoopComplete` fires after each loop and `onComplete` after the last.
 
 <Example id="finite-loops" />
 
 ### Edges
 
-Add `Marquee.Edge` components to create fade effects at the start and end of the scrolling area:
+Add `Marquee.Edge` to fade the start and end of the scroll area.
 
 <Example id="with-edges" />
 
@@ -81,8 +79,7 @@ Add `Marquee.Edge` components to create fade effects at the start and end of the
 
 ### Content Animation
 
-The Marquee component requires CSS keyframe animations to function properly. You'll need to define animations for both
-horizontal and vertical scrolling:
+Marquee needs CSS keyframes for horizontal and vertical scrolling:
 
 ```css
 @keyframes marqueeX {
@@ -104,10 +101,9 @@ horizontal and vertical scrolling:
 }
 ```
 
-The component automatically applies the appropriate animation (`marqueeX` or `marqueeY`) based on the scroll direction
-and uses the `--marquee-translate` CSS variable for seamless looping.
+The component applies `marqueeX` or `marqueeY` based on direction and uses `--marquee-translate` to loop without a jump.
 
-You can target specific parts of the marquee using their data attributes for custom styling:
+Style parts through their data attributes:
 
 - `[data-marquee-root]` - The root container
 - `[data-marquee-viewport]` - The scrolling viewport
@@ -117,12 +113,9 @@ You can target specific parts of the marquee using their data attributes for cus
 
 ### Best Practices
 
-- **Enable pause-on-interaction**: Use `pauseOnInteraction` to allow users to pause animations on hover or focus,
-  improving accessibility and readability
-- **Use descriptive labels**: Provide meaningful `aria-label` values that describe the marquee content (e.g., "Partner
-  logos", "Latest announcements")
-- **Avoid for critical information**: Don't use marquees for essential content that users must read, as continuously
-  moving text can be difficult to process. Consider static displays for important information
+- **Enable pause-on-interaction**: Set `pauseOnInteraction` so users can pause on hover or focus.
+- **Use descriptive labels**: Give an `aria-label` that names the content (e.g., "Partner logos").
+- **Avoid for critical information**: Moving text is hard to read. Show essential content statically.
 
 ## API Reference
 

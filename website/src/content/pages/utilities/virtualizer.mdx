@@ -9,15 +9,14 @@ status: new
 
 ## Usage
 
-The virtualizer keeps the DOM small by rendering only the items that intersect the scroll viewport, plus a few extra for
-smooth scrolling. It comes in three flavors, each with a hook and a matching set of components:
+The virtualizer renders only the items in the scroll viewport, plus a few extra for smooth scrolling. There are three
+flavors, each a hook plus components:
 
-- `useListVirtualizer` + `ListVirtualizer` for vertical or horizontal lists that scroll inside their own container.
-- `useGridVirtualizer` + `GridVirtualizer` for two-dimensional grids of rows and cells.
-- `useWindowVirtualizer` + `WindowVirtualizer` for lists that scroll with the window or the nearest scrollable ancestor.
+- `useListVirtualizer` + `ListVirtualizer` for lists that scroll inside their own container.
+- `useGridVirtualizer` + `GridVirtualizer` for grids of rows and cells.
+- `useWindowVirtualizer` + `WindowVirtualizer` for lists that scroll with the window or nearest scrollable ancestor.
 
-Create a virtualizer with one of the hooks, pass it to `Root` as `value`, render the spacer with `Content`, and map the
-virtual items to `Item` elements.
+Pass the hook's result to `Root` as `value`, render the spacer with `Content`, and map the virtual items to `Item`.
 
 ```tsx
 import { ListVirtualizer, useListVirtualizer } from '@ark-ui/react/virtualizer'
@@ -38,10 +37,12 @@ const virtualizer = useListVirtualizer({
 </ListVirtualizer.Root>
 ```
 
-`Root` is the scroll container: it receives the ARIA attributes, the `overflow` styles, and the scroll listener. Give it
-a fixed height (or width for horizontal lists) so it can scroll. `Content` is the spacer that grows to the total size of
-the list. `Item` is positioned absolutely with a `transform`; its size comes from your CSS or from the estimate, so give
-your items a height that matches `estimatedSize`, or opt into measurement as shown below.
+`Root` is the scroll container. Give it a fixed height (or width when horizontal). `Content` is a spacer sized to the
+whole list. `Item` is positioned with a `transform`, so give items a height that matches `estimatedSize`, or measure
+them as shown below.
+
+The virtualizer re-measures when the container resizes, so it works inside tabs, dialogs and collapsed panels. Set
+`observeScrollElementSize: false` to opt out.
 
 ### List
 
@@ -49,44 +50,40 @@ your items a height that matches `estimatedSize`, or opt into measurement as sho
 
 ### Dynamic Size
 
-When items have different heights, set the `measure` prop on `Item`. The rendered size of each item is then measured and
-fed back into the virtualizer, so `estimatedSize` only needs to be a rough guess.
+For items of different heights, set `measure` on `Item`. Each item is measured after render, so `estimatedSize` only
+needs to be a rough guess.
 
 <Example id="dynamic-size" />
 
 ### Horizontal
 
-Set `orientation` to `horizontal` to virtualize along the x-axis. `Content` grows in width and items are translated
-horizontally.
+Set `orientation="horizontal"` to virtualize along the x-axis.
 
 <Example id="horizontal" />
 
 ### Scroll to Index
 
-Use `scrollToIndex` on the virtualizer to jump to an item. It accepts an `align` option (`start`, `center`, `end`, or
-`auto`) and a `smooth` option for animated scrolling.
+`scrollToIndex` jumps to an item. It takes `align` (`start`, `center`, `end`, `auto`) and `smooth`.
 
 <Example id="scroll-to-index" />
 
 ### Grid
 
-The grid virtualizer is row-first: map `getVirtualRows()` to `Row` elements and each row's `columns` to `Cell` elements.
-`Cell` reads its row from context, so it only needs the `column`. Rows can opt into height measurement with the
-`measure` prop.
+Map `getVirtualRows()` to `Row` and each row's `columns` to `Cell`. `Cell` reads its row from context, so it only needs
+the `column`. Rows accept `measure`.
 
 <Example id="grid" />
 
 ### Window
 
-The window virtualizer delegates scrolling to the window or the nearest scrollable ancestor, so `Root` does not need a
-height or an overflow style. Use it for long pages where the list is part of the document flow.
+Scrolling happens on the window or nearest scrollable ancestor, so `Root` needs no height or overflow. Use it when the
+list is part of the page flow.
 
-<Example id="window" />
+<ExampleCode id="window" component="virtualizer" />
 
 ### Using the Context
 
-`Context` exposes the virtualizer to child components, which is useful for rendering derived state such as the visible
-range.
+`Context` exposes the virtualizer to children, for derived state like the visible range.
 
 ```tsx
 <ListVirtualizer.Root value={virtualizer}>
@@ -98,10 +95,9 @@ range.
 
 ### Composing with other components
 
-The virtualizer parts compose with any Ark component through the `render` prop. Render the component's scroll container
-as `ListVirtualizer.Root` and each of its items as `ListVirtualizer.Item`; the component's own props (roles, ids,
-handlers) win over the virtualizer's, and the virtualizer adds the positioning and the `aria-posinset` / `aria-setsize`
-attributes.
+Use the `render` prop to render a component's scroll container as `ListVirtualizer.Root` and its items as
+`ListVirtualizer.Item`. The component keeps its roles, ids and handlers; the virtualizer adds positioning and
+`aria-posinset` / `aria-setsize`.
 
 ```tsx
 <Combobox.List render={<ListVirtualizer.Root value={virtualizer} />}>
@@ -118,8 +114,8 @@ attributes.
 </Combobox.List>
 ```
 
-Pass the component's `scrollToIndexFn` through to `virtualizer.scrollToIndex` so keyboard navigation reaches items that
-are not mounted. See the virtualized examples for [Select](/docs/components/select#virtualized),
+Forward the component's `scrollToIndexFn` to `virtualizer.scrollToIndex` so keyboard navigation reaches unmounted items.
+See the virtualized examples for [Select](/docs/components/select#virtualized),
 [Combobox](/docs/components/combobox#virtualized), [Listbox](/docs/components/listbox#virtualized), and
 [Tree View](/docs/components/tree-view#virtualized).
 
@@ -127,9 +123,8 @@ are not mounted. See the virtualized examples for [Select](/docs/components/sele
 
 ### Web Components
 
-In `@ark-ui/web`, the three flavors are elements: `<ark-list-virtualizer>`, `<ark-grid-virtualizer>`, and
-`<ark-window-virtualizer>`. Options such as `count` and `estimated-size` are attributes. Items are stamped from a
-`<template>` in the content part, and `renderItem` fills each one:
+The flavors are `<ark-list-virtualizer>`, `<ark-grid-virtualizer>` and `<ark-window-virtualizer>`. Options like `count`
+and `estimated-size` are attributes. Items are stamped from a `<template>` and filled by `renderItem`:
 
 ```html
 <ark-list-virtualizer count="10000" estimated-size="48">
@@ -146,8 +141,8 @@ list.renderItem = (element, item) => {
 }
 ```
 
-Inside a collection component, compose with `as-child` so the component keeps its roles and the virtualizer only
-positions, and set `scrollToIndexFn` to `({ index }) => list.virtualizer?.scrollToIndex(index)`.
+Inside a collection component, compose with `as-child` and set `scrollToIndexFn` to
+`({ index }) => list.virtualizer?.scrollToIndex(index)`.
 
 </FrameworkOnly>
 

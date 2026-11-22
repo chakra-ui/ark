@@ -34,86 +34,75 @@ description: A component that allows users to add tags to an input field.
 
 ### Controlled
 
-Use the `value` and `onValueChange` props to programmatically control the tags input's state. This allows you to manage
-the tags array externally and respond to changes.
+Pass `value` and update it in `onValueChange` to manage the tags array yourself.
 
 <Example id="controlled" />
 
 ### Controlled Input Value
 
-Use the `inputValue` and `onInputValueChange` props to control the text input field independently. This is useful for
-clearing the input or pre-filling it programmatically.
+Use `inputValue` and `onInputValueChange` to control the text field on its own, for example to clear or pre-fill it.
 
 <Example id="controlled-input-value" />
 
 ### Root Provider
 
-An alternative way to control the tags input is to use the `RootProvider` component and the `useTagsInput` hook. This
-way you can access the state and methods from outside the component.
+Use `RootProvider` with the `useTagsInput` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Field
 
-The `Field` component helps manage form-related state and accessibility attributes of a tags input. It includes handling
-ARIA labels, helper text, and error text to ensure proper accessibility.
+Wrap the tags input in `Field` to wire up the label, helper text, error text and ARIA attributes.
 
 <Example id="with-field" />
 
 ### Max Tags
 
-To limit the number of tags within the component, you can set the `max` property to the limit you want. The default
-value is `Infinity`.
-
-When the tag reaches the limit, new tags cannot be added except the `allowOverflow` prop is set to `true`.
+Set `max` to limit the number of tags (default `Infinity`). Once the limit is reached, new tags are rejected unless
+`allowOverflow` is `true`.
 
 <Example id="max-with-overflow" />
 
 ### Custom Delimiter
 
-Use the `delimiter` prop with a regex pattern to specify multiple characters that can separate tags. By default, only
-the Enter key creates tags.
+Pass a regex to `delimiter` to split tags on several characters. By default, only Enter creates a tag.
 
 <Example id="delimiter" />
 
 ### Disabled
 
-Use the `disabled` prop to make the tags input non-interactive. Users won't be able to add, remove, or edit tags.
+Set `disabled` to block adding, removing and editing tags.
 
 <Example id="disabled" />
 
 ### Invalid
 
-Use the `invalid` prop to mark the tags input as invalid for form validation purposes.
+Set `invalid` to mark the tags input as invalid.
 
 <Example id="invalid" />
 
 ### Max Length
 
-Use the `maxLength` prop to limit the number of characters allowed per tag. This prevents users from creating overly
-long tags.
+Set `maxLength` to cap the characters per tag.
 
 <Example id="max-tag-length" />
 
 ### Read-only
 
-Use the `readOnly` prop to make tags visible but not editable. Users can view tags but cannot add, remove, or modify
-them.
+Set `readOnly` to show tags without allowing changes.
 
 <Example id="readonly" />
 
 ### Validation
 
-Before a tag is added, the `validate` function is called to determine whether to accept or reject a tag.
-
-A common use-case for validating tags is preventing duplicates or validating the data type.
+`validate` runs before a tag is added and decides whether to accept it. Use it to prevent duplicates or check the data
+type.
 
 <Example id="validation" />
 
 ### Blur behavior
 
-When the tags input is blurred, you can configure the action the component should take by passing the `blurBehavior`
-prop.
+`blurBehavior` sets what happens when the input loses focus:
 
 - `add`: Adds the tag to the list of tags.
 - `clear`: Clears the tags input value.
@@ -122,41 +111,36 @@ prop.
 
 ### Paste behavior
 
-To add a tag when a arbitrary value is pasted in the input element, pass the `addOnPaste` prop.
+Set `addOnPaste` to add tags from pasted text. The pasted value is:
 
-When a value is pasted, the component will:
-
-- check if the value is a valid tag based on the `validate` option
-- split the value by the `delimiter` option passed
+- checked against `validate`
+- split by `delimiter`
 
 <Example id="paste-behavior" />
 
 ### Disable Editing
 
-by default the tags can be edited by double-clicking on the tag or focusing on them and pressing
-
-<kbd>Enter</kbd>. To disable this behavior, pass `editable={false}`
+Tags are editable by default: double-click a tag, or focus it and press <kbd>Enter</kbd>. Pass `editable={false}` to
+turn this off.
 
 <Example id="disabled-editing" />
 
 ### Programmatic Control
 
-Use the `useTagsInput` hook with `RootProvider` to access the component's API methods like `addValue()`, `setValue()`,
-and `clearValue()` for full programmatic control.
+Use `useTagsInput` with `RootProvider` to call API methods like `addValue()`, `setValue()` and `clearValue()`.
 
 <Example id="programmatic-control" />
 
 ### Sanitize Value
 
-Use the `sanitizeValue` prop to normalize tag values before they're added. This runs on every new tag, which is useful
-for trimming whitespace, converting to lowercase, or any other formatting you need.
+`sanitizeValue` normalizes every new tag before it's added, for example to trim whitespace or lowercase it.
 
 <Example id="sanitize-value" />
 
 ### Combobox
 
-Combine TagsInput with Combobox to create an autocomplete tags input. This pattern uses shared IDs between both
-components and the `asChild` prop to compose the inputs together.
+Combine TagsInput with Combobox for autocomplete. Share IDs between both components and compose the inputs with
+`asChild`.
 
 <Example id="with-combobox" />
 
@@ -164,12 +148,11 @@ components and the `asChild` prop to compose the inputs together.
 
 ### Navigation
 
-When the input has an empty value or the caret is at the start position, the tags can be selected by using the arrow
-left and arrow right keys. When "visual" focus in on any tag:
+When the input is empty or the caret is at the start, use the left and right arrow keys to move through tags. When a tag
+has visual focus:
 
-- Pressing <kbd>Enter</kbd> or double-clicking on the tag will put it in edit mode, allowing the user change its value
-  and press <kbd>Enter</kbd> to commit the changes.
-- Pressing <kbd>Delete</kbd> or <kbd>Backspace</kbd> will delete the tag that has _visual_ focus.
+- <kbd>Enter</kbd> or double-click puts it in edit mode. Press <kbd>Enter</kbd> again to commit.
+- <kbd>Delete</kbd> or <kbd>Backspace</kbd> deletes it.
 
 ## API Reference
 

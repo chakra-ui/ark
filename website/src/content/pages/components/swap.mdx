@@ -20,25 +20,21 @@ description: Animate between two visual states with smooth transitions.
 
 ### Fade
 
-Swap between two icons with a fade animation. Set the `swap` prop to toggle between the `on` and `off` indicators.
+Set the `swap` prop to toggle between the `on` and `off` indicators.
 
 <Example id="fade" />
 
 ### Flip
 
-Add a 3D flip effect by setting `perspective` on the root and using `rotateY` keyframes on the indicators.
+Set `perspective` on the root and use `rotateY` keyframes on the indicators.
 
 <Example id="flip" />
 
 ### Rotate
 
-Rotate the indicators in and out with a spin transition.
-
 <Example id="rotate" />
 
 ### Scale
-
-Scale the indicators up and down for a pop-in effect.
 
 <Example id="scale" />
 
@@ -46,13 +42,12 @@ Scale the indicators up and down for a pop-in effect.
 
 ### How It Works
 
-Swap renders two indicators stacked on top of each other in a 1x1 CSS grid. The `swap` prop controls which indicator is
-visible. Each indicator uses the presence system, so you get `data-state="open"` and `data-state="closed"` attributes to
-drive your CSS animations.
+Swap stacks two indicators in a 1x1 CSS grid. The `swap` prop controls which one is visible. Each indicator uses the
+presence system, so it gets `data-state="open"` or `data-state="closed"` to drive CSS animations.
 
 ### Animating Indicators
 
-Target `data-state` on each indicator to define enter and exit animations:
+Target `data-state` to define enter and exit animations:
 
 ```css
 .indicator[data-state='open'] {
@@ -82,7 +77,7 @@ Target `data-state` on each indicator to define enter and exit animations:
 }
 ```
 
-You can combine animations for richer effects. For example, scale with fade:
+Combine animations, such as scale with fade:
 
 ```css
 .indicator[data-state='open'] {
@@ -100,7 +95,7 @@ You can combine animations for richer effects. For example, scale with fade:
 
 ### 3D Flip Animation
 
-For a flip effect, set `perspective` on the root and use `backface-visibility: hidden` on indicators:
+Set `perspective` on the root and `backface-visibility: hidden` on the indicators:
 
 ```css
 .flip-indicator {
@@ -136,8 +131,7 @@ For a flip effect, set `perspective` on the root and use `backface-visibility: h
 
 ### Lazy Mount
 
-Use `lazyMount` and `unmountOnExit` to control when indicators mount and unmount. This keeps the DOM clean when
-indicators aren't visible.
+Use `lazyMount` and `unmountOnExit` to keep hidden indicators out of the DOM.
 
 ```tsx
 <Swap.Root swap={swapped} lazyMount unmountOnExit>

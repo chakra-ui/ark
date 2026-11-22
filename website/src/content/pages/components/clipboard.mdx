@@ -28,36 +28,31 @@ description: A component to copy text to the clipboard
 
 ### Controlled
 
-Control the clipboard value externally by managing the state yourself and using `onValueChange` to handle updates.
+Use `value` and `onValueChange` to control the clipboard value.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the clipboard is to use the `RootProvider` component and the `useClipboard` hook. This way
-you can access the state and methods from outside the component.
+Use `RootProvider` with the `useClipboard` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Context
 
-Access the clipboard's state with `Clipboard.Context` or the `useClipboardContext` hook. You get properties like
-`copied`, `value`, and `setValue`.
-
-> Alternatively, you can use the `useClipboardContext` hook to access the clipboard context.
+Use `Clipboard.Context` or the `useClipboardContext` hook to read `copied`, `value` and `setValue`.
 
 <Example id="context" />
 
 ### Copy Status
 
-Use the `onStatusChange` prop to listen for copy operations. It exposes a `copied` property that you can use to display
-a success message.
+`onStatusChange` fires on each copy. Use its `copied` property to show a success message.
 
 <Example id="copy-status" />
 
 ### Timeout
 
-Configure the copy status timeout duration using the `timeout` prop. Default is 3000ms (3 seconds).
+Set `timeout` to change how long the copied status lasts. The default is 3000ms.
 
 <Example id="timeout" />
 

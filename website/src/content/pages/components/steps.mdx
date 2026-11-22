@@ -31,27 +31,23 @@ description: Used to guide users through a series of steps in a process
 
 ### Basic
 
-Here's a basic example of the `Steps` component.
-
 <Example component="steps" id="basic" />
 
 ### Controlled
 
-Using the `RootProvider` component, you can control the active step by using the `step` prop and handling the
-`onStepChange` event.
+Use `value` and `onValueChange` to control the active step.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the steps is to use the `RootProvider` component and the `useSteps` hook. This way you can
-access the state and methods from outside the component.
+Use `RootProvider` with the `useSteps` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Vertical
 
-Use the `orientation` prop to display the steps vertically.
+Set `orientation="vertical"` to stack the steps.
 
 <Example id="vertical" />
 

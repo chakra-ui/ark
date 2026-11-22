@@ -27,30 +27,26 @@ description: A component that allows users to draw a signature using a signature
 
 ### Controlled
 
-Use the `paths` prop with `onDraw` (React/Solid), `v-model:paths` (Vue), `bind:paths` (Svelte), or the `paths` attribute
-as JSON with the `draw` event (Web) to control the signature pad externally. The example tracks the path count and can
-clear the signature from outside the component.
+Control the paths with `paths` and `onDraw` (React/Solid), `v-model:paths` (Vue), `bind:paths` (Svelte), or the `paths`
+attribute as JSON with the `draw` event (Web). The example tracks the path count and clears the signature from outside.
 
 <Example id="controlled" />
 
 ### Image Preview
 
-After the user draws a signature, you can display a preview of the signature as an image. This is useful when you want
-to show the user a preview of the signature before saving it.
+Show the drawn signature as an image preview before saving it.
 
 <Example id="image-preview" />
 
 ### Field
 
-The `Field` component helps manage form-related state and accessibility attributes of a signature pad. It includes
-handling ARIA labels, helper text, and error text to ensure proper accessibility.
+`Field` wires up the label, helper text, error text and ARIA attributes.
 
 <Example id="with-field" />
 
 ### Root Provider
 
-An alternative way to control the signature pad is to use the `RootProvider` component and the `useSignaturePad` hook.
-This way you can access the state and methods from outside the component.
+Use `RootProvider` with the `useSignaturePad` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 

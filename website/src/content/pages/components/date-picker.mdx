@@ -54,162 +54,142 @@ description: A component that allows users to select a date from a calendar.
 
 ### Default Value
 
-Use the `defaultValue` prop with `parseDate` to set the initial date value.
+Use `defaultValue` with `parseDate` to set the initial date.
 
 <Example id="default-value" />
 
 ### Controlled
 
-Use the `value` and `onValueChange` props to control the date picker's value programmatically.
+Use `value` and `onValueChange` to control the value.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the date picker is to use the `RootProvider` component and the `useDatePicker` hook. This
-way you can access the state and methods from outside the component.
+Use `RootProvider` with the `useDatePicker` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Default View
 
-Use the `defaultView` prop to set which view (day, month, or year) the calendar opens to initially.
+Set `defaultView` to open the calendar on the day, month, or year view.
 
 <Example id="default-view" />
 
 ### Month and Year Select
 
-Use `MonthSelect` and `YearSelect` components to create a header with dropdown selects for quick month/year navigation,
-alongside the prev/next triggers.
+Use `MonthSelect` and `YearSelect` next to the prev/next triggers for dropdown month and year navigation.
 
 <Example id="month-year-select" />
 
 ### Range
 
-To create a date picker that allows a range selection, you need to:
-
-- Set the `selectionMode` prop to `range`.
-- Render multiple inputs with the `index` prop set to `0` and `1`.
+Set `selectionMode="range"` and render two inputs with `index` set to `0` and `1`.
 
 <Example id="range-selection" />
 
 ### Multiple
 
-Use the `selectionMode="multiple"` prop to allow selecting multiple dates. This example also shows how to display
-selected dates as removable tags.
+Set `selectionMode="multiple"` to select several dates. This example shows them as removable tags.
 
 <Example id="multi-selection" />
 
 ### Max Selected Dates
 
-Use the `maxSelectedDates` prop with `selectionMode="multiple"` to limit the number of dates that can be selected. In
-this example, users can select up to 3 dates.
+Use `maxSelectedDates` with `selectionMode="multiple"` to cap the selection. Here the limit is 3.
 
 <Example id="max-selected-dates" />
 
 ### Multiple Months
 
-To create a date picker that displays multiple months side by side:
-
-- Set the `numOfMonths` prop to the number of months you want to display.
-- Use the `datePicker.getOffset({ months: 1 })` to get data for the next month.
+Set `numOfMonths` to show months side by side. Use `datePicker.getOffset({ months: 1 })` to get the next month's data.
 
 <Example id="multiple-months" />
 
 ### Presets
 
-Use the `DatePicker.PresetTrigger` component to add quick-select preset options like "Last 7 days" or "This month".
+Use `DatePicker.PresetTrigger` for presets like "Last 7 days" or "This month".
 
 <Example id="presets" />
 
 ### Min and Max
 
-Use the `min` and `max` props with `parseDate` to restrict the selectable date range. Dates outside this range will be
-disabled.
+Use `min` and `max` with `parseDate` to restrict the range. Dates outside it are disabled.
 
 <Example id="min-max" />
 
 ### Unavailable
 
-Use the `isDateUnavailable` prop to mark specific dates as unavailable. This example disables weekends.
+Use `isDateUnavailable` to mark dates as unavailable. This example disables weekends.
 
 <Example id="unavailable" />
 
 ### Locale
 
-Use the `locale` prop to set the language and formatting, and `startOfWeek` to set the first day of the week (0 =
-Sunday, 1 = Monday, etc.).
+Set `locale` for language and formatting. Set `startOfWeek` for the first day of the week (0 = Sunday, 1 = Monday).
 
 <Example id="locale" />
 
 ### Month Picker
 
-Create a month-only picker by setting `defaultView="month"` and `minView="month"`. Use custom `format` and `parse`
-functions to handle month/year input format.
+Set `defaultView="month"` and `minView="month"`. Custom `format` and `parse` functions handle the month/year input.
 
 <Example id="month-picker" />
 
 ### Year Picker
 
-Create a year-only picker by setting `defaultView="year"` and `minView="year"`. Use custom `format` and `parse`
-functions to handle year-only input format.
+Set `defaultView="year"` and `minView="year"`. Custom `format` and `parse` functions handle the year input.
 
 <Example id="year-picker" />
 
 ### Inline
 
-Use the `inline` prop to display the date picker directly on the page, without a popup.
+Set `inline` to render the calendar on the page without a popup.
 
-> When using the `inline` prop, omit the `Portal`, `Positioner`, and `Content` components to render the calendar inline
-> within your layout.
+> With `inline`, omit `Portal`, `Positioner`, and `Content`.
 
 <Example id="inline" />
 
 ### Custom Parsing
 
-Use the `parse` prop to implement custom date parsing logic. This allows users to enter dates in flexible formats like
-"25/12" or "25/12/24" which are automatically converted to valid dates.
+Use `parse` for custom parsing, so users can type formats like "25/12" or "25/12/24".
 
 <Example id="format-parse" />
 
 ### Month Picker Range
 
-Create a month range picker by combining `selectionMode="range"` with `defaultView="month"` and `minView="month"`. This
-is useful for selecting billing periods or date ranges by month.
+Combine `selectionMode="range"` with `defaultView="month"` and `minView="month"`, for example for billing periods.
 
 <Example id="month-picker-range" />
 
 ### Year Range
 
-Create a year range picker by combining `selectionMode="range"` with `defaultView="year"` and `minView="year"`. This is
-useful for selecting multi-year periods.
+Combine `selectionMode="range"` with `defaultView="year"` and `minView="year"` to select multi-year periods.
 
 <Example id="year-picker-range" />
 
 ### Select Today
 
-Use the `selectToday` method from the date picker context to add a "Today" button that quickly selects the current date.
+Call `selectToday` from the context to build a "Today" button.
 
 <Example id="select-today" />
 
 ### Fixed Weeks
 
-Use the `fixedWeeks` prop to always display 6 weeks in the calendar, preventing layout shifts when navigating between
-months.
+Set `fixedWeeks` to always show 6 weeks, so the layout doesn't shift between months.
 
 <Example id="fixed-weeks" />
 
 ### Form
 
-Use the `name` prop to integrate the date picker with native HTML forms. The selected date value will be submitted as
-form data. This example also uses `isDateUnavailable` to disable weekends.
+Set `name` to submit the selected date with a native form. This example also disables weekends with `isDateUnavailable`.
 
 <Example id="form" />
 
 ### With Time
 
-Integrate a time input with the date picker using `CalendarDateTime` from `@internationalized/date`. The time input
-updates the hour and minute of the selected date value.
+Use `CalendarDateTime` from `@internationalized/date` to add a time input. It updates the hour and minute of the
+selected value.
 
 <Example id="with-time" />
 

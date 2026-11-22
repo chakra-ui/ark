@@ -30,62 +30,59 @@ description: A modal window that appears on top of the main content.
 
 ### Controlled
 
-Manage the dialog state using the `open` and `onOpenChange` props.
+Use `open` and `onOpenChange` to control the open state.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the dialog is to use the `RootProvider` component and the `useDialog` hook. This way you
-can access the state and methods from outside the component.
+Use `RootProvider` with the `useDialog` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Alert Dialog
 
-For critical confirmations or destructive actions, use `role="alertdialog"`. Alert dialogs differ from regular dialogs
-in important ways:
+Use `role="alertdialog"` for critical confirmations or destructive actions. Unlike a regular dialog:
 
-- **Automatic focus**: The close/cancel button receives focus when opened, prioritizing the safest action
-- **Requires explicit dismissal**: Cannot be closed by clicking outside, only via button clicks or Escape key
+- **Automatic focus**: the close/cancel button gets focus on open, so the safest action comes first
+- **Explicit dismissal**: an outside click doesn't close it; only a button or <kbd>Escape</kbd> does
 
 <Example id="alert-dialog" />
 
 ### Lazy Mount
 
-Use `lazyMount` to render dialog content only when first opened. Combine with `unmountOnExit` to unmount when closed,
-freeing up resources. Prefer this over conditionally rendering `Dialog.Root` (see **Conditional Rendering**).
+`lazyMount` renders the content on first open. Add `unmountOnExit` to unmount it on close. Prefer this over
+conditionally rendering `Dialog.Root` (see **Conditional Rendering**).
 
 <Example id="lazy-mount" />
 
 ### Initial Focus
 
-Use `initialFocusEl` to control which element receives focus when the dialog opens.
+Use `initialFocusEl` to choose the element focused on open.
 
 <Example id="initial-focus" />
 
 ### Final Focus
 
-Use `finalFocusEl` to control which element receives focus when the dialog closes. Defaults to the trigger element.
+Use `finalFocusEl` to choose the element focused on close. Defaults to the trigger.
 
 <Example id="final-focus" />
 
 ### Non-Modal
 
-Use `modal={false}` to allow interaction with elements outside the dialog. Disables focus trapping and scroll
-prevention.
+Set `modal={false}` to allow interaction outside the dialog. This disables focus trapping and scroll locking.
 
 <Example id="non-modal" />
 
 ### Inside Scroll
 
-Make the content area scrollable while keeping header and footer fixed using `maxHeight` and `overflow: auto`.
+Use `maxHeight` and `overflow: auto` to scroll the content while the header and footer stay fixed.
 
 <Example id="inside-scroll" />
 
 ### Outside Scroll
 
-Make the positioner scrollable so the dialog can extend beyond the viewport.
+Make the positioner scrollable so the dialog can grow past the viewport.
 
 <Example id="outside-scroll" />
 
@@ -97,14 +94,14 @@ Access the dialog's state and methods with `Dialog.Context` or the `useDialogCon
 
 ### Open from Menu
 
-Open a dialog imperatively from a menu item using the `onClick` handler.
+Open the dialog from a menu item's `onClick` handler.
 
 <Example id="open-from-menu" />
 
 ### Nested
 
-Nest dialogs within one another. The parent receives `data-has-nested` and `--nested-layer-count` CSS variable for
-styling effects like zoom-out:
+The parent of a nested dialog gets `data-has-nested` and the `--nested-layer-count` CSS variable, for effects like
+zoom-out:
 
 ```css
 [data-dialog-content][data-has-nested] {
@@ -116,14 +113,14 @@ styling effects like zoom-out:
 
 ### Multiple Triggers
 
-Share a single dialog across multiple trigger elements. Pass a `value` to each `Dialog.Trigger` and use
-`onTriggerValueChange` to update the dialog content based on which trigger was clicked.
+Share one dialog across several triggers. Give each `Dialog.Trigger` a `value` and use `onTriggerValueChange` to update
+the content for the clicked trigger.
 
 <Example id="multiple-triggers" />
 
 ### Confirmation
 
-Intercept close attempts to show confirmation prompts, preventing data loss from unsaved changes.
+Intercept close attempts to confirm before discarding unsaved changes.
 
 <Example id="confirmation" />
 
@@ -138,10 +135,10 @@ For conditional control, use `onEscapeKeyDown` or `onInteractOutside` with `e.pr
 
 ### Conditional Rendering
 
-Unmounting `Dialog.Root` when toggling open state can break focus, scroll lock, and cleanup. Keep the root mounted and
-control it with `open` / `onOpenChange`.
+Unmounting `Dialog.Root` on toggle can break focus, scroll lock, and cleanup. Keep the root mounted and control it with
+`open` / `onOpenChange`.
 
-When you want portal content out of the DOM while closed, add `lazyMount` and `unmountOnExit` to the root.
+To remove portal content from the DOM while closed, add `lazyMount` and `unmountOnExit` to the root.
 
 ```tsx
 import { Dialog } from '@ark-ui/react/dialog'
@@ -171,7 +168,7 @@ const Do = () => {
 
 ### Z-Index Stacking
 
-Use a shared overlay z-index with `--layer-index` to keep stacked dialogs and nested overlays in order:
+Use a shared overlay z-index with `--layer-index` to keep stacked overlays in order:
 
 ```css
 [data-dialog-content] {
@@ -187,11 +184,11 @@ Use a shared overlay z-index with `--layer-index` to keep stacked dialogs and ne
 }
 ```
 
-Read the [Styling guide](/docs/guides/styling#z-index) for more details.
+See the [Styling guide](/docs/guides/styling#z-index).
 
 ### Dynamic Imports
 
-When using `lazyMount` with `React.lazy` or Next.js `dynamic`, wrap the imported component in `Suspense`:
+With `lazyMount` and `React.lazy` or Next.js `dynamic`, wrap the imported component in `Suspense`:
 
 ```tsx
 import { Dialog } from '@ark-ui/react/dialog'

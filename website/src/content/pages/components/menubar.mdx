@@ -9,8 +9,7 @@ status: new
 
 ## Anatomy
 
-The menubar is a thin coordinator. It owns only a root element; the items it navigates are the triggers of the `Menu`
-components rendered inside it.
+The menubar owns only a root element. Its items are the triggers of the `Menu` components inside it.
 
 <Anatomy id="menubar" />
 
@@ -33,40 +32,39 @@ components rendered inside it.
 
 ### Basic
 
-Each `Menu` inside a `Menubar.Root` becomes one of its items. The menubar takes over roving tabindex, arrow key
-navigation, `Home`/`End`, and typeahead across the triggers, and the menus coordinate opening and closing between
-themselves. No extra prop or wrapper is needed.
+Each `Menu` inside `Menubar.Root` becomes an item. The menubar handles roving tabindex, arrow keys, `Home`/`End` and
+typeahead across the triggers. The menus coordinate opening and closing. No extra prop or wrapper is needed.
 
-Once one menu is open, moving to a sibling with the arrow keys or the pointer switches to it directly.
+While a menu is open, moving to a sibling with the arrow keys or pointer switches to it.
 
 <Example id="basic" />
 
 ### Nested Menus
 
-Submenus work exactly as they do outside a menubar, with `Menu.TriggerItem`. `ArrowRight` on a submenu trigger opens the
-submenu instead of moving to the next menu.
+Submenus use `Menu.TriggerItem` as usual. `ArrowRight` on a submenu trigger opens the submenu instead of moving to the
+next menu.
 
 <Example id="nested" />
 
 ### Vertical
 
-Set `orientation="vertical"` to stack the triggers. Up and down then move between them, and `ArrowRight` opens the
-focused menu as a fly-out.
+Set `orientation="vertical"` to stack the triggers. Up and down move between them. `ArrowRight` opens the focused menu
+as a fly-out.
 
 <Example id="vertical" />
 
 ### Disabled
 
-Set `disabled` on `Menubar.Root` to disable every trigger at once.
+Set `disabled` on `Menubar.Root` to disable every trigger.
 
-To disable a single menu instead, set `disabled` on its `Menu.Trigger`. It is skipped by keyboard navigation, never
-becomes the tabbable item, and does not open on hover.
+Set `disabled` on a `Menu.Trigger` to disable one menu. Keyboard navigation skips it, it is never tabbable, and hover
+doesn't open it.
 
 <Example id="disabled" />
 
 ### Root Provider
 
-Use the `useMenubar` hook with `Menubar.RootProvider` to read the menubar's state from outside the component.
+Use the `useMenubar` hook with `Menubar.RootProvider` to read state from outside the component.
 
 <Example id="root-provider" />
 
@@ -74,9 +72,8 @@ Use the `useMenubar` hook with `Menubar.RootProvider` to read the menubar's stat
 
 ### Portal the menus
 
-Menu content must be rendered in a `Portal`. The menubar treats every element with `role="menuitem"` inside its root as
-one of its own items, so a `Menu.Positioner` left inline would have its menu items picked up as menubar triggers and
-keyboard navigation would land on them.
+Render menu content in a `Portal`. The menubar treats every `role="menuitem"` inside its root as its own item. An inline
+`Menu.Positioner` would have its items picked up as menubar triggers, and keyboard navigation would land on them.
 
 ```tsx
 <Menu.Root>
@@ -92,11 +89,11 @@ keyboard navigation would land on them.
 
 ### Skipping the animation between menus
 
-Opening the first menu is a normal open and should animate. Moving from one menu to the next is a swap, and replaying
-the enter and exit animations on every step reads as flicker.
+The first open should animate. Moving between menus is a swap, and replaying enter and exit animations there looks like
+flicker.
 
-Both the outgoing and the incoming content carry `data-instant` for that swap, so styles can opt out of the animation
-without giving it up for the first open:
+The outgoing and incoming content both get `data-instant` during a swap. Use it to skip the animation while keeping it
+for the first open:
 
 ```css
 [data-menu-content][data-state='open'] {
@@ -113,8 +110,8 @@ without giving it up for the first open:
 }
 ```
 
-`data-instant` is set when the swap comes from the arrow keys or from hovering a sibling trigger. Closing a menu on its
-own, by clicking its trigger again or pressing `Escape`, clears it, so the next open animates normally.
+Arrow keys and hovering a sibling trigger set `data-instant`. Closing a menu by clicking its trigger or pressing
+`Escape` clears it, so the next open animates.
 
 ## API Reference
 

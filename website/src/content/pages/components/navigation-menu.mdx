@@ -36,51 +36,49 @@ description: A collection of links and menus for website navigation.
 
 ### Viewport
 
-Use `NavigationMenu.Viewport` for one shared panel. Add `NavigationMenu.Indicator` so the arrow follows the open
-trigger.
+Use `NavigationMenu.Viewport` for one shared panel. Add `NavigationMenu.Indicator` so the arrow tracks the open trigger.
 
 <Example id="viewport" />
 
 ### Current link
 
-Pass the `current` prop to the link that represents the page the user is on. It renders `aria-current="page"` for
-assistive technology and a `data-current` attribute for styling.
+Set `current` on the link for the current page. It renders `aria-current="page"` and a `data-current` attribute for
+styling.
 
 <Example id="current-link" />
 
 ### Vertical
 
-Set `orientation="vertical"` on the root to build sidebar-style navigation. Panels open to the side, and the keyboard
-model adapts: ArrowUp and ArrowDown move between triggers, ArrowRight enters the open panel.
+Set `orientation="vertical"` for sidebar navigation. Panels open to the side. ArrowUp and ArrowDown move between
+triggers, and ArrowRight enters the open panel.
 
 <Example id="vertical" />
 
 ### Indicator
 
-Render `NavigationMenu.Indicator` inside the list to highlight the active trigger, tab-style. The machine exposes
-`--trigger-x` and `--trigger-width` CSS variables, so the indicator slides between triggers with a plain CSS transition.
-For a static per-item marker, use `NavigationMenu.ItemIndicator` instead.
+Render `NavigationMenu.Indicator` inside the list to highlight the active trigger, tab-style. It slides between triggers
+with a CSS transition on `--trigger-x` and `--trigger-width`. For a static per-item marker, use
+`NavigationMenu.ItemIndicator`.
 
 <Example id="indicator" />
 
 ### Controlled
 
-Use the `value` and `onValueChange` props to control the active menu item.
+Use `value` and `onValueChange` to control the active item.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the navigation menu is to use the `RootProvider` component and the `useNavigationMenu`
-hook. This way you can access the state and methods from outside the component.
+Use `RootProvider` with the `useNavigationMenu` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+> `RootProvider` replaces `Root`. Don't use both.
 
 ### Context
 
-Access the navigation menu's state with `NavigationMenu.Context` or the `useNavigationMenuContext` hook:
+Read state with `NavigationMenu.Context` or the `useNavigationMenuContext` hook.
 
 <Example id="context" />
 
@@ -88,7 +86,7 @@ Access the navigation menu's state with `NavigationMenu.Context` or the `useNavi
 
 ### Custom links
 
-Use the `asChild` prop to render `NavigationMenu.Link` as your framework's link component for client-side routing.
+Use `asChild` to render `NavigationMenu.Link` as your router's link component.
 
 ```tsx
 import { Link as RouterLink } from 'react-router-dom'
@@ -105,8 +103,8 @@ export const MenuLink = (props: NavigationMenu.LinkProps) => {
 
 <FrameworkOnly framework="web">
 
-In `@ark-ui/web`, `ark-navigation-menu-link` wraps your own `a` element and puts the link props on it. Mark the current
-page with the `current` attribute, and handle client-side routing by intercepting the anchor's click:
+In `@ark-ui/web`, `ark-navigation-menu-link` wraps your `a` element and applies the link props to it. Mark the current
+page with `current`. For client-side routing, intercept the anchor's click:
 
 ```html
 <ark-navigation-menu-link current><a href="/docs">Documentation</a></ark-navigation-menu-link>
@@ -116,7 +114,7 @@ page with the `current` attribute, and handle client-side routing by interceptin
 
 ### Viewport size
 
-The following CSS variables are exposed on `NavigationMenu.Root` and `NavigationMenu.Viewport`:
+`NavigationMenu.Root` and `NavigationMenu.Viewport` expose these CSS variables:
 
 ```css
 /* size and position of the active trigger */
@@ -132,7 +130,7 @@ The following CSS variables are exposed on `NavigationMenu.Root` and `Navigation
 --viewport-y: <pixel-value>;
 ```
 
-Use `--viewport-width` and `--viewport-height` to animate the shared panel as the active item changes:
+Animate the shared panel between items with `--viewport-width` and `--viewport-height`:
 
 ```css
 [data-navigation-menu-viewport] {
@@ -146,7 +144,7 @@ Use `--viewport-width` and `--viewport-height` to animate the shared panel as th
 
 ### Large menus
 
-When menu content is taller than the viewport, constrain the panel and scroll the content:
+For content taller than the viewport, cap the panel and scroll the content:
 
 ```css
 [data-navigation-menu-viewport] {

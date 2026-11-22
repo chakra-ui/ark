@@ -18,8 +18,8 @@ description: A set of form controls optionally grouped under a common name.
 
 ## Examples
 
-The `Fieldset` component provides contexts such as `invalid` and `disabled` for form elements. While most Ark UI
-components natively support these contexts, you can also use the `Field` component with standard HTML form elements.
+`Fieldset` provides `invalid` and `disabled` context to the fields inside it. Most Ark UI components read it natively.
+Use `Field` to apply it to standard HTML form elements.
 
 ### Basic
 
@@ -27,39 +27,37 @@ components natively support these contexts, you can also use the `Field` compone
 
 ### Disabled
 
-Set `disabled` on the fieldset to disable every field inside it, including fields that do not render a control.
+Set `disabled` to disable every field inside, including fields without a control.
 
 <Example id="disabled" />
 
 ### Invalid
 
-Set `invalid` to show the fieldset error text alongside the errors of each field.
+Set `invalid` to show the fieldset error text next to each field's errors.
 
 <Example id="invalid" />
 
 ### Field
 
-This example demonstrates how to use the `Field` component with a standard input field within a `Fieldset`.
+Use `Field` with a standard input inside a `Fieldset`.
 
 <Example id="with-field" />
 
 ### Checkbox
 
-This example shows how to use the `Fieldset` component with other Ark UI form elements like `Checkbox`.
+Use `Fieldset` with Ark UI form components like `Checkbox`.
 
 <Example id="with-checkbox" />
 
 ### Root Provider
 
-An alternative way to control the fieldset is to use the `RootProvider` component and the `useFieldset` hook. This way
-you can access the state and methods from outside the component.
+Use `RootProvider` with the `useFieldset` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Input with Select
 
-This example shows how to use the `Fieldset` component with `Field.Input` and `Select` to create a interactive phone
-input component.
+Combine `Field.Input` and `Select` in a `Fieldset` to build a phone input.
 
 <Example id="phone-input" />
 

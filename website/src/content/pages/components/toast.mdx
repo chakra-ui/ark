@@ -27,10 +27,8 @@ const toaster = createToaster({ placement: 'bottom-end' })
 
 ## Setup
 
-To use the Toast component, create the toast engine using the `createToaster` function.
-
-This function manages the placement and grouping of toasts, and provides a `toast` object needed to create toast
-notification.
+Create the toast engine with `createToaster`. It manages placement and grouping, and returns the object you use to
+create toasts.
 
 ```ts
 const toaster = createToaster({
@@ -42,14 +40,13 @@ const toaster = createToaster({
 
 ## Examples
 
-Here's an example of creating a toast using the `toast.create` method.
+Create a toast with `toast.create`.
 
 <Example id="basic" />
 
 ### Types
 
-You can create different types of toasts (`success`, `error`, `warning`, `info`) with appropriate styling. For example,
-to create a success toast, you can do:
+Toasts come in `success`, `error`, `warning` and `info` types. For example:
 
 ```ts
 toaster.success({
@@ -62,42 +59,38 @@ toaster.success({
 
 ### Promise
 
-You can use `toaster.promise()` to automatically handle the different states of an asynchronous operation. It provides
-options for the `success`, `error`, and `loading` states of the promise and will automatically update the toast when the
-promise resolves or rejects.
+`toaster.promise()` takes options for the `loading`, `success` and `error` states. It updates the toast when the promise
+resolves or rejects.
 
 <Example id="promise-toast" />
 
 ### Update
 
-To update a toast, use the `toast.update` method.
+Update a toast with `toast.update`.
 
 <Example id="update" />
 
 ### Duration
 
-You can control how long a toast stays visible by setting a custom `duration` in milliseconds, or use `Infinity` to keep
-it visible until manually dismissed.
+Set `duration` in milliseconds, or `Infinity` to keep the toast until it's dismissed.
 
 <Example id="duration" />
 
 ### Max Visible
 
-Set the `max` prop on the `createToaster` function to define the maximum number of toasts that can be rendered at any
-one time. Any extra toasts will be queued and rendered when a toast has been dismissed.
+Set `max` in `createToaster` to cap the number of visible toasts. Extra toasts queue until one is dismissed.
 
 <Example id="max-toasts" />
 
 ### Placement
 
-Configure where toasts appear on the screen using the `placement` option in `createToaster`. Options include
-`top-start`, `top-end`, `bottom-start`, `bottom-end`, and more.
+Set `placement` in `createToaster`, such as `top-start`, `top-end`, `bottom-start` or `bottom-end`.
 
 <Example id="placement" />
 
 ### Action
 
-To add an action to a toast, use the `toast.action` property.
+Add an action with the `toast.action` property.
 
 <Example id="action" />
 
@@ -111,8 +104,8 @@ Archive a file, then restore it from `Toast.ActionTrigger`.
 
 ### Toast in Effects
 
-When creating a toast inside React effects (like `useEffect`, `useLayoutEffect`, or event handlers that trigger during
-render), you may encounter a "flushSync" warning. To avoid this, wrap the toast call in `queueMicrotask`:
+Creating a toast inside React effects (`useEffect`, `useLayoutEffect`, or handlers that run during render) can trigger a
+"flushSync" warning. Wrap the call in `queueMicrotask`:
 
 ```tsx
 import { useEffect } from 'react'
@@ -136,16 +129,15 @@ export const EffectToast = () => {
 }
 ```
 
-This ensures the toast creation is deferred until after the current execution context, preventing React's concurrent
-rendering warnings.
+This defers the toast until the current execution context finishes.
 
 ### Styling
 
-There's a minimal styling required for the toast to work correctly.
+Toasts need some minimal styling to work correctly.
 
 #### Toast root
 
-The toast root will be assigned these css properties at runtime:
+The toast root gets these CSS variables at runtime:
 
 - `--x` - The x position
 - `--y` - The y position
@@ -183,7 +175,7 @@ The toast root will be assigned these css properties at runtime:
 
 #### Styling based on type
 
-You can also style based on the `data-type` attribute.
+Style by the `data-type` attribute.
 
 ```css
 [data-toast-root] {
@@ -210,7 +202,7 @@ You can also style based on the `data-type` attribute.
 
 #### Mobile considerations
 
-A very common use case is to adjust the toast width on mobile so it spans the full width of the screen.
+Make toasts span the full screen width on mobile.
 
 ```css
 @media (max-width: 640px) {

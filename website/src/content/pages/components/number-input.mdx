@@ -28,8 +28,7 @@ description: A field that allows user input of numeric values.
 
 ### Min and Max
 
-Pass the `min` prop or `max` prop to set an upper and lower limit for the input. By default, the input will restrict the
-value to stay within the specified range.
+Set `min` and `max` to limit the value. The input clamps the value to that range.
 
 <Example id="min-max" />
 
@@ -37,44 +36,39 @@ value to stay within the specified range.
 
 ### Precision
 
-In some cases, you might need the value to be rounded to specific decimal points. Set the `formatOptions` and provide
-`Intl.NumberFormatOptions` such as `maximumFractionDigits` or `minimumFractionDigits`.
+To round to fixed decimals, pass `Intl.NumberFormatOptions` like `maximumFractionDigits` or `minimumFractionDigits` to
+`formatOptions`.
 
 <Example id="fraction-digits" />
 
 ### Scrubbing
 
-The NumberInput supports the scrubber interaction pattern. To use this pattern, render the `NumberInput.Scrubber`
-component. It uses the Pointer lock API and tracks the pointer movement. It also renders a virtual cursor which mimics
-the real cursor's pointer.
+Render `NumberInput.Scrubber` to change the value by dragging. It uses the Pointer Lock API to track movement and
+renders a virtual cursor.
 
 <Example id="scrubber" />
 
 ### Mouse Wheel
 
-The NumberInput exposes a way to increment/decrement the value using the mouse wheel event. To activate this, set the
-`allowMouseWheel` prop to `true`.
+Set `allowMouseWheel` to increment or decrement with the mouse wheel.
 
 <Example id="mouse-wheel" />
 
 ### Formatting
 
-To apply custom formatting to the input's value, set the `formatOptions` and provide `Intl.NumberFormatOptions` such as
-`style` and `currency`.
+Pass `Intl.NumberFormatOptions` like `style` and `currency` to `formatOptions`.
 
 <Example id="formatting" />
 
 ### Field
 
-The `Field` component helps manage form-related state and accessibility attributes of a number input. It includes
-handling ARIA labels, helper text, and error text to ensure proper accessibility.
+`Field` wires up the label, helper text, error text and their ARIA attributes.
 
 <Example id="with-field" />
 
 ### Root Provider
 
-An alternative way to control the number input is to use the `RootProvider` component and the `useNumberInput` hook.
-This way you can access the state and methods from outside the component.
+Use `RootProvider` with the `useNumberInput` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
@@ -82,19 +76,15 @@ This way you can access the state and methods from outside the component.
 
 ### Scrubber
 
-The `NumberInput.Scrubber` component provides an interactive scrub area that allows users to drag to change the input
-value. It renders as a `<div>` element and displays a custom cursor element during scrubbing interactions.
+`NumberInput.Scrubber` is a `<div>` users drag to change the value. It shows a custom cursor while scrubbing and uses
+the [Pointer Lock API](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_Lock_API).
 
-This component utilizes the [Pointer Lock API](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_Lock_API) for
-smooth dragging interactions.
-
-> **Note:** Browsers may show a notification when the Pointer Lock API is activated. The scrubber is automatically
-> disabled in Safari to prevent layout shifts.
+> **Note:** Browsers may show a notification when pointer lock activates. The scrubber is disabled in Safari to prevent
+> layout shifts.
 
 ### Controlled
 
-When controlling the NumberInput component, it's recommended to use string values instead of converting to numbers. This
-is especially important when using `formatOptions` for currency or locale-specific formatting.
+Keep the controlled value as a string, not a number. This matters most with `formatOptions` for currency or locales.
 
 ```tsx
 const [value, setValue] = useState('0')
@@ -104,11 +94,10 @@ const [value, setValue] = useState('0')
 </NumberInput.Root>
 ```
 
-Converting values to numbers can cause issues with locale-specific formatting, particularly for currencies that use
-different decimal and thousands separators (e.g., `1.523,30` vs `1,523.30`). By keeping values as strings, you preserve
-the correct formatting and avoid parsing issues.
+Converting to numbers breaks locale formats with different decimal and thousands separators (e.g., `1.523,30` vs
+`1,523.30`). Strings keep the formatting intact.
 
-If you need to submit a numeric value in your form, use a hidden input that reads `value` from `NumberInput.Context`:
+To submit a numeric value, add a hidden input that reads `value` from `NumberInput.Context`:
 
 ```tsx
 <NumberInput.Root value={value} onValueChange={(details) => setValue(details.value)}>

@@ -39,57 +39,56 @@ const tour = useTour({ steps: [...] })
 
 ### Step Types
 
-Demonstrate all three step types in a single tour: `dialog` for welcome/completion, `tooltip` anchored to elements, and
-`floating` for fixed-position content.
+One tour with `dialog` steps for welcome and completion, `tooltip` steps anchored to elements, and `floating` steps for
+fixed-position content.
 
 <Example id="mixed-types" />
 
 ### Progress
 
-Display a visual progress indicator at the bottom of the tour content showing how far along the user is.
+Show how far along the user is with a progress bar at the bottom of the content.
 
 <Example id="progress-bar" />
 
 ### Skip
 
-Allow users to skip the entire tour at any step by adding a skip action.
+Add a skip action so users can leave the tour at any step.
 
 <Example id="skip-tour" />
 
 ### Keyboard Navigation
 
-Enable arrow key navigation between tour steps using the `keyboardNavigation` prop.
+Set `keyboardNavigation` to move between steps with the arrow keys.
 
 <Example id="keyboard-navigation" />
 
 ### Events
 
-Listen to tour lifecycle events like `onStepChange` and `onStatusChange` to track user progress.
+Track progress with `onStepChange` and `onStatusChange`.
 
 <Example id="events" />
 
 ### Wait for Click
 
-Use the `effect` function with `waitForEvent` to wait for user interaction before proceeding to the next step.
+Use `effect` with `waitForEvent` to wait for a user interaction before the next step.
 
 <Example id="wait-for-click" />
 
 ### Wait for Input
 
-Create form tutorials that wait for users to enter valid input before advancing.
+Wait for valid input before advancing.
 
 <Example id="wait-for-input" />
 
 ### Wait for Element
 
-Wait for dynamically rendered elements to appear in the DOM before showing a step.
+Wait for a dynamically rendered element to appear in the DOM before showing a step.
 
 <Example id="wait-for-element" />
 
 ### Async
 
-Load data asynchronously and update step content before displaying it using the `effect` function with `show()` and
-`update()`.
+Load data in `effect`, then call `update()` and `show()` to display the step.
 
 <Example id="async-step" />
 
@@ -97,18 +96,12 @@ Load data asynchronously and update step content before displaying it using the 
 
 ### Step Types
 
-The tour machine supports different types of steps, allowing you to create a diverse and interactive tour experience.
-The available step types are defined in the `StepType` type:
+The `StepType` type defines the available step types:
 
-- `tooltip`: Displays the step content as a tooltip, typically positioned near the target element.
-
-- `dialog`: Shows the step content in a modal dialog centered on screen, useful for starting or ending the tour. This
-  usually don't have a `target` defined.
-
-- `floating`: Presents the step content as a floating element, which can be positioned flexibly on the screen. This
-  usually don't have a `target` defined.
-
-- `wait`: A special type that waits for a specific condition before proceeding to the next step.
+- `tooltip`: content positioned near the target element.
+- `dialog`: a modal centered on screen, good for starting or ending the tour. Usually has no `target`.
+- `floating`: a floating element you can position anywhere on screen. Usually has no `target`.
+- `wait`: waits for a condition before moving to the next step.
 
 ```tsx
 const steps: TourStepDetails[] = [
@@ -148,8 +141,7 @@ const steps: TourStepDetails[] = [
 
 ### Actions
 
-Every step supports a list of actions that are rendered in the step footer.Use the `actions` property to define each
-action.
+Define footer actions for a step with the `actions` property.
 
 ```tsx
 const steps: TourStepDetails[] = [
@@ -165,7 +157,7 @@ const steps: TourStepDetails[] = [
 
 ### Tooltip Placement
 
-Use the `placement` property to define the placement of the tooltip.
+Set `placement` to position a tooltip step.
 
 ```tsx {5}
 const steps: TourStepDetails[] = [
@@ -180,7 +172,7 @@ const steps: TourStepDetails[] = [
 
 ### Hide Arrow
 
-Set `arrow: false` in the step property to hide the tooltip arrow. This is only useful for tooltip steps.
+Set `arrow: false` to hide the arrow. This only applies to tooltip steps.
 
 ```tsx {5}
 const steps: TourStepDetails[] = [
@@ -194,7 +186,7 @@ const steps: TourStepDetails[] = [
 
 ### Hide Backdrop
 
-Set `backdrop: false` in the step property to hide the backdrop. This applies to all step types except the `wait` step.
+Set `backdrop: false` to hide the backdrop. This applies to every step type except `wait`.
 
 ```tsx {5}
 const steps: TourStepDetails[] = [
@@ -208,14 +200,11 @@ const steps: TourStepDetails[] = [
 
 ### Effects
 
-Step effects are functions that are called before a step is opened. They are useful for adding custom logic to a step.
+A step's `effect` runs before the step opens. It receives:
 
-This function provides the following methods:
-
-- `next()`: Call this method to move to the next step.
-- `show()`: Call this method to show the current step.
-- `update(details: StepDetails)`: Call this method to update the details of the current step (say, after data has been
-  fetched).
+- `next()`: moves to the next step.
+- `show()`: shows the current step.
+- `update(details: StepDetails)`: updates the current step, for example after fetching data.
 
 ```tsx
 const steps: TourStepDetails[] = [
@@ -240,9 +229,7 @@ const steps: TourStepDetails[] = [
 
 ### Wait
 
-Wait steps are useful when you need to wait for a specific condition before proceeding to the next step.
-
-Use the step `effect` function to perform an action and then call `next()` to move to the next step.
+Wait steps hold the tour until a condition is met. Run your logic in `effect`, then call `next()`.
 
 > **Note:** You cannot call `show()` in a wait step.
 
@@ -263,7 +250,7 @@ const steps: TourStepDetails[] = [
 
 ### Styling
 
-Ensure the `box-sizing` is set to `border-box` for the means of measuring the tour target.
+Set `box-sizing` to `border-box` so the tour can measure its target.
 
 ```css
 * {
@@ -271,7 +258,7 @@ Ensure the `box-sizing` is set to `border-box` for the means of measuring the to
 }
 ```
 
-Ensure the `body` has a `position` of `relative`.
+Give `body` a `position` of `relative`.
 
 ```css
 body {

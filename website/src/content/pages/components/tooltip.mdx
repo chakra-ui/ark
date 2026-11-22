@@ -28,32 +28,31 @@ description: A label that provides information on hover or focus.
 
 ### Controlled
 
-To create a controlled Tooltip component, manage the state of whether the tooltip is open using the `open` prop:
+Pass `open` to control the tooltip.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the tooltip is to use the `RootProvider` component and the `useTooltip` hook. This way you
-can access the state and methods from outside the component.
+Use `RootProvider` with the `useTooltip` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Arrow
 
-To display an arrow pointing to the trigger from the tooltip, use the `Tooltip.Arrow` and `Tooltip.ArrowTip` components:
+Add `Tooltip.Arrow` and `Tooltip.ArrowTip` to point at the trigger.
 
 <Example id="arrow" />
 
 ### Delay
 
-To configure the open and close delay for the Tooltip, use the `closeDelay` and `openDelay` props:
+Set `openDelay` and `closeDelay`.
 
 <Example id="delay" />
 
 ### Positioning
 
-To customize the position of the Tooltip relative to the trigger, use the `positioning` prop:
+Use `positioning` to place the tooltip relative to the trigger.
 
 <Example id="positioning" />
 
@@ -65,21 +64,19 @@ Use `positioning.getAnchorElement` with the pointer position to make the tooltip
 
 ### Context
 
-Access the tooltip's state and methods with `Tooltip.Context` or the `useTooltipContext` hook:
+Read the state and methods with `Tooltip.Context` or the `useTooltipContext` hook.
 
 <Example id="context" />
 
 ### Within Fixed Containers
 
-When rendering a tooltip inside a fixed-position container, set `positioning.strategy` to `"fixed"` to ensure proper
-positioning.
+Inside a fixed-position container, set `positioning.strategy` to `"fixed"`.
 
 <Example id="within-fixed" />
 
 ### Multiple Triggers
 
-Share a single tooltip across multiple trigger elements. Pass a `value` to each `Tooltip.Trigger`. The tooltip
-repositions to whichever trigger is hovered without closing.
+Pass a `value` to each `Tooltip.Trigger` to share one tooltip. It moves to the hovered trigger without closing.
 
 <Example id="multiple-triggers" />
 

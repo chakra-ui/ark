@@ -37,34 +37,33 @@ description: A component that is used to upload multiple files.
 
 ### Initial Files
 
-Use the `defaultAcceptedFiles` prop to set the initial files in the file upload component.
+Use `defaultAcceptedFiles` to set the initial files.
 
 <Example id="initial-files" />
 
 ### Clear Trigger
 
-Use the `ClearTrigger` to remove all uploaded files at once.
+Use `ClearTrigger` to remove all files at once.
 
 <Example id="clear-trigger" />
 
 ### Dropzone
 
-Use the `Dropzone` to enable drag-and-drop. It exposes a `data-dragging` attribute for styling.
+Use `Dropzone` for drag-and-drop. Style it with `data-dragging`.
 
 <Example id="dropzone" />
 
 ### Directory Upload
 
-Use the `directory` prop to upload entire folders. Access file paths through `file.webkitRelativePath`.
+Set `directory` to upload whole folders. Read file paths from `file.webkitRelativePath`.
 
 <Example id="directory-upload" />
 
-> When uploading directories with many files, set `maxFiles` to a higher value or remove it entirely to prevent
-> rejections.
+> For directories with many files, raise or remove `maxFiles` to avoid rejections.
 
 ### Accepted File Types
 
-Use the `accept` prop to restrict file types. Accepts MIME types (`image/png`) or extensions (`.pdf`).
+Use `accept` to restrict file types by MIME type (`image/png`) or extension (`.pdf`).
 
 <Example id="accepted-file-types" />
 
@@ -77,8 +76,7 @@ Set constraints with `maxFiles`, `maxFileSize`, `minFileSize`, and `accept`. Rej
 
 ### File Transformations
 
-Use `transformFiles` to process files before they're added. Useful for image compression, format conversion, or
-resizing.
+Use `transformFiles` to process files before they're added, for example to compress, convert, or resize images.
 
 <Example id="transform-files" />
 
@@ -90,26 +88,25 @@ Use `Field` to add helper text and error handling.
 
 ### Root Provider
 
-An alternative way to control the file upload is to use the `RootProvider` component and the `useFileUpload` hook. This
-way you can access the state and methods from outside the component.
+Use `RootProvider` with the `useFileUpload` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Pasting Files
 
-Use `setClipboardFiles` to enable pasting images from the clipboard.
+Use `setClipboardFiles` to accept images pasted from the clipboard.
 
 <Example id="pasting-files" />
 
 ### Media Capture
 
-Use `capture` to access the device camera. Set to `"environment"` for back camera or `"user"` for front camera.
+Use `capture` to open the device camera: `"environment"` for the back camera, `"user"` for the front.
 
 <Example id="media-capture" />
 
 ### Rejected Files
 
-Access `rejectedFiles` from the context to display validation errors.
+Read `rejectedFiles` from the context to show validation errors.
 
 <Example id="rejected-files" />
 
@@ -117,12 +114,12 @@ Access `rejectedFiles` from the context to display validation errors.
 
 ### File Previews
 
-Use `ItemPreview` with type matching to show appropriate previews based on file format.
+Set `type` on `ItemPreview` to render a preview per file format.
 
-- `type="image/*"`: Shows image thumbnails using `ItemPreviewImage`
-- `type="video/*"`: For video file previews
-- `type="application/pdf"`: For PDF files
-- `type=".*"`: Generic fallback for any file type
+- `type="image/*"`: image thumbnails via `ItemPreviewImage`
+- `type="video/*"`: video files
+- `type="application/pdf"`: PDF files
+- `type=".*"`: fallback for any file
 
 ```tsx
 <FileUpload.ItemPreview type="image/*">
@@ -144,7 +141,7 @@ Use `ItemPreview` with type matching to show appropriate previews based on file 
 
 ### Disable Dropzone
 
-To disable drag-and-drop functionality, set `allowDrop` to `false`.
+Set `allowDrop={false}` to disable drag-and-drop.
 
 ```tsx
 <FileUpload.Root allowDrop={false}>{/* ... */}</FileUpload.Root>
@@ -152,8 +149,8 @@ To disable drag-and-drop functionality, set `allowDrop` to `false`.
 
 ### Prevent Document Drop
 
-By default, we prevent accidental navigation when files are dropped outside the dropzone. Set `preventDocumentDrop` to
-`false` to disable this.
+Dropping files outside the dropzone doesn't navigate away by default. Set `preventDocumentDrop={false}` to turn this
+off.
 
 ```tsx
 <FileUpload.Root preventDocumentDrop={false}>{/* ... */}</FileUpload.Root>
@@ -161,8 +158,7 @@ By default, we prevent accidental navigation when files are dropped outside the 
 
 ### Prevent Double Open
 
-Use `disableClick` on `Dropzone` when delegating clicks to a nested `Trigger`. This prevents the file picker from
-opening twice.
+Set `disableClick` on `Dropzone` when it contains a `Trigger`, so the file picker doesn't open twice.
 
 ```tsx
 <FileUpload.Dropzone disableClick>

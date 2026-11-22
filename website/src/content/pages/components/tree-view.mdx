@@ -38,107 +38,85 @@ description: A component that is used to show a tree hierarchy.
 
 ### Controlled Expanded
 
-Pass the `expandedValue` and `onExpandedChange` props to the `TreeView.Root` component to control the expanded state of
-the tree view.
+Pass `expandedValue` and `onExpandedChange` to `TreeView.Root`.
 
 <Example id="controlled-expanded" />
 
 ### Controlled Selection
 
-Pass the `selectedValue` and `onSelectionChange` props to the `TreeView.Root` component to control the selected state of
-the tree view.
+Pass `selectedValue` and `onSelectionChange` to `TreeView.Root`.
 
 <Example id="controlled-selected" />
 
 ### Root Provider
 
-An alternative way to control the tree view is to use the `RootProvider` component and the `useTreeView` hook. This way
-you can access the state and methods from outside the component.
+Use `RootProvider` with the `useTreeView` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Lazy Loading
 
-Lazy loading is a feature that allows the tree view to load children of a node on demand (or async). This helps to
-improve the initial load time and memory usage.
+Load a node's children on demand to cut initial load time and memory use. Provide:
 
-To use this, you need to provide the following:
-
-- `loadChildren`: A function that is used to load the children of a node.
-- `onLoadChildrenComplete`: A callback that is called when the children of a node are loaded. Used to update the tree
-  collection.
-- `childrenCount`: A number that indicates the number of children of a branch node.
+- `loadChildren`: loads the children of a node.
+- `onLoadChildrenComplete`: called when children finish loading. Update the tree collection here.
+- `childrenCount`: the number of children of a branch node.
 
 <Example id="async-loading" />
 
 ### Lazy Mount
 
-Lazy mounting is a feature that allows the content of a tree view to be rendered only when it is expanded. This is
-useful for performance optimization, especially when tree content is large or complex. To enable lazy mounting, use the
-`lazyMount` prop on the `TreeView.Root` component.
+Set `lazyMount` on `TreeView.Root` to render branch content only when it's expanded. This helps when content is large.
 
-In addition, the `unmountOnExit` prop can be used in conjunction with `lazyMount` to unmount the tree view content when
-branches are collapsed, freeing up resources. The next time a branch is expanded, its content will be re-rendered.
+Add `unmountOnExit` to unmount content when a branch collapses. It re-renders the next time the branch expands.
 
 <Example id="lazy-mount" />
 
 ### Filtering
 
-Filtering is useful when you have a large tree and you want to filter the nodes to only show the ones that match the
-search query. Here's an example that composes the `filter` method from the `TreeCollection` and `useFilter` hook to
-filter the nodes.
+Combine the collection's `filter` method with the `useFilter` hook to show only nodes that match a search query.
 
 <Example id="filtering" />
 
 ### Links
 
-Tree items can be rendered as links to another page or website. This could be useful for documentation sites.
-
-Here's an example that modifies the tree collection to represent an hierarchical link structure. It uses the `asChild`
-prop to render the tree items as links, passing the `href` prop to a `<a>` element.
+Render tree items as links, for example in a docs site. Store a link hierarchy in the collection and use `asChild` to
+render each item as an `<a>` with an `href`.
 
 <Example id="links" />
 
 ### Virtualized
 
-For large tree views with thousands of nodes, render only the visible rows with the
-[Virtualizer](/docs/utilities/virtualizer).
+For trees with thousands of nodes, render only the visible rows with the [Virtualizer](/docs/utilities/virtualizer).
 
-Key implementation details:
-
-- Use the `useTreeView` hook with `TreeView.RootProvider` for programmatic control
-- Use `getVisibleNodes()` to get the flattened list of currently visible nodes, and keep the virtualizer's `count` in
-  sync with it
-- Render `TreeView.Tree` as `ListVirtualizer.Root` and each `TreeView.Node` as `ListVirtualizer.Item`
-- Pass `scrollToIndexFn` to enable keyboard navigation within the virtualized list
+- Use `useTreeView` with `TreeView.RootProvider`.
+- `getVisibleNodes()` returns the flat list of visible nodes. Keep the virtualizer's `count` in sync with it.
+- Render `TreeView.Tree` as `ListVirtualizer.Root` and each `TreeView.Node` as `ListVirtualizer.Item`.
+- Pass `scrollToIndexFn` to enable keyboard navigation.
 
 <Example id="virtualized" />
 
 ### Checkbox Tree
 
-Use the `defaultCheckedValue` prop to enable checkbox selection mode. This allows users to select multiple nodes with
-checkboxes, including parent-child selection relationships.
+Set `defaultCheckedValue` to enable checkbox selection. Checking a parent or child updates the related nodes.
 
 <Example id="checkbox-tree" />
 
 ### Expand and Collapse All
 
-Use the `expand()` and `collapse()` methods from the tree view context to programmatically expand or collapse all
-branches.
+Call `expand()` or `collapse()` from the tree view context to toggle all branches.
 
 <Example id="expand-collapse-all" />
 
 ### Mutation
 
-Use the collection's `remove()` and `replace()` methods to dynamically add and remove nodes from the tree. This is
-useful for building file explorer interfaces where users can create and delete files.
+Use the collection's `remove()` and `replace()` methods to add and remove nodes, for example in a file explorer.
 
 <Example id="mutation" />
 
 ### Rename Node
 
-Enable inline renaming of nodes using the `canRename` prop and `onRenameComplete` callback. Press <kbd>F2</kbd> to
-activate rename mode on the focused node.
+Use `canRename` and `onRenameComplete` for inline renaming. Press <kbd>F2</kbd> to rename the focused node.
 
 <Example id="rename-node" />
 
@@ -146,8 +124,7 @@ activate rename mode on the focused node.
 
 ### Type Safety
 
-The `TreeView.RootComponent` type enables you to create typed wrapper components that maintain full type safety for tree
-nodes.
+Use the `TreeView.RootComponent` type to build wrappers that keep tree nodes fully typed.
 
 ```tsx
 import { TreeView as ArkTreeView } from '@ark-ui/react/tree-view'
@@ -157,7 +134,7 @@ const TreeView: ArkTreeView.RootComponent = (props) => {
 }
 ```
 
-Use the wrapper with full type inference on `onSelectionChange` and other callbacks:
+`onSelectionChange` and other callbacks then infer the node type:
 
 ```tsx
 const App = () => {

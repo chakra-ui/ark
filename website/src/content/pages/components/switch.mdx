@@ -26,29 +26,25 @@ description: A control element that allows for a binary selection.
 
 ### Controlled
 
-For a controlled Switch component, the state of the toggle is managed using the checked prop, and updates when the
-`onCheckedChange` event handler is called:
+Pass `checked` and update it in `onCheckedChange`.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the switch is to use the `RootProvider` component and the `useSwitch` hook. This way you
-can access the state and methods from outside the component.
+Use `RootProvider` with the `useSwitch` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Field
 
-The `Field` component helps manage form-related state and accessibility attributes of a switch. It includes handling
-ARIA labels, helper text, and error text to ensure proper accessibility.
+Wrap the switch in `Field` to wire up the label, helper text, error text and ARIA attributes.
 
 <Example id="with-field" />
 
 ### Context
 
-Access the switch's state with `Switch.Context` or the `useSwitchContext` hook. This lets you customize the component
-based on its current state:
+Read the switch state with `Switch.Context` or the `useSwitchContext` hook.
 
 <Example id="context" />
 
@@ -56,12 +52,10 @@ based on its current state:
 
 ### asChild
 
-The `Switch.Root` element of the switch is a `label` element. This is because the switch is a form control and should be
-associated with a label to provide context and meaning to the user. Otherwise, the HTML and accessibility structure will
-be invalid.
+`Switch.Root` renders a `label` element, because a form control needs an associated label. Without it, the HTML and
+accessibility structure are invalid.
 
-> If you need to use the `asChild` property, make sure that the `label` element is the direct child of the `Switch.Root`
-> component.
+> With `asChild`, make sure a `label` element is the direct child of `Switch.Root`.
 
 ## API Reference
 

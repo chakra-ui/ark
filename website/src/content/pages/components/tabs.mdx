@@ -26,63 +26,52 @@ description: Flexible navigation tool with various modes and features.
 
 ### Controlled
 
-To create a controlled Tabs component, manage the current selected tab using the `value` prop and update it when the
-`onValueChange` event handler is called:
+Pass `value` and update it in `onValueChange`.
 
 <Example id="controlled" />
 
 ### Root Provider
 
-An alternative way to control the tabs is to use the `RootProvider` component and the `useTabs` hook. This way you can
-access the state and methods from outside the component.
+Use `RootProvider` with the `useTabs` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
 ### Indicator
 
-To provide a visual cue for the selected tab, use the `Tabs.Indicator` component:
+`Tabs.Indicator` marks the selected tab.
 
 <Example id="indicator" />
 
 ### Disabled
 
-To disable a tab, simply pass the `disabled` prop to the `Tabs.Trigger` component:
+Pass `disabled` to a `Tabs.Trigger`.
 
 <Example id="disabled-tab" />
 
 ### Vertical
 
-The default orientation of the tabs is `horizontal`. To change the orientation, set the `orientation` prop to
-`vertical`.
+Tabs are horizontal by default. Set `orientation="vertical"` to stack them.
 
 <Example id="vertical" />
 
 ### Lazy Mount
 
-Lazy mounting is a feature that allows the content of a tab to be rendered only when the tab is first activated. This is
-useful for performance optimization, especially when tab content is large or complex. To enable lazy mounting, use the
-`lazyMount` prop on the `Tabs.Content` component.
+Set `lazyMount` to render a tab's content only when the tab is first activated. This helps when content is large.
 
-In addition, the `unmountOnExit` prop can be used in conjunction with `lazyMount` to unmount the tab content when the
-tab is deactivated, freeing up resources. The next time the tab is activated, its content will be re-rendered.
+Add `unmountOnExit` to unmount the content when the tab is deactivated. It re-renders the next time the tab activates.
 
 <Example id="lazy-mount" />
 
 ### Manual Activation
 
-By default, the tab can be selected when it receives focus from either the keyboard or pointer interaction. This is
-called automatic tab activation.
-
-In contrast, manual tab activation means the tab is selected with the
-
-<kbd>Enter</kbd> key or by clicking on the tab.
+By default, a tab is selected as soon as it receives focus (automatic activation). With manual activation, a tab is
+selected only by pressing <kbd>Enter</kbd> or clicking it.
 
 <Example id="manual-activation" />
 
 ### Links
 
-Use the `asChild` prop to render tab triggers as anchor links. This is useful for SEO and allows tabs to work with
-browser navigation.
+Use `asChild` to render triggers as anchor links. This helps SEO and works with browser navigation.
 
 <Example id="links" />
 
@@ -90,14 +79,12 @@ browser navigation.
 
 ### Router Integration
 
-When using frameworks like Next.js, Remix, or React Router, controlling the active tabs based on the URL can be useful.
+To sync the active tab with the URL in Next.js, Remix or React Router:
 
-To achieve this, you need to do two things:
+- Set `value` from the current URL path.
+- Update the URL path in `onValueChange`.
 
-- Set the `value` prop to the current URL path.
-- Listen to the `onValueChange` event and update the URL path.
-
-Here's an example using Remix Router
+Here's an example with Remix:
 
 ```tsx
 import { Tabs } from '@ark-ui/<framework>/tabs'
@@ -134,7 +121,7 @@ export default function App() {
 
 <FrameworkOnly framework="web">
 
-In `@ark-ui/web`, render the `value` attribute on `ark-tabs` from the current URL. Triggers can wrap an `a` instead of a
+In `@ark-ui/web`, set the `value` attribute on `ark-tabs` from the current URL. Triggers can wrap an `a` instead of a
 `button`:
 
 ```html
@@ -146,7 +133,7 @@ In `@ark-ui/web`, render the `value` attribute on `ark-tabs` from the current UR
 </ark-tabs>
 ```
 
-With a client-side router, update the URL from the `valuechange` event and set `value` to match:
+With a client-side router, update the URL from `valuechange` and set `value` to match:
 
 ```ts
 const tabs = document.querySelector('ark-tabs')!

@@ -26,40 +26,34 @@ description: An element that shows either determinate or indeterminate progress.
 
 ### Min and Max
 
-By default, the maximum is `100`. If that's not what you want, you can easily specify a different bound by changing the
-value of the `max` prop. You can do the same with the minimum value by setting the `min` prop.
-
-For example, to show the user a progress from `10` to `30`, you can use:
+Set `min` and `max` to change the range. The default max is `100`. This example shows progress from `10` to `30`.
 
 <Example id="min-max" />
 
 ### Indeterminate
 
-The progress component is determinate by default, with the value and max set to 50 and 100 respectively. To render an
-indeterminate progress, you will have to set the `value` to `null`.
+Progress is determinate by default, with `value` 50 and `max` 100. Set `value` to `null` for indeterminate progress.
 
 <Example id="indeterminate" />
 
 ### Value Text
 
-Progress bars can only be interpreted by sighted users. To include a text description to support assistive technologies
-like screen readers, use the `value` part in `translations`.
+Only sighted users can read a progress bar. Set the `value` key in `translations` to give screen readers a text
+description.
 
 <Example id="value-text" />
 
 ### Orientation
 
-By default, the progress is assumed to be horizontal. To change the orientation to vertical, set the orientation
-property in the machine's context to vertical.
+Set `orientation="vertical"` for a vertical progress.
 
-> Don't forget to change the styles of the vertical progress by specifying its height
+> Give the vertical progress a height in your styles.
 
 <Example id="vertical" />
 
 ### Root Provider
 
-An alternative way to control the progress is to use the `RootProvider` component and the `useProgress` hook. This way
-you can access the state and methods from outside the component.
+Use `RootProvider` with the `useProgress` hook to access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
@@ -69,4 +63,4 @@ you can access the state and methods from outside the component.
 
 ## Accessibility
 
-Complies with the [the progressbar role requirements.](https://w3c.github.io/aria/#progressbar).
+Complies with the [progressbar role requirements](https://w3c.github.io/aria/#progressbar).
