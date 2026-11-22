@@ -135,7 +135,7 @@
   background: var(--demo-bg-popover);
 
   & .Root {
-    font-size: 1.75rem;
+    font-size: 1.375rem;
     font-weight: 600;
     letter-spacing: -0.02em;
   }

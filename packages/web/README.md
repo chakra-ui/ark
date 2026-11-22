@@ -335,6 +335,32 @@ native `fieldset`, so `disabled` on it disables every control inside, and its fi
 </ark-field>
 ```
 
+## Hotkeys
+
+`@ark-ui/web/hotkeys` registers keyboard shortcuts on a shared store. Each call returns a function that removes what it
+added. `mod` is Command on Apple platforms and Control elsewhere.
+
+```ts
+import { createHotkey, createHotkeys, formatHotkey, getHotkeyStore } from '@ark-ui/web/hotkeys'
+
+const off = createHotkey('mod+k', () => (palette.open = true), { label: 'Open palette' })
+
+createHotkeys([
+  { hotkey: 'g g', action: scrollToTop, label: 'Go to top' },
+  { hotkey: 'escape', action: clear, scopes: 'editor', options: { enableOnFormTags: true } },
+])
+
+const hotkeys = getHotkeyStore()
+hotkeys.setScope('editor')
+hotkeys.subscribe((state) => state.pressedKeys, render)
+
+button.title = formatHotkey('mod+k')
+```
+
+Plain keys don't fire while typing in a form field unless `enableOnFormTags` is set. `createHotkeyRecorder` captures a
+shortcut from the keyboard, for settings screens. Pass `{ store }` to use your own `createHotkeyStore()`, or `{ root }`
+to listen inside a shadow root.
+
 ## Formatting and downloads
 
 `@ark-ui/web/format` renders locale-aware text. The locale comes from the `locale` attribute, then the closest `lang`.

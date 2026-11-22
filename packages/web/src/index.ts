@@ -62,4 +62,15 @@ export * from './components/virtualizer/index.js'
 export { createAsyncList, type AsyncList, type AsyncListProps } from './utils/async-list.js'
 export type { PartElement, RootElement, StateProperties } from './utils/define.js'
 export type { InputSource } from './utils/events.js'
+export {
+  createHotkey,
+  createHotkeyRecorder,
+  createHotkeys,
+  formatHotkey,
+  getHotkeyStore,
+  type CreateHotkeyOptions,
+  type HotkeysCommand,
+  type HotkeysOptions,
+  type HotkeyStore,
+} from './utils/hotkeys.js'
 export { createCollator, createFilter, type FilterOptions, type FilterReturn } from './utils/locale.js'

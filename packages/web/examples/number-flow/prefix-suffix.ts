@@ -5,7 +5,7 @@ import styles from 'styles/number-flow.module.css'
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
-  <div class="${styles.Card}">
+  <div class="stack">
     <div class="${styles.Grid}">
       <div class="${styles.Stat}">
         <span class="${styles.Label}">Throughput</span>
@@ -22,9 +22,7 @@ export function mount(root: HTMLElement) {
     </ark-number-flow>
       </div>
     </div>
-    <div class="${styles.Actions}">
-      <button type="button" class="${button.Root}" data-action="shuffle">Shuffle</button>
-    </div>
+    <button type="button" class="${button.Root}" data-action="shuffle">Shuffle</button>
   </div>`
 
   const flows = root.querySelectorAll('ark-number-flow')
