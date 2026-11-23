@@ -234,7 +234,7 @@
     "@tanstack/svelte-form": "1.33.5",
     "@tanstack/svelte-virtual": "3.13.54",
     "@testing-library/dom": "10.4.2",
-    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/jest-dom": "8.0.0",
     "@testing-library/svelte": "5.4.2",
     "@testing-library/user-event": "14.6.13",
     "@vitest/coverage-v8": "5.1.1",

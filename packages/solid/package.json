@@ -165,7 +165,7 @@
     "@storybook/addon-vitest": "10.6.8",
     "@tanstack/solid-virtual": "3.13.55",
     "@testing-library/dom": "10.4.2",
-    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/jest-dom": "8.0.0",
     "@testing-library/user-event": "14.6.13",
     "@types/jsdom": "30.0.0",
     "@vitest/coverage-v8": "5.1.1",
