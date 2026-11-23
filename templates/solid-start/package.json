@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@ark-ui/solid": "workspace:*",
-    "@solidjs/meta": "0.29.8",
+    "@solidjs/meta": "2.0.0",
     "@solidjs/router": "1.0.3",
     "@solidjs/start": "2.2.3",
     "lucide-solid": "1.77.0",
