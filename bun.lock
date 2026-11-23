@@ -39,7 +39,7 @@
     },
     "packages/react": {
       "name": "@ark-ui/react",
-      "version": "5.40.0",
+      "version": "5.40.1",
       "dependencies": {
         "@internationalized/date": "3.12.4",
         "@zag-js/accordion": "1.49.0",
@@ -152,7 +152,7 @@
     },
     "packages/solid": {
       "name": "@ark-ui/solid",
-      "version": "5.40.0",
+      "version": "5.40.1",
       "dependencies": {
         "@internationalized/date": "3.12.4",
         "@zag-js/accordion": "1.49.0",
@@ -261,7 +261,7 @@
     },
     "packages/svelte": {
       "name": "@ark-ui/svelte",
-      "version": "5.25.1",
+      "version": "5.25.2",
       "dependencies": {
         "@internationalized/date": "3.12.4",
         "@zag-js/accordion": "1.49.0",
@@ -368,7 +368,7 @@
     },
     "packages/vue": {
       "name": "@ark-ui/vue",
-      "version": "5.40.0",
+      "version": "5.40.1",
       "dependencies": {
         "@internationalized/date": "3.12.4",
         "@zag-js/accordion": "1.49.0",
@@ -524,7 +524,7 @@
     "templates/solid-start": {
       "name": "@ark-ui/solid-start",
       "dependencies": {
-        "@ark-ui/solid": "workspace*",
+        "@ark-ui/solid": "workspace:*",
         "@solidjs/meta": "0.29.8",
         "@solidjs/router": "1.0.3",
         "@solidjs/start": "2.2.3",

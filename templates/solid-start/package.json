@@ -11,7 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ark-ui/solid": "workspace*",
+    "@ark-ui/solid": "workspace:*",
     "@solidjs/meta": "0.29.8",
     "@solidjs/router": "1.0.3",
     "@solidjs/start": "2.2.3",
