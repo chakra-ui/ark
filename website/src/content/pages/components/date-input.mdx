@@ -99,7 +99,16 @@ Use the `shouldForceLeadingZeros` prop to toggle whether numeric segments are pa
 
 ### Localized
 
-Use the `locale` prop to set the language and regional formatting of the date segments.
+Use the `locale` prop to set the language and regional formatting of the date segments. Segment labels announced to
+screen readers follow the locale too. Override them with the `segmentLabel` translation.
+
+```tsx
+const labels: Record<string, string> = { day: 'Tag', month: 'Monat', year: 'Jahr' }
+
+<DateInput.Root locale="de-DE" translations={{ segmentLabel: (type) => labels[type] ?? type }}>
+  {/* ... */}
+</DateInput.Root>
+```
 
 <Example id="localized" />
 

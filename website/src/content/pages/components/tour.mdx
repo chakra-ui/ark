@@ -284,6 +284,21 @@ attribute. Use it to turn off your transitions:
 }
 ```
 
+### Target Timeout
+
+A step waits up to 3000ms for its target to appear. If it never shows up, the tour ends with the `not-found` status.
+Pass `targetTimeout` to wait longer, or `Infinity` to wait indefinitely.
+
+```tsx
+const tour = useTour({
+  steps,
+  targetTimeout: 10000,
+  onStatusChange({ status }) {
+    if (status === 'not-found') console.warn('Tour target missing')
+  },
+})
+```
+
 ### Styling
 
 Ensure the `box-sizing` is set to `border-box` for the means of measuring the tour target.

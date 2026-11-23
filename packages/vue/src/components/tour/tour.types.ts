@@ -55,6 +55,12 @@ export interface RootProps {
    */
   steps?: tour.StepDetails[]
   /**
+   * How long to wait, in milliseconds, for a step's target to appear before the tour
+   * ends with the `not-found` status. Pass `Infinity` to wait indefinitely.
+   * @default 3000
+   */
+  targetTimeout?: number
+  /**
    * The translations for the tour
    */
   translations?: tour.IntlTranslations
