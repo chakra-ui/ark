@@ -1,5 +1,70 @@
 # @ark-ui/vue
 
+## [5.40.1] - 2026-11-23
+
+### Fixed
+
+- **FileUpload**: Fixed `FileUpload.ItemPreviewImage` revoking its blob URL on every re-render, which caused
+  intermittent `ERR_FILE_NOT_FOUND` requests. The URL is now recreated only when the file changes.
+- **Menu**: Forward `value` on `Menu.ContextTrigger` the same way `Menu.Trigger` does.
+- **Toc**: Fix type declarations failing under `moduleResolution: node16` and `nodenext` without `skipLibCheck`.
+- **Highlight**: Fix duplicate `HighlightChunk` identifier error in `useHighlight` types when `skipLibCheck` is `false`.
+- **Menu**: Add `initialFocusEl` and `finalFocusEl` to choose which element gets focus when the menu opens and closes.
+
+- **Popover, Menu**: Fix opening one popup while another is open closing both, and clicks inside a same-origin iframe
+  closing the popup that contains it.
+
+- **Menu**: Fix focus not returning to the previously focused element when a context menu closes.
+
+- **Combobox, Select, Listbox, Menu, Cascade Select**: Fix the page scrolling when the highlighted item scrolls into
+  view.
+
+- **Collapsible**: Fix the trigger staying focusable and not announced as disabled when the collapsible is disabled.
+
+- **Floating Panel**: The positioner no longer sets an inline `z-index`. Add `z-index: var(--z-index)` to the positioner
+  to keep panel stacking.
+
+- **Slider**: Fix stepping past `max` with a decimal `step` moving the value down a step.
+
+- **Tabs**: Fix Shift- and Alt-clicks on link triggers being blocked.
+- **Vue**: Fix inline styles set by components, such as the positioner's `z-index`, being cleared on re-render.
+- **Tour**: Add `targetTimeout` to control how long the tour waits for a step's target before ending with `not-found`
+  (defaults to 3000ms).
+
+- **Date Input**: Fix segment labels and their announcements always being in English. They now follow `locale`. Add a
+  `segmentLabel` translation to customize them.
+
+- **Combobox**: Add a `highlightedItem` translation for the option announced on highlight. Return an empty string to
+  disable it.
+
+- **Color Picker**: Add support for the space-separated color syntax, e.g. `rgb(255 0 0 / 50%)` and
+  `hsl(120deg 50% 50%)`.
+
+- **Color Picker**: Fix `rgb()` percentage channels and alpha being parsed as `0`, hex output containing decimals when
+  RGB channels are fractional, and invalid `rgb()`, `hsl()` and `hsb()` values being parsed instead of rejected.
+
+- **Checkbox, Switch, Combobox**: Fix `aria-labelledby` pointing to a missing element when the label part isn't
+  rendered.
+
+- **Dialog, Drawer, Popover**: Fix the content's `aria-labelledby` and `aria-describedby` not updating when the title or
+  description is added or removed while open.
+
+- **Date Picker**: Fix the view trigger's accessible name hiding its visible month or year text. The `viewTrigger`
+  translation is now the trigger's `aria-description` instead of its `aria-label`.
+
+- **Date Picker**: Fix the week number showing `53` instead of `1` for weeks starting in late December.
+
+- **Number Input**: Fix fast typing dropping keys.
+
+- **Presence**: Fix closing during the enter animation skipping the exit animation in Chromium and Firefox.
+
+- **File Upload**: Fix `relativePath` missing the `/` between nested directory names in dropped folders.
+
+- **Floating Panel, Image Cropper**: Fix the arrow keys moving, resizing and panning the wrong way when `dir` is `rtl`.
+
+- **Hotkeys**: Fix `store.subscribe` never firing for selectors that return `pressedKeys`, `pressedCodes`,
+  `activeScopes` or `commands`.
+
 ## [5.40.0] - 2026-10-29
 
 ### Added
