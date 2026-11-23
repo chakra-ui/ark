@@ -1,7 +1,7 @@
 services:
   db:
     container_name: ark-plus-db
-    image: postgres:18-alpine
+    image: postgres:19-alpine
     restart: always
     ports:
       - 5432:5432
