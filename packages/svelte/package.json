@@ -227,7 +227,7 @@
     "@storybook/addon-a11y": "10.6.8",
     "@storybook/svelte": "10.6.8",
     "@storybook/sveltekit": "10.6.8",
-    "@sveltejs/adapter-auto": "7.0.1",
+    "@sveltejs/adapter-auto": "9.0.0",
     "@sveltejs/kit": "2.70.4",
     "@sveltejs/package": "3.0.3",
     "@sveltejs/vite-plugin-svelte": "7.3.1",
