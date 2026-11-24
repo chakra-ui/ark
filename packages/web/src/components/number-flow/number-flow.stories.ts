@@ -6,7 +6,9 @@ import { mount as FormattingExample } from './examples/formatting.js'
 import { mount as LiveExample } from './examples/live.js'
 import { mount as LocaleExample } from './examples/locale.js'
 import { mount as PrefixSuffixExample } from './examples/prefix-suffix.js'
+import { mount as PricingExample } from './examples/pricing.js'
 import { mount as TimingExample } from './examples/timing.js'
+import { mount as TrendExample } from './examples/trend.js'
 import { mount as WithTimerExample } from './examples/with-timer.js'
 
 const meta: Meta = { title: 'Components / Number Flow' }
@@ -27,3 +29,7 @@ export const PrefixSuffix: StoryObj = { name: 'Prefix Suffix', render: renderExa
 export const Timing: StoryObj = { name: 'Timing', render: renderExample(TimingExample) }
 
 export const WithTimer: StoryObj = { name: 'With Timer', render: renderExample(WithTimerExample) }
+
+export const Pricing: StoryObj = { name: 'Pricing', render: renderExample(PricingExample) }
+
+export const Trend: StoryObj = { name: 'Trend', render: renderExample(TrendExample) }
