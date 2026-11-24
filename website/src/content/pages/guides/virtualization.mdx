@@ -1,0 +1,176 @@
+---
+id: virtualization
+title: Virtualization
+description: Render long lists and menus by mounting only the items on screen.
+---
+
+A list of 10,000 options renders 10,000 elements, and the browser lays out and paints every one of them. A virtualizer
+mounts only the items in view, plus a few on either side, and swaps them as you scroll. The
+[Virtualizer](/docs/utilities/virtualizer) utility covers the API. This guide covers using it in real components.
+
+## When to Virtualize
+
+Reach for it when a list grows into the hundreds of items, or when each item is expensive to render. A few hundred plain
+rows are usually fine without it.
+
+It has costs worth knowing up front:
+
+- The browser's find-in-page only sees items that are mounted.
+- Items you haven't scrolled to don't exist yet, so anything that queries the DOM for them won't find them.
+- You need to give the scroll container a fixed height, or a maximum height.
+
+## Choosing a Virtualizer
+
+| Virtualizer         | Use it for                                                                     |
+| ------------------- | ------------------------------------------------------------------------------ |
+| `ListVirtualizer`   | A list that scrolls inside its own container: menus, select and combobox lists |
+| `GridVirtualizer`   | Rows and columns, like a data grid or an icon picker                           |
+| `WindowVirtualizer` | A list that scrolls with the page, like a feed                                 |
+
+## Virtualizing a Collection Component
+
+Select, Combobox, Listbox and Tree View keep their items in a collection, so they know every item even when only a few
+are mounted. Virtualizing one takes four steps:
+
+1. Create a virtualizer whose `count` is the collection's size.
+2. Render the component's list as `ListVirtualizer.Root` with the `render` prop.
+3. Map the virtual items to the component's items, each rendered as `ListVirtualizer.Item`.
+4. Forward the component's `scrollToIndexFn` to the virtualizer.
+
+<ExampleCode id="virtualized" component="combobox" />
+
+The component keeps its roles, ids and event handlers, and the virtualizer adds positioning. The same pattern works for
+[Select](/docs/components/select#virtualized), [Listbox](/docs/components/listbox#virtualized) and
+[Tree View](/docs/components/tree-view#virtualized).
+
+### Keyboard Navigation
+
+An item that isn't mounted can't be focused. When arrow keys or typeahead move the highlight to an item off screen, the
+component calls `scrollToIndexFn` first, and the virtualizer scrolls that item into view and mounts it. Without
+`scrollToIndexFn`, the highlight still moves but the list doesn't follow it.
+
+Typeahead searches the collection, not the DOM, so it finds items that haven't been rendered.
+
+### Accessibility
+
+`ListVirtualizer.Item` sets `aria-posinset` and `aria-setsize` on each item, so a screen reader announces "12 of 10,000"
+even though only a handful of items exist in the DOM. Key items by their value, not their index, so an item keeps its
+identity when the list is filtered.
+
+### Sizing the List
+
+The list needs a height to scroll within. In a popover, setting `--total-size` from `getTotalSize()` lets the list
+shrink to fit a short result and stop at a maximum height for a long one:
+
+```css
+.list {
+  height: var(--total-size);
+  max-height: 300px;
+  overflow: auto;
+}
+```
+
+## Filtering
+
+When a filter changes the collection, update the virtualizer's `count` to match.
+
+<FrameworkOnly framework="react">
+
+`useListVirtualizer` creates the virtualizer once, so pass the new count with `updateOptions` from an effect. Calling it
+while rendering updates other components mid-render, and React warns about it.
+
+```tsx
+const count = collection.size
+useLayoutEffect(() => {
+  virtualizer.updateOptions({ count })
+}, [virtualizer, count])
+```
+
+</FrameworkOnly>
+
+<FrameworkOnly framework={['solid', 'svelte']}>
+
+Pass the options as a function so the virtualizer tracks the collection:
+
+```ts
+const virtualizer = useListVirtualizer(() => ({ count: collection().size, estimatedSize: () => 36 }))
+```
+
+</FrameworkOnly>
+
+<FrameworkOnly framework="vue">
+
+Pass the options as a computed so the virtualizer tracks the collection:
+
+```ts
+const virtualizer = useListVirtualizer(computed(() => ({ count: collection.value.size, estimatedSize: () => 36 })))
+```
+
+</FrameworkOnly>
+
+<FrameworkOnly framework="web">
+
+Set `count` on the element:
+
+```ts
+list.count = collection.size
+```
+
+</FrameworkOnly>
+
+To start a new search at the top, call `virtualizer.scrollToIndex(0)` when the filter changes.
+
+## Items of Different Heights
+
+The virtualizer positions items using `estimatedSize` until it has measured them. When items vary in height, set
+`measure` on `ListVirtualizer.Item` so each one is measured after it renders. Keep `estimatedSize` close to the average
+height so the scrollbar doesn't jump.
+
+Use the virtualizer's `gap`, `paddingStart` and `paddingEnd` options for spacing. Margins on items aren't included in
+their measured size, so items drift out of place.
+
+<ExampleCode id="dynamic-size" component="virtualizer" />
+
+## Loading More as You Scroll
+
+To load a long list in pages, fetch the next page when the user scrolls near the end. The example pairs the virtualizer
+with [useAsyncList](/docs/collections/async-list), which tracks the loaded items, the cursor for the next page and
+whether a request is in flight, so a second request never starts while one is loading.
+
+<ExampleCode id="infinite-loading" component="virtualizer" />
+
+<FrameworkOnly framework="react">
+
+React reads the last rendered item while rendering and loads the next page from an effect. Loading from `onRangeChange`
+would set state while the virtualizer is updating.
+
+</FrameworkOnly>
+
+<FrameworkOnly framework={['solid', 'vue', 'svelte', 'web']}>
+
+The example watches the visible range with `onRangeChange` and loads the next page once the last rendered item is within
+ten of the end.
+
+</FrameworkOnly>
+
+## Inside Popovers, Dialogs and Tabs
+
+The virtualizer measures its container, and re-measures when the container resizes. A list inside a closed popover or a
+hidden tab measures zero and renders nothing, then fills in as soon as it becomes visible. Set
+`observeScrollElementSize: false` to turn off the resize tracking.
+
+## Server Rendering and Tests
+
+The server, jsdom and happy-dom have no layout, so the container measures zero and no items render. Pass `initialRect`
+with the size you expect the container to have, and the virtualizer renders the first window of items before it can
+measure:
+
+```ts
+useListVirtualizer({ count: items.length, estimatedSize: () => 48, initialRect: { width: 320, height: 400 } })
+```
+
+## Performance
+
+- Raise `overscan` (default `3`) if fast scrolling shows blank space; lower it if items are expensive to render.
+- Keep item components light. Every scroll mounts new ones.
+- Prefer a fixed `estimatedSize` when every item is the same height. Measuring has a cost.

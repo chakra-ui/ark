@@ -3,7 +3,7 @@ import { useFilter } from '@ark-ui/react/locale'
 import { Portal } from '@ark-ui/react/portal'
 import { ListVirtualizer, useListVirtualizer } from '@ark-ui/react/virtualizer'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
-import type { CSSProperties } from 'react'
+import { type CSSProperties, useLayoutEffect } from 'react'
 import styles from 'styles/combobox.module.css'
 
 export const Virtualized = () => {
@@ -20,7 +20,10 @@ export const Virtualized = () => {
     overscan: 10,
   })
 
-  virtualizer.updateOptions({ count: collection.size })
+  const count = collection.size
+  useLayoutEffect(() => {
+    virtualizer.updateOptions({ count })
+  }, [virtualizer, count])
 
   const handleScrollToIndex: Combobox.RootProps<Country>['scrollToIndexFn'] = (details) => {
     virtualizer.scrollToIndex(details.index, { align: 'auto' })

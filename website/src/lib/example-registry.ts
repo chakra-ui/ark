@@ -673,6 +673,7 @@ const exampleModules: Record<string, () => Promise<ExampleModule>> = {
   'virtualizer/dynamic-size': () => import('@examples/virtualizer/examples/dynamic-size'),
   'virtualizer/grid': () => import('@examples/virtualizer/examples/grid'),
   'virtualizer/horizontal': () => import('@examples/virtualizer/examples/horizontal'),
+  'virtualizer/infinite-loading': () => import('@examples/virtualizer/examples/infinite-loading'),
   'virtualizer/list': () => import('@examples/virtualizer/examples/list'),
   'virtualizer/scroll-to-index': () => import('@examples/virtualizer/examples/scroll-to-index'),
   'virtualizer/window': () => import('@examples/virtualizer/examples/window'),
