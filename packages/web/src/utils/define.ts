@@ -93,6 +93,9 @@ export type ActionMethods<Api, Names extends keyof Api> = {
 
 type Action<Api> = (api: Api, ...args: any[]) => void
 
+const inheritedDir = (el: Element) =>
+  (el.parentElement?.closest('[dir=ltr], [dir=rtl]')?.getAttribute('dir') ?? undefined) as 'ltr' | 'rtl' | undefined
+
 const isBareValue = (value: unknown) => ['boolean', 'number', 'string'].includes(typeof value)
 
 const detailKey = (prop: string) => {
@@ -247,6 +250,7 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
         const own = config.props(this)
         const assigned = machineProperties(this)
         const props: Dict = { id: this.machineId, getRootNode, ...own, ...assigned }
+        if (props.dir == null) props.dir = inheritedDir(this)
         // Assigned ids add to the ids a root derives, such as the ones an enclosing field supplies
         if (own.ids && assigned.ids) props.ids = { ...own.ids, ...assigned.ids }
         for (const [prop, type] of Object.entries(config.events ?? {})) {
