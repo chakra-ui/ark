@@ -1,4 +1,6 @@
+import { ListVirtualizer, useListVirtualizer } from '@ark-ui/solid/virtualizer'
 import { render, screen } from '@solidjs/testing-library'
+import { For, createSignal } from 'solid-js'
 import { Grid } from '../examples/grid.tsx'
 import { List } from '../examples/list.tsx'
 import { Window } from '../examples/window.tsx'
@@ -41,5 +43,32 @@ describe('Virtualizer', () => {
     expect(screen.getByRole('list')).toBeInTheDocument()
     expect(screen.getByText('Item 1')).toBeInTheDocument()
     expect(screen.queryByText('Item 10000')).not.toBeInTheDocument()
+  })
+
+  it('keeps rendered items in range when the count shrinks', async () => {
+    const [items, setItems] = createSignal(Array.from({ length: 200 }, (_, index) => `Item ${index + 1}`))
+    const errors: unknown[] = []
+    const Shrinking = () => {
+      const virtualizer = useListVirtualizer(() => ({ count: items().length, estimatedSize: () => 48 }))
+      return (
+        <ListVirtualizer.Root value={virtualizer}>
+          <ListVirtualizer.Content>
+            <For each={virtualizer.getVirtualItems()} keyed={false}>
+              {(item) => {
+                const label = () => items()[item().index]
+                if (label() === undefined) errors.push(item().index)
+                return <ListVirtualizer.Item item={item()}>{label()}</ListVirtualizer.Item>
+              }}
+            </For>
+          </ListVirtualizer.Content>
+        </ListVirtualizer.Root>
+      )
+    }
+    render(() => <Shrinking />)
+    expect(screen.getByText('Item 1')).toBeInTheDocument()
+    setItems(['Only'])
+    expect(await screen.findByText('Only')).toBeInTheDocument()
+    expect(screen.getAllByRole('listitem')).toHaveLength(1)
+    expect(errors).toEqual([])
   })
 })
