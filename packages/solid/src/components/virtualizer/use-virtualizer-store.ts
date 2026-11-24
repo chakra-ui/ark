@@ -20,13 +20,23 @@ export function useVirtualizerStore<Options extends object, T extends Virtualize
   const options = createMemo(() => runIfFn(props))
   let applied = untrack(options)
   const virtualizer = create(applied)
-  const snapshot = useSyncExternalStore(virtualizer.subscribe, virtualizer.getSnapshot)
+  let syncing = false
+  const subscribe = (listener: VoidFunction) =>
+    virtualizer.subscribe(() => {
+      if (!syncing) listener()
+    })
+  const snapshot = useSyncExternalStore(subscribe, virtualizer.getSnapshot)
 
   const sync = () => {
     const next = options()
     if (next === applied) return
     applied = next
-    untrack(() => virtualizer.updateOptions(next))
+    syncing = true
+    try {
+      untrack(() => virtualizer.updateOptions(next))
+    } finally {
+      syncing = false
+    }
   }
 
   createRenderEffect(options, sync)
