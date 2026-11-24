@@ -1,6 +1,7 @@
 import { TreeView, createTreeCollection, useTreeView } from '@ark-ui/react/tree-view'
 import { ListVirtualizer, useListVirtualizer } from '@ark-ui/react/virtualizer'
 import { ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-react'
+import { useLayoutEffect } from 'react'
 import button from 'styles/button.module.css'
 import styles from 'styles/tree-view.module.css'
 
@@ -49,7 +50,10 @@ export const Virtualized = () => {
   })
 
   const visibleNodes = tree.getVisibleNodes()
-  virtualizer.updateOptions({ count: visibleNodes.length })
+  const count = visibleNodes.length
+  useLayoutEffect(() => {
+    virtualizer.updateOptions({ count })
+  }, [virtualizer, count])
 
   return (
     <TreeView.RootProvider className={styles.Root} value={tree}>

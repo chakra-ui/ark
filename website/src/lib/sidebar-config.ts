@@ -47,6 +47,7 @@ export const sidebarConfig: SidebarTabConfig[] = [
           { id: 'component-state' },
           { id: 'animation' },
           { id: 'forms' },
+          { id: 'virtualization' },
           { id: 'ref', title: 'Refs' },
         ],
       },
