@@ -3,6 +3,11 @@ import { waitFor } from '@testing-library/dom'
 import { mount as ActiveChange } from '../examples/active-change.js'
 import { mount as Basic } from '../examples/basic.js'
 import { mount as Nested } from '../examples/nested.js'
+import { mount as WithCollapsible } from '../examples/with-collapsible.js'
+import { mount as WithHover } from '../examples/with-hover.js'
+import { mount as WithRail } from '../examples/with-rail.js'
+import { mount as WithSelect } from '../examples/with-select.js'
+import { mount as WithTreeView } from '../examples/with-tree-view.js'
 import { intersect, mount, observedTargets } from '../../../test-utils.js'
 
 afterEach(() => {
@@ -52,4 +57,54 @@ test('toc picks up items added to the markup', async () => {
   item.innerHTML = '<ark-toc-link><a href="#01-faq">FAQ</a></ark-toc-link>'
   document.querySelector('ark-toc-list')!.append(item)
   await waitFor(() => expect(toc.api?.items).toHaveLength(6))
+})
+
+const activate = async (id: string) => {
+  const heading = document.getElementById(id)!
+  await waitFor(() => expect(observedTargets()).toContain(heading))
+  intersect(heading)
+}
+
+test('toc with a select follows the active heading and scrolls on change', async () => {
+  mount(WithSelect)
+  const select = document.querySelector('select')!
+  await activate('08-usage')
+  await waitFor(() => expect(select.value).toBe('08-usage'))
+  const content = document.querySelector<HTMLElement>('ark-toc-content')!
+  const scrollTo = vi.fn()
+  content.scrollTo = scrollTo
+  select.value = '08-conclusion'
+  select.dispatchEvent(new Event('change'))
+  expect(scrollTo).toHaveBeenCalled()
+})
+
+test('toc in a collapsible shows the active heading in its trigger', async () => {
+  mount(WithCollapsible)
+  await activate('04-quick-start')
+  await waitFor(() => expect(document.querySelector('[data-label]')).toHaveTextContent('Quick Start'))
+  expect(document.querySelector('[data-index]')).toHaveTextContent('3')
+})
+
+test('toc with hover uses its items property and swaps the list on hover', async () => {
+  mount(WithHover)
+  const toc = document.querySelector('ark-toc')!
+  await waitFor(() => expect(toc.api?.items).toHaveLength(5))
+  const nav = document.querySelector('ark-toc-nav')!
+  nav.dispatchEvent(new MouseEvent('mouseenter'))
+  await waitFor(() => expect(document.querySelector('ark-swap')).toHaveAttribute('swap'))
+  expect(nav).toHaveAttribute('data-expanded')
+})
+
+test('toc with a rail draws a rail for each item', async () => {
+  mount(WithRail)
+  await waitFor(() => expect(document.querySelector('ark-toc')!.api?.items).toHaveLength(9))
+  expect(document.querySelectorAll('ark-toc-item svg')).toHaveLength(9)
+})
+
+test('toc with a tree view expands the section of the active heading', async () => {
+  mount(WithTreeView)
+  const treeView = document.querySelector('ark-tree-view')!
+  await waitFor(() => expect(document.querySelector('ark-toc')!.api?.items).toHaveLength(10))
+  await activate('09-toc-events')
+  await waitFor(() => expect(treeView.expandedValue).toEqual(['09-core-concepts']))
 })
