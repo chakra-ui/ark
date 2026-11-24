@@ -21,6 +21,7 @@ const shared = {
   configFile: false,
   logLevel: 'warn',
   root,
+  define: { 'process.env.NODE_ENV': JSON.stringify('production') },
 }
 
 await build({
