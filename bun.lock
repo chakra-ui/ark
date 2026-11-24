@@ -563,6 +563,7 @@
         "@zag-js/hover-card": "2.0.0-next.4",
         "@zag-js/i18n-utils": "2.0.0-next.4",
         "@zag-js/image-cropper": "2.0.0-next.4",
+        "@zag-js/json-tree-utils": "2.0.0-next.4",
         "@zag-js/listbox": "2.0.0-next.4",
         "@zag-js/marquee": "2.0.0-next.4",
         "@zag-js/menu": "2.0.0-next.4",

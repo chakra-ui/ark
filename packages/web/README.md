@@ -6,10 +6,10 @@ ordinary CSS. No framework runtime is required.
 This package is a prerelease. It includes accordion, angle slider, avatar, carousel, checkbox and checkbox group,
 clipboard, collapsible, color picker, combobox, command, date input, date picker, dialog, download trigger, drawer,
 editable, field, fieldset, file upload, floating panel, focus trap, format, frame, highlight, hover card, image cropper,
-listbox, marquee, menu, menubar, meter, navigation menu, number flow, number input, pagination, password input, pin
-input, popover, progress, qr code, radio group, rating group, scroll area, segment group, select, signature pad, slider,
-splitter, steps, swap, switch, table of contents, tabs, tags input, timer, toast, toggle, toggle group, tooltip, tour,
-tree view, and virtualizer.
+JSON tree view, listbox, marquee, menu, menubar, meter, navigation menu, number flow, number input, pagination, password
+input, pin input, popover, progress, qr code, radio group, rating group, scroll area, segment group, select, signature
+pad, slider, splitter, steps, swap, switch, table of contents, tabs, tags input, timer, toast, toggle, toggle group,
+tooltip, tour, tree view, and virtualizer.
 
 ## Usage
 
