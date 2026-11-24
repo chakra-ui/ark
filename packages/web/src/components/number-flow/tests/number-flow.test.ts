@@ -4,6 +4,8 @@ import userEvent from '@testing-library/user-event'
 import { mount as Basic } from '../examples/basic.js'
 import { mount as Formatting } from '../examples/formatting.js'
 import { mount as PrefixSuffix } from '../examples/prefix-suffix.js'
+import { mount as Pricing } from '../examples/pricing.js'
+import { mount as Trend } from '../examples/trend.js'
 import { mount as WithTimer } from '../examples/with-timer.js'
 import { mount } from '../../../test-utils.js'
 
@@ -69,4 +71,30 @@ test('number flow renders the initial timer value in place and rolls on change',
   expect(seconds).toHaveAttribute('data-state', 'idle')
   minutes.value = 4
   await waitFor(() => expect(minutes).toHaveAttribute('data-state', 'rolling'))
+})
+
+test('pricing switches the price and caption with the billing period', async () => {
+  mount(Pricing)
+  const flow = document.querySelector('ark-number-flow')!
+  await waitFor(() => expect(flow.value).toBe(24))
+  await user.click(screen.getByRole('button', { name: 'Yearly' }))
+  await waitFor(() => expect(flow.value).toBe(19.2))
+  expect(screen.getByRole('button', { name: 'Yearly' })).toHaveAttribute('aria-pressed', 'true')
+  expect(screen.getByText(/You save 20%/)).toBeInTheDocument()
+})
+
+test('trend moves the price and its change badge together', async () => {
+  vi.useFakeTimers({ toFake: ['setInterval', 'clearInterval'] })
+  try {
+    mount(Trend)
+    const [change, price] = document.querySelectorAll('ark-number-flow')
+    await waitFor(() => expect(price.value).toBe(182.4))
+    vi.advanceTimersByTime(1600)
+    await waitFor(() => expect(price.value).not.toBe(182.4))
+    expect(change.value).toBeCloseTo((price.value - 182.4) / 182.4)
+    const badge = change.closest('[data-trend]')!
+    expect(badge.getAttribute('data-trend')).toBe(change.value >= 0 ? 'up' : 'down')
+  } finally {
+    vi.useRealTimers()
+  }
 })
