@@ -18,6 +18,8 @@ import type {
   TourTitle,
 } from './parts.js'
 
+export { waitForElement, waitForElementValue, waitForPromise, type WaitOptions } from '@zag-js/tour'
+export { waitForEvent, type WaitForEventOptions } from './wait-for-event.js'
 export type { Api as TourApi, StepDetails as TourStepDetails } from '@zag-js/tour'
 export interface TourElement
   extends
