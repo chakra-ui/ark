@@ -79,6 +79,7 @@
     "@zag-js/toggle-group": "2.0.0-next.4",
     "@zag-js/tooltip": "2.0.0-next.4",
     "@zag-js/tour": "2.0.0-next.4",
+    "@zag-js/json-tree-utils": "2.0.0-next.4",
     "@zag-js/tree-view": "2.0.0-next.4",
     "@zag-js/types": "2.0.0-next.4",
     "@zag-js/vanilla": "2.0.0-next.4",
@@ -383,6 +384,10 @@
     "./image-cropper": {
       "types": "./dist/components/image-cropper/index.d.ts",
       "import": "./dist/components/image-cropper/index.js"
+    },
+    "./json-tree-view": {
+      "types": "./dist/components/json-tree-view/index.d.ts",
+      "import": "./dist/components/json-tree-view/index.js"
     },
     "./focus-trap": {
       "types": "./dist/components/focus-trap/index.d.ts",
