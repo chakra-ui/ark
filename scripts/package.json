@@ -10,6 +10,7 @@
     "check:llms": "bun run src/check-llms-size.ts",
     "check:nodes": "bun run src/check-nodes.ts",
     "check:zag": "bun run src/check-zag-versions.ts",
+    "skill:components": "bun run src/generate-skill-components.ts && prettier --write ../skills/ark-ui/references/components.md",
     "exports:files": "bun run src/exports-files.ts",
     "exports:sync": "bun run src/exports-sync.ts",
     "document:types": "bun run src/generate-type-docs.ts",
