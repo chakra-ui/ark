@@ -37,7 +37,10 @@ come through barrels or wrappers.
 | `getPrevTriggerProps()`, `goToPrevPage()`, `selectPrev()`    | `getPreviousTriggerProps()`, `goToPreviousPage()`, `selectPrevious()` |
 | Accordion `loopFocus`                                        | removed; `collapsible` now defaults to `true`                         |
 | TagsInput editing tags on double-click by default            | pass `editable`                                                       |
-| Carousel `slideCount`                                        | `count`                                                               |
+| Carousel `slideCount`, `autoplay`, `padding`                 | `count`, `autoPlay`, `itemSpacing`                                    |
+| Tabs `composite`                                             | `virtualFocus`, with the value inverted                               |
+| FloatingPanel `axis`, `resizeTriggerAxes`                    | `placement`, `resizeTriggerPlacements`                                |
+| ImageCropper `handles`, `position`                           | `placements`, `placement`                                             |
 | `useCollator()()`, `filters().contains` (Solid, Svelte, Vue) | `collator.compare`, `const { contains } = useFilter()`                |
 | Solid 1, `jsxImportSource: "solid-js"`                       | Solid 2, `jsxImportSource: "@solidjs/web"`                            |
 | Svelte `useDialog()` with no id                              | `useDialog({ id: $props.id() })`                                      |

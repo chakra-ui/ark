@@ -96,9 +96,9 @@ Section: `utilities`.
 
 Section: `collections`. Select, Combobox, Listbox and Tree View take a collection, not an `items` array.
 
-| Name            | Slug              | Import                           | Web | What it is                                                                                                                  |
-| --------------- | ----------------- | -------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------- |
-| Async List      | `async-list`      | `@ark-ui/{framework}/collection` | Yes | A hook for managing asynchronous data operations in list collections including loading, filtering, sorting, and pagination. |
-| List Collection | `list-collection` | `@ark-ui/{framework}/collection` | Yes | Working with list collections in Ark UI                                                                                     |
-| List Selection  | `list-selection`  | `@ark-ui/{framework}/collection` | Yes | Used for managing selection state in list collections.                                                                      |
-| Tree Collection | `tree-collection` | `@ark-ui/{framework}/collection` | Yes | Working with tree collections in Ark UI                                                                                     |
+| Name            | Slug              | Import                                                          | Web | What it is                                                                                                                  |
+| --------------- | ----------------- | --------------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------- |
+| Async List      | `async-list`      | `@ark-ui/{framework}/collection`, web: `@ark-ui/web/async-list` | Yes | A hook for managing asynchronous data operations in list collections including loading, filtering, sorting, and pagination. |
+| List Collection | `list-collection` | `@ark-ui/{framework}/collection`                                | Yes | Working with list collections in Ark UI                                                                                     |
+| List Selection  | `list-selection`  | `@ark-ui/{framework}/collection`                                | Yes | Used for managing selection state in list collections.                                                                      |
+| Tree Collection | `tree-collection` | `@ark-ui/{framework}/collection`                                | Yes | Working with tree collections in Ark UI                                                                                     |

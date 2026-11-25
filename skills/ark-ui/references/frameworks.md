@@ -35,7 +35,7 @@ Solid 2 only: `solid-js` and `@solidjs/web` `>=2.0.0-rc.19`, with `"jsxImportSou
 
 - `props` is a function. Pass your own props to it to merge them, rather than adding them after the spread.
 - The render function runs once, so `state` is an accessor.
-- Use `class`, not `className`. `For` and `Portal` come from `@solidjs/web`.
+- Use `class`, not `className`. `For` comes from `solid-js`, `Portal` from `@solidjs/web`.
 - Lists use `<For each={collection.items} keyed={false}>`, where the item is an accessor: `{(item) => item().label}`.
 - Solid's DOM attributes are lowercase: `novalidate`, not `noValidate`.
 
@@ -96,7 +96,8 @@ every component. Pin an exact version.
   `input`, `select` or `textarea` you write. That native child gets the part's props. For other parts, add `as-child` to
   put the props on the first element child.
 - **Forms:** give the root a `name`. Render the hidden part where the page shows one, like
-  `<ark-checkbox-hidden-input>`. `ark-select` creates its hidden select from `name`, so it has none.
+  `<ark-checkbox-hidden-input>`. `ark-select` creates its own hidden select from `name` unless you render
+  `ark-select-hidden-input`.
 - **Props are kebab-case attributes,** like `default-value` or `same-width`. Elements take a subset of the framework
   props, listed on each web page, so check before assuming one exists. Object options like `ids` or a focus target are
   properties. Collections come from the item elements, like `<ark-select-item value="react">`, not from a collection

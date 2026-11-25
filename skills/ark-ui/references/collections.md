@@ -55,7 +55,9 @@ export const Fruits = (props: { initialItems: { label: string; value: string }[]
 }
 ```
 
-`useFilter` and `useCollator` return values, not accessors, in every framework.
+`useListCollection` returns `collection` as an accessor in Solid (`collection().items`) and as a ref in Vue
+(`collection.value` in script, `collection` in the template). `useFilter` and `useCollator` return values, not
+accessors, in every framework.
 
 ## Tree collections
 
@@ -75,7 +77,7 @@ Render it recursively with `TreeView.Node`, `TreeView.NodeGroup` and `TreeView.N
 ## Loading data
 
 `useAsyncList` from `@ark-ui/{framework}/collection` loads, filters, sorts and paginates remote data. Its `load` returns
-`{ items, cursor }`.
+`{ items, cursor }`. On web it's `createAsyncList` from `@ark-ui/web/async-list`.
 
 ## Long lists
 

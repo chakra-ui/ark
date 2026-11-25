@@ -19,11 +19,16 @@ const entryOverrides: Record<string, string> = {
   'format-time': 'format',
 }
 
+const webEntryOverrides: Record<string, string> = {
+  'async-list': 'async-list',
+}
+
 interface Page {
   slug: string
   title: string
   description: string
   entry: string
+  webEntry: string
   web: boolean
 }
 
@@ -59,15 +64,21 @@ const readPages = (section: string): Page[] =>
         title,
         description,
         entry,
-        web: webExports.includes(`./${entry}`),
+        webEntry: webEntryOverrides[slug] ?? entry,
+        web: webExports.includes(`./${webEntryOverrides[slug] ?? entry}`),
       }
     })
-    .sort((a, b) => a.title.localeCompare(b.title))
+    .sort((a, b) => a.title.localeCompare(b.title, 'en'))
+
+const importOf = (page: Page) => {
+  const entry = `\`@ark-ui/{framework}/${page.entry}\``
+  return page.web && page.webEntry !== page.entry ? `${entry}, web: \`@ark-ui/web/${page.webEntry}\`` : entry
+}
 
 const table = (section: string) => {
   const rows = readPages(section).map(
     (page) =>
-      `| ${page.title} | \`${page.slug}\` | \`@ark-ui/{framework}/${page.entry}\` | ${page.web ? 'Yes' : 'No'} | ${page.description} |`,
+      `| ${page.title} | \`${page.slug}\` | ${importOf(page)} | ${page.web ? 'Yes' : 'No'} | ${page.description.replaceAll('|', '\\|')} |`,
   )
   return ['| Name | Slug | Import | Web | What it is |', '| --- | --- | --- | --- | --- |', ...rows].join('\n')
 }
