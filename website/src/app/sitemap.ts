@@ -8,7 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .map((page) => ({ url: `https://ark-ui.com/docs/${page.slug}` }))
 
   const examples = await fetchExamples()
-  const examplePages = examples.map((example) => ({ url: `https://ark-ui.com/examples/${example}` }))
+  const examplePages = examples.map((example) => ({ url: `https://ark-ui.com/examples/${example.id}` }))
 
   return [{ url: 'https://ark-ui.com' }, ...docsPages, ...examplePages]
 }
