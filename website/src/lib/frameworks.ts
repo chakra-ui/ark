@@ -15,13 +15,7 @@ export const frameworkLabels: Record<Framework, string> = {
 export const isFramework = (value: string | undefined): value is Framework => frameworks.includes(value as Framework)
 
 const unavailableDocs: Partial<Record<Framework, string[]>> = {
-  web: [
-    'overview/changelog',
-    'utilities/client-only',
-    'utilities/environment',
-    'components/json-tree-view',
-    'utilities/presence',
-  ],
+  web: ['overview/changelog', 'utilities/client-only', 'utilities/environment', 'utilities/presence'],
 }
 
 export const isDocAvailable = (framework: Framework, slug: string) => !unavailableDocs[framework]?.includes(slug)
