@@ -121,55 +121,36 @@ For example, this should stack correctly:
 If each component type uses a different base z-index, those base values can fight the layer order. Keep the base the
 same, then let `--layer-index` do the stacking.
 
-For dialogs and drawers, apply it to the content. Zag syncs the content's computed z-index to the backdrop and
-positioner as `--z-index`, so set the z-index property for those parts:
+Set the z-index on the positioner, and on the backdrop for dialogs and drawers. Ark doesn't put a z-index on the
+content, and the content stacks inside its positioner.
 
 ```css
-[data-dialog-content] {
+[data-dialog-backdrop],
+[data-dialog-positioner] {
   z-index: calc(1000 + var(--layer-index, 0));
 }
 
-[data-dialog-positioner] {
-  z-index: var(--z-index, 1000);
-}
-
-[data-dialog-backdrop] {
-  z-index: calc(var(--z-index, 1000) - 1);
-}
-```
-
-For popper-style components, apply it to the floating content. Zag syncs the content's computed z-index to the
-positioner as `--z-index`, and the positioner already uses `z-index: var(--z-index)`:
-
-```css
-[data-popover-content],
-[data-menu-content],
-[data-select-content],
-[data-combobox-content],
-[data-date-picker-content] {
+[data-popover-positioner],
+[data-menu-positioner],
+[data-select-positioner],
+[data-combobox-positioner],
+[data-date-picker-positioner] {
   z-index: calc(1000 + var(--layer-index, 0));
 }
 ```
 
-If your design system exposes z-index tokens, prefer one shared overlay token for dismissible layers:
+If your design system exposes z-index tokens, use one shared overlay token for every dismissible layer:
 
 ```css
-[data-dialog-content] {
-  z-index: calc(var(--z-index-overlay) + var(--layer-index, 0));
-}
-
-[data-dialog-positioner] {
-  z-index: var(--z-index, var(--z-index-overlay));
-}
-
-[data-dialog-backdrop] {
-  z-index: calc(var(--z-index, var(--z-index-overlay)) - 1);
-}
-
-[data-popover-content] {
+[data-dialog-backdrop],
+[data-dialog-positioner],
+[data-popover-positioner] {
   z-index: calc(var(--z-index-overlay) + var(--layer-index, 0));
 }
 ```
+
+Toasts and tours are the exceptions. Set the z-index on `[data-toast-group]`. For a tour, add `--tour-layer` to your
+base on its backdrop, spotlight and positioner: `z-index: calc(1000 + var(--tour-layer))`.
 
 **Caution:** Avoid using `--layer-index` as the entire z-index:
 
