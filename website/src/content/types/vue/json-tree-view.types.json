@@ -1,11 +1,78 @@
 {
   "JsonTreeViewRoot": {
+    "emits": {
+      "beforeRename": {
+        "type": "[details: RenameCompleteDetails]",
+        "isRequired": true,
+        "description": "Called before a rename is completed. Return false to prevent the rename."
+      },
+      "checkedChange": {
+        "type": "[details: CheckedChangeDetails]",
+        "isRequired": true,
+        "description": "Called when the checked value changes"
+      },
+      "expandedChange": {
+        "type": "[details: ExpandedChangeDetails<JsonNode<any>>]",
+        "isRequired": true,
+        "description": "Called when the tree is opened or closed"
+      },
+      "focusChange": {
+        "type": "[details: FocusChangeDetails<JsonNode<any>>]",
+        "isRequired": true,
+        "description": "Called when the focused node changes"
+      },
+      "loadChildrenComplete": {
+        "type": "[details: LoadChildrenCompleteDetails<JsonNode<any>>]",
+        "isRequired": true,
+        "description": "A function that is called when the children are loaded successfully."
+      },
+      "loadChildrenError": {
+        "type": "[details: LoadChildrenErrorDetails<JsonNode<any>>]",
+        "isRequired": true,
+        "description": "A function that is called when there is an error loading the children."
+      },
+      "renameComplete": {
+        "type": "[details: RenameCompleteDetails]",
+        "isRequired": true,
+        "description": "Called when a node label rename is completed"
+      },
+      "renameStart": {
+        "type": "[details: RenameStartDetails<JsonNode<any>>]",
+        "isRequired": true,
+        "description": "Called when a node starts being renamed"
+      },
+      "selectionChange": {
+        "type": "[details: SelectionChangeDetails<JsonNode<any>>]",
+        "isRequired": true,
+        "description": "Called when the selection changes"
+      },
+      "update:checkedValue": {
+        "type": "[value: string[]]",
+        "isRequired": true,
+        "description": "Called when the checked value changes"
+      },
+      "update:expandedValue": {
+        "type": "[value: string[]]",
+        "isRequired": true,
+        "description": "Called when the expanded value changes"
+      },
+      "update:focusedValue": {
+        "type": "[value: string | null]",
+        "isRequired": true,
+        "description": "Called when the focused value changes"
+      },
+      "update:selectedValue": {
+        "type": "[value: string[]]",
+        "isRequired": true,
+        "description": "Called when the selected value changes"
+      }
+    },
     "props": {
       "data": { "type": "object", "isRequired": true, "description": "The data to display in the tree." },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "canRename": {
         "type": "(node: JsonNode<any>, indexPath: number[]) => boolean",
@@ -107,7 +174,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "lazyMount": {
         "type": "boolean",
@@ -128,7 +195,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "indentGuide": { "type": "boolean", "isRequired": false }
     }

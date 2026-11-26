@@ -4,7 +4,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLDivElement",
@@ -15,7 +20,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "type ONLY_FOR_FORMAT =\n  ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<NumberInputDecrementTriggerState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLButtonElement",
@@ -26,7 +36,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "type ONLY_FOR_FORMAT =\n  ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<NumberInputIncrementTriggerState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLButtonElement",
@@ -37,7 +52,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<NumberInputInputState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLInputElement",
@@ -48,7 +68,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLLabelElement",
@@ -61,27 +86,21 @@
         "isRequired": false,
         "description": "Whether to allow mouse wheel to change the value"
       },
-      "allowOverflow": {
+      "allowOutOfRange": {
         "type": "boolean",
-        "defaultValue": "true",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "Whether to allow the value overflow the min/max range"
+        "description": "Whether a typed value can stay outside the min/max range instead of being clamped on blur or Enter.\nThe value is then reported as invalid. Stepping always stays within the range."
       },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "clampValueOnBlur": {
-        "type": "boolean",
-        "defaultValue": "true",
-        "isRequired": false,
-        "description": "Whether to clamp the value when the input loses focus (blur)"
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "defaultValue": {
-        "type": "string",
+        "type": "number",
         "isRequired": false,
-        "description": "The initial value of the input when rendered.\nUse when you don't need to control the value of the input."
+        "description": "The initial value when rendered.\nUse when you don't need to control the value."
       },
       "disabled": {
         "type": "boolean",
@@ -110,15 +129,14 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  label: string\n  input: string\n  incrementTrigger: string\n  decrementTrigger: string\n  scrubber: string\n}>",
+        "type": "Partial<{\n  root: string\n  label: string\n  input: string\n  incrementTrigger: string\n  decrementTrigger: string\n  scrubber: string\n  scrubberCursor: string\n  hiddenInput: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the number input. Useful for composition."
       },
       "inputMode": {
         "type": "InputMode",
-        "defaultValue": "\"decimal\"",
         "isRequired": false,
-        "description": "Hints at the type of data that might be entered by the user. It also determines\nthe type of keyboard shown to the user on mobile devices"
+        "description": "Hints at the type of data that might be entered by the user. It also determines\nthe type of keyboard shown to the user on mobile devices.\nDefaults to `\"text\"` on iPhone when negatives are allowed, otherwise `\"decimal\"`."
       },
       "invalid": {
         "type": "boolean",
@@ -127,9 +145,9 @@
       },
       "largeStep": {
         "type": "number",
-        "defaultValue": "10 * step",
+        "defaultValue": "step * 10",
         "isRequired": false,
-        "description": "The amount to increment or decrement the value by when the `Shift` key is held."
+        "description": "Step value when Shift key is held (large increments)."
       },
       "locale": {
         "type": "string",
@@ -139,13 +157,11 @@
       },
       "max": {
         "type": "number",
-        "defaultValue": "Number.MAX_SAFE_INTEGER",
         "isRequired": false,
         "description": "The maximum value of the number input"
       },
       "min": {
         "type": "number",
-        "defaultValue": "Number.MIN_SAFE_INTEGER",
         "isRequired": false,
         "description": "The minimum value of the number input"
       },
@@ -167,7 +183,7 @@
       "onValueCommit": {
         "type": "(details: ValueChangeDetails) => void",
         "isRequired": false,
-        "description": "Function invoked when the value is committed (when the input is blurred or the Enter key is pressed)"
+        "description": "Function invoked when the value settles: the input is blurred or `Enter` is pressed, a stepper\nor scrub gesture ends, or a key or wheel step completes."
       },
       "onValueInvalid": {
         "type": "(details: ValueInvalidDetails) => void",
@@ -185,16 +201,44 @@
         "isRequired": false,
         "description": "Whether the number input is readonly"
       },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<NumberInputRootState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      },
       "required": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the number input is required"
       },
+      "scrubberDirection": {
+        "type": "'horizontal' | 'vertical'",
+        "defaultValue": "\"horizontal\"",
+        "isRequired": false,
+        "description": "The direction of scrubbing."
+      },
+      "scrubberPixelSensitivity": {
+        "type": "number",
+        "defaultValue": "2",
+        "isRequired": false,
+        "description": "How many pixels the pointer must move to change the value by one step.\nHigher values mean more precise control. Lower values mean more sensitivity."
+      },
+      "scrubberTeleportDistance": {
+        "type": "number",
+        "isRequired": false,
+        "description": "Distance in pixels before the virtual cursor wraps around.\nWhen not set, the viewport bounds are used (default behavior)."
+      },
       "smallStep": {
         "type": "number",
-        "defaultValue": "step / 10",
+        "defaultValue": "step * 0.1",
         "isRequired": false,
-        "description": "The amount to increment or decrement the value by when the `Alt` key is held."
+        "description": "Step value when Alt/Option key is held (fine control)."
+      },
+      "snapOnStep": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether values snap to step multiples when scrubbing."
       },
       "spinOnPress": {
         "type": "boolean",
@@ -214,9 +258,9 @@
         "description": "Specifies the localized strings that identifies the accessibility elements and their states"
       },
       "value": {
-        "type": "string",
+        "type": "number",
         "isRequired": false,
-        "description": "The controlled value of the input"
+        "description": "The controlled value. Use `null` for an empty input."
       }
     },
     "element": "HTMLDivElement",
@@ -231,7 +275,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "type ONLY_FOR_FORMAT =\n  ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<NumberInputRootProviderState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLDivElement",
@@ -242,7 +291,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLSpanElement",
@@ -253,7 +307,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLSpanElement",

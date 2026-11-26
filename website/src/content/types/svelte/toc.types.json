@@ -4,9 +4,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'article'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'article'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Context": { "props": { "render": { "type": "Snippet<[UseTocContext]>", "isRequired": true } } },
@@ -15,9 +20,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Item": {
@@ -26,9 +36,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'li'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'li'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Link": {
@@ -36,9 +51,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'a'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'a'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "List": {
@@ -46,70 +66,29 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'ul'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'ul'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Nav": {
     "props": {
-      "activeIds": { "type": "string[]", "isRequired": false, "description": "The controlled active heading ids." },
       "asChild": {
         "type": "Snippet<[PropsFn<'nav'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "autoScroll": {
-        "type": "boolean",
-        "defaultValue": "true",
-        "isRequired": false,
-        "description": "Whether to auto-scroll the TOC container so the first active item\nis visible when active headings change."
-      },
-      "defaultActiveIds": {
-        "type": "string[]",
-        "isRequired": false,
-        "description": "The default active heading ids when rendered.\nUse when you don't need to control the active headings."
-      },
-      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
-      "ids": {
-        "type": "Partial<{\n  root: string\n  title: string\n  list: string\n  item: (value: string) => string\n  link: (value: string) => string\n  indicator: string\n}>",
-        "isRequired": false,
-        "description": "The ids of the elements in the TOC. Useful for composition."
-      },
-      "items": {
-        "type": "TocItem[]",
-        "isRequired": false,
-        "description": "The TOC items with `value` (slug/id) and `depth` (heading level)."
-      },
-      "onActiveChange": {
-        "type": "(details: ActiveChangeDetails) => void",
-        "isRequired": false,
-        "description": "Callback when the active (visible) headings change."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "placement": { "type": "'left' | 'right'", "isRequired": false },
       "ref": { "type": "Element", "isRequired": false },
-      "rootMargin": {
-        "type": "string",
-        "defaultValue": "\"-20px 0px -40% 0px\"",
+      "render": {
+        "type": "Snippet<[PropsFn<'nav'>, EmptyState]>",
         "isRequired": false,
-        "description": "The root margin for the IntersectionObserver.\nControls the effective viewport area for determining active headings."
-      },
-      "scrollBehavior": {
-        "type": "ScrollBehavior",
-        "defaultValue": "\"smooth\"",
-        "isRequired": false,
-        "description": "The default scroll behavior used when auto-scrolling the TOC container\nand when scrolling to a heading (via link click or `api.scrollTo`).\nCan be overridden per-call by passing `behavior` to `api.scrollTo`."
-      },
-      "scrollEl": {
-        "type": "() => HTMLElement | null",
-        "isRequired": false,
-        "description": "Function that returns the scroll container element to observe within.\nDefaults to the document/viewport."
-      },
-      "threshold": {
-        "type": "number | number[]",
-        "defaultValue": "0",
-        "isRequired": false,
-        "description": "The IntersectionObserver threshold. A value of `0` means the heading is\nactive as soon as even one pixel is visible within the root margin area."
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
       }
     }
   },
@@ -124,7 +103,7 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "autoScroll": {
         "type": "boolean",
@@ -139,9 +118,15 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  title: string\n  list: string\n  item: (value: string) => string\n  link: (value: string) => string\n  indicator: string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the TOC. Useful for composition."
+      },
+      "multiple": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether every visible heading can be active at once.\nWhen `false`, only the topmost visible heading is active."
       },
       "onActiveChange": {
         "type": "(details: ActiveChangeDetails) => void",
@@ -149,6 +134,11 @@
         "description": "Callback when the active (visible) headings change."
       },
       "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      },
       "rootMargin": {
         "type": "string",
         "defaultValue": "\"-20px 0px -40% 0px\"",
@@ -180,9 +170,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Title": {
@@ -190,9 +185,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'h2'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'h2'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   }
 }

@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "fallback": {
         "type": "string",
@@ -18,7 +18,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -27,7 +27,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -36,7 +36,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -46,7 +46,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "readOnly": {
         "type": "boolean",
@@ -61,7 +61,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -71,7 +71,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "snapAlign": {
         "type": "'start' | 'end' | 'center'",
@@ -86,7 +86,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -95,7 +95,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -104,7 +104,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -132,10 +132,10 @@
       }
     },
     "props": {
-      "slideCount": {
+      "count": {
         "type": "number",
         "isRequired": true,
-        "description": "The total number of slides.\nUseful for SSR to render the initial ating the snap points."
+        "description": "The total number of slides.\nUseful for SSR to render the initial snap points."
       },
       "allowMouseDrag": {
         "type": "boolean",
@@ -146,9 +146,9 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
-      "autoplay": {
+      "autoPlay": {
         "type": "boolean | { delay: number }",
         "defaultValue": "false",
         "isRequired": false,
@@ -168,7 +168,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  item(index: number): string\n  itemGroup: string\n  nextTrigger: string\n  prevTrigger: string\n  indicatorGroup: string\n  indicator(index: number): string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the carousel. Useful for composition."
       },
@@ -177,6 +177,11 @@
         "defaultValue": "0.6",
         "isRequired": false,
         "description": "The threshold for determining if an item is in view."
+      },
+      "itemSpacing": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Defines the extra space added around the scrollable area,\nenabling nearby items to remain partially in view."
       },
       "loop": {
         "type": "boolean",
@@ -189,11 +194,6 @@
         "defaultValue": "\"horizontal\"",
         "isRequired": false,
         "description": "The orientation of the element."
-      },
-      "padding": {
-        "type": "string",
-        "isRequired": false,
-        "description": "Defines the extra space added around the scrollable area,\nenabling nearby items to remain partially in view."
       },
       "page": { "type": "number", "isRequired": false, "description": "The controlled page of the carousel." },
       "slidesPerMove": {
@@ -233,7 +233,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   }

@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -13,7 +13,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -22,7 +22,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -31,7 +31,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -69,7 +69,7 @@
       "overlap": { "type": "boolean", "isRequired": false, "description": "Whether to overlap the toasts" },
       "pauseOnPageIdle": {
         "type": "boolean",
-        "defaultValue": "false",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to pause toast when the user leaves the browser tab"
       },
@@ -84,6 +84,11 @@
         "defaultValue": "200",
         "isRequired": false,
         "description": "The duration for the toast to kept alive before it is removed.\nUseful for exit transitions."
+      },
+      "swipeDirections": {
+        "type": "SwipeDirection[]",
+        "isRequired": false,
+        "description": "The directions toasts can be swiped to dismiss. Pass `[]` to disable swiping.\nDefaults to the edges nearest the placement, e.g. `[\"down\", \"right\"]` for `bottom-end`."
       }
     }
   },
@@ -92,13 +97,21 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
   "Toaster": {
     "props": {
-      "toaster": { "type": "CreateToasterReturn<any>", "isRequired": true }
+      "toaster": { "type": "CreateToasterReturn<any>", "isRequired": true },
+      "dir": { "type": "'ltr' | 'rtl'", "isRequired": false },
+      "getRootNode": { "type": "() => ShadowRoot | Node | Document", "isRequired": false },
+      "label": {
+        "type": "string",
+        "defaultValue": "\"Notifications\"",
+        "isRequired": false,
+        "description": "The human-readable label for the toast region."
+      }
     }
   }
 }

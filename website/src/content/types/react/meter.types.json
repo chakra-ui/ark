@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "render": {
         "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
@@ -20,7 +20,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "render": {
         "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
@@ -36,10 +36,11 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "defaultValue": {
         "type": "number",
+        "defaultValue": "min",
         "isRequired": false,
         "description": "The initial value of the meter when rendered.\nUse when you don't need to control the value of the meter."
       },
@@ -130,7 +131,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "render": {
         "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
@@ -146,7 +147,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "render": {
         "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
@@ -162,7 +163,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "render": {
         "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",

@@ -2,7 +2,7 @@
   "Frame": {
     "props": {
       "head": {
-        "type": "number | boolean | Node | ArrayElement | (string & {})",
+        "type": "number | boolean | RenderedElement | ArrayElement | (string & {}) | Node | JSX.ArrayElement",
         "isRequired": false,
         "description": "Additional content to be inserted into the frame's <head>"
       },

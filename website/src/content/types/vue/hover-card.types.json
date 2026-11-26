@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -13,7 +13,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -22,7 +22,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -31,7 +31,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -70,7 +70,7 @@
       "triggerValueChange": {
         "type": "[details: TriggerValueChangeDetails]",
         "isRequired": true,
-        "description": "Function called when the trigger value changes"
+        "description": "Function called when the trigger value changes."
       },
       "update:open": {
         "type": "[open: boolean]",
@@ -103,7 +103,7 @@
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the hover card is disabled" },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{ trigger: string; content: string; positioner: string; arrow: string }>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the popover. Useful for composition."
       },
@@ -116,7 +116,7 @@
       "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the hover card" },
       "openDelay": {
         "type": "number",
-        "defaultValue": "700",
+        "defaultValue": "600",
         "isRequired": false,
         "description": "The duration from when the mouse enters the trigger until the hover card opens."
       },
@@ -125,11 +125,7 @@
         "isRequired": false,
         "description": "The user provided options used to position the popover content"
       },
-      "triggerValue": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The value of the trigger that currently open the hover card"
-      },
+      "triggerValue": { "type": "string", "isRequired": false, "description": "The controlled trigger value" },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
@@ -172,7 +168,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "value": {
         "type": "string",

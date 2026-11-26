@@ -4,7 +4,22 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Overrides the generated id. Use when two error texts share the same `match`."
+      },
+      "match": {
+        "type": "boolean | ValidityMatch",
+        "isRequired": false,
+        "description": "Narrows when the error text shows:\n- a `ValidityState` key shows it only for that native failure\n- `true` forces it visible (e.g. driven by an external form library)\n- omitted shows it whenever the field is invalid"
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<FieldErrorTextState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLSpanElement",
@@ -15,7 +30,33 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<FieldHelperTextState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      }
+    },
+    "element": "HTMLSpanElement",
+    "tag": "span"
+  },
+  "Indicator": {
+    "props": {
+      "type": {
+        "type": "IndicatorType",
+        "isRequired": true,
+        "description": "The state the indicator reflects. Hidden (not unmounted) unless the state\nmatches, so CSS transitions survive:\n- `required`: the field is required (e.g. an asterisk)\n- `invalid`: committed validity is invalid\n- `valid`: committed validity is valid — a pristine field shows neither\n- `validating`: an async validation is in flight (e.g. a spinner)"
+      },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<FieldIndicatorState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLSpanElement",
@@ -26,7 +67,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<FieldInputState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLInputElement",
@@ -45,63 +91,92 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<FieldLabelState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLLabelElement",
     "tag": "label"
-  },
-  "RequiredIndicator": {
-    "props": {
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "fallback": {
-        "type": "string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<...>",
-        "isRequired": false
-      }
-    },
-    "element": "HTMLSpanElement",
-    "tag": "span"
   },
   "Root": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "dirty": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the field's value has been changed from its initial value.\nUseful when the field state is controlled by an external library."
       },
       "disabled": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "Indicates whether the field is disabled."
+        "description": "Whether the field is disabled. Also inherited from a surrounding native `<fieldset disabled>`."
+      },
+      "errors": {
+        "type": "string | string[]",
+        "isRequired": false,
+        "description": "Errors from outside the field, such as a server response. They mark the field invalid\nuntil the user changes the value, and show again when different errors are passed or the form is submitted."
       },
       "ids": {
-        "type": "ElementIds",
+        "type": "Partial<{ root: string; control: string; label: string; errorText: string; helperText: string }>",
         "isRequired": false,
-        "description": "The ids of the field parts."
+        "description": "The ids of the elements. Useful for composition."
       },
       "invalid": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Indicates whether the field is invalid."
+        "description": "Whether the field is invalid, regardless of computed validity.\nUse for app-level errors (e.g. server errors) the machine cannot compute itself."
+      },
+      "onValidityChange": {
+        "type": "(details: ValidityChangeDetails) => void",
+        "isRequired": false,
+        "description": "Called when the committed validity changes."
       },
       "readOnly": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "Indicates whether the field is read-only."
+        "description": "Whether the field is read-only."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<FieldRootState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       },
       "required": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "Indicates whether the field is required."
+        "description": "Whether the field is required."
       },
       "target": {
         "type": "string",
         "isRequired": false,
-        "description": "The target field item value the label should point to."
+        "description": "The item whose control the field tracks, for fields composed of multiple controls.\nThe tracked control id (and the root label's `htmlFor`) become `{id}:item:{target}`.\n`ids.control` overrides this."
+      },
+      "touched": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the field has been touched.\nUseful when the field state is controlled by an external library."
+      },
+      "validate": {
+        "type": "(details: ValidateDetails) => ValidateResult | Promise<ValidateResult>",
+        "isRequired": false,
+        "description": "Custom validation, run against the value and the native validity snapshot.\nMay return a promise; a newer validation run supersedes an in-flight one."
+      },
+      "validationMode": {
+        "type": "ValidationMode",
+        "defaultValue": "\"onSubmit\"",
+        "isRequired": false,
+        "description": "When validation results become visible."
       }
     },
     "element": "HTMLDivElement",
@@ -110,13 +185,18 @@
   "RootProvider": {
     "props": {
       "value": {
-        "type": "{ ariaDescribedby: string | undefined; ids: { root: string; control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: RefObject<HTMLDivElement | null>; }; ... 11 more ...; getRequiredIndicatorProps: () => Omit<...>; }",
+        "type": "UseFieldReturn",
         "isRequired": true
       },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<FieldRootProviderState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLDivElement",
@@ -127,7 +207,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<FieldSelectState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLSelectElement",
@@ -138,13 +223,18 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "autoresize": {
         "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether the textarea should autoresize"
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<FieldTextareaState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLTextAreaElement",

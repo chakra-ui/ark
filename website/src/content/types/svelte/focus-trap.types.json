@@ -4,7 +4,7 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the focus trap is disabled." },
       "fallbackFocus": {
@@ -33,6 +33,11 @@
         "description": "Additional elements to treat as part of the trap, for portalled content\nnot discoverable via `aria-controls`/`aria-expanded` (see `followControlledElements`)."
       },
       "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      },
       "returnFocusOnDeactivate": {
         "type": "boolean",
         "isRequired": false,

@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -13,7 +13,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "defaultValue": {
         "type": "string[]",
@@ -51,13 +51,13 @@
   "GroupProvider": {
     "props": {
       "value": {
-        "type": "{ isChecked: (val: string | undefined) => boolean; value: string[]; name: string | undefined; disabled: boolean; readOnly: boolean | undefined; invalid: boolean | undefined; addValue: (val: string) => void; setValue: (value: string[]) => void; toggleValue: (val: string) => void; getItemProps: (itemProps: CheckboxGro...",
+        "type": "{ isChecked: (val: string | undefined) => boolean; value: string[]; name: string | undefined; disabled: boolean; readOnly: boolean | undefined; invalid: boolean; addValue: (val: string) => void; setValue: (value: string[]) => void; toggleValue: (val: string) => void; getItemProps: (itemProps: CheckboxGroupItemProps)...",
         "isRequired": true
       },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -66,7 +66,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -75,7 +75,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "indeterminate": { "type": "boolean", "isRequired": false }
     }
@@ -85,7 +85,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -106,7 +106,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "checked": {
         "type": "CheckedState",
@@ -126,7 +126,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{ root: string; hiddenInput: string; control: string; label: string }>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the checkbox. Useful for composition."
       },
@@ -152,7 +152,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   }

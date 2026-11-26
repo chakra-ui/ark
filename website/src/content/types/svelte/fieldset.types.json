@@ -1,20 +1,18 @@
 {
-  "Context": {
-    "props": {
-      "render": {
-        "type": "Snippet<[() => { setRootRef: (el: Element | null) => void; ids: { legend: string; errorText: string; helperText: string; }; disabled: boolean; invalid: boolean; getRootProps: () => HTMLFieldsetAttributes; getLegendProps: () => HTMLAttributes<...>; getHelperTextProps: () => HTMLAttributes<...>; getErrorTextProps: () ...",
-        "isRequired": true
-      }
-    }
-  },
+  "Context": { "props": { "render": { "type": "Snippet<[UseFieldsetReturn]>", "isRequired": true } } },
   "ErrorText": {
     "props": {
       "asChild": {
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, FieldsetErrorTextState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "HelperText": {
@@ -22,9 +20,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, FieldsetHelperTextState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Legend": {
@@ -32,9 +35,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'legend'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'legend'>, FieldsetLegendState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Root": {
@@ -42,34 +50,48 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'fieldset'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "disabled": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "Indicates whether the fieldset is disabled."
+        "description": "Whether the fieldset is disabled. Native `<fieldset disabled>` semantics\ncarry the disabled state to all descendant form controls."
       },
-      "id": { "type": "string", "isRequired": false, "description": "The id of the fieldset." },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{ root: string; legend: string; errorText: string; helperText: string }>",
+        "isRequired": false,
+        "description": "The ids of the elements. Useful for composition."
+      },
       "invalid": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "Indicates whether the fieldset is invalid."
+        "description": "Whether the fieldset is invalid. Not inherited by descendant fields,\nbut their controls are described by the fieldset's error text."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'fieldset'>, FieldsetRootState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "() => { setRootRef: (el: Element | null) => void; ids: { legend: string; errorText: string; helperText: string; }; disabled: boolean; invalid: boolean; getRootProps: () => HTMLFieldsetAttributes; getLegendProps: () => HTMLAttributes<...>; getHelperTextProps: () => HTMLAttributes<...>; getErrorTextProps: () => HTMLAt...",
-        "isRequired": true
-      },
+      "value": { "type": "UseFieldsetReturn", "isRequired": true },
       "asChild": {
         "type": "Snippet<[PropsFn<'fieldset'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'fieldset'>, FieldsetRootProviderState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   }
 }

@@ -4,7 +4,17 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Overrides the generated id. Use when two error texts share the same `match`."
+      },
+      "match": {
+        "type": "boolean | ValidityMatch",
+        "isRequired": false,
+        "description": "Narrows when the error text shows: a `ValidityState` key shows it only for that native failure,\n`true` forces it visible, and omitted shows it whenever the field is invalid."
       }
     }
   },
@@ -13,7 +23,21 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      }
+    }
+  },
+  "Indicator": {
+    "props": {
+      "type": {
+        "type": "IndicatorType",
+        "isRequired": true,
+        "description": "The state the indicator reflects. Hidden unless the state matches."
+      },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -22,7 +46,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "modelValue": { "type": "any", "isRequired": false }
     }
@@ -33,53 +57,82 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "RequiredIndicator": {
-    "props": {
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
   "Root": {
+    "emits": {
+      "validityChange": {
+        "type": "[details: ValidityChangeDetails]",
+        "isRequired": true,
+        "description": "Called when the committed validity changes."
+      }
+    },
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
-      "disabled": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is disabled." },
-      "id": { "type": "string", "isRequired": false, "description": "The id of the field." },
-      "ids": { "type": "ElementIds", "isRequired": false, "description": "The ids of the field parts." },
-      "invalid": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is invalid." },
-      "readOnly": {
+      "dirty": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Indicates whether the field is read-only."
+        "description": "Whether the field's value has been changed from its initial value.\nUseful when the field state is controlled by an external library."
       },
-      "required": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is required." },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the field is disabled. Also inherited from a surrounding native `<fieldset disabled>`."
+      },
+      "errors": {
+        "type": "string | string[]",
+        "isRequired": false,
+        "description": "Errors from outside the field, such as a server response. They mark the field invalid\nuntil the user changes the value, and show again when different errors are passed or the form is submitted."
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The id of the field." },
+      "ids": {
+        "type": "Partial<{ root: string; control: string; label: string; errorText: string; helperText: string }>",
+        "isRequired": false,
+        "description": "The ids of the field parts."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the field is invalid, regardless of computed validity."
+      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the field is read-only." },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the field is required." },
       "target": {
         "type": "string",
         "isRequired": false,
-        "description": "The target field item value the label should point to."
+        "description": "The item whose control the field tracks, for fields composed of multiple controls."
+      },
+      "touched": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the field has been touched.\nUseful when the field state is controlled by an external library."
+      },
+      "validate": {
+        "type": "(details: ValidateDetails) => ValidateResult | Promise<ValidateResult>",
+        "isRequired": false,
+        "description": "Custom validation, run against the value and the native validity snapshot.\nMay return a promise; a newer validation run supersedes an in-flight one."
+      },
+      "validationMode": {
+        "type": "ValidationMode",
+        "defaultValue": "\"onSubmit\"",
+        "isRequired": false,
+        "description": "When validation results become visible."
       }
     }
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "{ ariaDescribedby: string | undefined; ids: { control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: Ref<null, null>; }; disabled: boolean | undefined; ... 10 more ...; getRequiredIndicatorProps: () => HTMLAttributes; }",
-        "isRequired": true
-      },
+      "value": { "type": "FieldApi<PropTypes>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -88,7 +141,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "modelValue": { "type": "any", "isRequired": false }
     }
@@ -98,7 +151,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "autoresize": {
         "type": "boolean",

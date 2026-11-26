@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -25,7 +25,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "defaultPressed": {
         "type": "boolean",
@@ -33,6 +33,7 @@
         "description": "The default pressed state of the toggle."
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the toggle is disabled." },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "pressed": { "type": "boolean", "isRequired": false, "description": "The pressed state of the toggle." }
     }
   }

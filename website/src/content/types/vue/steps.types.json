@@ -4,17 +4,17 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
   "Content": {
     "props": {
-      "index": { "type": "number", "isRequired": true },
+      "value": { "type": "string", "isRequired": true, "description": "The value of the step item" },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -23,17 +23,17 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
   "Item": {
     "props": {
-      "index": { "type": "number", "isRequired": true },
+      "value": { "type": "string", "isRequired": true, "description": "The value of the step item" },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -42,7 +42,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -51,7 +51,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -60,7 +60,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -69,56 +69,88 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
   "Root": {
+    "emits": {
+      "complete": {
+        "type": "[details: CompleteDetails]",
+        "isRequired": true,
+        "description": "Callback to be called when the user moves past the last step.\nWith a controlled value, it fires on each request, whether or not you apply it."
+      },
+      "completedChange": {
+        "type": "[details: CompletedChangeDetails]",
+        "isRequired": true,
+        "description": "Callback to be called when the completed steps change.\nAlso fires on `goToNext`, which marks the step it leaves as completed."
+      },
+      "navigationBlocked": {
+        "type": "[details: NavigationBlockedDetails]",
+        "isRequired": true,
+        "description": "Callback to be called when navigation is blocked"
+      },
+      "update:modelValue": {
+        "type": "[value: string | null]",
+        "isRequired": true,
+        "description": "The callback fired when the model value changes."
+      },
+      "valueChange": {
+        "type": "[details: ValueChangeDetails]",
+        "isRequired": true,
+        "description": "Callback to be called when the value changes"
+      }
+    },
     "props": {
+      "items": { "type": "StepItem[]", "isRequired": true, "description": "The steps of the stepper" },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
-      "count": { "type": "number", "isRequired": false, "description": "The total number of steps" },
-      "defaultStep": {
-        "type": "number",
+      "completedValues": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The controlled values of the completed steps"
+      },
+      "defaultCompletedValues": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The initial values of the completed steps when rendered.\nUse when you don't need to control the completed steps."
+      },
+      "defaultValue": {
+        "type": "string",
         "isRequired": false,
         "description": "The initial value of the stepper when rendered.\nUse when you don't need to control the value of the stepper."
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": { "type": "ElementIds", "isRequired": false, "description": "The custom ids for the stepper elements" },
-      "isStepSkippable": {
-        "type": "(index: number) => boolean",
-        "isRequired": false,
-        "description": "Function that returns whether a step can be skipped"
-      },
-      "isStepValid": {
-        "type": "(index: number) => boolean",
-        "isRequired": false,
-        "description": "Function that returns whether a step is valid"
-      },
       "linear": {
         "type": "boolean",
         "isRequired": false,
         "description": "If `true`, the stepper requires the user to complete the steps in order"
       },
+      "modelValue": { "type": "string", "isRequired": false, "description": "The v-model value of the stepper" },
       "orientation": {
         "type": "'horizontal' | 'vertical'",
         "defaultValue": "\"horizontal\"",
         "isRequired": false,
         "description": "The orientation of the stepper"
       },
-      "step": { "type": "number", "isRequired": false, "description": "The controlled value of the stepper" }
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "The localized messages to use"
+      }
     }
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "StepsApi<PropTypes>", "isRequired": true },
+      "value": { "type": "StepsApi<PropTypes, StepItem>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -127,7 +159,16 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      }
+    }
+  },
+  "SkipTrigger": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -136,7 +177,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   }

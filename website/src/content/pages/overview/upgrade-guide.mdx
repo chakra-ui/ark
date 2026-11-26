@@ -64,9 +64,10 @@ Report anything ambiguous instead of guessing.
    Add --cross-file if parts come through barrels, re-exports or wrappers.
 
 2. Leave `asChild` as is; it is still supported. Where a part needs its
-   state, use `render`, which receives (props, state). React: spread `props`.
-   Solid/Svelte/Vue: `props` is a merge function, so spread `props()` and call
-   `props({ onClick })` to merge handlers. Solid's `state` is an accessor.
+   state, use `render`, which receives (props, state). React and Vue: spread
+   or v-bind `props`, an object. Solid/Svelte: `props` is a merge function, so
+   spread `props()` and call `props({ onClick })` to merge handlers. Solid's
+   `state` is an accessor.
 
 3. Toaster: remove `render`/`asChild` and `ToasterState`. Style it with CSS.
 
@@ -93,8 +94,8 @@ Full guide: https://ark-ui.com/docs/overview/upgrade-guide
 ### `render` alongside `asChild`
 
 `asChild` still works, so this change is optional. `render` receives the part's props and its state, so you can read
-state inline. React and Vue move the child into a function or slot. In Solid, Svelte and Vue, `props` is a function:
-call it to spread, and pass your handlers to merge them instead of overwriting.
+state inline. React and Vue move the child into a function or slot. In Solid and Svelte, `props` is a function: call it
+to spread, and pass your handlers to merge them instead of overwriting. In Vue, `props` is an object to `v-bind`.
 
 Codemod (optional): `<framework>/as-child-to-render`.
 
@@ -133,7 +134,7 @@ Codemod (optional): `<framework>/as-child-to-render`.
 ```vue
 <Collapsible.Trigger>
   <template #render="{ props, state }">
-    <button v-bind="props()">{{ state.open ? 'Open' : 'Closed' }}</button>
+    <button v-bind="props">{{ state.open ? 'Open' : 'Closed' }}</button>
   </template>
 </Collapsible.Trigger>
 ```
@@ -174,22 +175,23 @@ those by hand.
 
 Some parts were renamed:
 
-| Component                    | v5                                      | v6                                      |
-| ---------------------------- | --------------------------------------- | --------------------------------------- |
-| TreeView                     | `branch`                                | `node-group`                            |
-| TreeView                     | `branch-control`, `item`                | `node` (`[data-branch]` on branches)    |
-| TreeView                     | `branch-content`, `branch-indent-guide` | `node-group-content`, `indent-guide`    |
-| TreeView                     | `branch-indicator`, `branch-trigger`    | `node-indicator`, `node-expand-trigger` |
-| TreeView                     | `branch-text`, `item-text`              | `node-text`                             |
-| TreeView                     | `item-indicator`                        | removed, use `node-indicator`           |
-| ImageCropper handle          | `[data-position="nw"]`                  | `[data-placement="nw"]`                 |
-| FloatingPanel resize trigger | `[data-axis="n"]`                       | `[data-placement="n"]`                  |
-| Field                        | `input`, `textarea`, `select`           | `control`                               |
-| Field                        | `required-indicator`                    | `indicator`                             |
-| Toc nav                      | `[data-toc-root]`                       | `[data-toc-nav]`                        |
+| Component                    | v5                                      | v6                                                               |
+| ---------------------------- | --------------------------------------- | ---------------------------------------------------------------- |
+| TreeView                     | `branch`                                | `node-group`                                                     |
+| TreeView                     | `branch-control`, `item`                | `node` (`[data-branch]` on branches)                             |
+| TreeView                     | `branch-content`, `branch-indent-guide` | `node-group-content`, `indent-guide`                             |
+| TreeView                     | `branch-indicator`, `branch-trigger`    | `node-indicator`, `node-expand-trigger`                          |
+| TreeView                     | `branch-text`, `item-text`              | `node-text`                                                      |
+| TreeView                     | `item-indicator`                        | removed, use `node-indicator`                                    |
+| TreeView                     | `node-checkbox-indicator`               | `node-indicator` with `type="checked"` or `type="indeterminate"` |
+| ImageCropper handle          | `[data-position="nw"]`                  | `[data-placement="nw"]`                                          |
+| FloatingPanel resize trigger | `[data-axis="n"]`                       | `[data-placement="n"]`                                           |
+| Field                        | `input`, `textarea`, `select`           | `control`                                                        |
+| Field                        | `required-indicator`                    | `indicator`                                                      |
+| Toc nav                      | `[data-toc-root]`                       | `[data-toc-nav]`                                                 |
 
-- The codemod renames all of these except `item-indicator` and the Toc nav. It renames `data-position` and `data-axis`
-  only right after the handle or resize trigger selector.
+- The codemod renames all of these except `item-indicator`, `node-checkbox-indicator` and the Toc nav. It renames
+  `data-position` and `data-axis` only right after the handle or resize trigger selector.
 - A v5 `item` or `branch-control` selector becomes two attribute selectors, which raises specificity. Check overrides
   that relied on order.
 - JsonTreeView uses the tree view's attributes: `[data-scope="json-tree-view"][data-part="branch"]` →
