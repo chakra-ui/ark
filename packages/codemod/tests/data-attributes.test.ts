@@ -122,6 +122,36 @@ const toggle = '[data-scope="toggle"][data-part="root"][data-state="on"]'`,
     )
   })
 
+  it('leaves tree-view parts v6 removed and reports them', () => {
+    const source = `[data-scope="tree-view"][data-part="node"] { }
+[data-scope="tree-view"][data-part="node-checkbox-indicator"] { }
+[data-part="item-indicator"][data-scope="json-tree-view"] { }`
+    const result = cssDataAttributes(source, 'a.css')
+    expect(result.count).toBe(1)
+    expect(result.code).toBe(`[data-tree-view-node] { }
+[data-scope="tree-view"][data-part="node-checkbox-indicator"] { }
+[data-part="item-indicator"][data-scope="json-tree-view"] { }`)
+    expect(result.skipped).toEqual([
+      'line 2: [data-scope="tree-view"][data-part="node-checkbox-indicator"] has no v6 part, use [data-tree-view-node-indicator]',
+      'line 3: [data-part="item-indicator"][data-scope="json-tree-view"] has no v6 part, use [data-tree-view-node-indicator]',
+    ])
+  })
+
+  it('reports removed tree-view parts in line order', () => {
+    const result = cssDataAttributes(
+      `[data-part="item-indicator"][data-scope="tree-view"] { }
+[data-scope="tree-view"][data-part="node-checkbox-indicator"] { }`,
+      'a.css',
+    )
+    expect(result.skipped.map((entry) => entry.split(':')[0])).toEqual(['line 1', 'line 2'])
+  })
+
+  it('reports a removed tree-view part even when nothing else changes', () => {
+    const result = cssDataAttributes(`[data-scope="tree-view"][data-part="item-indicator"] { }`, 'a.css')
+    expect(result.code).toBeNull()
+    expect(result.skipped).toHaveLength(1)
+  })
+
   it('leaves v6 tree-view selectors alone', () => {
     expect(cssDataAttributes(`[data-tree-view-node][data-branch] { }`, 'a.css').code).toBeNull()
   })
