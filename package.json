@@ -20,6 +20,7 @@
     "check:exports": "bun scripts check:exports",
     "check:publish-exports": "bun scripts check:publish-exports",
     "check:zag": "bun scripts check:zag",
+    "skill:components": "bun scripts skill:components",
     "clean": "find . -name 'node_modules' -type d -prune -exec rm -rf {} \\;",
     "exports:sync": "bun scripts exports:sync",
     "local:sync": "bun scripts local:sync",
