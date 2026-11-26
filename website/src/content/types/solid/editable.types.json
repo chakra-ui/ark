@@ -4,8 +4,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EditableAreaState>",
         "isRequired": false,
@@ -18,8 +20,22 @@
       "asChild": {
         "type": "(props: PropsFn<'button'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:command": { "type": "string | number", "isRequired": false },
+      "prop:commandForElement": { "type": "Element", "isRequired": false },
+      "prop:disabled": { "type": "boolean", "isRequired": false },
+      "prop:formAction": { "type": "string | number", "isRequired": false },
+      "prop:formEnctype": { "type": "string | number", "isRequired": false },
+      "prop:formMethod": { "type": "string | number", "isRequired": false },
+      "prop:formNoValidate": { "type": "boolean", "isRequired": false },
+      "prop:formTarget": { "type": "string | number", "isRequired": false },
+      "prop:name": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetAction": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetElement": { "type": "Element", "isRequired": false },
+      "prop:type": { "type": "'button' | 'submit' | 'reset'", "isRequired": false },
+      "prop:value": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'button', EmptyState>",
         "isRequired": false,
@@ -32,8 +48,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -46,8 +64,22 @@
       "asChild": {
         "type": "(props: PropsFn<'button'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:command": { "type": "string | number", "isRequired": false },
+      "prop:commandForElement": { "type": "Element", "isRequired": false },
+      "prop:disabled": { "type": "boolean", "isRequired": false },
+      "prop:formAction": { "type": "string | number", "isRequired": false },
+      "prop:formEnctype": { "type": "string | number", "isRequired": false },
+      "prop:formMethod": { "type": "string | number", "isRequired": false },
+      "prop:formNoValidate": { "type": "boolean", "isRequired": false },
+      "prop:formTarget": { "type": "string | number", "isRequired": false },
+      "prop:name": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetAction": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetElement": { "type": "Element", "isRequired": false },
+      "prop:type": { "type": "'button' | 'submit' | 'reset'", "isRequired": false },
+      "prop:value": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'button', EmptyState>",
         "isRequired": false,
@@ -60,8 +92,47 @@
       "asChild": {
         "type": "(props: PropsFn<'input'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:accept": { "type": "string | number", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
+      "prop:alt": { "type": "string | number", "isRequired": false },
+      "prop:autocomplete": { "type": "AutoFill", "isRequired": false },
+      "prop:capture": { "type": "string | number", "isRequired": false },
+      "prop:dirName": { "type": "string | number", "isRequired": false },
+      "prop:disabled": { "type": "boolean", "isRequired": false },
+      "prop:formAction": { "type": "string | number", "isRequired": false },
+      "prop:formEnctype": { "type": "string | number", "isRequired": false },
+      "prop:formMethod": { "type": "string | number", "isRequired": false },
+      "prop:formNoValidate": { "type": "boolean", "isRequired": false },
+      "prop:formTarget": { "type": "string | number", "isRequired": false },
+      "prop:height": { "type": "number", "isRequired": false },
+      "prop:indeterminate": { "type": "boolean", "isRequired": false },
+      "prop:max": { "type": "string | number", "isRequired": false },
+      "prop:maxLength": { "type": "number", "isRequired": false },
+      "prop:min": { "type": "string | number", "isRequired": false },
+      "prop:minLength": { "type": "number", "isRequired": false },
+      "prop:multiple": { "type": "boolean", "isRequired": false },
+      "prop:name": { "type": "string | number", "isRequired": false },
+      "prop:pattern": { "type": "string | number", "isRequired": false },
+      "prop:placeholder": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetAction": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetElement": { "type": "Element", "isRequired": false },
+      "prop:readOnly": { "type": "boolean", "isRequired": false },
+      "prop:required": { "type": "boolean", "isRequired": false },
+      "prop:selectionDirection": { "type": "SelectionDirection", "isRequired": false },
+      "prop:selectionEnd": { "type": "number", "isRequired": false },
+      "prop:selectionStart": { "type": "number", "isRequired": false },
+      "prop:size": { "type": "number", "isRequired": false },
+      "prop:src": { "type": "string | number", "isRequired": false },
+      "prop:step": { "type": "string | number", "isRequired": false },
+      "prop:type": { "type": "string | number", "isRequired": false },
+      "prop:useMap": { "type": "string | number", "isRequired": false },
+      "prop:valueAsDate": { "type": "Date", "isRequired": false },
+      "prop:valueAsNumber": { "type": "number", "isRequired": false },
+      "prop:webkitdirectory": { "type": "boolean", "isRequired": false },
+      "prop:width": { "type": "number", "isRequired": false },
       "render": {
         "type": "RenderFn<'input', EditableInputState>",
         "isRequired": false,
@@ -74,8 +145,10 @@
       "asChild": {
         "type": "(props: PropsFn<'label'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:htmlFor": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'label', EditableLabelState>",
         "isRequired": false,
@@ -88,8 +161,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', EditablePreviewState>",
         "isRequired": false,
@@ -108,7 +182,7 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
       "autoResize": {
         "type": "boolean",
@@ -133,6 +207,7 @@
         "description": "The element to receive focus when the editable is closed."
       },
       "form": { "type": "string", "isRequired": false, "description": "The associate form of the underlying input." },
+      "id": { "type": "string", "isRequired": false },
       "ids": {
         "type": "ElementIds",
         "isRequired": false,
@@ -189,6 +264,7 @@
         "isRequired": false,
         "description": "The placeholder text for the editable."
       },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the editable is read-only." },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
@@ -222,8 +298,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -236,8 +314,22 @@
       "asChild": {
         "type": "(props: PropsFn<'button'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:command": { "type": "string | number", "isRequired": false },
+      "prop:commandForElement": { "type": "Element", "isRequired": false },
+      "prop:disabled": { "type": "boolean", "isRequired": false },
+      "prop:formAction": { "type": "string | number", "isRequired": false },
+      "prop:formEnctype": { "type": "string | number", "isRequired": false },
+      "prop:formMethod": { "type": "string | number", "isRequired": false },
+      "prop:formNoValidate": { "type": "boolean", "isRequired": false },
+      "prop:formTarget": { "type": "string | number", "isRequired": false },
+      "prop:name": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetAction": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetElement": { "type": "Element", "isRequired": false },
+      "prop:type": { "type": "'button' | 'submit' | 'reset'", "isRequired": false },
+      "prop:value": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'button', EmptyState>",
         "isRequired": false,

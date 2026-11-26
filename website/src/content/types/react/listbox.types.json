@@ -4,7 +4,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<ListboxContentState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLDivElement",
@@ -15,7 +20,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLDivElement",
@@ -26,7 +36,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "autoHighlight": {
         "type": "boolean",
@@ -39,6 +49,11 @@
         "defaultValue": "\"caret\"",
         "isRequired": false,
         "description": "Determines how keyboard conflicts in the input are resolved.\n- \"caret\": keep native text-editing behavior\n- \"navigate\": forward supported keys to listbox navigation"
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLInputElement",
@@ -49,7 +64,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLDivElement",
@@ -60,7 +80,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLDivElement",
@@ -71,7 +96,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLSpanElement",
@@ -82,7 +112,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "highlightOnHover": {
         "type": "boolean",
@@ -93,6 +123,11 @@
         "type": "any",
         "isRequired": false,
         "description": "The item to render"
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<ListboxItemState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLDivElement",
@@ -103,7 +138,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLSpanElement",
@@ -114,23 +154,44 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLSpanElement",
     "tag": "span"
   },
+  "List": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<ListboxListState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      }
+    },
+    "element": "HTMLDivElement",
+    "tag": "div"
+  },
   "Root": {
     "props": {
       "collection": {
-        "type": "ListCollection<T>",
+        "type": "ListCollection<T, never>",
         "isRequired": true,
         "description": "The collection of items"
       },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "defaultHighlightedValue": {
         "type": "string",
@@ -169,7 +230,7 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  content: string\n  label: string\n  item: (id: string | number) => string\n  itemGroup: (id: string | number) => string\n  itemGroupLabel: (id: string | number) => string\n}>",
+        "type": "Partial<{\n  root: string\n  content: string\n  list: string\n  label: string\n  item: (id: string | number) => string\n  itemGroup: (id: string | number) => string\n  itemGroupLabel: (id: string | number) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the listbox. Useful for composition."
       },
@@ -199,6 +260,11 @@
         "defaultValue": "\"vertical\"",
         "isRequired": false,
         "description": "The orientation of the listbox."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       },
       "scrollToIndexFn": {
         "type": "(details: ScrollToIndexDetails) => void",
@@ -238,9 +304,30 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
+    "tag": "div"
+  },
+  "Status": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      }
+    },
+    "element": "HTMLDivElement",
     "tag": "div"
   },
   "ValueText": {
@@ -248,12 +335,17 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "placeholder": {
         "type": "string",
         "isRequired": false,
         "description": "Text to display when no value is listboxed."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLSpanElement",

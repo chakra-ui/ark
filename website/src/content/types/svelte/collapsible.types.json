@@ -4,20 +4,30 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, CollapsibleContentState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Context": { "props": { "render": { "type": "Snippet<[UseCollapsibleContext]>", "isRequired": false } } },
   "Indicator": {
     "props": {
       "asChild": {
-        "type": "Snippet<[PropsFn<'div'>]>",
+        "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Root": {
@@ -25,7 +35,7 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "collapsedHeight": {
         "type": "string | number",
@@ -43,9 +53,14 @@
         "description": "The initial open state of the collapsible when rendered.\nUse when you don't need to control the open state of the collapsible."
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the collapsible is disabled." },
+      "hiddenUntilFound": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the closed content stays searchable with the browser's find-in-page.\nUses `hidden=\"until-found\"`, and opens the collapsible when a match is found inside it."
+      },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{ root: string; content: string; trigger: string }>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the collapsible. Useful for composition."
       },
@@ -70,6 +85,16 @@
         "description": "The controlled open state of the collapsible."
       },
       "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      },
+      "state": {
+        "type": "{}",
+        "isRequired": false,
+        "description": "The state of the part, forwarded to the `render` snippet. Set by the component, not the consumer."
+      },
       "unmountOnExit": {
         "type": "boolean",
         "isRequired": false,
@@ -83,9 +108,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Trigger": {
@@ -93,9 +123,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'button'>, CollapsibleTriggerState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   }
 }

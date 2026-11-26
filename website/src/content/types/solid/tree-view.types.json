@@ -4,8 +4,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -18,8 +20,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -32,8 +36,10 @@
       "asChild": {
         "type": "(props: PropsFn<'h3'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'h3', EmptyState>",
         "isRequired": false,
@@ -46,8 +52,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,
@@ -60,8 +67,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -74,8 +83,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -88,8 +99,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', NodeState>",
         "isRequired": false,
@@ -107,8 +120,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -121,10 +136,12 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
-        "type": "RenderFn<'div', NodeState>",
+        "type": "RenderFn<'div', TreeViewNodeState>",
         "isRequired": false,
         "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
@@ -141,8 +158,47 @@
       "asChild": {
         "type": "(props: PropsFn<'input'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:accept": { "type": "string | number", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
+      "prop:alt": { "type": "string | number", "isRequired": false },
+      "prop:autocomplete": { "type": "AutoFill", "isRequired": false },
+      "prop:capture": { "type": "string | number", "isRequired": false },
+      "prop:dirName": { "type": "string | number", "isRequired": false },
+      "prop:disabled": { "type": "boolean", "isRequired": false },
+      "prop:formAction": { "type": "string | number", "isRequired": false },
+      "prop:formEnctype": { "type": "string | number", "isRequired": false },
+      "prop:formMethod": { "type": "string | number", "isRequired": false },
+      "prop:formNoValidate": { "type": "boolean", "isRequired": false },
+      "prop:formTarget": { "type": "string | number", "isRequired": false },
+      "prop:height": { "type": "number", "isRequired": false },
+      "prop:indeterminate": { "type": "boolean", "isRequired": false },
+      "prop:max": { "type": "string | number", "isRequired": false },
+      "prop:maxLength": { "type": "number", "isRequired": false },
+      "prop:min": { "type": "string | number", "isRequired": false },
+      "prop:minLength": { "type": "number", "isRequired": false },
+      "prop:multiple": { "type": "boolean", "isRequired": false },
+      "prop:name": { "type": "string | number", "isRequired": false },
+      "prop:pattern": { "type": "string | number", "isRequired": false },
+      "prop:placeholder": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetAction": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetElement": { "type": "Element", "isRequired": false },
+      "prop:readOnly": { "type": "boolean", "isRequired": false },
+      "prop:required": { "type": "boolean", "isRequired": false },
+      "prop:selectionDirection": { "type": "SelectionDirection", "isRequired": false },
+      "prop:selectionEnd": { "type": "number", "isRequired": false },
+      "prop:selectionStart": { "type": "number", "isRequired": false },
+      "prop:size": { "type": "number", "isRequired": false },
+      "prop:src": { "type": "string | number", "isRequired": false },
+      "prop:step": { "type": "string | number", "isRequired": false },
+      "prop:type": { "type": "string | number", "isRequired": false },
+      "prop:useMap": { "type": "string | number", "isRequired": false },
+      "prop:valueAsDate": { "type": "Date", "isRequired": false },
+      "prop:valueAsNumber": { "type": "number", "isRequired": false },
+      "prop:webkitdirectory": { "type": "boolean", "isRequired": false },
+      "prop:width": { "type": "number", "isRequired": false },
       "render": {
         "type": "RenderFn<'input', EmptyState>",
         "isRequired": false,
@@ -155,8 +211,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,
@@ -170,10 +227,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
       "canRename": {
-        "type": "(node: any, indexPath: IndexPath) => boolean",
+        "type": "(node: T, indexPath: IndexPath) => boolean",
         "isRequired": false,
         "description": "Function to determine if a node can be renamed"
       },
@@ -219,7 +276,7 @@
         "description": "Whether to enable lazy mounting"
       },
       "loadChildren": {
-        "type": "(details: LoadChildrenDetails<any>) => Promise<any[]>",
+        "type": "(details: LoadChildrenDetails<T>) => Promise<T[]>",
         "isRequired": false,
         "description": "Function to load children for a node asynchronously.\nWhen provided, branches will wait for this promise to resolve before expanding."
       },
@@ -234,22 +291,22 @@
         "description": "Called when the checked value changes"
       },
       "onExpandedChange": {
-        "type": "(details: ExpandedChangeDetails<any>) => void",
+        "type": "(details: ExpandedChangeDetails<T>) => void",
         "isRequired": false,
         "description": "Called when the tree is opened or closed"
       },
       "onFocusChange": {
-        "type": "(details: FocusChangeDetails<any>) => void",
+        "type": "(details: FocusChangeDetails<T>) => void",
         "isRequired": false,
         "description": "Called when the focused node changes"
       },
       "onLoadChildrenComplete": {
-        "type": "(details: LoadChildrenCompleteDetails<any>) => void",
+        "type": "(details: LoadChildrenCompleteDetails<T>) => void",
         "isRequired": false,
         "description": "Called when a node finishes loading children"
       },
       "onLoadChildrenError": {
-        "type": "(details: LoadChildrenErrorDetails<any>) => void",
+        "type": "(details: LoadChildrenErrorDetails<T>) => void",
         "isRequired": false,
         "description": "Called when loading children fails for one or more nodes"
       },
@@ -259,22 +316,23 @@
         "description": "Called when a node label rename is completed"
       },
       "onRenameStart": {
-        "type": "(details: RenameStartDetails<any>) => void",
+        "type": "(details: RenameStartDetails<T>) => void",
         "isRequired": false,
         "description": "Called when a node starts being renamed"
       },
       "onSelectionChange": {
-        "type": "(details: SelectionChangeDetails<any>) => void",
+        "type": "(details: SelectionChangeDetails<T>) => void",
         "isRequired": false,
         "description": "Called when the selection changes"
       },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
         "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       },
       "scrollToIndexFn": {
-        "type": "(details: ScrollToIndexDetails<any>) => void",
+        "type": "(details: ScrollToIndexDetails<T>) => void",
         "isRequired": false,
         "description": "Function to scroll to a specific index.\nUseful for virtualized tree views."
       },
@@ -310,14 +368,16 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -336,8 +396,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,

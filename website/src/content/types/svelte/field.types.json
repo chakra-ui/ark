@@ -5,9 +5,24 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Overrides the generated id. Use when two error texts share the same `match`."
+      },
+      "match": {
+        "type": "boolean | ValidityMatch",
+        "isRequired": false,
+        "description": "Narrows when the error text shows:\n- a `ValidityState` key shows it only for that native failure\n- `true` forces it visible (e.g. driven by an external form library)\n- omitted shows it whenever the field is invalid"
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, FieldErrorTextState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "HelperText": {
@@ -15,9 +30,34 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, FieldHelperTextState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "Indicator": {
+    "props": {
+      "type": {
+        "type": "IndicatorType",
+        "isRequired": true,
+        "description": "The state the indicator reflects. Hidden (not unmounted) unless the state\nmatches, so CSS transitions survive:\n- `required`: the field is required (e.g. an asterisk)\n- `invalid`: committed validity is invalid\n- `valid`: committed validity is valid — a pristine field shows neither\n- `validating`: an async validation is in flight (e.g. a spinner)"
+      },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, FieldIndicatorState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Input": {
@@ -25,9 +65,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'input'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'input'>, FieldInputState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Item": { "props": { "value": { "type": "string", "isRequired": true } } },
@@ -36,20 +81,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'label'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
-    }
-  },
-  "RequiredIndicator": {
-    "props": {
-      "asChild": {
-        "type": "Snippet<[PropsFn<'span'>]>",
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'label'>, FieldLabelState]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "fallback": { "type": "Snippet<[]>", "isRequired": false },
-      "ref": { "type": "Element", "isRequired": false }
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Root": {
@@ -57,36 +96,93 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "disabled": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is disabled." },
-      "id": { "type": "string", "isRequired": false, "description": "The id of the field." },
-      "ids": { "type": "ElementIds", "isRequired": false, "description": "The ids of the field parts." },
-      "invalid": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is invalid." },
-      "readOnly": {
+      "dirty": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Indicates whether the field is read-only."
+        "description": "Whether the field's value has been changed from its initial value.\nUseful when the field state is controlled by an external library."
+      },
+      "disabled": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the field is disabled. Also inherited from a surrounding native `<fieldset disabled>`."
+      },
+      "errors": {
+        "type": "string | string[]",
+        "isRequired": false,
+        "description": "Errors from outside the field, such as a server response. They mark the field invalid\nuntil the user changes the value, and show again when different errors are passed or the form is submitted."
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{ root: string; control: string; label: string; errorText: string; helperText: string }>",
+        "isRequired": false,
+        "description": "The ids of the elements. Useful for composition."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the field is invalid, regardless of computed validity.\nUse for app-level errors (e.g. server errors) the machine cannot compute itself."
+      },
+      "onValidityChange": {
+        "type": "(details: ValidityChangeDetails) => void",
+        "isRequired": false,
+        "description": "Called when the committed validity changes."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the field is read-only."
       },
       "ref": { "type": "Element", "isRequired": false },
-      "required": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is required." },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, FieldRootState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      },
+      "required": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the field is required."
+      },
       "target": {
         "type": "string",
         "isRequired": false,
-        "description": "The target field item value the label should point to."
+        "description": "The item whose control the field tracks, for fields composed of multiple controls.\nThe tracked control id (and the root label's `htmlFor`) become `{id}:item:{target}`.\n`ids.control` overrides this."
+      },
+      "touched": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the field has been touched.\nUseful when the field state is controlled by an external library."
+      },
+      "validate": {
+        "type": "(details: ValidateDetails) => ValidateResult | Promise<ValidateResult>",
+        "isRequired": false,
+        "description": "Custom validation, run against the value and the native validity snapshot.\nMay return a promise; a newer validation run supersedes an in-flight one."
+      },
+      "validationMode": {
+        "type": "ValidationMode",
+        "defaultValue": "\"onSubmit\"",
+        "isRequired": false,
+        "description": "When validation results become visible."
       }
     }
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "() => { setRootRef: (el: Element | null) => void; ariaDescribedby: string | undefined; ids: { root: string; control: string; label: string; errorText: string; helperText: string; }; ... 11 more ...; getRequiredIndicatorProps: () => HTMLAttributes<...>; }",
-        "isRequired": true
-      },
+      "value": { "type": "UseFieldReturn", "isRequired": true },
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
+      },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, FieldRootProviderState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
       }
     }
   },
@@ -95,9 +191,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'select'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'select'>, FieldSelectState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Textarea": {
@@ -105,7 +206,7 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'textarea'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "autoresize": {
         "type": "boolean",
@@ -113,7 +214,12 @@
         "isRequired": false,
         "description": "Whether the textarea should autoresize"
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'textarea'>, FieldTextareaState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   }
 }

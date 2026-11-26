@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -13,7 +13,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -22,7 +22,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -31,7 +31,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "fixOnBlur": {
         "type": "boolean",
@@ -47,7 +47,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -56,7 +56,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -65,7 +65,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -74,7 +74,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -84,7 +84,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -93,7 +93,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -102,7 +102,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -161,14 +161,14 @@
       "visibleRangeChange": {
         "type": "[details: VisibleRangeChangeDetails]",
         "isRequired": true,
-        "description": "Function called when the visible date range changes."
+        "description": "Function called when the visible range changes."
       }
     },
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "closeOnSelect": {
         "type": "boolean",
@@ -216,16 +216,12 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{ root: string; label(index: number): string; table(id: string): string; tableHeader(id: string): string; tableBody(id: string): string; tableRow(id: string): string; content: string; ... 10 more ...; positioner: string; }>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the date picker. Useful for composition."
       },
-      "inline": { "type": "boolean", "isRequired": false, "description": "Whether the date picker is inline" },
-      "invalid": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the date picker is in an invalid state"
-      },
+      "inline": { "type": "boolean", "isRequired": false, "description": "Whether to render the date picker inline" },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the date picker is invalid" },
       "isDateUnavailable": {
         "type": "(date: DateValue, locale: string) => boolean",
         "isRequired": false,
@@ -353,7 +349,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "lazyMount": {
         "type": "boolean",
@@ -374,7 +370,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -384,7 +380,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "columns": { "type": "number", "isRequired": false },
       "disabled": { "type": "boolean", "isRequired": false },
@@ -396,7 +392,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -405,7 +401,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -414,7 +410,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -423,7 +419,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "columns": { "type": "number", "isRequired": false },
       "id": { "type": "string", "isRequired": false },
@@ -435,7 +431,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -444,7 +440,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -453,7 +449,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "placeholder": {
         "type": "string",
@@ -481,7 +477,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -491,7 +487,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -500,7 +496,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -511,7 +507,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -520,7 +516,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -529,7 +525,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   }

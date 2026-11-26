@@ -5,7 +5,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -14,7 +14,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -23,7 +23,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -33,7 +33,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the tab is disabled" }
     }
@@ -46,7 +46,7 @@
         "description": "Callback to be called when the focused tab changes"
       },
       "update:modelValue": {
-        "type": "[value: string]",
+        "type": "[value: string | null]",
         "isRequired": true,
         "description": "The callback fired when the model value changes."
       },
@@ -66,9 +66,8 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
-      "composite": { "type": "boolean", "isRequired": false, "description": "Whether the tab is composite" },
       "defaultValue": {
         "type": "string",
         "isRequired": false,
@@ -81,7 +80,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  trigger: (id: string) => string\n  content: (id: string) => string\n  list: string\n  indicator: string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the tabs. Useful for composition."
       },
@@ -119,6 +118,12 @@
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to unmount on exit."
+      },
+      "virtualFocus": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the tabs use virtual focus instead of roving tabindex.\n\nWhen `true`, triggers receive no DOM focus — arrow keys update `focusedValue`\nand all triggers remain `tabIndex: -1`. Useful when tabs live inside another\nwidget that manages focus (e.g. a combobox)."
       }
     }
   },
@@ -128,7 +133,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "lazyMount": {
         "type": "boolean",

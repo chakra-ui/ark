@@ -5,8 +5,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,
@@ -19,8 +20,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",
@@ -52,8 +54,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,

@@ -2,13 +2,17 @@
   "Indicator": {
     "props": {
       "asChild": {
-        "type": "(props: PropsFn<'div'>) => Element",
+        "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
-      "fallback": { "type": "number | boolean | Node | ArrayElement | (string & {})", "isRequired": false },
+      "fallback": {
+        "type": "number | boolean | Node | (string & {}) | RenderedElement | ArrayElement | JSX.ArrayElement",
+        "isRequired": false
+      },
+      "id": { "type": "string", "isRequired": false },
       "render": {
-        "type": "RenderFn<'div', EmptyState>",
+        "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,
         "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
@@ -19,19 +23,34 @@
       "asChild": {
         "type": "(props: PropsFn<'button'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
       "defaultPressed": {
         "type": "boolean",
         "isRequired": false,
         "description": "The default pressed state of the toggle."
       },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the toggle is disabled." },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "onPressedChange": {
         "type": "(pressed: boolean) => void",
         "isRequired": false,
         "description": "Event handler called when the pressed state of the toggle changes."
       },
       "pressed": { "type": "boolean", "isRequired": false, "description": "The pressed state of the toggle." },
+      "prop:command": { "type": "string | number", "isRequired": false },
+      "prop:commandForElement": { "type": "Element", "isRequired": false },
+      "prop:disabled": { "type": "boolean", "isRequired": false },
+      "prop:formAction": { "type": "string | number", "isRequired": false },
+      "prop:formEnctype": { "type": "string | number", "isRequired": false },
+      "prop:formMethod": { "type": "string | number", "isRequired": false },
+      "prop:formNoValidate": { "type": "boolean", "isRequired": false },
+      "prop:formTarget": { "type": "string | number", "isRequired": false },
+      "prop:name": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetAction": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetElement": { "type": "Element", "isRequired": false },
+      "prop:type": { "type": "'button' | 'submit' | 'reset'", "isRequired": false },
+      "prop:value": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'button', ToggleRootState>",
         "isRequired": false,

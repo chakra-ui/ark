@@ -6,8 +6,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,
@@ -21,8 +22,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,
@@ -36,8 +38,24 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "render": {
+        "type": "RenderFn<'span', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
+      }
+    }
+  },
+  "HiddenValueText": {
+    "props": {
+      "asChild": {
+        "type": "(props: PropsFn<'span'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
+      },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,
@@ -50,7 +68,7 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
       "continuous": {
         "type": "boolean",
@@ -156,8 +174,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,
@@ -171,22 +190,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
-      "render": {
-        "type": "RenderFn<'span', EmptyState>",
-        "isRequired": false,
-        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
-      }
-    }
-  },
-  "HiddenValueText": {
-    "props": {
-      "asChild": {
-        "type": "(props: PropsFn<'span'>) => Element",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,

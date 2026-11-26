@@ -4,8 +4,10 @@
       "asChild": {
         "type": "(props: PropsFn<'svg'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:currentScale": { "type": "number", "isRequired": false },
       "render": {
         "type": "RenderFn<'svg', EmptyState>",
         "isRequired": false,
@@ -18,8 +20,9 @@
       "asChild": {
         "type": "(props: PropsFn<'circle'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'circle', EmptyState>",
         "isRequired": false,
@@ -32,8 +35,9 @@
       "asChild": {
         "type": "(props: PropsFn<'circle'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'circle', EmptyState>",
         "isRequired": false,
@@ -46,8 +50,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,
@@ -60,8 +65,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -74,11 +81,11 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
       "defaultValue": {
         "type": "number",
-        "defaultValue": "50",
+        "defaultValue": "min",
         "isRequired": false,
         "description": "The initial value of the progress bar when rendered.\nUse when you don't need to control the value of the progress bar."
       },
@@ -88,6 +95,7 @@
         "isRequired": false,
         "description": "The options to use for formatting the value."
       },
+      "id": { "type": "string", "isRequired": false },
       "ids": {
         "type": "ElementIds",
         "isRequired": false,
@@ -122,6 +130,7 @@
         "isRequired": false,
         "description": "The orientation of the element."
       },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -141,8 +150,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -155,8 +166,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -169,8 +182,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,
@@ -184,8 +198,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', ProgressViewState>",
         "isRequired": false,

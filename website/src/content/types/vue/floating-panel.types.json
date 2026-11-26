@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -13,7 +13,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -22,7 +22,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -31,7 +31,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -40,7 +40,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -49,7 +49,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -58,17 +58,21 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
   "ResizeTrigger": {
     "props": {
-      "axis": { "type": "ResizeTriggerAxis", "isRequired": true, "description": "The axis of the resize handle" },
+      "placement": {
+        "type": "CompassDirection",
+        "isRequired": true,
+        "description": "The placement of the resize handle"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -170,7 +174,7 @@
       "finalFocusEl": {
         "type": "() => HTMLElement | null",
         "isRequired": false,
-        "description": "The element to receive focus when the panel closes"
+        "description": "Element to receive focus when the panel is closed.\nBy default, the trigger element is focused."
       },
       "getAnchorPosition": {
         "type": "(details: AnchorPositionDetails) => Point",
@@ -190,14 +194,14 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{ trigger: string; positioner: string; content: string; title: string; header: string }>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the floating panel. Useful for composition."
       },
       "initialFocusEl": {
-        "type": "() => HTMLElement | null",
+        "type": "() => false | HTMLElement | null",
         "isRequired": false,
-        "description": "The element to receive focus when the panel opens"
+        "description": "Element to receive focus when the panel is opened. Defaults to the panel content.\nReturn `false` to skip moving focus, or `null` to use the default."
       },
       "lazyMount": {
         "type": "boolean",
@@ -229,12 +233,12 @@
         "type": "boolean",
         "defaultValue": "true",
         "isRequired": false,
-        "description": "Whether to restore focus to the trigger element when the panel closes"
+        "description": "Whether to restore focus to the trigger when the panel is closed."
       },
       "size": { "type": "Size", "isRequired": false, "description": "The size of the panel" },
       "strategy": {
         "type": "'absolute' | 'fixed'",
-        "defaultValue": "\"absolute\"",
+        "defaultValue": "\"fixed\"",
         "isRequired": false,
         "description": "The strategy to use for positioning"
       },
@@ -286,7 +290,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -295,7 +299,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -304,7 +308,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   }

@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -13,7 +13,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -22,7 +22,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -31,27 +31,33 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "disabled": {
         "type": "boolean | 'true' | 'false'",
         "isRequired": false,
-        "description": "Indicates whether the fieldset is disabled."
+        "description": "Whether the fieldset is disabled. Native `<fieldset disabled>` semantics carry the disabled\nstate to all descendant form controls."
       },
       "id": { "type": "string", "isRequired": false, "description": "The id of the fieldset." },
-      "invalid": { "type": "boolean", "isRequired": false, "description": "Indicates whether the fieldset is invalid." }
+      "ids": {
+        "type": "Partial<{ root: string; legend: string; errorText: string; helperText: string }>",
+        "isRequired": false,
+        "description": "The ids of the fieldset parts."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the fieldset is invalid. Not inherited by descendant fields,\nbut their controls are described by the fieldset's error text."
+      }
     }
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "{ refs: { rootRef: Ref<null, null>; }; ids: { legend: string; errorText: string; helperText: string; }; disabled: boolean | \"true\" | \"false\" | undefined; invalid: boolean | undefined; getRootProps: () => FieldsetHTMLAttributes; getLegendProps: () => { ...; }; getHelperTextProps: () => { ...; }; getErrorTextProps: ()...",
-        "isRequired": true
-      },
+      "value": { "type": "FieldsetApi<PropTypes>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   }

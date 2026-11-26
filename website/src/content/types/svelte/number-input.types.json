@@ -5,9 +5,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "DecrementTrigger": {
@@ -15,9 +20,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'button'>, NumberInputDecrementTriggerState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "IncrementTrigger": {
@@ -25,9 +35,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'button'>, NumberInputIncrementTriggerState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Input": {
@@ -35,9 +50,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'input'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'input'>, NumberInputInputState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Label": {
@@ -45,9 +65,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'label'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'label'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Root": {
@@ -57,27 +82,21 @@
         "isRequired": false,
         "description": "Whether to allow mouse wheel to change the value"
       },
-      "allowOverflow": {
+      "allowOutOfRange": {
         "type": "boolean",
-        "defaultValue": "true",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "Whether to allow the value overflow the min/max range"
+        "description": "Whether a typed value can stay outside the min/max range instead of being clamped on blur or Enter.\nThe value is then reported as invalid. Stepping always stays within the range."
       },
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "clampValueOnBlur": {
-        "type": "boolean",
-        "defaultValue": "true",
-        "isRequired": false,
-        "description": "Whether to clamp the value when the input loses focus (blur)"
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "defaultValue": {
-        "type": "string",
+        "type": "number",
         "isRequired": false,
-        "description": "The initial value of the input when rendered.\nUse when you don't need to control the value of the input."
+        "description": "The initial value when rendered.\nUse when you don't need to control the value."
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the number input is disabled." },
       "focusInputOnChange": {
@@ -94,15 +113,14 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  label: string\n  input: string\n  incrementTrigger: string\n  decrementTrigger: string\n  scrubber: string\n}>",
+        "type": "Partial<{\n  root: string\n  label: string\n  input: string\n  incrementTrigger: string\n  decrementTrigger: string\n  scrubber: string\n  scrubberCursor: string\n  hiddenInput: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the number input. Useful for composition."
       },
       "inputMode": {
         "type": "InputMode",
-        "defaultValue": "\"decimal\"",
         "isRequired": false,
-        "description": "Hints at the type of data that might be entered by the user. It also determines\nthe type of keyboard shown to the user on mobile devices"
+        "description": "Hints at the type of data that might be entered by the user. It also determines\nthe type of keyboard shown to the user on mobile devices.\nDefaults to `\"text\"` on iPhone when negatives are allowed, otherwise `\"decimal\"`."
       },
       "invalid": {
         "type": "boolean",
@@ -111,9 +129,9 @@
       },
       "largeStep": {
         "type": "number",
-        "defaultValue": "10 * step",
+        "defaultValue": "step * 10",
         "isRequired": false,
-        "description": "The amount to increment or decrement the value by when the `Shift` key is held."
+        "description": "Step value when Shift key is held (large increments)."
       },
       "locale": {
         "type": "string",
@@ -121,18 +139,8 @@
         "isRequired": false,
         "description": "The current locale. Based on the BCP 47 definition."
       },
-      "max": {
-        "type": "number",
-        "defaultValue": "Number.MAX_SAFE_INTEGER",
-        "isRequired": false,
-        "description": "The maximum value of the number input"
-      },
-      "min": {
-        "type": "number",
-        "defaultValue": "Number.MIN_SAFE_INTEGER",
-        "isRequired": false,
-        "description": "The minimum value of the number input"
-      },
+      "max": { "type": "number", "isRequired": false, "description": "The maximum value of the number input" },
+      "min": { "type": "number", "isRequired": false, "description": "The minimum value of the number input" },
       "name": {
         "type": "string",
         "isRequired": false,
@@ -151,7 +159,7 @@
       "onValueCommit": {
         "type": "(details: ValueChangeDetails) => void",
         "isRequired": false,
-        "description": "Function invoked when the value is committed (when the input is blurred or the Enter key is pressed)"
+        "description": "Function invoked when the value settles: the input is blurred or `Enter` is pressed, a stepper\nor scrub gesture ends, or a key or wheel step completes."
       },
       "onValueInvalid": {
         "type": "(details: ValueInvalidDetails) => void",
@@ -166,12 +174,40 @@
       },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the number input is readonly" },
       "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, NumberInputRootState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the number input is required" },
+      "scrubberDirection": {
+        "type": "'horizontal' | 'vertical'",
+        "defaultValue": "\"horizontal\"",
+        "isRequired": false,
+        "description": "The direction of scrubbing."
+      },
+      "scrubberPixelSensitivity": {
+        "type": "number",
+        "defaultValue": "2",
+        "isRequired": false,
+        "description": "How many pixels the pointer must move to change the value by one step.\nHigher values mean more precise control. Lower values mean more sensitivity."
+      },
+      "scrubberTeleportDistance": {
+        "type": "number",
+        "isRequired": false,
+        "description": "Distance in pixels before the virtual cursor wraps around.\nWhen not set, the viewport bounds are used (default behavior)."
+      },
       "smallStep": {
         "type": "number",
-        "defaultValue": "step / 10",
+        "defaultValue": "step * 0.1",
         "isRequired": false,
-        "description": "The amount to increment or decrement the value by when the `Alt` key is held."
+        "description": "Step value when Alt/Option key is held (fine control)."
+      },
+      "snapOnStep": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether values snap to step multiples when scrubbing."
       },
       "spinOnPress": {
         "type": "boolean",
@@ -190,7 +226,11 @@
         "isRequired": false,
         "description": "Specifies the localized strings that identifies the accessibility elements and their states"
       },
-      "value": { "type": "string", "isRequired": false, "description": "The controlled value of the input" }
+      "value": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The controlled value. Use `null` for an empty input."
+      }
     }
   },
   "RootProvider": {
@@ -199,9 +239,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, NumberInputRootProviderState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Scrubber": {
@@ -209,9 +254,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "ValueText": {
@@ -219,9 +269,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   }
 }

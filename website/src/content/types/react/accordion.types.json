@@ -4,17 +4,43 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLDivElement"
+  },
+  "ItemHeader": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<AccordionItemHeaderState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      }
+    },
+    "element": "HTMLHeadingElement",
+    "tag": "h3"
   },
   "ItemIndicator": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLSpanElement",
@@ -30,12 +56,17 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "disabled": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the accordion item is disabled."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<AccordionItemState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLDivElement"
@@ -45,7 +76,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLButtonElement",
@@ -56,11 +92,11 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "collapsible": {
         "type": "boolean",
-        "defaultValue": "false",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether an accordion item can be closed after it has been expanded."
       },
@@ -74,6 +110,11 @@
         "isRequired": false,
         "description": "Whether the accordion items are disabled"
       },
+      "hiddenUntilFound": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether closed items stay searchable with the browser's find-in-page.\nUses `hidden=\"until-found\"`, and expands an item when a match is found inside it."
+      },
       "hideMode": {
         "type": "HideMode",
         "defaultValue": "'display-none'",
@@ -86,7 +127,7 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  item: (value: string) => string\n  itemContent: (value: string) => string\n  itemTrigger: (value: string) => string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the accordion. Useful for composition."
       },
@@ -118,6 +159,11 @@
         "isRequired": false,
         "description": "The orientation of the accordion items."
       },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
@@ -142,7 +188,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "hideMode": {
         "type": "HideMode",
@@ -155,6 +201,11 @@
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       },
       "unmountOnExit": {
         "type": "boolean",

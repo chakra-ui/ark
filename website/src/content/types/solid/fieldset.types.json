@@ -4,10 +4,11 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
-        "type": "RenderFn<'span', EmptyState>",
+        "type": "RenderFn<'span', FieldsetErrorTextState>",
         "isRequired": false,
         "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
@@ -18,10 +19,11 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
-        "type": "RenderFn<'span', EmptyState>",
+        "type": "RenderFn<'span', FieldsetHelperTextState>",
         "isRequired": false,
         "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
@@ -32,10 +34,12 @@
       "asChild": {
         "type": "(props: PropsFn<'legend'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
-        "type": "RenderFn<'legend', EmptyState>",
+        "type": "RenderFn<'legend', FieldsetLegendState>",
         "isRequired": false,
         "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
@@ -46,15 +50,30 @@
       "asChild": {
         "type": "(props: PropsFn<'fieldset'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
+      },
+      "disabled": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the fieldset is disabled. Native `<fieldset disabled>` semantics\ncarry the disabled state to all descendant form controls."
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{ root: string; legend: string; errorText: string; helperText: string }>",
+        "isRequired": false,
+        "description": "The ids of the elements. Useful for composition."
       },
       "invalid": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "Indicates whether the fieldset is invalid."
+        "description": "Whether the fieldset is invalid. Not inherited by descendant fields,\nbut their controls are described by the fieldset's error text."
       },
+      "prop:disabled": { "type": "boolean", "isRequired": false },
+      "prop:name": { "type": "string | number", "isRequired": false },
       "render": {
-        "type": "RenderFn<'fieldset', EmptyState>",
+        "type": "RenderFn<'fieldset', FieldsetRootState>",
         "isRequired": false,
         "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
@@ -62,17 +81,17 @@
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "Accessor<{ refs: { rootRef: Setter<HTMLFieldSetElement | undefined>; }; ids: { legend: string; errorText: string; helperText: string; }; disabled: boolean; invalid: boolean; getRootProps: () => { ...; }; getLegendProps: () => { ...; }; getHelperTextProps: () => { ...; }; getErrorTextProps: () => { ...; }; }>",
-        "isRequired": true
-      },
+      "value": { "type": "UseFieldsetReturn", "isRequired": true },
       "asChild": {
         "type": "(props: PropsFn<'fieldset'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:disabled": { "type": "boolean", "isRequired": false },
+      "prop:name": { "type": "string | number", "isRequired": false },
       "render": {
-        "type": "RenderFn<'fieldset', EmptyState>",
+        "type": "RenderFn<'fieldset', FieldsetRootProviderState>",
         "isRequired": false,
         "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }

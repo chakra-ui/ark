@@ -7,7 +7,7 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "ref": { "type": "Element", "isRequired": false },
       "render": {
@@ -23,7 +23,7 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "ref": { "type": "Element", "isRequired": false },
       "render": {
@@ -39,7 +39,22 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "HiddenValueText": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "ref": { "type": "Element", "isRequired": false },
       "render": {
@@ -54,7 +69,7 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "continuous": {
         "type": "boolean",
@@ -161,7 +176,7 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "ref": { "type": "Element", "isRequired": false },
       "render": {
@@ -177,22 +192,7 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "ref": { "type": "Element", "isRequired": false },
-      "render": {
-        "type": "Snippet<[PropsFn<'span'>, EmptyState]>",
-        "isRequired": false,
-        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
-      }
-    }
-  },
-  "HiddenValueText": {
-    "props": {
-      "asChild": {
-        "type": "Snippet<[PropsFn<'span'>]>",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "ref": { "type": "Element", "isRequired": false },
       "render": {

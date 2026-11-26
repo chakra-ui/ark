@@ -9,8 +9,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -24,8 +26,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -38,8 +42,29 @@
       "asChild": {
         "type": "(props: PropsFn<'img'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
+      "prop:alt": { "type": "string | number", "isRequired": false },
+      "prop:border": { "type": "string | number", "isRequired": false },
+      "prop:crossOrigin": { "type": "string", "isRequired": false },
+      "prop:decoding": { "type": "'async' | 'sync' | 'auto'", "isRequired": false },
+      "prop:fetchPriority": { "type": "'auto' | 'high' | 'low'", "isRequired": false },
+      "prop:height": { "type": "number", "isRequired": false },
+      "prop:hspace": { "type": "number", "isRequired": false },
+      "prop:isMap": { "type": "boolean", "isRequired": false },
+      "prop:loading": { "type": "'eager' | 'lazy'", "isRequired": false },
+      "prop:longDesc": { "type": "string | number", "isRequired": false },
+      "prop:lowsrc": { "type": "string | number", "isRequired": false },
+      "prop:name": { "type": "string | number", "isRequired": false },
+      "prop:referrerPolicy": { "type": "string | number", "isRequired": false },
+      "prop:sizes": { "type": "string | number", "isRequired": false },
+      "prop:src": { "type": "string | number", "isRequired": false },
+      "prop:srcset": { "type": "string | number", "isRequired": false },
+      "prop:useMap": { "type": "string | number", "isRequired": false },
+      "prop:vspace": { "type": "number", "isRequired": false },
+      "prop:width": { "type": "number", "isRequired": false },
       "render": {
         "type": "RenderFn<'img', ImageCropperImageState>",
         "isRequired": false,
@@ -52,7 +77,7 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
       "aspectRatio": {
         "type": "number",
@@ -90,6 +115,7 @@
         "description": "Whether the crop area is fixed in size and position."
       },
       "flip": { "type": "FlipState", "isRequired": false, "description": "The controlled flip state of the image." },
+      "id": { "type": "string", "isRequired": false },
       "ids": { "type": "ElementIds", "isRequired": false, "description": "The ids of the image cropper elements" },
       "initialCrop": {
         "type": "Rect",
@@ -170,6 +196,7 @@
         "isRequired": false,
         "description": "Callback fired when the zoom level changes."
       },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', ImageCropperRootState>",
         "isRequired": false,
@@ -206,8 +233,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', ImageCropperRootProviderState>",
         "isRequired": false,
@@ -220,8 +249,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', ImageCropperSelectionState>",
         "isRequired": false,
@@ -234,8 +265,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,

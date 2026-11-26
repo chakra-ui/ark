@@ -4,53 +4,78 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Content": {
     "props": {
-      "index": { "type": "number", "isRequired": true },
+      "value": { "type": "string", "isRequired": true, "description": "The value of the step item" },
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Context": { "props": { "render": { "type": "Snippet<[UseStepsContext]>", "isRequired": true } } },
   "Indicator": {
     "props": {
       "asChild": {
-        "type": "Snippet<[PropsFn<'div'>]>",
+        "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "ItemContext": { "props": { "render": { "type": "Snippet<[UseStepsItemContext]>", "isRequired": true } } },
   "Item": {
     "props": {
-      "index": { "type": "number", "isRequired": true },
+      "value": { "type": "string", "isRequired": true, "description": "The value of the step item" },
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, StepsItemState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "List": {
     "props": {
       "asChild": {
-        "type": "Snippet<[PropsFn<'ol'>]>",
+        "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "NextTrigger": {
@@ -58,9 +83,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'button'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "PrevTrigger": {
@@ -68,9 +98,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'button'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Progress": {
@@ -78,57 +113,65 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Root": {
     "props": {
+      "items": { "type": "StepItem[]", "isRequired": true, "description": "The steps of the stepper" },
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "count": { "type": "number", "isRequired": false, "description": "The total number of steps" },
-      "defaultStep": {
-        "type": "number",
+      "completedValues": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The controlled values of the completed steps"
+      },
+      "defaultCompletedValues": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The initial values of the completed steps when rendered.\nUse when you don't need to control the completed steps."
+      },
+      "defaultValue": {
+        "type": "string",
         "isRequired": false,
         "description": "The initial value of the stepper when rendered.\nUse when you don't need to control the value of the stepper."
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": { "type": "ElementIds", "isRequired": false, "description": "The custom ids for the stepper elements" },
-      "isStepSkippable": {
-        "type": "(index: number) => boolean",
-        "defaultValue": "() => false",
-        "isRequired": false,
-        "description": "Whether a step can be skipped during navigation.\nSkippable steps are bypassed when using next/prev."
-      },
-      "isStepValid": {
-        "type": "(index: number) => boolean",
-        "defaultValue": "() => true",
-        "isRequired": false,
-        "description": "Whether a step is valid. Invalid steps block forward navigation in linear mode."
-      },
       "linear": {
         "type": "boolean",
         "isRequired": false,
         "description": "If `true`, the stepper requires the user to complete the steps in order"
       },
-      "onStepChange": {
-        "type": "(details: StepChangeDetails) => void",
+      "onComplete": {
+        "type": "(details: CompleteDetails) => void",
+        "isRequired": false,
+        "description": "Callback to be called when the user moves past the last step.\nWith a controlled value, it fires on each request, whether or not you apply it."
+      },
+      "onCompletedChange": {
+        "type": "(details: CompletedChangeDetails) => void",
+        "isRequired": false,
+        "description": "Callback to be called when the completed steps change.\nAlso fires on `goToNext`, which marks the step it leaves as completed."
+      },
+      "onNavigationBlocked": {
+        "type": "(details: NavigationBlockedDetails) => void",
+        "isRequired": false,
+        "description": "Callback to be called when navigation is blocked"
+      },
+      "onValueChange": {
+        "type": "(details: ValueChangeDetails) => void",
         "isRequired": false,
         "description": "Callback to be called when the value changes"
-      },
-      "onStepComplete": {
-        "type": "VoidFunction",
-        "isRequired": false,
-        "description": "Callback to be called when a step is completed"
-      },
-      "onStepInvalid": {
-        "type": "(details: StepInvalidDetails) => void",
-        "isRequired": false,
-        "description": "Called when navigation is blocked due to an invalid step."
       },
       "orientation": {
         "type": "'horizontal' | 'vertical'",
@@ -137,7 +180,21 @@
         "description": "The orientation of the stepper"
       },
       "ref": { "type": "Element", "isRequired": false },
-      "step": { "type": "number", "isRequired": false, "description": "The controlled value of the stepper" }
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "The localized messages to use"
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The controlled value of the stepper. `COMPLETE` is the position past the last step."
+      }
     }
   },
   "RootProvider": {
@@ -146,9 +203,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Separator": {
@@ -156,9 +218,29 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "SkipTrigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'button'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Trigger": {
@@ -166,9 +248,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'button'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   }
 }

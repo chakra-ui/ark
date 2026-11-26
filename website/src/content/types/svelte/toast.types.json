@@ -4,9 +4,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'button'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "CloseTrigger": {
@@ -14,9 +19,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'button'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Context": { "props": { "render": { "type": "Snippet<[UseToastContext]>", "isRequired": true } } },
@@ -25,9 +35,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Root": {
@@ -35,9 +50,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, ToastRootState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Store": {
@@ -74,7 +94,7 @@
       "overlap": { "type": "boolean", "isRequired": false, "description": "Whether to overlap the toasts" },
       "pauseOnPageIdle": {
         "type": "boolean",
-        "defaultValue": "false",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to pause toast when the user leaves the browser tab"
       },
@@ -89,6 +109,11 @@
         "defaultValue": "200",
         "isRequired": false,
         "description": "The duration for the toast to kept alive before it is removed.\nUseful for exit transitions."
+      },
+      "swipeDirections": {
+        "type": "SwipeDirection[]",
+        "isRequired": false,
+        "description": "The directions toasts can be swiped to dismiss. Pass `[]` to disable swiping.\nDefaults to the edges nearest the placement, e.g. `[\"down\", \"right\"]` for `bottom-end`."
       }
     }
   },
@@ -97,9 +122,14 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
     }
   },
   "Toaster": {
@@ -115,6 +145,12 @@
         "type": "() => Node | ShadowRoot | Document",
         "isRequired": false,
         "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+      },
+      "label": {
+        "type": "string",
+        "defaultValue": "\"Notifications\"",
+        "isRequired": false,
+        "description": "The human-readable label for the toast region."
       },
       "ref": { "type": "Element", "isRequired": false }
     }

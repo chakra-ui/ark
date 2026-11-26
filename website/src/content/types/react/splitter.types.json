@@ -8,7 +8,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLDivElement",
@@ -33,7 +38,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLSpanElement",
@@ -48,11 +58,16 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "disabled": {
         "type": "boolean",
         "isRequired": false
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<SplitterResizeTriggerState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLButtonElement",
@@ -68,12 +83,17 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
       },
       "defaultSize": {
         "type": "PanelSize[]",
         "isRequired": false,
         "description": "The initial size of the panels when rendered.\nUse when you don't need to control the size of the panels."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether resizing is disabled for the whole splitter"
       },
       "id": {
         "type": "string",
@@ -81,14 +101,15 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  resizeTrigger: (id: string) => string\n  label: (id: string) => string\n  panel: (id: string | number) => string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the splitter. Useful for composition."
       },
       "keyboardResizeBy": {
         "type": "number",
+        "defaultValue": "1",
         "isRequired": false,
-        "description": "The number of pixels to resize the panel by when the keyboard is used."
+        "description": "The percentage to resize the panel by when an arrow key is pressed."
       },
       "nonce": {
         "type": "string",
@@ -131,6 +152,11 @@
         "isRequired": false,
         "description": "The splitter registry to use for multi-drag support.\nWhen provided, enables dragging at the intersection of multiple splitters."
       },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      },
       "size": {
         "type": "PanelSize[]",
         "isRequired": false,
@@ -149,7 +175,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state: `render={(props, state) => <MyButton {...props} />}`."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
       }
     },
     "element": "HTMLDivElement",

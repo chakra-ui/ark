@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -13,7 +13,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "index": { "type": "number", "isRequired": false },
       "name": { "type": "string", "isRequired": false }
@@ -24,7 +24,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -33,12 +33,12 @@
       "focusChange": {
         "type": "[details: FocusChangeDetails]",
         "isRequired": true,
-        "description": "Function invoked when the focused segment changes."
+        "description": "A function called when the date input gains or loses focus."
       },
       "placeholderChange": {
         "type": "[details: PlaceholderChangeDetails]",
         "isRequired": true,
-        "description": "Function invoked when the placeholder value changes."
+        "description": "A function called when the placeholder value changes."
       },
       "update:modelValue": {
         "type": "[value: DateValue[]]",
@@ -53,24 +53,29 @@
       "valueChange": {
         "type": "[details: ValueChangeDetails]",
         "isRequired": true,
-        "description": "Function invoked when the selected value changes."
+        "description": "Function called when the value changes."
       }
     },
     "props": {
       "allSegments": {
-        "type": "Partial<{\n  year: boolean\n  month: boolean\n  day: boolean\n  hour: boolean\n  minute: boolean\n  second: boolean\n  dayPeriod: boolean\n  era: boolean\n  literal: boolean\n  timeZoneName: boolean\n  weekday: boolean\n  unknown: boolean\n  fractionalSecond: boolean\n}>",
+        "type": "Segments",
         "isRequired": false,
-        "description": "Whether to include all date/time segments based on the granularity."
+        "description": "The computed segments map for the formatter."
       },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      },
+      "createCalendar": {
+        "type": "(identifier: CalendarIdentifier) => Calendar",
+        "isRequired": false,
+        "description": "A function that creates a calendar object for a given calendar identifier.\nUse this to support non-Gregorian calendars (e.g., Persian, Islamic, Buddhist)."
       },
       "defaultPlaceholderValue": {
         "type": "DateValue",
         "isRequired": false,
-        "description": "The initial placeholder date value when rendered."
+        "description": "The initial placeholder date when rendered."
       },
       "defaultValue": {
         "type": "DateValue[]",
@@ -81,41 +86,43 @@
       "form": {
         "type": "string",
         "isRequired": false,
-        "description": "The associate form of the hidden input element."
+        "description": "The `form` attribute of the hidden input element."
       },
       "format": {
         "type": "(date: DateValue, details: FormatDateDetails) => string",
         "isRequired": false,
-        "description": "The format of the date to display in the input."
+        "description": "The format function for converting a DateValue to a string."
       },
-      "formatter": {
-        "type": "DateFormatter",
-        "isRequired": false,
-        "description": "The formatter used to format the date segments."
-      },
+      "formatter": { "type": "DateFormatter", "isRequired": false, "description": "The date formatter to use." },
       "granularity": {
         "type": "DateGranularity",
+        "defaultValue": "\"day\"",
         "isRequired": false,
-        "description": "The granularity of the date input."
+        "description": "Determines the smallest unit that is displayed in the date input."
       },
       "hideTimeZone": {
         "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
-        "description": "Whether to hide the time zone segment when the value is a `ZonedDateTime`."
+        "description": "Whether to hide the time zone segment when the value is a `ZonedDateTime`.\nHas no effect for values without a time zone."
       },
       "hourCycle": {
         "type": "HourCycle",
         "isRequired": false,
-        "description": "The hour cycle used for formatting time segments."
+        "description": "Whether to use 12-hour or 24-hour time format.\nBy default, this is determined by the locale."
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  label: (index: number) => string\n  control: string\n  segmentGroup: (index: number) => string\n  hiddenInput: (index: number) => string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the date input. Useful for composition."
       },
-      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the date input is invalid." },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the date input is invalid" },
+      "isDateUnavailable": {
+        "type": "(date: DateValue, locale: string) => boolean",
+        "isRequired": false,
+        "description": "Returns whether a date is unavailable.\nWhen a committed date matches, the input is marked as invalid."
+      },
       "locale": {
         "type": "string",
         "defaultValue": "\"en-US\"",
@@ -123,40 +130,43 @@
         "description": "The locale (BCP 47 language tag) to use when formatting the date."
       },
       "max": { "type": "DateValue", "isRequired": false, "description": "The maximum date that can be selected." },
+      "maxGranularity": {
+        "type": "MaxGranularity",
+        "defaultValue": "\"year\"",
+        "isRequired": false,
+        "description": "Determines the largest unit that is displayed in the date input.\nTo create a time-only input, set this to `\"hour\"` and set `granularity`\nto `\"hour\"`, `\"minute\"`, or `\"second\"`."
+      },
       "min": { "type": "DateValue", "isRequired": false, "description": "The minimum date that can be selected." },
       "modelValue": {
         "type": "DateValue[]",
         "isRequired": false,
-        "description": "The v-model value of the date input."
+        "description": "The v-model value of the date input"
       },
-      "name": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The `name` attribute of the hidden input element."
-      },
+      "name": { "type": "string", "isRequired": false, "description": "The `name` attribute of the input element." },
       "placeholderValue": {
         "type": "DateValue",
         "isRequired": false,
-        "description": "The placeholder date value used to generate placeholder segments."
+        "description": "The controlled placeholder date."
       },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the date input is read-only." },
-      "required": { "type": "boolean", "isRequired": false, "description": "Whether the date input is required." },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the date input is required" },
       "selectionMode": {
         "type": "SelectionMode",
         "defaultValue": "\"single\"",
         "isRequired": false,
-        "description": "The selection mode of the date input.\n- `single` - only one date can be selected\n- `range` - a range of dates can be selected"
+        "description": "The selection mode of the date input.\n- `single` - only one date can be entered\n- `range` - a range of dates can be entered (start and end)"
       },
       "shouldForceLeadingZeros": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "Whether to force leading zeros for numeric segments."
+        "description": "Whether to always show leading zeros in month, day, and hour fields.\nWhen false, formatting follows the locale default (e.g. \"1\" instead of \"01\")."
       },
       "timeZone": {
         "type": "string",
         "defaultValue": "\"UTC\"",
         "isRequired": false,
-        "description": "The time zone to use."
+        "description": "The time zone to use"
       },
       "translations": {
         "type": "IntlTranslations",
@@ -172,7 +182,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -181,7 +191,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "index": { "type": "number", "isRequired": false }
     }
@@ -192,7 +202,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   }

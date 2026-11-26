@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -13,7 +13,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "value": { "type": "string", "isRequired": false, "description": "The value of the item this content belongs to" }
     }
@@ -23,7 +23,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -32,7 +32,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -42,7 +42,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the item is disabled" }
     }
@@ -52,7 +52,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "closeOnClick": {
         "type": "boolean",
@@ -74,7 +74,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -88,7 +88,7 @@
       "valueChange": {
         "type": "[details: ValueChangeDetails]",
         "isRequired": true,
-        "description": "Function called when the value of the navigation menu changes"
+        "description": "Function called when the value of the menu changes"
       }
     },
     "props": {
@@ -119,11 +119,7 @@
         "description": "Whether to disable the pointer leave close"
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
-      "ids": {
-        "type": "Partial<{\n  root: string\n  list: string\n  item: string\n  trigger: (value: string) => string\n  content: (value: string) => string\n  viewport: string\n}>",
-        "isRequired": false,
-        "description": "The ids of the elements in the machine."
-      },
+      "ids": { "type": "ElementIds", "isRequired": false, "description": "The ids of the elements in the machine." },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",
@@ -140,7 +136,7 @@
         "type": "'horizontal' | 'vertical'",
         "defaultValue": "\"horizontal\"",
         "isRequired": false,
-        "description": "The orientation of the navigation menu"
+        "description": "The orientation of the element."
       },
       "translations": {
         "type": "IntlTranslations",
@@ -178,7 +174,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the item is disabled" }
     }
@@ -193,7 +189,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -202,7 +198,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   }

@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -13,7 +13,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -22,7 +22,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -31,7 +31,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -40,7 +40,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -52,7 +52,7 @@
         "description": "Function invoked when the number input is focused"
       },
       "update:modelValue": {
-        "type": "[value: string]",
+        "type": "[value: number | null]",
         "isRequired": true,
         "description": "The callback fired when the model value changes."
       },
@@ -60,6 +60,11 @@
         "type": "[details: ValueChangeDetails]",
         "isRequired": true,
         "description": "Function invoked when the value changes"
+      },
+      "valueCommit": {
+        "type": "[details: ValueChangeDetails]",
+        "isRequired": true,
+        "description": "Function invoked when the value settles: the input is blurred or `Enter` is pressed, a stepper\nor scrub gesture ends, or a key or wheel step completes."
       },
       "valueInvalid": {
         "type": "[details: ValueInvalidDetails]",
@@ -73,27 +78,21 @@
         "isRequired": false,
         "description": "Whether to allow mouse wheel to change the value"
       },
-      "allowOverflow": {
+      "allowOutOfRange": {
         "type": "boolean",
-        "defaultValue": "true",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "Whether to allow the value overflow the min/max range"
+        "description": "Whether a typed value can stay outside the min/max range instead of being clamped on blur or Enter.\nThe value is then reported as invalid. Stepping always stays within the range."
       },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "clampValueOnBlur": {
-        "type": "boolean",
-        "defaultValue": "true",
-        "isRequired": false,
-        "description": "Whether to clamp the value when the input loses focus (blur)"
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "defaultValue": {
-        "type": "string",
+        "type": "number",
         "isRequired": false,
-        "description": "The initial value of the input when rendered.\nUse when you don't need to control the value of the input."
+        "description": "The initial value when rendered.\nUse when you don't need to control the value."
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the number input is disabled." },
       "focusInputOnChange": {
@@ -110,15 +109,14 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  label: string\n  input: string\n  incrementTrigger: string\n  decrementTrigger: string\n  scrubber: string\n}>",
+        "type": "Partial<{\n  root: string\n  label: string\n  input: string\n  incrementTrigger: string\n  decrementTrigger: string\n  scrubber: string\n  scrubberCursor: string\n  hiddenInput: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the number input. Useful for composition."
       },
       "inputMode": {
-        "type": "'text' | 'tel' | 'numeric' | 'decimal'",
-        "defaultValue": "\"decimal\"",
+        "type": "InputMode",
         "isRequired": false,
-        "description": "Hints at the type of data that might be entered by the user. It also determines\nthe type of keyboard shown to the user on mobile devices"
+        "description": "Hints at the type of data that might be entered by the user. It also determines\nthe type of keyboard shown to the user on mobile devices.\nDefaults to `\"text\"` on iPhone when negatives are allowed, otherwise `\"decimal\"`."
       },
       "invalid": {
         "type": "boolean",
@@ -127,9 +125,9 @@
       },
       "largeStep": {
         "type": "number",
-        "defaultValue": "10 * step",
+        "defaultValue": "step * 10",
         "isRequired": false,
-        "description": "The amount to increment or decrement the value by when the shift key is held"
+        "description": "Step value when Shift key is held (large increments)."
       },
       "locale": {
         "type": "string",
@@ -137,19 +135,9 @@
         "isRequired": false,
         "description": "The current locale. Based on the BCP 47 definition."
       },
-      "max": {
-        "type": "number",
-        "defaultValue": "Number.MAX_SAFE_INTEGER",
-        "isRequired": false,
-        "description": "The maximum value of the number input"
-      },
-      "min": {
-        "type": "number",
-        "defaultValue": "Number.MIN_SAFE_INTEGER",
-        "isRequired": false,
-        "description": "The minimum value of the number input"
-      },
-      "modelValue": { "type": "string", "isRequired": false, "description": "The v-model value of the number input" },
+      "max": { "type": "number", "isRequired": false, "description": "The maximum value of the number input" },
+      "min": { "type": "number", "isRequired": false, "description": "The minimum value of the number input" },
+      "modelValue": { "type": "number", "isRequired": false, "description": "The v-model value of the number input" },
       "name": {
         "type": "string",
         "isRequired": false,
@@ -157,17 +145,40 @@
       },
       "pattern": {
         "type": "string",
-        "defaultValue": "\"[0-9]*(.[0-9]+)?\"",
+        "defaultValue": "\"-?[0-9]*(.[0-9]+)?\"",
         "isRequired": false,
         "description": "The pattern used to check the <input> element's value against"
       },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the number input is readonly" },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the number input is required" },
+      "scrubberDirection": {
+        "type": "'horizontal' | 'vertical'",
+        "defaultValue": "\"horizontal\"",
+        "isRequired": false,
+        "description": "The direction of scrubbing."
+      },
+      "scrubberPixelSensitivity": {
+        "type": "number",
+        "defaultValue": "2",
+        "isRequired": false,
+        "description": "How many pixels the pointer must move to change the value by one step.\nHigher values mean more precise control. Lower values mean more sensitivity."
+      },
+      "scrubberTeleportDistance": {
+        "type": "number",
+        "isRequired": false,
+        "description": "Distance in pixels before the virtual cursor wraps around.\nWhen not set, the viewport bounds are used (default behavior)."
+      },
       "smallStep": {
         "type": "number",
-        "defaultValue": "step / 10",
+        "defaultValue": "step * 0.1",
         "isRequired": false,
-        "description": "The amount to increment or decrement the value by when the alt key is held"
+        "description": "Step value when Alt/Option key is held (fine control)."
+      },
+      "snapOnStep": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether values snap to step multiples when scrubbing."
       },
       "spinOnPress": {
         "type": "boolean",
@@ -194,7 +205,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -203,7 +214,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -212,7 +223,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   }

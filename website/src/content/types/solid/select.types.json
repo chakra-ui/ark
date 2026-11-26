@@ -4,8 +4,22 @@
       "asChild": {
         "type": "(props: PropsFn<'button'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:command": { "type": "string | number", "isRequired": false },
+      "prop:commandForElement": { "type": "Element", "isRequired": false },
+      "prop:disabled": { "type": "boolean", "isRequired": false },
+      "prop:formAction": { "type": "string | number", "isRequired": false },
+      "prop:formEnctype": { "type": "string | number", "isRequired": false },
+      "prop:formMethod": { "type": "string | number", "isRequired": false },
+      "prop:formNoValidate": { "type": "boolean", "isRequired": false },
+      "prop:formTarget": { "type": "string | number", "isRequired": false },
+      "prop:name": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetAction": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetElement": { "type": "Element", "isRequired": false },
+      "prop:type": { "type": "'button' | 'submit' | 'reset'", "isRequired": false },
+      "prop:value": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'button', EmptyState>",
         "isRequired": false,
@@ -18,8 +32,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', SelectContentState>",
         "isRequired": false,
@@ -32,10 +48,65 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
+      }
+    }
+  },
+  "HiddenInput": {
+    "props": {
+      "asChild": {
+        "type": "(props: PropsFn<'input'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
+      },
+      "id": { "type": "string", "isRequired": false },
+      "prop:accept": { "type": "string | number", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
+      "prop:alt": { "type": "string | number", "isRequired": false },
+      "prop:autocomplete": { "type": "AutoFill", "isRequired": false },
+      "prop:capture": { "type": "string | number", "isRequired": false },
+      "prop:dirName": { "type": "string | number", "isRequired": false },
+      "prop:disabled": { "type": "boolean", "isRequired": false },
+      "prop:formAction": { "type": "string | number", "isRequired": false },
+      "prop:formEnctype": { "type": "string | number", "isRequired": false },
+      "prop:formMethod": { "type": "string | number", "isRequired": false },
+      "prop:formNoValidate": { "type": "boolean", "isRequired": false },
+      "prop:formTarget": { "type": "string | number", "isRequired": false },
+      "prop:height": { "type": "number", "isRequired": false },
+      "prop:indeterminate": { "type": "boolean", "isRequired": false },
+      "prop:max": { "type": "string | number", "isRequired": false },
+      "prop:maxLength": { "type": "number", "isRequired": false },
+      "prop:min": { "type": "string | number", "isRequired": false },
+      "prop:minLength": { "type": "number", "isRequired": false },
+      "prop:multiple": { "type": "boolean", "isRequired": false },
+      "prop:name": { "type": "string | number", "isRequired": false },
+      "prop:pattern": { "type": "string | number", "isRequired": false },
+      "prop:placeholder": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetAction": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetElement": { "type": "Element", "isRequired": false },
+      "prop:readOnly": { "type": "boolean", "isRequired": false },
+      "prop:required": { "type": "boolean", "isRequired": false },
+      "prop:selectionDirection": { "type": "SelectionDirection", "isRequired": false },
+      "prop:selectionEnd": { "type": "number", "isRequired": false },
+      "prop:selectionStart": { "type": "number", "isRequired": false },
+      "prop:size": { "type": "number", "isRequired": false },
+      "prop:src": { "type": "string | number", "isRequired": false },
+      "prop:step": { "type": "string | number", "isRequired": false },
+      "prop:type": { "type": "string | number", "isRequired": false },
+      "prop:useMap": { "type": "string | number", "isRequired": false },
+      "prop:valueAsDate": { "type": "Date", "isRequired": false },
+      "prop:valueAsNumber": { "type": "number", "isRequired": false },
+      "prop:webkitdirectory": { "type": "boolean", "isRequired": false },
+      "prop:width": { "type": "number", "isRequired": false },
+      "render": {
+        "type": "RenderFn<'input', EmptyState>",
         "isRequired": false,
         "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
@@ -46,8 +117,17 @@
       "asChild": {
         "type": "(props: PropsFn<'select'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:autocomplete": { "type": "AutoFill", "isRequired": false },
+      "prop:disabled": { "type": "boolean", "isRequired": false },
+      "prop:length": { "type": "number", "isRequired": false },
+      "prop:multiple": { "type": "boolean", "isRequired": false },
+      "prop:name": { "type": "string | number", "isRequired": false },
+      "prop:required": { "type": "boolean", "isRequired": false },
+      "prop:selectedIndex": { "type": "number", "isRequired": false },
+      "prop:size": { "type": "number", "isRequired": false },
       "render": {
         "type": "RenderFn<'select', EmptyState>",
         "isRequired": false,
@@ -58,12 +138,13 @@
   "Indicator": {
     "props": {
       "asChild": {
-        "type": "(props: PropsFn<'div'>) => Element",
+        "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
-        "type": "RenderFn<'div', EmptyState>",
+        "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,
         "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
@@ -74,8 +155,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -88,8 +171,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -100,12 +185,13 @@
   "ItemIndicator": {
     "props": {
       "asChild": {
-        "type": "(props: PropsFn<'div'>) => Element",
+        "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
-        "type": "RenderFn<'div', EmptyState>",
+        "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,
         "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
@@ -116,14 +202,16 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "item": { "type": "any", "isRequired": false, "description": "The item to render" },
       "persistFocus": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether hovering outside should clear the highlighted state"
       },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', SelectItemState>",
         "isRequired": false,
@@ -136,8 +224,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,
@@ -150,8 +239,10 @@
       "asChild": {
         "type": "(props: PropsFn<'label'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:htmlFor": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'label', EmptyState>",
         "isRequired": false,
@@ -164,8 +255,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -178,8 +271,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -189,7 +284,11 @@
   },
   "Root": {
     "props": {
-      "collection": { "type": "ListCollection<T>", "isRequired": true, "description": "The collection of items" },
+      "collection": {
+        "type": "ListCollection<T, never>",
+        "isRequired": true,
+        "description": "The collection of items"
+      },
       "alignItemWithTrigger": {
         "type": "boolean",
         "defaultValue": "false",
@@ -199,7 +298,7 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
       "autoComplete": {
         "type": "string",
@@ -241,7 +340,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  content: string\n  list: string\n  control: string\n  trigger: string\n  clearTrigger: string\n  label: string\n  hiddenSelect: string\n  positioner: string\n  item: (id: string | number) => string\n  itemGroup: (id: string | number) => string\n  itemGroupLabel: (id: string | number) => string\n}>",
+        "type": "Partial<{\n  root: string\n  content: string\n  list: string\n  input: string\n  control: string\n  trigger: string\n  clearTrigger: string\n  label: string\n  hiddenSelect: string\n  positioner: string\n  item: (id: string | number) => string\n  itemGroup: (id: string | number) => string\n  itemGroupLabel: (id: string | number) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the select. Useful for composition."
       },
@@ -324,7 +423,7 @@
         "type": "'dialog' | 'listbox'",
         "defaultValue": "\"listbox\"",
         "isRequired": false,
-        "description": "The ARIA pattern of the popup. Drives `aria-haspopup` on the trigger and\nthe `role` of the content element.\n- `\"listbox\"` (default): content is a passthrough wrapper; the list bears `role=\"listbox\"`.\n- `\"dialog\"`: content is announced as a dialog; useful when composing search inputs, tabs, or other widgets inside the popup."
+        "description": "The ARIA pattern of the popup. Drives `aria-haspopup` on the trigger and\nthe `role` of the content element.\n- `\"listbox\"` (default) — content is a passthrough wrapper; the list bears `role=\"listbox\"`.\n- `\"dialog\"` — content is announced as a dialog; useful when composing search inputs, tabs, or other widgets inside the popup."
       },
       "positioning": {
         "type": "PositioningOptions",
@@ -336,6 +435,7 @@
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
       },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the select is read-only" },
       "render": {
         "type": "RenderFn<'div', SelectRootState>",
@@ -374,8 +474,9 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "immediate": {
         "type": "boolean",
         "isRequired": false,
@@ -402,6 +503,7 @@
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
       },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', SelectRootProviderState>",
         "isRequired": false,
@@ -421,13 +523,64 @@
       }
     }
   },
+  "ScrollArrow": {
+    "props": {
+      "placement": {
+        "type": "'top' | 'bottom'",
+        "isRequired": true,
+        "description": "Where the scroll arrow is placed.\n- `\"top\"`: the arrow shown at the top of the popup (scrolls content up)\n- `\"bottom\"`: the arrow shown at the bottom of the popup (scrolls content down)"
+      },
+      "asChild": {
+        "type": "(props: PropsFn<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
+      },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
+      }
+    }
+  },
+  "Status": {
+    "props": {
+      "asChild": {
+        "type": "(props: PropsFn<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
+      },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
+      }
+    }
+  },
   "Trigger": {
     "props": {
       "asChild": {
         "type": "(props: PropsFn<'button'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:command": { "type": "string | number", "isRequired": false },
+      "prop:commandForElement": { "type": "Element", "isRequired": false },
+      "prop:disabled": { "type": "boolean", "isRequired": false },
+      "prop:formAction": { "type": "string | number", "isRequired": false },
+      "prop:formEnctype": { "type": "string | number", "isRequired": false },
+      "prop:formMethod": { "type": "string | number", "isRequired": false },
+      "prop:formNoValidate": { "type": "boolean", "isRequired": false },
+      "prop:formTarget": { "type": "string | number", "isRequired": false },
+      "prop:name": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetAction": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetElement": { "type": "Element", "isRequired": false },
+      "prop:type": { "type": "'button' | 'submit' | 'reset'", "isRequired": false },
+      "prop:value": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'button', SelectTriggerState>",
         "isRequired": false,
@@ -440,8 +593,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "placeholder": {
         "type": "string",
         "isRequired": false,

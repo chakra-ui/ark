@@ -11,9 +11,8 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
-      "composite": { "type": "boolean", "isRequired": false, "description": "Whether the tab is composite" },
       "defaultValue": {
         "type": "string",
         "isRequired": false,
@@ -26,7 +25,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  trigger: (value: string) => string\n  list: string\n  content: (value: string) => string\n  indicator: string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the tabs. Useful for composition."
       },
@@ -64,6 +63,11 @@
         "description": "The orientation of the tabs. Can be `horizontal` or `vertical`\n- `horizontal`: only left and right arrow key navigation will work.\n- `vertical`: only up and down arrow key navigation will work."
       },
       "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      },
       "translations": {
         "type": "IntlTranslations",
         "isRequired": false,
@@ -75,7 +79,13 @@
         "isRequired": false,
         "description": "Whether to unmount on exit."
       },
-      "value": { "type": "string", "isRequired": false, "description": "The controlled selected tab value" }
+      "value": { "type": "string", "isRequired": false, "description": "The controlled selected tab value" },
+      "virtualFocus": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the tabs use virtual focus instead of roving tabindex.\n\nWhen `true`, triggers receive no DOM focus — arrow keys update `focusedValue`\nand all triggers remain `tabIndex: -1`. Useful when tabs live inside another\nwidget that manages focus (e.g. a combobox)."
+      }
     }
   },
   "RootProvider": {
@@ -84,7 +94,7 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "lazyMount": {
         "type": "boolean",
@@ -93,6 +103,11 @@
         "description": "Whether to enable lazy mounting"
       },
       "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",

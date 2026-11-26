@@ -4,8 +4,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', DateInputControlState>",
         "isRequired": false,
@@ -18,9 +20,49 @@
       "asChild": {
         "type": "(props: PropsFn<'input'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "index": { "type": "number", "isRequired": false },
+      "name": { "type": "string", "isRequired": false },
+      "prop:accept": { "type": "string | number", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
+      "prop:alt": { "type": "string | number", "isRequired": false },
+      "prop:autocomplete": { "type": "AutoFill", "isRequired": false },
+      "prop:capture": { "type": "string | number", "isRequired": false },
+      "prop:dirName": { "type": "string | number", "isRequired": false },
+      "prop:disabled": { "type": "boolean", "isRequired": false },
+      "prop:formAction": { "type": "string | number", "isRequired": false },
+      "prop:formEnctype": { "type": "string | number", "isRequired": false },
+      "prop:formMethod": { "type": "string | number", "isRequired": false },
+      "prop:formNoValidate": { "type": "boolean", "isRequired": false },
+      "prop:formTarget": { "type": "string | number", "isRequired": false },
+      "prop:height": { "type": "number", "isRequired": false },
+      "prop:indeterminate": { "type": "boolean", "isRequired": false },
+      "prop:max": { "type": "string | number", "isRequired": false },
+      "prop:maxLength": { "type": "number", "isRequired": false },
+      "prop:min": { "type": "string | number", "isRequired": false },
+      "prop:minLength": { "type": "number", "isRequired": false },
+      "prop:multiple": { "type": "boolean", "isRequired": false },
+      "prop:name": { "type": "string | number", "isRequired": false },
+      "prop:pattern": { "type": "string | number", "isRequired": false },
+      "prop:placeholder": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetAction": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetElement": { "type": "Element", "isRequired": false },
+      "prop:readOnly": { "type": "boolean", "isRequired": false },
+      "prop:required": { "type": "boolean", "isRequired": false },
+      "prop:selectionDirection": { "type": "SelectionDirection", "isRequired": false },
+      "prop:selectionEnd": { "type": "number", "isRequired": false },
+      "prop:selectionStart": { "type": "number", "isRequired": false },
+      "prop:size": { "type": "number", "isRequired": false },
+      "prop:src": { "type": "string | number", "isRequired": false },
+      "prop:step": { "type": "string | number", "isRequired": false },
+      "prop:type": { "type": "string | number", "isRequired": false },
+      "prop:useMap": { "type": "string | number", "isRequired": false },
+      "prop:valueAsDate": { "type": "Date", "isRequired": false },
+      "prop:valueAsNumber": { "type": "number", "isRequired": false },
+      "prop:webkitdirectory": { "type": "boolean", "isRequired": false },
+      "prop:width": { "type": "number", "isRequired": false },
       "render": {
         "type": "RenderFn<'input', EmptyState>",
         "isRequired": false,
@@ -33,8 +75,10 @@
       "asChild": {
         "type": "(props: PropsFn<'label'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:htmlFor": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'label', EmptyState>",
         "isRequired": false,
@@ -52,7 +96,7 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
       "createCalendar": {
         "type": "(identifier: CalendarIdentifier) => Calendar",
@@ -98,6 +142,7 @@
         "isRequired": false,
         "description": "Whether to use 12-hour or 24-hour time format.\nBy default, this is determined by the locale."
       },
+      "id": { "type": "string", "isRequired": false },
       "ids": {
         "type": "ElementIds",
         "isRequired": false,
@@ -116,6 +161,12 @@
         "description": "The locale (BCP 47 language tag) to use when formatting the date."
       },
       "max": { "type": "DateValue", "isRequired": false, "description": "The maximum date that can be selected." },
+      "maxGranularity": {
+        "type": "MaxGranularity",
+        "defaultValue": "\"year\"",
+        "isRequired": false,
+        "description": "Determines the largest unit that is displayed in the date input.\nTo create a time-only input, set this to `\"hour\"` and set `granularity`\nto `\"hour\"`, `\"minute\"`, or `\"second\"`."
+      },
       "min": { "type": "DateValue", "isRequired": false, "description": "The minimum date that can be selected." },
       "name": { "type": "string", "isRequired": false, "description": "The `name` attribute of the input element." },
       "onFocusChange": {
@@ -138,6 +189,7 @@
         "isRequired": false,
         "description": "The controlled placeholder date."
       },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the date input is read-only." },
       "render": {
         "type": "RenderFn<'div', DateInputRootState>",
@@ -177,8 +229,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', DateInputRootProviderState>",
         "isRequired": false,
@@ -191,9 +245,11 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "index": { "type": "number", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', DateInputSegmentGroupState>",
         "isRequired": false,
@@ -207,8 +263,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', DateInputSegmentState>",
         "isRequired": false,

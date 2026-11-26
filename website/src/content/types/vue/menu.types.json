@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -13,7 +13,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -25,7 +25,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "closeOnSelect": {
         "type": "boolean",
@@ -45,7 +45,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -54,7 +54,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "value": {
         "type": "string",
@@ -68,7 +68,16 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      }
+    }
+  },
+  "Input": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -77,7 +86,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -86,7 +95,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "id": {
         "type": "string",
@@ -100,7 +109,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -110,7 +119,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "closeOnSelect": {
         "type": "boolean",
@@ -130,7 +139,16 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      }
+    }
+  },
+  "List": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -139,7 +157,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -149,7 +167,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "id": { "type": "string", "isRequired": false },
       "modelValue": { "type": "string", "isRequired": false }
@@ -161,7 +179,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "closeOnSelect": {
         "type": "boolean",
@@ -173,171 +191,6 @@
         "type": "string",
         "isRequired": false,
         "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
-      }
-    }
-  },
-  "Root": {
-    "emits": {
-      "escapeKeyDown": {
-        "type": "[event: KeyboardEvent]",
-        "isRequired": true,
-        "description": "Function called when the escape key is pressed"
-      },
-      "enterComplete": {
-        "type": "[]",
-        "isRequired": true,
-        "description": "Function called when the animation ends in the open state"
-      },
-      "exitComplete": {
-        "type": "[]",
-        "isRequired": true,
-        "description": "Function called when the animation ends in the closed state"
-      },
-      "focusOutside": {
-        "type": "[event: FocusOutsideEvent]",
-        "isRequired": true,
-        "description": "Function called when the focus is moved outside the component"
-      },
-      "highlightChange": {
-        "type": "[details: HighlightChangeDetails]",
-        "isRequired": true,
-        "description": "Function called when the highlighted menu item changes."
-      },
-      "interactOutside": {
-        "type": "[event: InteractOutsideEvent]",
-        "isRequired": true,
-        "description": "Function called when an interaction happens outside the component"
-      },
-      "openChange": {
-        "type": "[details: OpenChangeDetails]",
-        "isRequired": true,
-        "description": "Function called when the menu opens or closes"
-      },
-      "pointerDownOutside": {
-        "type": "[event: PointerDownOutsideEvent]",
-        "isRequired": true,
-        "description": "Function called when the pointer is pressed down outside the component"
-      },
-      "requestDismiss": {
-        "type": "[\n  event: CustomEvent<{\n    originalLayer: HTMLElement\n    targetLayer: HTMLElement | undefined\n    originalIndex: number\n    targetIndex: number\n  }>,\n]",
-        "isRequired": true,
-        "description": "Function called when this layer is closed due to a parent layer being closed"
-      },
-      "select": {
-        "type": "[details: SelectionDetails]",
-        "isRequired": true,
-        "description": "Function called when a menu item is selected."
-      },
-      "triggerValueChange": {
-        "type": "[details: TriggerValueChangeDetails]",
-        "isRequired": true,
-        "description": "Function called when the trigger value changes"
-      },
-      "update:highlightedValue": {
-        "type": "[highlightedValue: string | null]",
-        "isRequired": true,
-        "description": "Function called when the highlighted menu item changes."
-      },
-      "update:open": {
-        "type": "[open: boolean]",
-        "isRequired": true,
-        "description": "Function called when the menu is opened or closed."
-      },
-      "update:triggerValue": {
-        "type": "[triggerValue: string | null]",
-        "isRequired": true,
-        "description": "The callback fired when the trigger value changes."
-      }
-    },
-    "props": {
-      "anchorPoint": {
-        "type": "Point",
-        "isRequired": false,
-        "description": "The positioning point for the menu. Can be set by the context menu trigger or the button trigger."
-      },
-      "aria-label": { "type": "string", "isRequired": false, "description": "The accessibility label for the menu" },
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "closeOnSelect": {
-        "type": "boolean",
-        "defaultValue": "true",
-        "isRequired": false,
-        "description": "Whether to close the menu when an option is selected"
-      },
-      "composite": {
-        "type": "boolean",
-        "defaultValue": "true",
-        "isRequired": false,
-        "description": "Whether the menu is a composed with other composite widgets like a combobox or tabs"
-      },
-      "defaultHighlightedValue": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The initial highlighted value of the menu item when rendered.\nUse when you don't need to control the highlighted value of the menu item."
-      },
-      "defaultOpen": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "The initial open state of the menu when rendered.\nUse when you don't need to control the open state of the menu."
-      },
-      "defaultTriggerValue": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The initial trigger value when rendered.\nUse when you don't need to control the trigger value."
-      },
-      "highlightedValue": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The controlled highlighted value of the menu item."
-      },
-      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
-      "ids": {
-        "type": "Partial<{\n  trigger: string\n  contextTrigger: string\n  content: string\n  groupLabel(id: string): string\n  group(id: string): string\n  positioner: string\n  arrow: string\n}>",
-        "isRequired": false,
-        "description": "The ids of the elements in the menu. Useful for composition."
-      },
-      "lazyMount": {
-        "type": "boolean",
-        "defaultValue": "false",
-        "isRequired": false,
-        "description": "Whether to enable lazy mounting"
-      },
-      "loopFocus": {
-        "type": "boolean",
-        "defaultValue": "false",
-        "isRequired": false,
-        "description": "Whether to loop the keyboard navigation."
-      },
-      "navigate": {
-        "type": "(details: NavigateDetails) => void",
-        "isRequired": false,
-        "description": "Function to navigate to the selected item if it's an anchor element"
-      },
-      "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the menu" },
-      "positioning": {
-        "type": "PositioningOptions",
-        "isRequired": false,
-        "description": "The options used to dynamically position the menu"
-      },
-      "triggerValue": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The value of the trigger that currently open the menu"
-      },
-      "typeahead": {
-        "type": "boolean",
-        "defaultValue": "true",
-        "isRequired": false,
-        "description": "Whether the pressing printable characters should trigger typeahead navigation"
-      },
-      "unmountOnExit": {
-        "type": "boolean",
-        "defaultValue": "false",
-        "isRequired": false,
-        "description": "Whether to unmount on exit."
       }
     }
   },
@@ -359,7 +212,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "lazyMount": {
         "type": "boolean",
@@ -380,7 +233,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -389,7 +242,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       }
     }
   },
@@ -398,7 +251,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
       },
       "value": {
         "type": "string",

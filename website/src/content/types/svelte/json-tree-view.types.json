@@ -4,7 +4,7 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "canRename": {
         "type": "(node: JsonNode<any>, indexPath: IndexPath) => boolean",
@@ -46,7 +46,7 @@
       "groupArraysAfterLength": { "type": "number", "isRequired": false },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{ root: string; tree: string; label: string; node: (value: string) => string }>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the tree elements. Useful for composition."
       },
@@ -109,6 +109,11 @@
       },
       "quotesOnKeys": { "type": "boolean", "isRequired": false, "description": "Whether to show quotes on the keys." },
       "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      },
       "scrollToIndexFn": {
         "type": "(details: ScrollToIndexDetails<JsonNode<any>>) => void",
         "isRequired": false,
@@ -147,7 +152,7 @@
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "lazyMount": {
         "type": "boolean",
@@ -156,6 +161,11 @@
         "description": "Whether to enable lazy mounting"
       },
       "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
@@ -168,9 +178,9 @@
     "props": {
       "arrow": { "type": "Snippet<[]>", "isRequired": false, "description": "The icon to use for the arrow." },
       "asChild": {
-        "type": "Snippet<[PropsFn<'ul'>]>",
+        "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` snippet when you need the part's state."
       },
       "indentGuide": {
         "type": "boolean | Snippet<[]>",
@@ -178,6 +188,11 @@
         "description": "The indent guide to use for the tree."
       },
       "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      },
       "renderValue": {
         "type": "Snippet<[JsonNodeHastElement]>",
         "isRequired": false,

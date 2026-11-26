@@ -4,8 +4,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -18,8 +20,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,
@@ -32,8 +35,47 @@
       "asChild": {
         "type": "(props: PropsFn<'input'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:accept": { "type": "string | number", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
+      "prop:alt": { "type": "string | number", "isRequired": false },
+      "prop:autocomplete": { "type": "AutoFill", "isRequired": false },
+      "prop:capture": { "type": "string | number", "isRequired": false },
+      "prop:dirName": { "type": "string | number", "isRequired": false },
+      "prop:disabled": { "type": "boolean", "isRequired": false },
+      "prop:formAction": { "type": "string | number", "isRequired": false },
+      "prop:formEnctype": { "type": "string | number", "isRequired": false },
+      "prop:formMethod": { "type": "string | number", "isRequired": false },
+      "prop:formNoValidate": { "type": "boolean", "isRequired": false },
+      "prop:formTarget": { "type": "string | number", "isRequired": false },
+      "prop:height": { "type": "number", "isRequired": false },
+      "prop:indeterminate": { "type": "boolean", "isRequired": false },
+      "prop:max": { "type": "string | number", "isRequired": false },
+      "prop:maxLength": { "type": "number", "isRequired": false },
+      "prop:min": { "type": "string | number", "isRequired": false },
+      "prop:minLength": { "type": "number", "isRequired": false },
+      "prop:multiple": { "type": "boolean", "isRequired": false },
+      "prop:name": { "type": "string | number", "isRequired": false },
+      "prop:pattern": { "type": "string | number", "isRequired": false },
+      "prop:placeholder": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetAction": { "type": "string | number", "isRequired": false },
+      "prop:popoverTargetElement": { "type": "Element", "isRequired": false },
+      "prop:readOnly": { "type": "boolean", "isRequired": false },
+      "prop:required": { "type": "boolean", "isRequired": false },
+      "prop:selectionDirection": { "type": "SelectionDirection", "isRequired": false },
+      "prop:selectionEnd": { "type": "number", "isRequired": false },
+      "prop:selectionStart": { "type": "number", "isRequired": false },
+      "prop:size": { "type": "number", "isRequired": false },
+      "prop:src": { "type": "string | number", "isRequired": false },
+      "prop:step": { "type": "string | number", "isRequired": false },
+      "prop:type": { "type": "string | number", "isRequired": false },
+      "prop:useMap": { "type": "string | number", "isRequired": false },
+      "prop:valueAsDate": { "type": "Date", "isRequired": false },
+      "prop:valueAsNumber": { "type": "number", "isRequired": false },
+      "prop:webkitdirectory": { "type": "boolean", "isRequired": false },
+      "prop:width": { "type": "number", "isRequired": false },
       "render": {
         "type": "RenderFn<'input', EmptyState>",
         "isRequired": false,
@@ -46,8 +88,10 @@
       "asChild": {
         "type": "(props: PropsFn<'label'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:htmlFor": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'label', EmptyState>",
         "isRequired": false,
@@ -60,8 +104,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -75,8 +121,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', SliderMarkerState>",
         "isRequired": false,
@@ -89,8 +136,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -100,20 +149,10 @@
   },
   "Root": {
     "props": {
-      "aria-label": {
-        "type": "string[]",
-        "isRequired": false,
-        "description": "The aria-label of each slider thumb. Useful for providing an accessible name to the slider"
-      },
-      "aria-labelledby": {
-        "type": "string[]",
-        "isRequired": false,
-        "description": "The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider"
-      },
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
       "defaultValue": {
         "type": "number[]",
@@ -125,6 +164,16 @@
         "type": "string",
         "isRequired": false,
         "description": "The associate form of the underlying input element."
+      },
+      "getAriaLabel": {
+        "type": "(details: ThumbLabelDetails) => string",
+        "isRequired": false,
+        "description": "Function that returns the accessible name of each thumb, e.g. \"Minimum price\""
+      },
+      "getAriaLabelledBy": {
+        "type": "(details: ThumbLabelDetails) => string",
+        "isRequired": false,
+        "description": "Function that returns the `id` of the element that labels each thumb.\nDefaults to the label part when no `getAriaLabel` is provided."
       },
       "getAriaValueText": {
         "type": "(details: ValueTextDetails) => string",
@@ -194,6 +243,7 @@
         "isRequired": false,
         "description": "The origin of the slider range. The track is filled from the origin to the thumb.\n- `\"start\"` / `\"end\"`: fill from `min` / `max`\n- `\"center\"`: fill from the midpoint of `min`/`max`\n- a `number`: fill from that value instead, for when the neutral point isn't the midpoint"
       },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the slider is read-only" },
       "render": {
         "type": "RenderFn<'div', SliderRootState>",
@@ -219,9 +269,9 @@
         "description": "Controls how thumbs behave when they collide during pointer interactions.\n- `none` (default): Thumbs cannot move past each other; excess movement is ignored.\n- `push`: Thumbs push each other without restoring their previous positions when dragged back.\n- `swap`: Thumbs swap places when dragged past each other."
       },
       "thumbSize": {
-        "type": "{ width: number; height: number }",
+        "type": "number | { width: number; height: number }",
         "isRequired": false,
-        "description": "The slider thumbs dimensions"
+        "description": "The slider thumbs dimensions. A number sets both the width and height."
       },
       "value": { "type": "number[]", "isRequired": false, "description": "The controlled value of the slider" }
     }
@@ -232,8 +282,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', SliderRootProviderState>",
         "isRequired": false,
@@ -247,9 +299,12 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "disabled": { "type": "boolean", "isRequired": false },
+      "id": { "type": "string", "isRequired": false },
       "name": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', SliderThumbState>",
         "isRequired": false,
@@ -262,8 +317,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -276,8 +333,9 @@
       "asChild": {
         "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "render": {
         "type": "RenderFn<'span', EmptyState>",
         "isRequired": false,

@@ -4,10 +4,10 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
       "canRename": {
-        "type": "(node: any, indexPath: IndexPath) => boolean",
+        "type": "(node: JsonNode<any>, indexPath: IndexPath) => boolean",
         "isRequired": false,
         "description": "Function to determine if a node can be renamed"
       },
@@ -57,7 +57,7 @@
         "description": "Whether to enable lazy mounting"
       },
       "loadChildren": {
-        "type": "(details: LoadChildrenDetails<any>) => Promise<any[]>",
+        "type": "(details: LoadChildrenDetails<JsonNode<any>>) => Promise<JsonNode<any>[]>",
         "isRequired": false,
         "description": "Function to load children for a node asynchronously.\nWhen provided, branches will wait for this promise to resolve before expanding."
       },
@@ -73,22 +73,22 @@
         "description": "Called when the checked value changes"
       },
       "onExpandedChange": {
-        "type": "(details: ExpandedChangeDetails<any>) => void",
+        "type": "(details: ExpandedChangeDetails<JsonNode<any>>) => void",
         "isRequired": false,
         "description": "Called when the tree is opened or closed"
       },
       "onFocusChange": {
-        "type": "(details: FocusChangeDetails<any>) => void",
+        "type": "(details: FocusChangeDetails<JsonNode<any>>) => void",
         "isRequired": false,
         "description": "Called when the focused node changes"
       },
       "onLoadChildrenComplete": {
-        "type": "(details: LoadChildrenCompleteDetails<any>) => void",
+        "type": "(details: LoadChildrenCompleteDetails<JsonNode<any>>) => void",
         "isRequired": false,
         "description": "Called when a node finishes loading children"
       },
       "onLoadChildrenError": {
-        "type": "(details: LoadChildrenErrorDetails<any>) => void",
+        "type": "(details: LoadChildrenErrorDetails<JsonNode<any>>) => void",
         "isRequired": false,
         "description": "Called when loading children fails for one or more nodes"
       },
@@ -98,15 +98,16 @@
         "description": "Called when a node label rename is completed"
       },
       "onRenameStart": {
-        "type": "(details: RenameStartDetails<any>) => void",
+        "type": "(details: RenameStartDetails<JsonNode<any>>) => void",
         "isRequired": false,
         "description": "Called when a node starts being renamed"
       },
       "onSelectionChange": {
-        "type": "(details: SelectionChangeDetails<any>) => void",
+        "type": "(details: SelectionChangeDetails<JsonNode<any>>) => void",
         "isRequired": false,
         "description": "Called when the selection changes"
       },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "quotesOnKeys": { "type": "boolean", "isRequired": false, "description": "Whether to show quotes on the keys." },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
@@ -114,7 +115,7 @@
         "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       },
       "scrollToIndexFn": {
-        "type": "(details: ScrollToIndexDetails<any>) => void",
+        "type": "(details: ScrollToIndexDetails<JsonNode<any>>) => void",
         "isRequired": false,
         "description": "Function to scroll to a specific index.\nUseful for virtualized tree views."
       },
@@ -151,14 +152,16 @@
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
@@ -175,20 +178,22 @@
   "JsonTreeViewTree": {
     "props": {
       "arrow": {
-        "type": "number | boolean | (string & {}) | Node | ArrayElement",
+        "type": "number | boolean | Node | RenderedElement | ArrayElement | (string & {}) | JSX.ArrayElement",
         "isRequired": false,
         "description": "The icon to use for the arrow."
       },
       "asChild": {
         "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse `render` when you need the part's state. It takes the same props function, plus the state."
       },
+      "id": { "type": "string", "isRequired": false },
       "indentGuide": {
-        "type": "number | boolean | (string & {}) | Node | ArrayElement",
+        "type": "number | boolean | Node | RenderedElement | ArrayElement | (string & {}) | JSX.ArrayElement",
         "isRequired": false,
         "description": "The indent guide to use for the tree."
       },
+      "prop:align": { "type": "string | number", "isRequired": false },
       "render": {
         "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,

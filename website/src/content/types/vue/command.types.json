@@ -1,0 +1,179 @@
+{
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      }
+    }
+  },
+  "Empty": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      }
+    }
+  },
+  "Input": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      }
+    }
+  },
+  "ItemGroupLabel": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      }
+    }
+  },
+  "ItemGroup": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      },
+      "id": { "type": "string", "isRequired": false }
+    }
+  },
+  "Item": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      },
+      "item": { "type": "any", "isRequired": false, "description": "The item to render" },
+      "persistFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether hovering outside should clear the highlighted state"
+      }
+    }
+  },
+  "ItemText": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      }
+    }
+  },
+  "List": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "collection": {
+        "type": "ListCollection<T, never> | PageListCollection<T>",
+        "isRequired": true,
+        "description": "The collection of items. Use `createPageListCollection` for nested pages,\nwhere an item with a `parent` value is shown on the page of that item."
+      },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      },
+      "autoFocus": { "type": "boolean", "isRequired": false, "description": "Whether to autofocus the input on mount" },
+      "defaultHighlightedValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial highlighted value of the command when rendered.\nUse when you don't need to control the highlighted value of the command."
+      },
+      "defaultInputValue": {
+        "type": "string",
+        "defaultValue": "\"\"",
+        "isRequired": false,
+        "description": "The initial value of the command's input when rendered.\nUse when you don't need to control the value of the command's input."
+      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the command is disabled" },
+      "filter": {
+        "type": "CommandFilter<T>",
+        "isRequired": false,
+        "description": "Returns the items that match the query, best match first.\nDefaults to a fuzzy search of the item text and its `keywords`."
+      },
+      "highlightedValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The controlled highlighted value of the command"
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the command" },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  item(id: string, index?: number | undefined): string\n  positioner: string\n  itemGroup(id: string | number): string\n  itemGroupLabel(id: string | number): string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements in the command. Useful for composition."
+      },
+      "inputValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The controlled value of the command's input"
+      },
+      "loading": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the results are being loaded (e.g. fetched from a server)."
+      },
+      "loopFocus": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to loop the keyboard navigation through the items"
+      },
+      "navigate": {
+        "type": "(details: NavigateDetails) => void",
+        "isRequired": false,
+        "description": "Function to navigate to the selected item"
+      },
+      "placeholder": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The placeholder text of the command's input"
+      },
+      "scrollToIndexFn": {
+        "type": "(details: ScrollToIndexDetails) => void",
+        "isRequired": false,
+        "description": "Function to scroll to a specific index"
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseCommandApi<T>", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior.\n\nUse the `render` slot when you need the part's state."
+      }
+    }
+  }
+}
