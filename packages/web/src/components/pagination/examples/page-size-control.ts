@@ -17,8 +17,8 @@ function onPaginationChange(el: HTMLElement, update: VoidFunction) {
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `<ark-pagination class="${styles.Root}" count="100" default-page-size="10"><div class="hstack">
-        <label class="${styles.Text}">Items per page:</label>
-        <select class="${styles.PageSizeSelect}">
+        <label for="page-size" class="${styles.Text}">Items per page:</label>
+        <select id="page-size" class="${styles.PageSizeSelect}">
           ${pageSizes.map((size) => option({ value: size, selected: size === 10 })).join('')}
         </select>
       </div>

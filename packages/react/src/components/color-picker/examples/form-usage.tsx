@@ -19,6 +19,7 @@ export const FormUsage = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <ColorPicker.Root className={styles.Root} inline defaultValue={parseColor('#eb5e41')}>
         <ColorPicker.HiddenInput {...register('color')} />
+        <ColorPicker.Label className={styles.Label}>Color</ColorPicker.Label>
 
         <ColorPicker.Area className={styles.Area}>
           <ColorPicker.AreaBackground className={styles.AreaBackground} />

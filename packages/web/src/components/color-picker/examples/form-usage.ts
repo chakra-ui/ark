@@ -11,6 +11,7 @@ export function mount(root: HTMLElement) {
   <form class="stack">
   <ark-color-picker class="${styles.Root}" inline name="color" default-value="#eb5e41">
   <ark-color-picker-hidden-input></ark-color-picker-hidden-input>
+  <ark-color-picker-label class="${styles.Label}">Color</ark-color-picker-label>
   <ark-color-picker-area class="${styles.Area}">
       <ark-color-picker-area-background class="${styles.AreaBackground}"></ark-color-picker-area-background>
       <ark-color-picker-area-thumb class="${styles.AreaThumb}"></ark-color-picker-area-thumb>

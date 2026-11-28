@@ -8,8 +8,9 @@ import styles from 'styles/pagination.module.css'
   <Pagination.Root :count="100" :default-page-size="10" :class="styles.Root">
     <Pagination.Context v-slot="pagination">
       <div class="hstack">
-        <label :class="styles.Text">Items per page:</label>
+        <label for="page-size" :class="styles.Text">Items per page:</label>
         <select
+          id="page-size"
           :class="styles.PageSizeSelect"
           :value="pagination.pageSize"
           @change="(event) => pagination.setPageSize(Number((event.currentTarget as HTMLSelectElement).value))"

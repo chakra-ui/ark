@@ -32,6 +32,7 @@
         onValueChange={(details) => field.handleChange(details.valueAsString)}
       >
         <ColorPicker.HiddenInput />
+        <ColorPicker.Label class={styles.Label}>Color</ColorPicker.Label>
 
         <ColorPicker.Area class={styles.Area}>
           <ColorPicker.AreaBackground class={styles.AreaBackground} />
