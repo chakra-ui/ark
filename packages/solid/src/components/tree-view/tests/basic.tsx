@@ -5,6 +5,7 @@ import { For } from 'solid-js'
 interface Node {
   id: string
   name: string
+  disabled?: boolean
   children?: Node[]
 }
 
@@ -41,7 +42,7 @@ const collection = createTreeCollection<Node>({
       },
       { id: 'panda.config', name: 'panda.config.ts' },
       { id: 'package.json', name: 'package.json' },
-      { id: 'renovate.json', name: 'renovate.json' },
+      { id: 'renovate.json', name: 'renovate.json', disabled: true },
       { id: 'readme.md', name: 'README.md' },
     ],
   },
