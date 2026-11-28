@@ -6,12 +6,7 @@
   import ChevronRightIcon from 'lucide-svelte/icons/chevron-right'
   import button from 'styles/button.module.css'
   import styles from 'styles/date-picker.module.css'
-  import type { DateValue } from '@internationalized/date'
-
-  const isWeekend = (date: DateValue) => {
-    const dayOfWeek = date.toDate('UTC').getDay()
-    return dayOfWeek === 0 || dayOfWeek === 6
-  }
+  import { isWeekend } from '@internationalized/date'
 </script>
 
 <DatePicker.Root isDateUnavailable={isWeekend} class={styles.Root}>

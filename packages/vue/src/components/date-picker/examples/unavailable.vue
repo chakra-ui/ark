@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import { DatePicker, type DateValue } from '@ark-ui/vue/date-picker'
+import { DatePicker } from '@ark-ui/vue/date-picker'
+import { isWeekend } from '@internationalized/date'
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-vue-next'
 import button from 'styles/button.module.css'
 import styles from 'styles/date-picker.module.css'
-
-const isWeekend = (date: DateValue) => {
-  const dayOfWeek = date.toDate('UTC').getDay()
-  return dayOfWeek === 0 || dayOfWeek === 6
-}
 </script>
 
 <template>
