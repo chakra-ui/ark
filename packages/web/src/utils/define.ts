@@ -2,6 +2,7 @@ import { createSharedMutationObserver } from '@zag-js/dom-query'
 import { normalizeProps, spreadProps, VanillaMachine } from '@zag-js/vanilla'
 import { debug, traceState } from './debug.js'
 import { emit, silently, trackInput, type CallbackEvents, type EventElement } from './events.js'
+import { linkLabel } from './label.js'
 
 type Dict = Record<string, any>
 type Connect<Api> = (service: any, normalize: typeof normalizeProps) => Api
@@ -58,11 +59,13 @@ function observeChild(el: HTMLElement, onChange: VoidFunction): VoidFunction | u
 class Target {
   private node: HTMLElement | null = null
   private cleanup: VoidFunction | undefined
+  private unlink: VoidFunction | undefined
 
   spread(node: HTMLElement, props: Dict, scope: string) {
     if (node !== this.node) this.release(scope)
     this.node = node
     this.cleanup = spreadProps(node, props, scope)
+    this.unlink = linkLabel(node) ?? this.unlink
   }
 
   /** Strips the previous node's props when the target changes. */
@@ -74,6 +77,8 @@ class Target {
   detach() {
     this.cleanup?.()
     this.cleanup = undefined
+    this.unlink?.()
+    this.unlink = undefined
     this.node = null
   }
 }
