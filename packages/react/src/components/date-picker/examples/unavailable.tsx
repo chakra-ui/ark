@@ -1,14 +1,9 @@
 import { DatePicker } from '@ark-ui/react/date-picker'
 import { Portal } from '@ark-ui/react/portal'
-import type { DateValue } from '@internationalized/date'
+import { isWeekend } from '@internationalized/date'
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 import button from 'styles/button.module.css'
 import styles from 'styles/date-picker.module.css'
-
-const isWeekend = (date: DateValue) => {
-  const dayOfWeek = date.toDate('UTC').getDay()
-  return dayOfWeek === 0 || dayOfWeek === 6
-}
 
 export const Unavailable = () => {
   return (
