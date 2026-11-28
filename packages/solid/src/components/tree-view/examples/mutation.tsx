@@ -21,8 +21,8 @@ export const Mutation = () => {
   return (
     <TreeView.Root class={styles.Root} collection={collection()}>
       <TreeView.Tree class={styles.Tree}>
-        <For each={collection().rootNode.children}>
-          {(node, index) => <TreeNode node={node} indexPath={[index()]} onRemove={removeNode} onAdd={addNode} />}
+        <For each={collection().rootNode.children} keyed={(node) => node.id}>
+          {(node, index) => <TreeNode node={node()} indexPath={[index()]} onRemove={removeNode} onAdd={addNode} />}
         </For>
       </TreeView.Tree>
     </TreeView.Root>
@@ -94,10 +94,10 @@ const TreeNode = (props: TreeNodeProps) => {
           </TreeView.Node>
           <TreeView.NodeGroupContent class={styles.NodeGroupContent}>
             <TreeView.IndentGuide class={styles.IndentGuide} />
-            <For each={props.node.children}>
+            <For each={props.node.children} keyed={(child) => child.id}>
               {(child, index) => (
                 <TreeNode
-                  node={child}
+                  node={child()}
                   indexPath={[...props.indexPath, index()]}
                   onRemove={props.onRemove}
                   onAdd={props.onAdd}

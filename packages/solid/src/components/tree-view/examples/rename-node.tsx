@@ -20,8 +20,8 @@ export const RenameNode = () => {
     >
       <TreeView.Label class={styles.Label}>Tree (Press F2 to rename)</TreeView.Label>
       <TreeView.Tree class={styles.Tree}>
-        <For each={collection().rootNode.children}>
-          {(node, index) => <TreeNode node={node} indexPath={[index()]} />}
+        <For each={collection().rootNode.children} keyed={(node) => node.id}>
+          {(node, index) => <TreeNode node={node()} indexPath={[index()]} />}
         </For>
       </TreeView.Tree>
     </TreeView.Root>
@@ -74,8 +74,8 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
               </TreeView.Node>
               <TreeView.NodeGroupContent class={styles.NodeGroupContent}>
                 <TreeView.IndentGuide class={styles.IndentGuide} />
-                <For each={props.node.children}>
-                  {(child, index) => <TreeNode node={child} indexPath={[...props.indexPath, index()]} />}
+                <For each={props.node.children} keyed={(child) => child.id}>
+                  {(child, index) => <TreeNode node={child()} indexPath={[...props.indexPath, index()]} />}
                 </For>
               </TreeView.NodeGroupContent>
             </TreeView.NodeGroup>
