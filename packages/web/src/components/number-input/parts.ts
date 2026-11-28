@@ -1,6 +1,7 @@
 import type * as numberInput from '@zag-js/number-input'
 import { definePart, ownInput, wrapped, wrappedButton } from '../../utils/define.js'
 import { root } from './shared.js'
+import { describedBy } from '../../utils/field.js'
 
 const autoText = new WeakSet<HTMLElement>()
 
@@ -20,7 +21,7 @@ export const NumberInputInput = definePart<numberInput.Api, numberInput.InputSta
   tag: 'ark-number-input-input',
   root,
   target: wrapped('input'),
-  props: (api) => api.getInputProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getInputProps() }),
   state: (api) => api.getInputState(),
 })
 

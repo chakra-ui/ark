@@ -76,9 +76,9 @@ test('a controlled switch reports changes through checkedchange', async () => {
   expect(document.querySelector('ark-switch-control')).toHaveAttribute('data-state', 'unchecked')
 })
 
-test('a field shows its helper text and hides the error text while valid', async () => {
+test('a field describes the switch with its helper text and hides the error text while valid', async () => {
   mount(WithField)
-  await waitFor(() => expect(screen.getByText('Additional Info')).toBeVisible())
+  await waitFor(() => expect(input()).toHaveAccessibleDescription('Additional Info'))
 
   expect(screen.queryByText('Error Info')).not.toBeVisible()
 })
@@ -92,6 +92,7 @@ test('an invalid required field marks the switch and shows the error text', asyn
   await waitFor(() => expect(input()).toBeInvalid())
   expect(input()).toBeRequired()
   expect(screen.getByText('Error Info')).toBeVisible()
+  await waitFor(() => expect(input()).toHaveAccessibleDescription('Additional Info Error Info'))
 })
 
 test('a disabled field disables the switch', async () => {

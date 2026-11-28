@@ -4,6 +4,7 @@ import { positionOf } from '../../utils/collection.js'
 import { definePart, wrappedButton } from '../../utils/define.js'
 import { definePresencePart } from '../../utils/presence.js'
 import { itemOf, root, syncHiddenInputs } from './shared.js'
+import { describedBy } from '../../utils/field.js'
 
 const itemStateOf = (api: select.Api, el: HTMLElement) => {
   const item = itemOf(el)
@@ -26,7 +27,7 @@ export const SelectTrigger = definePart<select.Api, select.TriggerState>({
   tag: 'ark-select-trigger',
   root,
   target: wrappedButton,
-  props: (api) => api.getTriggerProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getTriggerProps() }),
   state: (api) => api.getTriggerState(),
 })
 

@@ -4,6 +4,7 @@ import { positionOf } from '../../utils/collection.js'
 import { definePart, wrapped, wrappedButton } from '../../utils/define.js'
 import { definePresencePart } from '../../utils/presence.js'
 import { hasGroup, isFilteredOut, itemOf, root } from './shared.js'
+import { describedBy } from '../../utils/field.js'
 
 const itemStateOf = (api: combobox.Api, el: HTMLElement) => {
   const item = itemOf(el)
@@ -26,7 +27,7 @@ export const ComboboxInput = definePart<combobox.Api>({
   tag: 'ark-combobox-input',
   root,
   target: wrapped('input'),
-  props: (api) => api.getInputProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getInputProps() }),
 })
 
 export const ComboboxTrigger = definePart<combobox.Api, combobox.TriggerState>({

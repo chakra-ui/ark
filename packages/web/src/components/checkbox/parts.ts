@@ -1,6 +1,7 @@
 import type * as checkbox from '@zag-js/checkbox'
 import { definePart, ownInput } from '../../utils/define.js'
 import { root } from './shared.js'
+import { describedBy } from '../../utils/field.js'
 
 export const CheckboxLabel = definePart<checkbox.Api>({
   tag: 'ark-checkbox-label',
@@ -28,5 +29,5 @@ export const CheckboxHiddenInput = definePart<checkbox.Api>({
   tag: 'ark-checkbox-hidden-input',
   root,
   target: ownInput,
-  props: (api) => api.getHiddenInputProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getHiddenInputProps() }),
 })

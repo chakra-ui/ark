@@ -1,6 +1,7 @@
 import type * as editable from '@zag-js/editable'
 import { definePart, wrapped, wrappedButton } from '../../utils/define.js'
 import { root } from './shared.js'
+import { describedBy } from '../../utils/field.js'
 
 export const EditableLabel = definePart<editable.Api>({
   tag: 'ark-editable-label',
@@ -18,7 +19,7 @@ export const EditableInput = definePart<editable.Api>({
   tag: 'ark-editable-input',
   root,
   target: wrapped('input, textarea'),
-  props: (api) => api.getInputProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getInputProps() }),
 })
 
 const previewTarget = (el: HTMLElement) => wrapped('span')(el) ?? el

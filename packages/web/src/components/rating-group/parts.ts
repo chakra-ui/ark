@@ -2,6 +2,7 @@ import type * as rating from '@zag-js/rating-group'
 import { definePart, ownInput } from '../../utils/define.js'
 import { repeat, templateOf } from '../../utils/repeat.js'
 import { indexOf, itemTag, root } from './shared.js'
+import { describedBy } from '../../utils/field.js'
 
 const dataAttr = (value: boolean) => (value ? '' : undefined)
 
@@ -15,7 +16,7 @@ export const RatingGroupLabel = definePart<rating.Api>({
 export const RatingGroupControl = definePart<rating.Api>({
   tag: 'ark-rating-group-control',
   root,
-  props: (api) => api.getControlProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getControlProps() }),
   render: (api, el) => {
     const template = templateOf(el)
     if (template) repeat(template, api.items, String, (node, index) => node.setAttribute('index', String(index)))
@@ -26,7 +27,7 @@ export const RatingGroupItem = definePart<rating.Api, rating.ItemState>({
   tag: itemTag,
   root,
   attributes: ['index'],
-  props: (api, el) => api.getItemProps({ index: indexOf(el) }),
+  props: (api, el) => ({ ...describedBy(el), ...api.getItemProps({ index: indexOf(el) }) }),
   state: (api, el) => api.getItemState({ index: indexOf(el) }),
 })
 
@@ -49,5 +50,5 @@ export const RatingGroupHiddenInput = definePart<rating.Api>({
   tag: 'ark-rating-group-hidden-input',
   root,
   target: ownInput,
-  props: (api) => api.getHiddenInputProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getHiddenInputProps() }),
 })

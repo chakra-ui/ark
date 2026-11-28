@@ -13,6 +13,7 @@ import {
   respectAlphaOf,
   swatchPropsOf,
 } from './shared.js'
+import { describedBy } from '../../utils/field.js'
 
 type Api = colorPicker.Api
 
@@ -37,7 +38,7 @@ export const ColorPickerTrigger = definePart<Api, colorPicker.TriggerState>({
   tag: 'ark-color-picker-trigger',
   root,
   target: wrappedButton,
-  props: (api) => api.getTriggerProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getTriggerProps() }),
   state: (api) => api.getTriggerState(),
 })
 
@@ -129,11 +130,13 @@ export const ColorPickerChannelInput = definePart<Api>({
   root,
   attributes: ['channel', 'orientation'],
   target: wrapped('input'),
-  props: (api, el) =>
-    api.getChannelInputProps({
+  props: (api, el) => ({
+    ...describedBy(el),
+    ...api.getChannelInputProps({
       channel: (str(el, 'channel') ?? 'hex') as colorPicker.ExtendedColorChannel,
       orientation: str<'horizontal' | 'vertical'>(el, 'orientation'),
     }),
+  }),
 })
 
 export const ColorPickerTransparencyGrid = definePart<Api>({
@@ -233,5 +236,5 @@ export const ColorPickerHiddenInput = definePart<Api>({
   tag: 'ark-color-picker-hidden-input',
   root,
   target: ownInput,
-  props: (api) => api.getHiddenInputProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getHiddenInputProps() }),
 })

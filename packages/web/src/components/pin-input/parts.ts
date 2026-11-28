@@ -1,6 +1,7 @@
 import type * as pinInput from '@zag-js/pin-input'
 import { definePart, ownInput, wrapped, rootOf } from '../../utils/define.js'
 import { inputsOf, inputTag, root } from './shared.js'
+import { describedBy } from '../../utils/field.js'
 
 const inputProps = (el: HTMLElement) => {
   const rootEl = rootOf(el, root)
@@ -16,7 +17,7 @@ export const PinInputLabel = definePart<pinInput.Api>({
 export const PinInputControl = definePart<pinInput.Api>({
   tag: 'ark-pin-input-control',
   root,
-  props: (api) => api.getControlProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getControlProps() }),
 })
 
 export const PinInputInput = definePart<pinInput.Api, pinInput.InputState | undefined>({
@@ -42,5 +43,5 @@ export const PinInputHiddenInput = definePart<pinInput.Api>({
   tag: 'ark-pin-input-hidden-input',
   root,
   target: ownInput,
-  props: (api) => api.getHiddenInputProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getHiddenInputProps() }),
 })

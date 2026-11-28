@@ -8,6 +8,11 @@ const apiOf = <Api>(el: HTMLElement, tag: string) =>
 
 export const fieldsetOf = (el: HTMLElement): FieldsetApi | undefined => apiOf<FieldsetApi>(el, 'ark-fieldset')
 
+export function describedBy(el: HTMLElement): { 'aria-describedby'?: string } {
+  const id = apiOf<FieldApi>(el, 'ark-field')?.ariaDescribedby
+  return id ? { 'aria-describedby': id } : {}
+}
+
 export function withField<P extends Dict>(
   el: HTMLElement,
   control: string,
