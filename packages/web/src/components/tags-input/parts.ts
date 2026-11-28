@@ -2,6 +2,7 @@ import type * as tagsInput from '@zag-js/tags-input'
 import { definePart, ownInput, wrapped, wrappedButton } from '../../utils/define.js'
 import { repeat, templateOf } from '../../utils/repeat.js'
 import { itemOf, root } from './shared.js'
+import { describedBy } from '../../utils/field.js'
 
 const autoText = new WeakSet<HTMLElement>()
 
@@ -35,7 +36,7 @@ export const TagsInputInput = definePart<tagsInput.Api>({
   tag: 'ark-tags-input-input',
   root,
   target: wrapped('input'),
-  props: (api) => api.getInputProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getInputProps() }),
 })
 
 export const TagsInputClearTrigger = definePart<tagsInput.Api>({
@@ -49,7 +50,7 @@ export const TagsInputHiddenInput = definePart<tagsInput.Api>({
   tag: 'ark-tags-input-hidden-input',
   root,
   target: ownInput,
-  props: (api) => api.getHiddenInputProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getHiddenInputProps() }),
 })
 
 export const TagsInputItem = definePart<tagsInput.Api, tagsInput.ItemState>({

@@ -2,6 +2,7 @@ import type * as passwordInput from '@zag-js/password-input'
 
 import { definePart, wrapped, wrappedButton } from '../../utils/define.js'
 import { root } from './shared.js'
+import { describedBy } from '../../utils/field.js'
 
 const isIndicatorShown = (api: passwordInput.Api, el: HTMLElement) => {
   const isFallback = el.hasAttribute('fallback')
@@ -24,7 +25,7 @@ export const PasswordInputInput = definePart<passwordInput.Api>({
   tag: 'ark-password-input-input',
   root,
   target: wrapped('input'),
-  props: (api) => api.getInputProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getInputProps() }),
 })
 
 export const PasswordInputVisibilityTrigger = definePart<passwordInput.Api>({

@@ -2,6 +2,7 @@ import type * as signaturePad from '@zag-js/signature-pad'
 
 import { definePart, ownInput, rootOf, targetOf, wrapped, wrappedButton, type RootElement } from '../../utils/define.js'
 import { root } from './shared.js'
+import { describedBy } from '../../utils/field.js'
 
 const svgNamespace = 'http://www.w3.org/2000/svg'
 
@@ -67,7 +68,7 @@ export const SignaturePadLabel = definePart<signaturePad.Api>({
 export const SignaturePadControl = definePart<signaturePad.Api>({
   tag: 'ark-signature-pad-control',
   root,
-  props: (api) => api.getControlProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getControlProps() }),
 })
 
 export const SignaturePadSegment = definePart<signaturePad.Api>({
@@ -95,7 +96,7 @@ export const SignaturePadHiddenInput = definePart<signaturePad.Api>({
   tag: 'ark-signature-pad-hidden-input',
   root,
   target: ownInput,
-  props: (api, el) => api.getHiddenInputProps({ value: captures.get(el)?.value ?? '' }),
+  props: (api, el) => ({ ...describedBy(el), ...api.getHiddenInputProps({ value: captures.get(el)?.value ?? '' }) }),
   render: (api, el) => {
     if (captures.get(el)?.paths !== api.paths) capture(api, el)
   },

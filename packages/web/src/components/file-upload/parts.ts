@@ -3,6 +3,7 @@ import { str } from '../../utils/attrs.js'
 import { definePart, ownInput, wrapped, wrappedButton } from '../../utils/define.js'
 import { templateOf } from '../../utils/repeat.js'
 import { fileKey, itemOf, items, repeat, root } from './shared.js'
+import { describedBy } from '../../utils/field.js'
 
 const autoText = new WeakSet<HTMLElement>()
 const trackEmpty = (el: HTMLElement) => {
@@ -26,7 +27,10 @@ export const FileUploadDropzone = definePart<fileUpload.Api, fileUpload.Dropzone
   tag: 'ark-file-upload-dropzone',
   root,
   attributes: ['disable-click'],
-  props: (api, el) => api.getDropzoneProps({ disableClick: el.hasAttribute('disable-click') }),
+  props: (api, el) => ({
+    ...describedBy(el),
+    ...api.getDropzoneProps({ disableClick: el.hasAttribute('disable-click') }),
+  }),
   state: (api) => api.getDropzoneState(),
 })
 
@@ -34,7 +38,7 @@ export const FileUploadTrigger = definePart<fileUpload.Api, fileUpload.TriggerSt
   tag: 'ark-file-upload-trigger',
   root,
   target: wrappedButton,
-  props: (api) => api.getTriggerProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getTriggerProps() }),
   state: (api) => api.getTriggerState(),
 })
 
@@ -49,7 +53,7 @@ export const FileUploadHiddenInput = definePart<fileUpload.Api>({
   tag: 'ark-file-upload-hidden-input',
   root,
   target: ownInput,
-  props: (api) => api.getHiddenInputProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getHiddenInputProps() }),
 })
 
 export const FileUploadItemGroup = definePart<fileUpload.Api, fileUpload.ItemGroupState>({

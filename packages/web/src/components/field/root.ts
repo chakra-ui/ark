@@ -27,5 +27,6 @@ defineRoot<field.Api>({
 
   events: { onValidityChange: 'validitychange' },
   rootProps: (api) => api.getRootProps(),
-  render: (api, el) => refreshOnChange(el, [api.disabled, api.invalid, api.readOnly, api.required]),
+  render: (api, el) =>
+    refreshOnChange(el, [api.disabled, api.invalid, api.readOnly, api.required, api.ariaDescribedby]),
 })

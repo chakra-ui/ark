@@ -11,7 +11,12 @@ import { mount as ServerErrors } from '../examples/server-errors.js'
 import { mount as ShadowRoot } from '../examples/shadow-root.js'
 import { mount as Textarea } from '../examples/textarea.js'
 import { mount as Validation } from '../examples/validation.js'
+import { mount as CheckboxWithField } from '../../checkbox/examples/with-field.js'
+import { mount as ColorPickerWithField } from '../../color-picker/examples/with-field.js'
+import { mount as ComboboxWithField } from '../../combobox/examples/with-field.js'
+import { mount as SelectWithField } from '../../select/examples/with-field.js'
 import { mount } from '../../../test-utils.js'
+import '@ark-ui/web/number-input'
 import '@ark-ui/web/checkbox'
 import '@ark-ui/web/field'
 
@@ -266,3 +271,41 @@ test('a server error marks the field invalid until the value changes', async () 
 
   await waitFor(() => expect(input).not.toHaveAttribute('aria-invalid'))
 })
+
+test.each([
+  ['checkbox', CheckboxWithField, 'ark-checkbox-hidden-input input'],
+  ['combobox', ComboboxWithField, 'ark-combobox-input input'],
+  ['select', SelectWithField, 'ark-select-trigger button'],
+  ['color picker trigger', ColorPickerWithField, 'ark-color-picker-trigger button'],
+  ['color picker channel input', ColorPickerWithField, 'ark-color-picker-channel-input input'],
+  ['number input', NumberInputWithField, 'ark-number-input-input input'],
+])('the helper text describes the %s inside a field', async (_, example, selector) => {
+  mount(example)
+
+  await waitFor(() => expect(document.querySelector(selector)).toHaveAttribute('aria-describedby', helperText().id))
+})
+
+test('the error text joins the description once the field turns invalid', async () => {
+  mount(NumberInputWithField)
+  const input = () => document.querySelector('ark-number-input-input input')
+  await waitFor(() => expect(input()).toHaveAttribute('aria-describedby', helperText().id))
+
+  field().setAttribute('invalid', '')
+
+  await waitFor(() => expect(input()).toHaveAttribute('aria-describedby', `${helperText().id} ${errorText().id}`))
+
+  field().removeAttribute('invalid')
+
+  await waitFor(() => expect(input()).toHaveAttribute('aria-describedby', helperText().id))
+})
+
+function NumberInputWithField(root: HTMLElement) {
+  root.innerHTML = /* html */ `
+    <ark-field>
+      <ark-number-input>
+        <ark-number-input-control><ark-number-input-input><input /></ark-number-input-input></ark-number-input-control>
+      </ark-number-input>
+      <ark-field-helper-text>Additional Info</ark-field-helper-text>
+      <ark-field-error-text>Error Info</ark-field-error-text>
+    </ark-field>`
+}

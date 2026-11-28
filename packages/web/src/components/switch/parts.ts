@@ -1,6 +1,7 @@
 import type * as zagSwitch from '@zag-js/switch'
 import { definePart, ownInput } from '../../utils/define.js'
 import { root } from './shared.js'
+import { describedBy } from '../../utils/field.js'
 
 export const SwitchLabel = definePart<zagSwitch.Api>({
   tag: 'ark-switch-label',
@@ -24,5 +25,5 @@ export const SwitchHiddenInput = definePart<zagSwitch.Api>({
   tag: 'ark-switch-hidden-input',
   root,
   target: ownInput,
-  props: (api) => api.getHiddenInputProps(),
+  props: (api, el) => ({ ...describedBy(el), ...api.getHiddenInputProps() }),
 })

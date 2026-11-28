@@ -4,6 +4,7 @@ import { spreadProps } from '@zag-js/vanilla'
 
 import { defineCollection, grouping, type Item } from '../../utils/collection.js'
 import { rootOf, type RootElement } from '../../utils/define.js'
+import { describedBy } from '../../utils/field.js'
 
 export const root = 'ark-select'
 
@@ -38,7 +39,7 @@ function syncOptions(hidden: HTMLSelectElement, items: ListCollection) {
 
 export function syncHiddenSelect(el: RootElement<select.Api>, hidden: HTMLSelectElement, api: select.Api) {
   syncOptions(hidden, api.collection)
-  spreadProps(hidden, api.getHiddenSelectProps(), el.machineId)
+  spreadProps(hidden, { ...describedBy(el), ...api.getHiddenSelectProps() }, el.machineId)
   const value = new Set(api.value)
   for (const option of hidden.options) option.selected = value.has(option.value)
 }
