@@ -2,6 +2,7 @@ import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
 import { mount as Controlled } from '../examples/controlled.js'
+import { mount as GroupWithFieldset } from '../examples/group-with-fieldset.js'
 import { mount as GroupWithForm } from '../examples/group-with-form.js'
 import { mount as GroupWithMaxSelected } from '../examples/group-with-max-selected.js'
 import { mount } from '../../../test-utils.js'
@@ -55,4 +56,21 @@ test('moving a controlled checkbox around the page does not duplicate its change
   await waitFor(() => expect(input).not.toBeChecked())
   expect(changed).toHaveBeenCalledTimes(1)
   expect(output()).toHaveTextContent('checked: false')
+})
+
+test('a checkbox group in a fieldset takes its invalid and disabled state', async () => {
+  mount(GroupWithFieldset)
+  await waitFor(() => expect(inputs()).toHaveLength(3))
+  const fieldset = document.querySelector('ark-fieldset')!
+
+  fieldset.setAttribute('invalid', '')
+  await waitFor(() => {
+    for (const input of inputs()) expect(input).toBeInvalid()
+  })
+
+  fieldset.setAttribute('disabled', '')
+  await waitFor(() => {
+    for (const label of document.querySelectorAll('ark-checkbox label'))
+      expect(label).toHaveAttribute('data-disabled', '')
+  })
 })

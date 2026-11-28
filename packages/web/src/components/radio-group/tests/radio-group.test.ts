@@ -143,3 +143,22 @@ test('a radio group inside a fieldset is selectable and disabled with the fields
   await waitFor(() => expect(document.querySelector('fieldset')).toHaveAttribute('disabled'))
   for (const name of ['React', 'Solid', 'Vue']) expect(radio(name)).toBeDisabled()
 })
+
+test('a radio group in a fieldset is named by the legend and takes its invalid and disabled state', async () => {
+  mount(WithFieldset)
+  const fieldset = document.querySelector('ark-fieldset')!
+  await fieldset.ready
+  const current = group()
+  const parent = current.parentElement!
+  current.remove()
+  parent.append(current)
+  await current.ready
+
+  await waitFor(() => expect(screen.getByRole('radiogroup', { name: 'Select a framework' })).toBe(group()))
+
+  fieldset.setAttribute('invalid', '')
+  await waitFor(() => expect(group()).toHaveAttribute('data-invalid', ''))
+
+  fieldset.setAttribute('disabled', '')
+  await waitFor(() => expect(group()).toHaveAttribute('data-disabled', ''))
+})

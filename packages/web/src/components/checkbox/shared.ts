@@ -2,6 +2,7 @@ import * as checkbox from '@zag-js/checkbox'
 import { list, num, str } from '../../utils/attrs.js'
 import type { RootElement } from '../../utils/define.js'
 import { emit } from '../../utils/events.js'
+import { fieldsetOf } from '../../utils/field.js'
 export const root = 'ark-checkbox'
 
 const groupTag = 'ark-checkbox-group'
@@ -55,11 +56,13 @@ class CheckboxGroup extends HTMLElement {
   itemProps(value: string) {
     const checked = this.isChecked(value)
     const max = num(this, 'max-selected')
+    const fieldset = fieldsetOf(this)
     return {
       checked,
       name: str(this, 'name'),
-      disabled: this.hasAttribute('disabled') || (max != null && this.value.length >= max && !checked),
-      invalid: this.hasAttribute('invalid'),
+      disabled:
+        this.hasAttribute('disabled') || !!fieldset?.disabled || (max != null && this.value.length >= max && !checked),
+      invalid: this.hasAttribute('invalid') || !!fieldset?.invalid,
       readOnly: this.hasAttribute('readonly'),
     }
   }
