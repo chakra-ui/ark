@@ -4,6 +4,7 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { getTableCellProps } from './get-table-cell-props.ts'
 import { useDatePickerContext } from './use-date-picker-context.ts'
 import {
   DatePickerTableCellPropsProvider,
@@ -21,12 +22,11 @@ export const DatePickerTableCell = forwardRef<HTMLTableCellElement, DatePickerTa
 
   const datePicker = useDatePickerContext()
   const viewProps = useDatePickerViewPropsContext()
-  const tableCellProps = {
+  const tableCellProps = getTableCellProps(viewProps.view, cellProps, {
     day: datePicker.getDayTableCellProps,
     month: datePicker.getMonthTableCellProps,
     year: datePicker.getYearTableCellProps,
-    // @ts-expect-error value is number filter
-  }[viewProps.view](cellProps)
+  })
 
   const mergedProps = mergeProps(tableCellProps, localProps)
 

@@ -11,6 +11,7 @@
   import { mergeProps } from '@zag-js/svelte'
   import { createSplitProps } from '../../utils/create-split-props.js'
   import { Ark } from '../factory/index.js'
+  import { getTableCellProps } from './get-table-cell-props.js'
   import { useDatePickerContext } from './use-date-picker-context.js'
   import { DatePickerTableCellPropsProvider } from './use-date-picker-table-cell-props-context.js'
   import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context.js'
@@ -29,16 +30,13 @@
   const datePicker = useDatePickerContext()
   const viewProps = useDatePickerViewPropsContext()
 
-  const tableCellProps = $derived(() => {
-    const viewMap = {
+  const tableCellProps = $derived(
+    getTableCellProps(viewProps().view ?? 'day', cellProps, {
       day: datePicker().getDayTableCellProps,
       month: datePicker().getMonthTableCellProps,
       year: datePicker().getYearTableCellProps,
-    }
-
-    // @ts-expect-error value is number filter
-    return viewMap[viewProps().view](cellProps)
-  })
+    }),
+  )
 
   const mergedProps = $derived(mergeProps(tableCellProps, localProps))
 
