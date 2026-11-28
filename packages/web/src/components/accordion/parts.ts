@@ -90,6 +90,8 @@ export const AccordionItemContent = definePart<accordion.Api, accordion.ItemStat
     const itemEl = el.closest<HTMLElement>(itemTag)
     if (!item || !itemEl) return
     const visible = collapsibleOf(itemEl, api, item).visible
-    mountTemplate(el, visible, !!rootOf(el, root)?.hasAttribute('unmount-on-exit'))
+    if (mountTemplate(el, visible, !!rootOf(el, root)?.hasAttribute('unmount-on-exit'))) {
+      itemEl.querySelector<PartElement<accordion.Api>>('ark-accordion-item-trigger')?.update(api)
+    }
   },
 })

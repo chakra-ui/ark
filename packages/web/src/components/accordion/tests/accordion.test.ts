@@ -113,8 +113,12 @@ test('lazy content mounts when its item opens and unmounts when it closes', asyn
   await user.click(trigger(first))
 
   await waitFor(() => expect(screen.getByText(/headless component library/)).toBeVisible())
+  await waitFor(() =>
+    expect(trigger(first)).toHaveAttribute('aria-controls', document.querySelector('ark-accordion-item-content')!.id),
+  )
 
   await user.click(trigger(first))
 
   await waitFor(() => expect(screen.queryByText(/headless component library/)).not.toBeInTheDocument())
+  expect(trigger(first)).not.toHaveAttribute('aria-controls')
 })
