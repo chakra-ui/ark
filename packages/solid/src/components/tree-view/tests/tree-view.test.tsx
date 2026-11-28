@@ -447,7 +447,7 @@ describe('TreeView', () => {
 
     await user.clear(input)
     await user.type(input, 'NOTES.md{Enter}')
-
+    await waitFor(() => expect(row('NOTES.md')).toHaveFocus())
     await waitFor(() => expect(row('NOTES.md')).toBeInTheDocument())
     expect(queryRow('README.md')).not.toBeInTheDocument()
     expect(screen.queryByRole('textbox', { name: 'Rename tree item' })).not.toBeInTheDocument()
