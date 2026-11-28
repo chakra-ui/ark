@@ -1,5 +1,219 @@
 # @ark-ui/vue
 
+## [6.0.0-next.1] - 2026-11-28
+
+### Changed
+
+- **Field** and **Fieldset**: Built on the `@zag-js/field` and `@zag-js/fieldset` machines. Fields now validate natively
+  and with `validate`, show results by `validationMode`, accept server `errors`, and track `touched`, `dirty` and
+  `filled`. `Field.ErrorText` takes `match` to show only for one native failure.
+
+- **Field**: Replaced `Field.RequiredIndicator` with `Field.Indicator`, whose `type` is `required`, `invalid`, `valid`
+  or `validating`. Use `<Field.Indicator type="required">*</Field.Indicator>`.
+
+- **Field**: Renamed the `input`, `textarea`, `select` and `requiredIndicator` parts to `control` and `indicator`
+  (`data-field-control`, `data-field-indicator`), and changed generated ids to `{id}:label` and `{id}:control`. Error
+  text stays mounted and hidden while the field is valid, and `Field.Root` no longer sets `role="group"`.
+- Render indicator and control parts that sit inside a `button` or `label` as `span` instead of `div`. A `div` inside a
+  `button` or `label` is invalid HTML, since both only accept phrasing content. The parts now render `span`, matching
+  Base UI:
+  - `Accordion.ItemIndicator`, `Collapsible.Indicator`, `Popover.Indicator`, `Toggle.Indicator`
+  - `Select.Indicator`, `Select.ItemIndicator`, `Combobox.ItemIndicator`, `Listbox.ItemIndicator`
+  - `Menu.Indicator`, `Menu.ItemIndicator`, `NavigationMenu.ItemIndicator`
+  - `Checkbox.Control`, `Checkbox.Indicator`, `RadioGroup.ItemControl`, `SegmentGroup.ItemControl`
+  - `Clipboard.Indicator`, `Steps.Indicator`, `Splitter.ResizeTriggerIndicator`
+  - `Avatar.Root`, `Avatar.RootProvider`, `Tabs.Indicator`, `NumberInput.Scrubber` A `span` is `display: inline` by
+    default, so styles that relied on these parts being block-level need an explicit `display` (`block`, `flex` or
+    `inline-flex`). In React, refs to these parts are now typed `HTMLSpanElement`.
+- Render the same element for every part across frameworks.
+  - `AngleSlider.Marker` renders `span` instead of `div` in React, Solid and Vue, matching `Slider.Marker`.
+  - `AngleSlider.ValueText` renders `span` instead of `div` in React and Solid, matching every other `ValueText`.
+  - `Listbox.ItemText` renders `span` instead of `div` in React, Solid and Vue, matching `Select.ItemText` and
+    `Combobox.ItemText`.
+  - `Popover.Title` renders `h2` instead of `div` in React, Solid and Vue, matching Svelte and `Dialog.Title`, so screen
+    reader users can reach it with heading navigation. Without a CSS reset it picks up the browser's default heading
+    margins and font size. Use `render` for a different heading level. Styles that relied on the `span` parts being
+    block-level need an explicit `display`.
+- Export the missing `RootEmits` types for AngleSlider, Drawer, FloatingPanel, JsonTreeView, PasswordInput,
+  SignaturePad, Steps and TreeView. AngleSlider's namespace now uses the short type names like the other frameworks, so
+  `AngleSlider.AngleSliderRootProps` becomes `AngleSlider.RootProps`.
+- Update to zag `2.0.0-next.4`.
+  - **Steps:** define steps with `items` and address them by `value` instead of `index`. `count`, `step`, `defaultStep`,
+    `isStepValid`, `isStepSkippable`, `onStepChange`, `onStepComplete` and `onStepInvalid` are replaced by `items`,
+    `value`, `defaultValue`, `invalid`/`optional` on each item, `onValueChange`, `onComplete` and `onNavigationBlocked`.
+    Add `Steps.SkipTrigger`, `completedValues` and `translations`. `Steps.ChangeDetails` and `Steps.InvalidDetails`
+    become `Steps.ValueChangeDetails` and `Steps.NavigationBlockedDetails`.
+  - **NumberInput:** the value is a `number`, with `null` for an empty input. `valueAsNumber` is removed; read `value`.
+    `allowOverflow` and `clampValueOnBlur` are replaced by `allowOutOfRange`. The input is a text field instead of a
+    spinbutton.
+  - **PinInput:** remove `blurOnComplete` and `selectOnFocus`; blur in `onValueComplete` instead. Rename `sanitizeValue`
+    to `normalizeValue`.
+  - **Accordion:** remove `loopFocus`; triggers are reached with `Tab`. `collapsible` defaults to `true`.
+  - **Combobox:** replace `disableLayer` with `inline`.
+  - **Menu:** replace `composite` with `popupType`.
+  - **Slider:** replace the `aria-label` and `aria-labelledby` arrays with `getAriaLabel` and `getAriaLabelledBy`.
+  - **Toc:** `multiple` defaults to `false`.
+  - **Tour:** the `"prev"` action is now `"previous"`.
+  - Part state types keep their names but now describe zag's root state, which absorbed the per-part states:
+    `CollapsibleTriggerState`, `EditableAreaState`/`InputState`/`LabelState`/`PreviewState`, `DateInputControlState`,
+    `PasswordInputInputState`/`VisibilityTriggerState`, `PinInputLabelState` and `RatingGroupControlState`.
+  - Context and hook APIs spell out "previous": `getPreviousTriggerProps()`, `goToPreviousPage()`,
+    `translations.previousTriggerLabel`, `goToPreviousStep()`, `hasPreviousStep`, `selectPrevious()` and
+    `scrollPrevious()`. Part names such as `Pagination.PrevTrigger` are unchanged.
+  - `StepChangeDetails` and `StepInvalidDetails` are replaced by `StepsValueChangeDetails` and
+    `StepsNavigationBlockedDetails`, alongside `StepsCompleteDetails`, `StepsCompletedChangeDetails` and
+    `StepsStepItem`.
+  - Overlays no longer get a `z-index` from zag. Set it on the positioner with `--layer-index`, e.g.
+    `z-index: calc(1400 + var(--layer-index))`.
+  - New props: `hiddenUntilFound` on Accordion and Collapsible, `maxGranularity` on DateInput, `disabled` on Splitter
+    and `Slider.Thumb`, `locale` on ColorPicker, and `collection`, `scrollToIndexFn`, `autoHighlight`, `initialFocusEl`
+    and `finalFocusEl` on Menu.
+  - **Toggle:** the hook takes an optional `id`.
+  - **Vue:** Steps uses `v-model` for the current step value instead of `v-model:step`. NumberInput's `v-model` is a
+    `number | null`.
+  - **Svelte:** Steps binds `value` instead of `step`.
+
+### Added
+
+- Add the `Command` component for command palettes and quick switchers. Focus stays in the input while the arrow keys
+  move the highlight, and Enter or a click calls `onSelect`.
+  ```tsx
+  <Command.Root collection={collection} onSelect={(details) => run(details.itemValue)}>
+    <Command.Label>Commands</Command.Label>
+    <Command.Control>
+      <Command.Input placeholder="Type a command or search..." />
+    </Command.Control>
+    <Command.Context>
+      {(command) => (
+        <Command.List>
+          {command.collection.items.map((item) => (
+            <Command.Item key={item.value} item={item}>
+              <Command.ItemText>{item.label}</Command.ItemText>
+            </Command.Item>
+          ))}
+        </Command.List>
+      )}
+    </Command.Context>
+    <Command.Empty>No results found</Command.Empty>
+  </Command.Root>
+  ```
+  Items are fuzzy-matched on their text and `keywords`; pass `filter` to replace it. Build the collection with the new
+  `createPageListCollection` for nested pages: an item's `parent` puts it on that item's page, and Backspace goes up.
+- Add `Menu.Input` and `Menu.List` for filterable menus. Filter the items yourself, for example with `useFilter` and
+  `useListCollection`, and the input keeps focus while the arrow keys move the highlight through the list.
+  ```tsx
+  <Menu.Root popupType="dialog">
+    <Menu.Trigger>Actions</Menu.Trigger>
+    <Menu.Positioner>
+      <Menu.Content>
+        <Menu.Input value={query} onChange={(e) => setQuery(e.currentTarget.value)} />
+        <Menu.List>{/* filtered items */}</Menu.List>
+      </Menu.Content>
+    </Menu.Positioner>
+  </Menu.Root>
+  ```
+  Set `popupType="dialog"` so the popup is a dialog holding the input and the `menu` list. `autoHighlight` on
+  `Menu.Root` highlights the first match as the query changes, or always with `"always"`. Submenus can have their own
+  input, and Escape or the left arrow on an empty input returns to the parent's.
+- Add the `Meter` component, which displays a numeric value within a known range, such as disk usage or battery level.
+  ```tsx
+  <Meter.Root defaultValue={24}>
+    <Meter.Label>Storage used</Meter.Label>
+    <Meter.ValueText />
+    <Meter.Track>
+      <Meter.Indicator />
+    </Meter.Track>
+  </Meter.Root>
+  ```
+  `low`, `high`, and `optimum` grade the value the way the HTML `<meter>` element does, exposed as `data-state`
+  (`optimal`, `suboptimal`, or `least-optimal`) for styling. The value is formatted with `Intl.NumberFormat` and
+  announced through `aria-valuetext`.
+- Render `Pagination.Item`, `Pagination.PrevTrigger`, `Pagination.NextTrigger`, `Pagination.FirstTrigger` and
+  `Pagination.LastTrigger` as anchors when the machine is `type="link"`. They rendered buttons carrying the `href` the
+  machine emits, which navigates nowhere.
+- Add the `NumberFlow` component, which animates a number by rolling each digit to its new value.
+  ```tsx
+  <NumberFlow.Root value={price} formatOptions={{ style: 'currency', currency: 'USD' }}>
+    <NumberFlow.Segments />
+    <NumberFlow.HiddenValueText />
+  </NumberFlow.Root>
+  ```
+  Formatting goes through `Intl.NumberFormat`, including currency, percent, compact notation, and non-Latin numeral
+  systems. Digits can roll along their shortest path, in the direction of the change (`trend`), or through every value
+  in between (`continuous`), with configurable `spinTiming`, `transformTiming`, and `stagger`. The number snaps instead
+  of rolling when the user prefers reduced motion, and `live` announces the settled value to screen readers. Use
+  `Segments` for the default rendering, or compose `Digit`, `DigitTrack`, `DigitCell`, and `Symbol` to style individual
+  digits and symbols.
+- **Select**: Add `Select.HiddenInput`, which submits the value through hidden inputs instead of a hidden `<select>`.
+  Use it for large or virtualized collections, where `Select.HiddenSelect` would render an `<option>` per item.
+
+### Fixed
+
+- `asChild` is no longer marked deprecated. It stays supported alongside `render`, matching the web package's `as-child`
+  attribute. Use `render` when you need the part's state.
+- **ColorPicker**: Inside a `Field`, the hidden input now takes the field's control id, so the field label and native
+  validation target it. Svelte already did this.
+- **Field**: Fixed helper and error text not being announced on the focused element of Select, TagsInput, ColorPicker,
+  FileUpload, SignaturePad, RatingGroup and PinInput. `PinInput.Control` now renders as a labelled group.
+- **Field**: Fixed `ids.root` being ignored and `ids.control` being applied to the root element instead of the control.
+- **FileUpload**: Fixed `Field.Root readOnly` not making the file upload read-only.
+- **FileUpload**: Fixed `FileUpload.ItemPreviewImage` revoking its blob URL on every re-render, which caused
+  intermittent `ERR_FILE_NOT_FOUND` requests. The URL is now recreated only when the file changes.
+- **Menu**: Forward `value` on `Menu.ContextTrigger` the same way `Menu.Trigger` does.
+- Fix part types that named a different element than the one the part renders.
+  - React: the refs of `Clipboard.ValueText`, `ColorPicker.ValueText`, `Combobox.ItemText`, `Select.ItemText` and
+    `Slider.ValueText` are now `HTMLSpanElement`, `FloatingPanel.Title` is `HTMLHeadingElement`, and
+    `FileUpload.ItemPreview` is `HTMLDivElement`.
+  - Solid: `ColorPicker.ChannelSliderValueText` takes `span` props.
+  - Svelte: `TreeView.Tree` takes `div` props and `AngleSlider.ValueText` takes `span` props.
+  - Vue: `Drawer.Trigger`, `Drawer.CloseTrigger` and `PasswordInput.VisibilityTrigger` accept button attributes,
+    `PasswordInput.Input` accepts input attributes, and `PasswordInput.Label`, `SignaturePad.Label` and
+    `ColorPicker.ChannelSliderLabel` accept label attributes.
+- **Toc**: Add `getNavProps()` to `useToc` and render `Toc.Nav` with it. `Toc.Nav` rendered the root props, so it
+  carried `data-toc-root` and no `id`. It now carries `data-toc-nav` and its own `id`, so update any styles that target
+  the nav through `[data-toc-root]`.
+
+- **Toc**: Move `aria-labelledby` from `Root` to `Nav`, and render the root props on `RootProvider` in React and on
+  `Root` in Svelte so the indicator keeps its position.
+
+- **Toc (Svelte)**: `Toc.Nav` now reads the Toc from `Toc.Root` like the other frameworks and no longer accepts `useToc`
+  props or creates its own Toc. Wrap it in `Toc.Root` if you were rendering it on its own.
+- **Toc**: Fix type declarations failing under `moduleResolution: node16` and `nodenext` without `skipLibCheck`.
+- **Virtualizer**: `useListVirtualizer` and `useGridVirtualizer` now re-measure when the scroll container resizes
+  (`observeScrollElementSize` defaults to `true`), matching `@ark-ui/web`. Lists mounted inside a hidden tab, dialog or
+  collapsed panel no longer render empty. Pass `observeScrollElementSize: false` to opt out.
+- **ColorPicker, Combobox, DatePicker, Dialog, Drawer, FloatingPanel, HoverCard, Menu, Popover, Select, Tooltip**: Fix
+  `Root` not declaring `enterComplete`. `usePresence` already emits it, so Vue warned that the event was undeclared.
+- **Field**: Fix `Field.Input`, `Field.Textarea`, and `Field.Select` clearing native initial values (`defaultValue`,
+  `<option selected>`) when used without `v-model`.
+- **Highlight**: Fix duplicate `HighlightChunk` identifier error in `useHighlight` types when `skipLibCheck` is `false`.
+- All `use*` composables now accept a getter for their props (`MaybeRefOrGetter`), so reactive values can be passed
+  without `computed` or object getters:
+  ```ts
+  const combobox = useCombobox(() => ({
+    collection: collection.value,
+    onInputValueChange: ({ inputValue }) => filter(inputValue),
+  }))
+  ```
+  Plain objects, `ref`s and `computed`s keep working.
+- **JsonTreeView**: Fix `JsonTreeView.Tree` with `indent-guide` rendering no built-in indent guides when no
+  `indentGuide` slot is provided, and an empty `BranchIndicator` when no `arrow` slot is provided.
+- Sync Vue prop and emit types with zag, adding props and events Vue was missing:
+  - `SegmentGroup`: `invalid` and `required`
+  - `DateInput`: `createCalendar` and `isDateUnavailable`
+  - `Pagination`: `boundaryCount`
+  - `Tour`: `scrollToTargetFn`
+  - `Toggle` and `ImageCropper`: `id`
+  - `Drawer`: `stack`, plus the `escapeKeyDown`, `focusOutside`, `interactOutside`, `pointerDownOutside` and
+    `requestDismiss` events
+  - `NumberInput`: the `valueCommit` event
+- **Timer**: Fix `Timer.Item` dropping the element passed through its default slot when using `asChild`. The element is
+  now rendered and receives the item attributes, and the formatted value is used only as fallback content.
+- **Toast**: Fix `Toast.Root` with `asChild` applying the root attributes to the internal ghost element instead of the
+  slotted element.
+- Fix Dialog, Drawer, Menu and Popover triggers pointing `aria-controls` at content that isn't mounted yet when
+  `lazyMount` is set.
+
 ## [6.0.0-next.0] - 2026-10-05
 
 ### Changed
@@ -216,12 +430,12 @@
   object as `state`, so `#render="{ props, state }"` receives the machine's part state instead of a hand-built
   `{ open }` object.
 - Fix `Select.HiddenSelect` rendering a stray `>` as text in every option, so each one read `Label >`.
-- **Tour**: Fix `Tour.RootEmits` declaring `statusChange`, `stepChange` and other machine events that `Tour.Root`
-  never emits. It now only declares `enterComplete` and `exitComplete`. Pass `onStatusChange`, `onStepChange` and the
-  other callbacks to `useTour` instead.
+- **Tour**: Fix `Tour.RootEmits` declaring `statusChange`, `stepChange` and other machine events that `Tour.Root` never
+  emits. It now only declares `enterComplete` and `exitComplete`. Pass `onStatusChange`, `onStepChange` and the other
+  callbacks to `useTour` instead.
   - **Presence**: Fix the `enterComplete` and `exitComplete` event descriptions being swapped.
-- **TreeView**: Fix `TreeView.RootEmits<T>` and `useTreeView` losing the node type, so `selectedNodes`,
-  `expandedNodes` and `focusedNode` are typed as `T` instead of `TreeNode`.
+- **TreeView**: Fix `TreeView.RootEmits<T>` and `useTreeView` losing the node type, so `selectedNodes`, `expandedNodes`
+  and `focusedNode` are typed as `T` instead of `TreeNode`.
 - Move to zag `2.0.0-next.2` and drop the shims it makes unnecessary. `normalizeHotkey` and the `Platform` re-export are
   back in `@zag-js/hotkeys`, and `@zag-js/presence` now calls `onEnterComplete`, so Ark's local stand-ins for all three
   are gone. **Svelte:** the `useX` hooks now require an `id`. `useMachine` began taking `InputProps<T>` rather than
