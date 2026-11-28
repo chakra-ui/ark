@@ -10,8 +10,11 @@ export const PageSizeControl = () => {
         {(pagination) => (
           <>
             <div class="hstack">
-              <label class={styles.Text}>Items per page:</label>
+              <label for="page-size" class={styles.Text}>
+                Items per page:
+              </label>
               <select
+                id="page-size"
                 class={styles.PageSizeSelect}
                 value={pagination().pageSize}
                 onChange={(e) => pagination().setPageSize(Number(e.target.value))}
