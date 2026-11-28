@@ -15,6 +15,7 @@ export interface DatePickerTableCellTriggerProps
 <script setup lang="ts">
 import { computed } from 'vue'
 import { ark } from '../factory.ts'
+import { getTableCellProps } from './get-table-cell-props.ts'
 import { useDatePickerContext } from './use-date-picker-context.ts'
 import { useDatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context.ts'
 import { DEFAULT_VIEW_PROPS_CONTEXT, useDatePickerViewPropsContext } from './use-date-picker-view-props-context.ts'
@@ -26,16 +27,11 @@ const cellProps = useDatePickerTableCellPropsContext()
 const viewProps = useDatePickerViewPropsContext(DEFAULT_VIEW_PROPS_CONTEXT)
 
 const triggerProps = computed(() => {
-  const viewMap = {
+  return getTableCellProps(viewProps.view ?? 'day', cellProps, {
     day: datePicker.value.getDayTableCellTriggerProps,
     month: datePicker.value.getMonthTableCellTriggerProps,
     year: datePicker.value.getYearTableCellTriggerProps,
-  }
-
-  const viewFn = viewMap[viewProps.view]
-
-  // @ts-expect-error fix later
-  return viewFn(cellProps)
+  })
 })
 
 useForwardExpose()
