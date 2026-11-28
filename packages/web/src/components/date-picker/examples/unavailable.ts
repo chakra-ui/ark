@@ -1,17 +1,12 @@
 import { createElement, Calendar, ChevronLeft, ChevronRight } from 'lucide'
 
-import type { DateValue } from '@zag-js/date-picker'
+import { isWeekend } from '@internationalized/date'
 
 import '@ark-ui/web/date-picker'
 
 import button from 'styles/button.module.css'
 
 import styles from 'styles/date-picker.module.css'
-
-const isWeekend = (date: DateValue) => {
-  const dayOfWeek = date.toDate('UTC').getDay()
-  return dayOfWeek === 0 || dayOfWeek === 6
-}
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `
